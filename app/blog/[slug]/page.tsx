@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { PortableText, type PortableTextComponents } from '@portabletext/react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Button } from '@/components/ui/button';
 import {
   getPostBySlug,
@@ -10,7 +11,7 @@ import {
   getRelatedPosts,
 } from '@/lib/sanity/queries';
 import { urlForImage } from '@/lib/sanity/image';
-import { PILLAR_TITLES, type SanityImage } from '@/lib/sanity/types';
+import { PILLAR_TITLES } from '@/lib/sanity/types';
 import {
   articleLd,
   breadcrumbLd,
@@ -66,74 +67,101 @@ function formatDate(iso: string) {
   });
 }
 
-const portableComponents: PortableTextComponents = {
-  block: {
-    h2: ({ children }) => (
-      <h2 className="text-2xl md:text-3xl text-gt-text mt-12 mb-5">{children}</h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className="font-sans text-xl font-medium text-gt-text mt-8 mb-4 normal-case">
-        {children}
-      </h3>
-    ),
-    blockquote: ({ children }) => (
-      <blockquote className="border-l-2 border-gt-orange pl-5 my-6 italic text-gt-text-muted font-sans">
-        {children}
-      </blockquote>
-    ),
-    normal: ({ children }) => (
-      <p className="text-gt-text leading-relaxed mb-5 font-sans">{children}</p>
-    ),
-  },
-  marks: {
-    strong: ({ children }) => (
-      <strong className="font-medium text-gt-text">{children}</strong>
-    ),
-    em: ({ children }) => <em className="italic">{children}</em>,
-    link: ({ children, value }) => (
+// Componentes customizados pra renderizar markdown com a paleta GT
+const markdownComponents = {
+  h1: ({ children }: { children?: React.ReactNode }) => (
+    <h1 className="text-3xl md:text-4xl text-gt-text mt-12 mb-6">{children}</h1>
+  ),
+  h2: ({ children }: { children?: React.ReactNode }) => (
+    <h2 className="text-2xl md:text-3xl text-gt-text mt-12 mb-5">{children}</h2>
+  ),
+  h3: ({ children }: { children?: React.ReactNode }) => (
+    <h3 className="font-sans text-xl font-medium text-gt-text mt-8 mb-4 normal-case">
+      {children}
+    </h3>
+  ),
+  p: ({ children }: { children?: React.ReactNode }) => (
+    <p className="text-gt-text leading-relaxed mb-5 font-sans">{children}</p>
+  ),
+  blockquote: ({ children }: { children?: React.ReactNode }) => (
+    <blockquote className="border-l-2 border-gt-orange pl-5 my-6 italic text-gt-text-muted font-sans">
+      {children}
+    </blockquote>
+  ),
+  a: ({ children, href }: { children?: React.ReactNode; href?: string }) => {
+    const isExternal = href?.startsWith('http');
+    return (
       <a
-        href={value?.href}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={href}
+        {...(isExternal
+          ? { target: '_blank', rel: 'noopener noreferrer' }
+          : {})}
         className="text-gt-orange hover:underline"
       >
         {children}
       </a>
-    ),
+    );
   },
-  types: {
-    image: ({ value }: { value: SanityImage }) => {
-      const url = urlForImage(value)?.width(1200).url();
-      if (!url) return null;
-      return (
-        <figure className="my-8">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={url}
-            alt={value.alt || ''}
-            className="rounded-lg w-full"
-          />
-          {value.caption && (
-            <figcaption className="text-sm text-gt-text-dim mt-3 text-center font-sans italic">
-              {value.caption}
-            </figcaption>
-          )}
-        </figure>
-      );
-    },
-  },
-  list: {
-    bullet: ({ children }) => (
-      <ul className="list-disc pl-6 mb-5 text-gt-text font-sans space-y-2">
+  strong: ({ children }: { children?: React.ReactNode }) => (
+    <strong className="font-medium text-gt-text">{children}</strong>
+  ),
+  em: ({ children }: { children?: React.ReactNode }) => (
+    <em className="italic">{children}</em>
+  ),
+  ul: ({ children }: { children?: React.ReactNode }) => (
+    <ul className="list-disc pl-6 mb-5 text-gt-text font-sans space-y-2">
+      {children}
+    </ul>
+  ),
+  ol: ({ children }: { children?: React.ReactNode }) => (
+    <ol className="list-decimal pl-6 mb-5 text-gt-text font-sans space-y-2">
+      {children}
+    </ol>
+  ),
+  li: ({ children }: { children?: React.ReactNode }) => (
+    <li className="leading-relaxed">{children}</li>
+  ),
+  hr: () => <hr className="my-10 border-gt-border" />,
+  code: ({ children }: { children?: React.ReactNode }) => (
+    <code className="bg-gt-card text-gt-text px-1.5 py-0.5 rounded text-sm font-mono">
+      {children}
+    </code>
+  ),
+  table: ({ children }: { children?: React.ReactNode }) => (
+    <div className="my-8 overflow-x-auto">
+      <table className="w-full border-collapse font-sans text-sm">
         {children}
-      </ul>
-    ),
-    number: ({ children }) => (
-      <ol className="list-decimal pl-6 mb-5 text-gt-text font-sans space-y-2">
-        {children}
-      </ol>
-    ),
-  },
+      </table>
+    </div>
+  ),
+  thead: ({ children }: { children?: React.ReactNode }) => (
+    <thead className="border-b border-gt-border-strong text-gt-text-muted">
+      {children}
+    </thead>
+  ),
+  th: ({ children }: { children?: React.ReactNode }) => (
+    <th className="text-left py-3 px-4 font-medium">{children}</th>
+  ),
+  td: ({ children }: { children?: React.ReactNode }) => (
+    <td className="py-3 px-4 border-b border-gt-border text-gt-text">
+      {children}
+    </td>
+  ),
+  img: ({ src, alt }: { src?: string; alt?: string }) => (
+    <figure className="my-8">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt || ''}
+        className="rounded-lg w-full"
+      />
+      {alt && (
+        <figcaption className="text-sm text-gt-text-dim mt-3 text-center font-sans italic">
+          {alt}
+        </figcaption>
+      )}
+    </figure>
+  ),
 };
 
 export default async function PostPage({ params }: PageProps) {
@@ -202,10 +230,12 @@ export default async function PostPage({ params }: PageProps) {
 
         <div className="bg-gt-bg py-12 md:py-16">
           <div className="container-narrow">
-            <PortableText
-              value={post.body}
-              components={portableComponents}
-            />
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={markdownComponents}
+            >
+              {post.body}
+            </ReactMarkdown>
 
             {post.tags && post.tags.length > 0 && (
               <div className="mt-12 pt-8 border-t border-gt-border">

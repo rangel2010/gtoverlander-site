@@ -1,5 +1,3 @@
-import type { PortableTextBlock } from '@portabletext/types';
-
 export type Pillar = 'destinos' | 'preparacao' | 'vida-overlander';
 
 export const PILLAR_TITLES: Record<Pillar, string> = {
@@ -45,5 +43,5 @@ export interface PostListItem {
 
 export interface PostFull extends PostListItem {
   authorBio?: string;
-  body: PortableTextBlock[];
+  body: string; // markdown bruto — renderizado via react-markdown
 }

@@ -118,57 +118,11 @@ export const postSchema = defineType({
     }),
     defineField({
       name: 'body',
-      title: 'Conteúdo',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'H2', value: 'h2' },
-            { title: 'H3', value: 'h3' },
-            { title: 'Citação', value: 'blockquote' },
-          ],
-          marks: {
-            decorators: [
-              { title: 'Negrito', value: 'strong' },
-              { title: 'Itálico', value: 'em' },
-            ],
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'URL',
-                    validation: (Rule) => Rule.required(),
-                  },
-                ],
-              },
-            ],
-          },
-        },
-        {
-          type: 'image',
-          options: { hotspot: true },
-          fields: [
-            {
-              name: 'alt',
-              type: 'string',
-              title: 'Texto alternativo',
-              validation: (Rule) => Rule.required(),
-            },
-            {
-              name: 'caption',
-              type: 'string',
-              title: 'Legenda (opcional)',
-            },
-          ],
-        },
-      ],
+      title: 'Conteúdo (Markdown)',
+      type: 'markdown',
+      description:
+        'Cole o markdown completo aqui. Suporta # H1, ## H2, ### H3, **negrito**, *itálico*, [link](url), listas com - ou 1., > citação, ![imagem](url) e tabelas.',
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {
