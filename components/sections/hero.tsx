@@ -39,15 +39,14 @@ export function Hero() {
           </p>
         </div>
 
-        <div className="hidden md:block">
-          {/* Placeholder pro mockup do app — substituir por screenshot real na fase de assets */}
-          <div className="aspect-[3/4] max-w-[360px] mx-auto bg-gt-card border border-gt-border rounded-2xl flex items-center justify-center">
-            <p className="text-gt-text-dim text-sm text-center px-8 font-sans">
-              Mockup do app
-              <br />
-              <span className="text-xs">(screenshot real entra aqui)</span>
-            </p>
-          </div>
+        <div className="hidden md:flex justify-center">
+          {/* Screenshot real da home do app GT Overlander */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/screenshots/app-home.jpg"
+            alt="Tela inicial do app GT Overlander mostrando a saudação ao usuário, hero com Jeep na estrada e botão Comece um novo roteiro"
+            className="max-h-[640px] w-auto rounded-3xl border border-gt-border shadow-2xl"
+          />
         </div>
       </div>
     </section>

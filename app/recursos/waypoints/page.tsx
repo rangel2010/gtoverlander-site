@@ -65,6 +65,33 @@ export default function WaypointsPage() {
         secondaryCta={{ label: 'Ver planos', href: '/planos' }}
       />
 
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
+        <div className="container-wide grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+          <div className="flex justify-center md:order-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/screenshots/app-radar.jpg"
+              alt="Tela do Radar de Waypoints mostrando filtros por categoria (restaurantes, hotéis, postos) e mapa com pontos coloridos por tipo"
+              className="max-h-[640px] w-auto rounded-3xl border border-gt-border shadow-2xl"
+            />
+          </div>
+          <div className="md:order-1">
+            <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
+              Radar de Waypoints
+            </p>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-5 leading-tight">
+              Tudo que você precisa, perto de você
+            </h2>
+            <p className="text-gt-text-muted leading-relaxed font-sans">
+              Abre o radar e vê o que tem ao redor — postos, restaurantes,
+              hotéis, atrativos. Filtros por categoria, mapa interativo, ícones
+              coloridos por tipo. Ideal pra encontrar recursos durante a viagem
+              ou ajustar a rota no momento.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">

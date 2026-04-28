@@ -82,6 +82,32 @@ export default function RoteirosIaPage() {
         secondaryCta={{ label: 'Ver planos', href: '/planos' }}
       />
 
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
+        <div className="container-wide grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+          <div>
+            <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
+              Veja em ação
+            </p>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-5 leading-tight">
+              Da descrição ao mapa, em segundos
+            </h2>
+            <p className="text-gt-text-muted leading-relaxed font-sans">
+              A IA monta a rota, exibe no mapa e já sugere postos, restaurantes,
+              hotéis e campings ao longo do trajeto. Você decide quais paradas
+              entram, edita o que quiser, e parte com CarPlay ou Android Auto.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/screenshots/app-chat-mapa.jpg"
+              alt="Tela do app mostrando a rota São Paulo a Curitiba com mapa, paradas em postos de combustível e botões de filtro por categoria"
+              className="max-h-[640px] w-auto rounded-3xl border border-gt-border shadow-2xl"
+            />
+          </div>
+        </div>
+      </section>
+
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
