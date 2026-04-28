@@ -8,7 +8,6 @@ interface BusinessLeadPayload {
   empresa?: string;
   tipo?: string;
   cidade?: string;
-  raio?: string;
   observacoes?: string;
 }
 
@@ -45,7 +44,6 @@ export async function POST(req: Request) {
     }
 
     const telefone = (data.telefone ?? '').trim();
-    const raio = (data.raio ?? '').trim();
     const observacoes = (data.observacoes ?? '').trim();
 
     const html = `
@@ -56,7 +54,6 @@ export async function POST(req: Request) {
       <p><strong>Empresa:</strong> ${escapeHtml(empresa)}</p>
       <p><strong>Tipo de negócio:</strong> ${escapeHtml(tipo || '—')}</p>
       <p><strong>Cidade:</strong> ${escapeHtml(cidade || '—')}</p>
-      <p><strong>Raio de atuação:</strong> ${escapeHtml(raio || '—')}</p>
       ${
         observacoes
           ? `<h3>Observações:</h3><p>${escapeHtml(observacoes).replace(/\n/g, '<br>')}</p>`

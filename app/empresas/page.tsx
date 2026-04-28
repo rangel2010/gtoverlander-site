@@ -13,8 +13,12 @@ const beneficios = [
     desc: 'Apareça pra quem JÁ DECIDIU passar pela sua região. Não é tráfego frio — é viajante no momento exato de planejar.',
   },
   {
+    titulo: 'Indicação prioritária no mapa',
+    desc: 'Sua empresa ganha destaque visual no radar. Quando houver concorrentes próximos, você aparece com prioridade pro viajante.',
+  },
+  {
     titulo: 'Self-service',
-    desc: 'Cadastra a empresa, escolhe categoria e raio de atuação, e tá no mapa. Sem ligação de vendas, sem contrato longo.',
+    desc: 'Cadastra a empresa, escolhe a categoria, e tá no mapa. Sem ligação de vendas, sem contrato longo, sem burocracia.',
   },
   {
     titulo: 'ROI mensurável',
@@ -31,12 +35,12 @@ const passos = [
 
 const categorias = [
   '⛽ Postos de combustível',
+  '🛌 Hotéis',
   '🏕️ Campings',
-  '🛌 Pousadas e hotéis',
+  '🏡 Pousadas',
   '🍽️ Restaurantes',
+  '☕ Cafés',
   '🔧 Oficinas mecânicas',
-  '🛒 Mercados e lojas',
-  '🐾 Hospitais veterinários',
   '🚐 Receptivos pra RV',
 ];
 
@@ -74,7 +78,7 @@ export default function EmpresasPage() {
             na frente de quem já passa pela sua região.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {beneficios.map((b) => (
               <div
                 key={b.titulo}

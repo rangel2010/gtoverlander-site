@@ -135,7 +135,7 @@ export function Footer() {
           <img
             src="/images/logo-gt-contorno.svg"
             alt="GT Overlander"
-            className="h-24 w-auto"
+            className="h-16 w-auto"
           />
         </div>
       </div>

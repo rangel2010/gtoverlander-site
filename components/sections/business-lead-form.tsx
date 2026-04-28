@@ -145,12 +145,13 @@ export function BusinessLeadForm() {
               Selecione…
             </option>
             <option value="Posto de combustível">Posto de combustível</option>
+            <option value="Hotel">Hotel</option>
             <option value="Camping">Camping</option>
-            <option value="Pousada / Hotel">Pousada / Hotel</option>
+            <option value="Pousada">Pousada</option>
             <option value="Restaurante">Restaurante</option>
+            <option value="Café">Café</option>
             <option value="Oficina mecânica">Oficina mecânica</option>
-            <option value="Mercado / Loja">Mercado / Loja</option>
-            <option value="Hospital veterinário">Hospital veterinário</option>
+            <option value="Receptivo pra RV">Receptivo pra RV</option>
             <option value="Outro">Outro</option>
           </select>
         </div>
@@ -167,19 +168,6 @@ export function BusinessLeadForm() {
             placeholder="Ex: Bonito / MS"
           />
         </div>
-      </div>
-
-      <div>
-        <label htmlFor="raio" className={labelStyles}>
-          Raio de atuação (opcional)
-        </label>
-        <input
-          id="raio"
-          name="raio"
-          type="text"
-          className={inputStyles}
-          placeholder="Ex: 50 km, ou cidade inteira, ou rota X-Y"
-        />
       </div>
 
       <div>
