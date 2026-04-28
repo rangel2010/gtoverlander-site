@@ -89,7 +89,7 @@ export default function SobrePage() {
             <div className="aspect-square bg-gt-green/5 rounded-lg overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/rangel.jpg"
+                src="/images/rangel.png"
                 alt="Rangel Machado, fundador do GT Overlander, em frente a paisagem patagônica"
                 className="w-full h-full object-cover"
               />
