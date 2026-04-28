@@ -130,12 +130,12 @@ export function Footer() {
             </a>
           </div>
 
-          {/* Logo real do GT (versão branca) — lado direito */}
+          {/* Logo real do GT (cor contorno, mesma do header) — lado direito */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/logo-gt-white.svg"
+            src="/images/logo-gt-contorno.svg"
             alt="GT Overlander"
-            className="h-16 w-auto opacity-90"
+            className="h-24 w-auto"
           />
         </div>
       </div>
