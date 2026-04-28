@@ -117,7 +117,7 @@ export function Footer() {
               aria-label="Instagram"
               className="text-gt-text-muted hover:text-gt-text transition-colors"
             >
-              <Instagram size={20} />
+              <Instagram size={26} />
             </a>
             <a
               href="https://youtube.com/@gtoverlander"
@@ -126,7 +126,7 @@ export function Footer() {
               aria-label="YouTube"
               className="text-gt-text-muted hover:text-gt-text transition-colors"
             >
-              <Youtube size={20} />
+              <Youtube size={26} />
             </a>
           </div>
 

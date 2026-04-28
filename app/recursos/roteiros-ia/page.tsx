@@ -82,12 +82,12 @@ export default function RoteirosIaPage() {
         secondaryCta={{ label: 'Ver planos', href: '/planos' }}
       />
 
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-2xl md:text-3xl font-medium text-gt-green mb-3">
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
             2 motores de IA, calibrados pra cada perfil
           </h2>
-          <p className="text-gt-gray-mid mb-10 max-w-xl">
+          <p className="text-gt-text-muted mb-10 max-w-xl font-sans">
             Free pra começar e descobrir. Premium pra quem viaja com mais frequência e quer mais densidade.
           </p>
 
@@ -95,20 +95,20 @@ export default function RoteirosIaPage() {
             {motores.map((m) => (
               <div
                 key={m.nome}
-                className="bg-gt-cream rounded-lg p-6 border border-gt-green/10"
+                className="bg-gt-card rounded-lg p-6 border border-gt-border"
               >
                 <div className="flex items-baseline gap-3 mb-2">
-                  <h3 className="font-medium text-gt-green text-lg">
+                  <h3 className="font-sans font-medium text-gt-text text-lg normal-case">
                     {m.nome}
                   </h3>
-                  <code className="text-xs text-gt-gray-mid bg-white px-2 py-0.5 rounded">
+                  <code className="text-xs text-gt-text-muted bg-gt-bg px-2 py-0.5 rounded font-sans">
                     {m.modelo}
                   </code>
                 </div>
-                <p className="text-xs uppercase tracking-wider text-gt-orange/80 mb-3">
+                <p className="text-xs uppercase tracking-wider text-gt-orange/80 mb-3 font-sans">
                   {m.pra}
                 </p>
-                <p className="text-sm text-gt-gray-mid leading-relaxed">
+                <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
                   {m.desc}
                 </p>
               </div>
@@ -117,12 +117,12 @@ export default function RoteirosIaPage() {
         </div>
       </section>
 
-      <section className="bg-gt-cream py-16 md:py-20">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-2xl md:text-3xl font-medium text-gt-green mb-3">
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
             Como funciona
           </h2>
-          <p className="text-gt-gray-mid mb-12 max-w-xl">
+          <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
             Da ideia ao roteiro pronto, em 4 passos. Você no controle, sempre.
           </p>
 
@@ -132,13 +132,13 @@ export default function RoteirosIaPage() {
                 key={p.num}
                 className="border-l-2 border-gt-orange pl-5"
               >
-                <div className="text-gt-orange font-medium text-sm mb-2">
+                <div className="text-gt-orange font-medium text-sm mb-2 font-sans">
                   {p.num.toString().padStart(2, '0')}
                 </div>
-                <h3 className="font-medium text-gt-green mb-2 leading-snug">
+                <h3 className="font-sans font-medium text-gt-text mb-2 leading-snug normal-case">
                   {p.titulo}
                 </h3>
-                <p className="text-sm text-gt-gray-mid leading-relaxed">
+                <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
                   {p.desc}
                 </p>
               </div>
@@ -147,12 +147,12 @@ export default function RoteirosIaPage() {
         </div>
       </section>
 
-      <section className="bg-gt-green text-white py-12 md:py-14">
+      <section className="bg-gt-card py-12 md:py-14 border-t border-gt-border">
         <div className="container-narrow">
-          <p className="text-xs uppercase tracking-[0.18em] text-white/60 mb-3">
+          <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
             Diferencial
           </p>
-          <p className="text-xl md:text-2xl font-medium leading-snug">
+          <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
             Outros apps te dão um mapa. O GT te dá um roteiro pensado e
             adaptável — uma narrativa de viagem que você ajusta no seu jeito.
           </p>

@@ -68,9 +68,9 @@ export default function OffRoadPage() {
         secondaryCta={{ label: 'Baixar o app agora', href: '/baixar' }}
       />
 
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-2xl md:text-3xl font-medium text-gt-green mb-12">
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-12">
             Como vai funcionar
           </h2>
 
@@ -78,12 +78,12 @@ export default function OffRoadPage() {
             {beneficios.map((b) => (
               <div
                 key={b.titulo}
-                className="bg-gt-cream rounded-lg p-6 border border-gt-green/10"
+                className="bg-gt-card rounded-lg p-6 border border-gt-border"
               >
-                <h3 className="font-medium text-gt-green mb-2">
+                <h3 className="font-sans font-medium text-gt-text mb-2 normal-case">
                   {b.titulo}
                 </h3>
-                <p className="text-sm text-gt-gray-mid leading-relaxed">
+                <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
                   {b.desc}
                 </p>
               </div>
@@ -92,12 +92,12 @@ export default function OffRoadPage() {
         </div>
       </section>
 
-      <section className="bg-gt-cream py-16 md:py-20">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-2xl md:text-3xl font-medium text-gt-green mb-3">
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
             Modelo universal de uso
           </h2>
-          <p className="text-gt-gray-mid mb-10 max-w-xl">
+          <p className="text-gt-text-muted mb-10 max-w-xl font-sans">
             Criar é ilimitado pra todos os planos. A diferença está em quantas
             vezes por mês você roda.
           </p>
@@ -106,24 +106,24 @@ export default function OffRoadPage() {
             {tiers.map((t) => (
               <div
                 key={t.nome}
-                className="bg-white rounded-lg p-6 border border-gt-green/10 text-center"
+                className="bg-gt-card rounded-lg p-6 border border-gt-border text-center"
               >
-                <p className="text-xs uppercase tracking-[0.18em] text-gt-orange/80 mb-3">
+                <p className="text-xs uppercase tracking-[0.18em] text-gt-orange/80 mb-3 font-sans">
                   {t.nome}
                 </p>
-                <p className="text-base font-medium text-gt-green">{t.uso}</p>
+                <p className="text-base font-medium text-gt-text font-sans">{t.uso}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-gt-green text-white py-12 md:py-14">
+      <section className="bg-gt-card py-12 md:py-14 border-t border-gt-border">
         <div className="container-narrow">
-          <p className="text-xs uppercase tracking-[0.18em] text-white/60 mb-3">
+          <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
             Visão de longo prazo
           </p>
-          <p className="text-xl md:text-2xl font-medium leading-snug">
+          <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
             Uma biblioteca social de trilhas brasileiras — outros overlanders
             compartilhando rotas que viraram realidade. O Off Road do GT é o
             primeiro passo.

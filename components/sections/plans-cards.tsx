@@ -64,17 +64,17 @@ export function PlansCards() {
         <div
           role="tablist"
           aria-label="Período de cobrança"
-          className="inline-flex bg-gt-cream rounded-full p-1 border border-gt-green/10"
+          className="inline-flex bg-gt-card rounded-full p-1 border border-gt-border"
         >
           <button
             type="button"
             role="tab"
             aria-selected={billing === 'mensal'}
             onClick={() => setBilling('mensal')}
-            className={`px-5 py-2 text-sm font-medium rounded-full transition-colors ${
+            className={`px-5 py-2 text-sm font-sans font-medium rounded-full transition-colors ${
               billing === 'mensal'
-                ? 'bg-white text-gt-green shadow-sm'
-                : 'text-gt-gray-mid hover:text-gt-green'
+                ? 'bg-gt-bg text-gt-text shadow-sm'
+                : 'text-gt-text-muted hover:text-gt-text'
             }`}
           >
             Mensal
@@ -84,10 +84,10 @@ export function PlansCards() {
             role="tab"
             aria-selected={billing === 'anual'}
             onClick={() => setBilling('anual')}
-            className={`px-5 py-2 text-sm font-medium rounded-full transition-colors flex items-center gap-2 ${
+            className={`px-5 py-2 text-sm font-sans font-medium rounded-full transition-colors flex items-center gap-2 ${
               billing === 'anual'
-                ? 'bg-white text-gt-green shadow-sm'
-                : 'text-gt-gray-mid hover:text-gt-green'
+                ? 'bg-gt-bg text-gt-text shadow-sm'
+                : 'text-gt-text-muted hover:text-gt-text'
             }`}
           >
             Anual
@@ -112,44 +112,46 @@ export function PlansCards() {
           return (
             <div
               key={p.name}
-              className={`bg-white rounded-lg p-7 relative ${
+              className={`bg-gt-card rounded-lg p-7 relative ${
                 p.highlight
                   ? 'border-2 border-gt-orange'
-                  : 'border border-gt-green/10'
+                  : 'border border-gt-border'
               }`}
             >
               {p.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gt-orange text-white text-[10px] font-medium uppercase tracking-wider px-3 py-1 rounded">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gt-orange text-white text-[10px] font-medium uppercase tracking-wider px-3 py-1 rounded font-sans">
                   Mais escolhido
                 </span>
               )}
 
-              <h3 className="text-xl font-medium text-gt-green mb-2">
+              <h3 className="font-sans text-xl font-medium text-gt-text mb-2 normal-case">
                 {p.name}
               </h3>
 
               <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-3xl font-medium text-gt-green">
+                <span className="font-display text-4xl text-gt-text uppercase tracking-display">
                   {formatPrice(price)}
                 </span>
                 {price > 0 && (
-                  <span className="text-sm text-gt-gray-mid">
+                  <span className="text-sm text-gt-text-muted font-sans">
                     {periodLabel}
                   </span>
                 )}
                 {price === 0 && (
-                  <span className="text-sm text-gt-gray-mid">pra sempre</span>
+                  <span className="text-sm text-gt-text-muted font-sans">
+                    pra sempre
+                  </span>
                 )}
               </div>
 
               {showSavings && savingsPct > 0 && (
-                <p className="text-xs text-gt-orange font-medium mb-3">
+                <p className="text-xs text-gt-orange font-medium mb-3 font-sans">
                   Economize {savingsPct}% em relação ao mensal
                 </p>
               )}
               {!showSavings && <div className="mb-3 h-4" />}
 
-              <p className="text-sm text-gt-gray-mid leading-relaxed mb-6 min-h-[4rem]">
+              <p className="text-sm text-gt-text-muted leading-relaxed mb-6 min-h-[4rem] font-sans">
                 {p.desc}
               </p>
 
@@ -165,7 +167,7 @@ export function PlansCards() {
         })}
       </div>
 
-      <p className="text-xs text-gt-gray-mid text-center mt-6">
+      <p className="text-xs text-gt-text-muted text-center mt-6 font-sans">
         Cancele a qualquer momento. Sem multa. Suas rotas ficam guardadas mesmo
         se você descer de plano.
       </p>

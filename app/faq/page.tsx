@@ -120,16 +120,16 @@ const categorias: FaqCategory[] = [
 export default function FaqPage() {
   return (
     <>
-      <section className="bg-gt-green text-white">
+      <section className="bg-gt-bg text-gt-text">
         <div className="container-wide py-12 md:py-16 max-w-3xl">
-          <h1 className="text-3xl md:text-4xl font-medium leading-[1.15] mb-3">
+          <h1 className="text-4xl md:text-5xl leading-[1.05] mb-3">
             Perguntas frequentes
           </h1>
-          <p className="text-base text-white/75">
+          <p className="text-base text-gt-text-muted font-sans">
             As dúvidas mais comuns sobre o GT Overlander. Não achou a sua?{' '}
             <Link
               href="/contato"
-              className="text-white underline underline-offset-4 hover:text-gt-orange"
+              className="text-gt-text underline underline-offset-4 hover:text-gt-orange"
             >
               fala com a gente
             </Link>
@@ -138,28 +138,28 @@ export default function FaqPage() {
         </div>
       </section>
 
-      <section className="bg-white py-12 md:py-16">
+      <section className="bg-gt-bg py-12 md:py-16 border-t border-gt-border">
         <div className="container-narrow space-y-10">
           {categorias.map((cat) => (
             <div key={cat.titulo}>
-              <h2 className="text-xl md:text-2xl font-medium text-gt-green mb-5 pb-3 border-b border-gt-green/15">
+              <h2 className="text-2xl md:text-3xl text-gt-text mb-5 pb-3 border-b border-gt-border">
                 {cat.titulo}
               </h2>
               <div className="space-y-3">
                 {cat.perguntas.map((p, i) => (
                   <details
                     key={i}
-                    className="group bg-gt-cream rounded-lg overflow-hidden"
+                    className="group bg-gt-card border border-gt-border rounded-lg overflow-hidden"
                   >
                     <summary className="flex items-center justify-between cursor-pointer p-5 list-none">
-                      <span className="font-medium text-gt-green pr-4">
+                      <span className="font-sans font-medium text-gt-text pr-4">
                         {p.q}
                       </span>
                       <span className="text-gt-orange flex-shrink-0 text-xl leading-none transition-transform group-open:rotate-45">
                         +
                       </span>
                     </summary>
-                    <div className="px-5 pb-5 text-sm text-gt-gray-mid leading-relaxed">
+                    <div className="px-5 pb-5 text-sm text-gt-text-muted leading-relaxed font-sans">
                       {p.a}
                     </div>
                   </details>
@@ -170,15 +170,15 @@ export default function FaqPage() {
         </div>
       </section>
 
-      <section className="bg-gt-green text-white py-12 md:py-16">
+      <section className="bg-gt-card py-12 md:py-16 border-t border-gt-border">
         <div className="container-narrow text-center">
-          <h2 className="text-xl md:text-2xl font-medium mb-3">
+          <h2 className="text-2xl md:text-3xl text-gt-text mb-3">
             Não achou sua dúvida?
           </h2>
-          <p className="text-white/75 mb-6">
+          <p className="text-gt-text-muted mb-6 font-sans">
             Nossa equipe responde em horário comercial.
           </p>
-          <Button href="/contato" variant="outline">
+          <Button href="/contato" variant="secondary">
             Falar com a gente
           </Button>
         </div>

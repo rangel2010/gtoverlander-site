@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 interface PlanFeature {
   label: string;
-  values: [string | boolean, string | boolean, string | boolean]; // [Free, Plus, Pro]
+  values: [string | boolean, string | boolean, string | boolean];
 }
 
 const features: PlanFeature[] = [
@@ -78,69 +78,69 @@ const faq = [
 
 function FeatureValue({ value }: { value: string | boolean }) {
   if (value === true) return <span className="text-gt-orange">✓</span>;
-  if (value === false) return <span className="text-gt-gray-light">—</span>;
-  return <span className="text-sm text-gt-gray-dark">{value}</span>;
+  if (value === false) return <span className="text-gt-text-dim">—</span>;
+  return <span className="text-sm text-gt-text font-sans">{value}</span>;
 }
 
 export default function PlanosPage() {
   return (
     <>
-      <section className="bg-gt-green text-white">
+      <section className="bg-gt-bg text-gt-text">
         <div className="container-wide py-16 md:py-20 max-w-3xl text-center">
-          <h1 className="text-4xl md:text-5xl font-medium leading-[1.1] mb-5">
+          <h1 className="text-5xl md:text-6xl leading-[0.95] mb-5">
             Escolha o plano que combina com sua viagem
           </h1>
-          <p className="text-base md:text-lg text-white/75 leading-relaxed">
+          <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
             Free pra começar. Plus pra quem viaja com frequência. Pro pra quem
             não para.
           </p>
         </div>
       </section>
 
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <PlansCards />
         </div>
       </section>
 
-      <section className="bg-gt-cream py-16 md:py-20">
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-2xl md:text-3xl font-medium text-gt-green mb-3">
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
             Comparação completa
           </h2>
-          <p className="text-gt-gray-mid mb-10 max-w-xl">
+          <p className="text-gt-text-muted mb-10 max-w-xl font-sans">
             Todos os planos têm acesso à base de mais de 4 milhões de waypoints
             e ao Modo Offline (em breve). A diferença é o uso intenso da IA e
             do radar.
           </p>
 
-          <div className="overflow-x-auto bg-white rounded-lg border border-gt-green/10">
-            <table className="w-full border-collapse min-w-[640px]">
+          <div className="overflow-x-auto bg-gt-bg rounded-lg border border-gt-border">
+            <table className="w-full border-collapse min-w-[640px] font-sans">
               <thead>
-                <tr className="border-b border-gt-green/20">
-                  <th className="text-left py-4 px-5 text-sm font-medium text-gt-green/70">
+                <tr className="border-b border-gt-border-strong">
+                  <th className="text-left py-4 px-5 text-sm font-medium text-gt-text-muted">
                     Recursos
                   </th>
-                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-green w-[18%]">
+                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[18%]">
                     Free
                   </th>
-                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-green w-[20%] bg-gt-cream">
+                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[20%] bg-gt-card">
                     Plus
                   </th>
-                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-green w-[18%]">
+                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[18%]">
                     Pro
                   </th>
                 </tr>
-                <tr className="border-b border-gt-green/10 text-xs text-gt-gray-mid">
+                <tr className="border-b border-gt-border text-xs text-gt-text-muted">
                   <td className="py-3 px-5">Mensal</td>
                   <td className="text-center py-3 px-3">R$ 0</td>
-                  <td className="text-center py-3 px-3 bg-gt-cream">R$ 14,90</td>
+                  <td className="text-center py-3 px-3 bg-gt-card">R$ 14,90</td>
                   <td className="text-center py-3 px-3">R$ 19,90</td>
                 </tr>
-                <tr className="border-b border-gt-green/10 text-xs text-gt-gray-mid">
+                <tr className="border-b border-gt-border text-xs text-gt-text-muted">
                   <td className="py-3 px-5">Anual</td>
                   <td className="text-center py-3 px-3">—</td>
-                  <td className="text-center py-3 px-3 bg-gt-cream">R$ 79,90</td>
+                  <td className="text-center py-3 px-3 bg-gt-card">R$ 79,90</td>
                   <td className="text-center py-3 px-3">R$ 99,90</td>
                 </tr>
               </thead>
@@ -148,15 +148,15 @@ export default function PlanosPage() {
                 {features.map((f) => (
                   <tr
                     key={f.label}
-                    className="border-b border-gt-green/10"
+                    className="border-b border-gt-border last:border-b-0"
                   >
-                    <td className="py-4 px-5 text-sm text-gt-gray-dark">
+                    <td className="py-4 px-5 text-sm text-gt-text">
                       {f.label}
                     </td>
                     <td className="text-center py-4 px-3">
                       <FeatureValue value={f.values[0]} />
                     </td>
-                    <td className="text-center py-4 px-3 bg-gt-cream">
+                    <td className="text-center py-4 px-3 bg-gt-card">
                       <FeatureValue value={f.values[1]} />
                     </td>
                     <td className="text-center py-4 px-3">
@@ -172,12 +172,12 @@ export default function PlanosPage() {
 
       <FeatureFaq items={faq} />
 
-      <section className="bg-gt-green text-white py-16 md:py-20">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow text-center">
-          <h2 className="text-2xl md:text-3xl font-medium mb-4">
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-4">
             Comece grátis e suba quando precisar
           </h2>
-          <p className="text-white/75 mb-8">
+          <p className="text-gt-text-muted mb-8 font-sans">
             Sem multa de cancelamento. Suas rotas ficam guardadas mesmo se
             você descer de plano.
           </p>

@@ -53,17 +53,17 @@ export default function ModoOfflinePage() {
         secondaryCta={{ label: 'Baixar o app agora', href: '/baixar' }}
       />
 
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow">
-          <h2 className="text-2xl md:text-3xl font-medium text-gt-green mb-6">
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-6">
             Use em qualquer lugar do mundo
           </h2>
-          <p className="text-gt-gray-mid leading-relaxed mb-5">
+          <p className="text-gt-text leading-relaxed mb-5 font-sans">
             Outros apps oferecem mapa offline. O GT te dá o app inteiro
             funcionando offline — planejamento, radar, waypoints, detalhes,
             edição de rota. Tudo na palma da mão sem depender de sinal.
           </p>
-          <p className="text-gt-gray-mid leading-relaxed">
+          <p className="text-gt-text leading-relaxed font-sans">
             Você não precisa pensar em região, em país, em quanto vai ocupar.
             O GT cuida do download em background quando você abre o app pela
             primeira vez. Quando você for viajar, simplesmente funciona.
@@ -71,18 +71,18 @@ export default function ModoOfflinePage() {
         </div>
       </section>
 
-      <section className="bg-gt-cream py-16 md:py-20">
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-xl font-medium text-gt-green mb-5">
+              <h3 className="font-sans text-xl font-medium text-gt-text mb-5 normal-case">
                 Funciona offline
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-3 font-sans">
                 {funciona.map((f, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-3 text-sm text-gt-gray-dark"
+                    className="flex items-start gap-3 text-sm text-gt-text"
                   >
                     <span className="text-gt-orange flex-shrink-0">✓</span>
                     <span>{f}</span>
@@ -92,16 +92,16 @@ export default function ModoOfflinePage() {
             </div>
 
             <div>
-              <h3 className="text-xl font-medium text-gt-green mb-5">
+              <h3 className="font-sans text-xl font-medium text-gt-text mb-5 normal-case">
                 Precisa de internet
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-3 font-sans">
                 {precisaInternet.map((p, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-3 text-sm text-gt-gray-dark"
+                    className="flex items-start gap-3 text-sm text-gt-text"
                   >
-                    <span className="text-gt-gray-light flex-shrink-0">○</span>
+                    <span className="text-gt-text-dim flex-shrink-0">○</span>
                     <span>{p}</span>
                   </li>
                 ))}
@@ -111,12 +111,12 @@ export default function ModoOfflinePage() {
         </div>
       </section>
 
-      <section className="bg-gt-green text-white py-12 md:py-14">
+      <section className="bg-gt-bg py-12 md:py-14 border-t border-gt-border">
         <div className="container-narrow">
-          <p className="text-xs uppercase tracking-[0.18em] text-white/60 mb-3">
+          <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
             Diferencial
           </p>
-          <p className="text-xl md:text-2xl font-medium leading-snug">
+          <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
             Universal pra Free, Plus e Pro. Sem trava por plano, sem download
             bloqueado por país. Todos os viajantes têm acesso completo.
           </p>

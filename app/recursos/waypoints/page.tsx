@@ -65,44 +65,44 @@ export default function WaypointsPage() {
         secondaryCta={{ label: 'Ver planos', href: '/planos' }}
       />
 
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
             {numeros.map((n) => (
               <div
                 key={n.contexto}
-                className="text-center bg-gt-cream rounded-lg p-6"
+                className="text-center bg-gt-card rounded-lg p-6 border border-gt-border"
               >
-                <div className="text-3xl md:text-4xl font-medium text-gt-green mb-2">
+                <div className="font-display text-4xl md:text-5xl text-gt-text mb-2 uppercase tracking-display">
                   {n.valor}
                 </div>
-                <p className="text-sm text-gt-gray-mid">{n.contexto}</p>
+                <p className="text-sm text-gt-text-muted font-sans">{n.contexto}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-gt-cream py-16 md:py-20">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-2xl md:text-3xl font-medium text-gt-green mb-3">
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
             Como o radar funciona
           </h2>
-          <p className="text-gt-gray-mid mb-10 max-w-2xl leading-relaxed">
+          <p className="text-gt-text-muted mb-10 max-w-2xl leading-relaxed font-sans">
             Ao longo da sua rota, uma busca geoespacial filtra os pontos por
             categoria e ordena por relevância. Corredor adaptativo: raios
             diferentes pra postos versus campings, porque overlander busca
             cada coisa numa distância diferente.
           </p>
 
-          <h3 className="text-lg font-medium text-gt-green mb-5">
+          <h3 className="font-sans text-lg font-medium text-gt-text mb-5 normal-case">
             Categorias visíveis
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {categorias.map((c) => (
               <div
                 key={c}
-                className="bg-white rounded-md px-4 py-3 text-sm text-gt-gray-dark border border-gt-green/10"
+                className="bg-gt-card rounded-md px-4 py-3 text-sm text-gt-text border border-gt-border font-sans"
               >
                 {c}
               </div>
@@ -111,17 +111,17 @@ export default function WaypointsPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow">
-          <h2 className="text-2xl md:text-3xl font-medium text-gt-green mb-6">
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-6">
             Origem dos dados
           </h2>
-          <p className="text-gt-gray-dark leading-relaxed mb-5">
+          <p className="text-gt-text leading-relaxed mb-5 font-sans">
             A base do GT vem de fontes consolidadas — OpenStreetMap,
             iOverlander e MaCamp — processadas, deduplificadas e enriquecidas
             pelo time GT em 16 categorias relevantes pro overlander.
           </p>
-          <p className="text-gt-gray-dark leading-relaxed">
+          <p className="text-gt-text leading-relaxed font-sans">
             Transparência aumenta credibilidade: a base não foi inventada do
             nada. É curadoria em cima de dados públicos e dados de comunidades
             de viajantes que já funcionam.
@@ -129,12 +129,12 @@ export default function WaypointsPage() {
         </div>
       </section>
 
-      <section className="bg-gt-green text-white py-12 md:py-14">
+      <section className="bg-gt-card py-12 md:py-14 border-t border-gt-border">
         <div className="container-narrow">
-          <p className="text-xs uppercase tracking-[0.18em] text-white/60 mb-3">
+          <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
             Diferencial
           </p>
-          <p className="text-xl md:text-2xl font-medium leading-snug">
+          <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
             O Google Maps não conhece o postinho rural. O GT conhece. A gente
             controla o que aparece como ponto de apoio — qualidade, ordem,
             relevância pra quem viaja por terra.
