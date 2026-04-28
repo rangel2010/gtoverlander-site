@@ -24,16 +24,19 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gt-green/10">
-      <div className="container-wide flex items-center justify-between h-16">
+      <div className="container-wide flex items-center justify-between h-20">
         <Link
           href="/"
-          className="flex items-center gap-2"
+          className="flex items-center"
           onClick={() => setMobileOpen(false)}
+          aria-label="GT Overlander — página inicial"
         >
-          <LogoIcon />
-          <span className="font-medium tracking-wider text-gt-green text-sm">
-            GT OVERLANDER
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/logo-gt.svg"
+            alt="GT Overlander"
+            className="h-12 w-auto"
+          />
         </Link>
 
         {/* Desktop nav */}
@@ -92,28 +95,12 @@ export function Header() {
                 </Link>
               ))}
             </div>
-            <Button
-              href="/baixar"
-              className="mt-3 w-fit"
-            >
+            <Button href="/baixar" className="mt-3 w-fit">
               Baixar grátis
             </Button>
           </nav>
         </div>
       )}
     </header>
-  );
-}
-
-function LogoIcon() {
-  return (
-    <svg width="28" height="22" viewBox="0 0 100 80" aria-hidden="true">
-      <path
-        d="M3,72 L26,32 L34,46 L50,18 L66,46 L74,32 L97,72 Z"
-        fill="#122e1f"
-      />
-      <path d="M50,18 L55,26 L48,28 Z" fill="white" />
-      <path d="M66,46 L70,52 L64,54 Z" fill="white" />
-    </svg>
   );
 }

@@ -84,13 +84,16 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div>
-            <p className="font-medium tracking-wider text-sm">GT OVERLANDER</p>
-            <p className="text-sm text-white/60 mt-1">
+            <p className="text-sm text-white/70">
               O ecossistema do viajante overland
             </p>
+            <p className="text-xs text-white/50 mt-2">
+              © 2026 GT Overlander
+            </p>
           </div>
+
           <div className="flex items-center gap-4">
             <a
               href="https://instagram.com/gtoverlander"
@@ -111,9 +114,14 @@ export function Footer() {
               <Youtube size={20} />
             </a>
           </div>
-          <p className="text-sm text-white/50">
-            © 2026 GT Overlander · Londrina, PR
-          </p>
+
+          {/* Logo real do GT (versão branca) — lado direito */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/logo-gt-white.svg"
+            alt="GT Overlander"
+            className="h-16 w-auto opacity-90"
+          />
         </div>
       </div>
     </footer>
