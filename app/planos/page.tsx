@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
 import { FeatureFaq } from '@/components/sections/feature-faq';
+import { PlansCards } from '@/components/sections/plans-cards';
 
 export const metadata: Metadata = {
   title: 'Planos',
   description:
-    'Free pra começar. Plus pra quem viaja com mais frequência. Pro pra quem não para. Compare e escolha o plano que combina com sua viagem.',
+    'Free pra começar. Plus pra quem viaja com frequência. Pro pra quem não para. A partir de R$ 14,90/mês ou R$ 79,90/ano.',
 };
 
 interface PlanFeature {
@@ -19,19 +20,19 @@ const features: PlanFeature[] = [
     values: ['Standard Free (gpt-5.4-mini)', 'Premium (gpt-5.4)', 'Premium (gpt-5.4)'],
   },
   {
-    label: 'Eventos guardados',
-    values: ['até X', 'até Y', 'ilimitado'],
+    label: 'Geração de rota (IA + Off Road)',
+    values: ['1 a cada 90 dias', '2 por mês', 'ilimitado'],
   },
   {
-    label: 'Off Road manual (em breve)',
-    values: ['1 execução / 90 dias', '2 execuções / mês', 'execuções ilimitadas'],
+    label: 'Consultas de radar de waypoints',
+    values: ['1 por dia', '5 por dia', 'ilimitado'],
   },
   {
     label: 'Modo Offline (em breve)',
     values: [true, true, true],
   },
   {
-    label: 'Waypoints próprios',
+    label: 'Waypoints próprios — base mundial',
     values: [true, true, true],
   },
   {
@@ -41,33 +42,6 @@ const features: PlanFeature[] = [
   {
     label: 'Suporte',
     values: ['Comunidade', 'E-mail', 'Prioritário'],
-  },
-];
-
-const plans = [
-  {
-    name: 'Free',
-    price: 'R$ 0',
-    priceContext: 'pra sempre',
-    desc: 'Pra quem tá começando ou viaja menos. Free de verdade — não é trial.',
-    cta: { label: 'Baixar grátis', href: '/baixar' },
-    highlight: false,
-  },
-  {
-    name: 'Plus',
-    price: 'R$ X',
-    priceContext: 'por mês',
-    desc: 'Pra quem viaja com frequência. Premium de IA + Off Road universal com limite mensal.',
-    cta: { label: 'Assinar Plus', href: '/baixar?plan=plus' },
-    highlight: true,
-  },
-  {
-    name: 'Pro',
-    price: 'R$ Y',
-    priceContext: 'por mês',
-    desc: 'Pra quem não para. Tudo ilimitado, suporte prioritário.',
-    cta: { label: 'Assinar Pro', href: '/baixar?plan=pro' },
-    highlight: false,
   },
 ];
 
@@ -81,12 +55,12 @@ const faq = [
     a: 'Sim. Cancele quando quiser, sem multa. O plano segue ativo até o fim do ciclo já pago e depois volta automaticamente pro Free.',
   },
   {
-    q: 'Tenho assinatura no iOS?',
-    a: 'Hoje só Android (via Asaas). A assinatura no iOS está em desenvolvimento — quando estiver pronta, todos os planos ficam disponíveis nas duas plataformas.',
+    q: 'Qual a diferença entre mensal e anual?',
+    a: 'Anual tem desconto significativo: Plus mensal sai R$ 178,80/ano, anual sai R$ 79,90 (economia de 55%). Pro mensal sai R$ 238,80/ano, anual sai R$ 99,90 (economia de 58%). Mesmo plano, mesmas features — só muda o ciclo de cobrança.',
   },
   {
-    q: 'Tem desconto no plano anual?',
-    a: 'Estamos avaliando o modelo de plano anual. Hoje só mensal.',
+    q: 'Tenho assinatura no iOS?',
+    a: 'Hoje só Android (via Asaas). A assinatura no iOS está em desenvolvimento — quando estiver pronta, todos os planos ficam disponíveis nas duas plataformas.',
   },
   {
     q: 'Quanto custa em outras moedas?',
@@ -125,67 +99,49 @@ export default function PlanosPage() {
 
       <section className="bg-white py-16 md:py-20">
         <div className="container-wide">
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {plans.map((p) => (
-              <div
-                key={p.name}
-                className={`bg-white rounded-lg p-7 relative ${
-                  p.highlight
-                    ? 'border-2 border-gt-orange'
-                    : 'border border-gt-green/10'
-                }`}
-              >
-                {p.highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gt-orange text-white text-[10px] font-medium uppercase tracking-wider px-3 py-1 rounded">
-                    Mais escolhido
-                  </span>
-                )}
+          <PlansCards />
+        </div>
+      </section>
 
-                <h3 className="text-xl font-medium text-gt-green mb-2">
-                  {p.name}
-                </h3>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-3xl font-medium text-gt-green">
-                    {p.price}
-                  </span>
-                  <span className="text-sm text-gt-gray-mid">
-                    {p.priceContext}
-                  </span>
-                </div>
-                <p className="text-sm text-gt-gray-mid leading-relaxed mb-6 min-h-[3rem]">
-                  {p.desc}
-                </p>
-                <Button
-                  href={p.cta.href}
-                  variant={p.highlight ? 'primary' : 'secondary'}
-                  className="w-full"
-                >
-                  {p.cta.label}
-                </Button>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-xs text-gt-gray-mid italic mb-6 text-center">
-            Preços e limites finais sendo confirmados. Tabela abaixo é referência da estrutura.
+      <section className="bg-gt-cream py-16 md:py-20">
+        <div className="container-wide">
+          <h2 className="text-2xl md:text-3xl font-medium text-gt-green mb-3">
+            Comparação completa
+          </h2>
+          <p className="text-gt-gray-mid mb-10 max-w-xl">
+            Todos os planos têm acesso à base de mais de 4 milhões de waypoints
+            e ao Modo Offline (em breve). A diferença é o uso intenso da IA e
+            do radar.
           </p>
 
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
+          <div className="overflow-x-auto bg-white rounded-lg border border-gt-green/10">
+            <table className="w-full border-collapse min-w-[640px]">
               <thead>
                 <tr className="border-b border-gt-green/20">
-                  <th className="text-left py-4 pr-4 text-sm font-medium text-gt-green/70">
-                    Comparação completa
+                  <th className="text-left py-4 px-5 text-sm font-medium text-gt-green/70">
+                    Recursos
                   </th>
                   <th className="text-center py-4 px-3 text-sm font-medium text-gt-green w-[18%]">
                     Free
                   </th>
-                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-green w-[18%] bg-gt-cream">
+                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-green w-[20%] bg-gt-cream">
                     Plus
                   </th>
                   <th className="text-center py-4 px-3 text-sm font-medium text-gt-green w-[18%]">
                     Pro
                   </th>
+                </tr>
+                <tr className="border-b border-gt-green/10 text-xs text-gt-gray-mid">
+                  <td className="py-3 px-5">Mensal</td>
+                  <td className="text-center py-3 px-3">R$ 0</td>
+                  <td className="text-center py-3 px-3 bg-gt-cream">R$ 14,90</td>
+                  <td className="text-center py-3 px-3">R$ 19,90</td>
+                </tr>
+                <tr className="border-b border-gt-green/10 text-xs text-gt-gray-mid">
+                  <td className="py-3 px-5">Anual</td>
+                  <td className="text-center py-3 px-3">—</td>
+                  <td className="text-center py-3 px-3 bg-gt-cream">R$ 79,90</td>
+                  <td className="text-center py-3 px-3">R$ 99,90</td>
                 </tr>
               </thead>
               <tbody>
@@ -194,7 +150,7 @@ export default function PlanosPage() {
                     key={f.label}
                     className="border-b border-gt-green/10"
                   >
-                    <td className="py-4 pr-4 text-sm text-gt-gray-dark">
+                    <td className="py-4 px-5 text-sm text-gt-gray-dark">
                       {f.label}
                     </td>
                     <td className="text-center py-4 px-3">
