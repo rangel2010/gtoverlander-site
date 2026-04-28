@@ -2,12 +2,12 @@ import { Button } from '../ui/button';
 
 export function CtaFinal() {
   return (
-    <section className="bg-gt-green text-white py-20 md:py-28">
+    <section className="bg-gt-bg py-20 md:py-28 border-t border-gt-border">
       <div className="container-narrow text-center">
-        <h2 className="text-3xl md:text-4xl font-medium mb-4 leading-tight">
+        <h2 className="text-4xl md:text-5xl text-gt-text mb-4 leading-[0.95]">
           Sua próxima viagem começa em uma conversa
         </h2>
-        <p className="text-white/75 mb-10 max-w-md mx-auto leading-relaxed">
+        <p className="text-gt-text-muted mb-10 max-w-md mx-auto leading-relaxed font-sans">
           Grátis pra começar. Premium pra quem viaja muito. Off Road pra quem
           sai do asfalto.
         </p>

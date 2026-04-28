@@ -2,8 +2,10 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Button } from './ui/button';
+
+const APP_WEB_URL = 'https://app.gtoverlander.com.br';
 
 const navLinks = [
   { href: '/recursos', label: 'Recursos' },
@@ -23,7 +25,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gt-green/10">
+    <header className="sticky top-0 z-40 bg-gt-bg/95 backdrop-blur border-b border-gt-border">
       <div className="container-wide flex items-center justify-between h-20">
         <Link
           href="/"
@@ -33,33 +35,44 @@ export function Header() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/logo-gt.svg"
+            src="/images/logo-gt-white.svg"
             alt="GT Overlander"
             className="h-12 w-auto"
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-7">
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm text-gt-green/75 hover:text-gt-green transition-colors"
+              className="text-sm text-gt-text-muted hover:text-gt-text transition-colors"
             >
               {l.label}
             </Link>
           ))}
         </nav>
 
-        {/* CTA + mobile toggle */}
-        <div className="flex items-center gap-3">
+        {/* CTAs + mobile toggle */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <a
+            href={APP_WEB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium text-gt-text-muted hover:text-gt-text transition-colors px-3 py-2"
+          >
+            Acessar pelo computador
+            <ArrowUpRight size={14} aria-hidden="true" />
+          </a>
+
           <Button href="/baixar" size="sm" className="hidden sm:inline-flex">
             Baixar grátis
           </Button>
+
           <button
             type="button"
-            className="md:hidden p-2 -mr-2 text-gt-green"
+            className="lg:hidden p-2 -mr-2 text-gt-text"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={mobileOpen}
@@ -71,29 +84,38 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-gt-green/10 bg-white">
+        <div className="lg:hidden border-t border-gt-border bg-gt-bg">
           <nav className="container-wide py-4 flex flex-col gap-3">
             {navLinks.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-gt-green text-base py-1"
+                className="text-gt-text text-base py-1"
               >
                 {l.label}
               </Link>
             ))}
-            <div className="border-t border-gt-green/10 pt-3 mt-1 flex flex-col gap-3">
+            <div className="border-t border-gt-border pt-3 mt-1 flex flex-col gap-3">
               {mobileExtraLinks.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-gt-green/75 text-sm py-1"
+                  className="text-gt-text-muted text-sm py-1"
                 >
                   {l.label}
                 </Link>
               ))}
+              <a
+                href={APP_WEB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gt-text-muted text-sm py-1 inline-flex items-center gap-1.5"
+              >
+                Acessar pelo computador
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </a>
             </div>
             <Button href="/baixar" className="mt-3 w-fit">
               Baixar grátis

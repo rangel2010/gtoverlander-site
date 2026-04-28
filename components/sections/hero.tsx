@@ -2,10 +2,10 @@ import { Button } from '../ui/button';
 
 export function Hero() {
   return (
-    <section className="bg-gt-green text-white">
-      <div className="container-wide grid md:grid-cols-2 gap-10 md:gap-12 items-center py-16 md:py-24 lg:py-28">
+    <section className="bg-gt-bg text-gt-text relative overflow-hidden">
+      <div className="container-wide grid md:grid-cols-2 gap-10 md:gap-12 items-center py-16 md:py-24 lg:py-28 relative">
         <div>
-          <p className="text-xs uppercase tracking-[0.18em] text-white/60 mb-5">
+          <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-5 font-sans">
             O ecossistema do viajante overland
           </p>
 
@@ -16,30 +16,33 @@ export function Hero() {
             2. "Roteiros personalizados, seu parceiro em qualquer estrada"
             3. "Roteiros personalizados pra qualquer viagem — parceiro em qualquer estrada"
           */}
-          <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-medium leading-[1.1] mb-6 max-w-xl">
-            Seu parceiro de roteiros personalizados pra qualquer estrada
+          <h1 className="text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-6 max-w-2xl">
+            Seu parceiro de roteiros personalizados{' '}
+            <span className="text-gt-orange">pra qualquer estrada</span>
           </h1>
 
-          <p className="text-base md:text-lg text-white/75 leading-relaxed max-w-md mb-8">
-            Descreva sua viagem em linguagem natural. A gente monta a espinha dorsal do trajeto e você personaliza com paradas, postos, hotéis e campings.
+          <p className="text-base md:text-lg text-gt-text-muted leading-relaxed max-w-md mb-8 font-sans">
+            Descreva sua viagem em linguagem natural. A gente monta a espinha
+            dorsal do trajeto e você personaliza com paradas, postos, hotéis e
+            campings.
           </p>
 
           <div className="flex flex-wrap gap-3">
             <Button href="/baixar">Baixar grátis</Button>
-            <Button href="#como-funciona" variant="outline">
+            <Button href="#como-funciona" variant="secondary">
               Como funciona
             </Button>
           </div>
 
-          <p className="text-[11px] uppercase tracking-[0.15em] text-white/55 mt-8">
+          <p className="text-[11px] uppercase tracking-[0.15em] text-gt-text-dim mt-8 font-sans">
             App Store · Play Store · CarPlay · Android Auto
           </p>
         </div>
 
         <div className="hidden md:block">
           {/* Placeholder pro mockup do app — substituir por screenshot real na fase de assets */}
-          <div className="aspect-[3/4] max-w-[360px] mx-auto bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center">
-            <p className="text-white/40 text-sm text-center px-8">
+          <div className="aspect-[3/4] max-w-[360px] mx-auto bg-gt-card border border-gt-border rounded-2xl flex items-center justify-center">
+            <p className="text-gt-text-dim text-sm text-center px-8 font-sans">
               Mockup do app
               <br />
               <span className="text-xs">(screenshot real entra aqui)</span>

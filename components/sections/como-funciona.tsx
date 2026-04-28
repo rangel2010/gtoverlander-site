@@ -25,25 +25,28 @@ const passos = [
 
 export function ComoFunciona() {
   return (
-    <section id="como-funciona" className="bg-white py-20 md:py-24">
+    <section
+      id="como-funciona"
+      className="bg-gt-bg py-20 md:py-24 border-t border-gt-border"
+    >
       <div className="container-wide">
-        <h2 className="text-2xl md:text-3xl font-medium text-gt-green mb-3">
+        <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
           Como funciona
         </h2>
-        <p className="text-gt-gray-mid mb-12 max-w-xl">
+        <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
           Da ideia ao roteiro pronto, em 4 passos.
         </p>
 
         <div className="grid md:grid-cols-4 gap-8 md:gap-6">
           {passos.map((p) => (
             <div key={p.num} className="border-l-2 border-gt-orange pl-5">
-              <div className="text-gt-orange font-medium text-sm mb-2">
+              <div className="text-gt-orange font-medium text-sm mb-2 font-sans">
                 {p.num.toString().padStart(2, '0')}
               </div>
-              <h3 className="font-medium text-gt-green mb-2 leading-snug">
+              <h3 className="text-lg text-gt-text mb-2 leading-snug">
                 {p.titulo}
               </h3>
-              <p className="text-sm text-gt-gray-mid leading-relaxed">
+              <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
                 {p.desc}
               </p>
             </div>
@@ -53,7 +56,7 @@ export function ComoFunciona() {
         <div className="mt-12">
           <Link
             href="/recursos/roteiros-ia"
-            className="text-gt-orange text-sm font-medium hover:underline"
+            className="text-gt-orange text-sm font-medium hover:underline font-sans"
           >
             Ver demonstração da IA →
           </Link>

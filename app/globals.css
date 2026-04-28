@@ -6,22 +6,21 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-padding-top: 5rem;
   }
 
   body {
-    @apply bg-white text-gt-green;
+    @apply bg-gt-bg text-gt-text;
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply font-medium tracking-tightish;
+  /* Headings de display usam Anton (condensada bold, all caps) */
+  h1, h2, h3 {
+    @apply font-display uppercase tracking-display;
+    font-weight: 400; /* Anton só tem weight 400, mas visualmente já é heavy */
   }
 
-  /* Targets de scroll com offset pro header fixo */
-  html {
-    scroll-padding-top: 5rem;
+  h4, h5, h6 {
+    @apply font-sans font-medium tracking-tightish;
   }
 }
 
@@ -32,5 +31,10 @@
 
   .container-wide {
     @apply mx-auto max-w-7xl px-6;
+  }
+
+  /* Para áreas que precisem de fundo levemente diferenciado do gt-bg */
+  .surface {
+    @apply bg-gt-card border border-gt-border;
   }
 }

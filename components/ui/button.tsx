@@ -3,15 +3,15 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 const baseStyles =
-  'inline-flex items-center justify-center font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gt-orange/40 disabled:opacity-50 disabled:pointer-events-none';
+  'inline-flex items-center justify-center font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gt-orange/50 disabled:opacity-50 disabled:pointer-events-none';
 
 const variants = {
   primary: 'bg-gt-orange text-white hover:bg-gt-orange/90',
   secondary:
-    'bg-transparent text-gt-green border border-gt-green/20 hover:bg-gt-cream',
+    'bg-gt-card text-gt-text border border-gt-border-strong hover:bg-gt-card-hover',
   outline:
-    'bg-transparent text-white border border-white/40 hover:bg-white/10',
-  ghost: 'bg-transparent text-gt-green hover:bg-gt-cream',
+    'bg-transparent text-gt-text border border-gt-text/30 hover:bg-gt-text/10',
+  ghost: 'bg-transparent text-gt-text hover:bg-gt-card',
 };
 
 const sizes = {

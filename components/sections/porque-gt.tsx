@@ -2,13 +2,13 @@ import Link from 'next/link';
 
 export function PorqueGt() {
   return (
-    <section className="bg-white py-20 md:py-24">
+    <section className="bg-gt-bg py-20 md:py-24 border-t border-gt-border">
       <div className="container-narrow">
-        <h2 className="text-2xl md:text-3xl font-medium text-gt-green mb-8 leading-tight">
+        <h2 className="text-3xl md:text-4xl text-gt-text mb-8 leading-tight">
           O Google Maps não foi feito pra overlanders
         </h2>
 
-        <div className="space-y-5 text-gt-gray-dark leading-relaxed">
+        <div className="space-y-5 text-gt-text leading-relaxed font-sans">
           <p>
             Aplicativos de mapa convencionais foram desenhados pra cidades e asfalto. O overlander vive numa outra realidade — estradas de terra, postos rurais, campings selvagens, fronteiras burocráticas, rotas que aparecem em mapa nenhum.
           </p>
@@ -23,7 +23,7 @@ export function PorqueGt() {
         <div className="mt-10">
           <Link
             href="/sobre"
-            className="text-gt-orange text-sm font-medium hover:underline"
+            className="text-gt-orange text-sm font-medium hover:underline font-sans"
           >
             Conheça nossa história →
           </Link>
