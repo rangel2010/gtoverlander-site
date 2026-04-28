@@ -13,6 +13,7 @@ const navLinks = [
   { href: '/blog', label: 'Blog' },
   { href: '/sobre', label: 'Sobre' },
   { href: '/empresas', label: 'Empresas' },
+  { href: '/parcerias', label: 'Parcerias' },
 ];
 
 const mobileExtraLinks = [
