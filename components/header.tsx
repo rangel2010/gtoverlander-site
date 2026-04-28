@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -24,6 +25,10 @@ const mobileExtraLinks = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Esconder header dentro do Studio do Sanity (/studio)
+  if (pathname?.startsWith('/studio')) return null;
 
   return (
     <header className="sticky top-0 z-40 bg-gt-bg/95 backdrop-blur border-b border-gt-border">

@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Instagram, Youtube } from 'lucide-react';
 
 interface FooterLink {
@@ -64,6 +67,11 @@ const columns: { title: string; links: FooterLink[] }[] = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
+
+  // Esconder footer dentro do Studio do Sanity (/studio)
+  if (pathname?.startsWith('/studio')) return null;
+
   return (
     <footer className="bg-gt-card text-gt-text mt-auto border-t border-gt-border">
       <div className="container-wide py-16">
