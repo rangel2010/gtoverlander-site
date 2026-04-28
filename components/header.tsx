@@ -35,9 +35,9 @@ export function Header() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/logo-gt-white.svg"
+            src="/images/logo-gt-contorno.svg"
             alt="GT Overlander"
-            className="h-12 w-auto"
+            className="h-14 w-auto"
           />
         </Link>
 
