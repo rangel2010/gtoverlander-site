@@ -11,6 +11,11 @@ import {
 } from '@/lib/sanity/queries';
 import { urlForImage } from '@/lib/sanity/image';
 import { PILLAR_TITLES, type SanityImage } from '@/lib/sanity/types';
+import {
+  articleLd,
+  breadcrumbLd,
+  jsonLdScriptProps,
+} from '@/lib/seo';
 
 interface PageProps {
   params: { slug: string };
@@ -143,6 +148,18 @@ export default async function PostPage({ params }: PageProps) {
 
   return (
     <>
+      {/* Schema.org Article + Breadcrumb */}
+      <script {...jsonLdScriptProps(articleLd(post))} />
+      <script
+        {...jsonLdScriptProps(
+          breadcrumbLd([
+            { name: 'Blog', url: '/blog' },
+            { name: PILLAR_TITLES[post.category], url: `/blog/${post.category}` },
+            { name: post.title, url: `/blog/${post.slug}` },
+          ])
+        )}
+      />
+
       <article>
         <header className="bg-gt-bg pt-16 md:pt-20 pb-10 md:pb-14">
           <div className="container-narrow">

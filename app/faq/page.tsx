@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { faqPageLd, jsonLdScriptProps } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Perguntas frequentes',
@@ -118,8 +119,14 @@ const categorias: FaqCategory[] = [
 ];
 
 export default function FaqPage() {
+  // Achata todas as perguntas pra schema.org FAQPage
+  const allQuestions = categorias.flatMap((cat) => cat.perguntas);
+
   return (
     <>
+      {/* Schema.org FAQPage — pode aparecer como rich snippet no Google */}
+      <script {...jsonLdScriptProps(faqPageLd(allQuestions))} />
+
       <section className="bg-gt-bg text-gt-text">
         <div className="container-wide py-12 md:py-16 max-w-3xl">
           <h1 className="text-4xl md:text-5xl leading-[1.05] mb-3">

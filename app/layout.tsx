@@ -2,6 +2,12 @@ import type { Metadata } from 'next';
 import { Inter, Anton } from 'next/font/google';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import {
+  organizationLd,
+  websiteLd,
+  softwareApplicationLd,
+  jsonLdScriptProps,
+} from '@/lib/seo';
 import './globals.css';
 
 const inter = Inter({
@@ -60,6 +66,11 @@ export default function RootLayout({
           }
           src="https://plausible.io/js/script.js"
         />
+
+        {/* Schema.org JSON-LD — Organization + WebSite + SoftwareApplication */}
+        <script {...jsonLdScriptProps(organizationLd())} />
+        <script {...jsonLdScriptProps(websiteLd())} />
+        <script {...jsonLdScriptProps(softwareApplicationLd())} />
       </head>
       <body className="font-sans antialiased flex flex-col min-h-screen bg-gt-bg text-gt-text">
         <Header />

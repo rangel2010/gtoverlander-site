@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { PlansCards } from '@/components/sections/plans-cards';
+import { productPlansLd, jsonLdScriptProps } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Planos',
@@ -85,6 +86,9 @@ function FeatureValue({ value }: { value: string | boolean }) {
 export default function PlanosPage() {
   return (
     <>
+      {/* Schema.org Product + Offers — rich snippet com preços no Google */}
+      <script {...jsonLdScriptProps(productPlansLd())} />
+
       <section className="bg-gt-bg text-gt-text">
         <div className="container-wide py-16 md:py-20 max-w-3xl text-center">
           <h1 className="text-5xl md:text-6xl leading-[0.95] mb-5">

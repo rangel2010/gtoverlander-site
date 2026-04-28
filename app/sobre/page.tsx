@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
+import { aboutPagePersonLd, jsonLdScriptProps } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Sobre',
@@ -36,6 +37,9 @@ const proximas = [
 export default function SobrePage() {
   return (
     <>
+      {/* Schema.org AboutPage + Person */}
+      <script {...jsonLdScriptProps(aboutPagePersonLd())} />
+
       <section className="bg-gt-bg text-gt-text">
         <div className="container-wide py-16 md:py-24 max-w-3xl">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-5 font-sans">
