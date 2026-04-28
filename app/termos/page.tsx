@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Termos de uso',
-  description: 'Termos e condições de uso do app e site GT Overlander.',
+  description:
+    'Termos de uso do app e site GT Overlander. Condições para utilização dos serviços.',
 };
 
 export default function TermosPage() {
@@ -14,7 +15,7 @@ export default function TermosPage() {
             Termos de uso
           </h1>
           <p className="text-sm text-white/70">
-            Última atualização: 28 de abril de 2026
+            Última atualização: 11 de agosto de 2025
           </p>
         </div>
       </section>
@@ -22,165 +23,160 @@ export default function TermosPage() {
       <section className="bg-white py-12 md:py-16">
         <div className="container-narrow">
           <p className="text-gt-gray-dark leading-relaxed mb-6">
-            Ao usar o GT Overlander (aplicativo móvel ou site), você concorda
-            com estes Termos. Leia com atenção. Caso não concorde, não use o
-            serviço.
+            Bem-vindo ao GT Overlander. Estes Termos de Uso estabelecem as
+            condições para utilização do nosso aplicativo e site. Ao criar uma
+            conta e utilizar nossos serviços, você concorda com estes termos.
           </p>
 
           <h2 className="text-xl font-medium text-gt-green mt-10 mb-4">
-            1. Quem oferece o serviço
+            1. Objeto
           </h2>
           <p className="text-gt-gray-dark leading-relaxed mb-6">
-            O GT Overlander é operado por Rangel Machado, com sede em Londrina,
-            Paraná, Brasil. Contato:{' '}
-            <a
-              href="mailto:contato@gtoverlander.com.br"
-              className="text-gt-orange hover:underline"
-            >
-              contato@gtoverlander.com.br
-            </a>
-            .
+            O GT Overlander é um aplicativo voltado para viajantes terrestres,
+            que oferece criação de rotas personalizadas, radar de pontos de
+            interesse (waypoints) e recursos adicionais integrados ao Google
+            Maps e outros serviços.
           </p>
 
           <h2 className="text-xl font-medium text-gt-green mt-10 mb-4">
-            2. O que o serviço faz
-          </h2>
-          <p className="text-gt-gray-dark leading-relaxed mb-6">
-            O GT é uma ferramenta de planejamento de rotas pra viajantes
-            overlander, com geração de roteiros por IA, base própria de
-            waypoints e integração com mapas convencionais. Não somos uma
-            plataforma de navegação turn-by-turn — usamos integrações com
-            Google Maps pra essa função.
-          </p>
-
-          <h2 className="text-xl font-medium text-gt-green mt-10 mb-4">
-            3. Conta e responsabilidades
+            2. Criação e Uso da Conta
           </h2>
           <ul className="text-gt-gray-dark leading-relaxed mb-6 space-y-2 list-disc pl-6">
             <li>
-              Você é responsável por manter as credenciais da sua conta em
-              segurança.
+              Para utilizar determinadas funcionalidades, é necessário criar
+              uma conta fornecendo informações verdadeiras e atualizadas.
             </li>
             <li>
-              Você se compromete a fornecer informações verdadeiras durante o
-              cadastro.
+              Você é responsável por manter a confidencialidade da sua senha e
+              por todas as atividades realizadas na sua conta.
             </li>
             <li>
-              Você é responsável pelas ações praticadas com sua conta.
-            </li>
-            <li>
-              Conta de menores de 18 anos requer consentimento de responsável
-              legal.
+              O uso é pessoal e intransferível. Contas compartilhadas podem
+              ser suspensas sem aviso prévio.
             </li>
           </ul>
 
           <h2 className="text-xl font-medium text-gt-green mt-10 mb-4">
-            4. Planos e pagamento
+            3. Assinaturas e Pagamentos
           </h2>
           <ul className="text-gt-gray-dark leading-relaxed mb-6 space-y-2 list-disc pl-6">
             <li>
-              O plano Free é gratuito sem prazo de validade, sujeito aos
-              limites descritos em{' '}
-              <a href="/planos" className="text-gt-orange hover:underline">
-                /planos
-              </a>
-              .
+              Alguns recursos do app são pagos e requerem assinatura ativa.
             </li>
             <li>
-              Planos Plus e Pro são pagos. A cobrança é feita pelo Asaas
-              (Android) ou pela loja de aplicativos (quando disponível pra
-              iOS).
+              Os valores e condições estão descritos na página de planos do
+              app ou site.
             </li>
             <li>
-              Você pode cancelar a qualquer momento. Sem multa de cancelamento.
-              O plano segue ativo até o fim do ciclo já pago e depois volta
-              automaticamente pro Free.
+              A cobrança é recorrente, podendo ser mensal ou anual, de acordo
+              com a escolha do usuário.
             </li>
             <li>
-              Reajustes de preço são comunicados com no mínimo 30 dias de
-              antecedência.
+              Assinaturas podem ser canceladas a qualquer momento, respeitando
+              as regras das lojas de aplicativos (Google Play ou App Store).
             </li>
           </ul>
 
           <h2 className="text-xl font-medium text-gt-green mt-10 mb-4">
-            5. Uso aceitável
+            4. Uso Permitido e Proibido
+          </h2>
+          <p className="text-gt-gray-dark leading-relaxed mb-4">É proibido:</p>
+          <ul className="text-gt-gray-dark leading-relaxed mb-6 space-y-2 list-disc pl-6">
+            <li>
+              Utilizar o app para atividades ilegais ou que violem direitos de
+              terceiros.
+            </li>
+            <li>
+              Tentar acessar, copiar ou modificar o código-fonte ou banco de
+              dados do app.
+            </li>
+            <li>Inserir informações falsas, enganosas ou fraudulentas.</li>
+            <li>
+              Usar o GT Overlander de forma que possa danificar, sobrecarregar
+              ou prejudicar seu funcionamento.
+            </li>
+          </ul>
+
+          <h2 className="text-xl font-medium text-gt-green mt-10 mb-4">
+            5. Propriedade Intelectual
           </h2>
           <p className="text-gt-gray-dark leading-relaxed mb-4">
-            Você concorda em não:
+            Todo o conteúdo, design, marcas e funcionalidades do GT Overlander
+            pertencem à GT Overlander Ltda e são protegidos por leis de
+            direitos autorais e propriedade industrial.
           </p>
+          <p className="text-gt-gray-dark leading-relaxed mb-6">
+            É proibida a reprodução, modificação ou distribuição sem
+            autorização expressa.
+          </p>
+
+          <h2 className="text-xl font-medium text-gt-green mt-10 mb-4">
+            6. Limitação de Responsabilidade
+          </h2>
           <ul className="text-gt-gray-dark leading-relaxed mb-6 space-y-2 list-disc pl-6">
-            <li>Usar o serviço pra atividades ilegais</li>
             <li>
-              Tentar acessar dados, contas ou sistemas que não são seus
+              O GT Overlander fornece informações e rotas com base em dados
+              disponíveis e tecnologias de terceiros (Google Maps, OSM etc.).
             </li>
-            <li>Fazer engenharia reversa ou tentar extrair o código-fonte</li>
             <li>
-              Usar bots, scrapers ou automação não autorizada pra extrair dados
-              em massa
+              Não nos responsabilizamos por mudanças de condições de estrada,
+              clima, restrições locais ou outros fatores externos.
             </li>
-            <li>Revender o acesso ao serviço sem autorização</li>
+            <li>
+              O usuário é responsável por seguir as leis de trânsito e se
+              preparar adequadamente para a viagem.
+            </li>
           </ul>
 
           <h2 className="text-xl font-medium text-gt-green mt-10 mb-4">
-            6. Propriedade intelectual
+            7. Privacidade e Proteção de Dados
           </h2>
           <p className="text-gt-gray-dark leading-relaxed mb-6">
-            O GT Overlander, suas marcas, logo, design, código e conteúdo
-            editorial são de propriedade do GT. Os roteiros que você cria,
-            paradas que você adiciona e dados pessoais permanecem seus —
-            licenciamos pra hospedagem e processamento conforme nossa{' '}
-            <a href="/privacidade" className="text-gt-orange hover:underline">
+            O tratamento de dados pessoais segue nossa{' '}
+            <a
+              href="/privacidade"
+              className="text-gt-orange hover:underline"
+            >
               Política de Privacidade
             </a>
-            .
+            . Ao utilizar o app, você concorda com a coleta e uso de dados
+            conforme descrito nela.
           </p>
 
           <h2 className="text-xl font-medium text-gt-green mt-10 mb-4">
-            7. Limitação de responsabilidade
+            8. Alterações nos Termos
           </h2>
           <p className="text-gt-gray-dark leading-relaxed mb-6">
-            O GT é uma ferramenta de planejamento. As decisões de viagem,
-            condições da rota, segurança no trajeto e cumprimento de leis
-            locais (incluindo trânsito, fronteiras e visto) são responsabilidade
-            do usuário. Não nos responsabilizamos por: imprecisões em waypoints
-            de terceiros, mudanças nas condições da rota após o planejamento,
-            falhas de equipamento ou perda de sinal celular. Faça sempre uma
-            checagem prévia das condições críticas antes de partir.
+            Podemos alterar estes Termos a qualquer momento. A versão mais
+            recente estará sempre disponível no app e no site.
           </p>
 
           <h2 className="text-xl font-medium text-gt-green mt-10 mb-4">
-            8. Suspensão e encerramento
+            9. Legislação Aplicável e Foro
           </h2>
+          <p className="text-gt-gray-dark leading-relaxed mb-4">
+            Estes Termos são regidos pela legislação brasileira.
+          </p>
           <p className="text-gt-gray-dark leading-relaxed mb-6">
-            Reservamos o direito de suspender ou encerrar contas que violem
-            estes Termos. Em caso de encerramento por nossa parte, devolvemos
-            valores proporcionais não usados (quando aplicável).
+            Qualquer disputa será resolvida no foro da comarca de Londrina —
+            PR, Brasil.
           </p>
 
           <h2 className="text-xl font-medium text-gt-green mt-10 mb-4">
-            9. Alterações nos Termos
+            10. Contato
           </h2>
           <p className="text-gt-gray-dark leading-relaxed mb-6">
-            Podemos atualizar estes Termos conforme o produto evolui. Mudanças
-            significativas serão comunicadas por e-mail ou notificação no app
-            com antecedência mínima de 30 dias. Continuar usando o serviço após
-            essa comunicação implica aceitação dos novos Termos.
-          </p>
-
-          <h2 className="text-xl font-medium text-gt-green mt-10 mb-4">
-            10. Foro
-          </h2>
-          <p className="text-gt-gray-dark leading-relaxed mb-6">
-            Estes Termos são regidos pelas leis brasileiras. Fica eleito o foro
-            da comarca de Londrina/PR pra dirimir quaisquer questões
-            decorrentes do uso do serviço.
-          </p>
-
-          <p className="text-sm text-gt-gray-mid italic mt-12 pt-8 border-t border-gt-green/10">
-            Este documento foi redigido com base em modelos padrão de Termos de
-            Uso de SaaS e está sujeito a revisão por advogado especializado
-            antes da publicação oficial. Recomendamos a consulta a um
-            profissional jurídico em caso de dúvida sobre seus direitos.
+            <strong>GT Overlander Ltda</strong>
+            <br />
+            CNPJ: 59.840.412/0001-82
+            <br />
+            E-mail:{' '}
+            <a
+              href="mailto:suporte@gtoverlander.com.br"
+              className="text-gt-orange hover:underline"
+            >
+              suporte@gtoverlander.com.br
+            </a>
           </p>
         </div>
       </section>

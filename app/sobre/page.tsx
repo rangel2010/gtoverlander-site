@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 export const metadata: Metadata = {
   title: 'Sobre',
   description:
-    'Por que o GT Overlander existe. A tese de "intenção de destino conhecida" e a missão de virar o ecossistema do viajante overland.',
+    'O GT Overlander é o ecossistema do viajante overland — um companheiro de estrada que une praticidade, inteligência artificial e comunidade.',
 };
 
 const numeros = [
@@ -42,10 +42,11 @@ export default function SobrePage() {
             Sobre o GT Overlander
           </p>
           <h1 className="text-4xl md:text-5xl font-medium leading-[1.1] mb-6">
-            Por que o GT existe
+            Mais do que um planejador de rotas — um companheiro de estrada
           </h1>
           <p className="text-base md:text-lg text-white/75 leading-relaxed">
-            O Google Maps não foi feito pra overlanders. O GT foi.
+            O GT existe pra transformar o planejamento de viagens por terra em
+            uma experiência simples, inteligente e inspiradora.
           </p>
         </div>
       </section>
@@ -53,26 +54,27 @@ export default function SobrePage() {
       <section className="bg-white py-16 md:py-20">
         <div className="container-narrow">
           <h2 className="text-2xl md:text-3xl font-medium text-gt-green mb-6">
-            A origem
+            Nossa missão
           </h2>
           <p className="text-gt-gray-dark leading-relaxed mb-5">
-            O GT Overlander nasceu de uma frustração compartilhada por quem
-            viaja por terra: aplicativos de mapa convencionais foram desenhados
-            pra cidade e asfalto. Quando o overlander sai pra estrada — pra uma
-            trilha, pro Mercosul, pra um camping rural — as ferramentas que
-            existem deixam furos grandes.
+            O GT Overlander é um aplicativo criado para viajantes que exploram
+            o mundo por terra — seja de carro, moto, 4x4 ou motorhome. Nossa
+            missão é transformar o planejamento de viagens em uma experiência
+            simples, inteligente e inspiradora.
           </p>
           <p className="text-gt-gray-dark leading-relaxed mb-5">
-            A ideia foi virar do avesso o problema: em vez de adaptar uma
-            ferramenta urbana pra uso rural, construir do zero pensando em
-            quem viaja por terra. Uma IA que entende essa viagem. Uma base
-            própria de waypoints relevantes pra quem rodando. Um app que
-            funciona quando o sinal cai.
+            Com tecnologia de inteligência artificial, o app cria rotas
+            personalizadas com base nas suas preferências e conecta você a
+            pontos de interesse úteis, como postos de combustível, campings,
+            hospedagens e atrações locais. Tudo é integrado ao Google Maps para
+            facilitar a navegação, e você ainda conta com um radar de waypoints
+            para encontrar recursos próximos durante a viagem.
           </p>
           <p className="text-gt-gray-dark leading-relaxed">
-            Hoje, dezenas de milhares de viajantes usam o GT pra planejar e
-            rodar — do litoral nordestino à Patagônia, do Pantanal aos Andes.
-            E o produto continua crescendo.
+            Mais do que um planejador de rotas, o GT Overlander é um
+            companheiro de estrada que une praticidade, segurança e
+            comunidade — ajudando você a descobrir novos destinos e aproveitar
+            ao máximo cada quilômetro.
           </p>
         </div>
       </section>
@@ -83,10 +85,14 @@ export default function SobrePage() {
             O fundador
           </h2>
 
-          <div className="grid md:grid-cols-[280px_1fr] gap-10 items-start">
-            <div className="aspect-square bg-gt-green/5 rounded-lg flex items-center justify-center text-gt-green/40 text-sm">
-              {/* Placeholder pra foto do Rangel — substituir com foto real */}
-              Foto do Rangel
+          <div className="grid md:grid-cols-[320px_1fr] gap-10 items-start">
+            <div className="aspect-square bg-gt-green/5 rounded-lg overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/rangel.jpg"
+                alt="Rangel Machado, fundador do GT Overlander, em frente a paisagem patagônica"
+                className="w-full h-full object-cover"
+              />
             </div>
 
             <div>

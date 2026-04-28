@@ -41,8 +41,8 @@ const columns: { title: string; links: FooterLink[] }[] = [
       { href: '/privacidade', label: 'Privacidade' },
       { href: '/termos', label: 'Termos' },
       {
-        href: 'mailto:contato@gtoverlander.com.br',
-        label: 'contato@gtoverlander.com.br',
+        href: 'mailto:suporte@gtoverlander.com.br',
+        label: 'suporte@gtoverlander.com.br',
         external: true,
       },
     ],
