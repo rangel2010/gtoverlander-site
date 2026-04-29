@@ -74,7 +74,7 @@ const categorias: FaqCategory[] = [
       },
       {
         q: 'Posso cancelar quando quiser?',
-        a: 'Sim, sem multa. O plano segue ativo até o fim do ciclo já pago e depois volta pro Free automaticamente. Suas rotas e configurações ficam guardadas — não são apagadas.',
+        a: 'Sim, sem multa. O plano segue ativo até o fim do ciclo já pago e depois volta pro Free automaticamente. Suas rotas e configurações nunca são apagadas — em nenhum plano. O que muda é só a quantidade de exportações pra navegar.',
       },
       {
         q: 'Tenho assinatura no iOS?',

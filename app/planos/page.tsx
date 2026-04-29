@@ -65,7 +65,7 @@ const faq = [
   },
   {
     q: 'O que acontece com minhas rotas se eu cancelar?',
-    a: 'Suas rotas, paradas e configurações ficam guardadas na conta — não são apagadas. Se você voltar pro Plus ou Pro depois, tudo continua exatamente onde estava.',
+    a: 'Suas rotas, paradas e configurações nunca são apagadas — em nenhum plano. O que muda entre os planos é só a quantidade de vezes que você pode exportar a rota pra navegar. Se voltar pro Plus ou Pro depois, tudo continua exatamente onde estava.',
   },
   {
     q: 'Conta Business é diferente?',
