@@ -61,7 +61,7 @@ const categorias: FaqCategory[] = [
       },
       {
         q: 'Os waypoints são confiáveis?',
-        a: 'Os dados vêm de fontes consolidadas (OpenStreetMap, iOverlander, MaCamp) processadas e classificadas pelo time GT. Em construção: validação por comunidade — overlanders contribuindo e validando pontos.',
+        a: 'A base começou com dados públicos do OpenStreetMap, processados e classificados pelo time GT em 16 categorias relevantes pro overlander. Em construção: validação por comunidade — overlanders contribuindo e validando pontos diretamente pelo app.',
       },
     ],
   },

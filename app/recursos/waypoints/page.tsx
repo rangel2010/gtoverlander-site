@@ -34,19 +34,19 @@ const categorias = [
 const faq = [
   {
     q: 'É confiável?',
-    a: 'Sim. Os dados vêm de fontes consolidadas (OpenStreetMap, iOverlander e MaCamp) e passam por um processo de deduplificação e enriquecimento pelo time GT antes de entrar na base. Erros acontecem, mas em escala muito menor que confiar só no Google Places — que não foi feito pro overlander.',
+    a: 'Sim. A base começou com dados públicos do OpenStreetMap e passou por curadoria exaustiva do time GT — deduplificação, classificação em 16 categorias e enriquecimento. Erros acontecem, mas em escala muito menor que confiar só no Google Places. Em breve, a comunidade vai poder validar e atualizar continuamente.',
   },
   {
     q: 'Posso adicionar pontos novos?',
-    a: 'Em construção. Estamos preparando o fluxo de validação por comunidade — overlanders contribuindo com pontos novos e validando os existentes. Sem data ainda, mas é parte do roadmap próximo.',
+    a: 'Em construção. Estamos preparando o fluxo de validação por comunidade — overlanders contribuindo com pontos novos e validando os existentes diretamente pelo app. Sem data ainda, mas é parte do roadmap próximo.',
   },
   {
     q: 'Funciona offline?',
-    a: 'Quando o Modo Offline estiver disponível, todos os waypoints da sua região (e do mundo, se você quiser) ficam acessíveis sem sinal. Hoje a consulta exige internet.',
+    a: 'Como os waypoints são nossos (não dependem do Google Places), eles podem ficar disponíveis offline em qualquer lugar do mundo. Quando o Modo Offline lançar, sua base de pontos vai junto com você — sem sinal, sem dependência de servidor de terceiros.',
   },
   {
     q: 'De onde vêm os dados?',
-    a: 'OpenStreetMap, iOverlander e MaCamp são as fontes principais. O time GT processa, deduplifica, enriquece e classifica em 16 categorias relevantes pro universo overlander.',
+    a: 'A base começou com dados públicos do OpenStreetMap. O time GT processa, deduplifica, enriquece e classifica em 16 categorias relevantes pro overlander. Daí em diante a base é viva — em breve com validação contínua pela comunidade.',
   },
   {
     q: 'É só radar ou aparece na hora de planejar a rota também?',
@@ -144,14 +144,21 @@ export default function WaypointsPage() {
             Origem dos dados
           </h2>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            A base do GT vem de fontes consolidadas — OpenStreetMap,
-            iOverlander e MaCamp — processadas, deduplificadas e enriquecidas
-            pelo time GT em 16 categorias relevantes pro overlander.
+            A base começou com dados públicos do OpenStreetMap e foi
+            exaustivamente curada pelo time GT — processada, deduplificada,
+            classificada e enriquecida em 16 categorias relevantes pro
+            overlander.
+          </p>
+          <p className="text-gt-text leading-relaxed mb-5 font-sans">
+            A base é viva. O time GT cura continuamente, e em breve a
+            comunidade vai poder validar pontos existentes e incluir novos
+            diretamente pelo app — quanto mais gente na estrada, mais rica a
+            base fica.
           </p>
           <p className="text-gt-text leading-relaxed font-sans">
-            Transparência aumenta credibilidade: a base não foi inventada do
-            nada. É curadoria em cima de dados públicos e dados de comunidades
-            de viajantes que já funcionam.
+            Por ser uma base própria, os waypoints podem ficar disponíveis
+            offline em qualquer lugar do mundo. Coisa que app que depende do
+            Google Places não consegue.
           </p>
         </div>
       </section>
@@ -162,9 +169,10 @@ export default function WaypointsPage() {
             Diferencial
           </p>
           <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
-            O Google Maps não conhece o postinho rural. O GT conhece. A gente
-            controla o que aparece como ponto de apoio — qualidade, ordem,
-            relevância pra quem viaja por terra.
+            O Google Maps conhece tudo — e por isso traz tudo, inclusive o que
+            não importa pra você. O GT entrega só o que o overlander precisa:
+            postos, campings, hospedagem, oficinas, atrativos. Curadoria, não
+            enxurrada.
           </p>
         </div>
       </section>
