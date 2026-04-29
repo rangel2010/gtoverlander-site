@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Instagram, Youtube, Mail } from 'lucide-react';
+import { Instagram, Facebook, Youtube, Mail } from 'lucide-react';
 
 interface FooterLink {
   href: string;
@@ -127,6 +127,15 @@ export function Footer() {
               className="text-gt-text-muted hover:text-gt-text transition-colors"
             >
               <Instagram size={26} />
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61566265237861"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="text-gt-text-muted hover:text-gt-text transition-colors"
+            >
+              <Facebook size={26} />
             </a>
             <a
               href="https://youtube.com/@gtoverlander"
