@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gtoverlander.com.br'
   ),
   title: {
-    default: 'GT Overlander · O ecossistema do viajante overland',
+    default: 'GT Overlander · O maior ecossistema overlander do mundo',
     template: '%s · GT Overlander',
   },
   description:

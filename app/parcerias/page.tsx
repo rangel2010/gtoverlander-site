@@ -79,10 +79,10 @@ export default function ParceriasPage() {
             Construa overlanding com a gente
           </h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
-            O ecossistema do viajante overland não é só app — é todo mundo que
-            sustenta esse universo. Criadores que contam histórias de estrada,
-            marcas que equipam quem viaja, serviços que cuidam do caminho.
-            Vamos fazer juntos.
+            O maior ecossistema overlander do mundo não é só app — é todo
+            mundo que sustenta esse universo. Criadores que contam histórias de
+            estrada, marcas que equipam quem viaja, serviços que cuidam do
+            caminho. Vamos fazer juntos.
           </p>
         </div>
       </section>

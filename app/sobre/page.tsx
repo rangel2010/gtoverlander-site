@@ -5,7 +5,7 @@ import { aboutPagePersonLd, jsonLdScriptProps } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Sobre',
   description:
-    'O GT Overlander é o ecossistema do viajante overland — um companheiro de estrada que une praticidade, inteligência artificial e comunidade.',
+    'O GT Overlander é o maior ecossistema overlander do mundo — um companheiro de estrada que une praticidade, inteligência artificial e comunidade.',
 };
 
 const numeros = [

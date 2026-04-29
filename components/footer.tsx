@@ -111,7 +111,7 @@ export function Footer() {
         <div className="pt-8 border-t border-gt-border flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div className="font-sans">
             <p className="text-sm text-gt-text-muted">
-              O ecossistema do viajante overland
+              O maior ecossistema overlander do mundo
             </p>
             <p className="text-xs text-gt-text-dim mt-2">
               © 2026 GT Overlander Ltda · CNPJ 59.840.412/0001-82
