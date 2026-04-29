@@ -119,9 +119,10 @@ export const postSchema = defineType({
     defineField({
       name: 'body',
       title: 'Conteúdo (Markdown)',
-      type: 'markdown',
+      type: 'text',
+      rows: 30,
       description:
-        'Cole o markdown completo aqui. Suporta # H1, ## H2, ### H3, **negrito**, *itálico*, [link](url), listas com - ou 1., > citação, ![imagem](url) e tabelas.',
+        'Cole o markdown completo aqui. Suporta # H1, ## H2, ### H3, **negrito**, *itálico*, [link](url), listas com - ou 1., > citação, ![imagem](url) e tabelas. Vai ser renderizado bonitinho no site.',
       validation: (Rule) => Rule.required(),
     }),
   ],
