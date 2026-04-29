@@ -7,21 +7,19 @@ import { CtaFinal } from '@/components/sections/cta-final';
 export const metadata: Metadata = {
   title: 'Roteiros com IA',
   description:
-    'A IA do GT monta a espinha dorsal do seu roteiro de viagem em linguagem natural. Free pra começar, Premium pra ir mais fundo. Para qualquer estrada.',
+    'Descreva a viagem em linguagem natural. A IA monta o trajeto — estradas, cidades e destino — e você completa com paradas. Free pra começar, Pro pra desafios maiores.',
 };
 
 const motores = [
   {
-    nome: 'Standard Free',
-    modelo: 'gpt-5.4-mini',
-    pra: 'Disponível pra todos',
-    desc: 'Onboarding e descoberta. Roteiros base pra quem tá conhecendo o app ou planejando uma viagem mais simples.',
+    nome: 'IA padrão',
+    pra: 'Plano Free',
+    desc: 'Trajetos diretos pra rotas convencionais. Suficiente pra primeira viagem ou roteiro mais simples.',
   },
   {
-    nome: 'Premium',
-    modelo: 'gpt-5.4',
-    pra: 'Plus e Pro',
-    desc: 'Roteiros mais ricos, mais paradas, contexto cultural mais profundo. Narrativa de viagem em vez de só lista de pontos.',
+    nome: 'IA avançada',
+    pra: 'Planos Plus e Pro',
+    desc: 'Pra quando o trajeto exige mais. Conhecimento geográfico apurado, adaptação ao seu estilo de viagem, e capacidade de planejar rotas complexas com vias secundárias e regiões menos conhecidas.',
   },
 ];
 
@@ -29,22 +27,22 @@ const passos = [
   {
     num: 1,
     titulo: 'Você descreve a viagem',
-    desc: 'Conta o destino, os dias, o ritmo, o perfil — em linguagem natural. Sem formulário, sem dropdown.',
+    desc: 'Conta o destino, as regiões que quer cruzar, suas preferências de estrada — em linguagem natural',
   },
   {
     num: 2,
-    titulo: 'A IA monta a espinha dorsal',
-    desc: 'O trajeto base com paradas, contexto regional e ritmo do dia — em segundos.',
+    titulo: 'A IA monta o trajeto',
+    desc: 'Estradas, cidades e destino — pronto em segundos, do jeito que você pediu',
   },
   {
     num: 3,
-    titulo: 'Você deixa com a sua cara',
-    desc: 'Refina, personaliza, inclui paradas, postos, hotéis e campings — você decide o que entra.',
+    titulo: 'Você escolhe onde parar',
+    desc: 'Postos, hospedagem, campings, atrações — escolhe da maior base de waypoints overlander do mundo',
   },
   {
     num: 4,
     titulo: 'Você roda',
-    desc: 'Parte com CarPlay ou Android Auto. Tudo na palma da mão, online ou offline.',
+    desc: 'Exporta a rota pro Google Maps e roda direto no painel do carro com CarPlay ou Android Auto',
   },
 ];
 
@@ -66,8 +64,8 @@ const faq = [
     a: 'Português, inglês e espanhol. Você descreve a viagem no idioma que preferir e a IA responde no mesmo.',
   },
   {
-    q: 'Qual a diferença entre Free e Premium?',
-    a: 'Free usa o motor gpt-5.4-mini, suficiente pra rotas convencionais. Premium usa o gpt-5.4 full, com roteiros mais ricos, mais paradas e contexto cultural mais profundo.',
+    q: 'Qual a diferença entre Free e Plus/Pro?',
+    a: 'Free usa a IA padrão, suficiente pra rotas convencionais e primeiras viagens. Plus e Pro usam a IA avançada — mais precisão em rotas complexas, conhecimento geográfico apurado e adaptação ao seu estilo de viagem.',
   },
 ];
 
@@ -77,7 +75,7 @@ export default function RoteirosIaPage() {
       <FeatureHero
         kicker="Disponível agora"
         title="Roteiros personalizados em uma conversa"
-        subline="Descreva sua viagem em linguagem natural. A IA monta a espinha dorsal do trajeto e você personaliza com paradas, postos, hotéis e campings."
+        subline="Descreva a viagem em linguagem natural. Primeiro a IA monta o trajeto — estradas, cidades e destino. Depois você completa: paradas, postos, hospedagem e campings."
         primaryCta={{ label: 'Baixar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Ver planos', href: '/planos' }}
       />
@@ -92,9 +90,10 @@ export default function RoteirosIaPage() {
               Da descrição ao mapa, em segundos
             </h2>
             <p className="text-gt-text-muted leading-relaxed font-sans">
-              A IA monta a rota, exibe no mapa e já sugere postos, restaurantes,
-              hotéis e campings ao longo do trajeto. Você decide quais paradas
-              entram, edita o que quiser, e parte com CarPlay ou Android Auto.
+              A IA traça o trajeto e exibe no mapa. Você filtra na nossa base de
+              mais de 4 milhões de waypoints — postos, hospedagem, campings,
+              atrações — pra escolher onde quer parar. Quando estiver pronto,
+              exporta pro Google Maps com um toque.
             </p>
           </div>
           <div className="flex justify-center">
@@ -111,10 +110,11 @@ export default function RoteirosIaPage() {
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            2 motores de IA, calibrados pra cada perfil
+            2 motores de IA, calibrados pra cada nível de viagem
           </h2>
           <p className="text-gt-text-muted mb-10 max-w-xl font-sans">
-            Free pra começar e descobrir. Premium pra quem viaja com mais frequência e quer mais densidade.
+            IA padrão pra começar. IA avançada pra rotas mais complexas — mais
+            precisão geográfica, mais adaptação ao seu estilo de viagem.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -123,14 +123,9 @@ export default function RoteirosIaPage() {
                 key={m.nome}
                 className="bg-gt-card rounded-lg p-6 border border-gt-border"
               >
-                <div className="flex items-baseline gap-3 mb-2">
-                  <h3 className="font-sans font-medium text-gt-text text-lg normal-case">
-                    {m.nome}
-                  </h3>
-                  <code className="text-xs text-gt-text-muted bg-gt-bg px-2 py-0.5 rounded font-sans">
-                    {m.modelo}
-                  </code>
-                </div>
+                <h3 className="font-sans font-medium text-gt-text text-lg mb-2 normal-case">
+                  {m.nome}
+                </h3>
                 <p className="text-xs uppercase tracking-wider text-gt-orange/80 mb-3 font-sans">
                   {m.pra}
                 </p>
@@ -179,8 +174,10 @@ export default function RoteirosIaPage() {
             Diferencial
           </p>
           <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
-            Outros apps te dão um mapa. O GT te dá um roteiro pensado e
-            adaptável — uma narrativa de viagem que você ajusta no seu jeito.
+            Outros apps te empurram pro caminho mais rápido. O GT entende que
+            pra um overlander, o que importa é o caminho — não só o destino. A
+            IA pensa no seu trajeto — estradas, regiões e contexto — não em
+            chegar logo.
           </p>
         </div>
       </section>
