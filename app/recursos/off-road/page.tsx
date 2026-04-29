@@ -6,32 +6,32 @@ import { OutrasFeatures } from '@/components/sections/outras-features';
 export const metadata: Metadata = {
   title: 'Modo Off Road',
   description:
-    'Em breve. Crie rotas off-road com a sua cara, ligando os waypoints da nossa base num mapa interativo dedicado a trilhas. Pra quem sai do asfalto.',
+    'Em breve. Você desenha a rota off-road ponto a ponto no mapa. Trilhas, ripio, estradas de terra — sem IA, pronta pra rodar offline em qualquer lugar do mundo.',
 };
 
 const beneficios = [
   {
     titulo: 'Você desenha sua rota',
-    desc: 'Liga os waypoints da nossa base num mapa interativo dedicado a trilhas. No jeito que faz sentido pra sua viagem.',
+    desc: 'No mapa, você seleciona os waypoints da nossa base na ordem que quiser. A trilha se forma ligando ponto por ponto — você decide cada curva, sem IA otimizando o caminho.',
   },
   {
-    titulo: 'Trilhas que o Google não conhece',
-    desc: 'Estradas de terra, caminhos rurais, pontos longe do asfalto. Onde os mapas convencionais não chegam.',
+    titulo: 'Trilhas e caminhos secundários',
+    desc: 'Estradas de terra, caminhos rurais, trilhas conhecidas só por quem já passou. Apps convencionais focam em rotas otimizadas — Off Road existe pra você desenhar o caminho que não tá no asfalto.',
   },
   {
     titulo: 'Asfalto continua igual',
-    desc: 'A IA e o Google Maps seguem cuidando das rotas convencionais. Off Road é uma camada nova, não substituição.',
+    desc: 'A IA continua cuidando das rotas convencionais, com Google Maps, CarPlay e Android Auto. Off Road é uma camada nova — não substitui o que já funciona.',
   },
   {
     titulo: 'Você no controle',
-    desc: 'Sem voz fazendo barulho, sem recálculo automático tirando seu rumo. Overlander quer pilotar, não ser pilotado.',
+    desc: 'Sem voz fazendo barulho, sem recálculo automático tirando você do rumo. Quem viaja por terra quer pilotar, não ser pilotado.',
   },
 ];
 
 const tiers = [
-  { nome: 'Free', uso: '1 execução a cada 90 dias' },
-  { nome: 'Plus', uso: '2 execuções por mês' },
-  { nome: 'Pro', uso: 'Execuções ilimitadas' },
+  { nome: 'Free', uso: '1 exportação a cada 90 dias' },
+  { nome: 'Plus', uso: '2 exportações por mês' },
+  { nome: 'Pro', uso: 'Exportações ilimitadas' },
 ];
 
 const faq = [
@@ -41,7 +41,7 @@ const faq = [
   },
   {
     q: 'É grátis ou pago?',
-    a: 'Universal: todos os planos (Free, Plus, Pro) podem CRIAR rotas off-road sem limite. A diferença está em quantas vezes por mês você roda essas rotas. Free 1 a cada 90 dias, Plus 2 por mês, Pro ilimitado.',
+    a: 'Universal: todos os planos (Free, Plus, Pro) podem CRIAR rotas off-road sem limite. A diferença está em quantas vezes você pode EXPORTAR pra navegar. Free 1 a cada 90 dias, Plus 2 por mês, Pro ilimitado.',
   },
   {
     q: 'Funciona sem sinal?',
@@ -63,7 +63,7 @@ export default function OffRoadPage() {
       <FeatureHero
         status="em-breve"
         title="Saia do asfalto sem perder o caminho"
-        subline="Em breve. Crie rotas off-road com a sua cara, ligando os waypoints da nossa base num mapa interativo dedicado a trilhas."
+        subline="Em breve. Você desenha a rota ponto a ponto no mapa — trilhas, ripio, estradas de terra. Sem IA, funciona offline."
         primaryCta={{ label: 'Avise quando lançar', href: '/contato' }}
         secondaryCta={{ label: 'Baixar o app agora', href: '/baixar' }}
       />
@@ -99,7 +99,7 @@ export default function OffRoadPage() {
           </h2>
           <p className="text-gt-text-muted mb-10 max-w-xl font-sans">
             Criar é ilimitado pra todos os planos. A diferença está em quantas
-            vezes por mês você roda.
+            vezes você exporta pra navegar.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -124,9 +124,9 @@ export default function OffRoadPage() {
             Visão de longo prazo
           </p>
           <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
-            Uma biblioteca social de trilhas brasileiras — outros overlanders
-            compartilhando rotas que viraram realidade. O Off Road do GT é o
-            primeiro passo.
+            Uma biblioteca social de trilhas overlander — outros viajantes
+            compartilhando rotas que viraram realidade, em qualquer canto do
+            mundo. O Off Road do GT é o primeiro passo.
           </p>
         </div>
       </section>
