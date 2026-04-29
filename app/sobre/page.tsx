@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 };
 
 const numeros = [
-  { valor: 'Milhares', contexto: 'de viajantes ativos' },
-  { valor: '+50%', contexto: 'voltam pro GT todo mês' },
-  { valor: '+4 mi', contexto: 'de waypoints próprios' },
+  { valor: 'Milhares', contexto: 'de viajantes cadastrados' },
+  { valor: '+30%', contexto: 'de crescimento de usuários ao mês' },
+  { valor: '+4 mi', contexto: 'de waypoints na nossa base — ajude a crescer ainda mais' },
   { valor: '209', contexto: 'países cobertos' },
 ];
 

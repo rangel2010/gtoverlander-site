@@ -1,8 +1,8 @@
 const stats = [
   { valor: 'Milhares', contexto: 'de viajantes cadastrados' },
-  { valor: '+30%', contexto: 'de crescimento ao mês' },
-  { valor: '+4 mi', contexto: 'de pontos no GT — você valida e contribui' },
-  { valor: '+50%', contexto: 'voltam pro GT todo mês' },
+  { valor: '+30%', contexto: 'de crescimento de usuários ao mês' },
+  { valor: '+4 mi', contexto: 'de waypoints na nossa base — ajude a crescer ainda mais' },
+  { valor: '+50%', contexto: 'dos que testaram voltaram a usar' },
 ];
 
 export function Numeros() {
