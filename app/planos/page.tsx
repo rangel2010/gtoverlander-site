@@ -18,19 +18,15 @@ interface PlanFeature {
 const features: PlanFeature[] = [
   {
     label: 'Roteiros com IA',
-    values: ['Standard Free (gpt-5.4-mini)', 'Premium (gpt-5.4)', 'Premium (gpt-5.4)'],
+    values: ['IA padrão', 'IA avançada', 'IA avançada'],
   },
   {
-    label: 'Geração de rota (IA + Off Road)',
+    label: 'Rotas exportadas pra navegação',
     values: ['1 a cada 90 dias', '2 por mês', 'ilimitado'],
   },
   {
     label: 'Consultas de radar de waypoints',
     values: ['1 por dia', '5 por dia', 'ilimitado'],
-  },
-  {
-    label: 'Modo Offline (em breve)',
-    values: [true, true, true],
   },
   {
     label: 'Waypoints próprios — base mundial',
@@ -41,15 +37,19 @@ const features: PlanFeature[] = [
     values: [true, true, true],
   },
   {
+    label: 'Explore Novos Destinos (em breve)',
+    values: [false, true, true],
+  },
+  {
     label: 'Suporte',
-    values: ['Comunidade', 'E-mail', 'Prioritário'],
+    values: ['E-mail', 'E-mail prioritário', 'E-mail prioritário'],
   },
 ];
 
 const faq = [
   {
     q: 'Posso testar antes de assinar?',
-    a: 'O plano Free não é trial — é grátis pra sempre. Você usa o GT com Standard Free de IA, todos os waypoints próprios disponíveis, CarPlay e Android Auto, sem deadline. Quando quiser mais densidade, sobe pra Plus ou Pro.',
+    a: 'O plano Free não é trial — é grátis pra sempre. Você usa o GT com a IA padrão, todos os waypoints próprios disponíveis, CarPlay e Android Auto, sem deadline. Quando quiser mais densidade, sobe pra Plus ou Pro.',
   },
   {
     q: 'Posso cancelar a qualquer momento?',
@@ -58,10 +58,6 @@ const faq = [
   {
     q: 'Qual a diferença entre mensal e anual?',
     a: 'Anual tem desconto significativo: Plus mensal sai R$ 178,80/ano, anual sai R$ 79,90 (economia de 55%). Pro mensal sai R$ 238,80/ano, anual sai R$ 99,90 (economia de 58%). Mesmo plano, mesmas features — só muda o ciclo de cobrança.',
-  },
-  {
-    q: 'Tenho assinatura no iOS?',
-    a: 'Hoje só Android (via Asaas). A assinatura no iOS está em desenvolvimento — quando estiver pronta, todos os planos ficam disponíveis nas duas plataformas.',
   },
   {
     q: 'Quanto custa em outras moedas?',
@@ -113,9 +109,9 @@ export default function PlanosPage() {
             Comparação completa
           </h2>
           <p className="text-gt-text-muted mb-10 max-w-xl font-sans">
-            Todos os planos têm acesso à base de mais de 4 milhões de waypoints
-            e ao Modo Offline (em breve). A diferença é o uso intenso da IA e
-            do radar.
+            Todos os planos têm acesso à base de mais de 4 milhões de waypoints.
+            Criar rotas é ilimitado pra todo mundo — a diferença está em
+            exportar pra navegar, no uso intenso da IA e nas consultas do radar.
           </p>
 
           <div className="overflow-x-auto bg-gt-bg rounded-lg border border-gt-border">

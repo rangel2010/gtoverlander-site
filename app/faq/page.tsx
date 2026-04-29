@@ -70,7 +70,7 @@ const categorias: FaqCategory[] = [
     perguntas: [
       {
         q: 'Posso testar antes de assinar?',
-        a: 'Free não é trial. Você usa o GT grátis pra sempre, com Standard Free de IA, todos os waypoints, CarPlay e Android Auto. 1 rota a cada 90 dias e 1 consulta de radar por dia. Quando precisar de mais, sobe pra Plus ou Pro.',
+        a: 'Free não é trial. Você usa o GT grátis pra sempre, com a IA padrão, todos os waypoints, CarPlay e Android Auto. 1 rota exportada pra navegar a cada 90 dias e 1 consulta de radar por dia. Quando precisar de mais, sobe pra Plus ou Pro.',
       },
       {
         q: 'Posso cancelar quando quiser?',
