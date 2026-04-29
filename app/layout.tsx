@@ -64,13 +64,21 @@ export default function RootLayout({
       className={`${inter.variable} ${anton.variable}`}
     >
       <head>
-        {/* Plausible Analytics */}
+        {/* Plausible Analytics — script combinado:
+            - outbound-links: trackeia cliques em links externos (App Store, Play Store, etc.) automaticamente
+            - tagged-events: permite eventos customizados via data-plausible-event-name e window.plausible() */}
         <script
           defer
           data-domain={
             process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? 'gtoverlander.com.br'
           }
-          src="https://plausible.io/js/script.js"
+          src="https://plausible.io/js/script.outbound-links.tagged-events.js"
+        />
+        {/* Stub global pra TypeScript não reclamar quando chamar window.plausible() */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: 'window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }',
+          }}
         />
 
         {/* Schema.org JSON-LD — Organization + WebSite + SoftwareApplication */}
