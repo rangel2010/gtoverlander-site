@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Instagram, Youtube } from 'lucide-react';
+import { Instagram, Youtube, Mail } from 'lucide-react';
 
 interface FooterLink {
   href: string;
@@ -118,7 +118,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center gap-5">
             <a
               href="https://instagram.com/gtoverlander"
               target="_blank"
@@ -136,6 +136,13 @@ export function Footer() {
               className="text-gt-text-muted hover:text-gt-text transition-colors"
             >
               <Youtube size={26} />
+            </a>
+            <a
+              href="mailto:suporte@gtoverlander.com.br"
+              aria-label="E-mail"
+              className="text-gt-text-muted hover:text-gt-text transition-colors"
+            >
+              <Mail size={26} />
             </a>
           </div>
 
