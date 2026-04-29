@@ -6,13 +6,13 @@ import { OutrasFeatures } from '@/components/sections/outras-features';
 export const metadata: Metadata = {
   title: 'Modo Offline',
   description:
-    'Em breve. Use o GT em qualquer lugar do mundo, sem depender de sinal. Baixe e parta. Universal pra Free, Plus e Pro.',
+    'Em breve. Baixe a região antes de viajar e use o GT em qualquer lugar do mundo, sem depender de sinal. Acesso universal pra Free, Plus e Pro.',
 };
 
 const funciona = [
   'Abrir o app e ver rotas salvas',
   'Radar interativo de waypoints com seu GPS',
-  'Detalhes de cada ponto (horário, telefone, "aceita RV")',
+  'Detalhes de cada ponto (horário, telefone, se aceita RV)',
   'Filtros de planejamento ao longo da rota',
   'Editar rota — sincroniza quando o sinal voltar',
 ];
@@ -20,7 +20,7 @@ const funciona = [
 const precisaInternet = [
   'Gerar nova rota com a IA',
   'Sincronizar atualizações dos waypoints',
-  'Compartilhar rota com outras pessoas',
+  'Atualizações da base com novos waypoints da comunidade',
 ];
 
 const faq = [
@@ -38,7 +38,7 @@ const faq = [
   },
   {
     q: 'É grátis ou pago?',
-    a: 'Universal pra todos os planos: Free, Plus e Pro têm acesso completo ao Modo Offline, sem limite de armazenamento ou bloqueio por país.',
+    a: 'Universal: Free, Plus e Pro têm acesso completo ao app no Modo Offline. O que muda entre os planos é só a quantidade de rotas que você pode exportar pra navegar — mas o app, os waypoints e o radar funcionam sem limite em qualquer plano.',
   },
 ];
 
@@ -48,7 +48,7 @@ export default function ModoOfflinePage() {
       <FeatureHero
         status="em-breve"
         title="O mundo no seu bolso, sem depender de sinal"
-        subline="Em breve. Baixe o app, baixe o mundo. Use o GT em qualquer lugar do planeta — online ou offline."
+        subline="Em breve. Baixe a região antes da viagem e use o GT em qualquer canto do planeta — sem sinal, sem dependência."
         primaryCta={{ label: 'Avise quando lançar', href: '/contato' }}
         secondaryCta={{ label: 'Baixar o app agora', href: '/baixar' }}
       />
@@ -59,14 +59,14 @@ export default function ModoOfflinePage() {
             Use em qualquer lugar do mundo
           </h2>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            Outros apps oferecem mapa offline. O GT te dá o app inteiro
-            funcionando offline — planejamento, radar, waypoints, detalhes,
-            edição de rota. Tudo na palma da mão sem depender de sinal.
+            Outros apps oferecem mapa offline. O GT vai além: os 4 milhões de
+            waypoints da nossa base ficam disponíveis pra consulta sem sinal —
+            radar com seu GPS, detalhes de cada ponto, filtros por categoria.
           </p>
           <p className="text-gt-text leading-relaxed font-sans">
-            Você não precisa pensar em região, em país, em quanto vai ocupar.
-            O GT cuida do download em background quando você abre o app pela
-            primeira vez. Quando você for viajar, simplesmente funciona.
+            Você baixa a região antes de viajar e parte tranquilo. Em qualquer
+            lugar do mundo onde o GT tem waypoints — qualquer um dos 209 países
+            — você tem a base completa na palma da mão.
           </p>
         </div>
       </section>
@@ -117,8 +117,9 @@ export default function ModoOfflinePage() {
             Diferencial
           </p>
           <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
-            Universal pra Free, Plus e Pro. Sem trava por plano, sem download
-            bloqueado por país. Todos os viajantes têm acesso completo.
+            Universal pra Free, Plus e Pro — sem trava por país, mesmo no plano
+            gratuito. Outros apps limitam o Free a 1 país escolhido; no GT, o
+            mundo todo é seu desde o primeiro dia.
           </p>
         </div>
       </section>
