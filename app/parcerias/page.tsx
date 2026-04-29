@@ -28,7 +28,7 @@ const categorias = [
 const oferta = [
   {
     titulo: 'Audiência qualificada',
-    desc: 'Você conversa com quem JÁ DECIDIU viajar por terra. Não é tráfego frio.',
+    desc: 'Você conversa com quem já decidiu viajar por terra. Não é tráfego frio — é viajante no momento exato de planejar.',
   },
   {
     titulo: 'Programa de afiliados',
@@ -63,7 +63,7 @@ const formatos = [
   },
   {
     titulo: 'Integração tecnológica',
-    desc: 'Pra parceiros estratégicos com produto digital. APIs, deep links, bundles. Caso a caso.',
+    desc: 'Pra parceiros estratégicos com produto digital. APIs, integrações no app, bundles. Caso a caso.',
   },
 ];
 
@@ -188,7 +188,7 @@ export default function ParceriasPage() {
           </h2>
           <p className="text-gt-text-muted mb-10 font-sans">
             Conte quem você é e o que tá imaginando. Lemos cada proposta e
-            respondemos em até 5 dias úteis. Se for um fit, marcamos uma
+            respondemos em até 5 dias úteis. Se fizer sentido, marcamos uma
             conversa pra desenhar a parceria juntos.
           </p>
 
