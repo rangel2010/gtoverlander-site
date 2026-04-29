@@ -4,22 +4,22 @@ const passos = [
   {
     num: 1,
     titulo: 'Você descreve a viagem',
-    desc: 'Conta o destino, os dias, o ritmo, o perfil — em linguagem natural',
+    desc: 'Conta o destino, as regiões que quer cruzar, suas preferências de estrada — em linguagem natural',
   },
   {
     num: 2,
-    titulo: 'A IA monta a espinha dorsal',
-    desc: 'O trajeto base da sua viagem, focado no caminho — pronto em segundos',
+    titulo: 'A IA monta o trajeto',
+    desc: 'Estradas, cidades e destino — pronto em segundos, do jeito que você pediu',
   },
   {
     num: 3,
-    titulo: 'Você deixa com a sua cara',
-    desc: 'Refina, personaliza, inclui paradas, postos, hotéis, campings — você decide',
+    titulo: 'Você escolhe onde parar',
+    desc: 'Postos, hospedagem, campings, atrações — escolhe da maior base de waypoints overlander do mundo',
   },
   {
     num: 4,
     titulo: 'Você roda',
-    desc: 'Parte com CarPlay ou Android Auto. Tudo na palma da mão',
+    desc: 'Exporta a rota pro Google Maps e roda direto no painel do carro com CarPlay ou Android Auto',
   },
 ];
 

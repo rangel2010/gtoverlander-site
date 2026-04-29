@@ -8,11 +8,10 @@ export function CtaFinal() {
           Sua próxima viagem começa em uma conversa
         </h2>
         <p className="text-gt-text-muted mb-10 max-w-md mx-auto leading-relaxed font-sans">
-          Grátis pra começar. Premium pra quem viaja muito. Off Road pra quem
-          sai do asfalto.
+          Comece grátis. Sem cartão, sem compromisso.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          <Button href="/baixar">Baixar grátis</Button>
+          <Button href="/baixar">Baixar agora</Button>
           <Button href="/planos" variant="outline">
             Ver planos
           </Button>

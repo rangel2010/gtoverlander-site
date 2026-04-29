@@ -10,6 +10,7 @@ interface Plan {
   desc: string;
   cta: { label: string; href: string };
   highlight: boolean;
+  badge?: string;
 }
 
 const plans: Plan[] = [
@@ -28,6 +29,7 @@ const plans: Plan[] = [
     desc: 'Pra quem viaja com frequência. 2 rotas por mês, 5 consultas de radar por dia, Premium da IA e Modo Offline universal.',
     cta: { label: 'Assinar Plus', href: '/baixar?plan=plus' },
     highlight: true,
+    badge: 'Mais escolhido',
   },
   {
     name: 'Pro',
@@ -36,6 +38,7 @@ const plans: Plan[] = [
     desc: 'Pra quem não para. Tudo ilimitado — rotas, radar, suporte prioritário.',
     cta: { label: 'Assinar Pro', href: '/baixar?plan=pro' },
     highlight: false,
+    badge: 'Melhor custo-benefício',
   },
 ];
 
@@ -55,7 +58,7 @@ function annualSavingsPct(monthly: number, annual: number): number {
 }
 
 export function PlansCards() {
-  const [billing, setBilling] = useState<'mensal' | 'anual'>('mensal');
+  const [billing, setBilling] = useState<'mensal' | 'anual'>('anual');
 
   return (
     <div>
@@ -101,10 +104,18 @@ export function PlansCards() {
       {/* Cards */}
       <div className="grid md:grid-cols-3 gap-6 mb-4">
         {plans.map((p) => {
-          const price = billing === 'mensal' ? p.monthlyPrice : p.annualPrice;
-          const periodLabel = billing === 'mensal' ? 'por mês' : 'por ano';
-          const showSavings =
-            billing === 'anual' && p.monthlyPrice > 0;
+          const isAnnual = billing === 'anual';
+          const isPaid = p.monthlyPrice > 0;
+
+          // Quando anual + pago, mostra equivalente mensal como destaque
+          const displayPrice =
+            isAnnual && isPaid ? p.annualPrice / 12 : p.monthlyPrice;
+          const periodLabel = !isPaid ? 'pra sempre' : 'por mês';
+          const annualNote =
+            isPaid && isAnnual
+              ? `${formatPrice(p.annualPrice)} cobrado anualmente`
+              : null;
+          const showSavings = isPaid && isAnnual;
           const savingsPct = showSavings
             ? annualSavingsPct(p.monthlyPrice, p.annualPrice)
             : 0;
@@ -118,9 +129,9 @@ export function PlansCards() {
                   : 'border border-gt-border'
               }`}
             >
-              {p.highlight && (
+              {p.badge && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gt-orange text-white text-[10px] font-medium uppercase tracking-wider px-3 py-1 rounded font-sans">
-                  Mais escolhido
+                  {p.badge}
                 </span>
               )}
 
@@ -130,19 +141,18 @@ export function PlansCards() {
 
               <div className="flex items-baseline gap-2 mb-1">
                 <span className="font-display text-4xl text-gt-text uppercase tracking-display">
-                  {formatPrice(price)}
+                  {formatPrice(displayPrice)}
                 </span>
-                {price > 0 && (
-                  <span className="text-sm text-gt-text-muted font-sans">
-                    {periodLabel}
-                  </span>
-                )}
-                {price === 0 && (
-                  <span className="text-sm text-gt-text-muted font-sans">
-                    pra sempre
-                  </span>
-                )}
+                <span className="text-sm text-gt-text-muted font-sans">
+                  {periodLabel}
+                </span>
               </div>
+
+              {annualNote && (
+                <p className="text-xs text-gt-text-dim mb-1 font-sans">
+                  {annualNote}
+                </p>
+              )}
 
               {showSavings && savingsPct > 0 && (
                 <p className="text-xs text-gt-orange font-medium mb-3 font-sans">

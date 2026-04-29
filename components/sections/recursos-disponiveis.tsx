@@ -3,13 +3,18 @@ import Link from 'next/link';
 const items = [
   {
     titulo: 'Roteiros com IA',
-    desc: 'Roteiros personalizados em uma conversa — do trajeto às paradas, no jeito que combina com você. Free pra começar, Premium pra ir mais fundo.',
+    desc: 'Trajeto montado pela IA em uma conversa — estradas, cidades e destino, pronto em segundos. Free pra começar, Pro pra desafios maiores.',
     href: '/recursos/roteiros-ia',
   },
   {
     titulo: 'Waypoints próprios',
-    desc: 'Mais de 4 milhões de waypoints em 209 países: postos, campings, oficinas, atrativos. A maior base do universo overlander.',
+    desc: 'Mais de 4 milhões de pontos em 209 países — postos, campings, hospedagem, atrações, oficinas. Você escolhe onde parar na maior base overlander do mundo.',
     href: '/recursos/waypoints',
+  },
+  {
+    titulo: 'Roda no painel do carro',
+    desc: 'Exporta a rota pro Google Maps com um toque. Você ganha radar, trânsito ao vivo e dirige com CarPlay ou Android Auto.',
+    href: '/baixar',
   },
 ];
 
@@ -24,7 +29,7 @@ export function RecursosDisponiveis() {
           O que o GT entrega hoje
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {items.map((i) => (
             <Link
               key={i.href}

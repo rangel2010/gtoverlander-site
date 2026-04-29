@@ -3,18 +3,18 @@ import Link from 'next/link';
 const items = [
   {
     titulo: 'Modo Off Road',
-    desc: 'Crie rotas off-road com a sua cara, ligando os waypoints da nossa base num mapa interativo dedicado a trilhas.',
+    desc: 'Você desenha a rota ponto a ponto no mapa. Trilhas, ripio, estradas de terra — sem IA, com cache pra rodar offline.',
     href: '/recursos/off-road',
   },
   {
     titulo: 'Modo Offline',
-    desc: 'Use o GT em qualquer lugar do mundo — sem depender de sinal. Baixe e parta.',
+    desc: 'Baixe a região antes da viagem. O GT roda em qualquer lugar do mundo, mesmo sem sinal.',
     href: '/recursos/modo-offline',
   },
   {
     titulo: 'Explore Novos Destinos',
-    desc: 'Roteiros curados por especialistas e pelo time GT. Inspire sua próxima viagem com rotas prontas.',
-    href: '/contato',
+    desc: 'Roteiros curados pelo time GT e viajantes experientes. Inspiração e rotas prontas pra sua próxima viagem.',
+    href: '/blog/destinos',
   },
 ];
 
@@ -29,7 +29,7 @@ export function RecursosEmBreve() {
           O que tá vindo
         </h2>
         <p className="text-sm text-gt-text-muted mb-12 max-w-xl font-sans">
-          Recursos em construção. Cadastre-se na lista pra ser avisado quando lançarem.
+          Recursos em construção. Em breve no app.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6">

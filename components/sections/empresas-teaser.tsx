@@ -10,16 +10,16 @@ export function EmpresasTeaser() {
               Conta Business — em breve
             </p>
             <h2 className="text-3xl md:text-4xl text-gt-text mb-4 leading-tight">
-              Você vende pra quem viaja?
+              Quer aparecer pra quem já decidiu viajar?
             </h2>
             <p className="text-gt-text-muted leading-relaxed max-w-xl font-sans">
-              Postos, campings, pousadas, oficinas e restaurantes podem aparecer
-              no mapa do GT pra viajantes que vão passar pela sua região.
+              Postos, campings, pousadas, oficinas e restaurantes ganham
+              visibilidade pra viajantes que já decidiram passar pela sua região.
             </p>
           </div>
           <div className="md:text-right">
             <Button href="/empresas" variant="secondary">
-              Cadastre seu interesse →
+              Quero saber mais →
             </Button>
           </div>
         </div>
