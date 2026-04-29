@@ -28,10 +28,10 @@ const placeholderPosts = [
 ];
 
 export async function BlogTeaser() {
-  // Tenta buscar posts reais do Sanity. Se Sanity não estiver configurado,
-  // ou se ainda não houver posts, usa placeholders.
+  // Tenta buscar posts reais do Sanity. Se houver pelo menos 1 post real,
+  // mostra os reais (até 3). Só cai em placeholder se não tiver nenhum.
   const realPosts = sanityConfigured ? await getAllPosts() : [];
-  const showReal = realPosts.length >= 3;
+  const showReal = realPosts.length >= 1;
   const display = showReal ? realPosts.slice(0, 3) : null;
 
   return (
