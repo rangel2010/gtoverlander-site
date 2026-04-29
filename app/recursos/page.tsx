@@ -5,32 +5,32 @@ import { Button } from '@/components/ui/button';
 export const metadata: Metadata = {
   title: 'Recursos',
   description:
-    'Roteiros com IA, Modo Off Road, Modo Offline e mais de 4 milhões de waypoints próprios em 209 países. Tudo no GT Overlander.',
+    'Roteiros com IA, Modo Off Road, Modo Offline e mais de 4 milhões de waypoints próprios em 209 países. O ecossistema completo pra quem viaja por terra.',
 };
 
 const features = [
   {
     slug: 'roteiros-ia',
     titulo: 'Roteiros com IA',
-    desc: 'Descreva sua viagem em linguagem natural. A IA monta a espinha dorsal do trajeto e você personaliza com paradas, postos, hotéis e campings. Free pra começar, Premium pra ir mais fundo.',
+    desc: 'Trajeto montado pela IA em uma conversa — estradas, cidades e destino, pronto em segundos. Free pra começar, Pro pra desafios maiores.',
     status: 'disponivel' as const,
   },
   {
     slug: 'waypoints',
     titulo: 'Waypoints próprios',
-    desc: 'Mais de 4 milhões de waypoints em 209 países: postos, campings, oficinas, atrativos. A maior base do universo overlander já reunida em uma plataforma.',
+    desc: 'Mais de 4 milhões de pontos em 209 países — postos, campings, hospedagem, atrações, oficinas. Você escolhe onde parar na maior base overlander do mundo.',
     status: 'disponivel' as const,
   },
   {
     slug: 'off-road',
     titulo: 'Modo Off Road',
-    desc: 'Crie rotas off-road com a sua cara, ligando os waypoints da nossa base num mapa interativo dedicado a trilhas. Para quem sai do asfalto.',
+    desc: 'Você desenha a rota ponto a ponto no mapa. Trilhas, ripio, estradas de terra — sem IA, funciona offline.',
     status: 'em-breve' as const,
   },
   {
     slug: 'modo-offline',
     titulo: 'Modo Offline',
-    desc: 'Use o GT em qualquer lugar do mundo — sem depender de sinal. Baixe e parta. Universal pra Free, Plus e Pro.',
+    desc: 'Escolha as regiões da sua viagem e gerencie tudo no app — adiciona, remove, atualiza. O GT roda em qualquer canto do mundo, mesmo sem sinal.',
     status: 'em-breve' as const,
   },
 ];
@@ -48,8 +48,7 @@ export default function RecursosPage() {
           </h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
             Da rota gerada por IA aos pontos de apoio na estrada. Do asfalto à
-            trilha. Online ou offline. O ecossistema completo do viajante
-            overland.
+            trilha. Online ou offline. O maior ecossistema overlander do mundo.
           </p>
         </div>
       </section>
@@ -89,8 +88,7 @@ export default function RecursosPage() {
             Pronto pra começar?
           </h2>
           <p className="text-gt-text-muted mb-8 max-w-md mx-auto font-sans">
-            Free pra começar. Premium pra ir mais fundo. Off Road pra quem sai
-            do asfalto.
+            Comece grátis. Sem cartão, sem compromisso.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Button href="/baixar">Baixar grátis</Button>
