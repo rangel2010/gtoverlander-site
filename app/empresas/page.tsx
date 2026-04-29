@@ -28,7 +28,7 @@ const beneficios = [
 
 const passos = [
   { num: 1, titulo: 'Cadastra sua empresa', desc: 'Nome, fotos, horário, contato — tudo no painel' },
-  { num: 2, titulo: 'Escolhe categoria e raio', desc: 'Posto, camping, pousada, oficina — defina sua área' },
+  { num: 2, titulo: 'Define a localização', desc: 'Endereço da empresa, categoria principal, fotos. O GT cuida do resto.' },
   { num: 3, titulo: 'Aparece pra viajantes', desc: 'Quando alguém planeja rota pela sua região, você está lá' },
   { num: 4, titulo: 'Acompanha métricas', desc: 'Visualizações, cliques, contatos — tudo medido' },
 ];
@@ -40,6 +40,7 @@ const categorias = [
   '🏡 Pousadas',
   '🍽️ Restaurantes',
   '☕ Cafés',
+  '🥐 Padarias',
   '🔧 Oficinas mecânicas',
   '🚐 Receptivos pra RV',
 ];
@@ -61,9 +62,9 @@ export default function EmpresasPage() {
             Apareça pra quem já decidiu viajar
           </h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
-            Postos, campings, pousadas, oficinas e restaurantes podem aparecer
-            no mapa do GT pra viajantes que vão passar pela sua região. Conta
-            Business em breve — entre na lista de espera.
+            Postos, campings, pousadas, oficinas e restaurantes ganham
+            visibilidade pra viajantes que já decidiram passar pela sua região.
+            Conta Business em breve — entre na lista de espera.
           </p>
         </div>
       </section>
@@ -75,7 +76,7 @@ export default function EmpresasPage() {
           </h2>
           <p className="text-gt-text-muted mb-12 max-w-2xl font-sans">
             Diferente de anunciar em rede social ou Google Ads — o GT te coloca
-            na frente de quem já passa pela sua região.
+            na frente de quem já decidiu passar pela sua região.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
