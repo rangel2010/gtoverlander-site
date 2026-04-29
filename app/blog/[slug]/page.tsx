@@ -5,6 +5,7 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Button } from '@/components/ui/button';
+import { ShareButtons } from '@/components/blog/share-buttons';
 import {
   getPostBySlug,
   getAllPostSlugs,
@@ -236,6 +237,11 @@ export default async function PostPage({ params }: PageProps) {
             >
               {post.body}
             </ReactMarkdown>
+
+            <ShareButtons
+              url={`https://gtoverlander.com.br/blog/${post.slug}`}
+              title={post.title}
+            />
 
             {post.tags && post.tags.length > 0 && (
               <div className="mt-12 pt-8 border-t border-gt-border">
