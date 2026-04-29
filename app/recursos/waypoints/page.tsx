@@ -24,8 +24,10 @@ const categorias = [
   '🍔 Fast Food',
   '☕ Café',
   '🥐 Padaria',
-  '📍 Atração',
-  '🧺 Área de Descanso',
+  '⭐ Atração',
+  '🏥 Hospitais',
+  '💊 Farmácias',
+  '🅿️ Área de Descanso',
   '🌲 Parque Nacional',
   '🛂 Fronteira',
   '🚐 Aceita RV',
@@ -116,10 +118,10 @@ export default function WaypointsPage() {
             Como o radar funciona
           </h2>
           <p className="text-gt-text-muted mb-10 max-w-2xl leading-relaxed font-sans">
-            Ao longo da sua rota, uma busca geoespacial filtra os pontos por
-            categoria e ordena por relevância. Corredor adaptativo: raios
-            diferentes pra postos versus campings, porque overlander busca
-            cada coisa numa distância diferente.
+            O radar mostra tudo o que está ao redor da sua localização atual.
+            Você filtra por categoria com um toque — postos, hospedagem,
+            hospitais, o que precisar. Achou o ponto? Um clique em &quot;Ir&quot; e
+            a rota vai pro Google Maps, pronta pra navegar.
           </p>
 
           <h3 className="font-sans text-lg font-medium text-gt-text mb-5 normal-case">
