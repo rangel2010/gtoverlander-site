@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const numeros = [
   { valor: 'Milhares', contexto: 'de viajantes ativos' },
-  { valor: '+40%', contexto: 'de recorrência mensal' },
+  { valor: '+50%', contexto: 'voltam pro GT todo mês' },
   { valor: '+4 mi', contexto: 'de waypoints próprios' },
   { valor: '209', contexto: 'países cobertos' },
 ];
@@ -18,15 +18,15 @@ const numeros = [
 const proximas = [
   {
     titulo: 'Motor próprio de waypoints',
-    desc: 'A maior base do universo overlander já em produção no backend. Integração final com o app no caminho.',
+    desc: 'A maior base overlander do mundo já em produção. Integração final com o app no caminho.',
   },
   {
     titulo: 'Modo Offline universal',
-    desc: 'Use o GT em qualquer lugar do mundo, sem depender de sinal. Em desenvolvimento.',
+    desc: 'Baixe a região e use o GT em qualquer canto do mundo, mesmo sem sinal. Em desenvolvimento.',
   },
   {
     titulo: 'Off Road manual',
-    desc: 'Crie rotas off-road desenhando sobre os waypoints. Pra quem sai do asfalto.',
+    desc: 'Você desenha a rota ponto a ponto, sem IA. Pra quem sai do asfalto e curte trilhas, ripio e estradas de terra.',
   },
   {
     titulo: 'Conta Business',
@@ -49,8 +49,9 @@ export default function SobrePage() {
             Mais do que um planejador de rotas — um companheiro de estrada
           </h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
-            O GT existe pra transformar o planejamento de viagens por terra em
-            uma experiência simples, inteligente e inspiradora.
+            O GT existe pra transformar o planejamento de viagens por terra
+            numa experiência simples, inteligente e prática — feita por quem
+            viaja, pra quem viaja.
           </p>
         </div>
       </section>
@@ -61,24 +62,23 @@ export default function SobrePage() {
             Nossa missão
           </h2>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            O GT Overlander é um aplicativo criado para viajantes que exploram
-            o mundo por terra — seja de carro, moto, 4x4 ou motorhome. Nossa
-            missão é transformar o planejamento de viagens em uma experiência
-            simples, inteligente e inspiradora.
+            O GT Overlander é um aplicativo pra quem viaja por terra — de
+            carro, moto, 4x4 ou motorhome. Nasceu da frustração com apps
+            genéricos que não entendem a realidade de quem cruza fronteira,
+            dorme em camping selvagem, ou roda 5 mil km numa só viagem.
           </p>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            Com tecnologia de inteligência artificial, o app cria rotas
-            personalizadas com base nas suas preferências e conecta você a
-            pontos de interesse úteis, como postos de combustível, campings,
-            hospedagens e atrações locais. Tudo é integrado ao Google Maps para
-            facilitar a navegação, e você ainda conta com um radar de waypoints
-            para encontrar recursos próximos durante a viagem.
+            O GT entende quem viaja: a IA monta o trajeto pelas estradas que
+            fazem sentido, com cidades pelo caminho e contexto regional. A base
+            própria de mais de 4 milhões de waypoints em 209 países cobre o que
+            importa pra quem já decidiu pra onde vai — postos, hospedagem,
+            campings, oficinas, atrações. E a integração com Google Maps,
+            CarPlay e Android Auto leva tudo pro painel do carro.
           </p>
           <p className="text-gt-text leading-relaxed font-sans">
-            Mais do que um planejador de rotas, o GT Overlander é um
-            companheiro de estrada que une praticidade, segurança e
-            comunidade — ajudando você a descobrir novos destinos e aproveitar
-            ao máximo cada quilômetro.
+            Mais que um planejador, o GT é um companheiro de estrada — feito
+            pra quem não vê a viagem só como deslocamento, mas como uma
+            experiência única.
           </p>
         </div>
       </section>
@@ -107,15 +107,14 @@ export default function SobrePage() {
                 Fundador
               </p>
               <p className="text-gt-text leading-relaxed mb-4 font-sans">
-                Empresário e viajante baseado em Londrina, no Paraná. Vê o
-                overlanding como um dos modos mais ricos de conhecer o
-                continente — e fundou o GT pra ser o app que ele mesmo queria
-                ter na primeira longa viagem.
+                Empresário paranaense e viajante. Vê o overlanding como um dos
+                modos mais ricos de conhecer o mundo — e fundou o GT pra ser o
+                app que ele mesmo queria ter na própria estrada.
               </p>
               <p className="text-gt-text leading-relaxed font-sans">
-                Não tem background técnico. Toma decisões de produto, ouve a
+                Não vem do background técnico. Toma decisões de produto, ouve a
                 comunidade, e trabalha lado a lado com o time pra transformar
-                cada viagem real em melhoria do app.
+                cada experiência pessoal em melhoria do app.
               </p>
             </div>
           </div>
@@ -125,7 +124,7 @@ export default function SobrePage() {
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-6">
-            A tese: intenção de destino conhecida
+            Conhecer quem viaja pra construir junto
           </h2>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
             Usuários no GT não estão navegando aleatoriamente pela internet.
@@ -133,14 +132,16 @@ export default function SobrePage() {
             exato de planejar onde parar, o que comprar e o que fazer.
           </p>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            Esse dado de <em>intenção de destino conhecida</em> é o ativo mais
-            valioso do GT — e ele sustenta cada camada do que estamos
-            construindo. Da rota gerada por IA, à recomendação de waypoints,
-            ao matchmaking entre viajantes e estabelecimentos da Conta Business.
+            Conhecer essa jornada — quem viaja, pra onde, com qual veículo,
+            qual estilo — é o que permite o GT melhorar continuamente. Cada
+            viagem real ensina algo: rotas que funcionam, paradas que faltam,
+            contextos regionais que ainda não cobrimos. É daí que cada camada
+            do app evolui.
           </p>
           <p className="text-gt-text leading-relaxed font-sans">
-            Não é um app de mapas. É a base de um ecossistema completo de
-            suporte ao viajante overland.
+            Não é um app de mapas. É um ecossistema vivo, construído junto com
+            quem viaja — feito pra crescer com a comunidade overlander do
+            mundo.
           </p>
         </div>
       </section>
@@ -163,8 +164,8 @@ export default function SobrePage() {
             ))}
           </div>
           <p className="text-sm text-gt-text-muted mt-10 font-sans">
-            App rodando em iOS, Android, CarPlay e Android Auto, em 3 idiomas
-            (português, inglês, espanhol).
+            App em iOS, Android e Web — compatível com CarPlay e Android Auto,
+            em 3 idiomas (português, inglês, espanhol).
           </p>
         </div>
       </section>
