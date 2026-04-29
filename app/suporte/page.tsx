@@ -46,7 +46,7 @@ const faqAprofundado = [
   },
   {
     q: 'Cancelei a assinatura mas continua aparecendo como Pro',
-    a: 'O plano fica ativo até o fim do ciclo já pago. Depois disso volta automaticamente pro Free. Se passou desse prazo e ainda aparece como Pro, abre ticket que verificamos.',
+    a: 'O plano fica ativo até o fim do ciclo já pago. Depois disso volta automaticamente pro Free — suas rotas e configurações continuam guardadas. Se passou desse prazo e ainda aparece como Pro, abre ticket que verificamos.',
   },
   {
     q: 'Comprei Pro pelo Google Play e não foi liberado',
@@ -71,8 +71,8 @@ export default function SuportePage() {
             Suporte
           </h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
-            Resolve dúvidas comuns abaixo, ou abre um ticket que a gente
-            responde em até 24 horas em dias úteis.
+            Resolve dúvidas comuns abaixo, ou abre um ticket. A gente responde
+            rápido — dúvidas mais complexas podem levar alguns dias.
           </p>
         </div>
       </section>

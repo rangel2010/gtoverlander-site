@@ -18,7 +18,7 @@ export default function ContatoPage() {
           </h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
             Manda mensagem por aqui, ou usa um dos canais diretos abaixo.
-            Respondemos em horário comercial.
+            Respondemos em até 2 dias úteis.
           </p>
         </div>
       </section>
@@ -81,7 +81,7 @@ export default function ContatoPage() {
 
               <div>
                 <h3 className="font-sans text-sm font-medium text-gt-text-muted uppercase tracking-wider mb-3">
-                  Empresa
+                  Razão social
                 </h3>
                 <p className="text-sm text-gt-text font-sans">
                   GT Overlander Ltda

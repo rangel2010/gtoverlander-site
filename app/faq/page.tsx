@@ -20,11 +20,11 @@ const categorias: FaqCategory[] = [
     perguntas: [
       {
         q: 'O que é o GT Overlander?',
-        a: 'É um app de planejamento de rotas pra viajantes overlander — quem viaja de carro, moto e veículo 4x4 por longas distâncias. Você descreve a viagem em linguagem natural pra uma IA que monta o roteiro com paradas, contexto regional e opções de trajeto.',
+        a: 'É um app de planejamento de rotas pra quem viaja por terra — de carro, moto, 4x4 ou motorhome, em qualquer lugar do mundo. Serve tanto pra grandes expedições quanto pra uma viagem de fim de semana. Você descreve a viagem em linguagem natural pra uma IA que monta o trajeto, e completa com paradas da nossa base de mais de 4 milhões de waypoints.',
       },
       {
         q: 'Em quais plataformas funciona?',
-        a: 'iOS (iPhone e iPad), Android (celular e tablet), com integração nativa pra Apple CarPlay e Android Auto. Tudo sincronizado entre dispositivos.',
+        a: 'iOS, Android e Web (acesso pelo computador). Compatível com CarPlay e Android Auto. Tudo sincronizado entre dispositivos.',
       },
       {
         q: 'Em quais idiomas?',
@@ -45,15 +45,15 @@ const categorias: FaqCategory[] = [
     perguntas: [
       {
         q: 'Como a IA gera as rotas?',
-        a: 'Você descreve sua viagem em linguagem natural — destino, dias, ritmo, perfil. A IA monta a espinha dorsal do trajeto em segundos. Daí você refina, personaliza e adiciona paradas. Você no controle, sempre.',
+        a: 'Você descreve a viagem em linguagem natural — destino, regiões, preferências de estrada. A IA monta o trajeto em segundos: estradas, cidades e contexto regional. Daí você escolhe as paradas na nossa base de waypoints. Você no controle, sempre.',
       },
       {
         q: 'O que é Modo Off Road?',
-        a: 'Em breve. Vai permitir você desenhar suas próprias rotas off-road ligando os waypoints da nossa base num mapa interativo dedicado a trilhas. Universal pra todos os planos, com limites de execução por mês.',
+        a: 'Em breve. Vai permitir você desenhar rotas off-road ponto a ponto no mapa, sem IA. Trilhas, ripio, estradas de terra — você decide cada curva. Disponível pra todos os planos.',
       },
       {
         q: 'O que é Modo Offline?',
-        a: 'Em breve. Use o GT em qualquer lugar do mundo, sem depender de sinal. Universal pra Free, Plus e Pro.',
+        a: 'Em breve. Baixe a região antes de viajar e use o GT em qualquer lugar do mundo, mesmo sem sinal. Universal pra Free, Plus e Pro — sem trava por país, mesmo no plano gratuito.',
       },
       {
         q: 'Funciona com CarPlay e Android Auto?',
@@ -77,12 +77,8 @@ const categorias: FaqCategory[] = [
         a: 'Sim, sem multa. O plano segue ativo até o fim do ciclo já pago e depois volta pro Free automaticamente. Suas rotas e configurações nunca são apagadas — em nenhum plano. O que muda é só a quantidade de exportações pra navegar.',
       },
       {
-        q: 'Tenho assinatura no iOS?',
-        a: 'Hoje a assinatura está disponível só no Android (via Asaas). A assinatura no iOS está em desenvolvimento. Quando estiver pronta, todos os planos ficam disponíveis nas duas plataformas.',
-      },
-      {
         q: 'Qual a diferença entre Plus e Pro?',
-        a: 'Mesmas features de IA e de Off Road. A diferença está em quotas: Plus tem 2 rotas/mês e 5 consultas radar/dia. Pro é ilimitado.',
+        a: 'Plus e Pro têm a mesma qualidade, mesma entrega, mesma usabilidade. A diferença está só nas quantidades: Plus limita em 2 rotas exportadas pra navegar/mês e 5 consultas de radar/dia. Pro é ilimitado em ambos.',
       },
     ],
   },
@@ -183,7 +179,7 @@ export default function FaqPage() {
             Não achou sua dúvida?
           </h2>
           <p className="text-gt-text-muted mb-6 font-sans">
-            Nossa equipe responde em horário comercial.
+            A gente responde rápido — fica tranquilo.
           </p>
           <Button href="/contato" variant="secondary">
             Falar com a gente

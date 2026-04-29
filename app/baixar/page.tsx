@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Baixar o app',
   description:
-    'Baixe o GT Overlander grátis na App Store ou Google Play. iOS, Android, CarPlay e Android Auto.',
+    'Baixe o GT Overlander grátis na App Store ou Google Play. iOS, Android e Web — compatível com CarPlay e Android Auto.',
 };
 
 const stores = [
@@ -33,8 +33,7 @@ export default function BaixarPage() {
           Baixe o GT Overlander
         </h1>
         <p className="text-base md:text-lg text-gt-text-muted leading-relaxed mb-12 font-sans">
-          Disponível pra iOS e Android, com integração nativa pra CarPlay e
-          Android Auto.
+          Disponível pra iOS e Android. Compatível com CarPlay e Android Auto.
         </p>
 
         <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto">
