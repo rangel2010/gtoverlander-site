@@ -344,14 +344,9 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
                 key={groupKey}
                 type="button"
                 onClick={() => toggleGroup(groupKey)}
-                style={
-                  isActive
-                    ? { color: config.color, borderColor: config.color }
-                    : undefined
-                }
                 className={`text-xs px-3 py-2 rounded-md font-sans font-medium transition-all border ${
                   isActive
-                    ? 'bg-transparent'
+                    ? 'bg-transparent text-gt-orange border-gt-orange'
                     : 'bg-transparent text-gt-text-muted border-gt-border/60 hover:text-gt-text hover:border-gt-text/30'
                 }`}
               >
@@ -548,8 +543,12 @@ function drawPinSprite(
   if (withBox) {
     ctx.beginPath();
     ctx.roundRect(PAD, PAD, SIZE - 2 * PAD, SIZE - 2 * PAD, CORNER);
-    ctx.lineWidth = STROKE * 1.5;
-    ctx.strokeStyle = groupColor;
+    // Cor única laranja GT pra TODOS os destacados (editorial + business),
+    // independente da categoria primária. Vira "carimbo de destaque GT".
+    // groupColor não é mais usado pra desenhar caixa (mantido na assinatura
+    // pra retrocompatibilidade caso a gente queira variação por destaque).
+    ctx.lineWidth = STROKE;
+    ctx.strokeStyle = '#E06226';
     ctx.stroke();
   }
 
