@@ -26,7 +26,8 @@
     "lucide-react": "^0.439.0",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.5.2",
-    "@vercel/speed-insights": "^1.0.12"
+    "@vercel/speed-insights": "^1.0.12",
+    "maplibre-gl": "^4.7.1"
   },
   "devDependencies": {
     "typescript": "^5.5.4",
