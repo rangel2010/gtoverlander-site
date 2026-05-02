@@ -58,7 +58,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         : [DEFAULT_CENTER.long, DEFAULT_CENTER.lat];
 
     const initialZoom =
-      geo.lat !== null && geo.long !== null ? 10 : DEFAULT_CENTER.zoom;
+      geo.lat !== null && geo.long !== null ? 8 : DEFAULT_CENTER.zoom;
 
     map.current = new maplibregl.Map({
       container: mapContainer.current,
@@ -202,7 +202,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       filter: ['!', ['has', 'point_count']],
       layout: {
         'icon-image': ['get', 'iconKey'],
-        'icon-size': 0.55,
+        'icon-size': 0.7,
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
       },
@@ -288,7 +288,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         ? [geo.long, geo.lat]
         : [DEFAULT_CENTER.long, DEFAULT_CENTER.lat];
     const zoom =
-      geo.lat !== null && geo.long !== null ? 10 : DEFAULT_CENTER.zoom;
+      geo.lat !== null && geo.long !== null ? 8 : DEFAULT_CENTER.zoom;
     map.current.easeTo({ center, zoom, bearing: 0, pitch: 0, duration: 700 });
   }
 
@@ -510,12 +510,12 @@ function loadCategoryIcons(map: maplibregl.Map) {
     const ctx = canvas.getContext('2d');
     if (!ctx) continue;
 
+    // Bolinha vazada — só contorno colorido com o emoji dentro,
+    // visualmente coerente com os chips ativos (transparent + colored border).
     ctx.beginPath();
     ctx.arc(SIZE / 2, SIZE / 2, RADIUS, 0, Math.PI * 2);
-    ctx.fillStyle = groupColor;
-    ctx.fill();
-    ctx.lineWidth = STROKE;
-    ctx.strokeStyle = '#0F0F0F';
+    ctx.lineWidth = STROKE * 1.5; // ring um pouco mais grosso pra dar presença
+    ctx.strokeStyle = groupColor;
     ctx.stroke();
 
     ctx.font = `${FONT_SIZE}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Twemoji Mozilla", sans-serif`;
