@@ -92,9 +92,13 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
     map.current.addControl(new maplibregl.NavigationControl(), 'top-right');
 
-    map.current.on('load', async () => {
+    map.current.on('load', () => {
+      // Adiciona source + layers VAZIOS antes de buscar dados.
+      // Garante que o pipeline de render esteja pronto quando os dados chegarem.
+      addWaypointsLayers([]);
       setMapReady(true);
-      await loadCountryData(geo.countryName ?? DEFAULT_COUNTRY);
+      // Inicia carregamento dos dados (sem await — não bloqueia o callback)
+      loadCountryData(geo.countryName ?? DEFAULT_COUNTRY);
     });
 
     return () => {
@@ -142,10 +146,8 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       if (!fileRes.ok) throw new Error('Falha ao carregar dados do país');
       const data: CountryFile = await fileRes.json();
 
-      // Adiciona/atualiza source + layers
-      addWaypointsLayers(data.waypoints);
-
-      // Lê dinamicamente quais categorias existem no arquivo do país
+      // Lê dinamicamente quais categorias existem no arquivo do país.
+      // O sync de dados pro mapa acontece via useEffect [filteredWaypoints, mapReady].
       const uniqueCategorias = Array.from(
         new Set(data.waypoints.map((w) => w.categoria))
       );
