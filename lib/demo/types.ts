@@ -48,6 +48,18 @@ export interface Waypoint {
    * usa o emoji da categoria por padrão.
    */
   customIcon?: string;
+  /**
+   * Texto fixo que aparece como tagline no popup, mesmo padrão do "🚐 Aceita RV".
+   * Ex: 'Monumento Rota Biker', 'Parceiro Oficial', 'Rota dos Vinhos'.
+   * Só renderiza se o ponto também for `featured`.
+   */
+  editorialLabel?: string;
+  /**
+   * Tags secundárias — categorias adicionais que fazem o pin aparecer também
+   * em outros filtros, sem mudar o visual (cor + ícone vêm sempre da `categoria`
+   * primária). Multi-categoria sem duplicar pin no mapa.
+   */
+  tags?: string[];
 }
 
 /**

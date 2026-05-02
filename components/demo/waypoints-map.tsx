@@ -639,6 +639,8 @@ function buildPopupHTML(props: Record<string, unknown>): string {
   const nome = String(props.nome ?? 'Sem nome');
   const categoria = String(props.categoria ?? '');
   const aceitaRv = props.aceitaRv === true || props.aceitaRv === 'true';
+  const editorialLabel = String(props.editorialLabel ?? '');
+  const customIcon = String(props.customIcon ?? '');
   const config = getCategoryConfig(categoria);
 
   const escape = (s: string) =>
@@ -665,6 +667,13 @@ function buildPopupHTML(props: Record<string, unknown>): string {
       <h3 style="font-size: 15px; font-weight: 500; line-height: 1.3; margin: 0; color: #ededed;">
         ${escape(nome)}
       </h3>
+      ${
+        editorialLabel
+          ? `<p style="font-size: 12px; color: #B89E5C; margin: 0; display: flex; align-items: center; gap: 4px;">
+            ${customIcon || '⭐'} ${escape(editorialLabel)}
+          </p>`
+          : ''
+      }
       ${
         aceitaRv
           ? `<p style="font-size: 12px; color: #1F8A8A; margin: 0; display: flex; align-items: center; gap: 4px;">
