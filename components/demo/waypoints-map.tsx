@@ -66,7 +66,6 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       container: mapContainer.current,
       style: {
         version: 8,
-        glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
         sources: {
           osm: {
             type: 'raster',
@@ -214,21 +213,9 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       },
     });
 
-    // Número do cluster
-    m.addLayer({
-      id: 'cluster-count',
-      type: 'symbol',
-      source: 'waypoints',
-      filter: ['has', 'point_count'],
-      layout: {
-        'text-field': ['get', 'point_count_abbreviated'],
-        'text-font': ['Open Sans Bold'],
-        'text-size': 13,
-      },
-      paint: {
-        'text-color': '#FFFFFF',
-      },
-    });
+    // (Layer de número do cluster removido — exigia fonte externa que dava 404.
+    // O tamanho da bolinha já comunica magnitude. Click no cluster faz zoom in
+    // e individualiza, então o usuário vê os pontos sem precisar do número.)
 
     // Pontos individuais
     m.addLayer({
