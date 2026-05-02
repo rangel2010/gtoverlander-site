@@ -1,44 +1,12 @@
 import type { Metadata } from 'next';
-import { headers } from 'next/headers';
 import { WaypointsMap } from '@/components/demo/waypoints-map';
-import { isoToCountryName, DEFAULT_COUNTRY } from '@/lib/demo/countries';
-import type { GeoData } from '@/lib/demo/types';
+import { getGeoFromHeaders } from '@/lib/demo/geo';
 
 export const metadata: Metadata = {
   title: 'Demo — Mapa interativo dos waypoints',
   description:
     'Mais de 4 milhões de waypoints curados em 209 países. Explore a base do GT Overlander no mapa — postos, campings, hospedagem, atrações.',
 };
-
-/**
- * Lê os headers do Vercel pra detectar localização do visitante.
- * Em dev local, esses headers ficam vazios — a gente trata isso no client com fallback.
- */
-function getGeoFromHeaders(): GeoData {
-  const h = headers();
-
-  const countryCode = h.get('x-vercel-ip-country');
-  const region = h.get('x-vercel-ip-country-region');
-  const cityRaw = h.get('x-vercel-ip-city');
-  const latStr = h.get('x-vercel-ip-latitude');
-  const longStr = h.get('x-vercel-ip-longitude');
-
-  // Vercel envia city com encoding URL — decodifica
-  const city = cityRaw ? decodeURIComponent(cityRaw) : null;
-
-  // Lat/long vem como string — converte
-  const lat = latStr ? Number(latStr) : null;
-  const long = longStr ? Number(longStr) : null;
-
-  return {
-    countryCode,
-    countryName: isoToCountryName(countryCode) ?? DEFAULT_COUNTRY,
-    region,
-    city,
-    lat: Number.isFinite(lat) ? lat : null,
-    long: Number.isFinite(long) ? long : null,
-  };
-}
 
 export default function DemoPage() {
   const geo = getGeoFromHeaders();

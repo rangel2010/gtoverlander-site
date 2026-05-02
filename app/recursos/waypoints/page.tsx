@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
+import { WaypointsMap } from '@/components/demo/waypoints-map';
+import { getGeoFromHeaders } from '@/lib/demo/geo';
 
 export const metadata: Metadata = {
   title: 'Waypoints próprios',
@@ -57,6 +59,8 @@ const faq = [
 ];
 
 export default function WaypointsPage() {
+  const geo = getGeoFromHeaders();
+
   return (
     <>
       <FeatureHero
@@ -68,29 +72,27 @@ export default function WaypointsPage() {
       />
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
-        <div className="container-wide grid md:grid-cols-2 gap-10 md:gap-12 items-center">
-          <div className="flex justify-center md:order-2">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/screenshots/app-radar.jpg"
-              alt="Tela do Radar de Waypoints mostrando filtros por categoria (restaurantes, hotéis, postos) e mapa com pontos coloridos por tipo"
-              className="max-h-[640px] w-auto rounded-3xl border border-gt-border shadow-2xl"
-            />
-          </div>
-          <div className="md:order-1">
+        <div className="container-wide">
+          <div className="max-w-2xl mb-8">
             <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
               Radar de Waypoints
             </p>
             <h2 className="text-3xl md:text-4xl text-gt-text mb-5 leading-tight">
-              Tudo que você precisa, perto de você
+              Explore a base na sua região agora
             </h2>
-            <p className="text-gt-text-muted leading-relaxed font-sans">
-              Abre o radar e vê o que tem ao redor — postos, restaurantes,
-              hotéis, atrativos. Filtros por categoria, mapa interativo, ícones
-              coloridos por tipo. Ideal pra encontrar recursos durante a viagem
-              ou ajustar a rota no momento.
+            <p className="text-gt-text-muted leading-relaxed font-sans mb-6">
+              Mapa interativo com os waypoints curados pelo GT. Filtra por
+              categoria, navega pelos pontos, abre os detalhes. Mais de 4
+              milhões de lugares em 209 países, e você vê tudo direto aqui.
             </p>
+            <a
+              href="/demo"
+              className="inline-flex items-center text-sm text-gt-orange hover:underline font-sans"
+            >
+              Abrir em tela cheia →
+            </a>
           </div>
+          <WaypointsMap geo={geo} />
         </div>
       </section>
 
