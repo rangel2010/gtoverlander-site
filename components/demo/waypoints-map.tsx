@@ -44,6 +44,8 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       container: mapContainer.current,
       style: {
         version: 8,
+        // Glyphs públicos da MapLibre — necessário pra renderizar texto nos clusters
+        glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
         sources: {
           osm: {
             type: 'raster',
@@ -194,7 +196,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         filter: ['has', 'point_count'],
         layout: {
           'text-field': ['get', 'point_count_abbreviated'],
-          'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+          'text-font': ['Open Sans Bold'],
           'text-size': 13,
         },
         paint: {
@@ -221,12 +223,17 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         const features = m.queryRenderedFeatures(e.point, {
           layers: ['clusters'],
         });
-        const clusterId = features[0].properties.cluster_id;
+        const feature = features[0];
+        if (!feature || feature.geometry.type !== 'Point') return;
+
+        const clusterId = feature.properties?.cluster_id;
+        if (clusterId === undefined) return;
+
         const source = m.getSource('waypoints') as maplibregl.GeoJSONSource;
         source.getClusterExpansionZoom(clusterId).then((zoom) => {
-          const geom = features[0].geometry as { coordinates: [number, number] };
+          const coords = feature.geometry as GeoJSON.Point;
           m.easeTo({
-            center: geom.coordinates,
+            center: coords.coordinates as [number, number],
             zoom,
           });
         });
