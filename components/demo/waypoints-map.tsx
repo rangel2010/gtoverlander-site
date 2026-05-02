@@ -628,6 +628,8 @@ function waypointsToGeoJSON(
           countryCode: w.countryCode,
           color: groupConfig.color,
           featured: w.featured ?? false,
+          editorialLabel: w.editorialLabel ?? '',
+          customIcon: w.customIcon ?? '',
           iconKey: iconKeyForWaypoint(w),
         },
       };
