@@ -12,23 +12,23 @@ interface CategoryConfig {
 
 const CATEGORIES_KNOWN: Record<string, CategoryConfig> = {
   // Estrada e veículo
-  'gas station': { label: 'Postos', emoji: '⛽', color: '#E06226' },
+  'gas station': { label: 'Postos', emoji: '⛽', color: '#F5C842' },
   mechanic: { label: 'Oficina', emoji: '🔧', color: '#8090A0' },
   'rv support': { label: 'Aceita RV', emoji: '🚐', color: '#1F8A8A' },
   // Hospedagem
   hotel: { label: 'Hospedagem', emoji: '🛌', color: '#7280C4' },
   guesthouse: { label: 'Pousada', emoji: '🏡', color: '#A48B65' },
-  camping: { label: 'Camping', emoji: '🏕️', color: '#5A8A48' },
+  camping: { label: 'Camping', emoji: '🏕️', color: '#7FCB7F' },
   // Comida
   restaurant: { label: 'Restaurante', emoji: '🍴', color: '#B8505A' },
   'fast food': { label: 'Fast Food', emoji: '🍔', color: '#D49850' },
   cafe: { label: 'Café', emoji: '☕', color: '#8B5A3C' },
   bakery: { label: 'Padaria', emoji: '🥐', color: '#C39556' },
   // Turismo
-  attraction: { label: 'Atração', emoji: '⭐', color: '#E0A025' },
+  attraction: { label: 'Atração', emoji: '⭐', color: '#7FCB7F' },
   'national park': { label: 'Parque Nacional', emoji: '🌲', color: '#3F7050' },
   // Logística
-  'rest area': { label: 'Área de Descanso', emoji: '🅿️', color: '#5C7080' },
+  'rest area': { label: 'Área de Descanso', emoji: '🅿️', color: '#8090A0' },
   'border crossing': { label: 'Fronteira', emoji: '🛂', color: '#A050A0' },
   // Saúde / emergência
   hospital: { label: 'Hospital', emoji: '🏥', color: '#C04050' },
@@ -105,8 +105,8 @@ const CATEGORY_TO_GROUP: Record<string, string> = {
 };
 
 const COMPOSITE_GROUPS_CONFIG: Record<string, CategoryConfig> = {
-  Hospedagem: { label: 'Hospedagem', emoji: '🛌', color: '#7280C4' },
-  Alimentação: { label: 'Alimentação', emoji: '🍽️', color: '#B8505A' },
+  Hospedagem: { label: 'Hospedagem', emoji: '🛌', color: '#2A4A7A' },
+  Alimentação: { label: 'Alimentação', emoji: '🍽️', color: '#5BA8E0' },
   Saúde: { label: 'Saúde', emoji: '🏥', color: '#C04050' },
 };
 

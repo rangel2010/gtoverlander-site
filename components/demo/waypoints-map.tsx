@@ -153,7 +153,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       cluster: true,
       clusterMaxZoom: 14,
       clusterRadius: 50,
-      clusterMinPoints: 10,
+      clusterMinPoints: 3,
     });
 
     m.addLayer({
@@ -513,8 +513,8 @@ function loadCategoryIcons(map: maplibregl.Map) {
 
     // Quadrado com cantos arredondados (estilo chip), só contorno colorido —
     // visualmente coerente com os chips ativos (transparent + colored border).
-    const PAD = 2 * PIXEL_RATIO;
-    const CORNER = 8 * PIXEL_RATIO;
+    const PAD = 7 * PIXEL_RATIO;
+    const CORNER = 5 * PIXEL_RATIO;
     ctx.beginPath();
     ctx.roundRect(PAD, PAD, SIZE - 2 * PAD, SIZE - 2 * PAD, CORNER);
     ctx.lineWidth = STROKE * 1.5;
