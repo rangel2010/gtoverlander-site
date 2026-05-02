@@ -90,19 +90,3 @@ export function sortCategories(categories: string[]): string[] {
     return a.localeCompare(b);
   });
 }
-
-/**
- * Retorna o config de uma categoria. Se categoria não for reconhecida,
- * retorna config genérico (pra defensive coding).
- */
-export function getCategoryConfig(category: string): CategoryConfig {
-  if (category in CATEGORIES) {
-    return CATEGORIES[category as WaypointCategory];
-  }
-  return {
-    label: category,
-    emoji: '📍',
-    color: '#707070',
-    inFilter: false,
-  };
-}
