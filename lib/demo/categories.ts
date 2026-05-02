@@ -40,50 +40,33 @@ const CATEGORIES_KNOWN: Record<string, CategoryConfig> = {
   supermarket: { label: 'Supermercado', emoji: '🛒', color: '#5070A0' },
 };
 
-/**
- * Ordem preferencial de exibição quando a categoria é conhecida.
- * Agrupa por contexto: estrada → hospedagem → comida → turismo → logística → emergência.
- * Categorias desconhecidas (não listadas) ficam no fim, em ordem alfabética.
- */
 const PREFERRED_ORDER: string[] = [
-  // Estrada
   'gas station',
   'mechanic',
-  // Hospedagem
   'hotel',
   'guesthouse',
   'camping',
-  // Comida
   'restaurant',
   'fast food',
   'cafe',
   'bakery',
   'supermarket',
-  // Turismo
   'attraction',
   'viewpoint',
   'museum',
   'national park',
-  // Logística
   'rest area',
   'parking',
   'border crossing',
-  // Emergência
   'hospital',
   'pharmacy',
-  // Transversal (sempre no fim)
   'rv support',
 ];
 
-/**
- * Retorna o config de uma categoria. Se for desconhecida, gera fallback
- * com label capitalizada do próprio código + emoji genérico.
- */
 export function getCategoryConfig(category: string): CategoryConfig {
   if (category in CATEGORIES_KNOWN) {
     return CATEGORIES_KNOWN[category];
   }
-  // Fallback: capitaliza primeira letra e troca _/- por espaço
   const label = category
     .replace(/[_-]/g, ' ')
     .replace(/\b\w/g, (c) => c.toUpperCase());
@@ -94,46 +77,31 @@ export function getCategoryConfig(category: string): CategoryConfig {
   };
 }
 
-/**
- * Ordena categorias colocando as conhecidas na ordem preferencial primeiro,
- * e desconhecidas alfabeticamente no fim.
- */
 export function sortCategories(categories: string[]): string[] {
   return [...categories].sort((a, b) => {
     const aIdx = PREFERRED_ORDER.indexOf(a);
     const bIdx = PREFERRED_ORDER.indexOf(b);
-
-    // Ambas conhecidas — ordem preferencial
     if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
-    // Só A é conhecida — A vem primeiro
     if (aIdx !== -1) return -1;
-    // Só B é conhecida — B vem primeiro
     if (bIdx !== -1) return 1;
-    // Ambas desconhecidas — alfabético
     return a.localeCompare(b);
   });
 }
 
 // === GRUPOS COMPOSTOS ===
-// Algumas categorias agrupam pra simplificar o filtro:
-// - Hospedagem = hotel + guesthouse
-// - Alimentação = restaurant + fast food + cafe + bakery + supermarket
-// - Saúde = hospital + pharmacy
-// As demais ficam como chips individuais.
-
 const CATEGORY_TO_GROUP: Record<string, string> = {
-  // Hospedagem (composto)
   hotel: 'Hospedagem',
   guesthouse: 'Hospedagem',
-  // Alimentação (composto)
   restaurant: 'Alimentação',
   'fast food': 'Alimentação',
   cafe: 'Alimentação',
   bakery: 'Alimentação',
   supermarket: 'Alimentação',
-  // Saúde (composto)
   hospital: 'Saúde',
   pharmacy: 'Saúde',
+  // Parque Nacional cai dentro do chip "Atração" (são poucos por país).
+  // No mapa cada um mantém o emoji próprio (⭐ vs 🌲).
+  'national park': 'attraction',
 };
 
 const COMPOSITE_GROUPS_CONFIG: Record<string, CategoryConfig> = {
@@ -142,18 +110,10 @@ const COMPOSITE_GROUPS_CONFIG: Record<string, CategoryConfig> = {
   Saúde: { label: 'Saúde', emoji: '🏥', color: '#C04050' },
 };
 
-/**
- * Retorna a chave do "grupo" pra uma categoria.
- * Se categoria está num grupo composto, retorna o nome do grupo.
- * Senão, retorna a própria categoria.
- */
 export function categoryToGroupKey(category: string): string {
   return CATEGORY_TO_GROUP[category] ?? category;
 }
 
-/**
- * Retorna config de um grupo (composto ou categoria simples).
- */
 export function getGroupConfig(groupKey: string): CategoryConfig {
   if (groupKey in COMPOSITE_GROUPS_CONFIG) {
     return COMPOSITE_GROUPS_CONFIG[groupKey];
@@ -162,25 +122,21 @@ export function getGroupConfig(groupKey: string): CategoryConfig {
 }
 
 const GROUP_ORDER: string[] = [
-  'gas station', // Postos
-  'mechanic', // Oficina
-  'Hospedagem', // composto
-  'camping', // Camping
-  'Alimentação', // composto
-  'attraction', // Atração
+  'gas station',
+  'mechanic',
+  'Hospedagem',
+  'camping',
+  'Alimentação',
+  'attraction',
   'viewpoint',
   'museum',
-  'national park', // Parque Nacional
-  'rest area', // Área de Descanso
+  'rest area',
   'parking',
-  'border crossing', // Fronteira
-  'Saúde', // composto
-  'rv support', // Aceita RV (transversal — sempre no fim)
+  'border crossing',
+  'Saúde',
+  'rv support',
 ];
 
-/**
- * Ordena grupos (compostos ou categorias simples) na ordem preferencial.
- */
 export function sortGroups(groupKeys: string[]): string[] {
   return [...groupKeys].sort((a, b) => {
     const aIdx = GROUP_ORDER.indexOf(a);

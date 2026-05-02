@@ -30,10 +30,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
   const map = useRef<maplibregl.Map | null>(null);
   const popup = useRef<maplibregl.Popup | null>(null);
 
-  // Estado
   const [allWaypoints, setAllWaypoints] = useState<Waypoint[]>([]);
-  // Grupos disponíveis no arquivo do país atual (compostos como Hospedagem,
-  // Alimentação, Saúde + categorias individuais)
   const [availableGroups, setAvailableGroups] = useState<string[]>([]);
   const [activeGroups, setActiveGroups] = useState<Set<string>>(new Set());
   const [loadingMessage, setLoadingMessage] = useState('Carregando mapa...');
@@ -41,23 +38,17 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
   const [activeCountry, setActiveCountry] = useState<string | null>(null);
   const [mapReady, setMapReady] = useState(false);
 
-  // Filtro: aplica activeGroups + lógica OR transversal de "Aceita RV"
   const filteredWaypoints = useMemo(() => {
     if (allWaypoints.length === 0) return [];
-
     const rvActive = activeGroups.has('rv support');
-
     return allWaypoints.filter((w) => {
       const groupKey = categoryToGroupKey(w.categoria);
-      // Se o grupo do waypoint está ativo, mostra
       if (activeGroups.has(groupKey)) return true;
-      // Se "Aceita RV" está ativo e o waypoint aceita RV (transversal)
       if (rvActive && w.aceitaRv) return true;
       return false;
     });
   }, [allWaypoints, activeGroups]);
 
-  // Init do mapa (executa uma vez)
   useEffect(() => {
     if (!mapContainer.current || map.current) return;
 
@@ -69,8 +60,6 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
     const initialZoom =
       geo.lat !== null && geo.long !== null ? 10 : DEFAULT_CENTER.zoom;
 
-    // Estilo dark matter da Carto — mesma vibe do app GT.
-    // É um vector style hospedado, já vem com glyphs (fontes) configurados.
     map.current = new maplibregl.Map({
       container: mapContainer.current,
       style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
@@ -81,9 +70,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
     map.current.addControl(new maplibregl.NavigationControl(), 'top-right');
 
-    // style.load garante que o estilo (e os glyphs) tá pronto antes de adicionar custom layers
     map.current.on('style.load', () => {
-      // Carrega emojis das categorias como sprite no mapa (pra usar no symbol layer)
       loadCategoryIcons(map.current!);
       addWaypointsLayers([]);
       setMapReady(true);
@@ -99,51 +86,39 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Sincroniza waypoints filtrados com o source do mapa
   useEffect(() => {
     if (!map.current || !mapReady) return;
     const source = map.current.getSource('waypoints') as
       | maplibregl.GeoJSONSource
       | undefined;
     if (!source) return;
-
     const geojson = waypointsToGeoJSON(filteredWaypoints);
     source.setData(geojson);
   }, [filteredWaypoints, mapReady]);
 
   async function loadCountryData(countryName: string) {
     if (!map.current) return;
-
     try {
       setLoadingMessage(`Buscando waypoints do ${countryName}...`);
-
       const manifestRes = await fetch(`${BLOB_BASE_URL}/manifest.json`);
       if (!manifestRes.ok) throw new Error('Falha ao carregar manifest');
       const manifest: Manifest = await manifestRes.json();
-
       const entry = manifest.regions[countryName];
       if (!entry) {
         throw new Error(`País ${countryName} não disponível na base`);
       }
-
       const fileSizeMB = (entry.sizeBytes / 1024 / 1024).toFixed(1);
       setLoadingMessage(
         `Carregando ${entry.count.toLocaleString('pt-BR')} waypoints do ${countryName} (${fileSizeMB} MB)...`
       );
-
       const fileRes = await fetch(`${BLOB_BASE_URL}/${entry.fileName}`);
       if (!fileRes.ok) throw new Error('Falha ao carregar dados do país');
       const data: CountryFile = await fileRes.json();
 
-      // Lê dinamicamente quais GRUPOS existem (categoria → grupo via map).
-      // O sync de dados pro mapa acontece via useEffect [filteredWaypoints, mapReady].
       const uniqueGroups = Array.from(
         new Set(data.waypoints.map((w) => categoryToGroupKey(w.categoria)))
       );
       const sorted = sortGroups(uniqueGroups);
-
-      // UX: começa com apenas 1 grupo ativo (Postos por padrão).
-      // Se o país não tem postos, escolhe o primeiro grupo disponível.
       const initialGroup = sorted.includes('gas station')
         ? 'gas station'
         : sorted[0];
@@ -165,10 +140,8 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
   function addWaypointsLayers(waypoints: Waypoint[]) {
     if (!map.current) return;
     const m = map.current;
-
     const geojson = waypointsToGeoJSON(waypoints);
 
-    // Source com cluster
     if (m.getSource('waypoints')) {
       (m.getSource('waypoints') as maplibregl.GeoJSONSource).setData(geojson);
       return;
@@ -182,18 +155,17 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       clusterRadius: 50,
     });
 
-    // Cluster (bolha escura com contorno laranja, semelhante aos cards do app)
     m.addLayer({
       id: 'clusters',
       type: 'circle',
       source: 'waypoints',
       filter: ['has', 'point_count'],
       paint: {
-        'circle-color': 'rgba(15, 15, 15, 0.88)', // fundo escuro translúcido
+        'circle-color': 'rgba(15, 15, 15, 0.88)',
         'circle-radius': [
           'step',
           ['get', 'point_count'],
-          20, // base
+          20,
           10,
           26,
           100,
@@ -204,11 +176,10 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
           48,
         ],
         'circle-stroke-width': 2.5,
-        'circle-stroke-color': '#E06226', // borda laranja GT
+        'circle-stroke-color': '#E06226',
       },
     });
 
-    // Número dentro do cluster — usa font do estilo Carto (que vem com Roboto Bold)
     m.addLayer({
       id: 'cluster-count',
       type: 'symbol',
@@ -224,9 +195,6 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       },
     });
 
-    // Pontos individuais — usa o sprite gerado em loadCategoryIcons
-    // (bolinha colorida da categoria + emoji por cima, tudo num único PNG).
-    // iconKey vem pré-calculado no GeoJSON.
     m.addLayer({
       id: 'unclustered-points',
       type: 'symbol',
@@ -240,19 +208,14 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       },
     });
 
-    // === Eventos ===
-
-    // Click no cluster → zoom in
     m.on('click', 'clusters', (e) => {
       const features = m.queryRenderedFeatures(e.point, {
         layers: ['clusters'],
       });
       const feature = features[0];
       if (!feature || feature.geometry.type !== 'Point') return;
-
       const clusterId = feature.properties?.cluster_id;
       if (clusterId === undefined) return;
-
       const source = m.getSource('waypoints') as maplibregl.GeoJSONSource;
       source.getClusterExpansionZoom(clusterId).then((zoom) => {
         const coords = feature.geometry as GeoJSON.Point;
@@ -263,22 +226,16 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       });
     });
 
-    // Click no ponto individual → popup
     m.on('click', 'unclustered-points', (e) => {
       const feature = e.features?.[0];
       if (!feature || feature.geometry.type !== 'Point') return;
-
       const props = feature.properties;
       if (!props) return;
-
       const coords = (feature.geometry as GeoJSON.Point).coordinates as [
         number,
         number,
       ];
-
-      // Remove popup anterior se existir
       popup.current?.remove();
-
       popup.current = new maplibregl.Popup({
         closeButton: true,
         closeOnClick: true,
@@ -290,7 +247,6 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         .addTo(m);
     });
 
-    // Cursor pointer no hover
     m.on('mouseenter', 'clusters', () => {
       m.getCanvas().style.cursor = 'pointer';
     });
@@ -304,8 +260,6 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       m.getCanvas().style.cursor = '';
     });
   }
-
-  // === Handlers de filtro ===
 
   function toggleGroup(groupKey: string) {
     setActiveGroups((prev) => {
@@ -327,9 +281,19 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
     setActiveGroups(new Set());
   }
 
+  function recenterMap() {
+    if (!map.current) return;
+    const center: [number, number] =
+      geo.lat !== null && geo.long !== null
+        ? [geo.long, geo.lat]
+        : [DEFAULT_CENTER.long, DEFAULT_CENTER.lat];
+    const zoom =
+      geo.lat !== null && geo.long !== null ? 10 : DEFAULT_CENTER.zoom;
+    map.current.easeTo({ center, zoom, bearing: 0, pitch: 0, duration: 700 });
+  }
+
   return (
     <div className="space-y-4">
-      {/* Filtros de categoria */}
       <div className="space-y-3">
         <div className="flex items-center justify-between flex-wrap gap-3">
           <p className="text-xs uppercase tracking-wider text-gt-text-muted font-sans">
@@ -382,14 +346,36 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         </div>
       </div>
 
-      {/* Container do mapa */}
       <div className="relative">
         <div
           ref={mapContainer}
           className="gt-map-medium w-full h-[70vh] min-h-[500px] rounded-lg overflow-hidden border border-gt-border bg-gt-card"
         />
 
-        {/* Overlay de loading */}
+        {mapReady && (
+          <button
+            type="button"
+            onClick={recenterMap}
+            aria-label="Recentralizar mapa"
+            title="Recentralizar mapa"
+            className="absolute top-[120px] right-[10px] z-10 w-[29px] h-[29px] flex items-center justify-center bg-white/95 hover:bg-white border border-gt-border/50 rounded shadow-sm transition-colors"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#333"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="3" />
+              <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+            </svg>
+          </button>
+        )}
+
         {loadingMessage && (
           <div className="absolute inset-0 flex items-center justify-center bg-gt-bg/80 backdrop-blur-sm rounded-lg z-10">
             <div className="text-center max-w-md px-6">
@@ -401,7 +387,6 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
           </div>
         )}
 
-        {/* Overlay de erro */}
         {error && (
           <div className="absolute inset-0 flex items-center justify-center bg-gt-bg/80 backdrop-blur-sm rounded-lg z-10">
             <div className="text-center max-w-md px-6">
@@ -413,7 +398,6 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
           </div>
         )}
 
-        {/* Stats overlay */}
         {activeCountry && filteredWaypoints.length > 0 && (
           <div className="absolute bottom-4 left-4 bg-gt-bg/90 backdrop-blur-sm rounded-md border border-gt-border px-4 py-3 z-10">
             <p className="text-xs text-gt-text-muted uppercase tracking-wider font-sans mb-1">
@@ -430,7 +414,6 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
           </div>
         )}
 
-        {/* Empty state quando filtros zeram */}
         {activeCountry &&
           allWaypoints.length > 0 &&
           filteredWaypoints.length === 0 &&
@@ -443,12 +426,9 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
           )}
       </div>
 
-      {/* Estilos do popup (Tailwind não consegue alcançar dentro do popup do MapLibre) */}
       <style jsx global>{`
-        /* Clareia o tile escuro pro tom intermediário (entre Dark Matter e Voyager).
-           Brilho 1.25 + saturação leve preserva os clusters/pinos coloridos. */
         .gt-map-medium .maplibregl-canvas {
-          filter: brightness(1.28) saturate(1.05) contrast(0.95);
+          filter: brightness(1.55) saturate(1.15) contrast(0.9);
         }
         .gt-popup .maplibregl-popup-content {
           background: #0f0f0f;
@@ -483,18 +463,10 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
 // === Helpers ===
 
-/**
- * Sanitiza nome da categoria pra usar como chave do sprite no MapLibre.
- * "gas station" → "gt-icon-gas-station".
- */
 function iconKeyFor(category: string): string {
   return `gt-icon-${category.replace(/\s+/g, '-').toLowerCase()}`;
 }
 
-/**
- * Lista de categorias que podem aparecer nos arquivos de país.
- * Inclui as 16 oficiais + as 4 do Radar (que ainda podem chegar como fallback).
- */
 const ALL_CATEGORIES_FOR_ICONS: string[] = [
   'gas station',
   'mechanic',
@@ -518,14 +490,6 @@ const ALL_CATEGORIES_FOR_ICONS: string[] = [
   'supermarket',
 ];
 
-/**
- * Gera um sprite PNG por categoria (bolinha colorida + emoji por cima)
- * via canvas 2D e registra como imagem no mapa. O symbol layer dos pontos
- * individuais referencia esses sprites por chave (`iconKey`).
- *
- * O fallback de fonte cobre mac/win/linux pra emojis renderizarem coloridos
- * mesmo quando o sistema não tem o conjunto principal.
- */
 function loadCategoryIcons(map: maplibregl.Map) {
   const PIXEL_RATIO = window.devicePixelRatio || 1;
   const SIZE = Math.round(40 * PIXEL_RATIO);
@@ -537,7 +501,8 @@ function loadCategoryIcons(map: maplibregl.Map) {
     const key = iconKeyFor(category);
     if (map.hasImage(key)) continue;
 
-    const config = getGroupConfig(categoryToGroupKey(category));
+    const groupColor = getGroupConfig(categoryToGroupKey(category)).color;
+    const emoji = getCategoryConfig(category).emoji;
 
     const canvas = document.createElement('canvas');
     canvas.width = SIZE;
@@ -545,24 +510,19 @@ function loadCategoryIcons(map: maplibregl.Map) {
     const ctx = canvas.getContext('2d');
     if (!ctx) continue;
 
-    // Bolinha colorida da categoria
     ctx.beginPath();
     ctx.arc(SIZE / 2, SIZE / 2, RADIUS, 0, Math.PI * 2);
-    ctx.fillStyle = config.color;
+    ctx.fillStyle = groupColor;
     ctx.fill();
     ctx.lineWidth = STROKE;
     ctx.strokeStyle = '#0F0F0F';
     ctx.stroke();
 
-    // Emoji por cima
     ctx.font = `${FONT_SIZE}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Twemoji Mozilla", sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    // Pequeno offset vertical pra centralizar opticamente — emojis tendem
-    // a ter uma baseline um pouco mais alta que o centro geométrico.
-    ctx.fillText(config.emoji, SIZE / 2, SIZE / 2 + PIXEL_RATIO);
+    ctx.fillText(emoji, SIZE / 2, SIZE / 2 + PIXEL_RATIO);
 
-    // pixelRatio garante que em retina o sprite não fica 2x maior
     map.addImage(key, ctx.getImageData(0, 0, SIZE, SIZE), {
       pixelRatio: PIXEL_RATIO,
     });
@@ -575,7 +535,6 @@ function waypointsToGeoJSON(
   return {
     type: 'FeatureCollection',
     features: waypoints.map((w) => {
-      // Pre-calcula a cor do grupo pra MapLibre poder renderizar via expression
       const groupConfig = getGroupConfig(categoryToGroupKey(w.categoria));
       return {
         type: 'Feature',
@@ -601,10 +560,8 @@ function buildPopupHTML(props: Record<string, unknown>): string {
   const nome = String(props.nome ?? 'Sem nome');
   const categoria = String(props.categoria ?? '');
   const aceitaRv = props.aceitaRv === true || props.aceitaRv === 'true';
-
   const config = getCategoryConfig(categoria);
 
-  // Escape básico pra evitar XSS no innerHTML
   const escape = (s: string) =>
     s.replace(
       /[&<>"']/g,
