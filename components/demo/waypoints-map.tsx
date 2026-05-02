@@ -537,8 +537,8 @@ function drawPinSprite(
   const SIZE = Math.round(40 * pixelRatio);
   const STROKE = 2 * pixelRatio;
   const FONT_SIZE = Math.round(20 * pixelRatio);
-  const PAD = 7 * pixelRatio;
-  const CORNER = 5 * pixelRatio;
+  const PAD = 4 * pixelRatio;
+  const CORNER = 6 * pixelRatio;
 
   const canvas = document.createElement('canvas');
   canvas.width = SIZE;
