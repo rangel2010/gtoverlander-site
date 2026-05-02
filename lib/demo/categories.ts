@@ -113,3 +113,81 @@ export function sortCategories(categories: string[]): string[] {
     return a.localeCompare(b);
   });
 }
+
+// === GRUPOS COMPOSTOS ===
+// Algumas categorias agrupam pra simplificar o filtro:
+// - Hospedagem = hotel + guesthouse
+// - Alimentação = restaurant + fast food + cafe + bakery + supermarket
+// - Saúde = hospital + pharmacy
+// As demais ficam como chips individuais.
+
+const CATEGORY_TO_GROUP: Record<string, string> = {
+  // Hospedagem (composto)
+  hotel: 'Hospedagem',
+  guesthouse: 'Hospedagem',
+  // Alimentação (composto)
+  restaurant: 'Alimentação',
+  'fast food': 'Alimentação',
+  cafe: 'Alimentação',
+  bakery: 'Alimentação',
+  supermarket: 'Alimentação',
+  // Saúde (composto)
+  hospital: 'Saúde',
+  pharmacy: 'Saúde',
+};
+
+const COMPOSITE_GROUPS_CONFIG: Record<string, CategoryConfig> = {
+  Hospedagem: { label: 'Hospedagem', emoji: '🛌', color: '#7280C4' },
+  Alimentação: { label: 'Alimentação', emoji: '🍽️', color: '#B8505A' },
+  Saúde: { label: 'Saúde', emoji: '🏥', color: '#C04050' },
+};
+
+/**
+ * Retorna a chave do "grupo" pra uma categoria.
+ * Se categoria está num grupo composto, retorna o nome do grupo.
+ * Senão, retorna a própria categoria.
+ */
+export function categoryToGroupKey(category: string): string {
+  return CATEGORY_TO_GROUP[category] ?? category;
+}
+
+/**
+ * Retorna config de um grupo (composto ou categoria simples).
+ */
+export function getGroupConfig(groupKey: string): CategoryConfig {
+  if (groupKey in COMPOSITE_GROUPS_CONFIG) {
+    return COMPOSITE_GROUPS_CONFIG[groupKey];
+  }
+  return getCategoryConfig(groupKey);
+}
+
+const GROUP_ORDER: string[] = [
+  'gas station', // Postos
+  'mechanic', // Oficina
+  'Hospedagem', // composto
+  'camping', // Camping
+  'Alimentação', // composto
+  'attraction', // Atração
+  'viewpoint',
+  'museum',
+  'national park', // Parque Nacional
+  'rest area', // Área de Descanso
+  'parking',
+  'border crossing', // Fronteira
+  'Saúde', // composto
+  'rv support', // Aceita RV (transversal — sempre no fim)
+];
+
+/**
+ * Ordena grupos (compostos ou categorias simples) na ordem preferencial.
+ */
+export function sortGroups(groupKeys: string[]): string[] {
+  return [...groupKeys].sort((a, b) => {
+    const aIdx = GROUP_ORDER.indexOf(a);
+    const bIdx = GROUP_ORDER.indexOf(b);
+    if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
+    if (aIdx !== -1) return -1;
+    if (bIdx !== -1) return 1;
+    return a.localeCompare(b);
+  });
+}

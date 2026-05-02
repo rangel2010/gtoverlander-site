@@ -11,7 +11,12 @@ import type {
   Waypoint,
 } from '@/lib/demo/types';
 import { DEFAULT_CENTER, DEFAULT_COUNTRY } from '@/lib/demo/countries';
-import { getCategoryConfig, sortCategories } from '@/lib/demo/categories';
+import {
+  categoryToGroupKey,
+  getCategoryConfig,
+  getGroupConfig,
+  sortGroups,
+} from '@/lib/demo/categories';
 
 interface WaypointsMapProps {
   geo: GeoData;
@@ -27,28 +32,30 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
   // Estado
   const [allWaypoints, setAllWaypoints] = useState<Waypoint[]>([]);
-  // Categorias que existem de fato no arquivo do país atual (lidas dinamicamente)
-  const [availableCategories, setAvailableCategories] = useState<string[]>([]);
-  const [activeCategories, setActiveCategories] = useState<Set<string>>(new Set());
+  // Grupos disponíveis no arquivo do país atual (compostos como Hospedagem,
+  // Alimentação, Saúde + categorias individuais)
+  const [availableGroups, setAvailableGroups] = useState<string[]>([]);
+  const [activeGroups, setActiveGroups] = useState<Set<string>>(new Set());
   const [loadingMessage, setLoadingMessage] = useState('Carregando mapa...');
   const [error, setError] = useState<string | null>(null);
   const [activeCountry, setActiveCountry] = useState<string | null>(null);
   const [mapReady, setMapReady] = useState(false);
 
-  // Filtro: aplica activeCategories + lógica OR transversal de "Aceita RV"
+  // Filtro: aplica activeGroups + lógica OR transversal de "Aceita RV"
   const filteredWaypoints = useMemo(() => {
     if (allWaypoints.length === 0) return [];
 
-    const rvActive = activeCategories.has('rv support');
+    const rvActive = activeGroups.has('rv support');
 
     return allWaypoints.filter((w) => {
-      // Se a categoria do waypoint está ativa, mostra
-      if (activeCategories.has(w.categoria)) return true;
+      const groupKey = categoryToGroupKey(w.categoria);
+      // Se o grupo do waypoint está ativo, mostra
+      if (activeGroups.has(groupKey)) return true;
       // Se "Aceita RV" está ativo e o waypoint aceita RV (transversal)
       if (rvActive && w.aceitaRv) return true;
       return false;
     });
-  }, [allWaypoints, activeCategories]);
+  }, [allWaypoints, activeGroups]);
 
   // Init do mapa (executa uma vez)
   useEffect(() => {
@@ -60,30 +67,13 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         : [DEFAULT_CENTER.long, DEFAULT_CENTER.lat];
 
     const initialZoom =
-      geo.lat !== null && geo.long !== null ? 8 : DEFAULT_CENTER.zoom;
+      geo.lat !== null && geo.long !== null ? 10 : DEFAULT_CENTER.zoom;
 
+    // Estilo dark matter da Carto — mesma vibe do app GT.
+    // É um vector style hospedado, já vem com glyphs (fontes) configurados.
     map.current = new maplibregl.Map({
       container: mapContainer.current,
-      style: {
-        version: 8,
-        sources: {
-          osm: {
-            type: 'raster',
-            tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
-            tileSize: 256,
-            attribution: '© OpenStreetMap contributors',
-          },
-        },
-        layers: [
-          {
-            id: 'osm-tiles',
-            type: 'raster',
-            source: 'osm',
-            minzoom: 0,
-            maxzoom: 22,
-          },
-        ],
-      },
+      style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
       center,
       zoom: initialZoom,
       attributionControl: { compact: true },
@@ -91,12 +81,10 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
     map.current.addControl(new maplibregl.NavigationControl(), 'top-right');
 
-    map.current.on('load', () => {
-      // Adiciona source + layers VAZIOS antes de buscar dados.
-      // Garante que o pipeline de render esteja pronto quando os dados chegarem.
+    // style.load garante que o estilo (e os glyphs) tá pronto antes de adicionar custom layers
+    map.current.on('style.load', () => {
       addWaypointsLayers([]);
       setMapReady(true);
-      // Inicia carregamento dos dados (sem await — não bloqueia o callback)
       loadCountryData(geo.countryName ?? DEFAULT_COUNTRY);
     });
 
@@ -145,16 +133,22 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       if (!fileRes.ok) throw new Error('Falha ao carregar dados do país');
       const data: CountryFile = await fileRes.json();
 
-      // Lê dinamicamente quais categorias existem no arquivo do país.
+      // Lê dinamicamente quais GRUPOS existem (categoria → grupo via map).
       // O sync de dados pro mapa acontece via useEffect [filteredWaypoints, mapReady].
-      const uniqueCategorias = Array.from(
-        new Set(data.waypoints.map((w) => w.categoria))
+      const uniqueGroups = Array.from(
+        new Set(data.waypoints.map((w) => categoryToGroupKey(w.categoria)))
       );
-      const sorted = sortCategories(uniqueCategorias);
+      const sorted = sortGroups(uniqueGroups);
+
+      // UX: começa com apenas 1 grupo ativo (Postos por padrão).
+      // Se o país não tem postos, escolhe o primeiro grupo disponível.
+      const initialGroup = sorted.includes('gas station')
+        ? 'gas station'
+        : sorted[0];
 
       setAllWaypoints(data.waypoints);
-      setAvailableCategories(sorted);
-      setActiveCategories(new Set(sorted));
+      setAvailableGroups(sorted);
+      setActiveGroups(initialGroup ? new Set([initialGroup]) : new Set());
       setActiveCountry(countryName);
       setLoadingMessage('');
     } catch (e) {
@@ -186,48 +180,59 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       clusterRadius: 50,
     });
 
-    // Cluster (bola laranja)
+    // Cluster (bolha escura com contorno laranja, semelhante aos cards do app)
     m.addLayer({
       id: 'clusters',
       type: 'circle',
       source: 'waypoints',
       filter: ['has', 'point_count'],
       paint: {
-        'circle-color': '#E06226',
+        'circle-color': 'rgba(15, 15, 15, 0.88)', // fundo escuro translúcido
         'circle-radius': [
           'step',
           ['get', 'point_count'],
-          18,
+          20, // base
           10,
-          22,
+          26,
           100,
-          28,
+          32,
           1000,
-          36,
+          40,
           10000,
-          44,
+          48,
         ],
-        'circle-stroke-width': 2,
-        'circle-stroke-color': '#FFFFFF',
-        'circle-opacity': 0.92,
+        'circle-stroke-width': 2.5,
+        'circle-stroke-color': '#E06226', // borda laranja GT
       },
     });
 
-    // (Layer de número do cluster removido — exigia fonte externa que dava 404.
-    // O tamanho da bolinha já comunica magnitude. Click no cluster faz zoom in
-    // e individualiza, então o usuário vê os pontos sem precisar do número.)
+    // Número dentro do cluster — usa font do estilo Carto (que vem com Roboto Bold)
+    m.addLayer({
+      id: 'cluster-count',
+      type: 'symbol',
+      source: 'waypoints',
+      filter: ['has', 'point_count'],
+      layout: {
+        'text-field': ['get', 'point_count_abbreviated'],
+        'text-font': ['Roboto Bold'],
+        'text-size': 13,
+      },
+      paint: {
+        'text-color': '#FFFFFF',
+      },
+    });
 
-    // Pontos individuais
+    // Pontos individuais — cor vem do grupo da categoria (pré-calculada no GeoJSON)
     m.addLayer({
       id: 'unclustered-points',
       type: 'circle',
       source: 'waypoints',
       filter: ['!', ['has', 'point_count']],
       paint: {
-        'circle-color': '#E06226',
-        'circle-radius': 6,
-        'circle-stroke-width': 1.5,
-        'circle-stroke-color': '#FFFFFF',
+        'circle-color': ['get', 'color'],
+        'circle-radius': 7,
+        'circle-stroke-width': 2,
+        'circle-stroke-color': '#0F0F0F', // contorno escuro pra destacar do mapa dark
       },
     });
 
@@ -298,24 +303,24 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
   // === Handlers de filtro ===
 
-  function toggleCategory(category: string) {
-    setActiveCategories((prev) => {
+  function toggleGroup(groupKey: string) {
+    setActiveGroups((prev) => {
       const next = new Set(prev);
-      if (next.has(category)) {
-        next.delete(category);
+      if (next.has(groupKey)) {
+        next.delete(groupKey);
       } else {
-        next.add(category);
+        next.add(groupKey);
       }
       return next;
     });
   }
 
   function selectAll() {
-    setActiveCategories(new Set(availableCategories));
+    setActiveGroups(new Set(availableGroups));
   }
 
   function clearAll() {
-    setActiveCategories(new Set());
+    setActiveGroups(new Set());
   }
 
   return (
@@ -346,18 +351,18 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {availableCategories.map((cat) => {
-            const config = getCategoryConfig(cat);
-            const isActive = activeCategories.has(cat);
+          {availableGroups.map((groupKey) => {
+            const config = getGroupConfig(groupKey);
+            const isActive = activeGroups.has(groupKey);
             return (
               <button
-                key={cat}
+                key={groupKey}
                 type="button"
-                onClick={() => toggleCategory(cat)}
-                className={`text-xs px-3 py-2 rounded-md font-sans font-medium transition-colors border ${
+                onClick={() => toggleGroup(groupKey)}
+                className={`text-xs px-3 py-2 rounded-md font-sans font-medium transition-all border ${
                   isActive
-                    ? 'bg-gt-orange text-white border-gt-orange'
-                    : 'bg-gt-card text-gt-text-muted border-gt-border hover:border-gt-border-strong hover:text-gt-text'
+                    ? 'bg-transparent text-gt-orange border-gt-orange'
+                    : 'bg-transparent text-gt-text-dim border-gt-border/40 opacity-50 hover:opacity-90 hover:text-gt-text-muted'
                 }`}
               >
                 <span className="mr-1">{config.emoji}</span>
@@ -469,20 +474,25 @@ function waypointsToGeoJSON(
 ): GeoJSON.FeatureCollection<GeoJSON.Point> {
   return {
     type: 'FeatureCollection',
-    features: waypoints.map((w) => ({
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [w.long, w.lat],
-      },
-      properties: {
-        id: w.id,
-        nome: w.nome,
-        categoria: w.categoria,
-        aceitaRv: w.aceitaRv,
-        countryCode: w.countryCode,
-      },
-    })),
+    features: waypoints.map((w) => {
+      // Pre-calcula a cor do grupo pra MapLibre poder renderizar via expression
+      const groupConfig = getGroupConfig(categoryToGroupKey(w.categoria));
+      return {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [w.long, w.lat],
+        },
+        properties: {
+          id: w.id,
+          nome: w.nome,
+          categoria: w.categoria,
+          aceitaRv: w.aceitaRv,
+          countryCode: w.countryCode,
+          color: groupConfig.color,
+        },
+      };
+    }),
   };
 }
 
