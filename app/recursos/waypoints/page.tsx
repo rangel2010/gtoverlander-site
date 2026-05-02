@@ -20,18 +20,14 @@ const numeros = [
 
 const categorias = [
   '⛽ Postos',
-  '🛌 Hospedagem',
+  '🔧 Oficina',
+  '🛌 Hospedagem (Hotel + Pousada)',
   '🏕️ Camping',
-  '🍽️ Restaurante',
-  '🍔 Fast Food',
-  '☕ Café',
-  '🥐 Padaria',
-  '⭐ Atração',
-  '🏥 Hospitais',
-  '💊 Farmácias',
+  '🍴 Alimentação (Restaurante + Fast Food + Café + Padaria)',
+  '⭐ Atração (atrações turísticas e parques nacionais)',
   '🅿️ Área de Descanso',
-  '🌲 Parque Nacional',
   '🛂 Fronteira',
+  '🏥 Saúde (Hospital + Farmácia)',
   '🚐 Aceita RV',
 ];
 
