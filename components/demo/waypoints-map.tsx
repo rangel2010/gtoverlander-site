@@ -9,14 +9,9 @@ import type {
   GeoData,
   Manifest,
   Waypoint,
-  WaypointCategory,
 } from '@/lib/demo/types';
 import { DEFAULT_CENTER, DEFAULT_COUNTRY } from '@/lib/demo/countries';
-import {
-  CATEGORIES,
-  DEFAULT_FILTER_CATEGORIES,
-  getCategoryConfig,
-} from '@/lib/demo/categories';
+import { getCategoryConfig, sortCategories } from '@/lib/demo/categories';
 
 interface WaypointsMapProps {
   geo: GeoData;
@@ -32,9 +27,9 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
   // Estado
   const [allWaypoints, setAllWaypoints] = useState<Waypoint[]>([]);
-  const [activeCategories, setActiveCategories] = useState<Set<WaypointCategory>>(
-    new Set(DEFAULT_FILTER_CATEGORIES)
-  );
+  // Categorias que existem de fato no arquivo do país atual (lidas dinamicamente)
+  const [availableCategories, setAvailableCategories] = useState<string[]>([]);
+  const [activeCategories, setActiveCategories] = useState<Set<string>>(new Set());
   const [loadingMessage, setLoadingMessage] = useState('Carregando mapa...');
   const [error, setError] = useState<string | null>(null);
   const [activeCountry, setActiveCountry] = useState<string | null>(null);
@@ -48,7 +43,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
     return allWaypoints.filter((w) => {
       // Se a categoria do waypoint está ativa, mostra
-      if (activeCategories.has(w.categoria as WaypointCategory)) return true;
+      if (activeCategories.has(w.categoria)) return true;
       // Se "Aceita RV" está ativo e o waypoint aceita RV (transversal)
       if (rvActive && w.aceitaRv) return true;
       return false;
@@ -150,7 +145,15 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       // Adiciona/atualiza source + layers
       addWaypointsLayers(data.waypoints);
 
+      // Lê dinamicamente quais categorias existem no arquivo do país
+      const uniqueCategorias = Array.from(
+        new Set(data.waypoints.map((w) => w.categoria))
+      );
+      const sorted = sortCategories(uniqueCategorias);
+
       setAllWaypoints(data.waypoints);
+      setAvailableCategories(sorted);
+      setActiveCategories(new Set(sorted));
       setActiveCountry(countryName);
       setLoadingMessage('');
     } catch (e) {
@@ -306,7 +309,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
   // === Handlers de filtro ===
 
-  function toggleCategory(category: WaypointCategory) {
+  function toggleCategory(category: string) {
     setActiveCategories((prev) => {
       const next = new Set(prev);
       if (next.has(category)) {
@@ -319,7 +322,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
   }
 
   function selectAll() {
-    setActiveCategories(new Set(DEFAULT_FILTER_CATEGORIES));
+    setActiveCategories(new Set(availableCategories));
   }
 
   function clearAll() {
@@ -354,18 +357,18 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {DEFAULT_FILTER_CATEGORIES.map((cat) => {
-            const config = CATEGORIES[cat];
+          {availableCategories.map((cat) => {
+            const config = getCategoryConfig(cat);
             const isActive = activeCategories.has(cat);
             return (
               <button
                 key={cat}
                 type="button"
                 onClick={() => toggleCategory(cat)}
-                className={`text-xs px-3 py-1.5 rounded-full font-sans transition-colors border ${
+                className={`text-xs px-3 py-2 rounded-md font-sans font-medium transition-colors border ${
                   isActive
                     ? 'bg-gt-orange text-white border-gt-orange'
-                    : 'bg-gt-card text-gt-text-muted border-gt-border hover:border-gt-border-strong'
+                    : 'bg-gt-card text-gt-text-muted border-gt-border hover:border-gt-border-strong hover:text-gt-text'
                 }`}
               >
                 <span className="mr-1">{config.emoji}</span>
