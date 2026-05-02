@@ -11,18 +11,29 @@ interface CategoryConfig {
 }
 
 const CATEGORIES_KNOWN: Record<string, CategoryConfig> = {
+  // Estrada e veículo
   'gas station': { label: 'Postos', emoji: '⛽', color: '#E06226' },
+  mechanic: { label: 'Oficina', emoji: '🔧', color: '#8090A0' },
+  'rv support': { label: 'Aceita RV', emoji: '🚐', color: '#1F8A8A' },
+  // Hospedagem
   hotel: { label: 'Hospedagem', emoji: '🛌', color: '#7280C4' },
+  guesthouse: { label: 'Pousada', emoji: '🏡', color: '#A48B65' },
   camping: { label: 'Camping', emoji: '🏕️', color: '#5A8A48' },
+  // Comida
   restaurant: { label: 'Restaurante', emoji: '🍽️', color: '#B8505A' },
   'fast food': { label: 'Fast Food', emoji: '🍔', color: '#D49850' },
   cafe: { label: 'Café', emoji: '☕', color: '#8B5A3C' },
   bakery: { label: 'Padaria', emoji: '🥐', color: '#C39556' },
+  // Turismo
   attraction: { label: 'Atração', emoji: '⭐', color: '#E0A025' },
-  'rest area': { label: 'Área de Descanso', emoji: '🅿️', color: '#5C7080' },
   'national park': { label: 'Parque Nacional', emoji: '🌲', color: '#3F7050' },
+  // Logística
+  'rest area': { label: 'Área de Descanso', emoji: '🅿️', color: '#5C7080' },
   'border crossing': { label: 'Fronteira', emoji: '🛂', color: '#A050A0' },
-  'rv support': { label: 'Aceita RV', emoji: '🚐', color: '#1F8A8A' },
+  // Saúde / emergência
+  hospital: { label: 'Hospital', emoji: '🏥', color: '#C04050' },
+  pharmacy: { label: 'Farmácia', emoji: '💊', color: '#5BAA5F' },
+  // Categorias do Radar (podem aparecer em outros países, mantidas como fallback)
   viewpoint: { label: 'Mirante', emoji: '🏞️', color: '#7080A0' },
   museum: { label: 'Museu', emoji: '🏛️', color: '#806060' },
   parking: { label: 'Estacionamento', emoji: '🚗', color: '#606060' },
@@ -31,24 +42,36 @@ const CATEGORIES_KNOWN: Record<string, CategoryConfig> = {
 
 /**
  * Ordem preferencial de exibição quando a categoria é conhecida.
- * Categorias desconhecidas (não listadas aqui) ficam no fim, em ordem alfabética.
+ * Agrupa por contexto: estrada → hospedagem → comida → turismo → logística → emergência.
+ * Categorias desconhecidas (não listadas) ficam no fim, em ordem alfabética.
  */
 const PREFERRED_ORDER: string[] = [
+  // Estrada
   'gas station',
+  'mechanic',
+  // Hospedagem
   'hotel',
+  'guesthouse',
   'camping',
+  // Comida
   'restaurant',
   'fast food',
   'cafe',
   'bakery',
   'supermarket',
+  // Turismo
   'attraction',
   'viewpoint',
   'museum',
   'national park',
+  // Logística
   'rest area',
   'parking',
   'border crossing',
+  // Emergência
+  'hospital',
+  'pharmacy',
+  // Transversal (sempre no fim)
   'rv support',
 ];
 
