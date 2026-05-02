@@ -83,6 +83,8 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
     // style.load garante que o estilo (e os glyphs) tá pronto antes de adicionar custom layers
     map.current.on('style.load', () => {
+      // Carrega emojis das categorias como sprite no mapa (pra usar no symbol layer)
+      loadCategoryIcons(map.current!);
       addWaypointsLayers([]);
       setMapReady(true);
       loadCountryData(geo.countryName ?? DEFAULT_COUNTRY);
@@ -222,17 +224,19 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       },
     });
 
-    // Pontos individuais — cor vem do grupo da categoria (pré-calculada no GeoJSON)
+    // Pontos individuais — usa o sprite gerado em loadCategoryIcons
+    // (bolinha colorida da categoria + emoji por cima, tudo num único PNG).
+    // iconKey vem pré-calculado no GeoJSON.
     m.addLayer({
       id: 'unclustered-points',
-      type: 'circle',
+      type: 'symbol',
       source: 'waypoints',
       filter: ['!', ['has', 'point_count']],
-      paint: {
-        'circle-color': ['get', 'color'],
-        'circle-radius': 7,
-        'circle-stroke-width': 2,
-        'circle-stroke-color': '#0F0F0F', // contorno escuro pra destacar do mapa dark
+      layout: {
+        'icon-image': ['get', 'iconKey'],
+        'icon-size': 0.55,
+        'icon-allow-overlap': true,
+        'icon-ignore-placement': true,
       },
     });
 
@@ -359,9 +363,14 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
                 key={groupKey}
                 type="button"
                 onClick={() => toggleGroup(groupKey)}
+                style={
+                  isActive
+                    ? { color: config.color, borderColor: config.color }
+                    : undefined
+                }
                 className={`text-xs px-3 py-2 rounded-md font-sans font-medium transition-all border ${
                   isActive
-                    ? 'bg-transparent text-gt-orange border-gt-orange'
+                    ? 'bg-transparent'
                     : 'bg-transparent text-gt-text-dim border-gt-border/40 opacity-50 hover:opacity-90 hover:text-gt-text-muted'
                 }`}
               >
@@ -377,7 +386,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       <div className="relative">
         <div
           ref={mapContainer}
-          className="w-full h-[70vh] min-h-[500px] rounded-lg overflow-hidden border border-gt-border bg-gt-card"
+          className="gt-map-medium w-full h-[70vh] min-h-[500px] rounded-lg overflow-hidden border border-gt-border bg-gt-card"
         />
 
         {/* Overlay de loading */}
@@ -436,6 +445,11 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
       {/* Estilos do popup (Tailwind não consegue alcançar dentro do popup do MapLibre) */}
       <style jsx global>{`
+        /* Clareia o tile escuro pro tom intermediário (entre Dark Matter e Voyager).
+           Brilho 1.25 + saturação leve preserva os clusters/pinos coloridos. */
+        .gt-map-medium .maplibregl-canvas {
+          filter: brightness(1.28) saturate(1.05) contrast(0.95);
+        }
         .gt-popup .maplibregl-popup-content {
           background: #0f0f0f;
           color: #ededed;
@@ -469,6 +483,92 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
 // === Helpers ===
 
+/**
+ * Sanitiza nome da categoria pra usar como chave do sprite no MapLibre.
+ * "gas station" → "gt-icon-gas-station".
+ */
+function iconKeyFor(category: string): string {
+  return `gt-icon-${category.replace(/\s+/g, '-').toLowerCase()}`;
+}
+
+/**
+ * Lista de categorias que podem aparecer nos arquivos de país.
+ * Inclui as 16 oficiais + as 4 do Radar (que ainda podem chegar como fallback).
+ */
+const ALL_CATEGORIES_FOR_ICONS: string[] = [
+  'gas station',
+  'mechanic',
+  'hotel',
+  'guesthouse',
+  'camping',
+  'restaurant',
+  'fast food',
+  'cafe',
+  'bakery',
+  'attraction',
+  'rest area',
+  'national park',
+  'border crossing',
+  'rv support',
+  'hospital',
+  'pharmacy',
+  'viewpoint',
+  'museum',
+  'parking',
+  'supermarket',
+];
+
+/**
+ * Gera um sprite PNG por categoria (bolinha colorida + emoji por cima)
+ * via canvas 2D e registra como imagem no mapa. O symbol layer dos pontos
+ * individuais referencia esses sprites por chave (`iconKey`).
+ *
+ * O fallback de fonte cobre mac/win/linux pra emojis renderizarem coloridos
+ * mesmo quando o sistema não tem o conjunto principal.
+ */
+function loadCategoryIcons(map: maplibregl.Map) {
+  const PIXEL_RATIO = window.devicePixelRatio || 1;
+  const SIZE = Math.round(40 * PIXEL_RATIO);
+  const RADIUS = SIZE / 2 - 2 * PIXEL_RATIO;
+  const STROKE = 2 * PIXEL_RATIO;
+  const FONT_SIZE = Math.round(20 * PIXEL_RATIO);
+
+  for (const category of ALL_CATEGORIES_FOR_ICONS) {
+    const key = iconKeyFor(category);
+    if (map.hasImage(key)) continue;
+
+    const config = getGroupConfig(categoryToGroupKey(category));
+
+    const canvas = document.createElement('canvas');
+    canvas.width = SIZE;
+    canvas.height = SIZE;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) continue;
+
+    // Bolinha colorida da categoria
+    ctx.beginPath();
+    ctx.arc(SIZE / 2, SIZE / 2, RADIUS, 0, Math.PI * 2);
+    ctx.fillStyle = config.color;
+    ctx.fill();
+    ctx.lineWidth = STROKE;
+    ctx.strokeStyle = '#0F0F0F';
+    ctx.stroke();
+
+    // Emoji por cima
+    ctx.font = `${FONT_SIZE}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Twemoji Mozilla", sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    // Pequeno offset vertical pra centralizar opticamente — emojis tendem
+    // a ter uma baseline um pouco mais alta que o centro geométrico.
+    ctx.fillText(config.emoji, SIZE / 2, SIZE / 2 + PIXEL_RATIO);
+
+    // pixelRatio garante que em retina o sprite não fica 2x maior
+    map.addImage(key, ctx.getImageData(0, 0, SIZE, SIZE), {
+      pixelRatio: PIXEL_RATIO,
+    });
+  }
+}
+
 function waypointsToGeoJSON(
   waypoints: Waypoint[]
 ): GeoJSON.FeatureCollection<GeoJSON.Point> {
@@ -490,6 +590,7 @@ function waypointsToGeoJSON(
           aceitaRv: w.aceitaRv,
           countryCode: w.countryCode,
           color: groupConfig.color,
+          iconKey: iconKeyFor(w.categoria),
         },
       };
     }),
