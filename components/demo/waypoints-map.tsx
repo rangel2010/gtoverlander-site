@@ -58,7 +58,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         : [DEFAULT_CENTER.long, DEFAULT_CENTER.lat];
 
     const initialZoom =
-      geo.lat !== null && geo.long !== null ? 8 : DEFAULT_CENTER.zoom;
+      geo.lat !== null && geo.long !== null ? 10 : DEFAULT_CENTER.zoom;
 
     map.current = new maplibregl.Map({
       container: mapContainer.current,
@@ -153,6 +153,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       cluster: true,
       clusterMaxZoom: 14,
       clusterRadius: 50,
+      clusterMinPoints: 10,
     });
 
     m.addLayer({
@@ -202,7 +203,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       filter: ['!', ['has', 'point_count']],
       layout: {
         'icon-image': ['get', 'iconKey'],
-        'icon-size': 0.7,
+        'icon-size': 0.85,
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
       },
@@ -288,7 +289,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         ? [geo.long, geo.lat]
         : [DEFAULT_CENTER.long, DEFAULT_CENTER.lat];
     const zoom =
-      geo.lat !== null && geo.long !== null ? 8 : DEFAULT_CENTER.zoom;
+      geo.lat !== null && geo.long !== null ? 10 : DEFAULT_CENTER.zoom;
     map.current.easeTo({ center, zoom, bearing: 0, pitch: 0, duration: 700 });
   }
 
@@ -510,11 +511,13 @@ function loadCategoryIcons(map: maplibregl.Map) {
     const ctx = canvas.getContext('2d');
     if (!ctx) continue;
 
-    // Bolinha vazada — só contorno colorido com o emoji dentro,
+    // Quadrado com cantos arredondados (estilo chip), só contorno colorido —
     // visualmente coerente com os chips ativos (transparent + colored border).
+    const PAD = 2 * PIXEL_RATIO;
+    const CORNER = 8 * PIXEL_RATIO;
     ctx.beginPath();
-    ctx.arc(SIZE / 2, SIZE / 2, RADIUS, 0, Math.PI * 2);
-    ctx.lineWidth = STROKE * 1.5; // ring um pouco mais grosso pra dar presença
+    ctx.roundRect(PAD, PAD, SIZE - 2 * PAD, SIZE - 2 * PAD, CORNER);
+    ctx.lineWidth = STROKE * 1.5;
     ctx.strokeStyle = groupColor;
     ctx.stroke();
 

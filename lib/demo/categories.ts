@@ -20,7 +20,7 @@ const CATEGORIES_KNOWN: Record<string, CategoryConfig> = {
   guesthouse: { label: 'Pousada', emoji: '🏡', color: '#A48B65' },
   camping: { label: 'Camping', emoji: '🏕️', color: '#5A8A48' },
   // Comida
-  restaurant: { label: 'Restaurante', emoji: '🍽️', color: '#B8505A' },
+  restaurant: { label: 'Restaurante', emoji: '🍴', color: '#B8505A' },
   'fast food': { label: 'Fast Food', emoji: '🍔', color: '#D49850' },
   cafe: { label: 'Café', emoji: '☕', color: '#8B5A3C' },
   bakery: { label: 'Padaria', emoji: '🥐', color: '#C39556' },
