@@ -37,6 +37,17 @@ export interface Waypoint {
   long: number;
   countryCode: string;
   aceitaRv: boolean;
+  /**
+   * Pontos destacados (curadoria editorial OU patrocinado Business) — recebem
+   * caixinha colorida da categoria no mapa. Comuns ficam só com o emoji.
+   */
+  featured?: boolean;
+  /**
+   * Ícone customizado pra pontos destacados — pode ser emoji (ex: '✌️' pra Rota Biker)
+   * ou (futuramente) URL de logo de marca pra Business. Quando ausente, destacado
+   * usa o emoji da categoria por padrão.
+   */
+  customIcon?: string;
 }
 
 /**

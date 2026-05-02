@@ -115,6 +115,22 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       if (!fileRes.ok) throw new Error('Falha ao carregar dados do país');
       const data: CountryFile = await fileRes.json();
 
+      // Registra sprites custom (combinações únicas categoria + customIcon)
+      // ANTES de setar os waypoints, pra que MapLibre encontre o sprite
+      // quando renderizar o symbol layer.
+      if (map.current) {
+        const seen = new Set<string>();
+        for (const w of data.waypoints) {
+          if (w.featured && w.customIcon) {
+            const k = `${w.categoria}|${w.customIcon}`;
+            if (!seen.has(k)) {
+              seen.add(k);
+              registerCustomSprite(map.current, w.categoria, w.customIcon);
+            }
+          }
+        }
+      }
+
       const uniqueGroups = Array.from(
         new Set(data.waypoints.map((w) => categoryToGroupKey(w.categoria)))
       );
@@ -336,7 +352,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
                 className={`text-xs px-3 py-2 rounded-md font-sans font-medium transition-all border ${
                   isActive
                     ? 'bg-transparent'
-                    : 'bg-transparent text-gt-text-dim border-gt-border/40 opacity-50 hover:opacity-90 hover:text-gt-text-muted'
+                    : 'bg-transparent text-gt-text-muted border-gt-border/60 hover:text-gt-text hover:border-gt-text/30'
                 }`}
               >
                 <span className="mr-1">{config.emoji}</span>
@@ -464,8 +480,24 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
 // === Helpers ===
 
-function iconKeyFor(category: string): string {
-  return `gt-icon-${category.replace(/\s+/g, '-').toLowerCase()}`;
+/**
+ * Sanitiza string pra compor chave de sprite. Ex: "gas station" → "gas-station".
+ */
+function slugify(s: string): string {
+  return s.replace(/\s+/g, '-').toLowerCase();
+}
+
+/**
+ * Computa a chave do sprite pra um waypoint.
+ *  - Comum: 'plain-{cat}' (só emoji da categoria, sem caixinha)
+ *  - Destacado sem customIcon: 'featured-{cat}' (emoji + caixinha colorida da categoria)
+ *  - Destacado com customIcon: 'custom-{cat}-{icon}' (icon custom + caixinha)
+ */
+function iconKeyForWaypoint(w: { categoria: string; featured?: boolean; customIcon?: string }): string {
+  const cat = slugify(w.categoria);
+  if (!w.featured) return `plain-${cat}`;
+  if (!w.customIcon) return `featured-${cat}`;
+  return `custom-${cat}-${slugify(w.customIcon)}`;
 }
 
 const ALL_CATEGORIES_FOR_ICONS: string[] = [
@@ -491,45 +523,88 @@ const ALL_CATEGORIES_FOR_ICONS: string[] = [
   'supermarket',
 ];
 
-function loadCategoryIcons(map: maplibregl.Map) {
-  const PIXEL_RATIO = window.devicePixelRatio || 1;
-  const SIZE = Math.round(40 * PIXEL_RATIO);
-  const RADIUS = SIZE / 2 - 2 * PIXEL_RATIO;
-  const STROKE = 2 * PIXEL_RATIO;
-  const FONT_SIZE = Math.round(20 * PIXEL_RATIO);
+/**
+ * Desenha um sprite de pino no canvas. Se withBox=true, desenha a caixinha
+ * colorida da categoria ao redor do emoji. emoji pode ser o da categoria
+ * (default) ou um custom (ex: ✌️ pra Rota Biker, M pra McDonald's).
+ */
+function drawPinSprite(
+  emoji: string,
+  groupColor: string,
+  withBox: boolean,
+  pixelRatio: number
+): ImageData {
+  const SIZE = Math.round(40 * pixelRatio);
+  const STROKE = 2 * pixelRatio;
+  const FONT_SIZE = Math.round(20 * pixelRatio);
+  const PAD = 7 * pixelRatio;
+  const CORNER = 5 * pixelRatio;
 
-  for (const category of ALL_CATEGORIES_FOR_ICONS) {
-    const key = iconKeyFor(category);
-    if (map.hasImage(key)) continue;
+  const canvas = document.createElement('canvas');
+  canvas.width = SIZE;
+  canvas.height = SIZE;
+  const ctx = canvas.getContext('2d')!;
 
-    const groupColor = getGroupConfig(categoryToGroupKey(category)).color;
-    const emoji = getCategoryConfig(category).emoji;
-
-    const canvas = document.createElement('canvas');
-    canvas.width = SIZE;
-    canvas.height = SIZE;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) continue;
-
-    // Quadrado com cantos arredondados (estilo chip), só contorno colorido —
-    // visualmente coerente com os chips ativos (transparent + colored border).
-    const PAD = 7 * PIXEL_RATIO;
-    const CORNER = 5 * PIXEL_RATIO;
+  if (withBox) {
     ctx.beginPath();
     ctx.roundRect(PAD, PAD, SIZE - 2 * PAD, SIZE - 2 * PAD, CORNER);
     ctx.lineWidth = STROKE * 1.5;
     ctx.strokeStyle = groupColor;
     ctx.stroke();
-
-    ctx.font = `${FONT_SIZE}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Twemoji Mozilla", sans-serif`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(emoji, SIZE / 2, SIZE / 2 + PIXEL_RATIO);
-
-    map.addImage(key, ctx.getImageData(0, 0, SIZE, SIZE), {
-      pixelRatio: PIXEL_RATIO,
-    });
   }
+
+  ctx.font = `${FONT_SIZE}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Twemoji Mozilla", sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(emoji, SIZE / 2, SIZE / 2 + pixelRatio);
+
+  return ctx.getImageData(0, 0, SIZE, SIZE);
+}
+
+/**
+ * Pré-registra os sprites BASE pra todas as categorias conhecidas:
+ *  - 'plain-{cat}': comum (só emoji, sem caixinha)
+ *  - 'featured-{cat}': destacado sem customIcon (emoji + caixinha)
+ *
+ * Sprites com customIcon são gerados sob demanda em registerCustomSprite().
+ */
+function loadCategoryIcons(map: maplibregl.Map) {
+  const PIXEL_RATIO = window.devicePixelRatio || 1;
+
+  for (const category of ALL_CATEGORIES_FOR_ICONS) {
+    const groupColor = getGroupConfig(categoryToGroupKey(category)).color;
+    const emoji = getCategoryConfig(category).emoji;
+    const cat = slugify(category);
+
+    const plainKey = `plain-${cat}`;
+    if (!map.hasImage(plainKey)) {
+      map.addImage(plainKey, drawPinSprite(emoji, groupColor, false, PIXEL_RATIO), {
+        pixelRatio: PIXEL_RATIO,
+      });
+    }
+
+    const featuredKey = `featured-${cat}`;
+    if (!map.hasImage(featuredKey)) {
+      map.addImage(featuredKey, drawPinSprite(emoji, groupColor, true, PIXEL_RATIO), {
+        pixelRatio: PIXEL_RATIO,
+      });
+    }
+  }
+}
+
+/**
+ * Registra (se ainda não existe) um sprite com customIcon pra uma categoria.
+ * Chamado lazy quando a demo recebe waypoints com customIcon.
+ */
+function registerCustomSprite(map: maplibregl.Map, category: string, customIcon: string) {
+  const cat = slugify(category);
+  const key = `custom-${cat}-${slugify(customIcon)}`;
+  if (map.hasImage(key)) return;
+  const PIXEL_RATIO = window.devicePixelRatio || 1;
+  const groupColor = getGroupConfig(categoryToGroupKey(category)).color;
+  map.addImage(key, drawPinSprite(customIcon, groupColor, true, PIXEL_RATIO), {
+    pixelRatio: PIXEL_RATIO,
+  });
 }
 
 function waypointsToGeoJSON(
@@ -552,7 +627,8 @@ function waypointsToGeoJSON(
           aceitaRv: w.aceitaRv,
           countryCode: w.countryCode,
           color: groupConfig.color,
-          iconKey: iconKeyFor(w.categoria),
+          featured: w.featured ?? false,
+          iconKey: iconKeyForWaypoint(w),
         },
       };
     }),
