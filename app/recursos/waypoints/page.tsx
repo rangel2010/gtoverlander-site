@@ -83,7 +83,7 @@ export default function WaypointsPage() {
             <p className="text-gt-text-muted leading-relaxed font-sans mb-6">
               Mapa interativo com os waypoints curados pelo GT. Filtra por
               categoria, navega pelos pontos, abre os detalhes. Mais de 4
-              milhões de lugares em 209 países, e você vê tudo direto aqui.
+              milhões de lugares em 209 países — aqui tem uma prévia pra você.
             </p>
             <a
               href="/demo"
@@ -161,8 +161,7 @@ export default function WaypointsPage() {
           </p>
           <p className="text-gt-text leading-relaxed font-sans">
             Por ser uma base própria, os waypoints podem ficar disponíveis
-            offline em qualquer lugar do mundo. Coisa que app que depende do
-            Google Places não consegue.
+            offline em qualquer lugar do mundo. Em Breve!
           </p>
         </div>
       </section>
@@ -175,8 +174,9 @@ export default function WaypointsPage() {
           <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
             O Google Maps conhece tudo — e por isso traz tudo, inclusive o que
             não importa pra você. O GT entrega só o que o overlander precisa:
-            postos, campings, hospedagem, oficinas, atrativos. Curadoria, não
-            enxurrada.
+            postos, campings, hospedagem, oficinas, atrativos. Locais realmente
+            relevantes para o seu planejamento, e em breve uma base viva,
+            podendo ser enriquecida e curada pela comunidade.
           </p>
         </div>
       </section>
