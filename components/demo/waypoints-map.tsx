@@ -100,7 +100,9 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
     if (!map.current) return;
     try {
       setLoadingMessage(`Buscando waypoints do ${countryName}...`);
-      const manifestRes = await fetch(`${BLOB_BASE_URL}/manifest.json`);
+      const manifestRes = await fetch(`${BLOB_BASE_URL}/manifest.json`, {
+        cache: 'no-store',
+      });
       if (!manifestRes.ok) throw new Error('Falha ao carregar manifest');
       const manifest: Manifest = await manifestRes.json();
       const entry = manifest.regions[countryName];
@@ -111,7 +113,9 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       setLoadingMessage(
         `Carregando ${entry.count.toLocaleString('pt-BR')} waypoints do ${countryName} (${fileSizeMB} MB)...`
       );
-      const fileRes = await fetch(`${BLOB_BASE_URL}/${entry.fileName}`);
+      const fileRes = await fetch(`${BLOB_BASE_URL}/${entry.fileName}`, {
+        cache: 'no-store',
+      });
       if (!fileRes.ok) throw new Error('Falha ao carregar dados do país');
       const data: CountryFile = await fileRes.json();
 
