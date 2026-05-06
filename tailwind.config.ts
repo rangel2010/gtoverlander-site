@@ -14,7 +14,7 @@ const config: Config = {
         'gt-brown': '#904e22',
 
         // Dark mode universal — harmonizado com app.gtoverlander.com.br
-        'gt-bg': '#0f0f0f',          // background principal do site
+        'gt-bg': '#122e1f',          // background principal do site (verde oficial GT)
         'gt-card': '#1c1c1c',         // cards e áreas elevadas
         'gt-card-hover': '#262626',   // hover de cards
         'gt-border': '#2a2a2a',       // bordas sutis
