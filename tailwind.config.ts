@@ -13,12 +13,12 @@ const config: Config = {
         'gt-orange': '#e06226',
         'gt-brown': '#904e22',
 
-        // Dark mode universal — harmonizado com app.gtoverlander.com.br
-        'gt-bg': '#122e1f',          // background principal do site (verde oficial GT)
-        'gt-card': '#1c1c1c',         // cards e áreas elevadas
-        'gt-card-hover': '#262626',   // hover de cards
-        'gt-border': '#2a2a2a',       // bordas sutis
-        'gt-border-strong': '#3a3a3a', // bordas mais visíveis
+        // Dark mode harmonizado em família verde GT
+        'gt-bg': '#122e1f',          // background principal (verde oficial GT)
+        'gt-card': '#1a3d29',         // cards e áreas elevadas (verde 1 tom acima)
+        'gt-card-hover': '#234d33',   // hover de cards (verde 2 tons acima)
+        'gt-border': '#2a4a35',       // bordas sutis (verde escuro intermediário)
+        'gt-border-strong': '#3a5a44', // bordas mais visíveis (verde mais claro)
 
         // Texto sobre dark
         'gt-text': '#f5f5f5',
