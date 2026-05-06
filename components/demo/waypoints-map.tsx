@@ -15,6 +15,7 @@ import {
   categoryToGroupKey,
   getCategoryConfig,
   getGroupConfig,
+  resolveCustomIcon,
   sortGroups,
 } from '@/lib/demo/categories';
 
@@ -125,11 +126,12 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       if (map.current) {
         const seen = new Set<string>();
         for (const w of data.waypoints) {
-          if (w.featured && w.customIcon) {
-            const k = `${w.categoria}|${w.customIcon}`;
+          if (w.customIcon) {
+            const featured = !!w.featured;
+            const k = `${w.categoria}|${w.customIcon}|${featured}`;
             if (!seen.has(k)) {
               seen.add(k);
-              registerCustomSprite(map.current, w.categoria, w.customIcon);
+              registerCustomSprite(map.current, w.categoria, w.customIcon, featured);
             }
           }
         }
@@ -487,16 +489,21 @@ function slugify(s: string): string {
 }
 
 /**
- * Computa a chave do sprite pra um waypoint.
- *  - Comum: 'plain-{cat}' (só emoji da categoria, sem caixinha)
- *  - Destacado sem customIcon: 'featured-{cat}' (emoji + caixinha colorida da categoria)
- *  - Destacado com customIcon: 'custom-{cat}-{icon}' (icon custom + caixinha)
+ * Computa a chave do sprite pra um waypoint. 4 estados possíveis:
+ *  - Comum sem customIcon: 'plain-{cat}' (emoji da categoria, sem caixinha)
+ *  - Comum com customIcon: 'plain-custom-{cat}-{icon}' (emoji subtipo, sem caixinha)
+ *  - Destacado sem customIcon: 'featured-{cat}' (emoji da categoria + caixinha laranja)
+ *  - Destacado com customIcon: 'custom-{cat}-{icon}' (emoji custom + caixinha laranja)
  */
 function iconKeyForWaypoint(w: { categoria: string; featured?: boolean; customIcon?: string }): string {
   const cat = slugify(w.categoria);
-  if (!w.featured) return `plain-${cat}`;
-  if (!w.customIcon) return `featured-${cat}`;
-  return `custom-${cat}-${slugify(w.customIcon)}`;
+  const hasCustom = !!w.customIcon;
+  if (!w.featured) {
+    if (!hasCustom) return `plain-${cat}`;
+    return `plain-custom-${cat}-${slugify(w.customIcon!)}`;
+  }
+  if (!hasCustom) return `featured-${cat}`;
+  return `custom-${cat}-${slugify(w.customIcon!)}`;
 }
 
 const ALL_CATEGORIES_FOR_ICONS: string[] = [
@@ -598,14 +605,28 @@ function loadCategoryIcons(map: maplibregl.Map) {
 /**
  * Registra (se ainda não existe) um sprite com customIcon pra uma categoria.
  * Chamado lazy quando a demo recebe waypoints com customIcon.
+ *
+ * featured=true → caixinha laranja GT (destacado editorial/business)
+ * featured=false → sem caixinha (subtipo dentro da categoria, ex: cachoeira em Atração)
+ *
+ * customIcon pode ser slug (ex: 'waterfall') ou emoji direto (ex: '✌️' Rota Biker).
+ * resolveCustomIcon mapeia slug → emoji; passthrough quando já é emoji.
  */
-function registerCustomSprite(map: maplibregl.Map, category: string, customIcon: string) {
+function registerCustomSprite(
+  map: maplibregl.Map,
+  category: string,
+  customIcon: string,
+  featured: boolean
+) {
   const cat = slugify(category);
-  const key = `custom-${cat}-${slugify(customIcon)}`;
+  const key = featured
+    ? `custom-${cat}-${slugify(customIcon)}`
+    : `plain-custom-${cat}-${slugify(customIcon)}`;
   if (map.hasImage(key)) return;
   const PIXEL_RATIO = window.devicePixelRatio || 1;
   const groupColor = getGroupConfig(categoryToGroupKey(category)).color;
-  map.addImage(key, drawPinSprite(customIcon, groupColor, true, PIXEL_RATIO), {
+  const emoji = resolveCustomIcon(customIcon);
+  map.addImage(key, drawPinSprite(emoji, groupColor, featured, PIXEL_RATIO), {
     pixelRatio: PIXEL_RATIO,
   });
 }
@@ -645,7 +666,8 @@ function buildPopupHTML(props: Record<string, unknown>): string {
   const categoria = String(props.categoria ?? '');
   const aceitaRv = props.aceitaRv === true || props.aceitaRv === 'true';
   const editorialLabel = String(props.editorialLabel ?? '');
-  const customIcon = String(props.customIcon ?? '');
+  const customIconRaw = String(props.customIcon ?? '');
+  const customIcon = resolveCustomIcon(customIconRaw);
   const config = getCategoryConfig(categoria);
 
   const escape = (s: string) =>

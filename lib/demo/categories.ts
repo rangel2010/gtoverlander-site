@@ -147,3 +147,39 @@ export function sortGroups(groupKeys: string[]): string[] {
     return a.localeCompare(b);
   });
 }
+
+// === CUSTOM ICONS (subtipo dentro de uma categoria) ===
+// CustomIcon no banco pode vir como:
+//  - emoji direto (legado, ex: '✌️' pra Rota Biker editorial)
+//  - slug de subtipo (ex: 'waterfall', 'icecream', 'cave') vindo da importação OSM
+// resolveCustomIcon faz o mapeamento slug → emoji, mantendo passthrough pra emoji direto.
+const CUSTOM_ICON_EMOJIS: Record<string, string> = {
+  // Atração — subtipos
+  ruins: '🏛️',
+  museum: '🖼️',
+  monument: '🗿',
+  peak: '⛰️',
+  waterfall: '🌊',
+  cave: '🦇',
+  trailhead: '🥾',
+  ferry: '⛴️',
+  // Posto — subtipo
+  charging: '⚡',
+  // Restaurante — subtipo
+  bar: '🍺',
+  // Fast food — subtipo
+  icecream: '🍦',
+  // Hospedagem — subtipos
+  cabin: '🏡',
+  shelter: '🛖',
+  // Área de descanso — subtipo
+  picnic: '🧺',
+  // Camping — subtipo
+  wild_camp: '⛺',
+};
+
+export function resolveCustomIcon(customIcon: string): string {
+  if (!customIcon) return '';
+  // Slug → emoji se conhecido; senão devolve o próprio valor (legado emoji direto).
+  return CUSTOM_ICON_EMOJIS[customIcon] ?? customIcon;
+}
