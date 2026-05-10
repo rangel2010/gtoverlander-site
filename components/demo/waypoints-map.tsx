@@ -39,6 +39,13 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
   const [activeCountry, setActiveCountry] = useState<string | null>(null);
   const [mapReady, setMapReady] = useState(false);
 
+  // Modo navegação (mobile-only): GPS em tempo real + fullscreen + filtros via hamburger
+  const [isMobile, setIsMobile] = useState(false);
+  const [isNavMode, setIsNavMode] = useState(false);
+  const [isFiltersDrawerOpen, setIsFiltersDrawerOpen] = useState(false);
+  const watchIdRef = useRef<number | null>(null);
+  const userMarkerRef = useRef<maplibregl.Marker | null>(null);
+
   const filteredWaypoints = useMemo(() => {
     if (allWaypoints.length === 0) return [];
     const rvActive = activeGroups.has('rv support');
@@ -315,9 +322,119 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
     map.current.easeTo({ center, zoom, bearing: 0, pitch: 0, duration: 700 });
   }
 
+  // === Modo navegação ===
+
+  function startWatchingPosition() {
+    if (!navigator.geolocation || !map.current) return;
+    if (watchIdRef.current !== null) return; // já está rodando
+
+    watchIdRef.current = navigator.geolocation.watchPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        if (!map.current) return;
+
+        // Cria ou atualiza marcador azul pulsante
+        if (!userMarkerRef.current) {
+          const el = document.createElement('div');
+          el.className = 'gt-user-location-dot';
+          userMarkerRef.current = new maplibregl.Marker({ element: el })
+            .setLngLat([longitude, latitude])
+            .addTo(map.current);
+        } else {
+          userMarkerRef.current.setLngLat([longitude, latitude]);
+        }
+
+        // Centraliza com easing suave + zoom apertado
+        map.current.easeTo({
+          center: [longitude, latitude],
+          zoom: Math.max(map.current.getZoom(), 15),
+          duration: 800,
+        });
+      },
+      (err) => {
+        console.error('Geolocation error:', err);
+        if (err.code === err.PERMISSION_DENIED) {
+          alert(
+            'Pra usar o modo navegação, precisamos da sua localização. Ativa nas permissões do navegador.'
+          );
+          exitNavMode();
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        maximumAge: 5000,
+        timeout: 30000,
+      }
+    );
+  }
+
+  function stopWatchingPosition() {
+    if (watchIdRef.current !== null) {
+      navigator.geolocation.clearWatch(watchIdRef.current);
+      watchIdRef.current = null;
+    }
+  }
+
+  function startNavMode() {
+    setActiveGroups(new Set(availableGroups)); // ativa todas categorias
+    setIsNavMode(true);
+    startWatchingPosition();
+  }
+
+  function exitNavMode() {
+    stopWatchingPosition();
+    if (userMarkerRef.current) {
+      userMarkerRef.current.remove();
+      userMarkerRef.current = null;
+    }
+    setIsNavMode(false);
+    setIsFiltersDrawerOpen(false);
+  }
+
+  // Detecta se é mobile (só client-side)
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  // Pausa GPS quando aba perde foco (economiza bateria)
+  useEffect(() => {
+    if (!isNavMode) return;
+    const handleVisibility = () => {
+      if (document.hidden) {
+        stopWatchingPosition();
+      } else {
+        startWatchingPosition();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () =>
+      document.removeEventListener('visibilitychange', handleVisibility);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isNavMode]);
+
+  // Resize do mapa quando entra/sai de fullscreen (MapLibre precisa recalcular)
+  useEffect(() => {
+    if (!map.current) return;
+    const t = setTimeout(() => {
+      map.current?.resize();
+    }, 150);
+    return () => clearTimeout(t);
+  }, [isNavMode]);
+
+  // Cleanup quando desmontar
+  useEffect(() => {
+    return () => {
+      stopWatchingPosition();
+      if (userMarkerRef.current) userMarkerRef.current.remove();
+    };
+  }, []);
+
   return (
     <div className="space-y-4">
-      <div className="space-y-3">
+      <div className={`space-y-3 ${isNavMode ? 'invisible' : ''}`}>
         <div className="flex items-center justify-between flex-wrap gap-3">
           <p className="text-xs uppercase tracking-wider text-gt-text-muted font-sans">
             Filtrar por categoria
@@ -364,13 +481,167 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         </div>
       </div>
 
-      <div className="relative">
+      <div
+        className={
+          isNavMode
+            ? 'fixed inset-0 z-[100] bg-gt-bg'
+            : 'relative'
+        }
+      >
         <div
           ref={mapContainer}
-          className="gt-map-medium w-full h-[70vh] min-h-[500px] rounded-lg overflow-hidden border border-gt-border bg-gt-card"
+          className={
+            isNavMode
+              ? 'gt-map-medium w-full h-full'
+              : 'gt-map-medium w-full h-[70vh] min-h-[500px] rounded-lg overflow-hidden border border-gt-border bg-gt-card'
+          }
         />
 
-        {mapReady && (
+        {/* Botão "Modo navegação" — só mobile, fora de nav mode */}
+        {isMobile && !isNavMode && mapReady && (
+          <button
+            type="button"
+            onClick={startNavMode}
+            className="absolute bottom-6 right-6 z-20 bg-gt-orange hover:bg-gt-orange/90 text-white px-4 py-3 rounded-full shadow-lg flex items-center gap-2 font-sans text-sm font-medium transition-colors"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="3" />
+              <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+            </svg>
+            Modo navegação
+          </button>
+        )}
+
+        {/* Botão sair do modo navegação (X) */}
+        {isNavMode && (
+          <button
+            type="button"
+            onClick={exitNavMode}
+            aria-label="Sair do modo navegação"
+            className="absolute top-4 right-4 z-[110] w-11 h-11 flex items-center justify-center bg-gt-bg/90 backdrop-blur-sm text-gt-text border border-gt-border rounded-full shadow-lg"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        )}
+
+        {/* Botão hamburger pra abrir drawer de filtros */}
+        {isNavMode && !isFiltersDrawerOpen && (
+          <button
+            type="button"
+            onClick={() => setIsFiltersDrawerOpen(true)}
+            aria-label="Abrir filtros de categoria"
+            className="absolute top-4 left-4 z-[110] w-11 h-11 flex items-center justify-center bg-gt-bg/90 backdrop-blur-sm text-gt-text border border-gt-border rounded-full shadow-lg"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M3 6h18M3 12h18M3 18h18" />
+            </svg>
+          </button>
+        )}
+
+        {/* Drawer lateral de filtros (em nav mode) */}
+        {isNavMode && isFiltersDrawerOpen && (
+          <>
+            <div
+              className="absolute inset-0 z-[115] bg-black/40"
+              onClick={() => setIsFiltersDrawerOpen(false)}
+            />
+            <div className="absolute top-0 left-0 z-[120] w-72 max-w-[85vw] h-full bg-gt-bg border-r border-gt-border p-5 overflow-y-auto">
+              <div className="flex items-center justify-between mb-5">
+                <p className="text-sm uppercase tracking-wider text-gt-text font-sans font-medium">
+                  Filtros
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setIsFiltersDrawerOpen(false)}
+                  aria-label="Fechar filtros"
+                  className="w-8 h-8 flex items-center justify-center text-gt-text-muted hover:text-gt-text"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div className="flex gap-3 mb-4">
+                <button
+                  type="button"
+                  onClick={selectAll}
+                  className="text-xs text-gt-text-muted hover:text-gt-text font-sans transition-colors"
+                >
+                  Selecionar tudo
+                </button>
+                <span className="text-xs text-gt-text-dim">·</span>
+                <button
+                  type="button"
+                  onClick={clearAll}
+                  className="text-xs text-gt-text-muted hover:text-gt-text font-sans transition-colors"
+                >
+                  Limpar
+                </button>
+              </div>
+              <div className="flex flex-col gap-2">
+                {availableGroups.map((groupKey) => {
+                  const config = getGroupConfig(groupKey);
+                  const isActive = activeGroups.has(groupKey);
+                  return (
+                    <button
+                      key={groupKey}
+                      type="button"
+                      onClick={() => toggleGroup(groupKey)}
+                      className={`text-sm px-3 py-2.5 rounded-md font-sans font-medium transition-all border text-left ${
+                        isActive
+                          ? 'bg-transparent text-gt-orange border-gt-orange'
+                          : 'bg-transparent text-gt-text-muted border-gt-border/60 hover:text-gt-text hover:border-gt-text/30'
+                      }`}
+                    >
+                      <span className="mr-2">{config.emoji}</span>
+                      {config.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
+
+        {mapReady && !isNavMode && (
           <button
             type="button"
             onClick={recenterMap}
@@ -447,6 +718,35 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       <style jsx global>{`
         .gt-map-medium .maplibregl-canvas {
           filter: brightness(0.92) contrast(0.95);
+        }
+        /* Ponto azul clássico de localização (modo navegação) */
+        .gt-user-location-dot {
+          width: 18px;
+          height: 18px;
+          background: #1d8cf8;
+          border: 3px solid #ffffff;
+          border-radius: 50%;
+          box-shadow:
+            0 0 0 0 rgba(29, 140, 248, 0.6),
+            0 1px 4px rgba(0, 0, 0, 0.4);
+          animation: gt-user-pulse 2s ease-out infinite;
+        }
+        @keyframes gt-user-pulse {
+          0% {
+            box-shadow:
+              0 0 0 0 rgba(29, 140, 248, 0.55),
+              0 1px 4px rgba(0, 0, 0, 0.4);
+          }
+          70% {
+            box-shadow:
+              0 0 0 22px rgba(29, 140, 248, 0),
+              0 1px 4px rgba(0, 0, 0, 0.4);
+          }
+          100% {
+            box-shadow:
+              0 0 0 0 rgba(29, 140, 248, 0),
+              0 1px 4px rgba(0, 0, 0, 0.4);
+          }
         }
         .gt-popup .maplibregl-popup-content {
           background: rgba(18, 46, 31, 0.85);
