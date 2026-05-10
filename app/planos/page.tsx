@@ -37,6 +37,26 @@ const features: PlanFeature[] = [
     values: [true, true, true],
   },
   {
+    label: 'Ver e contatar anúncios no GT Desapega',
+    values: [true, true, true],
+  },
+  {
+    label: 'Anunciar no GT Desapega',
+    values: [false, true, true],
+  },
+  {
+    label: 'Copiar rotas públicas de outros overlanders',
+    values: [false, true, true],
+  },
+  {
+    label: 'Pedir ajuda no Help Overlander',
+    values: [true, true, true],
+  },
+  {
+    label: 'Oferecer ajuda como prestador no Help Overlander',
+    values: [false, true, true],
+  },
+  {
     label: 'Explore Novos Destinos (em breve)',
     values: [false, true, true],
   },

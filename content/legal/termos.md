@@ -282,7 +282,7 @@ A GT NÃO se responsabiliza por: qualidade, autenticidade, segurança, condiçã
 
 **6.6.2. Acesso à Funcionalidade**
 
-A publicação de anúncios no GT Desapega é restrita a Usuários assinantes do Plano Pro (ou plano equivalente que venha a ser definido pela GT). A consulta a anúncios e a iniciação de contato com vendedores são livres a todos os Usuários. A receita de assinatura, ainda que confira o direito de anunciar, é classificada como prestação de serviço de software (SaaS), não constituindo prestação de serviço de publicidade pela GT.
+A publicação de anúncios no GT Desapega é restrita a Usuários assinantes de plano pago (Plus, Pro ou planos equivalentes que venham a ser definidos pela GT). A consulta a anúncios e a iniciação de contato com vendedores são livres a todos os Usuários, inclusive Free. A receita de assinatura, ainda que confira o direito de anunciar, é classificada como prestação de serviço de software (SaaS), não constituindo prestação de serviço de publicidade pela GT.
 
 **6.6.3. Regras dos Anúncios**
 
@@ -518,4 +518,4 @@ A GT não intermedeia pagamentos no GT Desapega. Comprador e vendedor são respo
 
 18.3. Antes do recurso à via judicial, as partes envidarão esforços razoáveis para resolução amigável de eventuais conflitos, podendo a GT indicar canais de conciliação extrajudicial e mediação.
 
-**Última atualização:** Maio de 2026 — Versão 1.0.
+**Última atualização:**
