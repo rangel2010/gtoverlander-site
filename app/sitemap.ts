@@ -19,6 +19,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/recursos/off-road', changeFreq: 'monthly', priority: 0.7 },
     { path: '/recursos/modo-offline', changeFreq: 'monthly', priority: 0.7 },
     { path: '/recursos/waypoints', changeFreq: 'monthly', priority: 0.8 },
+    { path: '/recursos/overlanders', changeFreq: 'monthly', priority: 0.8 },
+    { path: '/recursos/help-overlander', changeFreq: 'monthly', priority: 0.8 },
+    { path: '/recursos/explorer', changeFreq: 'monthly', priority: 0.8 },
+    { path: '/recursos/desapega', changeFreq: 'monthly', priority: 0.8 },
     { path: '/planos', changeFreq: 'monthly', priority: 0.9 },
     { path: '/blog', changeFreq: 'weekly', priority: 0.9 },
     { path: '/blog/destinos', changeFreq: 'weekly', priority: 0.8 },
@@ -45,7 +49,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: r.priority,
   }));
 
-  // Posts dinâmicos do Sanity (com fallback gracioso se Sanity offline)
   let postEntries: MetadataRoute.Sitemap = [];
   try {
     const posts = await getAllPosts();

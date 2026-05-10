@@ -7,6 +7,11 @@ const FEATURES = [
     desc: 'Roteiros personalizados em uma conversa',
   },
   {
+    slug: 'waypoints',
+    titulo: 'Waypoints próprios',
+    desc: 'Mais de 4 milhões de pontos em 209 países',
+  },
+  {
     slug: 'off-road',
     titulo: 'Modo Off Road',
     desc: 'Crie rotas off-road do seu jeito',
@@ -19,9 +24,24 @@ const FEATURES = [
     emBreve: true,
   },
   {
-    slug: 'waypoints',
-    titulo: 'Waypoints próprios',
-    desc: 'Mais de 4 milhões de pontos em 209 países',
+    slug: 'overlanders',
+    titulo: 'Overlanders',
+    desc: 'Siga viajantes, descubra rotas, copie roteiros',
+  },
+  {
+    slug: 'help-overlander',
+    titulo: 'Help Overlander',
+    desc: 'Comunidade que se ajuda na estrada',
+  },
+  {
+    slug: 'explorer',
+    titulo: 'GT Explorer',
+    desc: 'Sua jornada em níveis, conquistas e ranking',
+  },
+  {
+    slug: 'desapega',
+    titulo: 'GT Desapega',
+    desc: 'Compra, venda e troca de equipamento overlander',
   },
 ];
 
@@ -39,7 +59,7 @@ export function OutrasFeatures({ currentSlug }: OutrasFeaturesProps) {
           Outras features
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {others.map((f) => (
             <Link
               key={f.slug}
@@ -51,10 +71,10 @@ export function OutrasFeatures({ currentSlug }: OutrasFeaturesProps) {
                   Em breve
                 </span>
               )}
-              <h3 className="font-sans font-medium text-gt-text mb-2 group-hover:text-gt-orange transition-colors pr-20">
+              <h3 className="font-sans font-medium text-gt-text mb-2 group-hover:text-gt-orange transition-colors pr-16">
                 {f.titulo}
               </h3>
-              <p className="text-sm text-gt-text-muted mb-3 font-sans">{f.desc}</p>
+              <p className="text-sm text-gt-text-muted mb-3 font-sans leading-relaxed">{f.desc}</p>
               <span className="text-gt-orange text-sm font-medium font-sans">
                 Saiba mais →
               </span>
