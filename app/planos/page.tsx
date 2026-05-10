@@ -16,54 +16,20 @@ interface PlanFeature {
 }
 
 const features: PlanFeature[] = [
-  {
-    label: 'Roteiros com IA',
-    values: ['IA padrão', 'IA avançada', 'IA avançada'],
-  },
-  {
-    label: 'Rotas exportadas pra navegação',
-    values: ['1 a cada 90 dias', '2 por mês', 'ilimitado'],
-  },
-  {
-    label: 'Consultas de radar de waypoints',
-    values: ['1 por dia', '5 por dia', 'ilimitado'],
-  },
-  {
-    label: 'Waypoints próprios — base mundial',
-    values: [true, true, true],
-  },
-  {
-    label: 'CarPlay / Android Auto',
-    values: [true, true, true],
-  },
-  {
-    label: 'Ver e contatar anúncios no GT Desapega',
-    values: [true, true, true],
-  },
-  {
-    label: 'Anunciar no GT Desapega',
-    values: [false, true, true],
-  },
-  {
-    label: 'Copiar rotas públicas de outros overlanders',
-    values: [false, true, true],
-  },
-  {
-    label: 'Pedir ajuda no Help Overlander',
-    values: [true, true, true],
-  },
-  {
-    label: 'Oferecer ajuda como prestador no Help Overlander',
-    values: [false, true, true],
-  },
-  {
-    label: 'Explore Novos Destinos (em breve)',
-    values: [false, true, true],
-  },
-  {
-    label: 'Suporte',
-    values: ['E-mail', 'E-mail prioritário', 'E-mail prioritário'],
-  },
+  { label: 'Roteiros com IA', values: ['IA padrão', 'IA avançada', 'IA avançada'] },
+  { label: 'Rotas exportadas pra navegação', values: ['1 a cada 90 dias', '2 por mês', 'ilimitado'] },
+  { label: 'Consultas de radar de waypoints', values: ['1 por dia', '5 por dia', 'ilimitado'] },
+  { label: 'Waypoints próprios — base mundial', values: [true, true, true] },
+  { label: 'CarPlay / Android Auto', values: [true, true, true] },
+  { label: 'Ver e contatar anúncios no GT Desapega', values: [true, true, true] },
+  { label: 'Anunciar no GT Desapega', values: [false, true, true] },
+  { label: 'Copiar rotas públicas de outros overlanders', values: [false, true, true] },
+  { label: 'Salvar rotas de outros como favoritas', values: [false, true, true] },
+  { label: 'Editar rotas copiadas de outros', values: [false, true, true] },
+  { label: 'Pedir ajuda no Help Overlander', values: [true, true, true] },
+  { label: 'Oferecer ajuda como prestador no Help Overlander', values: [false, true, true] },
+  { label: 'Explore Novos Destinos (em breve)', values: [false, true, true] },
+  { label: 'Suporte', values: ['E-mail', 'E-mail prioritário', 'E-mail prioritário'] },
 ];
 
 const faq = [
@@ -102,7 +68,6 @@ function FeatureValue({ value }: { value: string | boolean }) {
 export default function PlanosPage() {
   return (
     <>
-      {/* Schema.org Product + Offers — rich snippet com preços no Google */}
       <script {...jsonLdScriptProps(productPlansLd())} />
 
       <section className="bg-gt-bg text-gt-text">
@@ -124,9 +89,7 @@ export default function PlanosPage() {
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            Comparação completa
-          </h2>
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">Comparação completa</h2>
           <p className="text-gt-text-muted mb-10 max-w-xl font-sans">
             Todos os planos têm acesso à base de mais de 4 milhões de waypoints. Criar rotas é ilimitado pra todo mundo — a diferença está em exportar pra navegar, no uso intenso da IA e nas consultas do radar.
           </p>
@@ -135,18 +98,10 @@ export default function PlanosPage() {
             <table className="w-full border-collapse min-w-[640px] font-sans">
               <thead>
                 <tr className="border-b border-gt-border-strong">
-                  <th className="text-left py-4 px-5 text-sm font-medium text-gt-text-muted">
-                    Recursos
-                  </th>
-                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[18%]">
-                    Free
-                  </th>
-                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[20%] bg-gt-card">
-                    Plus
-                  </th>
-                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[18%]">
-                    Pro
-                  </th>
+                  <th className="text-left py-4 px-5 text-sm font-medium text-gt-text-muted">Recursos</th>
+                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[18%]">Free</th>
+                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[20%] bg-gt-card">Plus</th>
+                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[18%]">Pro</th>
                 </tr>
                 <tr className="border-b border-gt-border text-xs text-gt-text-muted">
                   <td className="py-3 px-5">Mensal</td>
@@ -163,22 +118,11 @@ export default function PlanosPage() {
               </thead>
               <tbody>
                 {features.map((f) => (
-                  <tr
-                    key={f.label}
-                    className="border-b border-gt-border last:border-b-0"
-                  >
-                    <td className="py-4 px-5 text-sm text-gt-text">
-                      {f.label}
-                    </td>
-                    <td className="text-center py-4 px-3">
-                      <FeatureValue value={f.values[0]} />
-                    </td>
-                    <td className="text-center py-4 px-3 bg-gt-card">
-                      <FeatureValue value={f.values[1]} />
-                    </td>
-                    <td className="text-center py-4 px-3">
-                      <FeatureValue value={f.values[2]} />
-                    </td>
+                  <tr key={f.label} className="border-b border-gt-border last:border-b-0">
+                    <td className="py-4 px-5 text-sm text-gt-text">{f.label}</td>
+                    <td className="text-center py-4 px-3"><FeatureValue value={f.values[0]} /></td>
+                    <td className="text-center py-4 px-3 bg-gt-card"><FeatureValue value={f.values[1]} /></td>
+                    <td className="text-center py-4 px-3"><FeatureValue value={f.values[2]} /></td>
                   </tr>
                 ))}
               </tbody>
@@ -193,9 +137,7 @@ export default function PlanosPage() {
             <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
               Pra quem vende ao universo overlander
             </p>
-            <h2 className="text-3xl md:text-4xl text-gt-text mb-4 leading-tight">
-              Conta Business
-            </h2>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-4 leading-tight">Conta Business</h2>
             <p className="text-gt-text-muted font-sans leading-relaxed">
               Plano comercial único, três frentes de uso conforme seu negócio:
             </p>
@@ -203,34 +145,22 @@ export default function PlanosPage() {
 
           <div className="grid md:grid-cols-3 gap-5 mb-10">
             <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
-              <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">
-                Waypoints
-              </p>
-              <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">
-                Destaque seu ponto no mapa
-              </h3>
+              <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Waypoints</p>
+              <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">Destaque seu ponto no mapa</h3>
               <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
                 Estabelecimento físico — posto, hotel, oficina, camping, restaurante, atrativo. Aparece em destaque no radar e no planejamento de quem viaja pela região.
               </p>
             </div>
             <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
-              <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">
-                Produtos
-              </p>
-              <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">
-                Venda pra base que viaja
-              </h3>
+              <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Produtos</p>
+              <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">Venda pra base que viaja</h3>
               <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
                 E-commerce, fabricante, distribuidor de equipamento overlander. Anuncie seus produtos com link direto pra sua loja, marketplace ou WhatsApp comercial.
               </p>
             </div>
             <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
-              <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">
-                Serviços
-              </p>
-              <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">
-                Ofereça experiência guiada
-              </h3>
+              <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Serviços</p>
+              <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">Ofereça experiência guiada</h3>
               <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
                 Guia, condutor de expedição, instrutor 4×4, fotógrafo de roteiro. Apareça nas regiões e roteiros relevantes pra quem está planejando a viagem.
               </p>
@@ -243,22 +173,18 @@ export default function PlanosPage() {
                 De <span className="line-through">R$ 199,90/mês</span> por
               </p>
               <div className="flex items-baseline gap-2 mb-2">
-                <span className="font-display text-5xl text-gt-text uppercase tracking-display">
-                  R$ 99,90
-                </span>
+                <span className="text-sm text-gt-text-muted font-sans">a partir de</span>
+                <span className="font-display text-5xl text-gt-text uppercase tracking-display">R$ 99,90</span>
                 <span className="text-sm text-gt-text-muted font-sans">por mês</span>
               </div>
               <p className="text-sm text-gt-text-muted font-sans leading-relaxed">
-                Plano único cobrindo as três frentes — você ativa as que fizerem sentido pro seu negócio. Cancele a qualquer momento.{' '}
-                <a href="/termos/conta-business" className="text-gt-orange hover:underline">
-                  Ver política completa
-                </a>.
+                Inclui 1 ponto destacado e até 15 produtos no Desapega. Add-ons disponíveis pra mais pontos ou produtos. Cancele a qualquer momento.{' '}
+                <a href="/empresas#precos" className="text-gt-orange hover:underline">Ver tabela completa</a> ·{' '}
+                <a href="/termos/conta-business" className="text-gt-orange hover:underline">Política</a>.
               </p>
             </div>
             <div className="w-full md:w-auto">
-              <Button href="/empresas" className="w-full md:w-auto">
-                Cadastrar minha conta Business
-              </Button>
+              <Button href="/empresas" className="w-full md:w-auto">Cadastrar minha conta Business</Button>
             </div>
           </div>
         </div>
@@ -268,17 +194,13 @@ export default function PlanosPage() {
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow text-center">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-4">
-            Comece grátis e suba quando precisar
-          </h2>
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-4">Comece grátis e suba quando precisar</h2>
           <p className="text-gt-text-muted mb-8 font-sans">
             Sem multa de cancelamento. Suas rotas ficam guardadas mesmo se você descer de plano.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Button href="/baixar">Baixar grátis</Button>
-            <Button href="/contato" variant="outline">
-              Falar com a gente
-            </Button>
+            <Button href="/contato" variant="outline">Falar com a gente</Button>
           </div>
         </div>
       </section>
