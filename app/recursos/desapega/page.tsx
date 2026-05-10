@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
+import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 
 export const metadata: Metadata = {
   title: 'GT Desapega',
@@ -80,6 +81,24 @@ export default function DesapegaPage() {
         subline="Equipamento overlander tem mercado próprio: barracas usadas, suspensão modificada, motorhome adaptado. Anuncia entre quem entende e busca exatamente isso. Vitrine sem comissão sobre venda."
         primaryCta={{ label: 'Baixar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Ver planos', href: '/planos' }}
+      />
+
+      <FeatureScreenshot
+        kicker="Marketplace organizado"
+        title="Busca, raio de distância e categorias"
+        desc='No Desapega, encontra rápido o que precisa. Filtra por raio (de "qualquer lugar" até "Até 50km"), por categoria (Veículos, Peças, Camping, Energia, Acessórios), e usa busca textual. Vendedor anuncia, comprador acha, transação acontece direto entre os dois.'
+        src="/screenshots/recursos/desapega-home.png"
+        alt="Tela do GT Desapega com busca, filtros de raio e categorias"
+        bg="card"
+      />
+
+      <FeatureScreenshot
+        kicker="Anúncios em destaque"
+        title="Foto real, preço claro, contato direto"
+        desc="Cada anúncio tem foto principal, título, preço e categoria visíveis logo no card. Overlanders premium podem destacar até alguns anúncios pra ter mais visibilidade. Pra negociações, contato direto entre vendedor e comprador — GT só conecta, não intermedia."
+        src="/screenshots/recursos/desapega-anuncios.png"
+        alt="Anúncios em destaque no GT Desapega: Barraca de Teto Expedition R$ 4.800 e Geladeira Portátil 45L R$ 2.100"
+        reverse
       />
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">

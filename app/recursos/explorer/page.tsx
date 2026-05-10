@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
+import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 
 export const metadata: Metadata = {
   title: 'GT Explorer',
@@ -80,6 +81,24 @@ export default function ExplorerPage() {
         subline="Cada km rodado, cada ponto validado, cada rota concluída soma XP. Você sobe de nível, desbloqueia conquistas, sobe no ranking regional. A comunidade GT reconhece quem realmente vive a estrada."
         primaryCta={{ label: 'Baixar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Ver planos', href: '/planos' }}
+      />
+
+      <FeatureScreenshot
+        kicker="Seu perfil overlander"
+        title="Visão geral, sempre à mão"
+        desc="Nível atual, título conquistado (Overlander Experiente, Guia de Estrada...), próximo nível e quanto falta pra desbloquear. Stats principais visíveis: km rodados, pontos criados. Tudo num cartão limpo, sem competir com a função principal do app."
+        src="/screenshots/recursos/explorer-perfil.png"
+        alt="Tela do GT Explorer mostrando o perfil do overlander Rangel no nível 6 com 7.840/10.000 XP"
+        bg="card"
+      />
+
+      <FeatureScreenshot
+        kicker="Liga Regional"
+        title="Compete com a comunidade da sua região"
+        desc="Ranking por liga regional (estado + país). Você vê sua posição, quem está acima, quanto falta pra subir. Avaliações úteis, rotas concluídas — tudo conta. Cada trimestre rola reset, então sempre tem chance de subir mesmo pra quem começou tarde."
+        src="/screenshots/recursos/explorer-ranking.png"
+        alt="Ranking GT Explorer mostrando posição #18 na Liga Expedição Brasil"
+        reverse
       />
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
+import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 
 export const metadata: Metadata = {
   title: 'Overlanders',
@@ -81,7 +82,16 @@ export default function OverlandersPage() {
         secondaryCta={{ label: 'Ver planos', href: '/planos' }}
       />
 
-      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
+      <FeatureScreenshot
+        kicker="Rotas Públicas Populares"
+        title="Descobre rotas que outros já testaram e cópia em 1 toque"
+        desc='Aba "Rotas Públicas Populares" mostra os roteiros que a comunidade está rodando. Cada card vem com avaliação, distância, dificuldade e quem criou. Gostou? Botão "Copiar" e a rota vira tua — ajusta paradas, datas, veículo. Crédito original preservado, edição livre.'
+        src="/screenshots/recursos/overlanders-rotas.png"
+        alt="Tela Overlanders mostrando Rotas Públicas Populares: Serra do Rio do Rastro 4×4 leve com avaliação 4.8"
+        bg="card"
+      />
+
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3 leading-tight">
             O que vc faz no Overlanders
@@ -91,7 +101,7 @@ export default function OverlandersPage() {
           </p>
           <div className="grid sm:grid-cols-2 gap-6">
             {oQueFaz.map((o) => (
-              <div key={o.titulo} className="bg-gt-bg rounded-lg p-6 border border-gt-border">
+              <div key={o.titulo} className="bg-gt-card rounded-lg p-6 border border-gt-border">
                 <h3 className="font-sans font-medium text-gt-text mb-3 normal-case">{o.titulo}</h3>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{o.desc}</p>
               </div>
@@ -100,7 +110,7 @@ export default function OverlandersPage() {
         </div>
       </section>
 
-      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3 leading-tight">
             Privacidade — você no controle
@@ -110,7 +120,7 @@ export default function OverlandersPage() {
           </p>
           <div className="grid sm:grid-cols-2 gap-6">
             {privacidade.map((p) => (
-              <div key={p.titulo} className="bg-gt-card rounded-lg p-6 border border-gt-border">
+              <div key={p.titulo} className="bg-gt-bg rounded-lg p-6 border border-gt-border">
                 <h3 className="font-sans font-medium text-gt-text mb-3 normal-case">{p.titulo}</h3>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{p.desc}</p>
               </div>
@@ -119,7 +129,7 @@ export default function OverlandersPage() {
         </div>
       </section>
 
-      <section className="bg-gt-card py-12 md:py-14 border-t border-gt-border">
+      <section className="bg-gt-bg py-12 md:py-14 border-t border-gt-border">
         <div className="container-narrow">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
             Diferencial

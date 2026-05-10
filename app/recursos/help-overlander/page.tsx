@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
+import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 
 export const metadata: Metadata = {
   title: 'Help Overlander',
@@ -14,13 +15,6 @@ const tipos = [
   { emoji: '🛞', titulo: 'Pneu furado', desc: 'Estepe, reparo na estrada' },
   { emoji: '🔋', titulo: 'Bateria', desc: 'Sem carga pra dar partida' },
   { emoji: '⛽', titulo: 'Combustível', desc: 'Pane seca' },
-];
-
-const passos = [
-  { num: 1, titulo: 'Sinaliza o pedido', desc: 'Em segundos, escolhe o tipo de ajuda, descreve a situação e marca a urgência' },
-  { num: 2, titulo: 'GT avisa quem tá perto', desc: 'Overlanders próximos disponíveis recebem a notificação em tempo real' },
-  { num: 3, titulo: 'Combina diretamente', desc: 'Quem aceita entra em contato. Vocês alinham detalhes e local' },
-  { num: 4, titulo: 'Avalia depois', desc: 'Os dois lados avaliam. Reputação cresce, comunidade fica mais segura' },
 ];
 
 const seguranca = [
@@ -76,7 +70,34 @@ export default function HelpOverlanderPage() {
         secondaryCta={{ label: 'Ver planos', href: '/planos' }}
       />
 
-      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
+      <FeatureScreenshot
+        kicker="Quem está perto"
+        title="Veja a comunidade disponível na sua região"
+        desc='Quando ativa o Help Overlander, você vê em tempo real quantos overlanders estão num raio próximo de você. Cada um aparece com distância, tipo de ajuda que oferece (Mecânico Solidário, Apoio Geral, etc) e avaliação. O botão "Pedir ajuda agora" dispara a notificação pra quem está disponível.'
+        src="/screenshots/recursos/help-pedido.png"
+        alt="Tela do Help Overlander mostrando 12 overlanders disponíveis em até 25km"
+        bg="card"
+      />
+
+      <FeatureScreenshot
+        kicker="Categorias diretas"
+        title="Categorize sua emergência em 1 toque"
+        desc="Mecânica, pneu furado, bateria, combustível — as 4 categorias cobrem 90% das paradas reais de estrada. Sem menus longos nem formulários. Você escolhe e o app já mostra quem oferece justamente esse tipo de ajuda na sua região."
+        src="/screenshots/recursos/help-tipos.png"
+        alt="Tela do Help Overlander mostrando os 4 tipos de ajuda: Mecânica, Pneu furado, Bateria, Combustível"
+        reverse
+      />
+
+      <FeatureScreenshot
+        kicker="Pedido objetivo"
+        title="Detalhe a urgência e a localização exata"
+        desc="Define o nível de urgência (Baixa, Média, Alta), descreve em uma frase o que aconteceu, e a localização precisa já vai automaticamente. A pessoa que aceita o pedido tem todas as informações pra decidir e chegar até você."
+        src="/screenshots/recursos/help-detalhes.png"
+        alt="Tela de Detalhes do pedido do Help Overlander com nível de urgência, mensagem rápida e localização exata"
+        bg="card"
+      />
+
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3 leading-tight">
             Tipos de ajuda cobertos
@@ -86,36 +107,10 @@ export default function HelpOverlanderPage() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {tipos.map((t) => (
-              <div key={t.titulo} className="bg-gt-bg rounded-lg p-6 border border-gt-border">
+              <div key={t.titulo} className="bg-gt-card rounded-lg p-6 border border-gt-border">
                 <div className="text-4xl mb-3">{t.emoji}</div>
                 <h3 className="font-sans font-medium text-gt-text mb-1 normal-case">{t.titulo}</h3>
                 <p className="text-sm text-gt-text-muted font-sans">{t.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
-        <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3 leading-tight">
-            Como funciona
-          </h2>
-          <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-            Do pedido ao atendimento, em minutos.
-          </p>
-          <div className="grid md:grid-cols-4 gap-8 md:gap-6">
-            {passos.map((p) => (
-              <div key={p.num} className="border-l-2 border-gt-orange pl-5">
-                <div className="text-gt-orange font-medium text-sm mb-2 font-sans">
-                  {p.num.toString().padStart(2, '0')}
-                </div>
-                <h3 className="font-sans font-medium text-gt-text mb-2 leading-snug normal-case">
-                  {p.titulo}
-                </h3>
-                <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
-                  {p.desc}
-                </p>
               </div>
             ))}
           </div>
