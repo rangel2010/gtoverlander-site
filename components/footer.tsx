@@ -55,13 +55,11 @@ const columns: { title: string; links: FooterLink[] }[] = [
   {
     title: 'Legal',
     links: [
-      { href: '/privacidade', label: 'Privacidade' },
-      { href: '/termos', label: 'Termos' },
-      {
-        href: 'mailto:suporte@gtoverlander.com.br',
-        label: 'suporte@gtoverlander.com.br',
-        external: true,
-      },
+      { href: '/termos', label: 'Termos de Uso' },
+      { href: '/privacidade', label: 'Política de Privacidade' },
+      { href: '/comunidade', label: 'Código de Conduta' },
+      { href: '/termos/help-overlander', label: 'Anexo Help Overlander' },
+      { href: '/termos/conta-business', label: 'Anexo Conta Business' },
     ],
   },
 ];

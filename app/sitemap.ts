@@ -33,6 +33,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/baixar', changeFreq: 'monthly', priority: 0.6 },
     { path: '/privacidade', changeFreq: 'yearly', priority: 0.3 },
     { path: '/termos', changeFreq: 'yearly', priority: 0.3 },
+    { path: '/termos/help-overlander', changeFreq: 'yearly', priority: 0.3 },
+    { path: '/termos/conta-business', changeFreq: 'yearly', priority: 0.3 },
+    { path: '/comunidade', changeFreq: 'yearly', priority: 0.4 },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((r) => ({
