@@ -492,7 +492,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
           ref={mapContainer}
           className={
             isNavMode
-              ? 'gt-map-medium w-full h-full'
+              ? 'gt-map-medium gt-nav-mode w-full h-full'
               : 'gt-map-medium w-full h-[70vh] min-h-[500px] rounded-lg overflow-hidden border border-gt-border bg-gt-card'
           }
         />
@@ -720,6 +720,11 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       <style jsx global>{`
         .gt-map-medium .maplibregl-canvas {
           filter: brightness(0.92) contrast(0.95);
+        }
+        /* Esconde os controles nativos do MapLibre em modo navegação
+           (no celular, pinch zoom é mais natural; libera o canto pro botão X) */
+        .gt-nav-mode .maplibregl-ctrl-top-right {
+          display: none;
         }
         /* Ponto azul clássico de localização (modo navegação) */
         .gt-user-location-dot {
