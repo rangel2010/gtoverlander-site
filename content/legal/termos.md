@@ -1,7 +1,3 @@
-**⚠ AVISO IMPORTANTE**
-
-> Este documento é a primeira versão dos Termos de Uso da Plataforma GT Overlander, construído a partir das decisões de produto, arquitetura e modelo de negócio definidos pela empresa. Embora seja documento operacionalmente completo, recomenda-se revisão por advogado especializado em tecnologia, marketplace e direito do consumidor à medida que a operação escale, especialmente nos pontos sensíveis sinalizados internamente (Help Overlander, regulamentação de premiações, base de waypoints OSM/proprietária, política de moderação).
-
 ## Sumário
 
   - 1. Definições
