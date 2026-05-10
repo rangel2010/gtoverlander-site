@@ -63,7 +63,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
     map.current = new maplibregl.Map({
       container: mapContainer.current,
-      style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+      style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
       center,
       zoom: initialZoom,
       attributionControl: { compact: true },
@@ -446,7 +446,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
       <style jsx global>{`
         .gt-map-medium .maplibregl-canvas {
-          filter: brightness(1.45) saturate(0) contrast(0.95);
+          filter: brightness(0.92) contrast(0.95);
         }
         .gt-popup .maplibregl-popup-content {
           background: #0f0f0f;
