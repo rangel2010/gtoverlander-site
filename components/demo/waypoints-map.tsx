@@ -184,7 +184,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       source: 'waypoints',
       filter: ['has', 'point_count'],
       paint: {
-        'circle-color': 'rgba(15, 15, 15, 0.55)',
+        'circle-color': 'rgba(18, 46, 31, 0.55)',
         'circle-radius': [
           'step',
           ['get', 'point_count'],
@@ -449,9 +449,11 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
           filter: brightness(0.92) contrast(0.95);
         }
         .gt-popup .maplibregl-popup-content {
-          background: #0f0f0f;
+          background: rgba(18, 46, 31, 0.85);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
           color: #ededed;
-          border: 1px solid #2a2a2a;
+          border: 1px solid rgba(58, 90, 68, 0.6);
           border-radius: 8px;
           padding: 16px;
           font-family:
@@ -462,8 +464,8 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
         .gt-popup .maplibregl-popup-tip {
-          border-top-color: #0f0f0f;
-          border-bottom-color: #0f0f0f;
+          border-top-color: rgba(18, 46, 31, 0.85);
+          border-bottom-color: rgba(18, 46, 31, 0.85);
         }
         .gt-popup .maplibregl-popup-close-button {
           color: #888;
