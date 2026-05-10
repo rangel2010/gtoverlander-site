@@ -76,17 +76,15 @@ O aceite deste Anexo é condição para criação e manutenção de Conta Busine
 
 ### Frente Waypoints
 
-  - Pontos adicionais (2 a 10), aplicáveis à mesma marca e categoria: R$ 59,90/mês cada ponto extra.
-  - Pacote 25 pontos: R$ 999/mês.
-  - Pacote 50 pontos: R$ 1.799/mês.
-  - Pacote 100 pontos: R$ 2.999/mês.
-  - Acima de 100 pontos: condições negociadas mediante contato em business@gtoverlander.com.br.
+  - Cada ponto extra além do incluso, aplicável à mesma marca e categoria: R$ 59,90/mês por ponto, em modelo linear, sem desconto progressivo por volume.
+  - Sem teto pré-definido — redes com muitas unidades pagam proporcionalmente ao número de pontos destacados.
+  - Modelos customizados pra cadeias com necessidades específicas podem ser negociados via business@gtoverlander.com.br.
 
 ### Frente Serviços
 
-  - +5 expedições agendadas ativas: R$ 49,90/mês.
-  - +10 expedições agendadas ativas: R$ 89,90/mês.
+  - Cada pacote adicional de 5 expedições agendadas ativas: R$ 49,90/mês.
   - +1 perfil profissional adicional (multi-guia ou agência): R$ 39,90/mês.
+  - Sem teto de pacotes — agências com muitos guias contratam quantos pacotes precisarem.
 
 3.4. Os preços vigentes podem ser reajustados pela GT mediante comunicação prévia razoável, observado o ciclo já contratado.
 

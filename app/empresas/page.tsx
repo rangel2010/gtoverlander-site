@@ -174,38 +174,22 @@ export default function EmpresasPage() {
               <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
                 <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Pontos destacados (Waypoints)</p>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
-                  Plano base inclui 1 ponto. Para redes com múltiplas unidades da mesma marca, escala progressiva com desconto por volume.
+                  Plano base inclui 1 ponto destacado. Pra redes com mais unidades, cada ponto extra é cobrado linearmente — sem desconto por volume. Quem entrega mais valor, paga proporcional.
                 </p>
                 <table className="w-full text-sm font-sans">
                   <tbody>
                     <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text">1 ponto</td>
+                      <td className="py-2 text-gt-text">1 ponto (incluso)</td>
                       <td className="py-2 text-right text-gt-text font-medium">R$ 99,90</td>
                     </tr>
-                    <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text-muted">2 a 10 pontos</td>
-                      <td className="py-2 text-right text-gt-text">+ R$ 59,90 cada</td>
-                    </tr>
-                    <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text-muted">Pacote 25 pontos</td>
-                      <td className="py-2 text-right text-gt-text">R$ 999/mês</td>
-                    </tr>
-                    <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text-muted">Pacote 50 pontos</td>
-                      <td className="py-2 text-right text-gt-text">R$ 1.799/mês</td>
-                    </tr>
-                    <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text-muted">Pacote 100 pontos</td>
-                      <td className="py-2 text-right text-gt-text">R$ 2.999/mês</td>
-                    </tr>
                     <tr>
-                      <td className="py-2 text-gt-text-muted">Acima de 100</td>
-                      <td className="py-2 text-right text-gt-text-dim">Sob consulta</td>
+                      <td className="py-2 text-gt-text-muted">Cada ponto extra</td>
+                      <td className="py-2 text-right text-gt-text">+ R$ 59,90</td>
                     </tr>
                   </tbody>
                 </table>
                 <p className="text-xs text-gt-text-dim mt-4 font-sans leading-relaxed">
-                  Pacotes de rede aplicam-se a unidades da mesma marca e categoria.
+                  Pontos extras aplicam-se a unidades da mesma marca e categoria. Sem teto e sem desconto progressivo — visibilidade no GT é ativo de aquisição direto, e o preço reflete o valor por ponto.
                 </p>
               </div>
 
@@ -221,12 +205,8 @@ export default function EmpresasPage() {
                       <td className="py-2 text-right text-gt-text font-medium">R$ 99,90</td>
                     </tr>
                     <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text-muted">+5 expedições ativas</td>
+                      <td className="py-2 text-gt-text-muted">Cada pacote +5 expedições</td>
                       <td className="py-2 text-right text-gt-text">+ R$ 49,90</td>
-                    </tr>
-                    <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text-muted">+10 expedições ativas</td>
-                      <td className="py-2 text-right text-gt-text">+ R$ 89,90</td>
                     </tr>
                     <tr>
                       <td className="py-2 text-gt-text-muted">+1 perfil (multi-guia)</td>
@@ -241,7 +221,7 @@ export default function EmpresasPage() {
             </div>
 
             <p className="text-xs text-gt-text-dim mt-8 font-sans leading-relaxed text-center">
-              Para redes com mais de 100 pontos, agências de turismo com vários guias ou modelos customizados, fale com a gente em <a href="mailto:business@gtoverlander.com.br" className="text-gt-orange hover:underline">business@gtoverlander.com.br</a>.
+              Pra agências de turismo com muitos guias ou modelos customizados, fale com a gente em <a href="mailto:business@gtoverlander.com.br" className="text-gt-orange hover:underline">business@gtoverlander.com.br</a>.
             </p>
           </div>
         </div>
