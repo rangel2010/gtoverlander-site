@@ -17,20 +17,20 @@ const numeros = [
 
 const proximas = [
   {
-    titulo: 'Motor próprio de waypoints',
-    desc: 'A maior base overlander do mundo já em produção. Integração final com o app no caminho.',
+    titulo: 'Comunidade GT viva',
+    desc: 'Help Overlander pra socorro na estrada, Overlanders pra rede social entre viajantes, GT Explorer pra reputação e ranking, GT Desapega pra marketplace. Tudo já no ar — agora cresce com você.',
+  },
+  {
+    titulo: 'Conta Business 3 frentes',
+    desc: 'POI físico, vendedor de produtos e serviços guiados de expedição numa só conta comercial. Disponível agora, com escalonamento por volume pra redes maiores.',
   },
   {
     titulo: 'Modo Offline universal',
-    desc: 'Baixe a região e use o GT em qualquer canto do mundo, mesmo sem sinal. Em desenvolvimento.',
+    desc: 'Vem com o v2 do app. Free baixa o país onde está com todas as categorias de waypoints; Plus e Pro liberam os 209 países com atualização automática.',
   },
   {
-    titulo: 'Off Road manual',
-    desc: 'Você desenha a rota ponto a ponto, sem IA. Pra quem sai do asfalto e curte trilhas, ripio e estradas de terra.',
-  },
-  {
-    titulo: 'Conta Business',
-    desc: 'Postos, campings, pousadas e oficinas aparecem pra quem já decidiu viajar. Em construção.',
+    titulo: 'Expansão internacional',
+    desc: 'A base de waypoints já cobre 209 países. Próximos passos: localização da interface, parcerias com guias regionais e canais comerciais multi-país.',
   },
 ];
 

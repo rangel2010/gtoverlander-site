@@ -48,12 +48,8 @@ const categorias: FaqCategory[] = [
         a: 'Você descreve a viagem em linguagem natural — destino, regiões, preferências de estrada. A IA monta o trajeto em segundos: estradas, cidades e contexto regional. Daí você escolhe as paradas na nossa base de waypoints. Você no controle, sempre.',
       },
       {
-        q: 'O que é Modo Off Road?',
-        a: 'Em breve. Vai permitir você desenhar rotas off-road ponto a ponto no mapa, sem IA. Trilhas, ripio, estradas de terra — você decide cada curva. Disponível pra todos os planos.',
-      },
-      {
         q: 'O que é Modo Offline?',
-        a: 'Em breve. Baixe a região antes de viajar e use o GT em qualquer lugar do mundo, mesmo sem sinal. Universal pra Free, Plus e Pro — sem trava por país, mesmo no plano gratuito.',
+        a: 'Em breve, integrado ao v2 do app. No plano Free, baixa o país onde você está com todas as categorias de waypoints. No Plus e Pro, libera os 209 países com atualização automática quando conectar wifi. GT roda em qualquer canto, mesmo sem sinal.',
       },
       {
         q: 'Funciona com CarPlay e Android Auto?',
