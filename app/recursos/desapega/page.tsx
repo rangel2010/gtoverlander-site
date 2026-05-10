@@ -95,7 +95,7 @@ export default function DesapegaPage() {
       <FeatureScreenshot
         kicker="Anúncios em destaque"
         title="Foto real, preço claro, contato direto"
-        desc="Cada anúncio tem foto principal, título, preço e categoria visíveis logo no card. Overlanders premium podem destacar até alguns anúncios pra ter mais visibilidade. Pra negociações, contato direto entre vendedor e comprador — GT só conecta, não intermedia."
+        desc="Cada anúncio tem foto principal, título, preço e categoria visíveis logo no card. Anunciantes Pro podem destacar até alguns anúncios pra ter mais visibilidade. Pra negociações, contato direto entre vendedor e comprador — GT só conecta, não intermedia."
         src="/screenshots/recursos/desapega-anuncios.png"
         alt="Anúncios em destaque no GT Desapega: Barraca de Teto Expedition R$ 4.800 e Geladeira Portátil 45L R$ 2.100"
         reverse

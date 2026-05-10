@@ -17,9 +17,9 @@ const items = [
     href: '/recursos/help-overlander',
   },
   {
-    titulo: 'Overlanders',
-    desc: 'Rede social dos viajantes do GT. Siga overlanders, descubra rotas testadas, copie roteiros completos com 1 toque.',
-    href: '/recursos/overlanders',
+    titulo: 'GT Social',
+    desc: 'Rede social dentro do GT. Siga overlanders, descubra rotas testadas, copie roteiros completos com 1 toque.',
+    href: '/recursos/gt-social',
   },
   {
     titulo: 'GT Explorer',

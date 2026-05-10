@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 export const metadata: Metadata = {
   title: 'Recursos',
   description:
-    'Roteiros com IA, waypoints próprios, comunidade Overlanders, Help Overlander, GT Explorer e GT Desapega. O ecossistema completo pra quem viaja por terra.',
+    'Roteiros com IA, waypoints próprios, GT Social, Help Overlander, GT Explorer e GT Desapega. O ecossistema completo pra quem viaja por terra.',
 };
 
 interface Feature {
@@ -38,9 +38,9 @@ const planejamento: Feature[] = [
 
 const comunidade: Feature[] = [
   {
-    slug: 'overlanders',
-    titulo: 'Overlanders',
-    desc: 'Rede de viajantes do GT. Siga overlanders, descubra rotas públicas, copie roteiros que outros já testaram.',
+    slug: 'gt-social',
+    titulo: 'GT Social',
+    desc: 'Rede social dentro do GT. Siga overlanders, descubra rotas públicas, copie roteiros que outros já testaram.',
     status: 'disponivel',
   },
   {

@@ -18,7 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/recursos/roteiros-ia', changeFreq: 'monthly', priority: 0.8 },
     { path: '/recursos/modo-offline', changeFreq: 'monthly', priority: 0.7 },
     { path: '/recursos/waypoints', changeFreq: 'monthly', priority: 0.8 },
-    { path: '/recursos/overlanders', changeFreq: 'monthly', priority: 0.8 },
+    { path: '/recursos/gt-social', changeFreq: 'monthly', priority: 0.8 },
     { path: '/recursos/help-overlander', changeFreq: 'monthly', priority: 0.8 },
     { path: '/recursos/explorer', changeFreq: 'monthly', priority: 0.8 },
     { path: '/recursos/desapega', changeFreq: 'monthly', priority: 0.8 },

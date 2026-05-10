@@ -18,7 +18,7 @@ const numeros = [
 const proximas = [
   {
     titulo: 'Comunidade GT viva',
-    desc: 'Help Overlander pra socorro na estrada, Overlanders pra rede social entre viajantes, GT Explorer pra reputação e ranking, GT Desapega pra marketplace. Tudo já no ar — agora cresce com você.',
+    desc: 'Help Overlander pra socorro na estrada, GT Social pra rede social entre viajantes, GT Explorer pra reputação e ranking, GT Desapega pra marketplace. Tudo já no ar — agora cresce com você.',
   },
   {
     titulo: 'Conta Business 3 frentes',
