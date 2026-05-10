@@ -16,7 +16,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '', changeFreq: 'weekly', priority: 1.0 },
     { path: '/recursos', changeFreq: 'monthly', priority: 0.9 },
     { path: '/recursos/roteiros-ia', changeFreq: 'monthly', priority: 0.8 },
-    { path: '/recursos/off-road', changeFreq: 'monthly', priority: 0.7 },
     { path: '/recursos/modo-offline', changeFreq: 'monthly', priority: 0.7 },
     { path: '/recursos/waypoints', changeFreq: 'monthly', priority: 0.8 },
     { path: '/recursos/overlanders', changeFreq: 'monthly', priority: 0.8 },

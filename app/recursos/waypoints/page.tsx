@@ -2,13 +2,14 @@ import type { Metadata } from 'next';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
+import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 import { WaypointsMap } from '@/components/demo/waypoints-map';
 import { getGeoFromHeaders } from '@/lib/demo/geo';
 
 export const metadata: Metadata = {
   title: 'Waypoints próprios',
   description:
-    'Mais de 4 milhões de waypoints em 209 países e 16 categorias. A maior base do universo overlander já reunida em uma plataforma.',
+    'Mais de 4 milhões de waypoints em 209 países e 16 categorias. Base própria curada e mantida viva pela comunidade — overlanders validam e cadastram pontos diretamente do app.',
 };
 
 const numeros = [
@@ -34,23 +35,27 @@ const categorias = [
 const faq = [
   {
     q: 'É confiável?',
-    a: 'Sim. A base começou com dados públicos do OpenStreetMap e passou por curadoria exaustiva do time GT — deduplificação, classificação em 16 categorias e enriquecimento. Erros acontecem, mas em escala muito menor que confiar só no Google Places. Em breve, a comunidade vai poder validar e atualizar continuamente.',
+    a: 'Sim. A base começou com dados públicos do OpenStreetMap e passou por curadoria exaustiva do time GT — deduplificação, classificação em 16 categorias e enriquecimento. Hoje a base é viva: overlanders validam e cadastram pontos pelo app, e o time GT cura continuamente. Erros acontecem, mas em escala muito menor que confiar só no Google Places.',
   },
   {
-    q: 'Posso adicionar pontos novos?',
-    a: 'Em construção. Estamos preparando o fluxo de validação por comunidade — overlanders contribuindo com pontos novos e validando os existentes diretamente pelo app. Sem data ainda, mas é parte do roadmap próximo.',
+    q: 'Quem pode validar e cadastrar pontos?',
+    a: 'Qualquer overlander, em qualquer plano (Free, Plus ou Pro). Validar e cadastrar é a forma mais valiosa que a comunidade contribui — e por isso é livre pra todos. Cada validação rende XP no GT Explorer e ajuda a manter a base atualizada.',
   },
   {
     q: 'Funciona offline?',
-    a: 'Como os waypoints são nossos (não dependem do Google Places), eles podem ficar disponíveis offline em qualquer lugar do mundo. Quando o Modo Offline lançar, sua base de pontos vai junto com você — sem sinal, sem dependência de servidor de terceiros.',
+    a: 'Sim. Como a base é nossa (não depende do Google Places), os waypoints ficam disponíveis offline. No plano Free você baixa o país do dispositivo com todas as categorias. No Plus e Pro, libera os 209 países com atualização automática. O Modo Offline vem com o v2.',
   },
   {
     q: 'De onde vêm os dados?',
-    a: 'A base começou com dados públicos do OpenStreetMap. O time GT processa, deduplifica, enriquece e classifica em 16 categorias relevantes pro overlander. Daí em diante a base é viva — em breve com validação contínua pela comunidade.',
+    a: 'A base começou com dados públicos do OpenStreetMap. O time GT processa, deduplifica, enriquece e classifica em 16 categorias relevantes pro overlander. A partir daí, a comunidade alimenta — overlanders validam o que existe e cadastram o que não tinha sido mapeado ainda.',
   },
   {
     q: 'É só radar ou aparece na hora de planejar a rota também?',
     a: 'Os dois. Quando você gera uma rota com a IA, os waypoints relevantes da nossa base aparecem como sugestão de paradas. E quando você está rodando, o radar mostra os pontos próximos da sua posição.',
+  },
+  {
+    q: 'O que ganho validando ou cadastrando?',
+    a: 'XP no GT Explorer (sobe nível, cria reputação no ranking regional), satisfação de ver a base ficando melhor, e um benefício prático: as próximas viagens da comunidade ficam mais ricas — incluindo as suas. Quanto mais gente contribui, mais valor a base entrega pra todo mundo.',
   },
 ];
 
@@ -62,7 +67,7 @@ export default function WaypointsPage() {
       <FeatureHero
         kicker="Disponível agora"
         title="Onde parar, onde dormir, onde abastecer"
-        subline="Mais de 4 milhões de pontos em 209 países e 16 categorias. A maior base do universo overlander já reunida em uma plataforma."
+        subline="Mais de 4 milhões de pontos em 209 países e 16 categorias. Base curada pelo GT e mantida viva pela comunidade — qualquer overlander valida ou cadastra direto do app."
         primaryCta={{ label: 'Baixar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Ver planos', href: '/planos' }}
       />
@@ -77,9 +82,7 @@ export default function WaypointsPage() {
               Explore a base na sua região agora
             </h2>
             <p className="text-gt-text-muted leading-relaxed font-sans mb-6">
-              Mapa interativo com os waypoints curados pelo GT. Filtra por
-              categoria, navega pelos pontos, abre os detalhes. Mais de 4
-              milhões de lugares em 209 países — aqui tem uma prévia pra você.
+              Mapa interativo com os waypoints curados pelo GT. Filtra por categoria, navega pelos pontos, abre os detalhes. Mais de 4 milhões de lugares em 209 países — aqui tem uma prévia pra você.
             </p>
             <a
               href="/demo"
@@ -110,16 +113,40 @@ export default function WaypointsPage() {
         </div>
       </section>
 
+      <FeatureScreenshot
+        kicker="A base é viva"
+        title="Adicione ou valide um waypoint em 1 toque"
+        desc="Encontrou camping novo no meio do nada? Cadastra ali. Posto fechou? Marca como inativo. Achou um lugar útil que ainda não tava no GT? Adiciona com foto e descrição. A base cresce a cada overlander na estrada — em qualquer plano, Free incluso."
+        src="/screenshots/recursos/waypoints-acao.png"
+        alt="Tela de Adicionar ou validar waypoint, com opções 'Adicionar novo ponto' e 'Validar ponto próximo'"
+        bg="card"
+      />
+
+      <FeatureScreenshot
+        kicker="16 categorias relevantes"
+        title="Categorias pensadas pra quem viaja"
+        desc='Camping, área de descanso, posto, restaurante, hotel, oficina, atrações, fronteira, saúde — categorias úteis pro overlander, sem ruído de "academia" ou "petshop". Cada ponto tá organizado pra você encontrar exatamente o que precisa, na hora que precisa.'
+        src="/screenshots/recursos/waypoints-categoria.png"
+        alt="Tela 'Escolha a categoria' com opções: Camping, Área de descanso, Posto de combustível, Restaurante, Hotel, Oficina mecânica"
+        reverse
+      />
+
+      <FeatureScreenshot
+        kicker="Facilidades reais"
+        title="Detalhes que outros viajantes confirmaram"
+        desc='Tem banheiro? Água potável? Aceita RV? Cada ponto guarda as facilidades validadas por quem esteve lá pessoalmente. Marcação simples — "Sim", "Não" ou "Não sei" — pra evitar informação chutada. O resultado: outros overlanders chegam sabendo o que esperar.'
+        src="/screenshots/recursos/waypoints-facilidades.png"
+        alt="Tela 'Detalhes e facilidades' de um camping, com perguntas sobre Banheiro e Água potável"
+        bg="card"
+      />
+
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
             Como o radar funciona
           </h2>
           <p className="text-gt-text-muted mb-10 max-w-2xl leading-relaxed font-sans">
-            O radar mostra tudo o que está ao redor da sua localização atual.
-            Você filtra por categoria com um toque — postos, hospedagem,
-            hospitais, o que precisar. Achou o ponto? Um clique em &quot;Ir&quot; e
-            a rota vai pro Google Maps, pronta pra navegar.
+            O radar mostra tudo o que está ao redor da sua localização atual. Você filtra por categoria com um toque — postos, hospedagem, hospitais, o que precisar. Achou o ponto? Um clique em &quot;Ir&quot; e a rota vai pro Google Maps, pronta pra navegar.
           </p>
 
           <h3 className="font-sans text-lg font-medium text-gt-text mb-5 normal-case">
@@ -141,23 +168,16 @@ export default function WaypointsPage() {
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-6">
-            Origem dos dados
+            Origem e evolução dos dados
           </h2>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            A base começou com dados públicos do OpenStreetMap e foi
-            exaustivamente curada pelo time GT — processada, deduplificada,
-            classificada e enriquecida em 16 categorias relevantes pro
-            overlander.
+            A base começou com dados públicos do OpenStreetMap e foi exaustivamente curada pelo time GT — processada, deduplificada, classificada e enriquecida em 16 categorias relevantes pro overlander.
           </p>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            A base é viva. O time GT cura continuamente, e em breve a
-            comunidade vai poder validar pontos existentes e incluir novos
-            diretamente pelo app — quanto mais gente na estrada, mais rica a
-            base fica.
+            Hoje a base é viva. O time GT cura continuamente, e a comunidade contribui validando pontos existentes e cadastrando os que ainda não tinham sido mapeados — tudo direto do app, em qualquer plano. Quanto mais gente na estrada validando, mais rica e atual a base fica.
           </p>
           <p className="text-gt-text leading-relaxed font-sans">
-            Por ser uma base própria, os waypoints podem ficar disponíveis
-            offline em qualquer lugar do mundo. Em Breve!
+            Por ser base própria, os waypoints ficam disponíveis offline. Plus e Pro liberam os 209 países com atualização automática; Free baixa o país do dispositivo com todas as categorias.
           </p>
         </div>
       </section>
@@ -168,11 +188,7 @@ export default function WaypointsPage() {
             Diferencial
           </p>
           <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
-            O Google Maps conhece tudo — e por isso traz tudo, inclusive o que
-            não importa pra você. O GT entrega só o que o overlander precisa:
-            postos, campings, hospedagem, oficinas, atrativos. Locais realmente
-            relevantes para o seu planejamento, e em breve uma base viva,
-            podendo ser enriquecida e curada pela comunidade.
+            O Google Maps conhece tudo — e por isso traz tudo, inclusive o que não importa pra você. O GT entrega só o que o overlander precisa: postos, campings, hospedagem, oficinas, atrativos. Curadoria editorial GT + base viva validada continuamente pela comunidade que vive a estrada.
           </p>
         </div>
       </section>

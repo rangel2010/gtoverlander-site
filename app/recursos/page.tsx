@@ -29,12 +29,6 @@ const planejamento: Feature[] = [
     status: 'disponivel',
   },
   {
-    slug: 'off-road',
-    titulo: 'Modo Off Road',
-    desc: 'Você desenha a rota ponto a ponto no mapa. Trilhas, ripio, estradas de terra — sem IA, funciona offline.',
-    status: 'em-breve',
-  },
-  {
     slug: 'modo-offline',
     titulo: 'Modo Offline',
     desc: 'Escolha as regiões da sua viagem. O GT roda em qualquer canto do mundo, mesmo sem sinal.',

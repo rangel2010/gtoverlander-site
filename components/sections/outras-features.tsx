@@ -12,12 +12,6 @@ const FEATURES = [
     desc: 'Mais de 4 milhões de pontos em 209 países',
   },
   {
-    slug: 'off-road',
-    titulo: 'Modo Off Road',
-    desc: 'Crie rotas off-road do seu jeito',
-    emBreve: true,
-  },
-  {
     slug: 'modo-offline',
     titulo: 'Modo Offline',
     desc: 'Use em qualquer lugar, sem sinal',

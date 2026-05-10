@@ -21,6 +21,9 @@ const features: PlanFeature[] = [
   { label: 'Consultas de radar de waypoints', values: ['1 por dia', '5 por dia', 'ilimitado'] },
   { label: 'Waypoints próprios — base mundial', values: [true, true, true] },
   { label: 'CarPlay / Android Auto', values: [true, true, true] },
+  { label: 'Validar e cadastrar waypoints', values: [true, true, true] },
+  { label: 'Modo Offline — país do dispositivo', values: ['Em breve', 'Em breve', 'Em breve'] },
+  { label: 'Modo Offline — todos os 209 países + atualização auto', values: [false, 'Em breve', 'Em breve'] },
   { label: 'Ver e contatar anúncios no GT Desapega', values: [true, true, true] },
   { label: 'Anunciar no GT Desapega', values: [false, true, true] },
   { label: 'Copiar rotas públicas de outros overlanders', values: [false, true, true] },
@@ -28,7 +31,6 @@ const features: PlanFeature[] = [
   { label: 'Editar rotas copiadas de outros', values: [false, true, true] },
   { label: 'Pedir ajuda no Help Overlander', values: [true, true, true] },
   { label: 'Oferecer ajuda como prestador no Help Overlander', values: [false, true, true] },
-  { label: 'Explore Novos Destinos (em breve)', values: [false, true, true] },
   { label: 'Suporte', values: ['E-mail', 'E-mail prioritário', 'E-mail prioritário'] },
 ];
 
@@ -198,7 +200,8 @@ export default function PlanosPage() {
           <p className="text-gt-text-muted mb-8 font-sans">
             Sem multa de cancelamento. Suas rotas ficam guardadas mesmo se você descer de plano.
           </p>
-          <div className="flex flex-wrap gap-3 justify-center">
+          <div className="flex flex-wrap gap-3 justify-ce
+nter">
             <Button href="/baixar">Baixar grátis</Button>
             <Button href="/contato" variant="outline">Falar com a gente</Button>
           </div>
