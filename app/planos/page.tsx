@@ -69,7 +69,7 @@ const faq = [
   },
   {
     q: 'Conta Business é diferente?',
-    a: 'Sim. A Conta Business (em breve) é pra estabelecimentos — postos, campings, pousadas, oficinas — que querem aparecer no mapa do GT pra quem passar pela região. Diferente dos planos pessoais (Free/Plus/Pro). Veja em /empresas.',
+    a: 'Sim. A Conta Business é pra quem comercializa pro universo overlander — estabelecimentos com ponto físico (postos, campings, pousadas, oficinas), vendedores recorrentes (e-commerce, fabricantes de equipamento) e prestadores de serviço (guias, condutores de expedição). Plano à parte dos pessoais (Free/Plus/Pro). Detalhes em /empresas.',
   },
 ];
 
@@ -91,8 +91,7 @@ export default function PlanosPage() {
             Escolha o plano que combina com sua viagem
           </h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
-            Free pra começar. Plus pra quem viaja com frequência. Pro pra quem
-            não para.
+            Free pra começar. Plus pra quem viaja com frequência. Pro pra quem não para.
           </p>
         </div>
       </section>
@@ -109,9 +108,7 @@ export default function PlanosPage() {
             Comparação completa
           </h2>
           <p className="text-gt-text-muted mb-10 max-w-xl font-sans">
-            Todos os planos têm acesso à base de mais de 4 milhões de waypoints.
-            Criar rotas é ilimitado pra todo mundo — a diferença está em
-            exportar pra navegar, no uso intenso da IA e nas consultas do radar.
+            Todos os planos têm acesso à base de mais de 4 milhões de waypoints. Criar rotas é ilimitado pra todo mundo — a diferença está em exportar pra navegar, no uso intenso da IA e nas consultas do radar.
           </p>
 
           <div className="overflow-x-auto bg-gt-bg rounded-lg border border-gt-border">
@@ -170,6 +167,83 @@ export default function PlanosPage() {
         </div>
       </section>
 
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+        <div className="container-wide">
+          <div className="max-w-2xl mb-10">
+            <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
+              Pra quem vende ao universo overlander
+            </p>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-4 leading-tight">
+              Conta Business
+            </h2>
+            <p className="text-gt-text-muted font-sans leading-relaxed">
+              Plano comercial único, três frentes de uso conforme seu negócio:
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5 mb-10">
+            <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
+              <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">
+                Waypoints
+              </p>
+              <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">
+                Destaque seu ponto no mapa
+              </h3>
+              <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
+                Estabelecimento físico — posto, hotel, oficina, camping, restaurante, atrativo. Aparece em destaque no radar e no planejamento de quem viaja pela região.
+              </p>
+            </div>
+            <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
+              <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">
+                Produtos
+              </p>
+              <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">
+                Venda pra base que viaja
+              </h3>
+              <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
+                E-commerce, fabricante, distribuidor de equipamento overlander. Anuncie quantos produtos quiser, com link direto pra sua loja, marketplace ou WhatsApp comercial.
+              </p>
+            </div>
+            <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
+              <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">
+                Serviços
+              </p>
+              <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">
+                Ofereça experiência guiada
+              </h3>
+              <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
+                Guia, condutor de expedição, instrutor 4×4, fotógrafo de roteiro. Apareça nas regiões e roteiros relevantes pra quem está planejando a viagem.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-gt-card border border-gt-border rounded-lg p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
+            <div className="flex-1">
+              <p className="text-xs text-gt-text-dim font-sans mb-1">
+                De <span className="line-through">R$ 199,90/mês</span> por
+              </p>
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="font-display text-5xl text-gt-text uppercase tracking-display">
+                  R$ 99,90
+                </span>
+                <span className="text-sm text-gt-text-muted font-sans">por mês</span>
+              </div>
+              <p className="text-sm text-gt-text-muted font-sans leading-relaxed">
+                Plano único cobrindo as três frentes — você ativa as que fizerem sentido pro seu negócio. Cancele a qualquer momento.{' '}
+                <a href="/termos/conta-business" className="text-gt-orange hover:underline">
+                  Ver política completa
+                </a>.
+              </p>
+            </div>
+            <div className="w-full md:w-auto">
+              <Button href="/empresas" className="w-full md:w-auto">
+                Cadastrar minha conta Business
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <FeatureFaq items={faq} />
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
@@ -178,8 +252,7 @@ export default function PlanosPage() {
             Comece grátis e suba quando precisar
           </h2>
           <p className="text-gt-text-muted mb-8 font-sans">
-            Sem multa de cancelamento. Suas rotas ficam guardadas mesmo se
-            você descer de plano.
+            Sem multa de cancelamento. Suas rotas ficam guardadas mesmo se você descer de plano.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Button href="/baixar">Baixar grátis</Button>

@@ -7,6 +7,8 @@ interface Plan {
   name: string;
   monthlyPrice: number;
   annualPrice: number;
+  /** Preço anual de tabela ("cheio") — quando definido, aparece riscado acima do preço promocional */
+  annualOriginalPrice?: number;
   desc: string;
   cta: { label: string; href: string };
   highlight: boolean;
@@ -26,6 +28,7 @@ const plans: Plan[] = [
     name: 'Plus',
     monthlyPrice: 14.9,
     annualPrice: 79.9,
+    annualOriginalPrice: 149.9,
     desc: 'Pra quem viaja com frequência. 2 rotas por mês, 5 consultas de radar por dia, Premium da IA e Modo Offline universal.',
     cta: { label: 'Assinar Plus', href: '/baixar?plan=plus' },
     highlight: true,
@@ -35,6 +38,7 @@ const plans: Plan[] = [
     name: 'Pro',
     monthlyPrice: 19.9,
     annualPrice: 99.9,
+    annualOriginalPrice: 189.9,
     desc: 'Pra quem não para. Tudo ilimitado — rotas, radar, suporte prioritário.',
     cta: { label: 'Assinar Pro', href: '/baixar?plan=pro' },
     highlight: false,
@@ -106,8 +110,6 @@ export function PlansCards() {
         {plans.map((p) => {
           const isAnnual = billing === 'anual';
           const isPaid = p.monthlyPrice > 0;
-
-          // Quando anual + pago, mostra equivalente mensal como destaque
           const displayPrice =
             isAnnual && isPaid ? p.annualPrice / 12 : p.monthlyPrice;
           const periodLabel = !isPaid ? 'pra sempre' : 'por mês';
@@ -138,6 +140,16 @@ export function PlansCards() {
               <h3 className="font-sans text-xl font-medium text-gt-text mb-2 normal-case">
                 {p.name}
               </h3>
+
+              {isAnnual && p.annualOriginalPrice && (
+                <p className="text-xs text-gt-text-dim font-sans mb-1">
+                  De{' '}
+                  <span className="line-through">
+                    {formatPrice(p.annualOriginalPrice)}/ano
+                  </span>{' '}
+                  por
+                </p>
+              )}
 
               <div className="flex items-baseline gap-2 mb-1">
                 <span className="font-display text-4xl text-gt-text uppercase tracking-display">
