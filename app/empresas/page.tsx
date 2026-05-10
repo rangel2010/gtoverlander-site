@@ -18,7 +18,7 @@ const frentes = [
   {
     tag: 'Produtos',
     titulo: 'Venda pra base que viaja',
-    desc: 'E-commerce, fabricante ou distribuidor de equipamento overlander. Anuncie quantos produtos quiser no GT Desapega, com link direto pra sua loja, marketplace ou WhatsApp comercial.',
+    desc: 'E-commerce, fabricante ou distribuidor de equipamento overlander. Anuncie seus produtos no GT Desapega com link direto pra sua loja, marketplace ou WhatsApp comercial.',
     exemplos: 'Lojas online · Fabricantes · Distribuidores · Customização · Acessórios · Peças',
   },
   {

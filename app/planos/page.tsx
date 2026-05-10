@@ -201,7 +201,7 @@ export default function PlanosPage() {
                 Venda pra base que viaja
               </h3>
               <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
-                E-commerce, fabricante, distribuidor de equipamento overlander. Anuncie quantos produtos quiser, com link direto pra sua loja, marketplace ou WhatsApp comercial.
+                E-commerce, fabricante, distribuidor de equipamento overlander. Anuncie seus produtos com link direto pra sua loja, marketplace ou WhatsApp comercial.
               </p>
             </div>
             <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
