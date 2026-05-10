@@ -131,19 +131,19 @@ export default function EmpresasPage() {
               <span className="text-base text-gt-text-muted font-sans">por mês</span>
             </div>
             <p className="text-sm text-gt-text-muted font-sans leading-relaxed mb-6 max-w-xl mx-auto">
-              Inclui 1 ponto destacado e até 15 produtos no Desapega. Cancele a qualquer momento, sem multa.{' '}
+              Plano base inclui 1 ponto destacado, até 15 produtos no Desapega e 1 perfil profissional + 6 expedições agendadas em Serviços. Cancele a qualquer momento, sem multa.{' '}
               <a href="/termos/conta-business" className="text-gt-orange hover:underline">Ver política completa</a>.
             </p>
             <Button href="#cadastro">Cadastrar minha conta agora</Button>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <h3 className="text-2xl md:text-3xl text-gt-text mb-3">Add-ons e escalonamento</h3>
             <p className="text-gt-text-muted mb-8 font-sans leading-relaxed">
               O plano base cobre quem está começando. Conforme a operação cresce, você adiciona pacotes — direto no painel, sem precisar renegociar.
             </p>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
                 <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Produtos no Desapega</p>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
@@ -205,10 +205,44 @@ export default function EmpresasPage() {
                   </tbody>
                 </table>
                 <p className="text-xs text-gt-text-dim mt-4 font-sans leading-relaxed">
-                  Pacotes de rede aplicam-se a unidades da mesma marca e categoria. Para redes diferentes ou categorias mistas, fale com a gente em <a href="mailto:business@gtoverlander.com.br" className="text-gt-orange hover:underline">business@gtoverlander.com.br</a>.
+                  Pacotes de rede aplicam-se a unidades da mesma marca e categoria.
+                </p>
+              </div>
+
+              <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
+                <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Expedições e perfis (Serviços)</p>
+                <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
+                  Plano base inclui 1 perfil profissional contínuo + 6 expedições agendadas. Cada expedição fica visível até a data passar e arquiva automaticamente.
+                </p>
+                <table className="w-full text-sm font-sans">
+                  <tbody>
+                    <tr className="border-b border-gt-border">
+                      <td className="py-2 text-gt-text">1 perfil + 6 expedições</td>
+                      <td className="py-2 text-right text-gt-text font-medium">R$ 99,90</td>
+                    </tr>
+                    <tr className="border-b border-gt-border">
+                      <td className="py-2 text-gt-text-muted">+5 expedições ativas</td>
+                      <td className="py-2 text-right text-gt-text">+ R$ 49,90</td>
+                    </tr>
+                    <tr className="border-b border-gt-border">
+                      <td className="py-2 text-gt-text-muted">+10 expedições ativas</td>
+                      <td className="py-2 text-right text-gt-text">+ R$ 89,90</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 text-gt-text-muted">+1 perfil (multi-guia)</td>
+                      <td className="py-2 text-right text-gt-text">+ R$ 39,90</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p className="text-xs text-gt-text-dim mt-4 font-sans leading-relaxed">
+                  Verificação reforçada de identidade e atividade profissional (CADASTUR, MTUR ou similar) exigida para Serviços.
                 </p>
               </div>
             </div>
+
+            <p className="text-xs text-gt-text-dim mt-8 font-sans leading-relaxed text-center">
+              Para redes com mais de 100 pontos, agências de turismo com vários guias ou modelos customizados, fale com a gente em <a href="mailto:business@gtoverlander.com.br" className="text-gt-orange hover:underline">business@gtoverlander.com.br</a>.
+            </p>
           </div>
         </div>
       </section>
