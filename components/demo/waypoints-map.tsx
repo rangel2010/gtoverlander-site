@@ -184,7 +184,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       source: 'waypoints',
       filter: ['has', 'point_count'],
       paint: {
-        'circle-color': 'rgba(15, 15, 15, 0.88)',
+        'circle-color': 'rgba(15, 15, 15, 0.55)',
         'circle-radius': [
           'step',
           ['get', 'point_count'],
