@@ -14,7 +14,7 @@ Para os fins desta Política e da LGPD, o Controlador dos seus dados pessoais é
 
   - **CNPJ:** 59.840.412/0001-82
 
-  - **Endereço:** Rua Luiz Lerco, 1215, Londrina/PR, Brasil
+  - **Endereço:** Londrina/PR, Brasil. Endereço completo disponível mediante solicitação via legal@gtoverlander.com.br ou consulta pública pelo CNPJ
 
   - **E-mail de contato geral:** suporte@gtoverlander.com.br
 
@@ -281,7 +281,7 @@ Para qualquer dúvida, solicitação ou reclamação relacionada a esta Polític
 
   - **Canal jurídico:** legal@gtoverlander.com.br
 
-  - **Endereço postal:** GT Overlander LTDA — Rua Luiz Lerco, 1215, Londrina/PR — Brasil
+  - **Endereço postal:** GT Overlander LTDA — Londrina/PR, Brasil
 
 Você também tem direito de apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD), pelos canais oficiais disponíveis em www.gov.br/anpd.
 

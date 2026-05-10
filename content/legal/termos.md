@@ -4,7 +4,7 @@ Para os fins destes Termos de Uso, os seguintes termos têm os significados a se
 
   - **"GT Overlander" ou "Plataforma"**: refere-se ao conjunto de produtos digitais (aplicativo móvel iOS e Android, aplicativo web, site institucional e demais interfaces) operados pela GT Overlander, incluindo todas as funcionalidades atuais e futuras.
 
-  - **"GT" ou "Empresa"**: GT Overlander LTDA, pessoa jurídica de direito privado inscrita no CNPJ sob o nº 59.840.412/0001-82, com sede na Rua Luiz Lerco, 1215, Londrina/PR, responsável pela operação da Plataforma.
+  - **"GT" ou "Empresa"**: GT Overlander LTDA, pessoa jurídica de direito privado inscrita no CNPJ sob o nº 59.840.412/0001-82, com sede em Londrina/PR, responsável pela operação da Plataforma.
 
   - **"Usuário"**: qualquer pessoa física, maior de 18 anos, civilmente capaz, que se cadastre e utilize a Plataforma.
 
@@ -486,7 +486,7 @@ A GT não intermedeia pagamentos no GT Desapega. Comprador e vendedor são respo
 
   - Canal jurídico (denúncias, ordens judiciais, takedown): legal@gtoverlander.com.br
 
-  - Endereço físico para correspondência: GT Overlander LTDA — Rua Luiz Lerco, 1215, Londrina/PR, Brasil
+  - Endereço físico para correspondência: GT Overlander LTDA — Londrina/PR, Brasil
 
 ## 16. Disposições Gerais
 
