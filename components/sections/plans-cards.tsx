@@ -110,12 +110,15 @@ export function PlansCards() {
         {plans.map((p) => {
           const isAnnual = billing === 'anual';
           const isPaid = p.monthlyPrice > 0;
-          const displayPrice =
-            isAnnual && isPaid ? p.annualPrice / 12 : p.monthlyPrice;
-          const periodLabel = !isPaid ? 'pra sempre' : 'por mês';
+
+          // Anual: valor cheio anual = número grande (anchor); equivalência mensal = pequeno embaixo
+          // Mensal: valor mensal = número grande
+          const displayPrice = isAnnual && isPaid ? p.annualPrice : p.monthlyPrice;
+          const periodLabel = !isPaid ? 'pra sempre' : isAnnual ? 'por ano' : 'por mês';
+          const perMonth = isAnnual && isPaid ? p.annualPrice / 12 : 0;
           const annualNote =
             isPaid && isAnnual
-              ? `${formatPrice(p.annualPrice)} cobrado anualmente`
+              ? `Equivale a ${formatPrice(perMonth)} por mês`
               : null;
           const showSavings = isPaid && isAnnual;
           const savingsPct = showSavings
