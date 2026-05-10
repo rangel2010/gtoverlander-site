@@ -497,27 +497,29 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
           }
         />
 
-        {/* Botão "Modo navegação" — só mobile, fora de nav mode */}
+        {/* Botão "Iniciar Navegação" — só mobile, fora de nav mode */}
         {isMobile && !isNavMode && mapReady && (
           <button
             type="button"
             onClick={startNavMode}
-            className="absolute bottom-6 right-6 z-20 bg-gt-orange hover:bg-gt-orange/90 text-white px-4 py-3 rounded-full shadow-lg flex items-center gap-2 font-sans text-sm font-medium transition-colors"
+            className="absolute bottom-6 right-6 z-20 bg-gt-orange hover:bg-gt-orange/90 text-white px-3 py-2.5 rounded-2xl shadow-lg flex flex-col items-center gap-0.5 font-sans text-xs font-medium leading-tight transition-colors"
           >
             <svg
-              width="18"
-              height="18"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
+              className="mb-0.5"
             >
               <circle cx="12" cy="12" r="3" />
               <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
             </svg>
-            Modo navegação
+            <span>Iniciar</span>
+            <span>Navegação</span>
           </button>
         )}
 
