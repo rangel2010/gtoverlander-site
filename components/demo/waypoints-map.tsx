@@ -446,7 +446,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
       <style jsx global>{`
         .gt-map-medium .maplibregl-canvas {
-          filter: brightness(1.55) saturate(1.15) contrast(0.9);
+          filter: brightness(1.45) saturate(0) contrast(0.95);
         }
         .gt-popup .maplibregl-popup-content {
           background: #0f0f0f;
