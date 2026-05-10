@@ -3,6 +3,7 @@ import { Inter, Anton } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { ConsentBanner } from '@/components/consent-banner';
 import {
   organizationLd,
   websiteLd,
@@ -90,6 +91,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ConsentBanner />
         {/* Vercel Speed Insights — mede Core Web Vitals reais dos visitantes */}
         <SpeedInsights />
       </body>
