@@ -80,14 +80,15 @@ export async function POST(req: Request) {
 
     // Salva contato no Brevo (CRM + segmentação pra campanhas futuras)
     // Não bloqueia o fluxo se falhar — email principal já foi enviado.
+    // Atributos têm que bater EXATAMENTE com os nomes cadastrados no Brevo.
     const businessListId = process.env.BREVO_LIST_BUSINESS_ID;
     await createBrevoContact({
       email,
       attributes: {
-        FIRSTNAME: nome,
+        NOME: nome,
         EMPRESA: empresa,
         TELEFONE: telefone || null,
-        TIPO_NEGOCIO: tipo || null,
+        TIPO_DE_NEGOCIO: tipo || null,
         CIDADE: cidade || null,
         OBSERVACOES: observacoes || null,
         SOURCE: 'site:/empresas',
