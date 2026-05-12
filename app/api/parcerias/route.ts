@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { resend, FROM_EMAIL, TO_EMAIL } from '@/lib/resend';
+import { createBrevoContact } from '@/lib/brevo';
 
 interface PartnershipPayload {
   nome?: string;
@@ -77,6 +78,23 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
+
+    // Salva contato no Brevo (CRM + email mkt futuro)
+    // Não bloqueia o fluxo se falhar — email principal já foi enviado.
+    const parceriasListId = process.env.BREVO_LIST_PARCERIAS_ID;
+    await createBrevoContact({
+      email,
+      attributes: {
+        NOME: nome,
+        EMPRESA: empresa,
+        TIPO_PARCERIA: tipo,
+        LINK: link || null,
+        AUDIENCIA: audiencia || null,
+        PROPOSTA: proposta,
+        SOURCE: 'site:/parcerias',
+      },
+      listIds: parceriasListId ? [Number(parceriasListId)] : [],
+    });
 
     return NextResponse.json({ ok: true });
   } catch (e) {
