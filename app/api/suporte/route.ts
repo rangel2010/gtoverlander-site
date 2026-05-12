@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { resend, FROM_EMAIL, TO_EMAIL } from '@/lib/resend';
+import { createBrevoContact } from '@/lib/brevo';
 
 interface SupportPayload {
   nome?: string;
@@ -66,6 +67,21 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
+
+    // Salva contato no Brevo (CRM + email mkt futuro)
+    // Não bloqueia o fluxo se falhar — email principal já foi enviado.
+    const suporteListId = process.env.BREVO_LIST_SUPORTE_ID;
+    await createBrevoContact({
+      email,
+      attributes: {
+        NOME: nome,
+        TIPO_PROBLEMA: tipo || null,
+        DESCRICAO: descricao,
+        VERSAO_APP: versao || null,
+        SOURCE: 'site:/suporte',
+      },
+      listIds: suporteListId ? [Number(suporteListId)] : [],
+    });
 
     return NextResponse.json({ ok: true });
   } catch (e) {
