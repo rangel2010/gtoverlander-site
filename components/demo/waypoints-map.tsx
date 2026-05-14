@@ -46,6 +46,16 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
   const watchIdRef = useRef<number | null>(null);
   const userMarkerRef = useRef<maplibregl.Marker | null>(null);
 
+  // Última posição GPS conhecida (pra recentralizar quando user pedir)
+  const lastPositionRef = useRef<[number, number] | null>(null);
+  // Follow mode: TRUE = mapa segue o usuário; user dragar = desliga (e botão recenter aparece)
+  const [isFollowingUser, setIsFollowingUser] = useState(true);
+  const isFollowingUserRef = useRef(true);
+  function setFollowing(value: boolean) {
+    isFollowingUserRef.current = value;
+    setIsFollowingUser(value);
+  }
+
   const filteredWaypoints = useMemo(() => {
     if (allWaypoints.length === 0) return [];
     const rvActive = activeGroups.has('rv support');
@@ -332,24 +342,34 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       (pos) => {
         const { latitude, longitude } = pos.coords;
         if (!map.current) return;
+        lastPositionRef.current = [longitude, latitude];
+        const isFirstFix = !userMarkerRef.current;
 
-        // Cria ou atualiza marcador azul pulsante
-        if (!userMarkerRef.current) {
+        if (isFirstFix) {
+          // Cria marcador azul pulsante na 1ª fix
           const el = document.createElement('div');
           el.className = 'gt-user-location-dot';
           userMarkerRef.current = new maplibregl.Marker({ element: el })
             .setLngLat([longitude, latitude])
             .addTo(map.current);
+          // 1ª fix: centraliza com zoom inicial de navegação (14 = visão de bairro/avenida)
+          map.current.easeTo({
+            center: [longitude, latitude],
+            zoom: 14,
+            duration: 800,
+          });
         } else {
-          userMarkerRef.current.setLngLat([longitude, latitude]);
+          // Fix subsequente: SÓ atualiza posição do marker
+          userMarkerRef.current!.setLngLat([longitude, latitude]);
+          // Recentraliza só se user ainda está em follow mode
+          // (NÃO mexe no zoom — respeita o que o user escolheu nos botões/pinch)
+          if (isFollowingUserRef.current) {
+            map.current.easeTo({
+              center: [longitude, latitude],
+              duration: 800,
+            });
+          }
         }
-
-        // Centraliza com easing suave + zoom apertado
-        map.current.easeTo({
-          center: [longitude, latitude],
-          zoom: Math.max(map.current.getZoom(), 15),
-          duration: 800,
-        });
       },
       (err) => {
         console.error('Geolocation error:', err);
@@ -377,6 +397,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
   function startNavMode() {
     setActiveGroups(new Set(availableGroups)); // ativa todas categorias
+    setFollowing(true); // reseta follow ON ao iniciar
     setIsNavMode(true);
     startWatchingPosition();
   }
@@ -387,8 +408,23 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       userMarkerRef.current.remove();
       userMarkerRef.current = null;
     }
+    lastPositionRef.current = null;
     setIsNavMode(false);
     setIsFiltersDrawerOpen(false);
+  }
+
+  /**
+   * Recentraliza o mapa na última posição GPS conhecida e reativa follow mode.
+   * Usado pelo botão "alvo" que aparece quando o user dragou e saiu do follow.
+   */
+  function recenterOnUser() {
+    if (!map.current || !lastPositionRef.current) return;
+    setFollowing(true);
+    map.current.easeTo({
+      center: lastPositionRef.current,
+      zoom: 14,
+      duration: 700,
+    });
   }
 
   // Detecta se é mobile (só client-side)
@@ -422,6 +458,20 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       map.current?.resize();
     }, 150);
     return () => clearTimeout(t);
+  }, [isNavMode]);
+
+  // Detecta pan manual do user em nav mode pra desligar follow.
+  // dragstart é só de gestos do user (touch/mouse) — easeTo programático não dispara.
+  useEffect(() => {
+    if (!map.current || !isNavMode) return;
+    const m = map.current;
+    const handleUserPan = () => {
+      setFollowing(false);
+    };
+    m.on('dragstart', handleUserPan);
+    return () => {
+      m.off('dragstart', handleUserPan);
+    };
   }, [isNavMode]);
 
   // Cleanup quando desmontar
@@ -544,6 +594,55 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
           </button>
+        )}
+
+        {/* Controles de zoom + recenter em nav mode — canto inferior direito,
+            longe do X (top-right) e do hamburger (top-left). Recenter aparece
+            apenas quando o user sai do follow mode (dragou o mapa). */}
+        {isNavMode && (
+          <div className="absolute bottom-6 right-4 z-[110] flex flex-col gap-2">
+            {!isFollowingUser && (
+              <button
+                type="button"
+                onClick={recenterOnUser}
+                aria-label="Recentralizar no meu ponto"
+                title="Recentralizar"
+                className="w-11 h-11 flex items-center justify-center bg-gt-orange hover:bg-gt-orange/90 text-white rounded-full shadow-lg transition-colors"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                </svg>
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => map.current?.zoomIn()}
+              aria-label="Aproximar"
+              title="Aproximar"
+              className="w-11 h-11 flex items-center justify-center bg-gt-bg/90 backdrop-blur-sm text-gt-text border border-gt-border rounded-full shadow-lg text-2xl font-bold leading-none"
+            >
+              +
+            </button>
+            <button
+              type="button"
+              onClick={() => map.current?.zoomOut()}
+              aria-label="Afastar"
+              title="Afastar"
+              className="w-11 h-11 flex items-center justify-center bg-gt-bg/90 backdrop-blur-sm text-gt-text border border-gt-border rounded-full shadow-lg text-2xl font-bold leading-none"
+            >
+              −
+            </button>
+          </div>
         )}
 
         {/* Botão hamburger pra abrir drawer de filtros */}
