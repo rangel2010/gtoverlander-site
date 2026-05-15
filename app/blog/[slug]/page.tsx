@@ -204,12 +204,19 @@ export default async function PostPage({ params }: PageProps) {
             <p className="text-lg text-gt-text-muted leading-relaxed mb-8 font-sans">
               {post.description}
             </p>
-            <div className="flex items-center gap-4 text-sm text-gt-text-dim font-sans">
-              <span>{post.authorName}</span>
-              <span>·</span>
-              <time dateTime={post.publishedAt}>
-                {formatDate(post.publishedAt)}
-              </time>
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div className="flex items-center gap-4 text-sm text-gt-text-dim font-sans">
+                <span>{post.authorName}</span>
+                <span>·</span>
+                <time dateTime={post.publishedAt}>
+                  {formatDate(post.publishedAt)}
+                </time>
+              </div>
+              <ShareButtons
+                url={`https://gtoverlander.com.br/blog/${post.slug}`}
+                title={post.title}
+                variant="compact"
+              />
             </div>
           </div>
         </header>
