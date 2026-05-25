@@ -20,7 +20,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Env (NUNCA commitar — secrets de Plausible, Resend, Sentry, Sanity)
+# Env (NUNCA commitar — secrets de Resend, Sentry, Sanity)
 .env*.local
 .env
 

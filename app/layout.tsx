@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Anton } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { ConsentBanner } from '@/components/consent-banner';
@@ -65,23 +66,6 @@ export default function RootLayout({
       className={`${inter.variable} ${anton.variable}`}
     >
       <head>
-        {/* Plausible Analytics — script combinado:
-            - outbound-links: trackeia cliques em links externos (App Store, Play Store, etc.) automaticamente
-            - tagged-events: permite eventos customizados via data-plausible-event-name e window.plausible() */}
-        <script
-          defer
-          data-domain={
-            process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? 'gtoverlander.com.br'
-          }
-          src="https://plausible.io/js/script.outbound-links.tagged-events.js"
-        />
-        {/* Stub global pra TypeScript não reclamar quando chamar window.plausible() */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: 'window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }',
-          }}
-        />
-
         {/* Schema.org JSON-LD — Organization + WebSite + SoftwareApplication */}
         <script {...jsonLdScriptProps(organizationLd())} />
         <script {...jsonLdScriptProps(websiteLd())} />
@@ -94,6 +78,8 @@ export default function RootLayout({
         <ConsentBanner />
         {/* Vercel Speed Insights — mede Core Web Vitals reais dos visitantes */}
         <SpeedInsights />
+        {/* Vercel Web Analytics — pageviews, top pages, referrers, sem cookies */}
+        <Analytics />
       </body>
     </html>
   );

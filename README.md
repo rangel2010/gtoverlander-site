@@ -9,7 +9,7 @@ Site institucional público de `gtoverlander.com.br`. Marketing, captura de down
 - **CMS do blog**: Sanity
 - **E-mail forms**: Resend
 - **Monitoramento**: Sentry
-- **Analytics**: Plausible
+- **Analytics**: Vercel Web Analytics
 - **Deploy**: Vercel via GitHub
 
 ## Setup local

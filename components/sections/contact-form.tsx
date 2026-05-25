@@ -39,11 +39,6 @@ export function ContactForm() {
 
       setStatus('success');
       form.reset();
-
-      // Plausible: dispara evento de conversão
-      if (typeof window !== 'undefined' && window.plausible) {
-        window.plausible('Form Contato');
-      }
     } catch {
       setErrorMsg('Erro de conexão. Verifique sua internet.');
       setStatus('error');

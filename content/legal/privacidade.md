@@ -132,7 +132,7 @@ A GT compartilha dados pessoais apenas com terceiros quando estritamente necess�
 
   - Sentry — monitoramento de erros da aplicação.
 
-  - Plausible Analytics — métricas agregadas de uso (sem cookies, sem identificação individual).
+  - Vercel Web Analytics — métricas agregadas de uso (sem cookies, sem identificação individual).
 
   - Vercel — hospedagem do site e aplicação web.
 
@@ -247,7 +247,7 @@ Para exclusão da Conta, há fluxo direto disponível em Configurações → Con
 
 A Plataforma utiliza cookies e tecnologias similares apenas o estritamente necessário ao funcionamento dos serviços, à manutenção da sessão do Usuário autenticado e à coleta de métricas agregadas e anônimas de uso.
 
-Para análise de uso, utilizamos a ferramenta Plausible Analytics, que opera de forma cookieless — não rastreia indivíduos, não cria perfis e não compartilha dados com terceiros para fins publicitários.
+Para análise de uso, utilizamos a ferramenta Vercel Web Analytics, que opera de forma cookieless — não rastreia indivíduos, não cria perfis e não compartilha dados com terceiros para fins publicitários.
 
 Não utilizamos cookies de publicidade comportamental, pixels de redes sociais para retargeting ou outras tecnologias invasivas. Caso isso venha a mudar, esta Política será atualizada e o Usuário será notificado.
 

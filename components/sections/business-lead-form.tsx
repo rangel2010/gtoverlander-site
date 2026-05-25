@@ -39,11 +39,6 @@ export function BusinessLeadForm() {
 
       setStatus('success');
       form.reset();
-
-      // Plausible: dispara evento de conversão
-      if (typeof window !== 'undefined' && window.plausible) {
-        window.plausible('Form Empresas');
-      }
     } catch {
       setErrorMsg('Erro de conexão. Verifique sua internet.');
       setStatus('error');
