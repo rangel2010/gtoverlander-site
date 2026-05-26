@@ -18,8 +18,11 @@ const CONSENT_KEY = 'gt-consent-v1';
  */
 export function ClarityScript() {
   useEffect(() => {
-    const projectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
-    if (!projectId) return;
+    const envId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
+    if (!envId) return;
+    // Captura em const com tipo string explícito — TS não preserva narrowing
+    // dentro de closures aninhadas, então usamos `id` em vez de `envId` abaixo.
+    const id: string = envId;
 
     let initialized = false;
 
@@ -30,7 +33,7 @@ export function ClarityScript() {
         if (!stored) return;
         const parsed = JSON.parse(stored);
         if (parsed?.accepted === true) {
-          Clarity.init(projectId);
+          Clarity.init(id);
           initialized = true;
         }
       } catch {
