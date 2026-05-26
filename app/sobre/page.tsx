@@ -26,7 +26,7 @@ const proximas = [
   },
   {
     titulo: 'Modo Offline universal',
-    desc: 'Vem com o v2 do app. Free baixa o país onde está com todas as categorias de waypoints; Plus e Pro liberam os 209 países com atualização automática.',
+    desc: 'Vem com o v2 do app. Free baixa o país onde está com todas as categorias de waypoints; Plus e Pro liberam os 209 países do mundo.',
   },
   {
     titulo: 'Expansão internacional',

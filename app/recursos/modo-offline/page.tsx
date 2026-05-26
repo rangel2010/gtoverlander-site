@@ -6,7 +6,7 @@ import { OutrasFeatures } from '@/components/sections/outras-features';
 export const metadata: Metadata = {
   title: 'Modo Offline',
   description:
-    'Em breve no v2. Free baixa o país onde tá com todas as categorias de waypoints. Plus e Pro liberam os 209 países do mundo com atualização automática. Use o GT em qualquer canto, sem depender de sinal.',
+    'Em breve no v2. Free baixa o país onde tá com todas as categorias de waypoints. Plus e Pro liberam os 209 países do mundo. Use o GT em qualquer canto, sem depender de sinal.',
 };
 
 const oQueFaz = [
@@ -36,7 +36,7 @@ const precisaInternet = [
   'Gerar rota nova com a IA (IA roda no servidor)',
   'Help Overlander (depende de notificação em tempo real)',
   'GT Desapega (anúncios, contato com vendedor)',
-  'Atualização automática da base (Plus/Pro fazem em wifi)',
+  'Atualização automática da base (em wifi)',
 ];
 
 const planos = [
@@ -48,14 +48,14 @@ const planos = [
       'Detecta automaticamente o país do dispositivo',
       'Todas as categorias de waypoints (postos, hospedagem, mecânica, camping, atração, etc)',
       'Mapa offline da região do país escolhido',
-      'Atualização manual (você decide quando baixar nova versão)',
+      'Atualização automática quando conectar wifi',
       'Validação e cadastro de pontos offline',
     ],
   },
   {
     nome: 'Plus + Pro',
     badge: 'Pra quem cruza fronteira',
-    titulo: 'Todos os 209 países + atualização automática',
+    titulo: 'Todos os 209 países do mundo',
     items: [
       'Baixe qualquer país ou continente que precisar',
       'Atualização automática quando conectar wifi',
@@ -77,19 +77,15 @@ const faq = [
   },
   {
     q: 'Posso validar e cadastrar pontos offline?',
-    a: 'Sim, em qualquer plano. É a contribuição mais valiosa que o Free dá pra comunidade — encontrou camping novo na trilha sem sinal, valida no celular ali, sincroniza quando voltar a conectar. A base cresce com isso.',
+    a: 'Sim, em qualquer plano. Encontrou camping novo na trilha sem sinal? Valida no celular ali, sincroniza quando voltar a conectar. A base cresce com isso.',
   },
   {
     q: 'O mapa offline é detalhado?',
     a: 'Free tem mapa básico do país escolhido (suficiente pra navegação geográfica). Plus/Pro têm mapa expandido com mais detalhe topográfico, vias secundárias, pontos de referência. Você sente a diferença em região remota.',
   },
   {
-    q: 'Free atualiza a base quando?',
-    a: 'Manualmente, no menu de Modo Offline. Você decide quando baixar a versão atualizada — útil pra controlar consumo de dados em wifi.',
-  },
-  {
-    q: 'Plus/Pro atualiza sozinho?',
-    a: 'Sim. Quando o app detecta wifi, atualiza a base de todos os países baixados em background. Sem você se preocupar.',
+    q: 'Como a base se atualiza?',
+    a: 'Automaticamente em wifi, em qualquer plano. O app detecta wifi disponível e atualiza a base em background, sem consumir dados móveis. Você não precisa se preocupar — fica sempre atualizada.',
   },
 ];
 
@@ -99,7 +95,7 @@ export default function ModoOfflinePage() {
       <FeatureHero
         kicker="Em breve · vem com o v2"
         title="GT roda em qualquer canto do mundo, sem depender de sinal"
-        subline="Free baixa o país onde você está com todas as categorias. Plus e Pro liberam os 209 países com atualização automática. Validação e cadastro de pontos funciona offline em todos os planos."
+        subline="Free baixa o país onde você está com todas as categorias. Plus e Pro liberam os 209 países do mundo. Validação, cadastro e atualização automática em wifi funcionam em todos os planos."
         primaryCta={{ label: 'Cadastre seu interesse', href: '/contato' }}
         secondaryCta={{ label: 'Ver planos', href: '/planos' }}
       />

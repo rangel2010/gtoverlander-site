@@ -26,7 +26,7 @@ export function RecursosEmBreve() {
               Modo Offline
             </h3>
             <p className="text-sm text-gt-text-muted leading-relaxed mb-5 font-sans">
-              Free baixa o país onde você está com todas as categorias. Plus e Pro liberam os 209 países do mundo com atualização automática. GT roda em qualquer canto, sem depender de sinal.
+              Free baixa o país onde você está com todas as categorias. Plus e Pro liberam os 209 países do mundo. GT roda em qualquer canto, sem depender de sinal.
             </p>
             <span className="text-gt-orange text-sm font-medium font-sans">
               Saiba mais →

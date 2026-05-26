@@ -43,7 +43,7 @@ const faq = [
   },
   {
     q: 'Funciona offline?',
-    a: 'Sim. Como a base é nossa (não depende do Google Places), os waypoints ficam disponíveis offline. No plano Free você baixa o país do dispositivo com todas as categorias. No Plus e Pro, libera os 209 países com atualização automática. O Modo Offline vem com o v2.',
+    a: 'Sim. Como a base é nossa (não depende do Google Places), os waypoints ficam disponíveis offline. No plano Free você baixa o país do dispositivo com todas as categorias. No Plus e Pro, libera os 209 países do mundo. O Modo Offline vem com o v2.',
   },
   {
     q: 'De onde vêm os dados?',
@@ -177,7 +177,7 @@ export default function WaypointsPage() {
             Hoje a base é viva. O time GT cura continuamente, e a comunidade contribui validando pontos existentes e cadastrando os que ainda não tinham sido mapeados — tudo direto do app, em qualquer plano. Quanto mais gente na estrada validando, mais rica e atual a base fica.
           </p>
           <p className="text-gt-text leading-relaxed font-sans">
-            Por ser base própria, os waypoints ficam disponíveis offline. Plus e Pro liberam os 209 países com atualização automática; Free baixa o país do dispositivo com todas as categorias.
+            Por ser base própria, os waypoints ficam disponíveis offline. Plus e Pro liberam os 209 países do mundo; Free baixa o país do dispositivo com todas as categorias.
           </p>
         </div>
       </section>
