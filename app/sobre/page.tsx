@@ -177,7 +177,7 @@ export default function SobrePage() {
           </h2>
           <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
             O GT é um ecossistema em construção. Cada frente abre uma nova
-            camada de valor — e uma nova fonte de receita.
+            camada de valor — pra quem viaja e pra quem atende quem viaja.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
