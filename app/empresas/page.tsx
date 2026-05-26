@@ -46,7 +46,7 @@ const passos = [
 export default function EmpresasPage() {
   return (
     <>
-      <section className="bg-gt-bg text-gt-text">
+      <section className="bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-16 md:py-24 max-w-3xl">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted font-sans mb-4">
             Conta Business

@@ -43,7 +43,7 @@ export default async function BlogPage() {
 
   return (
     <>
-      <section className="bg-gt-bg text-gt-text">
+      <section className="bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-12 md:py-16 max-w-3xl">
           <h1 className="text-5xl md:text-6xl leading-[0.95] mb-5">
             Blog GT Overlander
@@ -200,7 +200,7 @@ function PostCard({ post }: { post: Awaited<ReturnType<typeof getAllPosts>>[numb
 
 function BlogEmConstrucao() {
   return (
-    <section className="bg-gt-bg text-gt-text min-h-[60vh] flex items-center">
+    <section className="bg-gt-bg-elevated text-gt-text min-h-[60vh] flex items-center">
       <div className="container-narrow text-center py-16 md:py-24">
         <h1 className="text-5xl md:text-6xl leading-[0.95] mb-6">
           Blog em construção

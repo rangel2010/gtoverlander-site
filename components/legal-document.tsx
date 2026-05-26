@@ -24,7 +24,7 @@ export function LegalDocument({
 }: LegalDocumentProps) {
   return (
     <>
-      <section className="bg-gt-bg text-gt-text">
+      <section className="bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-12 md:py-16 max-w-3xl">
           <h1 className="text-3xl md:text-4xl font-medium leading-[1.15] mb-3">
             {title}

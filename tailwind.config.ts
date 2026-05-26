@@ -15,7 +15,8 @@ const config: Config = {
 
         // Dark mode — verde GT só em header/footer/cards/Hero;
         // demais seções alternam entre 2 tons escuros com hint verde sutil
-        'gt-bg': '#122e1f',           // verde GT (Hero, Header, Footer, cards "marca")
+        'gt-bg': '#122e1f',           // verde GT âncora (Header, Footer — não muda nunca)
+        'gt-bg-elevated': '#163725',  // verde GT levemente mais claro (Heros e blocos verdes que encostam em header/footer)
         // Os dois fundos escuros são "soft" — diferença sutil entre eles, sem preto pesado
         'gt-bg-base': '#131715',      // soft mais escuro (entre os dois)
         'gt-bg-soft': '#181c19',      // soft mais claro (cinza-escuro com hint verde)

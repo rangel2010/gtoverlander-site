@@ -72,7 +72,7 @@ export default function PlanosPage() {
     <>
       <script {...jsonLdScriptProps(productPlansLd())} />
 
-      <section className="bg-gt-bg text-gt-text">
+      <section className="bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-16 md:py-20 max-w-3xl text-center">
           <h1 className="text-5xl md:text-6xl leading-[0.95] mb-5">
             Escolha o plano que combina com sua viagem

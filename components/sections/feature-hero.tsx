@@ -18,7 +18,7 @@ export function FeatureHero({
   secondaryCta,
 }: FeatureHeroProps) {
   return (
-    <section className="bg-gt-bg text-gt-text">
+    <section className="bg-gt-bg-elevated text-gt-text">
       <div className="container-wide py-16 md:py-24 max-w-4xl">
         {(kicker || status) && (
           <div className="flex items-center gap-3 mb-6">

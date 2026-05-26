@@ -24,7 +24,7 @@ const stores = [
 
 export default function BaixarPage() {
   return (
-    <section className="bg-gt-bg text-gt-text min-h-[80vh] flex items-center">
+    <section className="bg-gt-bg-elevated text-gt-text min-h-[80vh] flex items-center">
       <div className="container-wide py-16 md:py-24 max-w-2xl text-center">
         <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-5 font-sans">
           Free pra sempre

@@ -119,7 +119,7 @@ export default function FaqPage() {
       {/* Schema.org FAQPage — pode aparecer como rich snippet no Google */}
       <script {...jsonLdScriptProps(faqPageLd(allQuestions))} />
 
-      <section className="bg-gt-bg text-gt-text">
+      <section className="bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-12 md:py-16 max-w-3xl">
           <h1 className="text-4xl md:text-5xl leading-[1.05] mb-3">
             Perguntas frequentes
