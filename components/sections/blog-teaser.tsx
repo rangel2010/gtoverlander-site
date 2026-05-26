@@ -35,7 +35,7 @@ export async function BlogTeaser() {
   const display = showReal ? realPosts.slice(0, 3) : null;
 
   return (
-    <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+    <section className="bg-gt-bg-deep py-16 md:py-20 border-t border-gt-border">
       <div className="container-wide">
         <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
           <h2 className="text-3xl md:text-4xl text-gt-text">No blog</h2>

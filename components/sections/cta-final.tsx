@@ -2,7 +2,7 @@ import { Button } from '../ui/button';
 
 export function CtaFinal() {
   return (
-    <section className="bg-gt-bg py-20 md:py-28 border-t border-gt-border">
+    <section className="bg-gt-bg-deep py-20 md:py-28 border-t border-gt-border">
       <div className="container-narrow text-center">
         <h2 className="text-4xl md:text-5xl text-gt-text mb-4 leading-[0.95]">
           Sua próxima viagem começa em uma conversa

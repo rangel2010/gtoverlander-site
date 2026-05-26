@@ -27,7 +27,7 @@ export function ComoFunciona() {
   return (
     <section
       id="como-funciona"
-      className="bg-gt-bg py-20 md:py-24 border-t border-gt-border"
+      className="bg-gt-bg-deep py-20 md:py-24 border-t border-gt-border"
     >
       <div className="container-wide">
         <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
