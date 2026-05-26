@@ -35,7 +35,7 @@ const items = [
 
 export function RecursosDisponiveis() {
   return (
-    <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+    <section className="bg-gt-bg-soft py-16 md:py-20 border-t border-gt-border">
       <div className="container-wide">
         <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
           Disponível agora

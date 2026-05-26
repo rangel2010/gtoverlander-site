@@ -7,7 +7,7 @@ const stats = [
 
 export function Numeros() {
   return (
-    <section className="bg-gt-bg-deep py-16 md:py-20 border-t border-gt-border">
+    <section className="bg-gt-bg-base py-16 md:py-20 border-t border-gt-border">
       <div className="container-wide">
         <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
           Momentum

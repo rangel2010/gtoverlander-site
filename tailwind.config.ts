@@ -13,9 +13,11 @@ const config: Config = {
         'gt-orange': '#e06226',
         'gt-brown': '#904e22',
 
-        // Dark mode harmonizado em família verde GT
-        'gt-bg': '#122e1f',          // background principal (verde oficial GT)
-        'gt-bg-deep': '#0a1410',      // fundo "respiro" alternante — verde-quase-preto
+        // Dark mode — verde GT só em header/footer/cards/Hero;
+        // demais seções alternam entre 2 tons escuros com hint verde sutil
+        'gt-bg': '#122e1f',           // verde GT (Hero, Header, Footer, cards "marca")
+        'gt-bg-base': '#0c1410',      // fundo escuro principal (preto com hint verde)
+        'gt-bg-soft': '#181c19',      // fundo escuro alternante (cinza-escuro com hint verde)
         'gt-card': '#1a3d29',         // cards e áreas elevadas (verde 1 tom acima)
         'gt-card-hover': '#234d33',   // hover de cards (verde 2 tons acima)
         'gt-border': '#2a4a35',       // bordas sutis (verde escuro intermediário)

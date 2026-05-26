@@ -2,7 +2,7 @@ import { Button } from '../ui/button';
 
 export function EmpresasTeaser() {
   return (
-    <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
+    <section className="bg-gt-bg-soft py-16 md:py-20 border-t border-gt-border">
       <div className="container-wide">
         <div className="grid md:grid-cols-[2fr_1fr] gap-8 items-center">
           <div>

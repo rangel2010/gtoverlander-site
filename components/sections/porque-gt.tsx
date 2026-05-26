@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export function PorqueGt() {
   return (
-    <section className="bg-gt-bg py-20 md:py-24 border-t border-gt-border">
+    <section className="bg-gt-bg-soft py-20 md:py-24 border-t border-gt-border">
       <div className="container-narrow">
         <h2 className="text-3xl md:text-4xl text-gt-text mb-8 leading-tight">
           Apps de mapa convencionais não entendem overlander
