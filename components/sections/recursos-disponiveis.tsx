@@ -49,7 +49,7 @@ export function RecursosDisponiveis() {
             <Link
               key={i.href}
               href={i.href}
-              className="bg-gt-card rounded-lg p-7 md:p-8 border border-gt-border hover:border-gt-border-strong hover:bg-gt-card-hover transition-colors group"
+              className="bg-gt-bg rounded-lg p-7 md:p-8 border border-gt-border hover:border-gt-border-strong hover:bg-gt-bg-elevated transition-colors group"
             >
               <h3 className="text-xl md:text-2xl text-gt-text mb-3 group-hover:text-gt-orange transition-colors">
                 {i.titulo}
