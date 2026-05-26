@@ -22,10 +22,17 @@ export function ConsentBanner() {
     }
   }, []);
 
-  const accept = () => {
+  const save = (accepted: boolean) => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ accepted: true, ts: Date.now() }));
-    } catch {}
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({ accepted, ts: Date.now() })
+      );
+      // Dispara evento custom pro ClarityScript reagir sem reload da página
+      window.dispatchEvent(new CustomEvent('gt:consent-changed'));
+    } catch {
+      // ignora falha de localStorage
+    }
     setVisible(false);
   };
 
@@ -37,21 +44,31 @@ export function ConsentBanner() {
       aria-label="Aviso de privacidade"
       className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:bottom-6 md:max-w-sm z-50 bg-gt-card border border-gt-border rounded-lg shadow-2xl p-5 font-sans"
     >
-      <p className="text-sm text-gt-text leading-relaxed mb-3">
-        Usamos analytics anônimos (sem cookies, sem rastreamento individual) pra entender o que ressoa
-        com a comunidade. Detalhes na nossa{' '}
+      <p className="text-sm text-gt-text leading-relaxed mb-4">
+        Usamos cookies de análise pra entender como você usa o site e melhorar a
+        experiência. Você pode aceitar ou recusar — sua escolha fica salva.
+        Detalhes na nossa{' '}
         <Link href="/privacidade" className="text-gt-orange hover:underline">
           Política de Privacidade
         </Link>
         .
       </p>
-      <button
-        type="button"
-        onClick={accept}
-        className="w-full bg-gt-orange hover:bg-gt-orange/90 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
-      >
-        Entendi
-      </button>
+      <div className="flex gap-2">
+        <button
+          type="button"
+          onClick={() => save(false)}
+          className="flex-1 bg-transparent hover:bg-gt-card-hover border border-gt-border hover:border-gt-border-strong text-gt-text text-sm font-medium px-4 py-2 rounded-md transition-colors"
+        >
+          Recusar
+        </button>
+        <button
+          type="button"
+          onClick={() => save(true)}
+          className="flex-1 bg-gt-orange hover:bg-gt-orange/90 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
+        >
+          Aceitar
+        </button>
+      </div>
     </div>
   );
 }

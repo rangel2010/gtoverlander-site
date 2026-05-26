@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/next';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { ConsentBanner } from '@/components/consent-banner';
+import { ClarityScript } from '@/components/clarity-script';
 import {
   organizationLd,
   websiteLd,
@@ -80,6 +81,9 @@ export default function RootLayout({
         <SpeedInsights />
         {/* Vercel Web Analytics — pageviews, top pages, referrers, sem cookies */}
         <Analytics />
+        {/* Microsoft Clarity — heatmap + session recording, só inicializa se o
+            usuário aceitou o ConsentBanner */}
+        <ClarityScript />
       </body>
     </html>
   );
