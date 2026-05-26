@@ -39,7 +39,7 @@ const faq = [
   },
   {
     q: 'Quem pode validar e cadastrar pontos?',
-    a: 'Qualquer overlander, em qualquer plano (Free, Plus ou Pro). Validar e cadastrar é a forma mais valiosa que a comunidade contribui — e por isso é livre pra todos. Cada validação rende XP no GT Explorer e ajuda a manter a base atualizada.',
+    a: 'Qualquer overlander, em qualquer plano (Free, Plus ou Pro). Validar e cadastrar é livre pra todos. Cada validação rende XP no GT Explorer e ajuda a manter a base atualizada.',
   },
   {
     q: 'Funciona offline?',
