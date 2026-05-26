@@ -16,8 +16,9 @@ const config: Config = {
         // Dark mode — verde GT só em header/footer/cards/Hero;
         // demais seções alternam entre 2 tons escuros com hint verde sutil
         'gt-bg': '#122e1f',           // verde GT (Hero, Header, Footer, cards "marca")
-        'gt-bg-base': '#0c1410',      // fundo escuro principal (preto com hint verde)
-        'gt-bg-soft': '#181c19',      // fundo escuro alternante (cinza-escuro com hint verde)
+        // Os dois fundos escuros são "soft" — diferença sutil entre eles, sem preto pesado
+        'gt-bg-base': '#131715',      // soft mais escuro (entre os dois)
+        'gt-bg-soft': '#181c19',      // soft mais claro (cinza-escuro com hint verde)
         'gt-card': '#1a3d29',         // cards e áreas elevadas (verde 1 tom acima)
         'gt-card-hover': '#234d33',   // hover de cards (verde 2 tons acima)
         'gt-border': '#2a4a35',       // bordas sutis (verde escuro intermediário)
