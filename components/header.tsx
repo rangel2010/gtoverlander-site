@@ -32,7 +32,7 @@ export function Header() {
   if (pathname?.startsWith('/studio')) return null;
 
   return (
-    <header className="dark sticky top-0 z-40 bg-gt-bg/95 backdrop-blur border-b border-gt-border">
+    <header className="sticky top-0 z-40 bg-gt-bg/95 backdrop-blur border-b border-gt-border">
       <div className="container-wide flex items-center justify-between h-20">
         <Link
           href="/"
