@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Button } from './ui/button';
+import { ThemeToggle } from './theme-toggle';
 
 const APP_WEB_URL = 'https://app.gtoverlander.com.br';
 
@@ -31,7 +32,7 @@ export function Header() {
   if (pathname?.startsWith('/studio')) return null;
 
   return (
-    <header className="sticky top-0 z-40 bg-gt-bg/95 backdrop-blur border-b border-gt-border">
+    <header className="dark sticky top-0 z-40 bg-gt-bg/95 backdrop-blur border-b border-gt-border">
       <div className="container-wide flex items-center justify-between h-20">
         <Link
           href="/"
@@ -62,6 +63,8 @@ export function Header() {
 
         {/* CTAs + mobile toggle */}
         <div className="flex items-center gap-2 sm:gap-3">
+          <ThemeToggle />
+
           <a
             href={APP_WEB_URL}
             target="_blank"

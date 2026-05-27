@@ -29,7 +29,7 @@ export async function PillarPage({ pillar }: { pillar: Pillar }) {
 
   return (
     <>
-      <section className="bg-gt-bg-elevated text-gt-text">
+      <section className="dark bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-12 md:py-16 max-w-3xl">
           <Link
             href="/blog"

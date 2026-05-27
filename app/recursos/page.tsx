@@ -90,7 +90,7 @@ function FeatureCard({ f }: { f: Feature }) {
 export default function RecursosPage() {
   return (
     <>
-      <section className="bg-gt-bg-elevated text-gt-text">
+      <section className="dark bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-16 md:py-24 max-w-3xl">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-5 font-sans">
             O que o GT entrega

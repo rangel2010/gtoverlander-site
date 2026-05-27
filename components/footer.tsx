@@ -71,7 +71,7 @@ export function Footer() {
   if (pathname?.startsWith('/studio')) return null;
 
   return (
-    <footer className="bg-gt-card text-gt-text mt-auto border-t border-gt-border">
+    <footer className="dark bg-gt-card text-gt-text mt-auto border-t border-gt-border">
       <div className="container-wide py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {columns.map((col) => (

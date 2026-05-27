@@ -65,7 +65,7 @@ const faqAprofundado = [
 export default function SuportePage() {
   return (
     <>
-      <section className="bg-gt-bg-elevated text-gt-text">
+      <section className="dark bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-16 md:py-20 max-w-3xl">
           <h1 className="text-5xl md:text-6xl leading-[0.95] mb-5">
             Suporte

@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './app/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -8,34 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Cores de marca (mantidas)
-        'gt-green': '#122e1f',
-        'gt-orange': '#e06226',
+        // ── CORES FIXAS DA MARCA (não respondem ao tema) ──
+        'gt-green': '#122e1f',           // verde GT âncora — Header/Footer sempre
+        'gt-bg-elevated': '#163725',     // verde GT levemente claro — Hero sempre verde
+        'gt-orange': '#e06226',          // CTA
         'gt-brown': '#904e22',
-
-        // Dark mode — verde GT só em header/footer/cards/Hero;
-        // demais seções alternam entre 2 tons escuros com hint verde sutil
-        'gt-bg': '#122e1f',           // verde GT âncora (Header, Footer — não muda nunca)
-        'gt-bg-elevated': '#163725',  // verde GT levemente mais claro (Heros e blocos verdes que encostam em header/footer)
-        // DEPRECATED — fundos escuros não-verdes; manter até a Fase 2 (modo claro)
-        // pra avaliar se serão úteis. Hoje não estão sendo usados em nenhum lugar.
-        'gt-bg-base': '#131715',      // soft mais escuro (entre os dois)
-        'gt-bg-soft': '#181c19',      // soft mais claro (cinza-escuro com hint verde)
-        'gt-card': '#1a3d29',         // cards e áreas elevadas (verde 1 tom acima)
-        'gt-card-hover': '#234d33',   // hover de cards (verde 2 tons acima)
-        'gt-border': '#2a4a35',       // bordas sutis (verde escuro intermediário)
-        'gt-border-strong': '#3a5a44', // bordas mais visíveis (verde mais claro)
-
-        // Texto sobre dark
-        'gt-text': '#f5f5f5',
-        'gt-text-muted': '#a6a6a6',
-        'gt-text-dim': '#737373',
-
-        // Cor cream legada (mantida só pra elementos que ainda usam fundo claro)
-        'gt-cream': '#f8f5ee',
+        'gt-cream': '#f8f5ee',           // legado, usado em poucos lugares
+        // Deprecated — soft tones que não estamos usando hoje
+        'gt-bg-base': '#131715',
+        'gt-bg-soft': '#181c19',
         'gt-gray-dark': '#333333',
         'gt-gray-mid': '#666666',
         'gt-gray-light': '#a6a6a6',
+
+        // ── CORES TEMÁTICAS (respondem ao tema via CSS variables) ──
+        // Valores definidos em app/globals.css: :root (light) e .dark (dark)
+        'gt-bg': 'var(--gt-bg)',
+        'gt-card': 'var(--gt-card)',
+        'gt-card-hover': 'var(--gt-card-hover)',
+        'gt-border': 'var(--gt-border)',
+        'gt-border-strong': 'var(--gt-border-strong)',
+        'gt-text': 'var(--gt-text)',
+        'gt-text-muted': 'var(--gt-text-muted)',
+        'gt-text-dim': 'var(--gt-text-dim)',
       },
       fontFamily: {
         // Display: Anton — condensada bold pra headlines impactantes (estilo app web GT)

@@ -2,7 +2,7 @@ import { Button } from '../ui/button';
 
 export function Hero() {
   return (
-    <section className="bg-gt-bg-elevated text-gt-text relative overflow-hidden">
+    <section className="dark bg-gt-bg-elevated text-gt-text relative overflow-hidden">
       <div className="container-wide grid md:grid-cols-2 gap-10 md:gap-12 items-center py-16 md:py-24 lg:py-28 relative">
         <div>
           <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-5 font-sans">
