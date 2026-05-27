@@ -67,7 +67,7 @@ function FeatureCard({ f }: { f: Feature }) {
   return (
     <Link
       href={`/recursos/${f.slug}`}
-      className="bg-gt-card rounded-lg p-7 md:p-8 border border-gt-border hover:border-gt-border-strong hover:bg-gt-card-hover transition-colors group relative"
+      className="bg-gt-card rounded-lg p-7 md:p-8 border border-gt-border hover:border-gt-orange transition-colors group relative"
     >
       {f.status === 'em-breve' && (
         <span className="absolute top-5 right-5 bg-gt-orange text-white text-[10px] font-medium uppercase tracking-wider px-2 py-1 rounded font-sans">

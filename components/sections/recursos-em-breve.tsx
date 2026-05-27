@@ -17,7 +17,7 @@ export function RecursosEmBreve() {
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
           <Link
             href="/recursos/modo-offline"
-            className="bg-gt-card rounded-lg p-7 md:p-8 border border-gt-border hover:border-gt-orange/50 hover:bg-gt-card-hover transition-colors group relative"
+            className="bg-gt-card rounded-lg p-7 md:p-8 border border-gt-border hover:border-gt-orange transition-colors group relative"
           >
             <span className="absolute top-5 right-5 bg-gt-orange text-white text-[10px] font-medium uppercase tracking-wider px-2 py-1 rounded font-sans">
               Em breve
