@@ -3,30 +3,31 @@
 @tailwind utilities;
 
 @layer base {
-  /* Tema claro (padrão das variáveis CSS) */
+  /* Tema claro (padrão das variáveis CSS).
+     Formato R G B (triplet) — exigido pelo Tailwind pra suportar opacidade (/95, /50 etc) */
   :root {
-    --gt-bg: #f8f5ee;
-    --gt-card: #ffffff;
-    --gt-card-hover: #f4f1e3;
-    --gt-border: #e0dcce;
-    --gt-border-strong: #c0baa9;
-    --gt-text: #122e1f;
-    --gt-text-muted: #4a5c52;
-    --gt-text-dim: #6b7a72;
+    --gt-bg: 248 245 238;         /* #f8f5ee — cream GT */
+    --gt-card: 255 255 255;       /* #ffffff — branco puro */
+    --gt-card-hover: 244 241 227; /* #f4f1e3 — cream sutil hover */
+    --gt-border: 224 220 206;     /* #e0dcce — borda sutil */
+    --gt-border-strong: 192 186 169; /* #c0baa9 — borda visível */
+    --gt-text: 18 46 31;          /* #122e1f — verde GT (texto) */
+    --gt-text-muted: 74 92 82;    /* #4a5c52 — verde acinzentado */
+    --gt-text-dim: 107 122 114;   /* #6b7a72 — verde mais dim */
   }
 
   /* Tema escuro — aplicado quando next-themes adiciona .dark no html
      (default na primeira visita) ou em regiões com className="dark"
      forçado (Header, Footer, Heros) */
   .dark {
-    --gt-bg: #122e1f;
-    --gt-card: #1a3d29;
-    --gt-card-hover: #234d33;
-    --gt-border: #2a4a35;
-    --gt-border-strong: #3a5a44;
-    --gt-text: #f5f5f5;
-    --gt-text-muted: #a6a6a6;
-    --gt-text-dim: #737373;
+    --gt-bg: 18 46 31;            /* #122e1f */
+    --gt-card: 26 61 41;          /* #1a3d29 */
+    --gt-card-hover: 35 77 51;    /* #234d33 */
+    --gt-border: 42 74 53;        /* #2a4a35 */
+    --gt-border-strong: 58 90 68; /* #3a5a44 */
+    --gt-text: 245 245 245;       /* #f5f5f5 */
+    --gt-text-muted: 166 166 166; /* #a6a6a6 */
+    --gt-text-dim: 115 115 115;   /* #737373 */
   }
 
   html {

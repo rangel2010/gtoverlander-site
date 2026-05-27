@@ -24,14 +24,15 @@ const config: Config = {
 
         // ── CORES TEMÁTICAS (respondem ao tema via CSS variables) ──
         // Valores definidos em app/globals.css: :root (light) e .dark (dark)
-        'gt-bg': 'var(--gt-bg)',
-        'gt-card': 'var(--gt-card)',
-        'gt-card-hover': 'var(--gt-card-hover)',
-        'gt-border': 'var(--gt-border)',
-        'gt-border-strong': 'var(--gt-border-strong)',
-        'gt-text': 'var(--gt-text)',
-        'gt-text-muted': 'var(--gt-text-muted)',
-        'gt-text-dim': 'var(--gt-text-dim)',
+        // Formato R G B (triplet) pra Tailwind conseguir aplicar opacidade (/95, /50 etc)
+        'gt-bg': 'rgb(var(--gt-bg) / <alpha-value>)',
+        'gt-card': 'rgb(var(--gt-card) / <alpha-value>)',
+        'gt-card-hover': 'rgb(var(--gt-card-hover) / <alpha-value>)',
+        'gt-border': 'rgb(var(--gt-border) / <alpha-value>)',
+        'gt-border-strong': 'rgb(var(--gt-border-strong) / <alpha-value>)',
+        'gt-text': 'rgb(var(--gt-text) / <alpha-value>)',
+        'gt-text-muted': 'rgb(var(--gt-text-muted) / <alpha-value>)',
+        'gt-text-dim': 'rgb(var(--gt-text-dim) / <alpha-value>)',
       },
       fontFamily: {
         // Display: Anton — condensada bold pra headlines impactantes (estilo app web GT)

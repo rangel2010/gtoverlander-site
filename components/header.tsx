@@ -54,7 +54,7 @@ export function Header() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm text-gt-text-muted hover:text-gt-text transition-colors"
+              className="text-sm text-gt-text-muted hover:text-gt-orange transition-colors"
             >
               {l.label}
             </Link>
@@ -69,7 +69,7 @@ export function Header() {
             href={APP_WEB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium text-gt-text-muted hover:text-gt-text transition-colors px-3 py-2"
+            className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium text-gt-text-muted hover:text-gt-orange transition-colors px-3 py-2"
           >
             Acessar pelo computador
             <ArrowUpRight size={14} aria-hidden="true" />
@@ -111,7 +111,7 @@ export function Header() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-gt-text-muted text-sm py-1"
+                  className="text-gt-text-muted hover:text-gt-orange text-sm py-1 transition-colors"
                 >
                   {l.label}
                 </Link>
@@ -120,7 +120,7 @@ export function Header() {
                 href={APP_WEB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gt-text-muted text-sm py-1 inline-flex items-center gap-1.5"
+                className="text-gt-text-muted hover:text-gt-orange text-sm py-1 transition-colors inline-flex items-center gap-1.5"
               >
                 Acessar pelo computador
                 <ArrowUpRight size={14} aria-hidden="true" />
