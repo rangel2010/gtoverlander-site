@@ -97,7 +97,7 @@ export default function ModoOfflinePage() {
         title="GT roda em qualquer canto do mundo, sem depender de sinal"
         subline="Free baixa o país onde você está com todas as categorias. Plus e Pro liberam os 209 países do mundo. Validação, cadastro e atualização automática em wifi funcionam em todos os planos."
         primaryCta={{ label: 'Cadastre seu interesse', href: '/contato' }}
-        secondaryCta={{ label: 'Ver planos', href: '/planos' }}
+        secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">

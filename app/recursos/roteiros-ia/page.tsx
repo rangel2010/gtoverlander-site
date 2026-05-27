@@ -76,8 +76,8 @@ export default function RoteirosIaPage() {
         kicker="Disponível agora"
         title="Roteiros personalizados em uma conversa"
         subline="Descreva a viagem em linguagem natural. Primeiro a IA monta o trajeto — estradas, cidades e destino. Depois você completa: paradas, postos, hospedagem e campings."
-        primaryCta={{ label: 'Baixar grátis', href: '/baixar' }}
-        secondaryCta={{ label: 'Ver planos', href: '/planos' }}
+        primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
+        secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">

@@ -79,8 +79,8 @@ export default function ExplorerPage() {
         kicker="Disponível agora"
         title="Sua jornada vira progressão"
         subline="Cada km rodado, cada ponto validado, cada rota concluída soma XP. Você sobe de nível, desbloqueia conquistas, sobe no ranking regional. A comunidade GT reconhece quem realmente vive a estrada."
-        primaryCta={{ label: 'Baixar grátis', href: '/baixar' }}
-        secondaryCta={{ label: 'Ver planos', href: '/planos' }}
+        primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
+        secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
 
       <FeatureScreenshot

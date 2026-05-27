@@ -64,10 +64,10 @@ export default function HelpOverlanderPage() {
     <>
       <FeatureHero
         kicker="Disponível agora"
-        title="Pane na estrada? Tem comunidade pra te ajudar"
+        title="Ninguém fica sozinho na estrada"
         subline="Pneu furado, bateria, pane seca ou mecânica — sinaliza no Help Overlander e quem está perto, disponível e disposto a ajudar aparece. Comunidade que cuida de comunidade."
-        primaryCta={{ label: 'Baixar grátis', href: '/baixar' }}
-        secondaryCta={{ label: 'Ver planos', href: '/planos' }}
+        primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
+        secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
 
       <FeatureScreenshot

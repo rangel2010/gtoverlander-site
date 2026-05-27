@@ -21,7 +21,7 @@ const plans: Plan[] = [
     monthlyPrice: 0,
     annualPrice: 0,
     desc: 'Pra começar a explorar. 1 rota a cada 90 dias e 1 consulta de radar por dia. Sem deadline — Free de verdade.',
-    cta: { label: 'Baixar grátis', href: '/baixar' },
+    cta: { label: 'Começar grátis', href: '/baixar' },
     highlight: false,
   },
   {

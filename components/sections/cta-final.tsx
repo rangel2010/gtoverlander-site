@@ -13,7 +13,7 @@ export function CtaFinal() {
         <div className="flex flex-wrap gap-3 justify-center">
           <Button href="/baixar">Baixar agora</Button>
           <Button href="/planos" variant="outline">
-            Ver planos
+            Explorar planos
           </Button>
         </div>
       </div>

@@ -281,9 +281,9 @@ export default async function PostPage({ params }: PageProps) {
             Baixa o GT e começa a planejar agora.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Button href="/baixar">Baixar grátis</Button>
+            <Button href="/baixar">Começar grátis</Button>
             <Button href="/planos" variant="outline">
-              Ver planos
+              Explorar planos
             </Button>
           </div>
         </div>

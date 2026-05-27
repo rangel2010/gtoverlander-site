@@ -202,7 +202,7 @@ export default function PlanosPage() {
           </p>
           <div className="flex flex-wrap gap-3 justify-ce
 nter">
-            <Button href="/baixar">Baixar grátis</Button>
+            <Button href="/baixar">Começar grátis</Button>
             <Button href="/contato" variant="outline">Falar com a gente</Button>
           </div>
         </div>

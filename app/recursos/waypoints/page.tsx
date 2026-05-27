@@ -68,8 +68,8 @@ export default function WaypointsPage() {
         kicker="Disponível agora"
         title="Onde parar, onde dormir, onde abastecer"
         subline="Mais de 4 milhões de pontos em 209 países e 16 categorias. Base curada pelo GT e mantida viva pela comunidade — qualquer overlander valida ou cadastra direto do app."
-        primaryCta={{ label: 'Baixar grátis', href: '/baixar' }}
-        secondaryCta={{ label: 'Ver planos', href: '/planos' }}
+        primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
+        secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">

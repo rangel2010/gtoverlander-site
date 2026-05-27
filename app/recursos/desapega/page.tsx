@@ -79,8 +79,8 @@ export default function DesapegaPage() {
         kicker="Disponível agora"
         title="Marketplace entre quem realmente viaja"
         subline="Equipamento overlander tem mercado próprio: barracas usadas, suspensão modificada, motorhome adaptado. Anuncia entre quem entende e busca exatamente isso. Vitrine sem comissão sobre venda."
-        primaryCta={{ label: 'Baixar grátis', href: '/baixar' }}
-        secondaryCta={{ label: 'Ver planos', href: '/planos' }}
+        primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
+        secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
 
       <FeatureScreenshot

@@ -176,8 +176,8 @@ export default function SobrePage() {
             Pra onde vamos
           </h2>
           <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-            O GT é um ecossistema em construção. Cada frente abre uma nova
-            camada de valor — pra quem viaja e pra quem atende quem viaja.
+            O GT está evoluindo pra um ecossistema completo pra quem vive a
+            estrada — conectando viajantes, empresas, serviços e experiências.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -208,7 +208,7 @@ export default function SobrePage() {
             estabelecimento na rota dos viajantes, conheça a Conta Business.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Button href="/baixar">Baixar grátis</Button>
+            <Button href="/baixar">Começar grátis</Button>
             <Button href="/empresas" variant="outline">
               Conta Business
             </Button>

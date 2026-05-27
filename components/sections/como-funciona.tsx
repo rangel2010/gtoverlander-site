@@ -18,7 +18,7 @@ const passos = [
   },
   {
     num: 4,
-    titulo: 'Você roda',
+    titulo: 'Você pega a estrada',
     desc: 'Exporta a rota pro Google Maps e roda direto no painel do carro com CarPlay ou Android Auto',
   },
 ];

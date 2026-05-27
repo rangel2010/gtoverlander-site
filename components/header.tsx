@@ -76,7 +76,7 @@ export function Header() {
           </a>
 
           <Button href="/baixar" size="sm" className="hidden sm:inline-flex">
-            Baixar grátis
+            Começar grátis
           </Button>
 
           <button
@@ -127,7 +127,7 @@ export function Header() {
               </a>
             </div>
             <Button href="/baixar" className="mt-3 w-fit">
-              Baixar grátis
+              Começar grátis
             </Button>
           </nav>
         </div>

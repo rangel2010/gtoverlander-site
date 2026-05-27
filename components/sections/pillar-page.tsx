@@ -136,7 +136,7 @@ export async function PillarPage({ pillar }: { pillar: Pillar }) {
           <p className="text-gt-text-muted mb-6 font-sans">
             Pegou inspiração? Baixa o GT e começa a planejar.
           </p>
-          <Button href="/baixar">Baixar grátis</Button>
+          <Button href="/baixar">Começar grátis</Button>
         </div>
       </section>
     </>

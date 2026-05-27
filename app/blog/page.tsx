@@ -117,7 +117,7 @@ export default async function BlogPage() {
           <p className="text-gt-text-muted mb-8 font-sans max-w-md mx-auto">
             Pegou inspiração? Baixa o GT e começa a planejar.
           </p>
-          <Button href="/baixar">Baixar grátis</Button>
+          <Button href="/baixar">Começar grátis</Button>
         </div>
       </section>
     </>
