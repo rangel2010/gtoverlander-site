@@ -25,7 +25,7 @@
     --gt-card-hover: 35 77 51;    /* #234d33 */
     --gt-border: 42 74 53;        /* #2a4a35 */
     --gt-border-strong: 58 90 68; /* #3a5a44 */
-    --gt-text: 245 245 245;       /* #f5f5f5 */
+    --gt-text: 232 232 232;       /* #e8e8e8 — branco suave, ~5% menos brilho que f5f5f5 */
     --gt-text-muted: 166 166 166; /* #a6a6a6 */
     --gt-text-dim: 115 115 115;   /* #737373 */
   }
