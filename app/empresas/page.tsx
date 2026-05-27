@@ -227,7 +227,7 @@ export default function EmpresasPage() {
         </div>
       </section>
 
-      <section id="cadastro" className="bg-gt-bg py-16 md:py-24 border-t border-gt-border scroll-mt-20">
+      <section id="cadastro" className="bg-gt-card py-16 md:py-24 border-t border-gt-border scroll-mt-20">
         <div className="container-narrow">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">Cadastro</p>
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">Conte sobre o seu negócio</h2>

@@ -23,7 +23,7 @@ export default function ContatoPage() {
         </div>
       </section>
 
-      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <div className="grid md:grid-cols-[1fr_320px] gap-12">
             <div>
