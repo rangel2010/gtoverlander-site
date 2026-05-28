@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "recursos": "Recursos",
+    "planos": "Planos",
+    "blog": "Blog",
+    "sobre": "Sobre",
+    "empresas": "Empresas",
+    "parcerias": "Parcerias",
+    "faq": "FAQ",
+    "contato": "Contato",
+    "suporte": "Suporte",
+    "acessarComputador": "Acessar pelo computador",
+    "comecarGratis": "Começar grátis"
+  },
+  "common": {
+    "explorarPlanos": "Explorar planos",
+    "saibaMais": "Saiba mais",
+    "verPlanos": "Explorar planos",
+    "baixarGratis": "Começar grátis"
+  }
+}

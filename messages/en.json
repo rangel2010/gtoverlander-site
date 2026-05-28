@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "recursos": "Features",
+    "planos": "Pricing",
+    "blog": "Blog",
+    "sobre": "About",
+    "empresas": "Business",
+    "parcerias": "Partnerships",
+    "faq": "FAQ",
+    "contato": "Contact",
+    "suporte": "Support",
+    "acessarComputador": "Open on desktop",
+    "comecarGratis": "Start free"
+  },
+  "common": {
+    "explorarPlanos": "Explore plans",
+    "saibaMais": "Learn more",
+    "verPlanos": "Explore plans",
+    "baixarGratis": "Start free"
+  }
+}

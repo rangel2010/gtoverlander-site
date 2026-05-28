@@ -1,4 +1,7 @@
 import { withSentryConfig } from '@sentry/nextjs';
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -36,6 +39,9 @@ const sentryWebpackPluginOptions = {
 
 const shouldWrap = Boolean(process.env.NEXT_PUBLIC_SENTRY_DSN);
 
-export default shouldWrap
+const baseConfig = shouldWrap
   ? withSentryConfig(nextConfig, sentryWebpackPluginOptions)
   : nextConfig;
+
+// next-intl por fora — prepara o build pra resolver i18n/request.ts
+export default withNextIntl(baseConfig);
