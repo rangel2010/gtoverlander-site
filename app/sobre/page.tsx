@@ -127,9 +127,9 @@ export default function SobrePage() {
             Conhecer quem viaja pra construir junto
           </h2>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            Usuários no GT não estão navegando aleatoriamente pela internet.
-            Eles já decidiram viajar, já sabem pra onde vão, e estão no momento
-            exato de planejar onde parar, o que comprar e o que fazer.
+            Quem usa o GT não está navegando à toa. Já decidiu viajar, já sabe
+            pra onde vai, e está no momento de planejar o caminho — onde parar,
+            onde dormir, o que ver na estrada.
           </p>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
             Conhecer essa jornada — quem viaja, pra onde, com qual veículo,

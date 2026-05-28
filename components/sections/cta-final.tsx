@@ -11,7 +11,7 @@ export function CtaFinal() {
           Comece grátis. Sem cartão, sem compromisso.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          <Button href="/baixar">Baixar agora</Button>
+          <Button href="/baixar">Começar grátis</Button>
           <Button href="/planos" variant="outline">
             Explorar planos
           </Button>

@@ -9,7 +9,7 @@ import { getGeoFromHeaders } from '@/lib/demo/geo';
 export const metadata: Metadata = {
   title: 'Waypoints próprios',
   description:
-    'Mais de 4 milhões de waypoints em 209 países e 16 categorias. Base própria curada e mantida viva pela comunidade — overlanders validam e cadastram pontos diretamente do app.',
+    'Mais de 4 milhões de waypoints em 209 países e 10 categorias. Base própria curada e mantida viva pela comunidade — overlanders validam e cadastram pontos diretamente do app.',
 };
 
 const numeros = [
@@ -35,7 +35,7 @@ const categorias = [
 const faq = [
   {
     q: 'É confiável?',
-    a: 'Sim. A base começou com dados públicos do OpenStreetMap e passou por curadoria exaustiva do time GT — deduplificação, classificação em 16 categorias e enriquecimento. Hoje a base é viva: overlanders validam e cadastram pontos pelo app, e o time GT cura continuamente. Erros acontecem, mas em escala muito menor que confiar só no Google Places.',
+    a: 'Sim. A base começou com dados públicos do OpenStreetMap e passou por curadoria exaustiva do time GT — deduplificação, classificação em 10 categorias e enriquecimento. Hoje a base é viva: overlanders validam e cadastram pontos pelo app, e o time GT cura continuamente. Erros acontecem, mas em escala muito menor que confiar só no Google Places.',
   },
   {
     q: 'Quem pode validar e cadastrar pontos?',
@@ -47,7 +47,7 @@ const faq = [
   },
   {
     q: 'De onde vêm os dados?',
-    a: 'A base começou com dados públicos do OpenStreetMap. O time GT processa, deduplifica, enriquece e classifica em 16 categorias relevantes pro overlander. A partir daí, a comunidade alimenta — overlanders validam o que existe e cadastram o que não tinha sido mapeado ainda.',
+    a: 'A base começou com dados públicos do OpenStreetMap. O time GT processa, deduplifica, enriquece e classifica em 10 categorias relevantes pro overlander. A partir daí, a comunidade alimenta — overlanders validam o que existe e cadastram o que não tinha sido mapeado ainda.',
   },
   {
     q: 'É só radar ou aparece na hora de planejar a rota também?',
@@ -67,7 +67,7 @@ export default function WaypointsPage() {
       <FeatureHero
         kicker="Disponível agora"
         title="Onde parar, onde dormir, onde abastecer"
-        subline="Mais de 4 milhões de pontos em 209 países e 16 categorias. Base curada pelo GT e mantida viva pela comunidade — qualquer overlander valida ou cadastra direto do app."
+        subline="Mais de 4 milhões de pontos em 209 países e 10 categorias. Base curada pelo GT e mantida viva pela comunidade — qualquer overlander valida ou cadastra direto do app."
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
@@ -123,7 +123,7 @@ export default function WaypointsPage() {
       />
 
       <FeatureScreenshot
-        kicker="16 categorias relevantes"
+        kicker="10 categorias relevantes"
         title="Categorias pensadas pra quem viaja"
         desc='Camping, área de descanso, posto, restaurante, hotel, oficina, atrações, fronteira, saúde — categorias úteis pro overlander, sem ruído de "academia" ou "petshop". Cada ponto tá organizado pra você encontrar exatamente o que precisa, na hora que precisa.'
         src="/screenshots/recursos/waypoints-categoria.png"
@@ -171,7 +171,7 @@ export default function WaypointsPage() {
             Origem e evolução dos dados
           </h2>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            A base começou com dados públicos do OpenStreetMap e foi exaustivamente curada pelo time GT — processada, deduplificada, classificada e enriquecida em 16 categorias relevantes pro overlander.
+            A base começou com dados públicos do OpenStreetMap e foi exaustivamente curada pelo time GT — processada, deduplificada, classificada e enriquecida em 10 categorias relevantes pro overlander.
           </p>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
             Hoje a base é viva. O time GT cura continuamente, e a comunidade contribui validando pontos existentes e cadastrando os que ainda não tinham sido mapeados — tudo direto do app, em qualquer plano. Quanto mais gente na estrada validando, mais rica e atual a base fica.

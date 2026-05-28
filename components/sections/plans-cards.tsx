@@ -29,7 +29,7 @@ const plans: Plan[] = [
     monthlyPrice: 14.9,
     annualPrice: 79.9,
     annualOriginalPrice: 149.9,
-    desc: 'Pra quem viaja com frequência. 2 rotas por mês, 5 consultas de radar por dia, Premium da IA e Modo Offline universal.',
+    desc: 'Pra quem viaja com frequência. 2 rotas por mês, 5 consultas de radar por dia, IA avançada e Modo Offline universal.',
     cta: { label: 'Assinar Plus', href: '/baixar?plan=plus' },
     highlight: true,
     badge: 'Mais escolhido',
@@ -99,7 +99,7 @@ export function PlansCards() {
           >
             Anual
             <span className="text-[10px] uppercase tracking-wider bg-gt-orange text-white px-2 py-0.5 rounded">
-              −55%
+              −58%
             </span>
           </button>
         </div>

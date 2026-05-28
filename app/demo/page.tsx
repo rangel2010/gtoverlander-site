@@ -48,7 +48,7 @@ export default function DemoPage() {
               href="/baixar"
               className="inline-flex items-center justify-center bg-gt-orange text-white px-6 py-3 rounded-md font-medium text-sm hover:bg-gt-orange/90 transition-colors font-sans"
             >
-              Baixar agora
+              Começar grátis
             </a>
             <a
               href="/recursos/waypoints"

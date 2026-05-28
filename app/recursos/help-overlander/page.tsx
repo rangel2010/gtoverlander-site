@@ -43,7 +43,7 @@ const faq = [
   },
   {
     q: 'Quem pode oferecer ajuda como prestador?',
-    a: 'Qualquer assinante Plus ou Pro maior de 18 anos. Ofertar ajuda no Free não é possível — pra criar reputação séria, é benefício do plano pago. Pedir ajuda, isso sim, é livre pra todos os planos.',
+    a: 'Qualquer assinante Plus ou Pro maior de 18 anos. Ofertar ajuda como prestador é um benefício dos planos pagos. Pedir ajuda é livre pra todos os planos, inclusive o Free.',
   },
   {
     q: 'O que cobrar / não cobrar?',

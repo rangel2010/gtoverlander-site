@@ -21,7 +21,7 @@ export function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <Button href="/baixar">Baixar agora</Button>
+            <Button href="/baixar">Começar grátis</Button>
             <Button href="#como-funciona" variant="secondary">
               Ver como funciona
             </Button>
