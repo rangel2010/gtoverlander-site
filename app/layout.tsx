@@ -1,94 +1,13 @@
-import type { Metadata } from 'next';
-import { Inter, Anton } from 'next/font/google';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Analytics } from '@vercel/analytics/next';
-import { Providers } from './providers';
-import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
-import { ConsentBanner } from '@/components/consent-banner';
-import { ClarityScript } from '@/components/clarity-script';
-import {
-  organizationLd,
-  websiteLd,
-  softwareApplicationLd,
-  jsonLdScriptProps,
-} from '@/lib/seo';
-import './globals.css';
+import type { ReactNode } from 'react';
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const anton = Anton({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-anton',
-  display: 'swap',
-});
-
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gtoverlander.com.br'
-  ),
-  title: {
-    default: 'GT Overlander · O maior ecossistema overlander do mundo',
-    template: '%s · GT Overlander',
-  },
-  description:
-    'Roteiros personalizados em uma conversa com IA. Mais de 4 milhões de waypoints em 209 países. iOS, Android, CarPlay e Android Auto.',
-  openGraph: {
-    type: 'website',
-    locale: 'pt_BR',
-    siteName: 'GT Overlander',
-  },
-  twitter: {
-    card: 'summary_large_image',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    types: {
-      'application/rss+xml': '/feed.xml',
-    },
-  },
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html
-      lang="pt-BR"
-      className={`${inter.variable} ${anton.variable}`}
-      suppressHydrationWarning
-    >
-      <head>
-        {/* Schema.org JSON-LD — Organization + WebSite + SoftwareApplication */}
-        <script {...jsonLdScriptProps(organizationLd())} />
-        <script {...jsonLdScriptProps(websiteLd())} />
-        <script {...jsonLdScriptProps(softwareApplicationLd())} />
-      </head>
-      <body className="font-sans antialiased flex flex-col min-h-screen bg-gt-bg text-gt-text">
-        <Providers>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <ConsentBanner />
-          {/* Vercel Speed Insights — mede Core Web Vitals reais dos visitantes */}
-          <SpeedInsights />
-          {/* Vercel Web Analytics — pageviews, top pages, referrers, sem cookies */}
-          <Analytics />
-          {/* Microsoft Clarity — heatmap + session recording, só inicializa se o
-              usuário aceitou o ConsentBanner */}
-          <ClarityScript />
-        </Providers>
-      </body>
-    </html>
-  );
+/**
+ * Root layout pass-through.
+ *
+ * O layout real (html/body, providers, header/footer, i18n) vive em
+ * app/[locale]/layout.tsx. Esse root precisa existir pro Next, mas só
+ * repassa os filhos — assim rotas fora do segmento [locale] (ex.: /studio,
+ * route handlers) não herdam o <html> do site.
+ */
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return children;
 }
