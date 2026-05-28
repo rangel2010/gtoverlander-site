@@ -147,7 +147,7 @@ export default function EmpresasPage() {
               <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
                 <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Produtos no Desapega</p>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
-                  Plano base inclui até 15 produtos ativos. Pra mais, adicione pacotes de 10 produtos por R$ 59,90/mês cada.
+                  Plano base inclui até 15 produtos ativos. Precisa de mais? Cada pacote de 10 produtos sai por R$ 59,90/mês.
                 </p>
                 <table className="w-full text-sm font-sans">
                   <tbody>
@@ -174,7 +174,7 @@ export default function EmpresasPage() {
               <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
                 <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Pontos destacados (Waypoints)</p>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
-                  Plano base inclui 1 ponto destacado. Pra redes com mais unidades, cada ponto extra é cobrado linearmente — sem desconto por volume. Quem entrega mais valor, paga proporcional.
+                  Plano base inclui 1 ponto destacado. Cada unidade adicional entra por só R$ 59,90 — 40% abaixo do valor cheio. Todas as suas unidades no radar de quem já decidiu passar pela região.
                 </p>
                 <table className="w-full text-sm font-sans">
                   <tbody>
@@ -189,14 +189,14 @@ export default function EmpresasPage() {
                   </tbody>
                 </table>
                 <p className="text-xs text-gt-text-dim mt-4 font-sans leading-relaxed">
-                  Pontos extras aplicam-se a unidades da mesma marca e categoria. Sem teto e sem desconto progressivo — visibilidade no GT é ativo de aquisição direto, e o preço reflete o valor por ponto.
+                  Pontos extras valem pra unidades da mesma marca e categoria. Sem limite de quantas você pode destacar — cada uma no radar de quem está na estrada.
                 </p>
               </div>
 
               <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
                 <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Expedições e perfis (Serviços)</p>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
-                  Plano base inclui 1 perfil profissional contínuo + 6 expedições agendadas. Cada expedição fica visível até a data passar e arquiva automaticamente.
+                  Plano base inclui 1 perfil profissional + 6 expedições agendadas. As expedições ficam visíveis até a data passar e arquivam sozinhas. Precisa de mais? Cada pacote adiciona +5 expedições, e cada guia extra (multi-guia) sai por R$ 39,90.
                 </p>
                 <table className="w-full text-sm font-sans">
                   <tbody>
@@ -215,7 +215,7 @@ export default function EmpresasPage() {
                   </tbody>
                 </table>
                 <p className="text-xs text-gt-text-dim mt-4 font-sans leading-relaxed">
-                  Verificação reforçada de identidade e atividade profissional (CADASTUR, MTUR ou similar) exigida para Serviços.
+                  Multi-guia é pra operações com mais de um condutor: cada guia ganha perfil próprio (nome, foto, especialidade), e todos compartilham o mesmo pool de expedições da conta — as expedições são contadas pela conta, não por guia. Verificação reforçada de identidade e atividade profissional (CADASTUR, MTUR ou similar) exigida para Serviços.
                 </p>
               </div>
             </div>

@@ -63,11 +63,14 @@ const comunidade: Feature[] = [
   },
 ];
 
-function FeatureCard({ f }: { f: Feature }) {
+function FeatureCard({ f, surface = 'bg' }: { f: Feature; surface?: 'bg' | 'card' }) {
+  // O card usa a cor OPOSTA ao fundo da seção pra sempre contrastar:
+  // seção bg-gt-bg (escuro) → card gt-card (claro); seção bg-gt-card (claro) → card gt-bg (escuro)
+  const cardBg = surface === 'card' ? 'bg-gt-bg' : 'bg-gt-card';
   return (
     <Link
       href={`/recursos/${f.slug}`}
-      className="bg-gt-card rounded-lg p-7 md:p-8 border border-gt-border hover:border-gt-orange transition-colors group relative"
+      className={`${cardBg} rounded-lg p-7 md:p-8 border border-gt-border hover:border-gt-orange transition-colors group relative`}
     >
       {f.status === 'em-breve' && (
         <span className="absolute top-5 right-5 bg-gt-orange text-white text-[10px] font-medium uppercase tracking-wider px-2 py-1 rounded font-sans">
@@ -114,7 +117,7 @@ export default function RecursosPage() {
             Da ideia da viagem à rota pronta
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {planejamento.map((f) => <FeatureCard key={f.slug} f={f} />)}
+            {planejamento.map((f) => <FeatureCard key={f.slug} f={f} surface="bg" />)}
           </div>
         </div>
       </section>
@@ -128,7 +131,7 @@ export default function RecursosPage() {
             A estrada é melhor com gente junto
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {comunidade.map((f) => <FeatureCard key={f.slug} f={f} />)}
+            {comunidade.map((f) => <FeatureCard key={f.slug} f={f} surface="card" />)}
           </div>
         </div>
       </section>
