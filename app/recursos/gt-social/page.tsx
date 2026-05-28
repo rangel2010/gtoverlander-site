@@ -7,7 +7,7 @@ import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 export const metadata: Metadata = {
   title: 'GT Social',
   description:
-    'A rede social dentro do GT. Siga overlanders, descubra rotas públicas testadas, copie roteiros que outros completaram, construa comunidade de quem realmente vive a estrada.',
+    'A rede social dentro do GT. Siga overlanders, descubra rotas públicas testadas e copie roteiros que outros já completaram. Comunidade de quem vive a estrada.',
 };
 
 const oQueFaz = [

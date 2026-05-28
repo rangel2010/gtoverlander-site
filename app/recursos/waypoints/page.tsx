@@ -9,7 +9,7 @@ import { getGeoFromHeaders } from '@/lib/demo/geo';
 export const metadata: Metadata = {
   title: 'Waypoints próprios',
   description:
-    'Mais de 4 milhões de waypoints em 209 países e 10 categorias. Base própria curada e mantida viva pela comunidade — overlanders validam e cadastram pontos diretamente do app.',
+    'Mais de 4 milhões de waypoints em 209 países e 10 categorias. Base própria curada e mantida viva pela comunidade — valida e cadastra direto do app.',
 };
 
 const numeros = [
@@ -43,7 +43,7 @@ const faq = [
   },
   {
     q: 'Funciona offline?',
-    a: 'Sim. Como a base é nossa (não depende do Google Places), os waypoints ficam disponíveis offline. No plano Free você baixa o país do dispositivo com todas as categorias. No Plus e Pro, libera os 209 países do mundo. O Modo Offline vem com o v2.',
+    a: 'Sim. Como a base é nossa (não depende do Google Places), os waypoints ficam disponíveis offline. No plano Free você baixa o país do dispositivo com todas as categorias. No Plus e Pro, libera os 209 países do mundo.',
   },
   {
     q: 'De onde vêm os dados?',

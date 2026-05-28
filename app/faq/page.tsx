@@ -49,7 +49,7 @@ const categorias: FaqCategory[] = [
       },
       {
         q: 'O que é Modo Offline?',
-        a: 'Em breve, integrado ao v2 do app. No plano Free, baixa o país onde você está com todas as categorias de waypoints. No Plus e Pro, libera os 209 países do mundo. Atualização automática em wifi funciona em qualquer plano. GT roda em qualquer canto, mesmo sem sinal.',
+        a: 'No plano Free, baixa o país onde você está com todas as categorias de waypoints. No Plus e Pro, libera os 209 países do mundo. Atualização automática em wifi funciona em qualquer plano. GT roda em qualquer canto, mesmo sem sinal.',
       },
       {
         q: 'Funciona com CarPlay e Android Auto?',

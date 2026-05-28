@@ -5,7 +5,7 @@ import { BusinessLeadForm } from '@/components/sections/business-lead-form';
 export const metadata: Metadata = {
   title: 'Conta Business',
   description:
-    'Conta comercial do GT Overlander. Destaque seu ponto no mapa, anuncie produtos pra base que viaja, ofereça serviços guiados. R$ 99,90/mês durante a fase de lançamento.',
+    'Conta Business do GT Overlander, em breve. Destaque seu ponto no mapa, venda produtos e ofereça serviços pra quem viaja por terra. Entre na lista de espera.',
 };
 
 const frentes = [
@@ -49,7 +49,7 @@ export default function EmpresasPage() {
       <section className="dark bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-16 md:py-24 max-w-3xl">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted font-sans mb-4">
-            Conta Business
+            Conta Business · Em breve
           </p>
           <h1 className="text-5xl md:text-6xl leading-[0.95] mb-6">
             Vende pra quem viaja? GT é o seu canal.
@@ -58,7 +58,7 @@ export default function EmpresasPage() {
             Estabelecimento físico, e-commerce de equipamento ou serviço de guia — a Conta Business é a porta única pra quem comercializa no universo overlander aparecer pra viajantes que já decidiram pegar a estrada.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Button href="#cadastro">Cadastrar minha conta</Button>
+            <Button href="#cadastro">Entrar na lista de espera</Button>
             <Button href="/termos/conta-business" variant="outline">Ver política completa</Button>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function EmpresasPage() {
       <section id="precos" className="bg-gt-card py-16 md:py-20 border-t border-gt-border scroll-mt-20">
         <div className="container-wide">
           <div className="max-w-3xl mx-auto bg-gt-bg border border-gt-border rounded-lg p-8 md:p-12 text-center mb-10">
-            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">Preço de lançamento</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">Valor de lançamento · garantido pra lista de espera</p>
             <p className="text-sm text-gt-text-dim font-sans mb-2">
               De <span className="line-through">R$ 199,90/mês</span> por
             </p>
@@ -131,10 +131,10 @@ export default function EmpresasPage() {
               <span className="text-base text-gt-text-muted font-sans">por mês</span>
             </div>
             <p className="text-sm text-gt-text-muted font-sans leading-relaxed mb-6 max-w-xl mx-auto">
-              Plano base inclui 1 ponto destacado, até 15 produtos no Desapega e 1 perfil profissional + 6 expedições agendadas em Serviços. Cancele a qualquer momento, sem multa.{' '}
+              Plano base inclui 1 ponto destacado, até 15 produtos no Desapega e 1 perfil profissional + 6 expedições agendadas em Serviços. Quem entrar na lista de espera agora garante esse valor de lançamento quando a Conta Business abrir. Cancele a qualquer momento, sem multa.{' '}
               <a href="/termos/conta-business" className="text-gt-orange hover:underline">Ver política completa</a>.
             </p>
-            <Button href="#cadastro">Cadastrar minha conta agora</Button>
+            <Button href="#cadastro">Entrar na lista de espera</Button>
           </div>
 
           <div className="max-w-6xl mx-auto">

@@ -32,7 +32,7 @@ const planejamento: Feature[] = [
     slug: 'modo-offline',
     titulo: 'Modo Offline',
     desc: 'Escolha as regiões da sua viagem. O GT roda em qualquer canto do mundo, mesmo sem sinal.',
-    status: 'em-breve',
+    status: 'disponivel',
   },
 ];
 

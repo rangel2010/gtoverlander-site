@@ -6,7 +6,7 @@ import { OutrasFeatures } from '@/components/sections/outras-features';
 export const metadata: Metadata = {
   title: 'Modo Offline',
   description:
-    'Em breve no v2. Free baixa o país onde tá com todas as categorias de waypoints. Plus e Pro liberam os 209 países do mundo. Use o GT em qualquer canto, sem depender de sinal.',
+    'Free baixa o país onde está com todas as categorias de waypoints. Plus e Pro liberam os 209 países. Use o GT em qualquer canto, sem depender de sinal.',
 };
 
 const oQueFaz = [
@@ -68,8 +68,8 @@ const planos = [
 
 const faq = [
   {
-    q: 'Quando lança?',
-    a: 'Vem com o v2 do app, em desenvolvimento agora. Sem data exata ainda — focamos em entregar a versão completa em vez de atualizar em partes. Quando lançar, todos os assinantes ativos recebem automaticamente.',
+    q: 'Como ativo o Modo Offline?',
+    a: 'Direto no app. Você escolhe as regiões ou países que vai usar, o GT baixa a base de waypoints e mapas dessas áreas, e tudo fica acessível mesmo sem sinal. Atualiza sozinho quando você reconecta no wifi.',
   },
   {
     q: 'Por que o Free tem 1 país e não o mundo todo?',
@@ -93,7 +93,7 @@ export default function ModoOfflinePage() {
   return (
     <>
       <FeatureHero
-        kicker="Em breve · vem com o v2"
+        kicker="Disponível agora"
         title="GT roda em qualquer canto do mundo, sem depender de sinal"
         subline="Free baixa o país onde você está com todas as categorias. Plus e Pro liberam os 209 países do mundo. Validação, cadastro e atualização automática em wifi funcionam em todos os planos."
         primaryCta={{ label: 'Cadastre seu interesse', href: '/contato' }}

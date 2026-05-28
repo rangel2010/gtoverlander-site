@@ -7,7 +7,7 @@ import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 export const metadata: Metadata = {
   title: 'GT Explorer',
   description:
-    'Sua jornada vira XP, níveis, conquistas e ranking regional. Cada quilômetro rodado, cada ponto validado, cada rota concluída — tudo conta. A estrada vira progressão.',
+    'Sua jornada vira XP, níveis, conquistas e ranking regional. Cada km rodado, cada ponto validado, cada rota concluída conta. A estrada vira progressão.',
 };
 
 const niveis = [

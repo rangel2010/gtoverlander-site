@@ -7,7 +7,7 @@ import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 export const metadata: Metadata = {
   title: 'Help Overlander',
   description:
-    'Pane na estrada, pneu furado, bateria, combustível? Sinaliza no Help Overlander e quem está perto e disposto a ajudar aparece. Comunidade que cuida de comunidade.',
+    'Pane na estrada, pneu, bateria ou combustível? Sinaliza no Help Overlander e quem está perto e disposto a ajudar aparece. Comunidade que cuida de comunidade.',
 };
 
 const tipos = [

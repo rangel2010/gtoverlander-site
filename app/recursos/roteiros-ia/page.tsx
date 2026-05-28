@@ -7,7 +7,7 @@ import { CtaFinal } from '@/components/sections/cta-final';
 export const metadata: Metadata = {
   title: 'Roteiros com IA',
   description:
-    'Descreva a viagem em linguagem natural. A IA monta o trajeto — estradas, cidades e destino — e você completa com paradas. Free pra começar, Pro pra desafios maiores.',
+    'Descreva a viagem em linguagem natural. A IA monta o trajeto — estradas, cidades e destino — e você completa com as paradas. Grátis pra começar.',
 };
 
 const motores = [

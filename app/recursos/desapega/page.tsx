@@ -7,7 +7,7 @@ import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 export const metadata: Metadata = {
   title: 'GT Desapega',
   description:
-    'Marketplace overlander entre quem realmente viaja. Compre e venda equipamento, peças, veículos adaptados e acessórios. Vitrine entre overlanders, sem intermediação.',
+    'Marketplace overlander entre quem realmente viaja. Compre e venda equipamento, peças e acessórios. Vitrine entre overlanders, sem intermediação.',
 };
 
 const categorias = [

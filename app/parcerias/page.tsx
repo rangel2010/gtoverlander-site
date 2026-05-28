@@ -4,7 +4,7 @@ import { PartnershipForm } from '@/components/sections/partnership-form';
 export const metadata: Metadata = {
   title: 'Parcerias',
   description:
-    'Criadores de conteúdo, marcas e serviços de viagem que sustentam o ecossistema overlander. Programa de afiliados, embaixadores, co-marketing e integrações.',
+    'Criadores, marcas e serviços de viagem que sustentam o ecossistema overlander. Afiliados, embaixadores, co-marketing e integrações.',
 };
 
 const categorias = [
