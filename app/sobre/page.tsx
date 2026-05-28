@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { aboutPagePersonLd, jsonLdScriptProps } from '@/lib/seo';
 
@@ -90,12 +91,13 @@ export default function SobrePage() {
           </h2>
 
           <div className="grid md:grid-cols-[320px_1fr] gap-10 items-start">
-            <div className="aspect-square bg-gt-bg rounded-lg overflow-hidden border border-gt-border">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="aspect-square bg-gt-bg rounded-lg overflow-hidden border border-gt-border relative">
+              <Image
                 src="/images/rangel.png"
                 alt="Rangel Machado, fundador do GT Overlander, em frente a paisagem patagônica"
-                className="w-full h-full object-cover"
+                fill
+                sizes="320px"
+                className="object-cover"
               />
             </div>
 

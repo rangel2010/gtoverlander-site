@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
@@ -97,10 +98,11 @@ export default function RoteirosIaPage() {
             </p>
           </div>
           <div className="flex justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/images/screenshots/app-chat-mapa.jpg"
               alt="Tela do app mostrando a rota São Paulo a Curitiba com mapa, paradas em postos de combustível e botões de filtro por categoria"
+              width={738}
+              height={1600}
               className="max-h-[640px] w-auto rounded-3xl border border-gt-border shadow-2xl"
             />
           </div>

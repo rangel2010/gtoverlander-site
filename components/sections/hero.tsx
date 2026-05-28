@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Button } from '../ui/button';
 
 export function Hero() {
@@ -34,10 +35,12 @@ export function Hero() {
 
         <div className="hidden md:flex justify-center">
           {/* Screenshot real da home do app GT Overlander */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/images/screenshots/app-home.jpg"
             alt="Tela inicial do app GT Overlander mostrando a saudação ao usuário, hero com Jeep na estrada e botão Comece um novo roteiro"
+            width={846}
+            height={1600}
+            priority
             className="max-h-[640px] w-auto rounded-3xl border border-gt-border shadow-2xl"
           />
         </div>

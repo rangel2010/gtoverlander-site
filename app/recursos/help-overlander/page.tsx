@@ -145,7 +145,7 @@ export default function HelpOverlanderPage() {
             Diferencial
           </p>
           <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
-            App de mapa não te ajuda quando o pneu fura. Aplicativo de seguro só responde se vc pagar caro. Help Overlander é a primeira solução de socorro na estrada feita pela própria comunidade overlander, gratuita pra pedir e aberta a quem quer retribuir.
+            App de mapa não te ajuda quando o pneu fura. Aplicativo de seguro só responde se você pagar caro. Help Overlander é a primeira solução de socorro na estrada feita pela própria comunidade overlander, gratuita pra pedir e aberta a quem quer retribuir.
           </p>
         </div>
       </section>

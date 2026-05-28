@@ -41,7 +41,7 @@ const beneficios = [
   },
   {
     titulo: 'Anúncio com link próprio',
-    desc: 'Coloca link pro WhatsApp, e-commerce ou marketplace externo. GT só conecta — vc operacionaliza do seu jeito.',
+    desc: 'Coloca link pro WhatsApp, e-commerce ou marketplace externo. GT só conecta — você operacionaliza do seu jeito.',
   },
 ];
 
