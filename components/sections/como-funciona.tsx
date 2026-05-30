@@ -1,29 +1,16 @@
-import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 
-const passos = [
-  {
-    num: 1,
-    titulo: 'Você descreve a viagem',
-    desc: 'Conta o destino, as regiões que quer cruzar, suas preferências de estrada — em linguagem natural',
-  },
-  {
-    num: 2,
-    titulo: 'A IA monta o trajeto',
-    desc: 'Estradas, cidades e destino — pronto em segundos, do jeito que você pediu',
-  },
-  {
-    num: 3,
-    titulo: 'Você escolhe onde parar',
-    desc: 'Postos, hospedagem, campings, atrações — escolhe da maior base de waypoints overlander do mundo',
-  },
-  {
-    num: 4,
-    titulo: 'Você pega a estrada',
-    desc: 'Exporta a rota pro Google Maps e roda direto no painel do carro com CarPlay ou Android Auto',
-  },
-];
+export async function ComoFunciona() {
+  const t = await getTranslations('home.comoFunciona');
 
-export function ComoFunciona() {
+  const passos = [
+    { num: 1, titulo: t('passo1titulo'), desc: t('passo1desc') },
+    { num: 2, titulo: t('passo2titulo'), desc: t('passo2desc') },
+    { num: 3, titulo: t('passo3titulo'), desc: t('passo3desc') },
+    { num: 4, titulo: t('passo4titulo'), desc: t('passo4desc') },
+  ];
+
   return (
     <section
       id="como-funciona"
@@ -31,10 +18,10 @@ export function ComoFunciona() {
     >
       <div className="container-wide">
         <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-          Como funciona
+          {t('titulo')}
         </h2>
         <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-          Da ideia ao roteiro pronto, em 4 passos.
+          {t('subtitulo')}
         </p>
 
         <div className="grid md:grid-cols-4 gap-8 md:gap-6">
@@ -58,7 +45,7 @@ export function ComoFunciona() {
             href="/recursos/roteiros-ia"
             className="text-gt-orange text-sm font-medium hover:underline font-sans"
           >
-            Ver demonstração da IA →
+            {t('verDemo')}
           </Link>
         </div>
       </div>

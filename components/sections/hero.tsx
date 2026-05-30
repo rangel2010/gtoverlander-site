@@ -1,43 +1,44 @@
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 import { Button } from '../ui/button';
 
-export function Hero() {
+export async function Hero() {
+  const t = await getTranslations('home.hero');
+  const tc = await getTranslations('common');
+
   return (
     <section className="dark bg-gt-bg-elevated text-gt-text relative overflow-hidden">
       <div className="container-wide grid md:grid-cols-2 gap-10 md:gap-12 items-center py-16 md:py-24 lg:py-28 relative">
         <div>
           <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-5 font-sans">
-            O maior ecossistema overlander do mundo
+            {t('tagline')}
           </p>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-6 max-w-2xl">
-            Seu companheiro de estrada{' '}
-            <span className="text-gt-orange">em qualquer lugar do mundo</span>
+            {t('titulo')}{' '}
+            <span className="text-gt-orange">{t('tituloDestaque')}</span>
           </h1>
 
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed max-w-md mb-8 font-sans">
-            Descreva a viagem em linguagem natural. Primeiro a IA monta o
-            trajeto — estradas, cidades e destino. Depois você completa:
-            paradas, postos, hospedagem e campings.
+            {t('desc')}
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <Button href="/baixar">Começar grátis</Button>
+            <Button href="/baixar">{tc('baixarGratis')}</Button>
             <Button href="#como-funciona" variant="secondary">
-              Ver como funciona
+              {t('ctaVerComo')}
             </Button>
           </div>
 
           <p className="text-[11px] uppercase tracking-[0.15em] text-gt-text-dim mt-8 font-sans">
-            App Store · Play Store · Web
+            {t('plataformas')}
           </p>
         </div>
 
         <div className="hidden md:flex justify-center">
-          {/* Screenshot real da home do app GT Overlander */}
           <Image
             src="/images/screenshots/app-home.jpg"
-            alt="Tela inicial do app GT Overlander mostrando a saudação ao usuário, hero com Jeep na estrada e botão Comece um novo roteiro"
+            alt={t('appAlt')}
             width={846}
             height={1600}
             priority

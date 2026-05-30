@@ -1,3 +1,4 @@
+import { setRequestLocale } from 'next-intl/server';
 import { Hero } from '@/components/sections/hero';
 import { ComoFunciona } from '@/components/sections/como-funciona';
 import { RecursosDisponiveis } from '@/components/sections/recursos-disponiveis';
@@ -7,7 +8,13 @@ import { BlogTeaser } from '@/components/sections/blog-teaser';
 import { EmpresasTeaser } from '@/components/sections/empresas-teaser';
 import { CtaFinal } from '@/components/sections/cta-final';
 
-export default function HomePage() {
+export default function HomePage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
+
   return (
     <>
       <Hero />

@@ -1,19 +1,23 @@
-const stats = [
-  { valor: 'Milhares', contexto: 'de viajantes cadastrados' },
-  { valor: '+30%', contexto: 'de crescimento de usuários ao mês' },
-  { valor: '+4 mi', contexto: 'de waypoints na nossa base — ajude a crescer ainda mais' },
-  { valor: '+50%', contexto: 'dos que testaram voltaram a usar' },
-];
+import { getTranslations } from 'next-intl/server';
 
-export function Numeros() {
+export async function Numeros() {
+  const t = await getTranslations('home.numeros');
+
+  const stats = [
+    { valor: t('s1valor'), contexto: t('s1ctx') },
+    { valor: t('s2valor'), contexto: t('s2ctx') },
+    { valor: t('s3valor'), contexto: t('s3ctx') },
+    { valor: t('s4valor'), contexto: t('s4ctx') },
+  ];
+
   return (
     <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
       <div className="container-wide">
         <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
-          Momentum
+          {t('label')}
         </p>
         <h2 className="text-3xl md:text-4xl text-gt-text mb-12">
-          O ritmo dos últimos meses
+          {t('titulo')}
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
@@ -29,7 +33,7 @@ export function Numeros() {
           ))}
         </div>
         <p className="text-xs text-gt-text-dim mt-10 md:mt-12 font-sans">
-          App em iOS, Android e Web — compatível com CarPlay e Android Auto, em 3 idiomas.
+          {t('rodape')}
         </p>
       </div>
     </section>

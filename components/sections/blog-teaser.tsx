@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { getAllPosts } from '@/lib/sanity/queries';
 import { sanityConfigured } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
@@ -28,6 +29,8 @@ const placeholderPosts = [
 ];
 
 export async function BlogTeaser() {
+  const t = await getTranslations('home.blog');
+
   // Tenta buscar posts reais do Sanity. Se houver pelo menos 1 post real,
   // mostra os reais (até 3). Só cai em placeholder se não tiver nenhum.
   const realPosts = sanityConfigured ? await getAllPosts() : [];
@@ -38,12 +41,12 @@ export async function BlogTeaser() {
     <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
       <div className="container-wide">
         <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
-          <h2 className="text-3xl md:text-4xl text-gt-text">No blog</h2>
+          <h2 className="text-3xl md:text-4xl text-gt-text">{t('titulo')}</h2>
           <Link
             href="/blog"
             className="text-gt-orange text-sm font-medium hover:underline font-sans"
           >
-            Ver todo o blog →
+            {t('verTudo')}
           </Link>
         </div>
 
@@ -96,7 +99,7 @@ export async function BlogTeaser() {
                   className="bg-gt-card rounded-lg overflow-hidden border border-gt-border hover:border-gt-border-strong transition-colors group"
                 >
                   <div className="aspect-[16/9] bg-gt-card-hover flex items-center justify-center text-gt-text-dim text-xs font-sans">
-                    Capa do artigo
+                    {t('capaCover')}
                   </div>
                   <div className="p-6">
                     <Link

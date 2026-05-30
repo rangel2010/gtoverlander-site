@@ -37,5 +37,83 @@
     "anexoHelp": "Anexo Help Overlander",
     "anexoBusiness": "Anexo Conta Business",
     "tagline": "O maior ecossistema overlander do mundo"
+  },
+  "home": {
+    "hero": {
+      "tagline": "O maior ecossistema overlander do mundo",
+      "titulo": "Seu companheiro de estrada",
+      "tituloDestaque": "em qualquer lugar do mundo",
+      "desc": "Descreva a viagem em linguagem natural. Primeiro a IA monta o trajeto — estradas, cidades e destino. Depois você completa: paradas, postos, hospedagem e campings.",
+      "ctaVerComo": "Ver como funciona",
+      "plataformas": "App Store · Play Store · Web",
+      "appAlt": "Tela inicial do app GT Overlander mostrando a saudação ao usuário, hero com Jeep na estrada e botão Comece um novo roteiro"
+    },
+    "comoFunciona": {
+      "titulo": "Como funciona",
+      "subtitulo": "Da ideia ao roteiro pronto, em 4 passos.",
+      "passo1titulo": "Você descreve a viagem",
+      "passo1desc": "Conta o destino, as regiões que quer cruzar, suas preferências de estrada — em linguagem natural",
+      "passo2titulo": "A IA monta o trajeto",
+      "passo2desc": "Estradas, cidades e destino — pronto em segundos, do jeito que você pediu",
+      "passo3titulo": "Você escolhe onde parar",
+      "passo3desc": "Postos, hospedagem, campings, atrações — escolhe da maior base de waypoints overlander do mundo",
+      "passo4titulo": "Você pega a estrada",
+      "passo4desc": "Exporta a rota pro Google Maps e roda direto no painel do carro com CarPlay ou Android Auto",
+      "verDemo": "Ver demonstração da IA →"
+    },
+    "recursos": {
+      "label": "Disponível agora",
+      "titulo": "O que o GT entrega hoje",
+      "saibaMais": "Saiba mais →",
+      "r1titulo": "Roteiros com IA",
+      "r1desc": "Trajeto montado pela IA em uma conversa — estradas, cidades e destino, pronto em segundos.",
+      "r2titulo": "Waypoints próprios",
+      "r2desc": "Mais de 4 milhões de pontos em 209 países, validados e cadastrados pela comunidade. A maior base overlander do mundo.",
+      "r3titulo": "Help Overlander",
+      "r3desc": "Pane na estrada? Sinaliza no app e quem está perto e disposto a ajudar aparece. Comunidade que cuida de comunidade.",
+      "r4titulo": "GT Social",
+      "r4desc": "Rede social dentro do GT. Siga overlanders, descubra rotas testadas, copie roteiros completos com 1 toque.",
+      "r5titulo": "GT Explorer",
+      "r5desc": "Sua jornada vira XP, níveis, conquistas e ranking regional. Cada km, cada validação, cada rota concluída soma.",
+      "r6titulo": "GT Desapega",
+      "r6desc": "Marketplace overlander entre quem realmente viaja. Compre, venda e troque equipamento sem comissão sobre venda."
+    },
+    "numeros": {
+      "label": "Momentum",
+      "titulo": "O ritmo dos últimos meses",
+      "rodape": "App em iOS, Android e Web — compatível com CarPlay e Android Auto, em 3 idiomas.",
+      "s1valor": "Milhares",
+      "s1ctx": "de viajantes cadastrados",
+      "s2valor": "+30%",
+      "s2ctx": "de crescimento de usuários ao mês",
+      "s3valor": "+4 mi",
+      "s3ctx": "de waypoints na nossa base — ajude a crescer ainda mais",
+      "s4valor": "+50%",
+      "s4ctx": "dos que testaram voltaram a usar"
+    },
+    "porqueGt": {
+      "titulo": "Apps de mapa convencionais não entendem overlander",
+      "p1": "Apps de mapa te empurram pro caminho mais rápido — a estrada principal, o atalho, a rota mais eficiente. Pra um overlander, o que importa é o caminho, não o destino.",
+      "p2": "O GT existe pra preencher esse vazio. Uma IA que entende viagem por terra, uma base própria com mais de 4 milhões de waypoints curados pelo time e pela comunidade, e um app pensado pra quem precisa de informação confiável quando o sinal cai.",
+      "p3": "Não substituímos o Google Maps na navegação. A gente passa a ser a inteligência dos pontos de apoio — onde dormir, onde abastecer, onde comer, onde acampar — junto da rota que faz sentido pro seu jeito de viajar.",
+      "p4": "Quando você fecha o roteiro, sua viagem sai do GT pro Google Maps com um toque. Você ganha radar, trânsito ao vivo e dirige com CarPlay ou Android Auto — coisa rara entre apps overlander.",
+      "linkHistoria": "Conheça nossa história →"
+    },
+    "blog": {
+      "titulo": "No blog",
+      "verTudo": "Ver todo o blog →",
+      "capaCover": "Capa do artigo"
+    },
+    "empresas": {
+      "label": "Conta Business — em breve",
+      "titulo": "Quer aparecer pra quem já decidiu viajar?",
+      "desc": "Postos, campings, pousadas, oficinas e restaurantes ganham visibilidade pra viajantes que já decidiram passar pela sua região.",
+      "cta": "Quero saber mais →"
+    },
+    "ctaFinal": {
+      "titulo": "Sua próxima viagem começa em uma conversa",
+      "subtitulo": "Comece grátis. Sem cartão, sem compromisso.",
+      "ctaPlanos": "Explorar planos"
+    }
   }
 }
