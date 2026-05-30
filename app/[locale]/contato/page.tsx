@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { ContactForm } from '@/components/sections/contact-form';
 
 export const metadata: Metadata = {
@@ -8,17 +9,23 @@ export const metadata: Metadata = {
     'Fale com a equipe GT Overlander. Suporte, parcerias, imprensa, dúvidas comerciais — todos os canais reunidos numa só página.',
 };
 
-export default function ContatoPage() {
+export default async function ContatoPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
+  const t = await getTranslations('contato');
+
   return (
     <>
       <section className="dark bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-16 md:py-20 max-w-3xl">
           <h1 className="text-5xl md:text-6xl leading-[0.95] mb-5">
-            Fala com a gente
+            {t('hero.titulo')}
           </h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
-            Manda mensagem por aqui, ou usa um dos canais diretos abaixo.
-            Respondemos em até 2 dias úteis.
+            {t('hero.desc')}
           </p>
         </div>
       </section>
@@ -28,7 +35,7 @@ export default function ContatoPage() {
           <div className="grid md:grid-cols-[1fr_320px] gap-12">
             <div>
               <h2 className="text-2xl md:text-3xl text-gt-text mb-8">
-                Mande sua mensagem
+                {t('form.titulo')}
               </h2>
               <ContactForm />
             </div>
@@ -36,7 +43,7 @@ export default function ContatoPage() {
             <aside className="space-y-8">
               <div>
                 <h3 className="font-sans text-sm font-medium text-gt-text-muted uppercase tracking-wider mb-3">
-                  Canais diretos
+                  {t('aside.canaisLabel')}
                 </h3>
                 <a
                   href="mailto:suporte@gtoverlander.com.br"
@@ -45,43 +52,43 @@ export default function ContatoPage() {
                   suporte@gtoverlander.com.br
                 </a>
                 <p className="text-sm text-gt-text-muted font-sans">
-                  E-mail principal pra qualquer assunto
+                  {t('aside.emailDesc')}
                 </p>
               </div>
 
               <div>
                 <h3 className="font-sans text-sm font-medium text-gt-text-muted uppercase tracking-wider mb-3">
-                  Tem dúvida sobre o app?
+                  {t('aside.suporteLabel')}
                 </h3>
                 <Link
                   href="/suporte"
                   className="text-gt-text hover:text-gt-orange transition-colors font-sans block mb-1"
                 >
-                  Ir pro suporte →
+                  {t('aside.suporteLink')}
                 </Link>
                 <p className="text-sm text-gt-text-muted font-sans">
-                  FAQ, tópicos populares e abertura de ticket
+                  {t('aside.suporteDesc')}
                 </p>
               </div>
 
               <div>
                 <h3 className="font-sans text-sm font-medium text-gt-text-muted uppercase tracking-wider mb-3">
-                  Empresas
+                  {t('aside.empresasLabel')}
                 </h3>
                 <Link
                   href="/empresas"
                   className="text-gt-text hover:text-gt-orange transition-colors font-sans block mb-1"
                 >
-                  Conta Business →
+                  {t('aside.empresasLink')}
                 </Link>
                 <p className="text-sm text-gt-text-muted font-sans">
-                  Pra estabelecimentos que querem aparecer no mapa
+                  {t('aside.empresasDesc')}
                 </p>
               </div>
 
               <div>
                 <h3 className="font-sans text-sm font-medium text-gt-text-muted uppercase tracking-wider mb-3">
-                  Razão social
+                  {t('aside.razaoLabel')}
                 </h3>
                 <p className="text-sm text-gt-text font-sans">
                   GT Overlander Ltda
@@ -90,7 +97,7 @@ export default function ContatoPage() {
                   CNPJ 59.840.412/0001-82
                 </p>
                 <p className="text-sm text-gt-text-muted font-sans">
-                  Londrina, PR — Brasil
+                  {t('aside.cidade')}
                 </p>
               </div>
             </aside>

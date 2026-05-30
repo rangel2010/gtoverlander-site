@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { PartnershipForm } from '@/components/sections/partnership-form';
 
 export const metadata: Metadata = {
@@ -7,82 +8,47 @@ export const metadata: Metadata = {
     'Criadores, marcas e serviços de viagem que sustentam o ecossistema overlander. Afiliados, embaixadores, co-marketing e integrações.',
 };
 
-const categorias = [
-  {
-    titulo: 'Criadores de conteúdo',
-    desc: 'Blogueiros, youtubers, podcasters e influenciadores que falam de overlanding, vanlife, motorhome, 4x4 ou viagem por terra.',
-    exemplos: 'YouTube · Instagram · TikTok · Blog · Podcast',
-  },
-  {
-    titulo: 'Marcas e produtos',
-    desc: 'Lojas especializadas, marcas de equipamento, acessórios 4x4, vestuário outdoor, autopeças relacionadas a overlanding.',
-    exemplos: 'Equipamento · Vestuário · Acessórios · Autopeças',
-  },
-  {
-    titulo: 'Serviços de viagem',
-    desc: 'Locadoras de motorhome e 4x4, operadoras de turismo de aventura, agências, seguradoras de viagem, assistência 24h.',
-    exemplos: 'Locação · Operadora · Agência · Seguro',
-  },
-];
+export default async function ParceriasPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
+  const t = await getTranslations('parcerias');
 
-const oferta = [
-  {
-    titulo: 'Audiência qualificada',
-    desc: 'Você conversa com quem já decidiu viajar por terra. Não é tráfego frio — é viajante no momento exato de planejar.',
-  },
-  {
-    titulo: 'Programa de afiliados',
-    desc: 'Link único de indicação com comissão recorrente sobre cada assinatura que vier do seu canal.',
-  },
-  {
-    titulo: 'Co-marketing e conteúdo',
-    desc: 'Campanhas em conjunto, divulgação cruzada, conteúdo editorial sobre o que vocês oferecem.',
-  },
-  {
-    titulo: 'Acesso e produto',
-    desc: 'Acesso Pro grátis pra você usar e criar conteúdo autêntico. Bundles com sua oferta quando faz sentido.',
-  },
-];
+  const categorias = [
+    { titulo: t('quem.c1t'), desc: t('quem.c1d'), exemplos: t('quem.c1e') },
+    { titulo: t('quem.c2t'), desc: t('quem.c2d'), exemplos: t('quem.c2e') },
+    { titulo: t('quem.c3t'), desc: t('quem.c3d'), exemplos: t('quem.c3e') },
+  ];
 
-const formatos = [
-  {
-    titulo: 'Afiliado',
-    desc: 'Link de indicação com comissão recorrente sobre assinaturas Pro/Plus. Modelo simples — você indica, ganha.',
-  },
-  {
-    titulo: 'Embaixador',
-    desc: 'Pra figuras públicas do universo overlander. Benefícios estendidos, presença no app, reconhecimento.',
-  },
-  {
-    titulo: 'Conteúdo patrocinado',
-    desc: 'Review honesto do app, com base em uso real. GT entra com Pro grátis e suporte pra produção.',
-  },
-  {
-    titulo: 'Co-marketing',
-    desc: 'Campanhas conjuntas, Stories cruzados, conteúdo editorial sobre seu produto/serviço no nosso blog.',
-  },
-  {
-    titulo: 'Integração tecnológica',
-    desc: 'Pra parceiros estratégicos com produto digital. APIs, integrações no app, bundles. Caso a caso.',
-  },
-];
+  const oferta = [
+    { titulo: t('oferta.o1t'), desc: t('oferta.o1d') },
+    { titulo: t('oferta.o2t'), desc: t('oferta.o2d') },
+    { titulo: t('oferta.o3t'), desc: t('oferta.o3d') },
+    { titulo: t('oferta.o4t'), desc: t('oferta.o4d') },
+  ];
 
-export default function ParceriasPage() {
+  const formatos = [
+    { titulo: t('formatos.f1t'), desc: t('formatos.f1d') },
+    { titulo: t('formatos.f2t'), desc: t('formatos.f2d') },
+    { titulo: t('formatos.f3t'), desc: t('formatos.f3d') },
+    { titulo: t('formatos.f4t'), desc: t('formatos.f4d') },
+    { titulo: t('formatos.f5t'), desc: t('formatos.f5d') },
+  ];
+
   return (
     <>
       <section className="dark bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-16 md:py-24 max-w-3xl">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-5 font-sans">
-            Parcerias
+            {t('hero.label')}
           </p>
           <h1 className="text-5xl md:text-6xl leading-[0.95] mb-6">
-            Construa overlanding com a gente
+            {t('hero.titulo')}
           </h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
-            O maior ecossistema overlander do mundo não é só app — é todo
-            mundo que sustenta esse universo. Criadores que contam histórias de
-            estrada, marcas que equipam quem viaja, serviços que cuidam do
-            caminho. Vamos fazer juntos.
+            {t('hero.desc')}
           </p>
         </div>
       </section>
@@ -90,11 +56,10 @@ export default function ParceriasPage() {
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            Quem buscamos
+            {t('quem.titulo')}
           </h2>
           <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-            Três grandes frentes. Se você se enquadra em alguma, queremos
-            conversar.
+            {t('quem.desc')}
           </p>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -121,10 +86,10 @@ export default function ParceriasPage() {
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            O que o GT oferece
+            {t('oferta.titulo')}
           </h2>
           <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-            Parceria boa é via de mão dupla. Aqui é o nosso lado.
+            {t('oferta.desc')}
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -148,11 +113,10 @@ export default function ParceriasPage() {
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            Formatos de parceria
+            {t('formatos.titulo')}
           </h2>
           <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-            Não é tamanho único. A gente adapta o formato pro que faz sentido
-            no seu caso.
+            {t('formatos.desc')}
           </p>
 
           <div className="space-y-3">
@@ -181,15 +145,13 @@ export default function ParceriasPage() {
       <section className="bg-gt-card py-16 md:py-24 border-t border-gt-border">
         <div className="container-narrow">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">
-            Mande sua proposta
+            {t('contato.label')}
           </p>
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            Vamos conversar
+            {t('contato.titulo')}
           </h2>
           <p className="text-gt-text-muted mb-10 font-sans">
-            Conte quem você é e o que tá imaginando. Lemos cada proposta e
-            respondemos em até 5 dias úteis. Se fizer sentido, marcamos uma
-            conversa pra desenhar a parceria juntos.
+            {t('contato.desc')}
           </p>
 
           <PartnershipForm />

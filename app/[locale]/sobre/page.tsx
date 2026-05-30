@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { aboutPagePersonLd, jsonLdScriptProps } from '@/lib/seo';
 
@@ -9,33 +10,29 @@ export const metadata: Metadata = {
     'O GT Overlander é o maior ecossistema overlander do mundo — um companheiro de estrada que une praticidade, inteligência artificial e comunidade.',
 };
 
-const numeros = [
-  { valor: 'Milhares', contexto: 'de viajantes cadastrados' },
-  { valor: '+30%', contexto: 'de crescimento de usuários ao mês' },
-  { valor: '+4 mi', contexto: 'de waypoints na nossa base — ajude a crescer ainda mais' },
-  { valor: '209', contexto: 'países cobertos' },
-];
+export default async function SobrePage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
+  const t = await getTranslations('sobre');
+  const tc = await getTranslations('common');
 
-const proximas = [
-  {
-    titulo: 'Comunidade GT viva',
-    desc: 'Help Overlander pra socorro na estrada, GT Social pra rede social entre viajantes, GT Explorer pra reputação e ranking, GT Desapega pra marketplace. Tudo já no ar — agora cresce com você.',
-  },
-  {
-    titulo: 'Conta Business 3 frentes',
-    desc: 'POI físico, vendedor de produtos e serviços guiados de expedição numa só conta comercial. Disponível agora, com escalonamento por volume pra redes maiores.',
-  },
-  {
-    titulo: 'Modo Offline universal',
-    desc: 'Free baixa o país onde está com todas as categorias de waypoints; Plus e Pro liberam os 209 países do mundo.',
-  },
-  {
-    titulo: 'Expansão internacional',
-    desc: 'A base de waypoints já cobre 209 países. Próximos passos: localização da interface, parcerias com guias regionais e canais comerciais multi-país.',
-  },
-];
+  const numeros = [
+    { valor: t('numeros.n1v'), contexto: t('numeros.n1c') },
+    { valor: t('numeros.n2v'), contexto: t('numeros.n2c') },
+    { valor: t('numeros.n3v'), contexto: t('numeros.n3c') },
+    { valor: t('numeros.n4v'), contexto: t('numeros.n4c') },
+  ];
 
-export default function SobrePage() {
+  const proximas = [
+    { titulo: t('proximas.p1t'), desc: t('proximas.p1d') },
+    { titulo: t('proximas.p2t'), desc: t('proximas.p2d') },
+    { titulo: t('proximas.p3t'), desc: t('proximas.p3d') },
+    { titulo: t('proximas.p4t'), desc: t('proximas.p4d') },
+  ];
+
   return (
     <>
       {/* Schema.org AboutPage + Person */}
@@ -44,15 +41,13 @@ export default function SobrePage() {
       <section className="dark bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-16 md:py-24 max-w-3xl">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-5 font-sans">
-            Sobre o GT Overlander
+            {t('hero.label')}
           </p>
           <h1 className="text-5xl md:text-6xl leading-[0.95] mb-6">
-            Mais do que um planejador de rotas — um companheiro de estrada
+            {t('hero.titulo')}
           </h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
-            O GT existe pra transformar o planejamento de viagens por terra
-            numa experiência simples, inteligente e prática — feita por quem
-            viaja, pra quem viaja.
+            {t('hero.desc')}
           </p>
         </div>
       </section>
@@ -60,41 +55,25 @@ export default function SobrePage() {
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-6">
-            Nossa missão
+            {t('missao.titulo')}
           </h2>
-          <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            O GT Overlander é um aplicativo pra quem viaja por terra — de
-            carro, moto, 4x4 ou motorhome. Nasceu da frustração com apps
-            genéricos que não entendem a realidade de quem cruza fronteira,
-            dorme em camping selvagem, ou roda 5 mil km numa só viagem.
-          </p>
-          <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            O GT entende quem viaja: a IA monta o trajeto pelas estradas que
-            fazem sentido, com cidades pelo caminho e contexto regional. A base
-            própria de mais de 4 milhões de waypoints em 209 países cobre o que
-            importa pra quem já decidiu pra onde vai — postos, hospedagem,
-            campings, oficinas, atrações. E a integração com Google Maps,
-            CarPlay e Android Auto leva tudo pro painel do carro.
-          </p>
-          <p className="text-gt-text leading-relaxed font-sans">
-            Mais que um planejador, o GT é um companheiro de estrada — feito
-            pra quem não vê a viagem só como deslocamento, mas como uma
-            experiência única.
-          </p>
+          <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('missao.p1')}</p>
+          <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('missao.p2')}</p>
+          <p className="text-gt-text leading-relaxed font-sans">{t('missao.p3')}</p>
         </div>
       </section>
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-12">
-            O fundador
+            {t('fundador.titulo')}
           </h2>
 
           <div className="grid md:grid-cols-[320px_1fr] gap-10 items-start">
             <div className="aspect-square bg-gt-bg rounded-lg overflow-hidden border border-gt-border relative">
               <Image
                 src="/images/rangel.png"
-                alt="Rangel Machado, fundador do GT Overlander, em frente a paisagem patagônica"
+                alt={t('fundador.imgAlt')}
                 fill
                 sizes="320px"
                 className="object-cover"
@@ -103,21 +82,13 @@ export default function SobrePage() {
 
             <div>
               <h3 className="font-sans text-xl font-medium text-gt-text mb-2 normal-case">
-                Rangel Machado
+                {t('fundador.nome')}
               </h3>
               <p className="text-sm text-gt-orange mb-5 uppercase tracking-wider font-sans">
-                Fundador
+                {t('fundador.cargo')}
               </p>
-              <p className="text-gt-text leading-relaxed mb-4 font-sans">
-                Empresário paranaense e viajante. Vê o overlanding como um dos
-                modos mais ricos de conhecer o mundo — e fundou o GT pra ser o
-                app que ele mesmo queria ter na própria estrada.
-              </p>
-              <p className="text-gt-text leading-relaxed font-sans">
-                Não vem do background técnico. Toma decisões de produto, ouve a
-                comunidade, e trabalha lado a lado com o time pra transformar
-                cada experiência pessoal em melhoria do app.
-              </p>
+              <p className="text-gt-text leading-relaxed mb-4 font-sans">{t('fundador.p1')}</p>
+              <p className="text-gt-text leading-relaxed font-sans">{t('fundador.p2')}</p>
             </div>
           </div>
         </div>
@@ -126,32 +97,18 @@ export default function SobrePage() {
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-6">
-            Conhecer quem viaja pra construir junto
+            {t('comunidade.titulo')}
           </h2>
-          <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            Quem usa o GT não está navegando à toa. Já decidiu viajar, já sabe
-            pra onde vai, e está no momento de planejar o caminho — onde parar,
-            onde dormir, o que ver na estrada.
-          </p>
-          <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            Conhecer essa jornada — quem viaja, pra onde, com qual veículo,
-            qual estilo — é o que permite o GT melhorar continuamente. Cada
-            viagem real ensina algo: rotas que funcionam, paradas que faltam,
-            contextos regionais que ainda não cobrimos. É daí que cada camada
-            do app evolui.
-          </p>
-          <p className="text-gt-text leading-relaxed font-sans">
-            Não é um app de mapas. É um ecossistema vivo, construído junto com
-            quem viaja — feito pra crescer com a comunidade overlander do
-            mundo.
-          </p>
+          <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('comunidade.p1')}</p>
+          <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('comunidade.p2')}</p>
+          <p className="text-gt-text leading-relaxed font-sans">{t('comunidade.p3')}</p>
         </div>
       </section>
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-12">
-            Onde estamos hoje
+            {t('numeros.titulo')}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
             {numeros.map((n, i) => (
@@ -166,8 +123,7 @@ export default function SobrePage() {
             ))}
           </div>
           <p className="text-sm text-gt-text-muted mt-10 font-sans">
-            App em iOS, Android e Web — compatível com CarPlay e Android Auto,
-            em 3 idiomas (português, inglês, espanhol).
+            {t('numeros.rodape')}
           </p>
         </div>
       </section>
@@ -175,11 +131,10 @@ export default function SobrePage() {
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            Pra onde vamos
+            {t('proximas.titulo')}
           </h2>
           <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-            O GT está evoluindo pra um ecossistema completo pra quem vive a
-            estrada — conectando viajantes, empresas, serviços e experiências.
+            {t('proximas.desc')}
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -203,16 +158,15 @@ export default function SobrePage() {
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow text-center">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-4">
-            Faça parte
+            {t('cta.titulo')}
           </h2>
           <p className="text-gt-text-muted mb-8 max-w-md mx-auto font-sans">
-            Baixe o app e comece sua próxima viagem. Ou, se você representa um
-            estabelecimento na rota dos viajantes, conheça a Conta Business.
+            {t('cta.desc')}
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Button href="/baixar">Começar grátis</Button>
+            <Button href="/baixar">{tc('baixarGratis')}</Button>
             <Button href="/empresas" variant="outline">
-              Conta Business
+              {t('cta.ctaBusiness')}
             </Button>
           </div>
         </div>

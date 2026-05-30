@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { faqPageLd, jsonLdScriptProps } from '@/lib/seo';
 
@@ -9,108 +10,59 @@ export const metadata: Metadata = {
     'Dúvidas mais comuns sobre o GT Overlander — o app, como funciona, planos, conta e dados, Conta Business.',
 };
 
-interface FaqCategory {
-  titulo: string;
-  perguntas: { q: string; a: string }[];
-}
+export default async function FaqPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
+  const t = await getTranslations('faqPage');
 
-const categorias: FaqCategory[] = [
-  {
-    titulo: 'Sobre o app',
-    perguntas: [
-      {
-        q: 'O que é o GT Overlander?',
-        a: 'É um app de planejamento de rotas pra quem viaja por terra — de carro, moto, 4x4 ou motorhome, em qualquer lugar do mundo. Serve tanto pra grandes expedições quanto pra uma viagem de fim de semana. Você descreve a viagem em linguagem natural pra uma IA que monta o trajeto, e completa com paradas da nossa base de mais de 4 milhões de waypoints.',
-      },
-      {
-        q: 'Em quais plataformas funciona?',
-        a: 'iOS, Android e Web (acesso pelo computador). Compatível com CarPlay e Android Auto. Tudo sincronizado entre dispositivos.',
-      },
-      {
-        q: 'Em quais idiomas?',
-        a: 'Português, inglês e espanhol. Você descreve a viagem no idioma que preferir.',
-      },
-      {
-        q: 'Custa quanto?',
-        a: 'O plano Free é grátis pra sempre — não é trial. Plus a partir de R$ 14,90/mês ou R$ 79,90/ano. Pro a partir de R$ 19,90/mês ou R$ 99,90/ano. Veja todos os planos em /planos.',
-      },
-      {
-        q: 'O GT funciona em qualquer país?',
-        a: 'A base de waypoints cobre 209 países nos 6 continentes habitados. O motor de IA gera rotas pro mundo todo. Cobertura regional pode variar conforme densidade de pontos na área.',
-      },
-    ],
-  },
-  {
-    titulo: 'Como funciona',
-    perguntas: [
-      {
-        q: 'Como a IA gera as rotas?',
-        a: 'Você descreve a viagem em linguagem natural — destino, regiões, preferências de estrada. A IA monta o trajeto em segundos: estradas, cidades e contexto regional. Daí você escolhe as paradas na nossa base de waypoints. Você no controle, sempre.',
-      },
-      {
-        q: 'O que é Modo Offline?',
-        a: 'No plano Free, baixa o país onde você está com todas as categorias de waypoints. No Plus e Pro, libera os 209 países do mundo. Atualização automática em wifi funciona em qualquer plano. GT roda em qualquer canto, mesmo sem sinal.',
-      },
-      {
-        q: 'Funciona com CarPlay e Android Auto?',
-        a: 'Sim, integração nativa. Você planeja a viagem no celular, conecta no carro, e tudo continua funcionando na tela do veículo.',
-      },
-      {
-        q: 'Os waypoints são confiáveis?',
-        a: 'A base começou com dados públicos do OpenStreetMap, processados e classificados pelo time GT em 10 categorias relevantes pro overlander. Em construção: validação por comunidade — overlanders contribuindo e validando pontos diretamente pelo app.',
-      },
-    ],
-  },
-  {
-    titulo: 'Planos e pagamento',
-    perguntas: [
-      {
-        q: 'Posso testar antes de assinar?',
-        a: 'Free não é trial. Você usa o GT grátis pra sempre, com a IA padrão, todos os waypoints, CarPlay e Android Auto. 1 rota exportada pra navegar a cada 90 dias e 1 consulta de radar por dia. Quando precisar de mais, sobe pra Plus ou Pro.',
-      },
-      {
-        q: 'Posso cancelar quando quiser?',
-        a: 'Sim, sem multa. O plano segue ativo até o fim do ciclo já pago e depois volta pro Free automaticamente. Suas rotas e configurações nunca são apagadas — em nenhum plano. O que muda é só a quantidade de exportações pra navegar.',
-      },
-      {
-        q: 'Qual a diferença entre Plus e Pro?',
-        a: 'Plus e Pro têm a mesma qualidade, mesma entrega, mesma usabilidade. A diferença está só nas quantidades: Plus limita em 2 rotas exportadas pra navegar/mês e 5 consultas de radar/dia. Pro é ilimitado em ambos.',
-      },
-    ],
-  },
-  {
-    titulo: 'Conta e dados',
-    perguntas: [
-      {
-        q: 'Como vocês tratam meus dados?',
-        a: 'Conforme LGPD. Coletamos só o necessário pra rodar o app: e-mail pra autenticação, rotas que você cria pra sincronizar entre dispositivos, dados de pagamento via Asaas (não armazenamos cartão). Veja a política completa em /privacidade.',
-      },
-      {
-        q: 'Posso excluir minha conta?',
-        a: 'Sim. No app, vai em Perfil → Configurações → Excluir conta. Suas rotas e dados pessoais são removidos em até 30 dias. Backups técnicos podem ficar mais alguns dias por questões de continuidade do serviço.',
-      },
-      {
-        q: 'Posso usar o GT sem criar conta?',
-        a: 'Você pode baixar e abrir o app sem conta, mas pra salvar rotas, sincronizar entre dispositivos e usar a IA, precisa criar conta com e-mail.',
-      },
-    ],
-  },
-  {
-    titulo: 'Empresas',
-    perguntas: [
-      {
-        q: 'Tenho um posto / camping / pousada. Como aparecer no GT?',
-        a: 'A Conta Business está em desenvolvimento. Quando lançar, qualquer estabelecimento na rota dos viajantes (postos, campings, pousadas, oficinas, restaurantes) poderá criar perfil e aparecer pra quem passa na região. Cadastre-se na lista de espera em /empresas.',
-      },
-      {
-        q: 'Quanto vai custar a Conta Business?',
-        a: 'O modelo está sendo finalizado. Vai ser self-service e ROI mensurável (você acompanha quantos viajantes passaram, viram seu perfil, foram até você).',
-      },
-    ],
-  },
-];
+  const categorias = [
+    {
+      titulo: t('cat1titulo'),
+      perguntas: [
+        { q: t('cat1q1'), a: t('cat1a1') },
+        { q: t('cat1q2'), a: t('cat1a2') },
+        { q: t('cat1q3'), a: t('cat1a3') },
+        { q: t('cat1q4'), a: t('cat1a4') },
+        { q: t('cat1q5'), a: t('cat1a5') },
+      ],
+    },
+    {
+      titulo: t('cat2titulo'),
+      perguntas: [
+        { q: t('cat2q1'), a: t('cat2a1') },
+        { q: t('cat2q2'), a: t('cat2a2') },
+        { q: t('cat2q3'), a: t('cat2a3') },
+        { q: t('cat2q4'), a: t('cat2a4') },
+      ],
+    },
+    {
+      titulo: t('cat3titulo'),
+      perguntas: [
+        { q: t('cat3q1'), a: t('cat3a1') },
+        { q: t('cat3q2'), a: t('cat3a2') },
+        { q: t('cat3q3'), a: t('cat3a3') },
+      ],
+    },
+    {
+      titulo: t('cat4titulo'),
+      perguntas: [
+        { q: t('cat4q1'), a: t('cat4a1') },
+        { q: t('cat4q2'), a: t('cat4a2') },
+        { q: t('cat4q3'), a: t('cat4a3') },
+      ],
+    },
+    {
+      titulo: t('cat5titulo'),
+      perguntas: [
+        { q: t('cat5q1'), a: t('cat5a1') },
+        { q: t('cat5q2'), a: t('cat5a2') },
+      ],
+    },
+  ];
 
-export default function FaqPage() {
   // Achata todas as perguntas pra schema.org FAQPage
   const allQuestions = categorias.flatMap((cat) => cat.perguntas);
 
@@ -122,15 +74,15 @@ export default function FaqPage() {
       <section className="dark bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-12 md:py-16 max-w-3xl">
           <h1 className="text-4xl md:text-5xl leading-[1.05] mb-3">
-            Perguntas frequentes
+            {t('hero.titulo')}
           </h1>
           <p className="text-base text-gt-text-muted font-sans">
-            As dúvidas mais comuns sobre o GT Overlander. Não achou a sua?{' '}
+            {t('hero.desc')}{' '}
             <Link
               href="/contato"
               className="text-gt-text underline underline-offset-4 hover:text-gt-orange"
             >
-              fala com a gente
+              {t('hero.descLink')}
             </Link>
             .
           </p>
@@ -172,13 +124,13 @@ export default function FaqPage() {
       <section className="bg-gt-card py-12 md:py-16 border-t border-gt-border">
         <div className="container-narrow text-center">
           <h2 className="text-2xl md:text-3xl text-gt-text mb-3">
-            Não achou sua dúvida?
+            {t('cta.titulo')}
           </h2>
           <p className="text-gt-text-muted mb-6 font-sans">
-            A gente responde rápido — fica tranquilo.
+            {t('cta.desc')}
           </p>
           <Button href="/contato" variant="secondary">
-            Falar com a gente
+            {t('cta.btn')}
           </Button>
         </div>
       </section>

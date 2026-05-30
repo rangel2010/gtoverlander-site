@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { BusinessLeadForm } from '@/components/sections/business-lead-form';
 
@@ -8,67 +9,59 @@ export const metadata: Metadata = {
     'Conta Business do GT Overlander, em breve. Destaque seu ponto no mapa, venda produtos e ofereça serviços pra quem viaja por terra. Entre na lista de espera.',
 };
 
-const frentes = [
-  {
-    tag: 'Waypoints',
-    titulo: 'Destaque seu ponto no mapa',
-    desc: 'Estabelecimento físico — posto, hotel, oficina, camping, restaurante, atrativo turístico. Aparece em destaque no radar de quem já decidiu passar pela sua região, com ícone customizado, foto e dados completos.',
-    exemplos: 'Postos · Campings · Hotéis · Pousadas · Oficinas · Restaurantes · Atrativos',
-  },
-  {
-    tag: 'Produtos',
-    titulo: 'Venda pra base que viaja',
-    desc: 'E-commerce, fabricante ou distribuidor de equipamento overlander. Anuncie seus produtos no GT Desapega com link direto pra sua loja, marketplace ou WhatsApp comercial.',
-    exemplos: 'Lojas online · Fabricantes · Distribuidores · Customização · Acessórios · Peças',
-  },
-  {
-    tag: 'Serviços',
-    titulo: 'Ofereça experiência guiada',
-    desc: 'Guia local, condutor de expedição, instrutor 4×4, fotógrafo de roteiro. Apareça em regiões e roteiros relevantes pra quem está planejando viagem — antes de sair de casa.',
-    exemplos: 'Guias 4×4 · Condutores · Instrutores · Fotógrafos · Trilhas guiadas · Expedições',
-  },
-];
+export default async function EmpresasPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
+  const t = await getTranslations('empresas');
 
-const beneficios = [
-  { titulo: 'Audiência qualificada', desc: 'Apareça pra quem JÁ DECIDIU viajar pra sua região. Não é tráfego frio — é viajante no momento exato de planejar.' },
-  { titulo: 'Destaque visual exclusivo', desc: 'Caixinha colorida + ícone customizado no mapa, presença no Desapega, apresentação nas páginas de destinos.' },
-  { titulo: 'Self-service', desc: 'Cadastra seu negócio, ativa as frentes que fazem sentido pra você, e tá no ar. Sem ligação de vendas, sem contrato longo.' },
-  { titulo: 'Cancele quando quiser', desc: 'Mensal, sem multa, sem fidelidade. Se não trouxer resultado, você sai. Suas informações ficam com você.' },
-];
+  const frentes = [
+    { tag: t('frentes.f1tag'), titulo: t('frentes.f1titulo'), desc: t('frentes.f1desc'), exemplos: t('frentes.f1exemplos') },
+    { tag: t('frentes.f2tag'), titulo: t('frentes.f2titulo'), desc: t('frentes.f2desc'), exemplos: t('frentes.f2exemplos') },
+    { tag: t('frentes.f3tag'), titulo: t('frentes.f3titulo'), desc: t('frentes.f3desc'), exemplos: t('frentes.f3exemplos') },
+  ];
 
-const passos = [
-  { num: 1, titulo: 'Preenche o cadastro', desc: 'Dados do negócio, frentes que vai usar, fotos e contato' },
-  { num: 2, titulo: 'GT valida', desc: 'Conferimos as informações pra garantir qualidade e segurança da base' },
-  { num: 3, titulo: 'Vai pro ar', desc: 'Aparece no mapa, no Desapega ou nos roteiros, conforme as frentes que ativou' },
-  { num: 4, titulo: 'Acompanha métricas', desc: 'Visualizações, cliques, contatos — tudo medido no painel' },
-];
+  const beneficios = [
+    { titulo: t('beneficios.b1t'), desc: t('beneficios.b1d') },
+    { titulo: t('beneficios.b2t'), desc: t('beneficios.b2d') },
+    { titulo: t('beneficios.b3t'), desc: t('beneficios.b3d') },
+    { titulo: t('beneficios.b4t'), desc: t('beneficios.b4d') },
+  ];
 
-export default function EmpresasPage() {
+  const passos = [
+    { num: 1, titulo: t('comoFunciona.p1t'), desc: t('comoFunciona.p1d') },
+    { num: 2, titulo: t('comoFunciona.p2t'), desc: t('comoFunciona.p2d') },
+    { num: 3, titulo: t('comoFunciona.p3t'), desc: t('comoFunciona.p3d') },
+    { num: 4, titulo: t('comoFunciona.p4t'), desc: t('comoFunciona.p4d') },
+  ];
+
   return (
     <>
       <section className="dark bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-16 md:py-24 max-w-3xl">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted font-sans mb-4">
-            Conta Business · Em breve
+            {t('hero.label')}
           </p>
           <h1 className="text-5xl md:text-6xl leading-[0.95] mb-6">
-            Vende pra quem viaja? GT é o seu canal.
+            {t('hero.titulo')}
           </h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans mb-8">
-            Estabelecimento físico, e-commerce de equipamento ou serviço de guia — a Conta Business é a porta única pra quem comercializa no universo overlander aparecer pra viajantes que já decidiram pegar a estrada.
+            {t('hero.desc')}
           </p>
           <div className="flex flex-wrap gap-3">
-            <Button href="#cadastro">Entrar na lista de espera</Button>
-            <Button href="/termos/conta-business" variant="outline">Ver política completa</Button>
+            <Button href="#cadastro">{t('hero.cta1')}</Button>
+            <Button href="/termos/conta-business" variant="outline">{t('hero.cta2')}</Button>
           </div>
         </div>
       </section>
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">Três frentes, uma conta</h2>
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('frentes.titulo')}</h2>
           <p className="text-gt-text-muted mb-12 max-w-2xl font-sans leading-relaxed">
-            A mesma assinatura cobre as três modalidades. Você ativa as que fizerem sentido pro seu negócio — pode ser uma, duas ou todas.
+            {t('frentes.desc')}
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             {frentes.map((f) => (
@@ -85,9 +78,9 @@ export default function EmpresasPage() {
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">Por que Conta Business</h2>
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('beneficios.titulo')}</h2>
           <p className="text-gt-text-muted mb-12 max-w-2xl font-sans">
-            Diferente de anunciar em rede social ou Google Ads — o GT te coloca na frente de quem já decidiu pegar a estrada.
+            {t('beneficios.desc')}
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {beneficios.map((b) => (
@@ -102,9 +95,9 @@ export default function EmpresasPage() {
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">Como funciona</h2>
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('comoFunciona.titulo')}</h2>
           <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-            Self-service, em 4 passos. Sem ligação de vendedor, sem contrato longo.
+            {t('comoFunciona.desc')}
           </p>
           <div className="grid md:grid-cols-4 gap-8 md:gap-6">
             {passos.map((p) => (
@@ -121,7 +114,7 @@ export default function EmpresasPage() {
       <section id="precos" className="bg-gt-card py-16 md:py-20 border-t border-gt-border scroll-mt-20">
         <div className="container-wide">
           <div className="max-w-3xl mx-auto bg-gt-bg border border-gt-border rounded-lg p-8 md:p-12 text-center mb-10">
-            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">Valor de lançamento · garantido pra lista de espera</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">{t('precos.labelLancamento')}</p>
             <p className="text-sm text-gt-text-dim font-sans mb-2">
               De <span className="line-through">R$ 199,90/mês</span> por
             </p>
@@ -134,7 +127,7 @@ export default function EmpresasPage() {
               Plano base inclui 1 ponto destacado, até 15 produtos no Desapega e 1 perfil profissional + 6 expedições agendadas em Serviços. Quem entrar na lista de espera agora garante esse valor de lançamento quando a Conta Business abrir. Cancele a qualquer momento, sem multa.{' '}
               <a href="/termos/conta-business" className="text-gt-orange hover:underline">Ver política completa</a>.
             </p>
-            <Button href="#cadastro">Entrar na lista de espera</Button>
+            <Button href="#cadastro">{t('precos.ctaListaEspera')}</Button>
           </div>
 
           <div className="max-w-6xl mx-auto">
@@ -229,10 +222,10 @@ export default function EmpresasPage() {
 
       <section id="cadastro" className="bg-gt-card py-16 md:py-24 border-t border-gt-border scroll-mt-20">
         <div className="container-narrow">
-          <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">Cadastro</p>
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">Conte sobre o seu negócio</h2>
+          <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">{t('cadastro.label')}</p>
+          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('cadastro.titulo')}</h2>
           <p className="text-gt-text-muted mb-10 font-sans leading-relaxed">
-            Preenche os dados abaixo e a gente entra em contato em até 2 dias úteis pra ativar sua conta. Quanto mais detalhe, mais rápido.
+            {t('cadastro.desc')}
           </p>
           <BusinessLeadForm />
         </div>

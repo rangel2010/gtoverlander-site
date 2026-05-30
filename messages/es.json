@@ -115,5 +115,291 @@
       "subtitulo": "Empieza gratis. Sin tarjeta, sin compromiso.",
       "ctaPlanos": "Explorar planes"
     }
+  },
+  "sobre": {
+    "hero": {
+      "label": "Sobre GT Overlander",
+      "titulo": "Más que un planificador de rutas — un compañero de ruta",
+      "desc": "GT existe para transformar la planificación de viajes por tierra en una experiencia simple, inteligente y práctica — hecha por viajeros, para viajeros."
+    },
+    "missao": {
+      "titulo": "Nuestra misión",
+      "p1": "GT Overlander es una app para quienes viajan por tierra — en auto, moto, 4x4 o motorhome. Nació de la frustración con apps genéricas que no entienden la realidad de quien cruza fronteras, duerme en campamento silvestre o maneja 5.000 km en un solo viaje.",
+      "p2": "GT entiende al viajero: la IA traza la ruta por los caminos que tienen sentido, con ciudades en el trayecto y contexto regional. La base propia de más de 4 millones de waypoints en 209 países cubre lo que importa para quien ya decidió a dónde va — gasolineras, alojamiento, campings, talleres, atracciones. Y la integración con Google Maps, CarPlay y Android Auto lleva todo al tablero del auto.",
+      "p3": "Más que un planificador, GT es un compañero de ruta — hecho para quienes no ven el viaje solo como desplazamiento, sino como una experiencia única."
+    },
+    "fundador": {
+      "titulo": "El fundador",
+      "nome": "Rangel Machado",
+      "cargo": "Fundador",
+      "imgAlt": "Rangel Machado, fundador de GT Overlander, frente a un paisaje patagónico",
+      "p1": "Empresario de Paraná y viajero. Ve el overlanding como una de las formas más ricas de conocer el mundo — y fundó GT para ser la app que él mismo quería tener en la ruta.",
+      "p2": "No tiene experiencia técnica. Toma decisiones de producto, escucha a la comunidad y trabaja codo a codo con el equipo para transformar cada experiencia personal en una mejora de la app."
+    },
+    "comunidade": {
+      "titulo": "Conocer a quienes viajan para construir juntos",
+      "p1": "Quienes usan GT no están navegando sin rumbo. Ya decidieron viajar, ya saben a dónde van, y están en el momento de planificar el camino — dónde parar, dónde dormir, qué ver en la ruta.",
+      "p2": "Conocer ese viaje — quién viaja, a dónde, con qué vehículo, con qué estilo — es lo que permite que GT mejore continuamente. Cada viaje real enseña algo: rutas que funcionan, paradas que faltan, contextos regionales que aún no hemos cubierto. De ahí evoluciona cada capa de la app.",
+      "p3": "No es una app de mapas. Es un ecosistema vivo, construido junto a quienes viajan — hecho para crecer con la comunidad overlander del mundo."
+    },
+    "numeros": {
+      "titulo": "Dónde estamos hoy",
+      "n1v": "Miles", "n1c": "de viajeros registrados",
+      "n2v": "+30%", "n2c": "de crecimiento mensual de usuarios",
+      "n3v": "+4M", "n3c": "de waypoints en nuestra base — ayúdanos a crecer aún más",
+      "n4v": "209", "n4c": "países cubiertos",
+      "rodape": "App en iOS, Android y Web — compatible con CarPlay y Android Auto, en 3 idiomas (portugués, inglés, español)."
+    },
+    "proximas": {
+      "titulo": "A dónde vamos",
+      "desc": "GT está evolucionando hacia un ecosistema completo para quienes viven la ruta — conectando viajeros, empresas, servicios y experiencias.",
+      "p1t": "Comunidad GT viva", "p1d": "Help Overlander para socorro en la ruta, GT Social para red social entre viajeros, GT Explorer para reputación y ranking, GT Desapega para marketplace. Todo ya en vivo — ahora crece contigo.",
+      "p2t": "Cuenta Business 3 frentes", "p2d": "POI físico, vendedor de productos y servicios de expedición guiada en una sola cuenta comercial. Disponible ahora, con escalado por volumen para redes más grandes.",
+      "p3t": "Modo Offline universal", "p3d": "Free descarga el país donde estás con todas las categorías de waypoints; Plus y Pro desbloquean los 209 países del mundo.",
+      "p4t": "Expansión internacional", "p4d": "La base de waypoints ya cubre 209 países. Próximos pasos: localización de la interfaz, alianzas con guías regionales y canales comerciales multi-país."
+    },
+    "cta": {
+      "titulo": "Sé parte de esto",
+      "desc": "Descarga la app y empieza tu próximo viaje. O, si representas un establecimiento en la ruta de los viajeros, conoce la Cuenta Business.",
+      "ctaBusiness": "Cuenta Business"
+    }
+  },
+  "recursos": {
+    "hero": {
+      "label": "Lo que GT entrega",
+      "titulo": "Todo lo que necesitas para rodar",
+      "desc": "Desde rutas generadas por IA hasta puntos de apoyo en la ruta. Desde el viaje en solitario hasta la comunidad que se ayuda. El mayor ecosistema overlander del mundo."
+    },
+    "planejamento": {
+      "label": "Planificación y mapa",
+      "titulo": "De la idea del viaje a la ruta lista",
+      "emBreve": "Próximamente",
+      "saibaMais": "Saber más →",
+      "r1t": "Rutas con IA", "r1d": "Ruta trazada por IA en una conversación — carreteras, ciudades y destino, lista en segundos.",
+      "r2t": "Waypoints propios", "r2d": "Más de 4 millones de puntos en 209 países — gasolineras, campings, alojamiento, atracciones, talleres.",
+      "r3t": "Modo Offline", "r3d": "Elige las regiones de tu viaje. GT funciona en cualquier rincón del mundo, incluso sin señal."
+    },
+    "comunidade": {
+      "label": "Comunidad y marketplace",
+      "titulo": "La ruta es mejor en compañía",
+      "r1t": "GT Social", "r1d": "Red social dentro de GT. Sigue overlanders, descubre rutas públicas, copia itinerarios que otros ya probaron.",
+      "r2t": "Help Overlander", "r2d": "Comunidad que se ayuda en la ruta. Pediste ayuda, alguien cercano aparece — avería, neumático, batería, combustible.",
+      "r3t": "GT Explorer", "r3d": "Tu travesía se convierte en XP, niveles, logros y ranking regional. Cada validación, cada ruta, cada kilómetro suma.",
+      "r4t": "GT Desapega", "r4d": "Compra, vende e intercambia equipamiento overlander entre quienes realmente viajan. Marketplace entre overlanders, sin intermediarios."
+    },
+    "cta": { "titulo": "¿Listo para empezar?", "desc": "Empieza gratis. Sin tarjeta, sin compromiso." }
+  },
+  "planos": {
+    "hero": {
+      "titulo": "Elige el plan que se adapta a tu viaje",
+      "desc": "Free para empezar. Plus para quienes viajan con frecuencia. Pro para quienes nunca paran."
+    },
+    "comparacao": {
+      "titulo": "Comparación completa",
+      "desc": "Todos los planes tienen acceso a la base de más de 4 millones de waypoints. Crear rutas es ilimitado para todos — la diferencia está en exportar para navegar, el uso intensivo de IA y las consultas del radar.",
+      "thRecursos": "Recursos", "thMensal": "Mensual", "thAnual": "Anual",
+      "f1l": "Rutas con IA", "f1v0": "IA estándar", "f1v1": "IA avanzada", "f1v2": "IA avanzada",
+      "f2l": "Rutas exportadas para navegación", "f2v0": "1 cada 90 días", "f2v1": "2 por mes", "f2v2": "ilimitado",
+      "f3l": "Consultas de radar de waypoints", "f3v0": "1 por día", "f3v1": "5 por día", "f3v2": "ilimitado",
+      "f4l": "Waypoints propios — base mundial",
+      "f5l": "CarPlay / Android Auto",
+      "f6l": "Validar y registrar waypoints",
+      "f7l": "Modo Offline — país del dispositivo",
+      "f8l": "Modo Offline — los 209 países + actualización automática",
+      "f9l": "Ver y contactar anuncios en GT Desapega",
+      "f10l": "Anunciar en GT Desapega",
+      "f11l": "Copiar rutas públicas de otros overlanders",
+      "f12l": "Guardar rutas de otros como favoritas",
+      "f13l": "Editar rutas copiadas de otros",
+      "f14l": "Pedir ayuda en Help Overlander",
+      "f15l": "Ofrecer ayuda como prestador en Help Overlander",
+      "f16l": "Soporte", "f16v0": "E-mail", "f16v1": "E-mail prioritario", "f16v2": "E-mail prioritario",
+      "ilimitado": "ilimitado"
+    },
+    "business": {
+      "label": "Para quienes venden al mundo overlander",
+      "titulo": "Cuenta Business",
+      "desc": "Plan comercial único, tres frentes de uso según tu negocio:",
+      "w_tag": "Waypoints", "w_titulo": "Destaca tu punto en el mapa", "w_desc": "Establecimiento físico — gasolinera, hotel, taller, camping, restaurante, atractivo. Aparece destacado en el radar y planificación de quienes viajan por la región.",
+      "p_tag": "Productos", "p_titulo": "Vende a la base que viaja", "p_desc": "E-commerce, fabricante, distribuidor de equipamiento overlander. Anuncia tus productos con enlace directo a tu tienda, marketplace o WhatsApp comercial.",
+      "s_tag": "Servicios", "s_titulo": "Ofrece experiencias guiadas", "s_desc": "Guía, conductor de expedición, instructor 4×4, fotógrafo de ruta. Aparece en las regiones y rutas relevantes para quienes están planificando su viaje.",
+      "pricing": "Incluye 1 punto destacado y hasta 15 productos en Desapega. Add-ons disponibles para más puntos o productos. Cancela en cualquier momento.",
+      "verTabela": "Ver tabla completa", "verPolitica": "Política",
+      "cta": "Registrar mi Cuenta Business"
+    },
+    "faq": {
+      "q1": "¿Puedo probar antes de suscribirme?", "a1": "El plan Free no es una prueba — es gratis para siempre. Usas GT con IA estándar, todos los waypoints propios disponibles, CarPlay y Android Auto, sin fecha límite. Cuando quieras más, sube a Plus o Pro.",
+      "q2": "¿Puedo cancelar en cualquier momento?", "a2": "Sí. Cancela cuando quieras, sin penalización. El plan sigue activo hasta el final del ciclo ya pagado y luego vuelve automáticamente a Free.",
+      "q3": "¿Cuál es la diferencia entre mensual y anual?", "a3": "El anual tiene un descuento significativo: Plus mensual sale R$ 178,80/año, el anual cuesta R$ 79,90 (ahorro del 55%). Pro mensual sale R$ 238,80/año, el anual cuesta R$ 99,90 (ahorro del 58%). Mismo plan, mismas funciones — solo cambia el ciclo de facturación.",
+      "q4": "¿Cuánto cuesta en otras monedas?", "a4": "Los precios en reales brasileños (R$) son los oficiales. En otras monedas, la app convierte automáticamente según la facturación de tu tienda.",
+      "q5": "¿Qué pasa con mis rutas si cancelo?", "a5": "Tus rutas, paradas y configuraciones nunca se borran — en ningún plan. Lo que cambia entre planes es solo cuántas veces puedes exportar la ruta para navegar. Si vuelves a Plus o Pro después, todo continúa exactamente donde estaba.",
+      "q6": "¿La Cuenta Business es diferente?", "a6": "Sí. La Cuenta Business es para quienes comercializan en el mundo overlander — establecimientos físicos (gasolineras, campings, hospedajes, talleres), vendedores recurrentes (e-commerce, fabricantes de equipamiento) y prestadores de servicios (guías, conductores de expedición). Un plan aparte de los personales (Free/Plus/Pro). Detalles en /empresas."
+    },
+    "cta": {
+      "titulo": "Empieza gratis y sube cuando lo necesites",
+      "desc": "Sin penalización por cancelación. Tus rutas se guardan aunque bajes de plan.",
+      "ctaFalar": "Habla con nosotros"
+    }
+  },
+  "contato": {
+    "hero": { "titulo": "Habla con nosotros", "desc": "Envía un mensaje aquí, o usa uno de los canales directos abajo. Respondemos en un plazo de 2 días hábiles." },
+    "form": { "titulo": "Envía tu mensaje" },
+    "aside": {
+      "canaisLabel": "Canales directos",
+      "emailDesc": "E-mail principal para cualquier consulta",
+      "suporteLabel": "¿Tienes una pregunta sobre la app?",
+      "suporteLink": "Ir al soporte →",
+      "suporteDesc": "FAQ, temas populares y apertura de ticket",
+      "empresasLabel": "Empresas",
+      "empresasLink": "Cuenta Business →",
+      "empresasDesc": "Para establecimientos que quieren aparecer en el mapa",
+      "razaoLabel": "Datos de la empresa",
+      "cidade": "Londrina, PR — Brasil"
+    }
+  },
+  "faqPage": {
+    "hero": { "titulo": "Preguntas frecuentes", "desc": "Las preguntas más comunes sobre GT Overlander. ¿No encontraste la tuya?", "descLink": "habla con nosotros" },
+    "cta": { "titulo": "¿No encontraste tu pregunta?", "desc": "Respondemos rápido — no te preocupes.", "btn": "Habla con nosotros" },
+    "cat1titulo": "Sobre la app",
+    "cat1q1": "¿Qué es GT Overlander?", "cat1a1": "Es una app de planificación de rutas para quienes viajan por tierra — en auto, moto, 4x4 o motorhome, en cualquier lugar del mundo. Funciona tanto para grandes expediciones como para un viaje de fin de semana. Describes el viaje en lenguaje natural a una IA que traza la ruta, y la completas con paradas de nuestra base de más de 4 millones de waypoints.",
+    "cat1q2": "¿En qué plataformas funciona?", "cat1a2": "iOS, Android y Web (acceso por ordenador). Compatible con CarPlay y Android Auto. Todo sincronizado entre dispositivos.",
+    "cat1q3": "¿En qué idiomas?", "cat1a3": "Portugués, inglés y español. Describes tu viaje en el idioma que prefieras.",
+    "cat1q4": "¿Cuánto cuesta?", "cat1a4": "El plan Free es gratis para siempre — no es una prueba. Plus desde R$ 14,90/mes o R$ 79,90/año. Pro desde R$ 19,90/mes o R$ 99,90/año. Ver todos los planes en /planes.",
+    "cat1q5": "¿GT funciona en cualquier país?", "cat1a5": "La base de waypoints cubre 209 países en los 6 continentes habitados. El motor de IA genera rutas para todo el mundo. La cobertura regional puede variar según la densidad de puntos en el área.",
+    "cat2titulo": "Cómo funciona",
+    "cat2q1": "¿Cómo genera la IA las rutas?", "cat2a1": "Describes el viaje en lenguaje natural — destino, regiones, preferencias de carretera. La IA traza la ruta en segundos: carreteras, ciudades y contexto regional. Luego eliges las paradas de nuestra base de waypoints. Tú siempre en control.",
+    "cat2q2": "¿Qué es el Modo Offline?", "cat2a2": "En el plan Free, descarga el país donde estás con todas las categorías de waypoints. En Plus y Pro, desbloquea los 209 países del mundo. La actualización automática en wifi funciona en cualquier plan. GT funciona en cualquier rincón, incluso sin señal.",
+    "cat2q3": "¿Funciona con CarPlay y Android Auto?", "cat2a3": "Sí, integración nativa. Planificas el viaje en el teléfono, lo conectas al auto, y todo sigue funcionando en la pantalla del vehículo.",
+    "cat2q4": "¿Son confiables los waypoints?", "cat2a4": "La base comenzó con datos públicos de OpenStreetMap, procesados y clasificados por el equipo GT en 10 categorías relevantes para el overlander. En desarrollo: validación por comunidad — overlanders contribuyendo y validando puntos directamente a través de la app.",
+    "cat3titulo": "Planes y pago",
+    "cat3q1": "¿Puedo probar antes de suscribirme?", "cat3a1": "Free no es una prueba. Usas GT gratis para siempre, con IA estándar, todos los waypoints, CarPlay y Android Auto. 1 ruta exportada para navegar cada 90 días y 1 consulta de radar por día. Cuando necesites más, sube a Plus o Pro.",
+    "cat3q2": "¿Puedo cancelar cuando quiera?", "cat3a2": "Sí, sin penalización. El plan sigue activo hasta el final del ciclo ya pagado y luego vuelve a Free automáticamente. Tus rutas y configuraciones nunca se borran — en ningún plan. Lo que cambia es solo la cantidad de exportaciones para navegar.",
+    "cat3q3": "¿Cuál es la diferencia entre Plus y Pro?", "cat3a3": "Plus y Pro tienen la misma calidad, misma entrega, misma usabilidad. La diferencia está solo en las cantidades: Plus limita a 2 rutas exportadas para navegar/mes y 5 consultas de radar/día. Pro es ilimitado en ambos.",
+    "cat4titulo": "Cuenta y datos",
+    "cat4q1": "¿Cómo tratan mis datos?", "cat4a1": "Conforme a las leyes de protección de datos. Recopilamos solo lo necesario para ejecutar la app: e-mail para autenticación, rutas que creas para sincronizar entre dispositivos, datos de pago vía Asaas (no almacenamos tarjetas). Ver la política completa en /privacidad.",
+    "cat4q2": "¿Puedo eliminar mi cuenta?", "cat4a2": "Sí. En la app, ve a Perfil → Configuración → Eliminar cuenta. Tus rutas y datos personales se eliminan en un plazo de 30 días. Los backups técnicos pueden permanecer algunos días más por continuidad del servicio.",
+    "cat4q3": "¿Puedo usar GT sin crear una cuenta?", "cat4a3": "Puedes descargar y abrir la app sin cuenta, pero para guardar rutas, sincronizar entre dispositivos y usar la IA, necesitas crear una cuenta con e-mail.",
+    "cat5titulo": "Empresas",
+    "cat5q1": "Tengo una gasolinera / camping / alojamiento. ¿Cómo aparecer en GT?", "cat5a1": "La Cuenta Business está en desarrollo. Cuando se lance, cualquier establecimiento en la ruta de los viajeros (gasolineras, campings, alojamientos, talleres, restaurantes) podrá crear un perfil y aparecer para quienes pasen por la región. Regístrate en la lista de espera en /empresas.",
+    "cat5q2": "¿Cuánto costará la Cuenta Business?", "cat5a2": "El modelo está siendo finalizado. Será self-service con ROI medible (sigues cuántos viajeros pasaron, vieron tu perfil, fueron a tu establecimiento)."
+  },
+  "suporte": {
+    "hero": { "titulo": "Soporte", "desc": "Resuelve preguntas comunes abajo, o abre un ticket. Respondemos rápido — preguntas más complejas pueden tardar algunos días." },
+    "topicos": {
+      "titulo": "Temas populares",
+      "desc": "Empieza revisando si tu pregunta cae en alguno de los casos abajo.",
+      "t1t": "No puedo entrar a mi cuenta", "t1d": "Recuperación de contraseña, problemas de inicio de sesión, e-mail que no llega.",
+      "t2t": "Cancelé y me siguen cobrando", "t2d": "Cargo después de cancelar, ciclo de facturación, reembolso.",
+      "t3t": "App se congela o tiene errores", "t3d": "Crash, pantalla blanca, función que no funciona.",
+      "t4t": "Cómo suscribirse a Pro / Plus", "t4d": "Cómo hacer upgrade, formas de pago aceptadas.",
+      "t5t": "Cómo cancelar mi suscripción", "t5d": "Cancelación directa, plazo, qué pasa con tus rutas.",
+      "t6t": "La IA generó una ruta con error", "t6d": "Dirección incorrecta, parada inexistente, ruta sin sentido."
+    },
+    "faq": {
+      "titulo": "Preguntas frecuentes",
+      "desc": "Respuestas más detalladas para problemas técnicos comunes.",
+      "verFaq": "FAQ general",
+      "rodapeTexto": "¿No encontraste? Ve también el",
+      "rodapeLink": "o abre un ticket abajo.",
+      "q1": "No estoy recibiendo el e-mail para restablecer la contraseña", "a1": "Revisa tu carpeta de spam. Si no llega en 10 minutos, abre un ticket abajo con el e-mail de la cuenta — lo restablecemos manualmente.",
+      "q2": "La app se congeló en medio de un viaje", "a2": "Intenta forzar el cierre y volver a abrir la app. Si persiste, abre un ticket con: marca/modelo del teléfono, sistema operativo y versión, versión de la app, y qué estabas haciendo cuando se congeló.",
+      "q3": "Cancelé la suscripción pero sigue apareciendo como Pro", "a3": "El plan permanece activo hasta el final del ciclo ya pagado. Después vuelve automáticamente a Free — tus rutas y configuraciones quedan guardadas. Si ya pasó ese plazo y sigue como Pro, abre un ticket y revisamos.",
+      "q4": "Compré Pro por Google Play y no se desbloqueó", "a4": "Puede ser un retraso de sincronización entre Google Play y nuestro servidor. Espera 30 minutos. Si persiste, abre un ticket con una captura de pantalla del recibo de Google Play.",
+      "q5": "Quiero eliminar mi cuenta", "a5": "En la app: Perfil → Configuración → Eliminar cuenta. Tus rutas y datos personales se eliminan en un plazo de 30 días. Los backups técnicos pueden permanecer algunos días más por continuidad del servicio.",
+      "q6": "La ruta de la IA me llevó a un lugar cerrado", "a6": "La IA puede equivocarse — por eso el paso de revisión es parte del flujo. Aun así, abre un ticket con el itinerario problemático: lo usamos para mejorar el motor."
+    },
+    "ticket": {
+      "label": "¿No se resolvió? Abre un ticket",
+      "titulo": "Cuéntanos qué pasó",
+      "desc": "Cuanto más detalle des (versión de la app, marca del teléfono, en qué pantalla ocurrió), más rápido podemos resolverlo.",
+      "rodape": "Antes de abrir un ticket de problema técnico, actualiza la app a la versión más reciente — la mayoría de los problemas se resuelven así."
+    }
+  },
+  "empresas": {
+    "hero": {
+      "label": "Cuenta Business · Próximamente",
+      "titulo": "¿Vendes a quienes viajan? GT es tu canal.",
+      "desc": "Establecimiento físico, e-commerce de equipamiento o servicio de guía — la Cuenta Business es la puerta única para quienes comercializan en el mundo overlander y quieren aparecer ante viajeros que ya decidieron salir a la ruta.",
+      "cta1": "Unirse a la lista de espera",
+      "cta2": "Ver política completa"
+    },
+    "frentes": {
+      "titulo": "Tres frentes, una cuenta",
+      "desc": "La misma suscripción cubre las tres modalidades. Activas las que tengan sentido para tu negocio — puede ser una, dos o todas.",
+      "f1tag": "Waypoints", "f1titulo": "Destaca tu punto en el mapa", "f1desc": "Establecimiento físico — gasolinera, hotel, taller, camping, restaurante, atractivo turístico. Aparece destacado en el radar de quienes ya decidieron pasar por tu región, con ícono personalizado, foto y datos completos.", "f1exemplos": "Gasolineras · Campings · Hoteles · Hospedajes · Talleres · Restaurantes · Atractivos",
+      "f2tag": "Productos", "f2titulo": "Vende a la base que viaja", "f2desc": "E-commerce, fabricante o distribuidor de equipamiento overlander. Anuncia tus productos en GT Desapega con enlace directo a tu tienda, marketplace o WhatsApp comercial.", "f2exemplos": "Tiendas online · Fabricantes · Distribuidores · Personalización · Accesorios · Repuestos",
+      "f3tag": "Servicios", "f3titulo": "Ofrece experiencias guiadas", "f3desc": "Guía local, conductor de expedición, instructor 4×4, fotógrafo de ruta. Aparece en regiones y rutas relevantes para quienes están planificando un viaje — antes de salir de casa.", "f3exemplos": "Guías 4×4 · Conductores · Instructores · Fotógrafos · Rutas guiadas · Expediciones"
+    },
+    "beneficios": {
+      "titulo": "Por qué Cuenta Business",
+      "desc": "A diferencia de anunciar en redes sociales o Google Ads — GT te pone frente a quienes ya decidieron salir a la ruta.",
+      "b1t": "Audiencia calificada", "b1d": "Aparece ante quienes YA DECIDIERON viajar a tu región. No es tráfico frío — es viajero en el momento exacto de planificar.",
+      "b2t": "Destaque visual exclusivo", "b2d": "Caja de color + ícono personalizado en el mapa, presencia en Desapega, presentación en páginas de destinos.",
+      "b3t": "Self-service", "b3d": "Registra tu negocio, activa las frentes que tienen sentido para ti, y ya estás en línea. Sin llamadas de ventas, sin contratos largos.",
+      "b4t": "Cancela cuando quieras", "b4d": "Mensual, sin penalización, sin fidelidad. Si no trae resultados, te vas. Tu información queda contigo."
+    },
+    "comoFunciona": {
+      "titulo": "Cómo funciona",
+      "desc": "Self-service, en 4 pasos. Sin llamada de ventas, sin contrato largo.",
+      "p1t": "Completa el registro", "p1d": "Datos del negocio, frentes que usarás, fotos y contacto",
+      "p2t": "GT valida", "p2d": "Verificamos la información para garantizar calidad y seguridad de la base",
+      "p3t": "Sale en vivo", "p3d": "Aparece en el mapa, en Desapega o en los itinerarios, según las frentes que activaste",
+      "p4t": "Seguimiento de métricas", "p4d": "Visualizaciones, clics, contactos — todo medido en tu panel"
+    },
+    "precos": {
+      "labelLancamento": "Precio de lanzamiento · garantizado para lista de espera",
+      "ctaListaEspera": "Unirse a la lista de espera"
+    },
+    "cadastro": {
+      "label": "Registro",
+      "titulo": "Cuéntanos sobre tu negocio",
+      "desc": "Completa los datos abajo y te contactamos en un plazo de 2 días hábiles para activar tu cuenta. Cuanto más detalle, más rápido."
+    }
+  },
+  "parcerias": {
+    "hero": {
+      "label": "Alianzas",
+      "titulo": "Construye overlanding con nosotros",
+      "desc": "El mayor ecosistema overlander del mundo no es solo una app — es todo el que sostiene este universo. Creadores que cuentan historias de ruta, marcas que equipan a quienes viajan, servicios que cuidan el camino. Hagámoslo juntos."
+    },
+    "quem": {
+      "titulo": "A quién buscamos",
+      "desc": "Tres grandes frentes. Si encajas en alguna, queremos hablar.",
+      "c1t": "Creadores de contenido", "c1d": "Bloggers, YouTubers, podcasters e influencers que hablan de overlanding, vanlife, motorhome, 4x4 o viaje por tierra.", "c1e": "YouTube · Instagram · TikTok · Blog · Podcast",
+      "c2t": "Marcas y productos", "c2d": "Tiendas especializadas, marcas de equipamiento, accesorios 4x4, ropa outdoor, autopartes relacionadas con overlanding.", "c2e": "Equipamiento · Ropa · Accesorios · Autopartes",
+      "c3t": "Servicios de viaje", "c3d": "Alquiladoras de motorhome y 4x4, operadoras de turismo de aventura, agencias, seguros de viaje, asistencia 24h.", "c3e": "Alquiler · Operadora · Agencia · Seguro"
+    },
+    "oferta": {
+      "titulo": "Lo que GT ofrece",
+      "desc": "Una buena alianza va en ambas direcciones. Aquí está nuestro lado.",
+      "o1t": "Audiencia calificada", "o1d": "Hablas con quienes ya decidieron viajar por tierra. No es tráfico frío — es viajero en el momento exacto de planificar.",
+      "o2t": "Programa de afiliados", "o2d": "Enlace único de referido con comisión recurrente por cada suscripción que venga de tu canal.",
+      "o3t": "Co-marketing y contenido", "o3d": "Campañas conjuntas, difusión cruzada, contenido editorial sobre lo que ofrecen.",
+      "o4t": "Acceso y producto", "o4d": "Acceso Pro gratis para que uses y crees contenido auténtico. Bundles con tu oferta cuando tiene sentido."
+    },
+    "formatos": {
+      "titulo": "Formatos de alianza",
+      "desc": "No es talla única. Adaptamos el formato a lo que tenga sentido en tu caso.",
+      "f1t": "Afiliado", "f1d": "Enlace de referido con comisión recurrente sobre suscripciones Pro/Plus. Modelo simple — tú refieres, tú ganas.",
+      "f2t": "Embajador", "f2d": "Para figuras públicas del universo overlander. Beneficios extendidos, presencia en la app, reconocimiento.",
+      "f3t": "Contenido patrocinado", "f3d": "Reseña honesta de la app, basada en uso real. GT pone el acceso Pro gratis y el soporte para la producción.",
+      "f4t": "Co-marketing", "f4d": "Campañas conjuntas, Stories cruzados, contenido editorial sobre tu producto/servicio en nuestro blog.",
+      "f5t": "Integración tecnológica", "f5d": "Para socios estratégicos con producto digital. APIs, integraciones en la app, bundles. Caso a caso."
+    },
+    "contato": {
+      "label": "Envía tu propuesta",
+      "titulo": "Hablemos",
+      "desc": "Cuéntanos quién eres y qué estás imaginando. Leemos cada propuesta y respondemos en hasta 5 días hábiles. Si tiene sentido, agendamos una conversación para diseñar la alianza juntos."
+    }
+  },
+  "baixar": {
+    "label": "Gratis para siempre",
+    "titulo": "Descarga GT Overlander",
+    "desc": "Disponible para iOS y Android. Compatible con CarPlay y Android Auto.",
+    "disponivelNa": "Disponible en",
+    "iosSub": "para iPhone e iPad",
+    "androidSub": "para Android",
+    "rodape": "¿Ya tienes cuenta?",
+    "rodapeLink": "Contáctanos"
   }
 }

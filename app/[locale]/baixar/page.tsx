@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 
 export const metadata: Metadata = {
   title: 'Baixar o app',
@@ -7,33 +8,40 @@ export const metadata: Metadata = {
     'Baixe o GT Overlander grátis na App Store ou Google Play. iOS, Android e Web — compatível com CarPlay e Android Auto.',
 };
 
-const stores = [
-  {
-    label: 'App Store',
-    sub: 'pra iPhone e iPad',
-    href: 'https://apps.apple.com/br/app/gt-overlander/id6745626026',
-    icon: AppleIcon,
-  },
-  {
-    label: 'Google Play',
-    sub: 'pra Android',
-    href: 'https://play.google.com/store/apps/details?id=com.overlander',
-    icon: PlayIcon,
-  },
-];
+export default async function BaixarPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
+  const t = await getTranslations('baixar');
 
-export default function BaixarPage() {
+  const stores = [
+    {
+      label: 'App Store',
+      sub: t('iosSub'),
+      href: 'https://apps.apple.com/br/app/gt-overlander/id6745626026',
+      icon: AppleIcon,
+    },
+    {
+      label: 'Google Play',
+      sub: t('androidSub'),
+      href: 'https://play.google.com/store/apps/details?id=com.overlander',
+      icon: PlayIcon,
+    },
+  ];
+
   return (
     <section className="dark bg-gt-bg-elevated text-gt-text min-h-[80vh] flex items-center">
       <div className="container-wide py-16 md:py-24 max-w-2xl text-center">
         <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-5 font-sans">
-          Free pra sempre
+          {t('label')}
         </p>
         <h1 className="text-5xl md:text-6xl leading-[0.95] mb-6">
-          Baixe o GT Overlander
+          {t('titulo')}
         </h1>
         <p className="text-base md:text-lg text-gt-text-muted leading-relaxed mb-12 font-sans">
-          Disponível pra iOS e Android. Compatível com CarPlay e Android Auto.
+          {t('desc')}
         </p>
 
         <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto">
@@ -49,7 +57,7 @@ export default function BaixarPage() {
               >
                 <Icon />
                 <div className="text-left font-sans">
-                  <p className="text-xs text-gt-text-muted">Disponível na</p>
+                  <p className="text-xs text-gt-text-muted">{t('disponivelNa')}</p>
                   <p className="font-medium">{s.label}</p>
                   <p className="text-xs text-gt-text-dim">{s.sub}</p>
                 </div>
@@ -59,12 +67,12 @@ export default function BaixarPage() {
         </div>
 
         <p className="text-xs text-gt-text-dim mt-12 font-sans">
-          Já tem conta?{' '}
+          {t('rodape')}{' '}
           <Link
             href="/contato"
             className="text-gt-text-muted hover:text-gt-text"
           >
-            Fale com a gente
+            {t('rodapeLink')}
           </Link>
         </p>
       </div>
