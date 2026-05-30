@@ -1,74 +1,70 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { Link, usePathname } from '@/i18n/navigation';
 import { Instagram, Facebook, Youtube, Mail } from 'lucide-react';
-
-interface FooterLink {
-  href: string;
-  label: string;
-  external?: boolean;
-}
-
-const columns: { title: string; links: FooterLink[] }[] = [
-  {
-    title: 'Produto',
-    links: [
-      { href: '/recursos', label: 'Recursos' },
-      { href: '/planos', label: 'Planos' },
-      { href: '/blog', label: 'Blog' },
-      {
-        href: 'https://apps.apple.com/br/app/gt-overlander/id6745626026',
-        label: 'App Store',
-        external: true,
-      },
-      {
-        href: 'https://play.google.com/store/apps/details?id=com.overlander',
-        label: 'Play Store',
-        external: true,
-      },
-      {
-        href: 'https://app.gtoverlander.com.br',
-        label: 'Acessar pelo computador',
-        external: true,
-      },
-    ],
-  },
-  {
-    title: 'Empresa',
-    links: [
-      { href: '/sobre', label: 'Sobre' },
-      { href: '/empresas', label: 'Empresas' },
-      { href: '/parcerias', label: 'Parcerias' },
-      { href: '/contato', label: 'Contato' },
-      { href: '/suporte', label: 'Suporte' },
-    ],
-  },
-  {
-    title: 'Conteúdo',
-    links: [
-      { href: '/blog/destinos', label: 'Destinos' },
-      { href: '/blog/preparacao', label: 'Preparação' },
-      { href: '/blog/vida-overlander', label: 'Vida Overlander' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { href: '/termos', label: 'Termos de Uso' },
-      { href: '/privacidade', label: 'Política de Privacidade' },
-      { href: '/comunidade', label: 'Código de Conduta' },
-      { href: '/termos/help-overlander', label: 'Anexo Help Overlander' },
-      { href: '/termos/conta-business', label: 'Anexo Conta Business' },
-    ],
-  },
-];
 
 export function Footer() {
   const pathname = usePathname();
+  const tn = useTranslations('nav');
+  const tf = useTranslations('footer');
 
   // Esconder footer dentro do Studio do Sanity (/studio)
   if (pathname?.startsWith('/studio')) return null;
+
+  const columns = [
+    {
+      title: tf('colProduto'),
+      links: [
+        { href: '/recursos', label: tn('recursos') },
+        { href: '/planos', label: tn('planos') },
+        { href: '/blog', label: tn('blog') },
+        {
+          href: 'https://apps.apple.com/br/app/gt-overlander/id6745626026',
+          label: tf('appStore'),
+          external: true,
+        },
+        {
+          href: 'https://play.google.com/store/apps/details?id=com.overlander',
+          label: tf('playStore'),
+          external: true,
+        },
+        {
+          href: 'https://app.gtoverlander.com.br',
+          label: tn('acessarComputador'),
+          external: true,
+        },
+      ],
+    },
+    {
+      title: tf('colEmpresa'),
+      links: [
+        { href: '/sobre', label: tn('sobre') },
+        { href: '/empresas', label: tn('empresas') },
+        { href: '/parcerias', label: tn('parcerias') },
+        { href: '/contato', label: tn('contato') },
+        { href: '/suporte', label: tn('suporte') },
+      ],
+    },
+    {
+      title: tf('colConteudo'),
+      links: [
+        { href: '/blog/destinos', label: tf('destinos') },
+        { href: '/blog/preparacao', label: tf('preparacao') },
+        { href: '/blog/vida-overlander', label: tf('vidaOverlander') },
+      ],
+    },
+    {
+      title: tf('colLegal'),
+      links: [
+        { href: '/termos', label: tf('termos') },
+        { href: '/privacidade', label: tf('privacidade') },
+        { href: '/comunidade', label: tf('conduta') },
+        { href: '/termos/help-overlander', label: tf('anexoHelp') },
+        { href: '/termos/conta-business', label: tf('anexoBusiness') },
+      ],
+    },
+  ];
 
   return (
     <footer className="dark bg-gt-card text-gt-text mt-auto border-t border-gt-border">
@@ -109,7 +105,7 @@ export function Footer() {
         <div className="pt-8 border-t border-gt-border flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div className="font-sans">
             <p className="text-sm text-gt-text-muted">
-              O maior ecossistema overlander do mundo
+              {tf('tagline')}
             </p>
             <p className="text-xs text-gt-text-dim mt-2">
               © 2026 GT Overlander Ltda · CNPJ 59.840.412/0001-82

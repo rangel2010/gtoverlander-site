@@ -10,12 +10,32 @@
     "contato": "Contacto",
     "suporte": "Soporte",
     "acessarComputador": "Abrir en el ordenador",
-    "comecarGratis": "Empezar gratis"
+    "comecarGratis": "Empezar gratis",
+    "abrirMenu": "Abrir menú",
+    "fecharMenu": "Cerrar menú",
+    "paginaInicial": "GT Overlander — página de inicio"
   },
   "common": {
     "explorarPlanos": "Explorar planes",
     "saibaMais": "Saber más",
     "verPlanos": "Explorar planes",
     "baixarGratis": "Empezar gratis"
+  },
+  "footer": {
+    "colProduto": "Producto",
+    "colEmpresa": "Empresa",
+    "colConteudo": "Contenido",
+    "colLegal": "Legal",
+    "appStore": "App Store",
+    "playStore": "Play Store",
+    "destinos": "Destinos",
+    "preparacao": "Preparación",
+    "vidaOverlander": "Vida Overlander",
+    "termos": "Términos de Uso",
+    "privacidade": "Política de Privacidad",
+    "conduta": "Código de Conducta",
+    "anexoHelp": "Anexo Help Overlander",
+    "anexoBusiness": "Anexo Cuenta Business",
+    "tagline": "El mayor ecosistema overlander del mundo"
   }
 }
