@@ -11,6 +11,7 @@ import {
   PILLAR_TITLES,
   PILLAR_DESCRIPTIONS,
   type Pillar,
+  type BlogLocale,
 } from '@/lib/sanity/types';
 
 function formatDate(iso: string) {
@@ -21,8 +22,8 @@ function formatDate(iso: string) {
   });
 }
 
-export async function PillarPage({ pillar }: { pillar: Pillar }) {
-  const posts = sanityConfigured ? await getPostsByPillar(pillar) : [];
+export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; locale?: BlogLocale }) {
+  const posts = sanityConfigured ? await getPostsByPillar(pillar, locale) : [];
   const otherPillars: Pillar[] = (
     ['destinos', 'preparacao', 'vida-overlander'] as Pillar[]
   ).filter((p) => p !== pillar);

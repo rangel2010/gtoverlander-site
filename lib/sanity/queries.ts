@@ -1,5 +1,5 @@
 import { sanityClient } from './client';
-import type { PostListItem, PostFull, Pillar } from './types';
+import type { PostListItem, PostFull, Pillar, BlogLocale } from './types';
 
 // Query base — todos os campos de listagem
 const POST_LIST_FIELDS = `
@@ -13,7 +13,9 @@ const POST_LIST_FIELDS = `
   authorName,
   publishedAt,
   tags,
-  featured
+  featured,
+  locale,
+  linkedTranslations
 `;
 
 const POST_FULL_FIELDS = `
@@ -23,18 +25,20 @@ const POST_FULL_FIELDS = `
 `;
 
 /**
- * Lista todos os posts publicados, ordenados pelo mais recente.
+ * Lista todos os posts publicados de um locale, ordenados pelo mais recente.
+ * Posts sem locale definido são tratados como PT (retrocompatível).
  * Retorna [] se Sanity não estiver configurado (fallback gracioso).
  */
-export async function getAllPosts(): Promise<PostListItem[]> {
+export async function getAllPosts(locale: BlogLocale = 'pt'): Promise<PostListItem[]> {
   if (!sanityClient) return [];
   try {
     return await sanityClient.fetch<PostListItem[]>(
-      `*[_type == "post" && defined(slug.current) && defined(publishedAt) && publishedAt <= now()]
+      `*[_type == "post" && defined(slug.current) && defined(publishedAt) && publishedAt <= now()
+        && (locale == $locale || (!defined(locale) && $locale == "pt"))]
         | order(publishedAt desc) {
           ${POST_LIST_FIELDS}
         }`,
-      {},
+      { locale },
       { next: { revalidate: 60 } }
     );
   } catch (e) {
@@ -44,17 +48,18 @@ export async function getAllPosts(): Promise<PostListItem[]> {
 }
 
 /**
- * Lista posts de uma pillar específica.
+ * Lista posts de uma pillar específica filtrados por locale.
  */
-export async function getPostsByPillar(pillar: Pillar): Promise<PostListItem[]> {
+export async function getPostsByPillar(pillar: Pillar, locale: BlogLocale = 'pt'): Promise<PostListItem[]> {
   if (!sanityClient) return [];
   try {
     return await sanityClient.fetch<PostListItem[]>(
-      `*[_type == "post" && category == $pillar && defined(slug.current) && publishedAt <= now()]
+      `*[_type == "post" && category == $pillar && defined(slug.current) && publishedAt <= now()
+        && (locale == $locale || (!defined(locale) && $locale == "pt"))]
         | order(publishedAt desc) {
           ${POST_LIST_FIELDS}
         }`,
-      { pillar },
+      { pillar, locale },
       { next: { revalidate: 60 } }
     );
   } catch (e) {
@@ -84,17 +89,18 @@ export async function getPostBySlug(slug: string): Promise<PostFull | null> {
 }
 
 /**
- * Busca o post em destaque (featured == true). Retorna null se não houver.
+ * Busca o post em destaque (featured == true) de um locale. Retorna null se não houver.
  */
-export async function getFeaturedPost(): Promise<PostListItem | null> {
+export async function getFeaturedPost(locale: BlogLocale = 'pt'): Promise<PostListItem | null> {
   if (!sanityClient) return null;
   try {
     const post = await sanityClient.fetch<PostListItem | null>(
-      `*[_type == "post" && featured == true && defined(slug.current) && publishedAt <= now()]
+      `*[_type == "post" && featured == true && defined(slug.current) && publishedAt <= now()
+        && (locale == $locale || (!defined(locale) && $locale == "pt"))]
         | order(publishedAt desc)[0] {
           ${POST_LIST_FIELDS}
         }`,
-      {},
+      { locale },
       { next: { revalidate: 60 } }
     );
     return post ?? null;
@@ -105,20 +111,22 @@ export async function getFeaturedPost(): Promise<PostListItem | null> {
 }
 
 /**
- * Lista posts relacionados (mesma pillar, exceto o atual). Limita a 3.
+ * Lista posts relacionados (mesma pillar e locale, exceto o atual). Limita a 3.
  */
 export async function getRelatedPosts(
   currentSlug: string,
-  pillar: Pillar
+  pillar: Pillar,
+  locale: BlogLocale = 'pt'
 ): Promise<PostListItem[]> {
   if (!sanityClient) return [];
   try {
     return await sanityClient.fetch<PostListItem[]>(
-      `*[_type == "post" && category == $pillar && slug.current != $slug && defined(slug.current) && publishedAt <= now()]
+      `*[_type == "post" && category == $pillar && slug.current != $slug && defined(slug.current) && publishedAt <= now()
+        && (locale == $locale || (!defined(locale) && $locale == "pt"))]
         | order(publishedAt desc)[0...3] {
           ${POST_LIST_FIELDS}
         }`,
-      { pillar, slug: currentSlug },
+      { pillar, slug: currentSlug, locale },
       { next: { revalidate: 60 } }
     );
   } catch (e) {

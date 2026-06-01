@@ -9,6 +9,11 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
-export default function VidaOverlanderPillarPage() {
-  return <PillarPage pillar="vida-overlander" />;
+export default function VidaOverlanderPillarPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const blogLocale = (locale === 'en' || locale === 'es') ? locale : 'pt';
+  return <PillarPage pillar="vida-overlander" locale={blogLocale} />;
 }

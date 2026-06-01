@@ -9,6 +9,11 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
-export default function DestinosPillarPage() {
-  return <PillarPage pillar="destinos" />;
+export default function DestinosPillarPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const blogLocale = (locale === 'en' || locale === 'es') ? locale : 'pt';
+  return <PillarPage pillar="destinos" locale={blogLocale} />;
 }

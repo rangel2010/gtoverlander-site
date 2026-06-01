@@ -26,14 +26,20 @@ function formatDate(iso: string) {
   });
 }
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   if (!sanityConfigured) {
     return <BlogEmConstrucao />;
   }
 
+  const blogLocale = (locale === 'en' || locale === 'es') ? locale : 'pt';
+
   const [allPosts, featured] = await Promise.all([
-    getAllPosts(),
-    getFeaturedPost(),
+    getAllPosts(blogLocale),
+    getFeaturedPost(blogLocale),
   ]);
 
   // Remove o featured da lista pra não duplicar

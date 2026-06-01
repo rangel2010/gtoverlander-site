@@ -26,6 +26,13 @@ export interface SanityImage {
   hotspot?: { x: number; y: number };
 }
 
+export type BlogLocale = 'pt' | 'en' | 'es';
+
+export interface LinkedTranslation {
+  locale: string;
+  slug: string;
+}
+
 export interface PostListItem {
   _id: string;
   title: string;
@@ -39,6 +46,8 @@ export interface PostListItem {
   readingTime?: number;
   tags?: string[];
   featured?: boolean;
+  locale?: BlogLocale;
+  linkedTranslations?: LinkedTranslation[];
 }
 
 export interface PostFull extends PostListItem {

@@ -110,6 +110,44 @@ export const postSchema = defineType({
       options: { layout: 'tags' },
     }),
     defineField({
+      name: 'locale',
+      title: 'Idioma',
+      type: 'string',
+      options: {
+        list: [
+          { title: '🇧🇷 Português', value: 'pt' },
+          { title: '🇺🇸 English', value: 'en' },
+          { title: '🇪🇸 Español', value: 'es' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'pt',
+      validation: (Rule) => Rule.required(),
+      description: 'Idioma em que este post foi escrito. Posts são escritos nativamente — não são traduções automáticas.',
+    }),
+    defineField({
+      name: 'linkedTranslations',
+      title: 'Posts equivalentes em outros idiomas (opcional)',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({ name: 'locale', title: 'Idioma', type: 'string' }),
+            defineField({ name: 'slug', title: 'Slug do post', type: 'string' }),
+          ],
+          preview: {
+            select: { locale: 'locale', slug: 'slug' },
+            prepare: ({ locale, slug }: { locale?: string; slug?: string }) => ({
+              title: locale?.toUpperCase() ?? '—',
+              subtitle: slug ?? '—',
+            }),
+          },
+        },
+      ],
+      description: 'Se este post existe em outros idiomas, linke aqui. Habilita hreflang e "leia em inglês" no site.',
+    }),
+    defineField({
       name: 'featured',
       title: 'Destacar este post no hub do blog',
       type: 'boolean',
@@ -133,12 +171,14 @@ export const postSchema = defineType({
       category: 'category',
       media: 'coverImage',
       featured: 'featured',
+      locale: 'locale',
     },
-    prepare({ title, author, category, media, featured }) {
+    prepare({ title, author, category, media, featured, locale }) {
       const cat = category ? PILLARS[category as Pillar] ?? category : '—';
+      const lang = locale ? locale.toUpperCase() : 'PT';
       return {
         title: featured ? `⭐ ${title}` : title,
-        subtitle: `${cat} · ${author ?? 'Sem autor'}`,
+        subtitle: `[${lang}] ${cat} · ${author ?? 'Sem autor'}`,
         media,
       };
     },

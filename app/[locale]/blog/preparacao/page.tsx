@@ -9,6 +9,11 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
-export default function PreparacaoPillarPage() {
-  return <PillarPage pillar="preparacao" />;
+export default function PreparacaoPillarPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const blogLocale = (locale === 'en' || locale === 'es') ? locale : 'pt';
+  return <PillarPage pillar="preparacao" locale={blogLocale} />;
 }
