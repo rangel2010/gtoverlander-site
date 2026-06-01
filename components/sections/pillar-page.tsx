@@ -1,8 +1,9 @@
 // Componente reutilizável pra renderizar uma pillar page do blog
 // Usado por /blog/destinos, /blog/preparacao, /blog/vida-overlander
 
-import Link from 'next/link';
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { Button } from '../ui/button';
 import { getPostsByPillar } from '@/lib/sanity/queries';
 import { sanityConfigured } from '@/lib/sanity/client';
@@ -23,6 +24,7 @@ function formatDate(iso: string) {
 }
 
 export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; locale?: BlogLocale }) {
+  const t = await getTranslations('blogPage');
   const posts = sanityConfigured ? await getPostsByPillar(pillar, locale) : [];
   const otherPillars: Pillar[] = (
     ['destinos', 'preparacao', 'vida-overlander'] as Pillar[]
@@ -36,7 +38,7 @@ export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; lo
             href="/blog"
             className="text-xs uppercase tracking-wider text-gt-text-muted hover:text-gt-text font-sans inline-block mb-5"
           >
-            ← Blog
+            {t('voltarBlog')}
           </Link>
           <h1 className="text-5xl md:text-6xl leading-[0.95] mb-6">
             {PILLAR_TITLES[pillar]}
@@ -55,12 +57,12 @@ export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; lo
       <section className="bg-gt-bg py-12 md:py-16 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-2xl md:text-3xl text-gt-text mb-10">
-            Artigos
+            {t('pillarArtigos')}
           </h2>
 
           {posts.length === 0 ? (
             <p className="text-gt-text-muted font-sans">
-              Ainda não temos artigos publicados nesse pilar. Em breve!
+              {t('semArtigosPilar')}
             </p>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -108,7 +110,7 @@ export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; lo
       <section className="bg-gt-card py-12 md:py-16 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-xl md:text-2xl text-gt-text mb-6">
-            Veja também
+            {t('vejaTambem')}
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {otherPillars.map((p) => (
@@ -121,7 +123,7 @@ export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; lo
                   {PILLAR_TITLES[p]}
                 </h3>
                 <span className="text-gt-orange text-sm font-medium font-sans">
-                  Ver artigos →
+                  {t('verArtigos')}
                 </span>
               </Link>
             ))}
@@ -132,12 +134,12 @@ export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; lo
       <section className="bg-gt-bg py-12 md:py-16 border-t border-gt-border">
         <div className="container-narrow text-center">
           <h2 className="text-2xl md:text-3xl text-gt-text mb-4">
-            Planeje sua próxima viagem
+            {t('planejeSuaViagem')}
           </h2>
           <p className="text-gt-text-muted mb-6 font-sans">
-            Pegou inspiração? Baixa o GT e começa a planejar.
+            {t('planejeSuaViagemDesc')}
           </p>
-          <Button href="/baixar">Começar grátis</Button>
+          <Button href="/baixar">{t('comecarGratis')}</Button>
         </div>
       </section>
     </>

@@ -6,27 +6,7 @@ import { sanityConfigured } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
 import { PILLAR_TITLES, type BlogLocale } from '@/lib/sanity/types';
 
-// Placeholders pra quando Sanity não estiver configurado ou não houver posts
-const placeholderPosts = [
-  {
-    categoria: 'Destinos & Roteiros',
-    categoriaHref: '/blog/destinos',
-    titulo: 'Roteiros pela Patagônia: o que ninguém te conta',
-    resumo: 'Argentina e Chile em 15 dias, com fronteiras, paradas obrigatórias e dicas de quem fez.',
-  },
-  {
-    categoria: 'Preparação & Planejamento',
-    categoriaHref: '/blog/preparacao',
-    titulo: 'Cruzando fronteiras na América do Sul sem dor de cabeça',
-    resumo: 'A documentação que você precisa, posto a posto, pra atravessar Mercosul tranquilo.',
-  },
-  {
-    categoria: 'Vida Overlander',
-    categoriaHref: '/blog/vida-overlander',
-    titulo: 'Acampar é perrengue? Só se você não souber escolher o lugar',
-    resumo: 'Como escolher camping, ler o terreno e dormir bem na estrada.',
-  },
-];
+const placeholderHrefs = ['/blog/destinos', '/blog/preparacao', '/blog/vida-overlander'];
 
 export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
   const t = await getTranslations('home.blog');
@@ -94,9 +74,9 @@ export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
                   </article>
                 );
               })
-            : placeholderPosts.map((p, i) => (
+            : ([1, 2, 3] as const).map((n) => (
                 <article
-                  key={i}
+                  key={n}
                   className="bg-gt-card rounded-lg overflow-hidden border border-gt-border hover:border-gt-border-strong transition-colors group"
                 >
                   <div className="aspect-[16/9] bg-gt-card-hover flex items-center justify-center text-gt-text-dim text-xs font-sans">
@@ -104,16 +84,16 @@ export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
                   </div>
                   <div className="p-6">
                     <Link
-                      href={p.categoriaHref}
+                      href={placeholderHrefs[n - 1]}
                       className="text-xs uppercase tracking-wider text-gt-orange/80 hover:text-gt-orange font-sans"
                     >
-                      {p.categoria}
+                      {PILLAR_TITLES[(['destinos', 'preparacao', 'vida-overlander'] as const)[n - 1]]}
                     </Link>
                     <h3 className="font-sans font-medium text-gt-text text-base md:text-lg mt-3 mb-3 leading-snug group-hover:text-gt-orange transition-colors normal-case">
-                      {p.titulo}
+                      {t(`placeholderTitulo${n}`)}
                     </h3>
                     <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
-                      {p.resumo}
+                      {t(`placeholderResumo${n}`)}
                     </p>
                   </div>
                 </article>

@@ -102,7 +102,13 @@
     "blog": {
       "titulo": "No blog",
       "verTudo": "Ver todo o blog →",
-      "capaCover": "Capa do artigo"
+      "capaCover": "Capa do artigo",
+      "placeholderTitulo1": "Roteiros pela Patagônia: o que ninguém te conta",
+      "placeholderTitulo2": "Cruzando fronteiras na América do Sul sem dor de cabeça",
+      "placeholderTitulo3": "Acampar é perrengue? Só se você não souber escolher o lugar",
+      "placeholderResumo1": "Argentina e Chile em 15 dias, com fronteiras, paradas obrigatórias e dicas de quem fez.",
+      "placeholderResumo2": "A documentação que você precisa, posto a posto, pra atravessar Mercosul tranquilo.",
+      "placeholderResumo3": "Como escolher camping, ler o terreno e dormir bem na estrada."
     },
     "empresas": {
       "label": "Conta Business — em breve",
@@ -401,5 +407,21 @@
     "androidSub": "pra Android",
     "rodape": "Já tem conta?",
     "rodapeLink": "Fale com a gente"
+  },
+  "blogPage": {
+    "titulo": "Blog GT Overlander",
+    "desc": "Destinos, preparação e vida overlander pra quem viaja por terra.",
+    "tresPilares": "Os 3 pilares",
+    "verArtigos": "Ver artigos →",
+    "todosArtigos": "Todos os artigos",
+    "semArtigos": "Ainda não temos artigos publicados. Em breve!",
+    "emDestaque": "Em destaque",
+    "planejeSuaViagem": "Planeje sua próxima viagem",
+    "planejeSuaViagemDesc": "Pegou inspiração? Baixa o GT e começa a planejar.",
+    "comecarGratis": "Começar grátis",
+    "pillarArtigos": "Artigos",
+    "semArtigosPilar": "Ainda não temos artigos publicados nesse pilar. Em breve!",
+    "vejaTambem": "Veja também",
+    "voltarBlog": "← Blog"
   }
 }

@@ -102,13 +102,7 @@
     "blog": {
       "titulo": "On the blog",
       "verTudo": "See all posts →",
-      "capaCover": "Article cover",
-      "placeholderTitulo1": "Patagonia by car: what nobody tells you",
-      "placeholderTitulo2": "Crossing South American borders without the headache",
-      "placeholderTitulo3": "Camping is a hassle? Only if you don't know how to pick the spot",
-      "placeholderResumo1": "Argentina and Chile in 15 days — borders, must-stop spots and tips from someone who's done it.",
-      "placeholderResumo2": "The documents you need, border by border, to cross Mercosur without stress.",
-      "placeholderResumo3": "How to choose a campsite, read the terrain and sleep well on the road."
+      "capaCover": "Article cover"
     },
     "empresas": {
       "label": "Business Account — coming soon",
@@ -529,21 +523,5 @@
     "androidSub": "for Android",
     "rodape": "Already have an account?",
     "rodapeLink": "Contact us"
-  },
-  "blogPage": {
-    "titulo": "GT Overlander Blog",
-    "desc": "Destinations, preparation and overlander life for those who travel overland.",
-    "tresPilares": "The 3 pillars",
-    "verArtigos": "See articles →",
-    "todosArtigos": "All articles",
-    "semArtigos": "No articles published yet. Coming soon!",
-    "emDestaque": "Featured",
-    "planejeSuaViagem": "Plan your next trip",
-    "planejeSuaViagemDesc": "Feeling inspired? Download GT and start planning.",
-    "comecarGratis": "Start free",
-    "pillarArtigos": "Articles",
-    "semArtigosPilar": "No articles published in this pillar yet. Coming soon!",
-    "vejaTambem": "See also",
-    "voltarBlog": "← Blog"
   }
 }

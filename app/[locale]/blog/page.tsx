@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
 import {
   getAllPosts,
   getFeaturedPost,
 } from '@/lib/sanity/queries';
 import { sanityConfigured } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
-import { PILLAR_TITLES, type Pillar } from '@/lib/sanity/types';
+import { PILLAR_TITLES, type Pillar, type BlogLocale } from '@/lib/sanity/types';
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -31,8 +32,11 @@ export default async function BlogPage({
 }: {
   params: { locale: string };
 }) {
+  setRequestLocale(locale);
+  const t = await getTranslations('blogPage');
+
   if (!sanityConfigured) {
-    return <BlogEmConstrucao />;
+    return <BlogEmConstrucao t={t} />;
   }
 
   const blogLocale = (locale === 'en' || locale === 'es') ? locale : 'pt';
@@ -52,10 +56,10 @@ export default async function BlogPage({
       <section className="dark bg-gt-bg-elevated text-gt-text">
         <div className="container-wide py-12 md:py-16 max-w-3xl">
           <h1 className="text-5xl md:text-6xl leading-[0.95] mb-5">
-            Blog GT Overlander
+            {t('titulo')}
           </h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
-            Destinos, preparação e vida overlander pra quem viaja por terra.
+            {t('desc')}
           </p>
         </div>
       </section>
@@ -63,7 +67,7 @@ export default async function BlogPage({
       <section className="bg-gt-bg py-12 md:py-16 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-2xl md:text-3xl text-gt-text mb-8">
-            Os 3 pilares
+            {t('tresPilares')}
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {pillars.map((p) => (
@@ -76,7 +80,7 @@ export default async function BlogPage({
                   {PILLAR_TITLES[p]}
                 </h3>
                 <span className="text-gt-orange text-sm font-medium font-sans">
-                  Ver artigos →
+                  {t('verArtigos')}
                 </span>
               </Link>
             ))}
@@ -88,7 +92,7 @@ export default async function BlogPage({
         <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
           <div className="container-wide">
             <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-4 font-sans">
-              Em destaque
+              {t('emDestaque')}
             </p>
             <FeaturedPost post={featured} />
           </div>
@@ -98,12 +102,12 @@ export default async function BlogPage({
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-2xl md:text-3xl text-gt-text mb-10">
-            Todos os artigos
+            {t('todosArtigos')}
           </h2>
 
           {otherPosts.length === 0 ? (
             <p className="text-gt-text-muted font-sans">
-              Ainda não temos artigos publicados. Em breve!
+              {t('semArtigos')}
             </p>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -118,12 +122,12 @@ export default async function BlogPage({
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow text-center">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-4">
-            Planeje sua próxima viagem
+            {t('planejeSuaViagem')}
           </h2>
           <p className="text-gt-text-muted mb-8 font-sans max-w-md mx-auto">
-            Pegou inspiração? Baixa o GT e começa a planejar.
+            {t('planejeSuaViagemDesc')}
           </p>
-          <Button href="/baixar">Começar grátis</Button>
+          <Button href="/baixar">{t('comecarGratis')}</Button>
         </div>
       </section>
     </>
@@ -204,18 +208,17 @@ function PostCard({ post }: { post: Awaited<ReturnType<typeof getAllPosts>>[numb
   );
 }
 
-function BlogEmConstrucao() {
+function BlogEmConstrucao({ t }: { t: Awaited<ReturnType<typeof getTranslations<'blogPage'>>> }) {
   return (
     <section className="dark bg-gt-bg-elevated text-gt-text min-h-[60vh] flex items-center">
       <div className="container-narrow text-center py-16 md:py-24">
         <h1 className="text-5xl md:text-6xl leading-[0.95] mb-6">
-          Blog em construção
+          {t('titulo')}
         </h1>
         <p className="text-base md:text-lg text-gt-text-muted leading-relaxed mb-8 font-sans">
-          Estamos preparando o blog GT Overlander — destinos, preparação e
-          histórias de estrada. Em breve.
+          {t('desc')}
         </p>
-        <Button href="/baixar">Baixar o app</Button>
+        <Button href="/baixar">{t('comecarGratis')}</Button>
       </div>
     </section>
   );
