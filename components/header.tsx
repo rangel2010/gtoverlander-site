@@ -6,6 +6,7 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { ThemeToggle } from './theme-toggle';
+import { LocaleSwitcher } from './locale-switcher';
 
 const APP_WEB_URL = 'https://app.gtoverlander.com.br';
 
@@ -64,6 +65,7 @@ export function Header() {
 
         {/* CTAs + mobile toggle */}
         <div className="flex items-center gap-2 sm:gap-3">
+          <LocaleSwitcher />
           <ThemeToggle />
 
           <a
