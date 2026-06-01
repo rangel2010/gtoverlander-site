@@ -22,7 +22,7 @@ export default function HomePage({
       <RecursosDisponiveis />
       <Numeros />
       <PorqueGt />
-      <BlogTeaser />
+      <BlogTeaser locale={(locale === 'en' || locale === 'es') ? locale : 'pt'} />
       <EmpresasTeaser />
       <CtaFinal />
     </>

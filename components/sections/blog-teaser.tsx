@@ -4,7 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { getAllPosts } from '@/lib/sanity/queries';
 import { sanityConfigured } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
-import { PILLAR_TITLES } from '@/lib/sanity/types';
+import { PILLAR_TITLES, type BlogLocale } from '@/lib/sanity/types';
 
 // Placeholders pra quando Sanity não estiver configurado ou não houver posts
 const placeholderPosts = [
@@ -28,12 +28,13 @@ const placeholderPosts = [
   },
 ];
 
-export async function BlogTeaser() {
+export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
   const t = await getTranslations('home.blog');
 
-  // Tenta buscar posts reais do Sanity. Se houver pelo menos 1 post real,
-  // mostra os reais (até 3). Só cai em placeholder se não tiver nenhum.
-  const realPosts = sanityConfigured ? await getAllPosts() : [];
+  // Tenta buscar posts reais do Sanity filtrados por locale.
+  // Se houver pelo menos 1 post real, mostra os reais (até 3).
+  // Só cai em placeholder se não tiver nenhum.
+  const realPosts = sanityConfigured ? await getAllPosts(locale) : [];
   const showReal = realPosts.length >= 1;
   const display = showReal ? realPosts.slice(0, 3) : null;
 
