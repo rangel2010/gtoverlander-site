@@ -100,7 +100,7 @@ export default async function BlogPage({
             <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-4 font-sans">
               {t('emDestaque')}
             </p>
-            <FeaturedPost post={featured} />
+            <FeaturedPost post={featured} pillarLabel={t(PILLAR_KEY[featured.category])} />
           </div>
         </section>
       )}
@@ -118,7 +118,7 @@ export default async function BlogPage({
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {otherPosts.map((post) => (
-                <PostCard key={post._id} post={post} />
+                <PostCard key={post._id} post={post} pillarLabel={t(PILLAR_KEY[post.category])} />
               ))}
             </div>
           )}
@@ -140,7 +140,7 @@ export default async function BlogPage({
   );
 }
 
-function FeaturedPost({ post }: { post: NonNullable<Awaited<ReturnType<typeof getFeaturedPost>>> }) {
+function FeaturedPost({ post, pillarLabel }: { post: NonNullable<Awaited<ReturnType<typeof getFeaturedPost>>>; pillarLabel: string }) {
   const imageUrl = urlForImage(post.coverImage)?.width(1200).height(675).url();
 
   return (
@@ -161,7 +161,7 @@ function FeaturedPost({ post }: { post: NonNullable<Awaited<ReturnType<typeof ge
       )}
       <div className="p-6 md:p-8">
         <p className="text-xs uppercase tracking-wider text-gt-orange/80 mb-3 font-sans">
-          {t(PILLAR_KEY[post.category])}
+          {pillarLabel}
         </p>
         <h3 className="text-2xl md:text-3xl text-gt-text mb-4 leading-snug group-hover:text-gt-orange transition-colors">
           {post.title}
@@ -177,7 +177,7 @@ function FeaturedPost({ post }: { post: NonNullable<Awaited<ReturnType<typeof ge
   );
 }
 
-function PostCard({ post }: { post: Awaited<ReturnType<typeof getAllPosts>>[number] }) {
+function PostCard({ post, pillarLabel }: { post: Awaited<ReturnType<typeof getAllPosts>>[number]; pillarLabel: string }) {
   const imageUrl = urlForImage(post.coverImage)?.width(800).height(450).url();
 
   return (
@@ -198,7 +198,7 @@ function PostCard({ post }: { post: Awaited<ReturnType<typeof getAllPosts>>[numb
       )}
       <div className="p-6 flex-1 flex flex-col">
         <p className="text-xs uppercase tracking-wider text-gt-orange/80 mb-3 font-sans">
-          {t(PILLAR_KEY[post.category])}
+          {pillarLabel}
         </p>
         <h3 className="font-sans text-lg font-medium text-gt-text mb-3 leading-snug group-hover:text-gt-orange transition-colors normal-case flex-1">
           {post.title}
