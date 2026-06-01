@@ -4,12 +4,19 @@ import { Link } from '@/i18n/navigation';
 import { getAllPosts } from '@/lib/sanity/queries';
 import { sanityConfigured } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
-import { PILLAR_TITLES, type BlogLocale } from '@/lib/sanity/types';
+import { type Pillar, type BlogLocale } from '@/lib/sanity/types';
+
+const PILLAR_KEY: Record<Pillar, 'pillarDestinos' | 'pillarPreparacao' | 'pillarVidaOverlander'> = {
+  destinos: 'pillarDestinos',
+  preparacao: 'pillarPreparacao',
+  'vida-overlander': 'pillarVidaOverlander',
+};
 
 const placeholderHrefs = ['/blog/destinos', '/blog/preparacao', '/blog/vida-overlander'];
 
 export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
   const t = await getTranslations('home.blog');
+  const tb = await getTranslations('blogPage');
 
   // Tenta buscar posts reais do Sanity filtrados por locale.
   // Se houver pelo menos 1 post real, mostra os reais (até 3).
@@ -61,7 +68,7 @@ export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
                       )}
                       <div className="p-6">
                         <p className="text-xs uppercase tracking-wider text-gt-orange/80 font-sans">
-                          {PILLAR_TITLES[p.category]}
+                          {tb(PILLAR_KEY[p.category])}
                         </p>
                         <h3 className="font-sans font-medium text-gt-text text-base md:text-lg mt-3 mb-3 leading-snug group-hover:text-gt-orange transition-colors normal-case">
                           {p.title}
@@ -87,7 +94,7 @@ export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
                       href={placeholderHrefs[n - 1]}
                       className="text-xs uppercase tracking-wider text-gt-orange/80 hover:text-gt-orange font-sans"
                     >
-                      {PILLAR_TITLES[(['destinos', 'preparacao', 'vida-overlander'] as const)[n - 1]]}
+                      {tb(PILLAR_KEY[(['destinos', 'preparacao', 'vida-overlander'] as const)[n - 1]])}
                     </Link>
                     <h3 className="font-sans font-medium text-gt-text text-base md:text-lg mt-3 mb-3 leading-snug group-hover:text-gt-orange transition-colors normal-case">
                       {t(`placeholderTitulo${n}`)}

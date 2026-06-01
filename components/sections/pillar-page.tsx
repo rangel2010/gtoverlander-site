@@ -9,8 +9,6 @@ import { getPostsByPillar } from '@/lib/sanity/queries';
 import { sanityConfigured } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
 import {
-  PILLAR_TITLES,
-  PILLAR_DESCRIPTIONS,
   type Pillar,
   type BlogLocale,
 } from '@/lib/sanity/types';
@@ -22,6 +20,18 @@ function formatDate(iso: string) {
     year: 'numeric',
   });
 }
+
+const PILLAR_KEY: Record<Pillar, 'pillarDestinos' | 'pillarPreparacao' | 'pillarVidaOverlander'> = {
+  destinos: 'pillarDestinos',
+  preparacao: 'pillarPreparacao',
+  'vida-overlander': 'pillarVidaOverlander',
+};
+
+const PILLAR_DESC_KEY: Record<Pillar, 'pillarDestinosDesc' | 'pillarPreparacaoDesc' | 'pillarVidaOverlanderDesc'> = {
+  destinos: 'pillarDestinosDesc',
+  preparacao: 'pillarPreparacaoDesc',
+  'vida-overlander': 'pillarVidaOverlanderDesc',
+};
 
 export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; locale?: BlogLocale }) {
   const t = await getTranslations('blogPage');
@@ -41,7 +51,7 @@ export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; lo
             {t('voltarBlog')}
           </Link>
           <h1 className="text-5xl md:text-6xl leading-[0.95] mb-6">
-            {PILLAR_TITLES[pillar]}
+            {t(PILLAR_KEY[pillar])}
           </h1>
         </div>
       </section>
@@ -49,7 +59,7 @@ export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; lo
       <section className="bg-gt-bg py-12 md:py-16 border-t border-gt-border">
         <div className="container-narrow">
           <p className="text-base md:text-lg text-gt-text leading-relaxed font-sans">
-            {PILLAR_DESCRIPTIONS[pillar]}
+            {t(PILLAR_DESC_KEY[pillar])}
           </p>
         </div>
       </section>
@@ -120,7 +130,7 @@ export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; lo
                 className="bg-gt-bg rounded-lg p-6 border border-gt-border hover:border-gt-border-strong transition-colors group"
               >
                 <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case group-hover:text-gt-orange transition-colors">
-                  {PILLAR_TITLES[p]}
+                  {t(PILLAR_KEY[p])}
                 </h3>
                 <span className="text-gt-orange text-sm font-medium font-sans">
                   {t('verArtigos')}

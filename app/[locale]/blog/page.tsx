@@ -19,6 +19,12 @@ export const metadata: Metadata = {
 
 const pillars: Pillar[] = ['destinos', 'preparacao', 'vida-overlander'];
 
+const PILLAR_KEY: Record<Pillar, 'pillarDestinos' | 'pillarPreparacao' | 'pillarVidaOverlander'> = {
+  destinos: 'pillarDestinos',
+  preparacao: 'pillarPreparacao',
+  'vida-overlander': 'pillarVidaOverlander',
+};
+
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('pt-BR', {
     day: 'numeric',
@@ -77,7 +83,7 @@ export default async function BlogPage({
                 className="bg-gt-card rounded-lg p-6 border border-gt-border hover:border-gt-border-strong transition-colors group"
               >
                 <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case group-hover:text-gt-orange transition-colors">
-                  {PILLAR_TITLES[p]}
+                  {t(PILLAR_KEY[p])}
                 </h3>
                 <span className="text-gt-orange text-sm font-medium font-sans">
                   {t('verArtigos')}
@@ -155,7 +161,7 @@ function FeaturedPost({ post }: { post: NonNullable<Awaited<ReturnType<typeof ge
       )}
       <div className="p-6 md:p-8">
         <p className="text-xs uppercase tracking-wider text-gt-orange/80 mb-3 font-sans">
-          {PILLAR_TITLES[post.category]}
+          {t(PILLAR_KEY[post.category])}
         </p>
         <h3 className="text-2xl md:text-3xl text-gt-text mb-4 leading-snug group-hover:text-gt-orange transition-colors">
           {post.title}
@@ -192,7 +198,7 @@ function PostCard({ post }: { post: Awaited<ReturnType<typeof getAllPosts>>[numb
       )}
       <div className="p-6 flex-1 flex flex-col">
         <p className="text-xs uppercase tracking-wider text-gt-orange/80 mb-3 font-sans">
-          {PILLAR_TITLES[post.category]}
+          {t(PILLAR_KEY[post.category])}
         </p>
         <h3 className="font-sans text-lg font-medium text-gt-text mb-3 leading-snug group-hover:text-gt-orange transition-colors normal-case flex-1">
           {post.title}
