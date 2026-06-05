@@ -5,6 +5,7 @@ import { RecursosDisponiveis } from '@/components/sections/recursos-disponiveis'
 import { Numeros } from '@/components/sections/numeros';
 import { PorqueGt } from '@/components/sections/porque-gt';
 import { BlogTeaser } from '@/components/sections/blog-teaser';
+import { PodcastTeaser } from '@/components/sections/podcast-teaser';
 import { EmpresasTeaser } from '@/components/sections/empresas-teaser';
 import { CtaFinal } from '@/components/sections/cta-final';
 
@@ -23,6 +24,7 @@ export default function HomePage({
       <Numeros />
       <PorqueGt />
       <BlogTeaser locale={(locale === 'en' || locale === 'es') ? locale : 'pt'} />
+      <PodcastTeaser />
       <EmpresasTeaser />
       <CtaFinal />
     </>

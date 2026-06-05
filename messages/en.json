@@ -120,6 +120,12 @@
       "titulo": "Your next trip starts with a conversation",
       "subtitulo": "Start free. No credit card, no commitment.",
       "ctaPlanos": "Explore plans"
+    },
+    "podcast": {
+      "label": "Podcast",
+      "titulo": "Listen to GT Overlander on Spotify",
+      "desc": "Destinations, preparation and life on the road in conversation format. New episodes every week.",
+      "cta": "Listen on Spotify →"
     }
   },
   "sobre": {
