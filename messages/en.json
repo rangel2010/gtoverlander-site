@@ -109,8 +109,10 @@
       "placeholderResumo1": "Argentina and Chile in 15 days — borders, must-stop spots and tips from someone who's done it.",
       "placeholderResumo2": "The documents you need, border by border, to cross Mercosur without stress.",
       "placeholderResumo3": "How to choose a campsite, read the terrain and sleep well on the road.",
-      "podcastTexto": "GT Overlander Podcast",
-      "podcastLink": "Spotify →"
+      "podcastTexto": "Podcast",
+      "podcastLink": "Spotify →",
+      "podcastPrefere": "Prefer to listen?",
+      "podcastNome": "GT Overlander"
     },
     "empresas": {
       "label": "Business Account — coming soon",
