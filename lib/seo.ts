@@ -180,12 +180,14 @@ export function productPlansLd() {
 export function articleLd(post: PostFull) {
   const imageUrl =
     urlForImage(post.coverImage)?.width(1200).height(630).url() ?? null;
+  const postUrl = `${BASE_URL}/blog/${post.slug}`;
 
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
+    url: postUrl,
     image: imageUrl ? [imageUrl] : undefined,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
@@ -193,6 +195,7 @@ export function articleLd(post: PostFull) {
     author: {
       '@type': 'Person',
       name: post.authorName,
+      url: `${BASE_URL}/sobre`,
     },
     publisher: {
       '@type': 'Organization',
@@ -204,7 +207,7 @@ export function articleLd(post: PostFull) {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${BASE_URL}/blog/${post.slug}`,
+      '@id': postUrl,
     },
     keywords: post.tags?.join(', '),
   };
