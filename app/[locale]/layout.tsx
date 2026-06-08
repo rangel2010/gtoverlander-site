@@ -10,6 +10,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { ConsentBanner } from '@/components/consent-banner';
 import { ClarityScript } from '@/components/clarity-script';
+import { GaScript } from '@/components/ga-script';
 import { routing } from '@/i18n/routing';
 import {
   organizationLd,
@@ -120,6 +121,8 @@ export default async function LocaleLayout({
             {/* Microsoft Clarity — heatmap + session recording, só inicializa se o
                 usuário aceitou o ConsentBanner */}
             <ClarityScript />
+            {/* Google Analytics 4 — só inicializa se o usuário aceitou o ConsentBanner */}
+            <GaScript />
           </Providers>
         </NextIntlClientProvider>
       </body>
