@@ -59,6 +59,9 @@ export const metadata: Metadata = {
       'application/rss+xml': '/feed.xml',
     },
   },
+  verification: {
+    google: 'xR2d6RJaIm9keUfM916f21S2XXFEu8J8A_iG36v9dj0',
+  },
 };
 
 export function generateStaticParams() {
