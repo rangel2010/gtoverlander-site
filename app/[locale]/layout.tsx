@@ -23,6 +23,7 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+  adjustFontFallback: true,
 });
 
 const anton = Anton({
@@ -30,6 +31,7 @@ const anton = Anton({
   weight: '400',
   variable: '--font-anton',
   display: 'swap',
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {

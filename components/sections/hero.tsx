@@ -35,14 +35,16 @@ export async function Hero() {
           </p>
         </div>
 
-        <div className="hidden md:flex justify-center">
+        {/* Reserva espaço explícito pra evitar CLS — 338x640 = proporção 846x1600 cortada em max-h-640 */}
+        <div className="hidden md:flex justify-center items-center h-[640px]">
           <Image
             src="/images/screenshots/app-home.jpg"
             alt={t('appAlt')}
-            width={846}
-            height={1600}
+            width={338}
+            height={640}
             priority
-            className="max-h-[640px] w-auto rounded-3xl border border-gt-border shadow-2xl"
+            sizes="(max-width: 1280px) 338px, 338px"
+            className="rounded-3xl border border-gt-border shadow-2xl"
           />
         </div>
       </div>
