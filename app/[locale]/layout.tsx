@@ -34,7 +34,7 @@ const anton = Anton({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gtoverlander.com.br'
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.gtoverlander.com.br'
   ),
   title: {
     default: 'GT Overlander · O maior ecossistema overlander do mundo',

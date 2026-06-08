@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Não indexar rotas de sistema
+Disallow: /api/
+Disallow: /_next/
+
+Sitemap: https://www.gtoverlander.com.br/sitemap.xml

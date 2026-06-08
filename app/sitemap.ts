@@ -2,6 +2,11 @@ import type { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/sanity/queries';
 import { BASE_URL } from '@/lib/seo';
 
+const WWW = 'https://www.gtoverlander.com.br';
+const LOCALES = ['pt', 'en', 'es'] as const;
+const localePath = (locale: string, path: string) =>
+  locale === 'pt' ? `${WWW}${path}` : `${WWW}/${locale}${path}`;
+
 // Rotas estáticas + dinâmicas (posts do Sanity)
 // Acessível em /sitemap.xml após build/deploy
 
@@ -41,24 +46,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/comunidade', changeFreq: 'yearly', priority: 0.4 },
   ];
 
-  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((r) => ({
-    url: `${BASE_URL}${r.path}`,
-    lastModified: now,
-    changeFrequency: r.changeFreq,
-    priority: r.priority,
-  }));
+  // Gera uma entrada por locale para cada rota estática
+  const staticEntries: MetadataRoute.Sitemap = staticRoutes.flatMap((r) =>
+    LOCALES.map((locale) => ({
+      url: localePath(locale, r.path || '/'),
+      lastModified: now,
+      changeFrequency: r.changeFreq,
+      priority: locale === 'pt' ? r.priority : r.priority * 0.9,
+    }))
+  );
 
   let postEntries: MetadataRoute.Sitemap = [];
   try {
     const posts = await getAllPosts();
-    postEntries = posts.map((post) => ({
-      url: `${BASE_URL}/blog/${post.slug}`,
-      lastModified: post.publishedAt
-        ? new Date(post.publishedAt)
-        : now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    }));
+    // Gera uma entrada por locale para cada post
+    postEntries = posts.flatMap((post) =>
+      LOCALES.map((locale) => ({
+        url: localePath(locale, `/blog/${post.slug}`),
+        lastModified: post.publishedAt ? new Date(post.publishedAt) : now,
+        changeFrequency: 'monthly' as const,
+        priority: locale === 'pt' ? 0.7 : 0.63,
+      }))
+    );
   } catch (e) {
     console.error('[sitemap] Falha ao buscar posts do Sanity:', e);
   }

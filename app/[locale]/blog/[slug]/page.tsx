@@ -17,10 +17,11 @@ import {
   articleLd,
   breadcrumbLd,
   jsonLdScriptProps,
+  getPageAlternates,
 } from '@/lib/seo';
 
 interface PageProps {
-  params: { slug: string };
+  params: { slug: string; locale: string };
 }
 
 // Pré-renderiza todos os posts publicados em build
@@ -39,10 +40,12 @@ export async function generateMetadata({
   if (!post) return { title: 'Post não encontrado' };
 
   const imageUrl = urlForImage(post.coverImage)?.width(1200).height(630).url();
+  const locale = params.locale ?? 'pt';
 
   return {
     title: post.title,
     description: post.description,
+    alternates: getPageAlternates(locale, `/blog/${params.slug}`),
     openGraph: {
       title: post.title,
       description: post.description,

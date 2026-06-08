@@ -10,12 +10,20 @@ import {
 import { sanityConfigured } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
 import { PILLAR_TITLES, type Pillar, type BlogLocale } from '@/lib/sanity/types';
+import { getPageAlternates } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Blog',
-  description:
-    'Destinos, preparação e vida overlander pra quem viaja por terra. Roteiros, dicas e histórias de quem vive na estrada.',
-};
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Blog',
+    description:
+      'Destinos, preparação e vida overlander pra quem viaja por terra. Roteiros, dicas e histórias de quem vive na estrada.',
+    alternates: getPageAlternates(locale, '/blog'),
+  };
+}
 
 const pillars: Pillar[] = ['destinos', 'preparacao', 'vida-overlander'];
 

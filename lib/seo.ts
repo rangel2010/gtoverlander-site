@@ -6,7 +6,29 @@ import { urlForImage } from '@/lib/sanity/image';
 import type { PostFull, PostListItem } from '@/lib/sanity/types';
 
 export const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gtoverlander.com.br';
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.gtoverlander.com.br';
+
+/**
+ * Gera `alternates` (canonical + hreflang) para qualquer página.
+ * Uso: alternates: getPageAlternates(locale, '/blog/meu-post')
+ *
+ * PT sem prefixo → https://www.gtoverlander.com.br/blog/meu-post
+ * EN com prefixo → https://www.gtoverlander.com.br/en/blog/meu-post
+ * ES com prefixo → https://www.gtoverlander.com.br/es/blog/meu-post
+ */
+export function getPageAlternates(locale: string, path: string) {
+  const www = 'https://www.gtoverlander.com.br';
+  const lp = (l: string) => (l === 'pt' ? `${www}${path}` : `${www}/${l}${path}`);
+  return {
+    canonical: lp(locale),
+    languages: {
+      'pt-BR': lp('pt'),
+      en: lp('en'),
+      es: lp('es'),
+      'x-default': lp('pt'),
+    },
+  };
+}
 
 const ORG_NAME = 'GT Overlander';
 const ORG_LEGAL_NAME = 'GT Overlander Ltda';
