@@ -1,12 +1,20 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { WaypointsMap } from '@/components/demo/waypoints-map';
 import { getGeoFromHeaders } from '@/lib/demo/geo';
 
-export const metadata: Metadata = {
-  title: 'Demo — Mapa interativo dos waypoints',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Demo — Mapa interativo dos waypoints',
+    description:
     'Mais de 4 milhões de waypoints curados em 209 países. Explore a base do GT Overlander no mapa — postos, campings, hospedagem, atrações.',
-};
+    alternates: getPageAlternates(locale, '/demo'),
+  };
+}
 
 export default function DemoPage() {
   const geo = getGeoFromHeaders();

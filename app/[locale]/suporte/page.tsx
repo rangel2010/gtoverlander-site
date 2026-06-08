@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { SupportForm } from '@/components/sections/support-form';
 
-export const metadata: Metadata = {
-  title: 'Suporte',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Suporte',
+    description:
     'Centro de ajuda do GT Overlander. Tópicos populares, FAQ aprofundado e abertura de ticket — pra resolver seu problema rápido.',
-};
+    alternates: getPageAlternates(locale, '/suporte'),
+  };
+}
 
 export default async function SuportePage({
   params: { locale },

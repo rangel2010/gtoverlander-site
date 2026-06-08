@@ -1,11 +1,19 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { PillarPage } from '@/components/sections/pillar-page';
 import { PILLAR_DESCRIPTIONS } from '@/lib/sanity/types';
 
-export const metadata: Metadata = {
-  title: 'Vida Overlander',
-  description: PILLAR_DESCRIPTIONS['vida-overlander'].slice(0, 160),
-};
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Vida Overlander',
+    description: PILLAR_DESCRIPTIONS['vida-overlander'].slice(0, 160),
+    alternates: getPageAlternates(locale, '/blog/vida-overlander'),
+  };
+}
 
 export const revalidate = 60;
 

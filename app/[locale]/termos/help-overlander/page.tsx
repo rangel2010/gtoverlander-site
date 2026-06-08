@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { LegalDocument } from '@/components/legal-document';
 
-export const metadata: Metadata = {
-  title: 'Anexo I — Termo de Assunção de Risco (Help Overlander)',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Anexo I — Termo de Assunção de Risco (Help Overlander)',
+    description:
     'Termo específico de assunção de risco para uso da funcionalidade Help Overlander. Aceite obrigatório para ativação da funcionalidade.',
-};
+    alternates: getPageAlternates(locale, '/termos/help-overlander'),
+  };
+}
 
 export default async function HelpOverlanderPage() {
   const content = await fs.readFile(

@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { BusinessLeadForm } from '@/components/sections/business-lead-form';
 
-export const metadata: Metadata = {
-  title: 'Conta Business',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Conta Business',
+    description:
     'Conta Business do GT Overlander, em breve. Destaque seu ponto no mapa, venda produtos e ofereça serviços pra quem viaja por terra. Entre na lista de espera.',
-};
+    alternates: getPageAlternates(locale, '/empresas'),
+  };
+}
 
 export default async function EmpresasPage({
   params: { locale },

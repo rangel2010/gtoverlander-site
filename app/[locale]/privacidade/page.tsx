@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { LegalDocument } from '@/components/legal-document';
 
-export const metadata: Metadata = {
-  title: 'Política de Privacidade',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Política de Privacidade',
+    description:
     'Política de Privacidade do GT Overlander em conformidade com a LGPD. Como coletamos, usamos, compartilhamos e protegemos seus dados pessoais.',
-};
+    alternates: getPageAlternates(locale, '/privacidade'),
+  };
+}
 
 export default async function PrivacidadePage() {
   const content = await fs.readFile(

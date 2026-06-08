@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { LegalDocument } from '@/components/legal-document';
 
-export const metadata: Metadata = {
-  title: 'Termos de Uso',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Termos de Uso',
+    description:
     'Termos de Uso do GT Overlander. Condições para utilização da plataforma, regras de conduta, direitos e responsabilidades.',
-};
+    alternates: getPageAlternates(locale, '/termos'),
+  };
+}
 
 export default async function TermosPage() {
   const content = await fs.readFile(

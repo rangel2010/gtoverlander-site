@@ -1,15 +1,23 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import Image from 'next/image';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
 import { CtaFinal } from '@/components/sections/cta-final';
 
-export const metadata: Metadata = {
-  title: 'Roteiros com IA',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Roteiros com IA',
+    description:
     'Descreva a viagem em linguagem natural. A IA monta o trajeto — estradas, cidades e destino — e você completa com as paradas. Grátis pra começar.',
-};
+    alternates: getPageAlternates(locale, '/recursos/roteiros-ia'),
+  };
+}
 
 const motores = [
   {

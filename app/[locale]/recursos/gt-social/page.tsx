@@ -1,14 +1,22 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
 import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 
-export const metadata: Metadata = {
-  title: 'GT Social',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'GT Social',
+    description:
     'A rede social dentro do GT. Siga overlanders, descubra rotas públicas testadas e copie roteiros que outros já completaram. Comunidade de quem vive a estrada.',
-};
+    alternates: getPageAlternates(locale, '/recursos/gt-social'),
+  };
+}
 
 const oQueFaz = [
   {

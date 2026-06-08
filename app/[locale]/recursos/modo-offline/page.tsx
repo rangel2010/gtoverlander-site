@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
 
-export const metadata: Metadata = {
-  title: 'Modo Offline',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Modo Offline',
+    description:
     'Free baixa o país onde está com todas as categorias de waypoints. Plus e Pro liberam os 209 países. Use o GT em qualquer canto, sem depender de sinal.',
-};
+    alternates: getPageAlternates(locale, '/recursos/modo-offline'),
+  };
+}
 
 const oQueFaz = [
   {

@@ -1,14 +1,22 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
 import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 
-export const metadata: Metadata = {
-  title: 'GT Explorer',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'GT Explorer',
+    description:
     'Sua jornada vira XP, níveis, conquistas e ranking regional. Cada km rodado, cada ponto validado, cada rota concluída conta. A estrada vira progressão.',
-};
+    alternates: getPageAlternates(locale, '/recursos/explorer'),
+  };
+}
 
 const niveis = [
   { nv: 1, nome: 'Iniciante', faixa: '0–1.000 XP' },

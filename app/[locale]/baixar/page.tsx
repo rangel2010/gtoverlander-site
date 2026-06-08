@@ -1,12 +1,20 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 
-export const metadata: Metadata = {
-  title: 'Baixar o app',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Baixar o app',
+    description:
     'Baixe o GT Overlander grátis na App Store ou Google Play. iOS, Android e Web — compatível com CarPlay e Android Auto.',
-};
+    alternates: getPageAlternates(locale, '/baixar'),
+  };
+}
 
 export default async function BaixarPage({
   params: { locale },

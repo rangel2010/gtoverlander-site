@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { LegalDocument } from '@/components/legal-document';
 
-export const metadata: Metadata = {
-  title: 'Código de Conduta da Comunidade',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Código de Conduta da Comunidade',
+    description:
     'Código de Conduta da Comunidade GT Overlander. Princípios, comportamentos esperados e regras de convivência entre overlanders.',
-};
+    alternates: getPageAlternates(locale, '/comunidade'),
+  };
+}
 
 export default async function ComunidadePage() {
   const content = await fs.readFile(

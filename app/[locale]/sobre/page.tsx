@@ -2,13 +2,22 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
-import { aboutPagePersonLd, jsonLdScriptProps } from '@/lib/seo';
+import { aboutPagePersonLd, jsonLdScriptProps,
+  getPageAlternates
+} from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Sobre',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Sobre',
+    description:
     'O GT Overlander é o maior ecossistema overlander do mundo — um companheiro de estrada que une praticidade, inteligência artificial e comunidade.',
-};
+    alternates: getPageAlternates(locale, '/sobre'),
+  };
+}
 
 export default async function SobrePage({
   params: { locale },

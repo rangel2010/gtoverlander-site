@@ -1,14 +1,22 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
 import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 
-export const metadata: Metadata = {
-  title: 'Help Overlander',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Help Overlander',
+    description:
     'Pane na estrada, pneu, bateria ou combustível? Sinaliza no Help Overlander e quem está perto e disposto a ajudar aparece. Comunidade que cuida de comunidade.',
-};
+    alternates: getPageAlternates(locale, '/recursos/help-overlander'),
+  };
+}
 
 const tipos = [
   { emoji: '🔧', titulo: 'Mecânica', desc: 'Pane, vazamento, falha elétrica' },

@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { LegalDocument } from '@/components/legal-document';
 
-export const metadata: Metadata = {
-  title: 'Anexo II — Termos da Conta Business',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Anexo II — Termos da Conta Business',
+    description:
     'Termos específicos da Conta Business no GT Overlander. Regras para destaque de pontos de interesse, cobrança, propriedade dos dados e responsabilidades.',
-};
+    alternates: getPageAlternates(locale, '/termos/conta-business'),
+  };
+}
 
 export default async function ContaBusinessPage() {
   const content = await fs.readFile(

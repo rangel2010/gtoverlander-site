@@ -1,11 +1,19 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { PillarPage } from '@/components/sections/pillar-page';
 import { PILLAR_DESCRIPTIONS } from '@/lib/sanity/types';
 
-export const metadata: Metadata = {
-  title: 'Destinos & Roteiros',
-  description: PILLAR_DESCRIPTIONS.destinos.slice(0, 160),
-};
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Destinos & Roteiros',
+    description: PILLAR_DESCRIPTIONS.destinos.slice(0, 160),
+    alternates: getPageAlternates(locale, '/blog/destinos'),
+  };
+}
 
 export const revalidate = 60;
 

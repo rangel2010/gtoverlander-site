@@ -2,13 +2,22 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
-import { faqPageLd, jsonLdScriptProps } from '@/lib/seo';
+import { faqPageLd, jsonLdScriptProps,
+  getPageAlternates
+} from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Perguntas frequentes',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Perguntas frequentes',
+    description:
     'Dúvidas mais comuns sobre o GT Overlander — o app, como funciona, planos, conta e dados, Conta Business.',
-};
+    alternates: getPageAlternates(locale, '/faq'),
+  };
+}
 
 export default async function FaqPage({
   params: { locale },

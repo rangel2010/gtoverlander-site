@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ContactForm } from '@/components/sections/contact-form';
 
-export const metadata: Metadata = {
-  title: 'Contato',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Contato',
+    description:
     'Fale com a equipe GT Overlander. Suporte, parcerias, imprensa, dúvidas comerciais — todos os canais reunidos numa só página.',
-};
+    alternates: getPageAlternates(locale, '/contato'),
+  };
+}
 
 export default async function ContatoPage({
   params: { locale },

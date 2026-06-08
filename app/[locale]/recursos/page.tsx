@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 
-export const metadata: Metadata = {
-  title: 'Recursos',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Recursos',
+    description:
     'Roteiros com IA, waypoints próprios, GT Social, Help Overlander, GT Explorer e GT Desapega. O ecossistema completo pra quem viaja por terra.',
-};
+    alternates: getPageAlternates(locale, '/recursos'),
+  };
+}
 
 type FeatureStatus = 'disponivel' | 'em-breve';
 

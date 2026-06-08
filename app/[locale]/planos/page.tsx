@@ -3,13 +3,29 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { PlansCards } from '@/components/sections/plans-cards';
-import { productPlansLd, jsonLdScriptProps } from '@/lib/seo';
+import { productPlansLd, jsonLdScriptProps, getPageAlternates } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Planos',
-  description:
-    'Free pra começar. Plus pra quem viaja com frequência. Pro pra quem não para. A partir de R$ 14,90/mês ou R$ 79,90/ano.',
-};
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    pt: 'Planos',
+    en: 'Plans',
+    es: 'Planes',
+  };
+  const descs: Record<string, string> = {
+    pt: 'Free pra começar. Plus pra quem viaja com frequência. Pro pra quem não para. A partir de R$ 14,90/mês ou R$ 79,90/ano.',
+    en: 'Free to start. Plus for frequent travelers. Pro for those who never stop. Plans for every overlander.',
+    es: 'Gratis para empezar. Plus para viajeros frecuentes. Pro para quienes nunca paran. Planes para cada overlander.',
+  };
+  return {
+    title: titles[locale] ?? titles.pt,
+    description: descs[locale] ?? descs.pt,
+    alternates: getPageAlternates(locale, '/planos'),
+  };
+}
 
 interface PlanFeature {
   label: string;

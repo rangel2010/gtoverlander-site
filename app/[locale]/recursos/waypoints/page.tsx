@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
@@ -6,11 +7,18 @@ import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 import { WaypointsMap } from '@/components/demo/waypoints-map';
 import { getGeoFromHeaders } from '@/lib/demo/geo';
 
-export const metadata: Metadata = {
-  title: 'Waypoints próprios',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Waypoints próprios',
+    description:
     'Mais de 4 milhões de waypoints em 209 países e 10 categorias. Base própria curada e mantida viva pela comunidade — valida e cadastra direto do app.',
-};
+    alternates: getPageAlternates(locale, '/recursos/waypoints'),
+  };
+}
 
 const numeros = [
   { valor: '+4 mi', contexto: 'pontos no mundo' },

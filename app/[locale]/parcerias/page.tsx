@@ -1,12 +1,20 @@
 import type { Metadata } from 'next';
+import { getPageAlternates } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { PartnershipForm } from '@/components/sections/partnership-form';
 
-export const metadata: Metadata = {
-  title: 'Parcerias',
-  description:
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
+    title: 'Parcerias',
+    description:
     'Criadores, marcas e serviços de viagem que sustentam o ecossistema overlander. Afiliados, embaixadores, co-marketing e integrações.',
-};
+    alternates: getPageAlternates(locale, '/parcerias'),
+  };
+}
 
 export default async function ParceriasPage({
   params: { locale },
