@@ -86,7 +86,7 @@ export default async function SobrePage({
                 fill
                 sizes="320px"
                 className="object-cover"
-                style={{ objectPosition: 'center 15%' }}
+                style={{ objectPosition: 'center 25%' }}
               />
             </div>
 
