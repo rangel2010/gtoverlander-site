@@ -85,7 +85,8 @@ export default async function SobrePage({
                 alt={t('fundador.imgAlt')}
                 fill
                 sizes="320px"
-                className="object-cover object-top"
+                className="object-cover"
+                style={{ objectPosition: 'center 15%' }}
               />
             </div>
 
