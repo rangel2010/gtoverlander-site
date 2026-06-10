@@ -81,7 +81,7 @@ export default async function SobrePage({
           <div className="grid md:grid-cols-[320px_1fr] gap-10 items-start">
             <div className="aspect-square bg-gt-bg rounded-lg overflow-hidden border border-gt-border relative">
               <Image
-                src="/images/rangel.png"
+                src="/images/rangel-e-esposa.jpg"
                 alt={t('fundador.imgAlt')}
                 fill
                 sizes="320px"
