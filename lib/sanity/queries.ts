@@ -69,16 +69,19 @@ export async function getPostsByPillar(pillar: Pillar, locale: BlogLocale = 'pt'
 }
 
 /**
- * Busca um post completo pelo slug. Retorna null se não encontrado.
+ * Busca um post completo pelo slug e locale. Retorna null se não encontrado.
+ * Filtrar por locale evita que posts PT sejam renderizados em /en/ ou /es/,
+ * o que causaria duplicatas sem canonical definido no Google.
  */
-export async function getPostBySlug(slug: string): Promise<PostFull | null> {
+export async function getPostBySlug(slug: string, locale: BlogLocale = 'pt'): Promise<PostFull | null> {
   if (!sanityClient) return null;
   try {
     const post = await sanityClient.fetch<PostFull | null>(
-      `*[_type == "post" && slug.current == $slug && publishedAt <= now()][0] {
+      `*[_type == "post" && slug.current == $slug && publishedAt <= now()
+        && (locale == $locale || (!defined(locale) && $locale == "pt"))][0] {
         ${POST_FULL_FIELDS}
       }`,
-      { slug },
+      { slug, locale },
       { next: { revalidate: 60 } }
     );
     return post ?? null;

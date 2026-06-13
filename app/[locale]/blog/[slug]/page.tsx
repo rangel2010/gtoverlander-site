@@ -36,7 +36,8 @@ export const revalidate = 60;
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
+  const locale = (params.locale ?? 'pt') as import('@/lib/sanity/types').BlogLocale;
+  const post = await getPostBySlug(params.slug, locale);
   if (!post) return { title: 'Post não encontrado' };
 
   const imageUrl = urlForImage(post.coverImage)?.width(1200).height(630).url();
@@ -169,10 +170,11 @@ const markdownComponents = {
 };
 
 export default async function PostPage({ params }: PageProps) {
-  const post = await getPostBySlug(params.slug);
+  const locale = (params.locale ?? 'pt') as import('@/lib/sanity/types').BlogLocale;
+  const post = await getPostBySlug(params.slug, locale);
   if (!post) notFound();
 
-  const related = await getRelatedPosts(post.slug, post.category);
+  const related = await getRelatedPosts(post.slug, post.category, locale);
   const coverUrl = urlForImage(post.coverImage)
     ?.width(1600)
     .height(900)
