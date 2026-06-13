@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { ShareButtons } from '@/components/blog/share-buttons';
 import {
   getPostBySlug,
-  getAllPostSlugs,
+  getAllPosts,
   getRelatedPosts,
 } from '@/lib/sanity/queries';
 import { urlForImage } from '@/lib/sanity/image';
@@ -25,9 +25,13 @@ interface PageProps {
 }
 
 // Pré-renderiza todos os posts publicados em build
-export async function generateStaticParams() {
-  const slugs = await getAllPostSlugs();
-  return slugs.map((slug) => ({ slug }));
+export async function generateStaticParams({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const posts = await getAllPosts(locale as import('@/lib/sanity/types').BlogLocale);
+  return posts.map((p) => ({ slug: p.slug }));
 }
 
 // Revalida a cada 60s pra pegar posts editados
