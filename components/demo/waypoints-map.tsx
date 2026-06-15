@@ -242,7 +242,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       filter: ['!', ['has', 'point_count']],
       layout: {
         'icon-image': ['get', 'iconKey'],
-        'icon-size': 0.85,
+        'icon-size': 0.98,
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
       },
