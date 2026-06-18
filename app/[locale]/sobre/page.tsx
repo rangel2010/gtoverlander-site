@@ -151,7 +151,7 @@ export default async function SobrePage({
             {proximas.map((p) => (
               <div
                 key={p.titulo}
-                className="bg-gt-bg rounded-lg p-6 border border-gt-border"
+                className="bg-gt-card rounded-lg p-6 border border-gt-border"
               >
                 <h3 className="font-sans font-medium text-gt-text mb-2 normal-case">
                   {p.titulo}
