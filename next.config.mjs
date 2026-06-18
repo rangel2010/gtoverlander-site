@@ -9,7 +9,9 @@ const nextConfig = {
   poweredByHeader: false,
   images: {
     remotePatterns: [
-      { protocol: 'https', hostname: 'cdn.sanity.io' }
+      { protocol: 'https', hostname: 'cdn.sanity.io' },
+      { protocol: 'https', hostname: 'i.ytimg.com' },
+      { protocol: 'https', hostname: 'i3.ytimg.com' }
     ],
     formats: ['image/avif', 'image/webp']
   }

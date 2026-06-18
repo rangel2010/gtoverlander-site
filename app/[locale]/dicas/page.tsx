@@ -71,7 +71,7 @@ export default async function DicasPage({ params: { locale } }: PageProps) {
       )}
 
       {/* Hero */}
-      <section className="bg-gt-bg-elevated py-16 md:py-20">
+      <section className="dark bg-gt-bg-elevated py-16 md:py-20">
         <div className="container-narrow">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-4 font-sans">
             Canal GT Overlander
