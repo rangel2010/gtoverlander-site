@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Button } from './ui/button';
@@ -14,6 +14,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const t = useTranslations('nav');
+  const locale = useLocale();
 
   // Esconder header dentro do Studio do Sanity (/studio)
   if (pathname?.startsWith('/studio')) return null;
@@ -22,6 +23,7 @@ export function Header() {
     { href: '/recursos' as const, label: t('recursos') },
     { href: '/planos' as const, label: t('planos') },
     { href: '/blog' as const, label: t('blog') },
+    ...(locale === 'pt' ? [{ href: '/dicas' as const, label: t('dicas') }] : []),
     { href: '/sobre' as const, label: t('sobre') },
     { href: '/empresas' as const, label: t('empresas') },
     { href: '/parcerias' as const, label: t('parcerias') },
@@ -130,11 +132,4 @@ export function Header() {
               </a>
             </div>
             <Button href="/baixar" className="mt-3 w-fit">
-              {t('comecarGratis')}
-            </Button>
-          </nav>
-        </div>
-      )}
-    </header>
-  );
-}
+  
