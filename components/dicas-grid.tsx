@@ -105,7 +105,7 @@ export function DicasGrid({ shorts }: Props) {
           onClick={closeModal}
         >
           <div
-            className="relative w-full max-w-sm bg-gt-bg rounded-xl overflow-hidden shadow-2xl"
+            className="relative w-full max-w-[240px] bg-gt-bg rounded-xl overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Botao fechar */}
