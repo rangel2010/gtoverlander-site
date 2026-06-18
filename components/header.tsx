@@ -16,18 +16,17 @@ export function Header() {
   const t = useTranslations('nav');
   const locale = useLocale();
 
-  // Esconder header dentro do Studio do Sanity (/studio)
   if (pathname?.startsWith('/studio')) return null;
 
   const navLinks = [
-    { href: '/recursos' as const, label: t('recursos') },
-    { href: '/planos' as const, label: t('planos') },
-    { href: '/blog' as const, label: t('blog') },
-    ...(locale === 'pt' ? [{ href: '/dicas' as const, label: t('dicas') }] : []),
-    { href: '/sobre' as const, label: t('sobre') },
-    { href: '/empresas' as const, label: t('empresas') },
-    { href: '/parcerias' as const, label: t('parcerias') },
-  ];
+    { href: '/recursos' as const, label: t('recursos'), ptOnly: false },
+    { href: '/planos' as const, label: t('planos'), ptOnly: false },
+    { href: '/blog' as const, label: t('blog'), ptOnly: false },
+    { href: '/dicas' as const, label: t('dicas'), ptOnly: true },
+    { href: '/sobre' as const, label: t('sobre'), ptOnly: false },
+    { href: '/empresas' as const, label: t('empresas'), ptOnly: false },
+    { href: '/parcerias' as const, label: t('parcerias'), ptOnly: false },
+  ].filter((l) => !l.ptOnly || locale === 'pt');
 
   const mobileExtraLinks = [
     { href: '/faq' as const, label: t('faq') },
@@ -132,4 +131,11 @@ export function Header() {
               </a>
             </div>
             <Button href="/baixar" className="mt-3 w-fit">
-  
+              {t('comecarGratis')}
+            </Button>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+}
