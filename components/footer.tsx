@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { Instagram, Facebook, Youtube, Mail } from 'lucide-react';
 
@@ -8,6 +8,7 @@ export function Footer() {
   const pathname = usePathname();
   const tn = useTranslations('nav');
   const tf = useTranslations('footer');
+  const locale = useLocale();
 
   // Esconder footer dentro do Studio do Sanity (/studio)
   if (pathname?.startsWith('/studio')) return null;
@@ -52,6 +53,7 @@ export function Footer() {
         { href: '/blog/destinos', label: tf('destinos') },
         { href: '/blog/preparacao', label: tf('preparacao') },
         { href: '/blog/vida-overlander', label: tf('vidaOverlander') },
+        ...(locale === 'pt' ? [{ href: '/dicas', label: 'Dicas em Vídeo' }] : []),
       ],
     },
     {
