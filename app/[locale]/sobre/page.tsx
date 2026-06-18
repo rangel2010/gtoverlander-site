@@ -115,7 +115,7 @@ export default async function SobrePage({
         </div>
       </section>
 
-      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-12">
             {t('numeros.titulo')}
@@ -138,7 +138,7 @@ export default async function SobrePage({
         </div>
       </section>
 
-      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
             {t('proximas.titulo')}
@@ -165,7 +165,7 @@ export default async function SobrePage({
         </div>
       </section>
 
-      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow text-center">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-4">
             {t('cta.titulo')}
