@@ -34,8 +34,10 @@ export async function GET() {
   const items = posts
     .map((post) => {
       const url = `${SITE_URL}/blog/${post.slug}`;
-      const imageUrl = post.coverImage
-        ? urlForImage(post.coverImage)?.width(1200).height(630).url()
+      // Usa imagemSocial (1:1 com arte) quando disponível; fallback para capa original
+      const socialSource = post.imagemSocial ?? post.coverImage;
+      const imageUrl = socialSource
+        ? urlForImage(socialSource)?.width(1080).height(1080).url()
         : null;
       const pillarLabel = PILLAR_TITLES[post.category] ?? post.category;
 

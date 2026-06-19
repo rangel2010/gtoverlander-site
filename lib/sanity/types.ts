@@ -41,6 +41,7 @@ export interface PostListItem {
   category: Pillar;
   coverImage: SanityImage;
   coverImageAlt: string;
+  imagemSocial?: SanityImage; // imagem pré-tratada para Instagram/Facebook (opcional)
   authorName: string;
   publishedAt: string;
   readingTime?: number;

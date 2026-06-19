@@ -10,6 +10,7 @@ const POST_LIST_FIELDS = `
   category,
   coverImage,
   coverImageAlt,
+  imagemSocial,
   authorName,
   publishedAt,
   tags,
