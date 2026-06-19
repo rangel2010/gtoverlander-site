@@ -85,6 +85,14 @@ export const postSchema = defineType({
       description: 'Descreva a imagem em 1 frase pra acessibilidade e SEO',
     }),
     defineField({
+      name: 'imagemSocial',
+      title: 'Imagem para redes sociais (opcional)',
+      type: 'image',
+      options: { hotspot: true },
+      description:
+        'Sobe aqui a imagem já tratada (1:1, com título e arte) para Instagram e Facebook. Quando presente, o Make posta essa imagem. Se não tiver, usa a capa original.',
+    }),
+    defineField({
       name: 'authorName',
       title: 'Autor',
       type: 'string',
