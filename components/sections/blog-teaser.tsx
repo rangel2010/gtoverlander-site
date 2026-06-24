@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import { WaveDivider } from '@/components/wave-divider';
-import { ScrollReveal } from '@/components/scroll-reveal';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { getAllPosts } from '@/lib/sanity/queries';
@@ -28,8 +26,7 @@ export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
   const display = showReal ? realPosts.slice(0, 3) : null;
 
   return (
-    <section className="relative bg-gt-bg py-16 md:py-20">
-      <WaveDivider fill="gt-bg" />
+    <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
       <div className="container-wide">
         <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
           <h2 className="text-3xl md:text-4xl text-gt-text">{t('titulo')}</h2>
