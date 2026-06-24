@@ -57,10 +57,18 @@
   transform: translateY(28px);
   transition: opacity 0.65s ease, transform 0.65s ease;
   will-change: opacity, transform;
+  /* Garante que o wrapper não quebre grids: filho único ocupa toda a célula */
+  display: flex;
+  flex-direction: column;
 }
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+/* Filho direto do reveal estica pra preencher a célula do grid */
+.reveal > * {
+  flex: 1 1 auto;
+  min-height: 0;
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
