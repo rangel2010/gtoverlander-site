@@ -9,16 +9,16 @@ export function WaveDivider({ fill }: { fill: 'gt-bg' | 'gt-card' }) {
 
   return (
     <div
-      className="absolute -top-[119px] left-0 w-full h-[120px] pointer-events-none"
+      className="absolute -top-[79px] left-0 w-full h-20 pointer-events-none"
       aria-hidden="true"
     >
       <svg
-        viewBox="0 0 1440 120"
+        viewBox="0 0 1440 80"
         preserveAspectRatio="none"
         className="w-full h-full"
       >
         <path
-          d="M0,120 C480,0 960,0 1440,120 L1440,120 L0,120Z"
+          d="M0,20 C480,80 960,80 1440,20 L1440,80 L0,80Z"
           style={{ fill: color }}
         />
       </svg>
