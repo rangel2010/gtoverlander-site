@@ -3,6 +3,7 @@ import { getPageAlternates } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { BusinessLeadForm } from '@/components/sections/business-lead-form';
+import { ScrollReveal } from '@/components/scroll-reveal';
 
 export async function generateMetadata({
   params: { locale },
@@ -67,18 +68,22 @@ export default async function EmpresasPage({
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('frentes.titulo')}</h2>
-          <p className="text-gt-text-muted mb-12 max-w-2xl font-sans leading-relaxed">
-            {t('frentes.desc')}
-          </p>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('frentes.titulo')}</h2>
+            <p className="text-gt-text-muted mb-12 max-w-2xl font-sans leading-relaxed">
+              {t('frentes.desc')}
+            </p>
+          </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-6">
-            {frentes.map((f) => (
-              <div key={f.tag} className="bg-gt-card rounded-lg p-7 border border-gt-border">
-                <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">{f.tag}</p>
-                <h3 className="font-sans text-xl font-medium text-gt-text mb-3 normal-case leading-tight">{f.titulo}</h3>
-                <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">{f.desc}</p>
-                <p className="text-xs text-gt-text-dim font-sans leading-relaxed">{f.exemplos}</p>
-              </div>
+            {frentes.map((f, idx) => (
+              <ScrollReveal key={f.tag} delay={idx * 80}>
+                <div className="bg-gt-card rounded-lg p-7 border border-gt-border">
+                  <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">{f.tag}</p>
+                  <h3 className="font-sans text-xl font-medium text-gt-text mb-3 normal-case leading-tight">{f.titulo}</h3>
+                  <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">{f.desc}</p>
+                  <p className="text-xs text-gt-text-dim font-sans leading-relaxed">{f.exemplos}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -86,16 +91,20 @@ export default async function EmpresasPage({
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('beneficios.titulo')}</h2>
-          <p className="text-gt-text-muted mb-12 max-w-2xl font-sans">
-            {t('beneficios.desc')}
-          </p>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('beneficios.titulo')}</h2>
+            <p className="text-gt-text-muted mb-12 max-w-2xl font-sans">
+              {t('beneficios.desc')}
+            </p>
+          </ScrollReveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {beneficios.map((b) => (
-              <div key={b.titulo} className="bg-gt-bg rounded-lg p-6 border border-gt-border">
-                <h3 className="font-sans font-medium text-gt-text mb-3 normal-case">{b.titulo}</h3>
-                <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{b.desc}</p>
-              </div>
+            {beneficios.map((b, idx) => (
+              <ScrollReveal key={b.titulo} delay={idx * 80}>
+                <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
+                  <h3 className="font-sans font-medium text-gt-text mb-3 normal-case">{b.titulo}</h3>
+                  <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{b.desc}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -103,17 +112,21 @@ export default async function EmpresasPage({
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('comoFunciona.titulo')}</h2>
-          <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-            {t('comoFunciona.desc')}
-          </p>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('comoFunciona.titulo')}</h2>
+            <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
+              {t('comoFunciona.desc')}
+            </p>
+          </ScrollReveal>
           <div className="grid md:grid-cols-4 gap-8 md:gap-6">
-            {passos.map((p) => (
-              <div key={p.num} className="border-l-2 border-gt-orange pl-5">
-                <div className="text-gt-orange font-medium text-sm mb-2 font-sans">{p.num.toString().padStart(2, '0')}</div>
-                <h3 className="font-sans font-medium text-gt-text mb-2 leading-snug normal-case">{p.titulo}</h3>
-                <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{p.desc}</p>
-              </div>
+            {passos.map((p, idx) => (
+              <ScrollReveal key={p.num} delay={idx * 80}>
+                <div className="border-l-2 border-gt-orange pl-5">
+                  <div className="text-gt-orange font-medium text-sm mb-2 font-sans">{p.num.toString().padStart(2, '0')}</div>
+                  <h3 className="font-sans font-medium text-gt-text mb-2 leading-snug normal-case">{p.titulo}</h3>
+                  <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{p.desc}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -121,104 +134,114 @@ export default async function EmpresasPage({
 
       <section id="precos" className="bg-gt-card py-16 md:py-20 border-t border-gt-border scroll-mt-20">
         <div className="container-wide">
-          <div className="max-w-3xl mx-auto bg-gt-bg border border-gt-border rounded-lg p-8 md:p-12 text-center mb-10">
-            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">{t('precos.labelLancamento')}</p>
-            <p className="text-sm text-gt-text-dim font-sans mb-2">
-              De <span className="line-through">R$ 199,90/mês</span> por
-            </p>
-            <div className="flex items-baseline justify-center gap-3 mb-3">
-              <span className="text-base text-gt-text-muted font-sans">a partir de</span>
-              <span className="font-display text-6xl md:text-7xl text-gt-text uppercase tracking-display">R$ 99,90</span>
-              <span className="text-base text-gt-text-muted font-sans">por mês</span>
+          <ScrollReveal>
+            <div className="max-w-3xl mx-auto bg-gt-bg border border-gt-border rounded-lg p-8 md:p-12 text-center mb-10">
+              <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">{t('precos.labelLancamento')}</p>
+              <p className="text-sm text-gt-text-dim font-sans mb-2">
+                De <span className="line-through">R$ 199,90/mês</span> por
+              </p>
+              <div className="flex items-baseline justify-center gap-3 mb-3">
+                <span className="text-base text-gt-text-muted font-sans">a partir de</span>
+                <span className="font-display text-6xl md:text-7xl text-gt-text uppercase tracking-display">R$ 99,90</span>
+                <span className="text-base text-gt-text-muted font-sans">por mês</span>
+              </div>
+              <p className="text-sm text-gt-text-muted font-sans leading-relaxed mb-6 max-w-xl mx-auto">
+                Plano base inclui 1 ponto destacado, até 15 produtos no Desapega e 1 perfil profissional + 6 expedições agendadas em Serviços. Quem entrar na lista de espera agora garante esse valor de lançamento quando a Conta Business abrir. Cancele a qualquer momento, sem multa.{' '}
+                <a href="/termos/conta-business" className="text-gt-orange hover:underline">Ver política completa</a>.
+              </p>
+              <Button href="#cadastro">{t('precos.ctaListaEspera')}</Button>
             </div>
-            <p className="text-sm text-gt-text-muted font-sans leading-relaxed mb-6 max-w-xl mx-auto">
-              Plano base inclui 1 ponto destacado, até 15 produtos no Desapega e 1 perfil profissional + 6 expedições agendadas em Serviços. Quem entrar na lista de espera agora garante esse valor de lançamento quando a Conta Business abrir. Cancele a qualquer momento, sem multa.{' '}
-              <a href="/termos/conta-business" className="text-gt-orange hover:underline">Ver política completa</a>.
-            </p>
-            <Button href="#cadastro">{t('precos.ctaListaEspera')}</Button>
-          </div>
+          </ScrollReveal>
 
           <div className="max-w-6xl mx-auto">
-            <h3 className="text-2xl md:text-3xl text-gt-text mb-3">Add-ons e escalonamento</h3>
-            <p className="text-gt-text-muted mb-8 font-sans leading-relaxed">
-              O plano base cobre quem está começando. Conforme a operação cresce, você adiciona pacotes — direto no painel, sem precisar renegociar.
-            </p>
+            <ScrollReveal>
+              <h3 className="text-2xl md:text-3xl text-gt-text mb-3">Add-ons e escalonamento</h3>
+              <p className="text-gt-text-muted mb-8 font-sans leading-relaxed">
+                O plano base cobre quem está começando. Conforme a operação cresce, você adiciona pacotes — direto no painel, sem precisar renegociar.
+              </p>
+            </ScrollReveal>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
-                <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Produtos no Desapega</p>
-                <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
-                  Plano base inclui até 15 produtos ativos. Precisa de mais? Cada pacote de 10 produtos sai por R$ 59,90/mês.
-                </p>
-                <table className="w-full text-sm font-sans">
-                  <tbody>
-                    <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text">Até 15 produtos</td>
-                      <td className="py-2 text-right text-gt-text font-medium">R$ 99,90</td>
-                    </tr>
-                    <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text-muted">+10 produtos (16–25)</td>
-                      <td className="py-2 text-right text-gt-text">+ R$ 59,90</td>
-                    </tr>
-                    <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text-muted">+10 produtos (26–35)</td>
-                      <td className="py-2 text-right text-gt-text">+ R$ 59,90</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2 text-gt-text-muted">e assim por diante</td>
-                      <td className="py-2 text-right text-gt-text-dim">+ R$ 59,90/pacote</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <ScrollReveal delay={0}>
+                <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
+                  <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Produtos no Desapega</p>
+                  <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
+                    Plano base inclui até 15 produtos ativos. Precisa de mais? Cada pacote de 10 produtos sai por R$ 59,90/mês.
+                  </p>
+                  <table className="w-full text-sm font-sans">
+                    <tbody>
+                      <tr className="border-b border-gt-border">
+                        <td className="py-2 text-gt-text">Até 15 produtos</td>
+                        <td className="py-2 text-right text-gt-text font-medium">R$ 99,90</td>
+                      </tr>
+                      <tr className="border-b border-gt-border">
+                        <td className="py-2 text-gt-text-muted">+10 produtos (16–25)</td>
+                        <td className="py-2 text-right text-gt-text">+ R$ 59,90</td>
+                      </tr>
+                      <tr className="border-b border-gt-border">
+                        <td className="py-2 text-gt-text-muted">+10 produtos (26–35)</td>
+                        <td className="py-2 text-right text-gt-text">+ R$ 59,90</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 text-gt-text-muted">e assim por diante</td>
+                        <td className="py-2 text-right text-gt-text-dim">+ R$ 59,90/pacote</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </ScrollReveal>
 
-              <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
-                <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Pontos destacados (Waypoints)</p>
-                <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
-                  Plano base inclui 1 ponto destacado. Cada unidade adicional entra por só R$ 59,90 — 40% abaixo do valor cheio. Todas as suas unidades no radar de quem já decidiu passar pela região.
-                </p>
-                <table className="w-full text-sm font-sans">
-                  <tbody>
-                    <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text">1 ponto (incluso)</td>
-                      <td className="py-2 text-right text-gt-text font-medium">R$ 99,90</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2 text-gt-text-muted">Cada ponto extra</td>
-                      <td className="py-2 text-right text-gt-text">+ R$ 59,90</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <p className="text-xs text-gt-text-dim mt-4 font-sans leading-relaxed">
-                  Pontos extras valem pra unidades da mesma marca e categoria. Sem limite de quantas você pode destacar — cada uma no radar de quem está na estrada.
-                </p>
-              </div>
+              <ScrollReveal delay={80}>
+                <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
+                  <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Pontos destacados (Waypoints)</p>
+                  <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
+                    Plano base inclui 1 ponto destacado. Cada unidade adicional entra por só R$ 59,90 — 40% abaixo do valor cheio. Todas as suas unidades no radar de quem já decidiu passar pela região.
+                  </p>
+                  <table className="w-full text-sm font-sans">
+                    <tbody>
+                      <tr className="border-b border-gt-border">
+                        <td className="py-2 text-gt-text">1 ponto (incluso)</td>
+                        <td className="py-2 text-right text-gt-text font-medium">R$ 99,90</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 text-gt-text-muted">Cada ponto extra</td>
+                        <td className="py-2 text-right text-gt-text">+ R$ 59,90</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p className="text-xs text-gt-text-dim mt-4 font-sans leading-relaxed">
+                    Pontos extras valem pra unidades da mesma marca e categoria. Sem limite de quantas você pode destacar — cada uma no radar de quem está na estrada.
+                  </p>
+                </div>
+              </ScrollReveal>
 
-              <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
-                <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Expedições e perfis (Serviços)</p>
-                <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
-                  Plano base inclui 1 perfil profissional + 6 expedições agendadas. As expedições ficam visíveis até a data passar e arquivam sozinhas. Precisa de mais? Cada pacote adiciona +5 expedições, e cada guia extra (multi-guia) sai por R$ 39,90.
-                </p>
-                <table className="w-full text-sm font-sans">
-                  <tbody>
-                    <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text">1 perfil + 6 expedições</td>
-                      <td className="py-2 text-right text-gt-text font-medium">R$ 99,90</td>
-                    </tr>
-                    <tr className="border-b border-gt-border">
-                      <td className="py-2 text-gt-text-muted">Cada pacote +5 expedições</td>
-                      <td className="py-2 text-right text-gt-text">+ R$ 49,90</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2 text-gt-text-muted">+1 perfil (multi-guia)</td>
-                      <td className="py-2 text-right text-gt-text">+ R$ 39,90</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <p className="text-xs text-gt-text-dim mt-4 font-sans leading-relaxed">
-                  Multi-guia é pra operações com mais de um condutor: cada guia ganha perfil próprio (nome, foto, especialidade), e todos compartilham o mesmo pool de expedições da conta — as expedições são contadas pela conta, não por guia. Verificação reforçada de identidade e atividade profissional (CADASTUR, MTUR ou similar) exigida para Serviços.
-                </p>
-              </div>
+              <ScrollReveal delay={160}>
+                <div className="bg-gt-bg rounded-lg p-6 border border-gt-border">
+                  <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">Expedições e perfis (Serviços)</p>
+                  <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
+                    Plano base inclui 1 perfil profissional + 6 expedições agendadas. As expedições ficam visíveis até a data passar e arquivam sozinhas. Precisa de mais? Cada pacote adiciona +5 expedições, e cada guia extra (multi-guia) sai por R$ 39,90.
+                  </p>
+                  <table className="w-full text-sm font-sans">
+                    <tbody>
+                      <tr className="border-b border-gt-border">
+                        <td className="py-2 text-gt-text">1 perfil + 6 expedições</td>
+                        <td className="py-2 text-right text-gt-text font-medium">R$ 99,90</td>
+                      </tr>
+                      <tr className="border-b border-gt-border">
+                        <td className="py-2 text-gt-text-muted">Cada pacote +5 expedições</td>
+                        <td className="py-2 text-right text-gt-text">+ R$ 49,90</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 text-gt-text-muted">+1 perfil (multi-guia)</td>
+                        <td className="py-2 text-right text-gt-text">+ R$ 39,90</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p className="text-xs text-gt-text-dim mt-4 font-sans leading-relaxed">
+                    Multi-guia é pra operações com mais de um condutor: cada guia ganha perfil próprio (nome, foto, especialidade), e todos compartilham o mesmo pool de expedições da conta — as expedições são contadas pela conta, não por guia. Verificação reforçada de identidade e atividade profissional (CADASTUR, MTUR ou similar) exigida para Serviços.
+                  </p>
+                </div>
+              </ScrollReveal>
             </div>
 
             <p className="text-xs text-gt-text-dim mt-8 font-sans leading-relaxed text-center">
@@ -230,11 +253,13 @@ export default async function EmpresasPage({
 
       <section id="cadastro" className="bg-gt-card py-16 md:py-24 border-t border-gt-border scroll-mt-20">
         <div className="container-narrow">
-          <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">{t('cadastro.label')}</p>
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('cadastro.titulo')}</h2>
-          <p className="text-gt-text-muted mb-10 font-sans leading-relaxed">
-            {t('cadastro.desc')}
-          </p>
+          <ScrollReveal>
+            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">{t('cadastro.label')}</p>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('cadastro.titulo')}</h2>
+            <p className="text-gt-text-muted mb-10 font-sans leading-relaxed">
+              {t('cadastro.desc')}
+            </p>
+          </ScrollReveal>
           <BusinessLeadForm />
         </div>
       </section>

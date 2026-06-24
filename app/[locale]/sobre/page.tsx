@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { aboutPagePersonLd, jsonLdScriptProps,
   getPageAlternates
 } from '@/lib/seo';
+import { ScrollReveal } from '@/components/scroll-reveal';
 
 export async function generateMetadata({
   params: { locale },
@@ -63,73 +64,87 @@ export default async function SobrePage({
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-6">
-            {t('missao.titulo')}
-          </h2>
-          <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('missao.p1')}</p>
-          <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('missao.p2')}</p>
-          <p className="text-gt-text leading-relaxed font-sans">{t('missao.p3')}</p>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-6">
+              {t('missao.titulo')}
+            </h2>
+            <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('missao.p1')}</p>
+            <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('missao.p2')}</p>
+            <p className="text-gt-text leading-relaxed font-sans">{t('missao.p3')}</p>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-12">
-            {t('fundador.titulo')}
-          </h2>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-12">
+              {t('fundador.titulo')}
+            </h2>
+          </ScrollReveal>
 
           <div className="grid md:grid-cols-[320px_1fr] gap-10 items-start">
-            <div className="aspect-square bg-gt-bg rounded-lg overflow-hidden border border-gt-border relative">
-              <Image
-                src="/images/rangel-e-esposa.jpg"
-                alt={t('fundador.imgAlt')}
-                fill
-                sizes="320px"
-                className="object-cover"
-                style={{ objectPosition: 'center 25%' }}
-              />
-            </div>
+            <ScrollReveal delay={80}>
+              <div className="aspect-square bg-gt-bg rounded-lg overflow-hidden border border-gt-border relative">
+                <Image
+                  src="/images/rangel-e-esposa.jpg"
+                  alt={t('fundador.imgAlt')}
+                  fill
+                  sizes="320px"
+                  className="object-cover"
+                  style={{ objectPosition: 'center 25%' }}
+                />
+              </div>
+            </ScrollReveal>
 
-            <div>
-              <h3 className="font-sans text-xl font-medium text-gt-text mb-2 normal-case">
-                {t('fundador.nome')}
-              </h3>
-              <p className="text-sm text-gt-orange mb-5 uppercase tracking-wider font-sans">
-                {t('fundador.cargo')}
-              </p>
-              <p className="text-gt-text leading-relaxed mb-4 font-sans">{t('fundador.p1')}</p>
-              <p className="text-gt-text leading-relaxed font-sans">{t('fundador.p2')}</p>
-            </div>
+            <ScrollReveal delay={160}>
+              <div>
+                <h3 className="font-sans text-xl font-medium text-gt-text mb-2 normal-case">
+                  {t('fundador.nome')}
+                </h3>
+                <p className="text-sm text-gt-orange mb-5 uppercase tracking-wider font-sans">
+                  {t('fundador.cargo')}
+                </p>
+                <p className="text-gt-text leading-relaxed mb-4 font-sans">{t('fundador.p1')}</p>
+                <p className="text-gt-text leading-relaxed font-sans">{t('fundador.p2')}</p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-6">
-            {t('comunidade.titulo')}
-          </h2>
-          <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('comunidade.p1')}</p>
-          <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('comunidade.p2')}</p>
-          <p className="text-gt-text leading-relaxed font-sans">{t('comunidade.p3')}</p>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-6">
+              {t('comunidade.titulo')}
+            </h2>
+            <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('comunidade.p1')}</p>
+            <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('comunidade.p2')}</p>
+            <p className="text-gt-text leading-relaxed font-sans">{t('comunidade.p3')}</p>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-12">
-            {t('numeros.titulo')}
-          </h2>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-12">
+              {t('numeros.titulo')}
+            </h2>
+          </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
             {numeros.map((n, i) => (
-              <div key={i}>
-                <div className="font-display text-4xl md:text-5xl text-gt-text mb-2 uppercase tracking-display">
-                  {n.valor}
+              <ScrollReveal key={i} delay={i * 80}>
+                <div>
+                  <div className="font-display text-4xl md:text-5xl text-gt-text mb-2 uppercase tracking-display">
+                    {n.valor}
+                  </div>
+                  <p className="text-sm text-gt-text-muted leading-snug font-sans">
+                    {n.contexto}
+                  </p>
                 </div>
-                <p className="text-sm text-gt-text-muted leading-snug font-sans">
-                  {n.contexto}
-                </p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
           <p className="text-sm text-gt-text-muted mt-10 font-sans">
@@ -140,26 +155,29 @@ export default async function SobrePage({
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            {t('proximas.titulo')}
-          </h2>
-          <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-            {t('proximas.desc')}
-          </p>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
+              {t('proximas.titulo')}
+            </h2>
+            <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
+              {t('proximas.desc')}
+            </p>
+          </ScrollReveal>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {proximas.map((p) => (
-              <div
-                key={p.titulo}
-                className="bg-gt-card rounded-lg p-6 border border-gt-border"
-              >
-                <h3 className="font-sans font-medium text-gt-text mb-2 normal-case">
-                  {p.titulo}
-                </h3>
-                <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
-                  {p.desc}
-                </p>
-              </div>
+            {proximas.map((p, idx) => (
+              <ScrollReveal key={p.titulo} delay={idx * 80}>
+                <div
+                  className="bg-gt-card rounded-lg p-6 border border-gt-border"
+                >
+                  <h3 className="font-sans font-medium text-gt-text mb-2 normal-case">
+                    {p.titulo}
+                  </h3>
+                  <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
+                    {p.desc}
+                  </p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -167,18 +185,20 @@ export default async function SobrePage({
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow text-center">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-4">
-            {t('cta.titulo')}
-          </h2>
-          <p className="text-gt-text-muted mb-8 max-w-md mx-auto font-sans">
-            {t('cta.desc')}
-          </p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Button href="/baixar">{tc('baixarGratis')}</Button>
-            <Button href="/empresas" variant="outline">
-              {t('cta.ctaBusiness')}
-            </Button>
-          </div>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-4">
+              {t('cta.titulo')}
+            </h2>
+            <p className="text-gt-text-muted mb-8 max-w-md mx-auto font-sans">
+              {t('cta.desc')}
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Button href="/baixar">{tc('baixarGratis')}</Button>
+              <Button href="/empresas" variant="outline">
+                {t('cta.ctaBusiness')}
+              </Button>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </>

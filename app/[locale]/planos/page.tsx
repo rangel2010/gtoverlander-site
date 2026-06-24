@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { PlansCards } from '@/components/sections/plans-cards';
 import { productPlansLd, jsonLdScriptProps, getPageAlternates } from '@/lib/seo';
+import { ScrollReveal } from '@/components/scroll-reveal';
 
 export async function generateMetadata({
   params: { locale },
@@ -92,104 +93,120 @@ export default async function PlanosPage({
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <PlansCards />
+          <ScrollReveal>
+            <PlansCards />
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('comparacao.titulo')}</h2>
-          <p className="text-gt-text-muted mb-10 max-w-xl font-sans">
-            {t('comparacao.desc')}
-          </p>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-3">{t('comparacao.titulo')}</h2>
+            <p className="text-gt-text-muted mb-10 max-w-xl font-sans">
+              {t('comparacao.desc')}
+            </p>
+          </ScrollReveal>
 
-          <div className="overflow-x-auto bg-gt-bg rounded-lg border border-gt-border">
-            <table className="w-full border-collapse min-w-[640px] font-sans">
-              <thead>
-                <tr className="border-b border-gt-border-strong">
-                  <th className="text-left py-4 px-5 text-sm font-medium text-gt-text-muted">{t('comparacao.thRecursos')}</th>
-                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[18%]">Free</th>
-                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[20%] bg-gt-card">Plus</th>
-                  <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[18%]">Pro</th>
-                </tr>
-                <tr className="border-b border-gt-border text-xs text-gt-text-muted">
-                  <td className="py-3 px-5">{t('comparacao.thMensal')}</td>
-                  <td className="text-center py-3 px-3">R$ 0</td>
-                  <td className="text-center py-3 px-3 bg-gt-card">R$ 14,90</td>
-                  <td className="text-center py-3 px-3">R$ 19,90</td>
-                </tr>
-                <tr className="border-b border-gt-border text-xs text-gt-text-muted">
-                  <td className="py-3 px-5">{t('comparacao.thAnual')}</td>
-                  <td className="text-center py-3 px-3">—</td>
-                  <td className="text-center py-3 px-3 bg-gt-card">R$ 79,90</td>
-                  <td className="text-center py-3 px-3">R$ 99,90</td>
-                </tr>
-              </thead>
-              <tbody>
-                {features.map((f) => (
-                  <tr key={f.label} className="border-b border-gt-border last:border-b-0">
-                    <td className="py-4 px-5 text-sm text-gt-text">{f.label}</td>
-                    <td className="text-center py-4 px-3"><FeatureValue value={f.values[0]} /></td>
-                    <td className="text-center py-4 px-3 bg-gt-card"><FeatureValue value={f.values[1]} /></td>
-                    <td className="text-center py-4 px-3"><FeatureValue value={f.values[2]} /></td>
+          <ScrollReveal>
+            <div className="overflow-x-auto bg-gt-bg rounded-lg border border-gt-border">
+              <table className="w-full border-collapse min-w-[640px] font-sans">
+                <thead>
+                  <tr className="border-b border-gt-border-strong">
+                    <th className="text-left py-4 px-5 text-sm font-medium text-gt-text-muted">{t('comparacao.thRecursos')}</th>
+                    <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[18%]">Free</th>
+                    <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[20%] bg-gt-card">Plus</th>
+                    <th className="text-center py-4 px-3 text-sm font-medium text-gt-text w-[18%]">Pro</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                  <tr className="border-b border-gt-border text-xs text-gt-text-muted">
+                    <td className="py-3 px-5">{t('comparacao.thMensal')}</td>
+                    <td className="text-center py-3 px-3">R$ 0</td>
+                    <td className="text-center py-3 px-3 bg-gt-card">R$ 14,90</td>
+                    <td className="text-center py-3 px-3">R$ 19,90</td>
+                  </tr>
+                  <tr className="border-b border-gt-border text-xs text-gt-text-muted">
+                    <td className="py-3 px-5">{t('comparacao.thAnual')}</td>
+                    <td className="text-center py-3 px-3">—</td>
+                    <td className="text-center py-3 px-3 bg-gt-card">R$ 79,90</td>
+                    <td className="text-center py-3 px-3">R$ 99,90</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {features.map((f) => (
+                    <tr key={f.label} className="border-b border-gt-border last:border-b-0">
+                      <td className="py-4 px-5 text-sm text-gt-text">{f.label}</td>
+                      <td className="text-center py-4 px-3"><FeatureValue value={f.values[0]} /></td>
+                      <td className="text-center py-4 px-3 bg-gt-card"><FeatureValue value={f.values[1]} /></td>
+                      <td className="text-center py-4 px-3"><FeatureValue value={f.values[2]} /></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <div className="max-w-2xl mb-10">
-            <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
-              {t('business.label')}
-            </p>
-            <h2 className="text-3xl md:text-4xl text-gt-text mb-4 leading-tight">{t('business.titulo')}</h2>
-            <p className="text-gt-text-muted font-sans leading-relaxed">
-              {t('business.desc')}
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="max-w-2xl mb-10">
+              <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
+                {t('business.label')}
+              </p>
+              <h2 className="text-3xl md:text-4xl text-gt-text mb-4 leading-tight">{t('business.titulo')}</h2>
+              <p className="text-gt-text-muted font-sans leading-relaxed">
+                {t('business.desc')}
+              </p>
+            </div>
+          </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-5 mb-10">
-            <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
-              <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">{t('business.w_tag')}</p>
-              <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">{t('business.w_titulo')}</h3>
-              <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{t('business.w_desc')}</p>
-            </div>
-            <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
-              <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">{t('business.p_tag')}</p>
-              <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">{t('business.p_titulo')}</h3>
-              <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{t('business.p_desc')}</p>
-            </div>
-            <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
-              <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">{t('business.s_tag')}</p>
-              <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">{t('business.s_titulo')}</h3>
-              <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{t('business.s_desc')}</p>
-            </div>
+            <ScrollReveal delay={0}>
+              <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
+                <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">{t('business.w_tag')}</p>
+                <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">{t('business.w_titulo')}</h3>
+                <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{t('business.w_desc')}</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={80}>
+              <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
+                <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">{t('business.p_tag')}</p>
+                <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">{t('business.p_titulo')}</h3>
+                <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{t('business.p_desc')}</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={160}>
+              <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
+                <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">{t('business.s_tag')}</p>
+                <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">{t('business.s_titulo')}</h3>
+                <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{t('business.s_desc')}</p>
+              </div>
+            </ScrollReveal>
           </div>
 
-          <div className="bg-gt-card border border-gt-border rounded-lg p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
-            <div className="flex-1">
-              <p className="text-xs text-gt-text-dim font-sans mb-1">
-                De <span className="line-through">R$ 199,90/mês</span> por
-              </p>
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-sm text-gt-text-muted font-sans">a partir de</span>
-                <span className="font-display text-5xl text-gt-text uppercase tracking-display">R$ 99,90</span>
-                <span className="text-sm text-gt-text-muted font-sans">por mês</span>
+          <ScrollReveal>
+            <div className="bg-gt-card border border-gt-border rounded-lg p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
+              <div className="flex-1">
+                <p className="text-xs text-gt-text-dim font-sans mb-1">
+                  De <span className="line-through">R$ 199,90/mês</span> por
+                </p>
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-sm text-gt-text-muted font-sans">a partir de</span>
+                  <span className="font-display text-5xl text-gt-text uppercase tracking-display">R$ 99,90</span>
+                  <span className="text-sm text-gt-text-muted font-sans">por mês</span>
+                </div>
+                <p className="text-sm text-gt-text-muted font-sans leading-relaxed">
+                  {t('business.pricing')}{' '}
+                  <a href="/empresas#precos" className="text-gt-orange hover:underline">{t('business.verTabela')}</a> ·{' '}
+                  <a href="/termos/conta-business" className="text-gt-orange hover:underline">{t('business.verPolitica')}</a>.
+                </p>
               </div>
-              <p className="text-sm text-gt-text-muted font-sans leading-relaxed">
-                {t('business.pricing')}{' '}
-                <a href="/empresas#precos" className="text-gt-orange hover:underline">{t('business.verTabela')}</a> ·{' '}
-                <a href="/termos/conta-business" className="text-gt-orange hover:underline">{t('business.verPolitica')}</a>.
-              </p>
+              <div className="w-full md:w-auto">
+                <Button href="/empresas" className="w-full md:w-auto">{t('business.cta')}</Button>
+              </div>
             </div>
-            <div className="w-full md:w-auto">
-              <Button href="/empresas" className="w-full md:w-auto">{t('business.cta')}</Button>
-            </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -197,14 +214,16 @@ export default async function PlanosPage({
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow text-center">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-4">{t('cta.titulo')}</h2>
-          <p className="text-gt-text-muted mb-8 font-sans">
-            {t('cta.desc')}
-          </p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Button href="/baixar">{tc('baixarGratis')}</Button>
-            <Button href="/contato" variant="outline">{t('cta.ctaFalar')}</Button>
-          </div>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-4">{t('cta.titulo')}</h2>
+            <p className="text-gt-text-muted mb-8 font-sans">
+              {t('cta.desc')}
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Button href="/baixar">{tc('baixarGratis')}</Button>
+              <Button href="/contato" variant="outline">{t('cta.ctaFalar')}</Button>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </>

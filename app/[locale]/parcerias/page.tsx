@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getPageAlternates } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { PartnershipForm } from '@/components/sections/partnership-form';
+import { ScrollReveal } from '@/components/scroll-reveal';
 
 export async function generateMetadata({
   params: { locale },
@@ -63,29 +64,32 @@ export default async function ParceriasPage({
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            {t('quem.titulo')}
-          </h2>
-          <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-            {t('quem.desc')}
-          </p>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
+              {t('quem.titulo')}
+            </h2>
+            <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
+              {t('quem.desc')}
+            </p>
+          </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {categorias.map((c) => (
-              <div
-                key={c.titulo}
-                className="bg-gt-card rounded-lg p-7 border border-gt-border"
-              >
-                <h3 className="font-sans font-medium text-gt-text mb-3 normal-case text-lg">
-                  {c.titulo}
-                </h3>
-                <p className="text-sm text-gt-text-muted leading-relaxed mb-4 font-sans">
-                  {c.desc}
-                </p>
-                <p className="text-xs uppercase tracking-wider text-gt-orange/80 font-sans">
-                  {c.exemplos}
-                </p>
-              </div>
+            {categorias.map((c, idx) => (
+              <ScrollReveal key={c.titulo} delay={idx * 80}>
+                <div
+                  className="bg-gt-card rounded-lg p-7 border border-gt-border"
+                >
+                  <h3 className="font-sans font-medium text-gt-text mb-3 normal-case text-lg">
+                    {c.titulo}
+                  </h3>
+                  <p className="text-sm text-gt-text-muted leading-relaxed mb-4 font-sans">
+                    {c.desc}
+                  </p>
+                  <p className="text-xs uppercase tracking-wider text-gt-orange/80 font-sans">
+                    {c.exemplos}
+                  </p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -93,26 +97,29 @@ export default async function ParceriasPage({
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            {t('oferta.titulo')}
-          </h2>
-          <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-            {t('oferta.desc')}
-          </p>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
+              {t('oferta.titulo')}
+            </h2>
+            <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
+              {t('oferta.desc')}
+            </p>
+          </ScrollReveal>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {oferta.map((o) => (
-              <div
-                key={o.titulo}
-                className="bg-gt-bg rounded-lg p-6 border border-gt-border"
-              >
-                <h3 className="font-sans font-medium text-gt-text mb-3 normal-case">
-                  {o.titulo}
-                </h3>
-                <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
-                  {o.desc}
-                </p>
-              </div>
+            {oferta.map((o, idx) => (
+              <ScrollReveal key={o.titulo} delay={idx * 80}>
+                <div
+                  className="bg-gt-bg rounded-lg p-6 border border-gt-border"
+                >
+                  <h3 className="font-sans font-medium text-gt-text mb-3 normal-case">
+                    {o.titulo}
+                  </h3>
+                  <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
+                    {o.desc}
+                  </p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -120,31 +127,34 @@ export default async function ParceriasPage({
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            {t('formatos.titulo')}
-          </h2>
-          <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
-            {t('formatos.desc')}
-          </p>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
+              {t('formatos.titulo')}
+            </h2>
+            <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
+              {t('formatos.desc')}
+            </p>
+          </ScrollReveal>
 
           <div className="space-y-3">
             {formatos.map((f, i) => (
-              <details
-                key={i}
-                className="group bg-gt-card border border-gt-border rounded-lg overflow-hidden"
-              >
-                <summary className="flex items-center justify-between cursor-pointer p-5 list-none">
-                  <span className="font-sans font-medium text-gt-text pr-4">
-                    {f.titulo}
-                  </span>
-                  <span className="text-gt-orange flex-shrink-0 text-xl leading-none transition-transform group-open:rotate-45">
-                    +
-                  </span>
-                </summary>
-                <div className="px-5 pb-5 text-sm text-gt-text-muted leading-relaxed font-sans">
-                  {f.desc}
-                </div>
-              </details>
+              <ScrollReveal key={i} delay={i * 80}>
+                <details
+                  className="group bg-gt-card border border-gt-border rounded-lg overflow-hidden"
+                >
+                  <summary className="flex items-center justify-between cursor-pointer p-5 list-none">
+                    <span className="font-sans font-medium text-gt-text pr-4">
+                      {f.titulo}
+                    </span>
+                    <span className="text-gt-orange flex-shrink-0 text-xl leading-none transition-transform group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+                  <div className="px-5 pb-5 text-sm text-gt-text-muted leading-relaxed font-sans">
+                    {f.desc}
+                  </div>
+                </details>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -152,15 +162,17 @@ export default async function ParceriasPage({
 
       <section className="bg-gt-card py-16 md:py-24 border-t border-gt-border">
         <div className="container-narrow">
-          <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">
-            {t('contato.label')}
-          </p>
-          <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            {t('contato.titulo')}
-          </h2>
-          <p className="text-gt-text-muted mb-10 font-sans">
-            {t('contato.desc')}
-          </p>
+          <ScrollReveal>
+            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">
+              {t('contato.label')}
+            </p>
+            <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
+              {t('contato.titulo')}
+            </h2>
+            <p className="text-gt-text-muted mb-10 font-sans">
+              {t('contato.desc')}
+            </p>
+          </ScrollReveal>
 
           <PartnershipForm />
         </div>

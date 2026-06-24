@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ScrollReveal } from '@/components/scroll-reveal';
-import { WaveDivider } from '@/components/wave-divider';
 
 export async function ComoFunciona() {
   const t = await getTranslations('home.comoFunciona');
@@ -14,8 +13,7 @@ export async function ComoFunciona() {
   ];
 
   return (
-    <section id="como-funciona" className="relative bg-gt-bg py-20 md:py-24">
-      <WaveDivider fill="gt-bg" />
+    <section id="como-funciona" className="bg-gt-bg py-20 md:py-24 border-t border-gt-border">
 
       <div className="container-wide">
         <ScrollReveal>
