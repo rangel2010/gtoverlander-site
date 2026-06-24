@@ -1,15 +1,12 @@
 import { getTranslations } from 'next-intl/server';
 import { Button } from '../ui/button';
 import { ScrollReveal } from '@/components/scroll-reveal';
-import { WaveDivider } from '@/components/wave-divider';
 
 export async function EmpresasTeaser() {
   const t = await getTranslations('home.empresas');
 
   return (
-    <section className="relative bg-gt-card py-16 md:py-20">
-      <WaveDivider fill="gt-card" />
-
+    <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
       <div className="container-wide">
         <ScrollReveal>
           <div className="grid md:grid-cols-[2fr_1fr] gap-8 items-center">

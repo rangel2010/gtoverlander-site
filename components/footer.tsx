@@ -3,6 +3,7 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { Instagram, Facebook, Youtube, Mail } from 'lucide-react';
+import { WaveDivider } from './wave-divider';
 
 export function Footer() {
   const pathname = usePathname();
@@ -69,7 +70,8 @@ export function Footer() {
   ];
 
   return (
-    <footer className="dark bg-gt-card text-gt-text mt-auto border-t border-gt-border">
+    <footer className="dark relative bg-gt-card text-gt-text mt-auto">
+      <WaveDivider fill="gt-card" />
       <div className="container-wide py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {columns.map((col) => (
