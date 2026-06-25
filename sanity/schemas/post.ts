@@ -180,13 +180,17 @@ export const postSchema = defineType({
       media: 'coverImage',
       featured: 'featured',
       locale: 'locale',
+      publishedAt: 'publishedAt',
     },
-    prepare({ title, author, category, media, featured, locale }) {
+    prepare({ title, author, category, media, featured, locale, publishedAt }) {
       const cat = category ? PILLARS[category as Pillar] ?? category : '—';
       const lang = locale ? locale.toUpperCase() : 'PT';
+      const dateStr = publishedAt
+        ? new Date(publishedAt).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: '2-digit' })
+        : 'sem data';
       return {
         title: featured ? `⭐ ${title}` : title,
-        subtitle: `[${lang}] ${cat} · ${author ?? 'Sem autor'}`,
+        subtitle: `${dateStr} · [${lang}] ${cat}`,
         media,
       };
     },
