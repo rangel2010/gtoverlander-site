@@ -37,7 +37,7 @@ export async function GET() {
       // Usa imagemSocial (1:1 com arte) quando disponível; fallback para capa original
       const socialSource = post.imagemSocial ?? post.coverImage;
       const imageUrl = socialSource
-        ? urlForImage(socialSource)?.width(1080).height(1080).fit('crop').crop('center').url()
+        ? urlForImage(socialSource)?.width(1080).height(1080).fit('crop').crop('center').format('jpg').quality(85).url()
         : null;
       const pillarLabel = PILLAR_TITLES[post.category] ?? post.category;
 
