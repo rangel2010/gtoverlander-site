@@ -49,7 +49,23 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
-    alternates: getPageAlternates(locale, `/blog/${params.slug}`),
+    // Blog posts são escritos nativamente por locale — só gera hreflang
+    // dos idiomas que realmente existem (via linkedTranslations), evitando
+    // que o Google indexe /en/blog/slug-pt que não existe e gera 404.
+    alternates: (() => {
+      const www = 'https://www.gtoverlander.com.br';
+      const canonicalPath = locale === 'pt' ? `/blog/${params.slug}` : `/${locale}/blog/${params.slug}`;
+      const languages: Record<string, string> = {
+        'pt-BR': `${www}/blog/${params.slug}`,
+        'x-default': `${www}/blog/${params.slug}`,
+      };
+      // Adiciona hreflang só dos idiomas que têm tradução linkada
+      for (const t of post.linkedTranslations ?? []) {
+        if (t.locale === 'en') languages['en'] = `${www}/en/blog/${t.slug}`;
+        if (t.locale === 'es') languages['es'] = `${www}/es/blog/${t.slug}`;
+      }
+      return { canonical: `${www}${canonicalPath}`, languages };
+    })(),
     openGraph: {
       title: post.title,
       description: post.description,

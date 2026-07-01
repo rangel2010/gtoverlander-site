@@ -11,11 +11,11 @@ function formatDurationClient(seconds: number): string {
 }
 
 function formatDateClient(iso: string) {
-  return new Date(iso).toLocaleDateString('pt-BR', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  });
+  // Formato manual sem toLocaleDateString pra evitar hydration mismatch
+  // entre Node.js (sem ICU pt-BR completo) e o browser
+  const d = new Date(iso);
+  const months = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  return `${d.getUTCDate()} ${months[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
 }
 
 interface Props {
