@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation';
+import { redirect } from '@/i18n/navigation';
 
 // "Overlanders" virou "GT Social" — overlander é a pessoa, a feature ganhou nome próprio.
 // Qualquer acesso a /recursos/overlanders redireciona pra /recursos/gt-social.
