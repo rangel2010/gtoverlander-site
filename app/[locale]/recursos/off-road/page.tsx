@@ -1,8 +1,7 @@
-import { redirect } from '@/i18n/navigation';
+import { redirect } from 'next/navigation';
 
-// Off Road foi descontinuado momentaneamente do site (não estava no app).
-// Qualquer acesso a /recursos/off-road redireciona pra /recursos.
-// Usa redirect locale-aware do next-intl — preserva /en/ e /es/ corretamente.
+// Off Road descontinuado do site. Redirect para /recursos.
+// O middleware next-intl re-detecta o locale na URL destino.
 export default function OffRoadPage() {
   redirect('/recursos');
 }

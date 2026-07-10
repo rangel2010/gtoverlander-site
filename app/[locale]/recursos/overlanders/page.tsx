@@ -1,7 +1,7 @@
-import { redirect } from '@/i18n/navigation';
+import { redirect } from 'next/navigation';
 
-// "Overlanders" virou "GT Social" — overlander é a pessoa, a feature ganhou nome próprio.
-// Qualquer acesso a /recursos/overlanders redireciona pra /recursos/gt-social.
+// "Overlanders" virou "GT Social". Redirect para a nova URL.
+// O middleware next-intl re-detecta o locale na URL destino.
 export default function OverlandersPage() {
   redirect('/recursos/gt-social');
 }
