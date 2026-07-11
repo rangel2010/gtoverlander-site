@@ -8,14 +8,13 @@ const FEATURES = [
   },
   {
     slug: 'waypoints',
-    titulo: 'Waypoints próprios',
+    titulo: 'Base de Waypoints',
     desc: 'Mais de 4 milhões de pontos em 209 países',
   },
   {
     slug: 'modo-offline',
     titulo: 'Modo Offline',
     desc: 'Use em qualquer lugar, sem sinal',
-    emBreve: true,
   },
   {
     slug: 'gt-social',
@@ -60,11 +59,6 @@ export function OutrasFeatures({ currentSlug }: OutrasFeaturesProps) {
               href={`/recursos/${f.slug}`}
               className="bg-gt-bg rounded-lg p-6 border border-gt-border hover:border-gt-border-strong transition-colors group relative"
             >
-              {f.emBreve && (
-                <span className="absolute top-4 right-4 bg-gt-orange text-white text-[10px] font-medium uppercase tracking-wider px-2 py-1 rounded font-sans">
-                  Em breve
-                </span>
-              )}
               <h3 className="font-sans font-medium text-gt-text mb-2 group-hover:text-gt-orange transition-colors pr-16">
                 {f.titulo}
               </h3>
