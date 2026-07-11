@@ -95,7 +95,7 @@
     "porqueGt": {
       "titulo": "Apps de mapa convencionais não entendem overlander",
       "p1": "Apps de mapa te empurram pro caminho mais rápido — a estrada principal, o atalho, a rota mais eficiente. Pra um overlander, o que importa é o caminho, não o destino.",
-      "p2": "O GT existe pra preencher esse vazio. Uma IA que entende viagem por terra, uma base própria com mais de 4 milhões de waypoints curados pelo time e pela comunidade, e um app pensado pra quem precisa de informação confiável quando o sinal cai.",
+      "p2": "O GT existe pra preencher esse vazio. Uma IA que entende viagem por terra, uma base com mais de 4 milhões de waypoints curados pelo time e pela comunidade, e um app pensado pra quem precisa de informação confiável quando o sinal cai.",
       "p3": "Não substituímos o Google Maps na navegação. A gente passa a ser a inteligência dos pontos de apoio — onde dormir, onde abastecer, onde comer, onde acampar — junto da rota que faz sentido pro seu jeito de viajar.",
       "p4": "Quando você fecha o roteiro, sua viagem sai do GT pro Google Maps com um toque. Você ganha radar, trânsito ao vivo e dirige com CarPlay ou Android Auto — coisa rara entre apps overlander.",
       "linkHistoria": "Conheça nossa história →"
@@ -142,7 +142,7 @@
     "missao": {
       "titulo": "Nossa missão",
       "p1": "O GT Overlander é um aplicativo pra quem viaja por terra — de carro, moto, 4x4 ou motorhome. Nasceu da frustração com apps genéricos que não entendem a realidade de quem cruza fronteira, dorme em camping selvagem, ou roda 5 mil km numa só viagem.",
-      "p2": "O GT entende quem viaja: a IA monta o trajeto pelas estradas que fazem sentido, com cidades pelo caminho e contexto regional. A base própria de mais de 4 milhões de waypoints em 209 países cobre o que importa pra quem já decidiu pra onde vai — postos, hospedagem, campings, oficinas, atrações. E a integração com Google Maps, CarPlay e Android Auto leva tudo pro painel do carro.",
+      "p2": "O GT entende quem viaja: a IA monta o trajeto pelas estradas que fazem sentido, com cidades pelo caminho e contexto regional. A base de mais de 4 milhões de waypoints em 209 países cobre o que importa pra quem já decidiu pra onde vai — postos, hospedagem, campings, oficinas, atrações. E a integração com Google Maps, CarPlay e Android Auto leva tudo pro painel do carro.",
       "p3": "Mais que um planejador, o GT é um companheiro de estrada — feito pra quem não vê a viagem só como deslocamento, mas como uma experiência única."
     },
     "fundador": {

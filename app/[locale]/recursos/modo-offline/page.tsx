@@ -197,7 +197,7 @@ export default function ModoOfflinePage() {
             Diferencial
           </p>
           <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
-            Apps de mapa que dependem do Google ficam mudos quando o sinal cai. Modo Offline do GT mantém a base própria de waypoints disponível, com toda a riqueza de categorias e validação comunitária. Continua útil onde outros viram tela em branco.
+            Apps de mapa que dependem do Google ficam mudos quando o sinal cai. Modo Offline do GT mantém a base de waypoints disponível, com toda a riqueza de categorias e validação comunitária. Continua útil onde outros viram tela em branco.
           </p>
         </div>
       </section>
