@@ -83,7 +83,7 @@ export default function GtSocialPage() {
   return (
     <>
       <FeatureHero
-        kicker="Disponível agora"
+        kicker="Em breve"
         title="Encontre pessoas que vivem a mesma estrada"
         subline="GT Social é a rede social dentro do GT. Encontre overlanders que viajam parecido com você, descubra rotas testadas pela comunidade, copie roteiros que outros já completaram. Comunidade que cresce na estrada."
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}

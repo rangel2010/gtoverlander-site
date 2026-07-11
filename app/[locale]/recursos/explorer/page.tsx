@@ -84,7 +84,7 @@ export default function ExplorerPage() {
   return (
     <>
       <FeatureHero
-        kicker="Disponível agora"
+        kicker="Em breve"
         title="Sua jornada vira progressão"
         subline="Cada km rodado, cada ponto validado, cada rota concluída soma XP. Você sobe de nível, desbloqueia conquistas, sobe no ranking regional. A comunidade GT reconhece quem realmente vive a estrada."
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}

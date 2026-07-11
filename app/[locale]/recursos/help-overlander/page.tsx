@@ -71,7 +71,7 @@ export default function HelpOverlanderPage() {
   return (
     <>
       <FeatureHero
-        kicker="Disponível agora"
+        kicker="Em breve"
         title="Ninguém fica sozinho na estrada"
         subline="Pneu furado, bateria, pane seca ou mecânica — sinaliza no Help Overlander e quem está perto, disponível e disposto a ajudar aparece. Comunidade que cuida de comunidade."
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}

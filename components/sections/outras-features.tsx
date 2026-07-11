@@ -18,21 +18,25 @@ const FEATURES = [
   },
   {
     slug: 'gt-social',
+    emBreve: true,
     titulo: 'GT Social',
     desc: 'Siga overlanders, descubra rotas, copie roteiros',
   },
   {
     slug: 'help-overlander',
+    emBreve: true,
     titulo: 'Help Overlander',
     desc: 'Comunidade que se ajuda na estrada',
   },
   {
     slug: 'explorer',
+    emBreve: true,
     titulo: 'GT Explorer',
     desc: 'Sua jornada em níveis, conquistas e ranking',
   },
   {
     slug: 'desapega',
+    emBreve: true,
     titulo: 'GT Desapega',
     desc: 'Compra, venda e troca de equipamento overlander',
   },
@@ -59,6 +63,11 @@ export function OutrasFeatures({ currentSlug }: OutrasFeaturesProps) {
               href={`/recursos/${f.slug}`}
               className="bg-gt-bg rounded-lg p-6 border border-gt-border hover:border-gt-border-strong transition-colors group relative"
             >
+                {f.emBreve && (
+                <span className="absolute top-4 right-4 bg-gt-orange text-white text-[10px] font-medium uppercase tracking-wider px-2 py-1 rounded font-sans">
+                  Em breve
+                </span>
+              )}
               <h3 className="font-sans font-medium text-gt-text mb-2 group-hover:text-gt-orange transition-colors pr-16">
                 {f.titulo}
               </h3>
