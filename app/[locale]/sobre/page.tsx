@@ -15,7 +15,7 @@ export async function generateMetadata({
   return {
     title: 'Sobre',
     description:
-    'O GT Overlander é o maior ecossistema overlander do mundo — um companheiro de estrada que une praticidade, inteligência artificial e comunidade.',
+    'O GT Overlander é o único ecossistema feito de ponta a ponta para quem viaja por terra — une planejamento com IA, waypoints curados e comunidade.',
     alternates: getPageAlternates(locale, '/sobre'),
   };
 }

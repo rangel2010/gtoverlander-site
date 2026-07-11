@@ -66,7 +66,7 @@ const faq = [
   },
   {
     q: 'Funciona offline?',
-    a: 'Gerar uma nova rota com a IA precisa de internet (a IA roda no servidor). Mas quando o Modo Offline lançar, você verá a rota gerada, paradas e waypoints sem sinal — só a geração nova precisa estar online.',
+    a: 'Gerar uma nova rota com a IA precisa de internet — o processamento acontece nos nossos servidores. Rotas já salvas, mapas e waypoints previamente baixados pelo Modo Offline podem ser consultados sem sinal. Só a geração de uma rota nova exige conexão.',
   },
   {
     q: 'Em quantos idiomas?',
