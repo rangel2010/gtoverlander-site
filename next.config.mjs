@@ -15,6 +15,21 @@ const nextConfig = {
         destination: '/blog/rota-biker-monumentos-mototurismo-brasil',
         permanent: true,
       },
+      {
+        source: '/pt/blog/rota-biker-monumentos-mototurismo-brasilrota-biker-monumentos-mototurismo-brasil',
+        destination: '/blog/rota-biker-monumentos-mototurismo-brasil',
+        permanent: true,
+      },
+      {
+        source: '/en/blog/rota-biker-monumentos-mototurismo-brasilrota-biker-monumentos-mototurismo-brasil',
+        destination: '/blog/rota-biker-monumentos-mototurismo-brasil',
+        permanent: true,
+      },
+      {
+        source: '/es/blog/rota-biker-monumentos-mototurismo-brasilrota-biker-monumentos-mototurismo-brasil',
+        destination: '/blog/rota-biker-monumentos-mototurismo-brasil',
+        permanent: true,
+      },
     ];
   },
   images: {

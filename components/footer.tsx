@@ -18,7 +18,7 @@ export function Footer() {
       links: [
         { href: '/recursos', label: tn('recursos') },
         { href: '/planos', label: tn('planos') },
-        { href: '/blog', label: tn('blog') },
+        ...(locale === 'pt' ? [{ href: '/blog', label: tn('blog') }] : []),
         { href: 'https://apps.apple.com/br/app/gt-overlander/id6745626026', label: tf('appStore'), external: true },
         { href: 'https://play.google.com/store/apps/details?id=com.overlander', label: tf('playStore'), external: true },
         { href: 'https://app.gtoverlander.com.br', label: tn('acessarComputador'), external: true },
@@ -34,15 +34,15 @@ export function Footer() {
         { href: '/suporte', label: tn('suporte') },
       ],
     },
-    {
+    ...(locale === 'pt' ? [{
       title: tf('colConteudo'),
       links: [
         { href: '/blog/destinos', label: tf('destinos') },
         { href: '/blog/preparacao', label: tf('preparacao') },
         { href: '/blog/vida-overlander', label: tf('vidaOverlander') },
-        ...(locale === 'pt' ? [{ href: '/dicas', label: 'Dicas em Vídeo' }] : []),
+        { href: '/dicas', label: 'Dicas em Vídeo' },
       ],
-    },
+    }] : []),
     {
       title: tf('colLegal'),
       links: [
