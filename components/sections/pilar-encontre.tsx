@@ -10,31 +10,28 @@ export async function PilarEncontre() {
   return (
     <section className="bg-gt-bg py-20 md:py-28 border-t border-gt-border overflow-hidden">
       <div className="container-wide">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
 
-          {/* Visual — DOM primeiro (mobile: acima do texto), desktop: coluna esquerda */}
-          <ScrollReveal delay={120} className="md:order-1">
-            <div className="flex justify-center md:justify-start">
-              <div className="relative">
-                {/* Glow decorativo */}
-                <div className="absolute inset-0 bg-gt-orange/15 rounded-3xl blur-3xl scale-110 pointer-events-none" />
-                <div className="relative rounded-3xl overflow-hidden border border-gt-border shadow-2xl w-[260px] md:w-[290px]">
-                  <video
-                    src="/images/screenshots/app-radar.mp4"
-                    poster="/images/screenshots/app-radar.jpg"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-auto"
-                  />
-                </div>
+          {/* Visual — mobile: acima, desktop: esquerda */}
+          <ScrollReveal delay={120} className="flex-shrink-0 order-first md:order-none">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gt-orange/15 rounded-3xl blur-3xl scale-110 pointer-events-none" />
+              <div className="relative rounded-3xl overflow-hidden border border-gt-border shadow-2xl w-[230px] md:w-[250px]">
+                <video
+                  src="/images/screenshots/app-radar.mp4"
+                  poster="/images/screenshots/app-radar.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-auto"
+                />
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Texto — DOM segundo (mobile: abaixo do visual), desktop: coluna direita */}
-          <ScrollReveal className="md:order-2 order-first">
+          {/* Texto */}
+          <ScrollReveal className="flex-1 min-w-0">
             <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-4 font-sans">
               {t('label')}
             </p>

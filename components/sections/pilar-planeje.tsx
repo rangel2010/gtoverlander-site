@@ -10,10 +10,10 @@ export async function PilarPlaneje() {
   return (
     <section className="bg-gt-card py-20 md:py-28 border-t border-gt-border overflow-hidden">
       <div className="container-wide">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
 
           {/* Texto */}
-          <ScrollReveal>
+          <ScrollReveal className="flex-1 min-w-0">
             <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-4 font-sans">
               {t('label')}
             </p>
@@ -40,22 +40,19 @@ export async function PilarPlaneje() {
           </ScrollReveal>
 
           {/* Visual */}
-          <ScrollReveal delay={120}>
-            <div className="flex justify-center md:justify-end">
-              <div className="relative">
-                {/* Glow decorativo */}
-                <div className="absolute inset-0 bg-gt-orange/15 rounded-3xl blur-3xl scale-110 pointer-events-none" />
-                <div className="relative rounded-3xl overflow-hidden border border-gt-border shadow-2xl w-[260px] md:w-[290px]">
-                  <video
-                    src="/images/screenshots/app-rotas.mp4"
-                    poster="/images/screenshots/app-chat-mapa.jpg"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-auto"
-                  />
-                </div>
+          <ScrollReveal delay={120} className="flex-shrink-0">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gt-orange/15 rounded-3xl blur-3xl scale-110 pointer-events-none" />
+              <div className="relative rounded-3xl overflow-hidden border border-gt-border shadow-2xl w-[230px] md:w-[250px]">
+                <video
+                  src="/images/screenshots/app-rotas.mp4"
+                  poster="/images/screenshots/app-chat-mapa.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-auto"
+                />
               </div>
             </div>
           </ScrollReveal>
