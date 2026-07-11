@@ -37,11 +37,11 @@
     "conduta": "Código de Conduta",
     "anexoHelp": "Anexo Help Overlander",
     "anexoBusiness": "Anexo Conta Business",
-    "tagline": "O único ecossistema feito para quem viaja por terra"
+    "tagline": "O ecossistema feito para quem viaja por terra"
   },
   "home": {
     "hero": {
-      "tagline": "O único ecossistema feito para quem viaja por terra",
+      "tagline": "O ecossistema feito para quem viaja por terra",
       "titulo": "Seu companheiro de estrada",
       "tituloDestaque": "em qualquer lugar do mundo",
       "desc": "Descreva a viagem em linguagem natural. Primeiro a IA monta o trajeto — estradas, cidades e destino. Depois você completa: paradas, postos, hospedagem e campings.",
@@ -193,7 +193,7 @@
     "hero": {
       "label": "O que o GT entrega",
       "titulo": "Tudo que você precisa pra rodar",
-      "desc": "Da rota gerada por IA aos pontos de apoio na estrada. Da viagem solo à comunidade que se ajuda. O único ecossistema feito para quem viaja por terra."
+      "desc": "Da rota gerada por IA aos pontos de apoio na estrada. Da viagem solo à comunidade que se ajuda. O ecossistema feito para quem viaja por terra."
     },
     "planejamento": {
       "label": "Planejamento e mapa",
@@ -484,7 +484,7 @@
     "hero": {
       "label": "Parcerias",
       "titulo": "Construa overlanding com a gente",
-      "desc": "O único ecossistema feito para quem viaja por terra não é só app — é todo mundo que sustenta esse universo. Criadores que contam histórias de estrada, marcas que equipam quem viaja, serviços que cuidam do caminho. Vamos fazer juntos."
+      "desc": "O ecossistema feito para quem viaja por terra não é só app — é todo mundo que sustenta esse universo. Criadores que contam histórias de estrada, marcas que equipam quem viaja, serviços que cuidam do caminho. Vamos fazer juntos."
     },
     "quem": {
       "titulo": "Quem buscamos",

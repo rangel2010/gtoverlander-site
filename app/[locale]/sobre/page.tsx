@@ -15,7 +15,7 @@ export async function generateMetadata({
   return {
     title: 'Sobre',
     description:
-    'O GT Overlander é o único ecossistema feito de ponta a ponta para quem viaja por terra — une planejamento com IA, waypoints curados e comunidade.',
+    'O GT Overlander é o ecossistema feito de ponta a ponta para quem viaja por terra — une planejamento com IA, waypoints curados e comunidade.',
     alternates: getPageAlternates(locale, '/sobre'),
   };
 }

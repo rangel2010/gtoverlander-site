@@ -22,6 +22,7 @@ export async function generateMetadata({
     description:
       'Destinos, preparação e vida overlander pra quem viaja por terra. Roteiros, dicas e histórias de quem vive na estrada.',
     alternates: getPageAlternates(locale, '/blog'),
+    ...(locale !== 'pt' && { robots: { index: false, follow: false } }),
   };
 }
 

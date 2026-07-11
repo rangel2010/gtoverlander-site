@@ -37,11 +37,11 @@
     "conduta": "Code of Conduct",
     "anexoHelp": "Help Overlander Addendum",
     "anexoBusiness": "Business Account Addendum",
-    "tagline": "The world's largest overlander ecosystem"
+    "tagline": "The overlander ecosystem built for those who travel by land"
   },
   "home": {
     "hero": {
-      "tagline": "The world's largest overlander ecosystem",
+      "tagline": "The overlander ecosystem built for those who travel by land",
       "titulo": "Your road companion",
       "tituloDestaque": "anywhere in the world",
       "desc": "Describe your trip in natural language. First the AI builds the route — roads, cities and destination. Then you complete it: stops, fuel, accommodation and campsites.",
@@ -55,9 +55,9 @@
       "passo1titulo": "You describe the trip",
       "passo1desc": "Tell it the destination, the regions you want to cross, your road preferences — in natural language",
       "passo2titulo": "AI builds the route",
-      "passo2desc": "Roads, cities and destination — ready in seconds, exactly the way you asked",
+      "passo2desc": "Roads, cities and destination — organized from the roads, regions and preferences you described",
       "passo3titulo": "You choose where to stop",
-      "passo3desc": "Fuel, accommodation, campsites, attractions — choose from the world's largest overlander waypoint database",
+      "passo3desc": "Fuel, accommodation, campsites, attractions — choose from over 4 million points across 209 countries",
       "passo4titulo": "You hit the road",
       "passo4desc": "Export the route to Google Maps and drive directly on your dashboard with CarPlay or Android Auto",
       "verDemo": "See AI demonstration →"
@@ -68,8 +68,8 @@
       "saibaMais": "Learn more →",
       "r1titulo": "AI Routes",
       "r1desc": "Route built by AI in a conversation — roads, cities and destination, ready in seconds.",
-      "r2titulo": "Own Waypoints",
-      "r2desc": "Over 4 million points across 209 countries, validated and submitted by the community. The world's largest overlander database.",
+      "r2titulo": "Waypoint Database",
+      "r2desc": "Over 4 million points across 209 countries, validated and submitted by the community.",
       "r3titulo": "Help Overlander",
       "r3desc": "Breakdown on the road? Signal in the app and nearby helpers appear. Community taking care of community.",
       "r4titulo": "GT Social",
@@ -95,7 +95,7 @@
     "porqueGt": {
       "titulo": "Conventional map apps don't understand overland travel",
       "p1": "Map apps push you toward the fastest route — the main road, the shortcut, the most efficient path. For an overlander, what matters is the journey, not the destination.",
-      "p2": "GT exists to fill that gap. An AI that understands overland travel, a proprietary database with over 4 million waypoints curated by our team and community, and an app built for those who need reliable information when the signal drops.",
+      "p2": "GT exists to fill that gap. An AI that understands overland travel, a database with over 4 million waypoints curated by our team and community, and an app built for those who need reliable information when the signal drops.",
       "p3": "We don't replace Google Maps for navigation. We become the intelligence behind support points — where to sleep, where to fuel up, where to eat, where to camp — alongside the route that makes sense for your way of traveling.",
       "p4": "When you finalize your itinerary, your trip moves from GT to Google Maps with a single tap. You get radar, live traffic and drive with CarPlay or Android Auto — rare among overlander apps.",
       "linkHistoria": "Our story →"
@@ -142,7 +142,7 @@
     "missao": {
       "titulo": "Our mission",
       "p1": "GT Overlander is an app for people who travel overland — by car, motorcycle, 4x4 or motorhome. Born from the frustration with generic apps that don't understand the reality of someone who crosses borders, sleeps in wild campsites, or drives 5,000 km in a single trip.",
-      "p2": "GT understands travelers: the AI builds the route along roads that make sense, with cities along the way and regional context. The proprietary database of over 4 million waypoints in 209 countries covers what matters to those who have already decided where they're going — gas stations, accommodation, campsites, workshops, attractions. And integration with Google Maps, CarPlay and Android Auto takes everything to the car's dashboard.",
+      "p2": "GT understands travelers: the AI builds the route along roads that make sense, with cities along the way and regional context. The GT database of over 4 million waypoints in 209 countries covers what matters to those who have already decided where they're going — gas stations, accommodation, campsites, workshops, attractions. And integration with Google Maps, CarPlay and Android Auto takes everything to the car's dashboard.",
       "p3": "More than a planner, GT is a road companion — made for those who don't see travel as just transportation, but as a unique experience."
     },
     "fundador": {
@@ -178,7 +178,7 @@
       "p1d": "Help Overlander for roadside rescue, GT Social for overlander social network, GT Explorer for reputation and ranking, GT Desapega for marketplace. All live now — now it grows with you.",
       "p2t": "Business Account 3 fronts",
       "p2d": "Physical POI, product seller and guided expedition services in a single business account. Available now, with volume scaling for larger networks.",
-      "p3t": "Universal Offline Mode",
+      "p3t": "Offline Mode",
       "p3d": "Free downloads the country you're in with all waypoint categories; Plus and Pro unlock all 209 countries worldwide.",
       "p4t": "International expansion",
       "p4d": "The waypoint base already covers 209 countries. Next steps: interface localization, partnerships with regional guides and multi-country commercial channels."
@@ -193,7 +193,7 @@
     "hero": {
       "label": "What GT delivers",
       "titulo": "Everything you need to roll",
-      "desc": "From AI-generated routes to support points on the road. From solo travel to the community that helps each other. The world's largest overlanding ecosystem."
+      "desc": "From AI-generated routes to support points on the road. From solo travel to the community that helps each other. The overlander ecosystem built for those who travel by land."
     },
     "planejamento": {
       "label": "Planning and map",
@@ -202,7 +202,7 @@
       "saibaMais": "Learn more →",
       "r1t": "AI Routes",
       "r1d": "Route built by AI in a conversation — roads, cities and destination, ready in seconds.",
-      "r2t": "Own Waypoints",
+      "r2t": "Waypoint Database",
       "r2d": "Over 4 million points in 209 countries — gas stations, campsites, accommodation, attractions, workshops.",
       "r3t": "Offline Mode",
       "r3d": "Choose the regions of your trip. GT runs anywhere in the world, even without signal."
@@ -247,7 +247,7 @@
       "f3v0": "1 per day",
       "f3v1": "5 per day",
       "f3v2": "unlimited",
-      "f4l": "Own waypoints — global database",
+      "f4l": "Waypoints — global database",
       "f5l": "CarPlay / Android Auto",
       "f6l": "Validate and submit waypoints",
       "f7l": "Offline Mode — device country",
@@ -281,11 +281,11 @@
       "pricing": "Includes 1 highlighted spot and up to 15 products on Desapega. Add-ons available for more spots or products. Cancel anytime.",
       "verTabela": "See full table",
       "verPolitica": "Policy",
-      "cta": "Register my Business Account"
+      "cta": "Join the waitlist"
     },
     "faq": {
       "q1": "Can I try before subscribing?",
-      "a1": "The Free plan isn't a trial — it's free forever. You use GT with standard AI, all available own waypoints, CarPlay and Android Auto, with no deadline. When you want more, upgrade to Plus or Pro.",
+      "a1": "The Free plan isn't a trial — it's free forever. You use GT with standard AI, all available waypoints, CarPlay and Android Auto, with no deadline. When you want more, upgrade to Plus or Pro.",
       "q2": "Can I cancel anytime?",
       "a2": "Yes. Cancel whenever you want, no penalty. The plan stays active until the end of the already-paid cycle and then automatically reverts to Free.",
       "q3": "What's the difference between monthly and annual?",
@@ -373,7 +373,7 @@
     "cat5q1": "I have a gas station / campsite / guesthouse. How do I appear on GT?",
     "cat5a1": "The Business Account is in development. When launched, any establishment on travelers' routes (gas stations, campsites, guesthouses, workshops, restaurants) will be able to create a profile and appear to those passing through the region. Sign up for the waitlist at /empresas.",
     "cat5q2": "How much will the Business Account cost?",
-    "cat5a2": "The model is being finalized. It will be self-service with measurable ROI (you track how many travelers passed by, saw your profile, came to you)."
+    "cat5a2": "The Business Account is on the waitlist. When it opens, you can track views, clicks and contacts generated — measurable ROI directly from the dashboard."
   },
   "suporte": {
     "hero": {
@@ -453,22 +453,22 @@
       "b1d": "Appear to those who HAVE ALREADY DECIDED to travel to your region. Not cold traffic — travelers at the exact moment of planning.",
       "b2t": "Exclusive visual highlight",
       "b2d": "Colored box + custom icon on the map, presence on Desapega, featured on destination pages.",
-      "b3t": "Self-service",
-      "b3d": "Register your business, activate the fronts that make sense for you, and you're live. No sales calls, no long contracts.",
+      "b3t": "Guided onboarding",
+      "b3d": "During the initial phase, we guide you through registration and activation. No long contracts.",
       "b4t": "Cancel whenever you want",
       "b4d": "Monthly, no penalty, no commitment. If it doesn't bring results, you leave. Your information stays with you."
     },
     "comoFunciona": {
       "titulo": "How it works",
-      "desc": "Self-service, in 4 steps. No sales call, no long contract.",
+      "desc": "In 4 steps, with support during the initial phase. No long contract.",
       "p1t": "Fill in the registration",
       "p1d": "Business data, fronts you'll use, photos and contact",
       "p2t": "GT validates",
       "p2d": "We verify the information to ensure quality and database security",
-      "p3t": "Goes live",
-      "p3d": "Appears on the map, on Desapega or in itineraries, according to the fronts you activated",
-      "p4t": "Track metrics",
-      "p4d": "Views, clicks, contacts — all measured in your dashboard"
+      "p3t": "Joins the waitlist",
+      "p3d": "You receive confirmation and are placed in the priority activation queue when the Business Account opens",
+      "p4t": "Goes live at launch",
+      "p4d": "Appears on the map, Desapega and itineraries according to the fronts you chose — ready to receive travelers"
     },
     "precos": {
       "labelLancamento": "Launch price · guaranteed for waitlist",
@@ -477,14 +477,14 @@
     "cadastro": {
       "label": "Registration",
       "titulo": "Tell us about your business",
-      "desc": "Fill in the details below and we'll contact you within 2 business days to activate your account. The more detail, the faster."
+      "desc": "Fill in the details below and you'll join the Business Account waitlist. When it opens, you'll be notified first and activated with priority."
     }
   },
   "parcerias": {
     "hero": {
       "label": "Partnerships",
       "titulo": "Build overlanding with us",
-      "desc": "The world's largest overlander ecosystem isn't just an app — it's everyone who sustains this universe. Creators who tell road stories, brands that equip travelers, services that care for the journey. Let's do it together."
+      "desc": "The overlander ecosystem built for those who travel by land isn't just an app — it's everyone who sustains this universe. Creators who tell road stories, brands that equip travelers, services that care for the journey. Let's do it together."
     },
     "quem": {
       "titulo": "Who we're looking for",
