@@ -1,81 +1,52 @@
-// RSS feed do blog GT Overlander
-// Acessível em /feed.xml — usado por leitores de feed e automações
-// (Make.com, Zapier, dlvr.it) pra disparar posts automáticos em redes sociais.
-
 import { getAllPosts } from '@/lib/sanity/queries';
-import { urlForImage } from '@/lib/sanity/image';
-import { PILLAR_TITLES } from '@/lib/sanity/types';
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gtoverlander.com.br';
+const SITE_URL = 'https://gtoverlander.com.br';
 
 function escapeXml(str: string): string {
-  return str.replace(/[<>&'"]/g, (c) => {
-    switch (c) {
-      case '<':
-        return '&lt;';
-      case '>':
-        return '&gt;';
-      case '&':
-        return '&amp;';
-      case "'":
-        return '&apos;';
-      case '"':
-        return '&quot;';
-      default:
-        return c;
-    }
-  });
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
 }
 
 export async function GET() {
-  const posts = await getAllPosts();
+  const posts = await getAllPosts('pt');
 
   const items = posts
-    .map((post) => {
-      const url = `${SITE_URL}/blog/${post.slug}`;
-      // Usa imagemSocial (1:1 com arte) quando disponível; fallback para capa original
-      const socialSource = post.imagemSocial ?? post.coverImage;
-      const imageUrl = socialSource
-        ? urlForImage(socialSource)?.width(1080).height(1080).fit('crop').crop('focalpoint').format('jpg').quality(85).url()
-        : null;
-      const pillarLabel = PILLAR_TITLES[post.category] ?? post.category;
-
-      return `    <item>
-      <title>${escapeXml(post.title)}</title>
+    .slice(0, 50)
+    .map((p) => {
+      const url = `${SITE_URL}/blog/${p.slug}`;
+      const pubDate = new Date(p.publishedAt).toUTCString();
+      const desc = p.description ? escapeXml(p.description) : '';
+      return `
+    <item>
+      <title>${escapeXml(p.title)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
-      <pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>
-      <description>${escapeXml(post.description)}</description>
-      <category>${escapeXml(pillarLabel)}</category>${
-        imageUrl
-          ? `\n      <enclosure url="${imageUrl}" type="image/jpeg" length="0" />`
-          : ''
-      }
+      <description>${desc}</description>
+      <pubDate>${pubDate}</pubDate>
     </item>`;
     })
-    .join('\n');
+    .join('');
 
-  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>GT Overlander · Blog</title>
+    <title>Blog GT Overlander</title>
     <link>${SITE_URL}/blog</link>
-    <description>Roteiros, preparação e vida overlander — conteúdo pra quem viaja por terra, em qualquer lugar do mundo.</description>
+    <description>Destinos, preparação e vida overlander pra quem viaja por terra.</description>
     <language>pt-BR</language>
-    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />
 ${items}
   </channel>
 </rss>`;
 
-  return new Response(rss, {
+  return new Response(xml, {
     headers: {
-      'Content-Type': 'application/rss+xml; charset=utf-8',
+      'Content-Type': 'application/xml; charset=utf-8',
       'Cache-Control': 's-maxage=3600, stale-while-revalidate',
     },
   });
 }
-
-// Revalida o cache do RSS a cada hora
-export const revalidate = 3600;
