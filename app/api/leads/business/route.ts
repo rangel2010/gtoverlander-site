@@ -78,6 +78,19 @@ export async function POST(req: Request) {
       );
     }
 
+
+    // E-mail de confirmação para quem preencheu o formulário
+    try {
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: email,
+        subject: 'Conta Business — GT Overlander',
+        html: `<!DOCTYPE html><html><head><meta charset='UTF-8'></head><body style='margin:0;padding:0;background:#f4f4f4;font-family:Arial,sans-serif'><table width='100%' cellpadding='0' cellspacing='0'><tr><td align='center' style='padding:24px 16px'><table cellpadding='0' cellspacing='0' style='background:#ffffff;border-radius:8px;width:100%;max-width:580px'><tr><td style='background:#122e1f;padding:20px 32px;border-radius:8px 8px 0 0'><span style='color:#e06226;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:3px'>GT Overlander</span></td></tr><tr><td style='padding:32px'><h2 style='color:#122e1f;font-size:20px;margin:0 0 16px'>Interesse recebido, ${escapeHtml(nome)}!</h2><p style='color:#555;font-size:15px;line-height:1.6;margin:0 0 16px'>Obrigado pelo interesse na Conta Business GT Overlander. Nossa equipe vai analisar as informações de ${escapeHtml(empresa)} e retornar em breve.</p><p style='color:#555;font-size:15px;line-height:1.6;margin:0 0 16px'>Continue explorando o GT Overlander. &#129347;</p></td></tr><tr><td style='padding:16px 32px 24px;border-top:1px solid #eee'><p style='color:#aaa;font-size:11px;margin:0'>GT Overlander &middot; <a href='https://gtoverlander.com.br' style='color:#aaa'>gtoverlander.com.br</a></p></td></tr></table></td></tr></table></body></html>`,
+      });
+    } catch (confirmErr) {
+      console.warn('[/api/leads/business] Confirmation email failed:', confirmErr);
+    }
+
     // Salva contato no Brevo (CRM + segmentação pra campanhas futuras)
     // Não bloqueia o fluxo se falhar — email principal já foi enviado.
     // Atributos têm que bater EXATAMENTE com os nomes cadastrados no Brevo.
