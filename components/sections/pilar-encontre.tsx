@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ScrollReveal } from '@/components/scroll-reveal';
@@ -20,14 +19,14 @@ export async function PilarEncontre() {
                 {/* Glow decorativo */}
                 <div className="absolute inset-0 bg-gt-orange/15 rounded-3xl blur-3xl scale-110 pointer-events-none" />
                 <div className="relative rounded-3xl overflow-hidden border border-gt-border shadow-2xl w-[260px] md:w-[290px]">
-                  <Image
-                    src="/images/screenshots/app-radar.jpg"
-                    alt={t('imgAlt')}
-                    width={290}
-                    height={580}
+                  <video
+                    src="/images/screenshots/app-radar.mp4"
+                    poster="/images/screenshots/app-radar.jpg"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
                     className="w-full h-auto"
-                    sizes="(max-width: 768px) 260px, 290px"
-                    priority={false}
                   />
                 </div>
               </div>
