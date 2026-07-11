@@ -55,9 +55,9 @@
       "passo1titulo": "Você descreve a viagem",
       "passo1desc": "Conta o destino, as regiões que quer cruzar, suas preferências de estrada — em linguagem natural",
       "passo2titulo": "A IA monta o trajeto",
-      "passo2desc": "Estradas, cidades e destino — pronto em segundos, do jeito que você pediu",
+      "passo2desc": "A IA organiza o caminho a partir das estradas, regiões e preferências que você descreveu",
       "passo3titulo": "Você escolhe onde parar",
-      "passo3desc": "Postos, hospedagem, campings, atrações — escolhe da maior base de waypoints overlander do mundo",
+      "passo3desc": "Postos, hospedagem, campings, atrações — escolhe entre mais de 4 milhões de pontos em 209 países",
       "passo4titulo": "Você pega a estrada",
       "passo4desc": "Exporta a rota pro Google Maps e roda direto no painel do carro com CarPlay ou Android Auto",
       "verDemo": "Ver demonstração da IA →"
@@ -151,7 +151,7 @@
       "cargo": "Fundador",
       "imgAlt": "Rangel Machado, fundador do GT Overlander, em frente a paisagem patagônica",
       "p1": "Empresário paranaense e viajante. Vê o overlanding como um dos modos mais ricos de conhecer o mundo — e fundou o GT pra ser o app que ele mesmo queria ter na própria estrada.",
-      "p2": "Não vem do background técnico. Toma decisões de produto, ouve a comunidade, e trabalha lado a lado com o time pra transformar cada experiência pessoal em melhoria do app."
+      "p2": "Começou na estrada, não em uma sala de reunião. Lidera produto, visão e estratégia do GT, ouve a comunidade de perto e trabalha ao lado do time técnico pra transformar experiências reais de viagem em melhorias no app."
     },
     "comunidade": {
       "titulo": "Conhecer quem viaja pra construir junto",

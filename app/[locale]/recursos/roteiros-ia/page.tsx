@@ -41,12 +41,12 @@ const passos = [
   {
     num: 2,
     titulo: 'A IA monta o trajeto',
-    desc: 'Estradas, cidades e destino — pronto em segundos, do jeito que você pediu',
+    desc: 'A IA organiza o caminho a partir das estradas, regiões e preferências que você descreveu',
   },
   {
     num: 3,
     titulo: 'Você escolhe onde parar',
-    desc: 'Postos, hospedagem, campings, atrações — escolhe da maior base de waypoints overlander do mundo',
+    desc: 'Postos, hospedagem, campings, atrações — escolhe entre mais de 4 milhões de pontos em 209 países',
   },
   {
     num: 4,

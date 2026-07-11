@@ -45,9 +45,9 @@ export function ConsentBanner() {
       className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:bottom-6 md:max-w-sm z-50 bg-gt-card border border-gt-border rounded-lg shadow-2xl p-5 font-sans"
     >
       <p className="text-sm text-gt-text leading-relaxed mb-4">
-        Usamos cookies de análise pra entender como você usa o site e melhorar a
-        experiência. Você pode aceitar ou recusar — sua escolha fica salva.
-        Detalhes na nossa{' '}
+        Usamos recursos essenciais para o funcionamento do site e métricas anônimas
+        para entender o uso e melhorar a experiência. Não criamos perfis individuais
+        de navegação. Detalhes na nossa{' '}
         <Link href="/privacidade" className="text-gt-orange hover:underline">
           Política de Privacidade
         </Link>

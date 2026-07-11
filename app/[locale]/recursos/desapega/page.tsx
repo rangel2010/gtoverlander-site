@@ -131,6 +131,9 @@ export default function DesapegaPage() {
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
+          <div className="bg-gt-card border border-gt-border rounded-lg p-5 mb-10 font-sans text-sm text-gt-text-muted leading-relaxed">
+            <strong className="text-gt-text font-medium">Atenção:</strong> O GT funciona como vitrine e canal de contato. Não recebe pagamentos, não realiza entregas e não garante a condição dos produtos. Confira o item, a identidade do vendedor e as condições da negociação antes de qualquer pagamento. Para mais segurança, combine encontros em locais públicos e movimentados.
+          </div>
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3 leading-tight">
             Como vender
           </h2>
@@ -180,7 +183,7 @@ export default function DesapegaPage() {
             Diferencial
           </p>
           <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
-            Desapega é o classificado feito pra um nicho específico: gente que vive em estrada. Vende rápido porque o comprador entende o que está vendo. E se aqui não vender, dificilmente vende em outro lugar.
+            GT Desapega é o classificado feito para um nicho específico: quem viaja por terra. O anúncio aparece para uma comunidade que entende equipamento overlander — veículos, peças, acessórios e itens de viagem.
           </p>
         </div>
       </section>

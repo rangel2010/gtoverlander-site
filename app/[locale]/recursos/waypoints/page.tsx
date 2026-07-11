@@ -15,7 +15,7 @@ export async function generateMetadata({
   return {
     title: 'Waypoints próprios',
     description:
-    'Mais de 4 milhões de waypoints em 209 países e 10 categorias. Base própria curada e mantida viva pela comunidade — valida e cadastra direto do app.',
+    'Mais de 4 milhões de waypoints em 209 países. São 16 categorias organizadas em 10 filtros de uso. Base curada pelo GT e mantida viva pela comunidade — valida e cadastra direto do app.',
     alternates: getPageAlternates(locale, '/recursos/waypoints'),
   };
 }
@@ -43,7 +43,7 @@ const categorias = [
 const faq = [
   {
     q: 'É confiável?',
-    a: 'Sim. A base começou com dados públicos do OpenStreetMap e passou por curadoria exaustiva do time GT — deduplificação, classificação em 10 categorias e enriquecimento. Hoje a base é viva: overlanders validam e cadastram pontos pelo app, e o time GT cura continuamente. Erros acontecem, mas em escala muito menor que confiar só no Google Places.',
+    a: 'Sim. A base começou com dados públicos do OpenStreetMap e passou por curadoria exaustiva do time GT — deduplificação, organização em 16 categorias e enriquecimento. Hoje a base é viva: overlanders validam e cadastram pontos pelo app, e o time GT cura continuamente. Erros acontecem, mas em escala muito menor que confiar só no Google Places.',
   },
   {
     q: 'Quem pode validar e cadastrar pontos?',
@@ -55,7 +55,7 @@ const faq = [
   },
   {
     q: 'De onde vêm os dados?',
-    a: 'A base começou com dados públicos do OpenStreetMap. O time GT processa, deduplifica, enriquece e classifica em 10 categorias relevantes pro overlander. A partir daí, a comunidade alimenta — overlanders validam o que existe e cadastram o que não tinha sido mapeado ainda.',
+    a: 'A base começou com dados públicos do OpenStreetMap. O time GT processa, deduplifica, enriquece e organiza em 16 categorias, agrupadas em 10 filtros de uso pro overlander. A partir daí, a comunidade alimenta — overlanders validam o que existe e cadastram o que não tinha sido mapeado ainda.',
   },
   {
     q: 'É só radar ou aparece na hora de planejar a rota também?',
@@ -75,7 +75,7 @@ export default function WaypointsPage() {
       <FeatureHero
         kicker="Disponível agora"
         title="Onde parar, onde dormir, onde abastecer"
-        subline="Mais de 4 milhões de pontos em 209 países e 10 categorias. Base curada pelo GT e mantida viva pela comunidade — qualquer overlander valida ou cadastra direto do app."
+        subline="Mais de 4 milhões de pontos em 209 países. São 16 categorias organizadas em 10 filtros de uso. Base curada pelo GT e mantida viva pela comunidade — qualquer overlander valida ou cadastra direto do app."
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
@@ -131,7 +131,7 @@ export default function WaypointsPage() {
       />
 
       <FeatureScreenshot
-        kicker="10 categorias relevantes"
+        kicker="16 categorias, 10 filtros"
         title="Categorias pensadas pra quem viaja"
         desc='Camping, área de descanso, posto, restaurante, hotel, oficina, atrações, fronteira, saúde — categorias úteis pro overlander, sem ruído de "academia" ou "petshop". Cada ponto tá organizado pra você encontrar exatamente o que precisa, na hora que precisa.'
         src="/screenshots/recursos/waypoints-categoria.png"
@@ -179,13 +179,16 @@ export default function WaypointsPage() {
             Origem e evolução dos dados
           </h2>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            A base começou com dados públicos do OpenStreetMap e foi exaustivamente curada pelo time GT — processada, deduplificada, classificada e enriquecida em 10 categorias relevantes pro overlander.
+            A base GT foi estruturada a partir de dados abertos do OpenStreetMap e passou por processamento, deduplicação e organização em 16 categorias, agrupadas em 10 filtros de uso para facilitar o planejamento e o dia a dia na estrada.
           </p>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            Hoje a base é viva. O time GT cura continuamente, e a comunidade contribui validando pontos existentes e cadastrando os que ainda não tinham sido mapeados — tudo direto do app, em qualquer plano. Quanto mais gente na estrada validando, mais rica e atual a base fica.
+            Hoje a Base GT é viva. O time GT cura continuamente, e a comunidade contribui validando pontos existentes e cadastrando os que ainda não tinham sido mapeados — tudo direto do app, em qualquer plano. Quanto mais gente na estrada validando, mais rica e atual a base fica.
           </p>
           <p className="text-gt-text leading-relaxed font-sans">
-            Por ser base própria, os waypoints ficam disponíveis offline. Plus e Pro liberam os 209 países do mundo; Free baixa o país do dispositivo com todas as categorias.
+            Por ser a Base GT, os waypoints ficam disponíveis offline. Plus e Pro liberam os 209 países do mundo; Free baixa o país do dispositivo com todas as categorias.
+          </p>
+          <p className="text-xs text-gt-text-dim leading-relaxed font-sans mt-4">
+            Dados de origem: © colaboradores do OpenStreetMap — ODbL. Curadoria, organização e enriquecimento: GT Overlander.
           </p>
         </div>
       </section>
@@ -196,7 +199,7 @@ export default function WaypointsPage() {
             Diferencial
           </p>
           <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
-            O Google Maps conhece tudo — e por isso traz tudo, inclusive o que não importa pra você. O GT entrega só o que o overlander precisa: postos, campings, hospedagem, oficinas, atrativos. Curadoria editorial GT + base viva validada continuamente pela comunidade que vive a estrada.
+            O Google Maps conhece tudo — e por isso traz tudo, inclusive o que não importa pra você. O GT entrega só o que o overlander precisa: postos, campings, hospedagem, oficinas, atrativos. Curadoria editorial GT + Base GT de waypoints, validada continuamente pela comunidade que vive a estrada.
           </p>
         </div>
       </section>

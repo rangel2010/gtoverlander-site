@@ -62,8 +62,8 @@ const faq = [
     a: 'Não. Help Overlander depende de conexão pra notificar overlanders próximos em tempo real. Se você tá sem sinal, use os serviços de emergência tradicionais.',
   },
   {
-    q: 'E se eu tô viajando sozinha — é seguro?',
-    a: 'Tem filtros específicos: você pode aceitar ajuda apenas de mulheres, só de prestadores verificados, ou só de quem tem avaliação acima de X. Dá pra calibrar bastante. Mas a decisão final de aceitar ou não a interação é sempre sua, e em qualquer momento você pode recuar.',
+    q: 'Como decido de quem aceitar ajuda?',
+    a: 'Use os filtros de avaliação, identidade e perfil disponíveis para decidir quem poderá atender o pedido. Eles ajudam na decisão, mas não eliminam todos os riscos. Converse com o contato antes do encontro e recuse ou cancele a interação sempre que não se sentir confortável.',
   },
 ];
 
@@ -78,8 +78,15 @@ export default function HelpOverlanderPage() {
         secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
 
+      <div className="bg-gt-card border-t border-b border-gt-border py-4">
+        <div className="container-wide">
+          <p className="text-sm text-gt-text-muted font-sans leading-relaxed">
+            <strong className="text-gt-text font-medium">Importante:</strong> O Help Overlander é uma ferramenta comunitária de conexão. Não substitui polícia, bombeiros, atendimento médico, seguro, guincho ou assistência veicular profissional. Em situação de risco imediato, acione os serviços públicos de emergência: Polícia (190), SAMU (192), Bombeiros (193).
+          </p>
+        </div>
+      </div>
+
       <FeatureScreenshot
-        kicker="Quem está perto"
         title="Veja a comunidade disponível na sua região"
         desc='Quando ativa o Help Overlander, você vê em tempo real quantos overlanders estão num raio próximo de você. Cada um aparece com distância, tipo de ajuda que oferece (Mecânico Solidário, Apoio Geral, etc) e avaliação. O botão "Pedir ajuda agora" dispara a notificação pra quem está disponível.'
         src="/screenshots/recursos/help-pedido.png"

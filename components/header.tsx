@@ -21,7 +21,7 @@ export function Header() {
   const navLinks = [
     { href: '/recursos' as const, label: t('recursos'), ptOnly: false },
     { href: '/planos' as const, label: t('planos'), ptOnly: false },
-    { href: '/blog' as const, label: t('blog'), ptOnly: false },
+    { href: '/blog' as const, label: t('blog'), ptOnly: true },
     { href: '/dicas' as const, label: t('dicas'), ptOnly: true },
     { href: '/sobre' as const, label: t('sobre'), ptOnly: false },
     { href: '/empresas' as const, label: t('empresas'), ptOnly: false },
