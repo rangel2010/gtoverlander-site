@@ -68,8 +68,8 @@
       "saibaMais": "Saiba mais →",
       "r1titulo": "Roteiros com IA",
       "r1desc": "Trajeto montado pela IA em uma conversa — estradas, cidades e destino, pronto em segundos.",
-      "r2titulo": "Waypoints próprios",
-      "r2desc": "Mais de 4 milhões de pontos em 209 países, validados e cadastrados pela comunidade. A maior base overlander do mundo.",
+      "r2titulo": "Base de Waypoints",
+      "r2desc": "Mais de 4 milhões de pontos em 209 países, validados e cadastrados pela comunidade.",
       "r3titulo": "Help Overlander",
       "r3desc": "Pane na estrada? Sinaliza no app e quem está perto e disposto a ajudar aparece. Comunidade que cuida de comunidade.",
       "r4titulo": "GT Social",
@@ -354,7 +354,7 @@
     "cat2q3": "Funciona com CarPlay e Android Auto?",
     "cat2a3": "Sim, integração nativa. Você planeja a viagem no celular, conecta no carro, e tudo continua funcionando na tela do veículo.",
     "cat2q4": "Os waypoints são confiáveis?",
-    "cat2a4": "A base começou com dados públicos do OpenStreetMap, processados e classificados pelo time GT em 10 categorias relevantes pro overlander. Em construção: validação por comunidade — overlanders contribuindo e validando pontos diretamente pelo app.",
+    "cat2a4": "A base começou com dados públicos do OpenStreetMap, processados e classificados pelo time GT em 16 categorias, organizadas em 10 filtros de uso pro overlander. Em construção: validação por comunidade — overlanders contribuindo e validando pontos diretamente pelo app.",
     "cat3titulo": "Planos e pagamento",
     "cat3q1": "Posso testar antes de assinar?",
     "cat3a1": "Free não é trial. Você usa o GT grátis pra sempre, com a IA padrão, todos os waypoints, CarPlay e Android Auto. 1 rota exportada pra navegar a cada 90 dias e 1 consulta de radar por dia. Quando precisar de mais, sobe pra Plus ou Pro.",
@@ -373,7 +373,7 @@
     "cat5q1": "Tenho um posto / camping / pousada. Como aparecer no GT?",
     "cat5a1": "A Conta Business está em desenvolvimento. Quando lançar, qualquer estabelecimento na rota dos viajantes (postos, campings, pousadas, oficinas, restaurantes) poderá criar perfil e aparecer pra quem passa na região. Cadastre-se na lista de espera em /empresas.",
     "cat5q2": "Quanto vai custar a Conta Business?",
-    "cat5a2": "O modelo está sendo finalizado. Vai ser self-service e ROI mensurável (você acompanha quantos viajantes passaram, viram seu perfil, foram até você)."
+    "cat5a2": "A Conta Business está em lista de espera. Quando abrir, você acompanha visualizações, cliques e contatos gerados — ROI mensurável diretamente pelo painel."
   },
   "suporte": {
     "hero": {
