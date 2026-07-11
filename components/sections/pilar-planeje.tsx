@@ -12,6 +12,24 @@ export async function PilarPlaneje() {
       <div className="container-wide">
         <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
 
+          {/* Visual — esquerda (igual ao Pilar 2) */}
+          <ScrollReveal delay={120} className="flex-shrink-0 order-first md:order-none">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gt-orange/15 rounded-3xl blur-3xl scale-110 pointer-events-none" />
+              <div className="relative rounded-3xl overflow-hidden border border-gt-border shadow-2xl w-[230px] md:w-[250px]">
+                <video
+                  src="/images/screenshots/app-rotas.mp4"
+                  poster="/images/screenshots/app-chat-mapa.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+          </ScrollReveal>
+
           {/* Texto */}
           <ScrollReveal className="flex-1 min-w-0">
             <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-4 font-sans">
@@ -37,24 +55,6 @@ export async function PilarPlaneje() {
             >
               {t('cta')}
             </Link>
-          </ScrollReveal>
-
-          {/* Visual */}
-          <ScrollReveal delay={120} className="flex-shrink-0">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gt-orange/15 rounded-3xl blur-3xl scale-110 pointer-events-none" />
-              <div className="relative rounded-3xl overflow-hidden border border-gt-border shadow-2xl w-[230px] md:w-[250px]">
-                <video
-                  src="/images/screenshots/app-rotas.mp4"
-                  poster="/images/screenshots/app-chat-mapa.jpg"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-auto"
-                />
-              </div>
-            </div>
           </ScrollReveal>
 
         </div>
