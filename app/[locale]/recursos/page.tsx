@@ -12,7 +12,7 @@ export async function generateMetadata({
   return {
     title: 'Recursos',
     description:
-    'Roteiros com IA, waypoints próprios, GT Social, Help Overlander, GT Explorer e GT Desapega. O ecossistema completo pra quem viaja por terra.',
+    'Roteiros com IA, base de waypoints, modo offline e comunidade overlander — tudo que você precisa pra viajar por terra.',
     alternates: getPageAlternates(locale, '/recursos'),
   };
 }
