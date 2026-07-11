@@ -299,7 +299,7 @@ export default async function PostPage({ params }: PageProps) {
       <NewsletterBlog />
 
       {/* CTA contextual */}
-      <section className="bg-gt-card py-12 md:py-16 border-t border-gt-border">
+      <section className="bg-gt-bg py-12 md:py-16 border-t border-gt-border">
         <div className="container-narrow text-center">
           <h2 className="text-2xl md:text-3xl text-gt-text mb-4">
             Pronto pra rodar essa rota?
@@ -318,7 +318,7 @@ export default async function PostPage({ params }: PageProps) {
 
 
       {related.length > 0 && (
-        <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+        <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
           <div className="container-wide">
             <h2 className="text-2xl md:text-3xl text-gt-text mb-10">
               Artigos relacionados

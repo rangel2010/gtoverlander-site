@@ -148,7 +148,7 @@ export default function WaypointsPage() {
         bg="card"
       />
 
-      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
             Como o radar funciona

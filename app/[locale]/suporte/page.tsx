@@ -123,7 +123,7 @@ export default async function SuportePage({
         </div>
       </section>
 
-      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">
             {t('ticket.label')}

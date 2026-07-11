@@ -147,7 +147,7 @@ export default async function PlanosPage({
         </div>
       </section>
 
-      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <ScrollReveal>
             <div className="max-w-2xl mb-10">
@@ -212,7 +212,7 @@ export default async function PlanosPage({
 
       <FeatureFaq items={faq} />
 
-      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow text-center">
           <ScrollReveal>
             <h2 className="text-3xl md:text-4xl text-gt-text mb-4">{t('cta.titulo')}</h2>

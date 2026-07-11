@@ -6,7 +6,6 @@ import { ComoFunciona } from '@/components/sections/como-funciona';
 import { PilarPlaneje } from '@/components/sections/pilar-planeje';
 import { PilarEncontre } from '@/components/sections/pilar-encontre';
 import { PilarComunidade } from '@/components/sections/pilar-comunidade';
-import { PorqueGt } from '@/components/sections/porque-gt';
 import { BlogTeaser } from '@/components/sections/blog-teaser';
 import { EmpresasTeaser } from '@/components/sections/empresas-teaser';
 import { CtaFinal } from '@/components/sections/cta-final';
@@ -35,10 +34,5 @@ export default function HomePage({
       <PilarPlaneje />
       <PilarEncontre />
       <PilarComunidade />
-      <PorqueGt />
       <BlogTeaser locale={(locale === 'en' || locale === 'es') ? locale : 'pt'} />
-      <EmpresasTeaser />
-      <CtaFinal />
-    </>
-  );
-}
+      <EmpresasTease

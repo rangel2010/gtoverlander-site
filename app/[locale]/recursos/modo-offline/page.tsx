@@ -193,7 +193,7 @@ export default function ModoOfflinePage() {
         </div>
       </section>
 
-      <section className="bg-gt-bg py-12 md:py-14 border-t border-gt-border">
+      <section className="bg-gt-card py-12 md:py-14 border-t border-gt-border">
         <div className="container-narrow">
           <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">
             Diferencial
