@@ -35,4 +35,8 @@ export default function HomePage({
       <PilarEncontre />
       <PilarComunidade />
       <BlogTeaser locale={(locale === 'en' || locale === 'es') ? locale : 'pt'} />
-      <EmpresasTease
+      <EmpresasTeaser />
+      <CtaFinal />
+    </>
+  );
+}
