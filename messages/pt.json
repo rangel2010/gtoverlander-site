@@ -125,6 +125,43 @@
       "titulo": "Ouça o GT Overlander no Spotify",
       "desc": "Destinos, preparação e vida na estrada em formato de conversa. Novos episódios toda semana.",
       "cta": "Ouvir no Spotify →"
+    },
+    "pilarPlaneje": {
+      "label": "01 — Planeje",
+      "titulo": "Planeje o caminho",
+      "desc": "Descreve a viagem em linguagem natural e a IA monta o trajeto — pelas estradas certas, nas regiões certas, no ritmo certo para um overlander.",
+      "f1": "Roteiro gerado em conversa, sem formulários",
+      "f2": "Edição e ajuste livres no mapa",
+      "f3": "Exportação com 1 toque pro Google Maps",
+      "f4": "CarPlay e Android Auto no painel do carro",
+      "cta": "Ver como a IA funciona →",
+      "imgAlt": "Chat com a IA do GT Overlander gerando um roteiro e exibindo a rota no mapa"
+    },
+    "pilarEncontre": {
+      "label": "02 — Encontre",
+      "titulo": "Encontre o que precisa",
+      "desc": "Mais de 4 milhões de pontos em 209 países. Postos, campings, hospedagem, oficinas e atrações — onde quer que sua rota passe.",
+      "f1": "Radar de proximidade em tempo real",
+      "f2": "16 categorias e 10 filtros sobrepostos",
+      "f3": "Funciona offline — sem sinal, sem desespero",
+      "f4": "Validado e atualizado pela comunidade",
+      "cta": "Explorar a base de waypoints →",
+      "imgAlt": "Radar de waypoints do GT Overlander mostrando pontos de apoio próximos com filtros ativos"
+    },
+    "pilarComunidade": {
+      "label": "03 — Comunidade",
+      "titulo": "Viaje com a comunidade",
+      "desc": "Overlanders que se ajudam, compartilham rotas e mantêm a base de pontos viva.",
+      "badge": "Em breve",
+      "c1titulo": "GT Social",
+      "c1desc": "Siga overlanders, descubra rotas testadas e copie roteiros completos com 1 toque.",
+      "c2titulo": "Help Overlander",
+      "c2desc": "Pane na estrada? Sinaliza no app e quem está perto aparece pra ajudar.",
+      "c3titulo": "GT Explorer",
+      "c3desc": "Cada km vira XP, conquistas e ranking regional. Quanto mais você roda, mais sobe.",
+      "c4titulo": "GT Desapega",
+      "c4desc": "Compre, venda e troque equipamento com quem realmente viaja.",
+      "rodape": "Beta fechado — chegam em breve para todos os usuários."
     }
   },
   "sobre": {

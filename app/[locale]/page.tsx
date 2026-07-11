@@ -3,8 +3,9 @@ import { setRequestLocale } from 'next-intl/server';
 import { getPageAlternates } from '@/lib/seo';
 import { Hero } from '@/components/sections/hero';
 import { ComoFunciona } from '@/components/sections/como-funciona';
-import { RecursosDisponiveis } from '@/components/sections/recursos-disponiveis';
-import { Numeros } from '@/components/sections/numeros';
+import { PilarPlaneje } from '@/components/sections/pilar-planeje';
+import { PilarEncontre } from '@/components/sections/pilar-encontre';
+import { PilarComunidade } from '@/components/sections/pilar-comunidade';
 import { PorqueGt } from '@/components/sections/porque-gt';
 import { BlogTeaser } from '@/components/sections/blog-teaser';
 import { EmpresasTeaser } from '@/components/sections/empresas-teaser';
@@ -31,8 +32,9 @@ export default function HomePage({
     <>
       <Hero />
       <ComoFunciona />
-      <RecursosDisponiveis />
-      <Numeros />
+      <PilarPlaneje />
+      <PilarEncontre />
+      <PilarComunidade />
       <PorqueGt />
       <BlogTeaser locale={(locale === 'en' || locale === 'es') ? locale : 'pt'} />
       <EmpresasTeaser />

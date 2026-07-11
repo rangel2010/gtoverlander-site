@@ -125,6 +125,43 @@
       "titulo": "Escucha GT Overlander en Spotify",
       "desc": "Destinos, preparación y vida en la carretera en formato de conversación. Nuevos episodios cada semana.",
       "cta": "Escuchar en Spotify →"
+    },
+    "pilarPlaneje": {
+      "label": "01 — Planifica",
+      "titulo": "Planifica el camino",
+      "desc": "Describe el viaje en lenguaje natural y la IA traza la ruta — por las carreteras correctas, en las regiones correctas, al ritmo justo para un overlander.",
+      "f1": "Ruta generada en conversación, sin formularios",
+      "f2": "Edición y ajuste libres en el mapa",
+      "f3": "Exportación con 1 toque a Google Maps",
+      "f4": "CarPlay y Android Auto en el tablero",
+      "cta": "Ver cómo funciona la IA →",
+      "imgAlt": "Chat con la IA de GT Overlander generando un itinerario y mostrando la ruta en el mapa"
+    },
+    "pilarEncontre": {
+      "label": "02 — Encuentra",
+      "titulo": "Encuentra lo que necesitas",
+      "desc": "Más de 4 millones de puntos en 209 países. Combustible, campings, alojamiento, talleres y atracciones — donde sea que pase tu ruta.",
+      "f1": "Radar de proximidad en tiempo real",
+      "f2": "16 categorías y 10 filtros superpuestos",
+      "f3": "Funciona offline — sin señal, sin pánico",
+      "f4": "Validado y actualizado por la comunidad",
+      "cta": "Explorar la base de waypoints →",
+      "imgAlt": "Radar de waypoints de GT Overlander mostrando puntos de apoyo cercanos con filtros activos"
+    },
+    "pilarComunidade": {
+      "label": "03 — Comunidad",
+      "titulo": "Viaja con la comunidad",
+      "desc": "Overlanders que se ayudan, comparten rutas y mantienen la base de puntos viva.",
+      "badge": "Próximamente",
+      "c1titulo": "GT Social",
+      "c1desc": "Sigue overlanders, descubre rutas probadas y copia itinerarios completos con 1 toque.",
+      "c2titulo": "Help Overlander",
+      "c2desc": "¿Avería en la ruta? Señaliza en la app y aparecen quienes están cerca para ayudar.",
+      "c3titulo": "GT Explorer",
+      "c3desc": "Cada km se convierte en XP, logros y ranking regional. Cuanto más ruedas, más subes.",
+      "c4titulo": "GT Desapega",
+      "c4desc": "Compra, vende e intercambia equipamiento con quienes realmente viajan.",
+      "rodape": "Beta cerrado — llegan pronto a todos los usuarios."
     }
   },
   "sobre": {

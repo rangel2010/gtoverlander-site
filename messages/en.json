@@ -125,6 +125,43 @@
       "titulo": "Listen to GT Overlander on Spotify",
       "desc": "Destinations, preparation and life on the road in conversation format. New episodes every week.",
       "cta": "Listen on Spotify →"
+    },
+    "pilarPlaneje": {
+      "label": "01 — Plan",
+      "titulo": "Plan the journey",
+      "desc": "Describe your trip in natural language and the AI builds the route — along the right roads, through the right regions, at the right pace for an overlander.",
+      "f1": "Route generated in conversation, no forms",
+      "f2": "Free editing and adjustment on the map",
+      "f3": "One-tap export to Google Maps",
+      "f4": "CarPlay and Android Auto on your dashboard",
+      "cta": "See how the AI works →",
+      "imgAlt": "GT Overlander AI chat generating an itinerary and showing the route on the map"
+    },
+    "pilarEncontre": {
+      "label": "02 — Find",
+      "titulo": "Find what you need",
+      "desc": "Over 4 million points across 209 countries. Fuel, campsites, accommodation, workshops and attractions — wherever your route takes you.",
+      "f1": "Real-time proximity radar",
+      "f2": "16 categories and 10 overlapping filters",
+      "f3": "Works offline — no signal, no panic",
+      "f4": "Validated and updated by the community",
+      "cta": "Explore the waypoint database →",
+      "imgAlt": "GT Overlander waypoint radar showing nearby support points with active filters"
+    },
+    "pilarComunidade": {
+      "label": "03 — Community",
+      "titulo": "Travel with the community",
+      "desc": "Overlanders who help each other, share routes and keep the waypoint database alive.",
+      "badge": "Coming soon",
+      "c1titulo": "GT Social",
+      "c1desc": "Follow overlanders, discover tested routes and copy complete itineraries with 1 tap.",
+      "c2titulo": "Help Overlander",
+      "c2desc": "Breakdown on the road? Signal in the app and nearby helpers appear.",
+      "c3titulo": "GT Explorer",
+      "c3desc": "Every km becomes XP, achievements and regional ranking. The more you ride, the higher you climb.",
+      "c4titulo": "GT Desapega",
+      "c4desc": "Buy, sell and trade gear with people who actually travel.",
+      "rodape": "Closed beta — coming soon to all users."
     }
   },
   "sobre": {
