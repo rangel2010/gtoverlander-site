@@ -3,8 +3,8 @@ import { getPostBySlug } from '@/lib/sanity/queries';
 import { PILLAR_TITLES } from '@/lib/sanity/types';
 
 // OG image gerada dinamicamente pra cada post do blog.
-// Aparece quando alguém compartilha o link no WhatsApp, X, LinkedIn, etc.
-// 1200x630 = padrão do Open Graph
+// Aparece quando alguem compartilha o link no WhatsApp, X, LinkedIn, etc.
+// 1200x630 = padrao do Open Graph
 
 export const runtime = 'edge';
 export const alt = 'GT Overlander';
@@ -14,9 +14,12 @@ export const contentType = 'image/png';
 export default async function OgImage({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; locale: string };
 }) {
-  const post = await getPostBySlug(params.slug);
+  const post = await getPostBySlug(
+    params.slug,
+    (params.locale ?? 'pt') as import('@/lib/sanity/types').BlogLocale
+  );
   const title = post?.title ?? 'GT Overlander';
   const category = post?.category ? PILLAR_TITLES[post.category] : 'Blog';
   const author = post?.authorName ?? 'GT Overlander';
