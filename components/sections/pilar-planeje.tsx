@@ -58,4 +58,10 @@ export async function PilarPlaneje() {
                 </div>
               </div>
             </div>
-          </Scro
+          </ScrollReveal>
+
+        </div>
+      </div>
+    </section>
+  );
+}
