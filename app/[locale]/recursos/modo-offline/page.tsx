@@ -35,13 +35,14 @@ const oQueFaz = [
     desc: 'Encontrou camping novo no meio do nada? Cadastra ali, valida no momento. Sincroniza com a base assim que conectar.',
   },
   {
-    titulo: 'Editar e usar rotas',
-    desc: 'Adiciona paradas, reordena, exporta pra navegação local. Sincroniza assinatura quando voltar à conexão.',
+    titulo: 'Consultar rotas salvas',
+    desc: 'Visualize suas rotas geradas, paradas e pontos marcados sem precisar de sinal. Edição e exportação de rotas requerem conexão.',
   },
 ];
 
 const precisaInternet = [
   'Gerar rota nova com a IA (IA roda no servidor)',
+  'Editar paradas ou reordenar uma rota existente',
   'Help Overlander (depende de notificação em tempo real)',
   'GT Desapega (anúncios, contato com vendedor)',
   'Atualização automática da base (em wifi)',
@@ -67,8 +68,6 @@ const planos = [
     items: [
       'Baixe qualquer país ou continente que precisar',
       'Atualização automática quando conectar wifi',
-      'Mapa offline expandido com mais detalhe geográfico',
-      'Roteamento offline em rotas previamente baixadas',
       'Sem limite de regiões simultâneas armazenadas',
     ],
   },
@@ -89,7 +88,7 @@ const faq = [
   },
   {
     q: 'O mapa offline é detalhado?',
-    a: 'Free tem mapa básico do país escolhido (suficiente pra navegação geográfica). Plus/Pro têm mapa expandido com mais detalhe topográfico, vias secundárias, pontos de referência. Você sente a diferença em região remota.',
+    a: 'O mapa de visualização de waypoints é o mesmo em todos os planos. A diferença está em quantas regiões você pode baixar — Free cobre o país do dispositivo, Plus/Pro liberam qualquer país ou continente do mundo.',
   },
   {
     q: 'Como a base se atualiza?',
