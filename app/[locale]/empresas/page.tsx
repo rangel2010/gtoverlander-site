@@ -146,7 +146,7 @@ export default async function EmpresasPage({
                 <span className="text-base text-gt-text-muted font-sans">por mês</span>
               </div>
               <p className="text-sm text-gt-text-muted font-sans leading-relaxed mb-6 max-w-xl mx-auto">
-                Plano base inclui 1 ponto destacado, até 15 produtos no Desapega e 1 perfil profissional + 6 expedições agendadas em Serviços. Quem entrar na lista de espera agora garante esse valor de lançamento quando a Conta Business abrir. Cancele a qualquer momento, sem multa.{' '}
+                Plano base inclui 1 ponto destacado, até 15 produtos no Desapega e 1 perfil profissional + 6 expedições agendadas em Serviços. Quem entrar na lista de espera agora tem prioridade de ativação e garante esse valor quando a Conta Business abrir. Cancele a qualquer momento, sem multa.{' '}
                 <a href="/termos/conta-business" className="text-gt-orange hover:underline">Ver política completa</a>.
               </p>
               <Button href="#cadastro">{t('precos.ctaListaEspera')}</Button>

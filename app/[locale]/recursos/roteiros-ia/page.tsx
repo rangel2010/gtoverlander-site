@@ -58,7 +58,7 @@ const passos = [
 const faq = [
   {
     q: 'A IA erra alguma vez?',
-    a: 'Acontece — IA generativa pode sugerir uma parada que não existe mais ou não está aberta. Por isso o passo 3 é parte do fluxo: você revisa e ajusta antes de partir. A base própria de waypoints do GT minimiza esse risco porque os pontos são curados.',
+    a: 'Acontece — IA generativa pode sugerir uma parada que não existe mais ou não está aberta. Por isso o passo 3 é parte do fluxo: você revisa e ajusta antes de partir. A base de waypoints do GT minimiza esse risco porque os pontos são curados.',
   },
   {
     q: 'Posso editar paradas depois que a rota tá pronta?',

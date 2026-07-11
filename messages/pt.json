@@ -178,7 +178,7 @@
       "p1d": "Help Overlander pra socorro na estrada, GT Social pra rede social entre viajantes, GT Explorer pra reputação e ranking, GT Desapega pra marketplace. Tudo já no ar — agora cresce com você.",
       "p2t": "Conta Business 3 frentes",
       "p2d": "POI físico, vendedor de produtos e serviços guiados de expedição numa só conta comercial. Disponível agora, com escalonamento por volume pra redes maiores.",
-      "p3t": "Modo Offline universal",
+      "p3t": "Modo Offline",
       "p3d": "Free baixa o país onde está com todas as categorias de waypoints; Plus e Pro liberam os 209 países do mundo.",
       "p4t": "Expansão internacional",
       "p4d": "A base de waypoints já cobre 209 países. Próximos passos: localização da interface, parcerias com guias regionais e canais comerciais multi-país."
@@ -281,7 +281,7 @@
       "pricing": "Inclui 1 ponto destacado e até 15 produtos no Desapega. Add-ons disponíveis pra mais pontos ou produtos. Cancele a qualquer momento.",
       "verTabela": "Ver tabela completa",
       "verPolitica": "Política",
-      "cta": "Cadastrar minha conta Business"
+      "cta": "Entrar na lista de espera"
     },
     "faq": {
       "q1": "Posso testar antes de assinar?",
@@ -453,22 +453,22 @@
       "b1d": "Apareça pra quem JÁ DECIDIU viajar pra sua região. Não é tráfego frio — é viajante no momento exato de planejar.",
       "b2t": "Destaque visual exclusivo",
       "b2d": "Caixinha colorida + ícone customizado no mapa, presença no Desapega, apresentação nas páginas de destinos.",
-      "b3t": "Self-service",
-      "b3d": "Cadastra seu negócio, ativa as frentes que fazem sentido pra você, e tá no ar. Sem ligação de vendas, sem contrato longo.",
+      "b3t": "Onboarding acompanhado",
+      "b3d": "Na fase inicial, acompanhamos você no cadastro e ativação. Sem ligação de vendas, sem contrato longo.",
       "b4t": "Cancele quando quiser",
       "b4d": "Mensal, sem multa, sem fidelidade. Se não trouxer resultado, você sai. Suas informações ficam com você."
     },
     "comoFunciona": {
       "titulo": "Como funciona",
-      "desc": "Self-service, em 4 passos. Sem ligação de vendedor, sem contrato longo.",
+      "desc": "Em 4 passos, com acompanhamento na fase inicial. Sem contrato longo.",
       "p1t": "Preenche o cadastro",
       "p1d": "Dados do negócio, frentes que vai usar, fotos e contato",
       "p2t": "GT valida",
       "p2d": "Conferimos as informações pra garantir qualidade e segurança da base",
-      "p3t": "Vai pro ar",
-      "p3d": "Aparece no mapa, no Desapega ou nos roteiros, conforme as frentes que ativou",
-      "p4t": "Acompanha métricas",
-      "p4d": "Visualizações, cliques, contatos — tudo medido no painel"
+      "p3t": "Entra na lista de espera",
+      "p3d": "Você recebe confirmação e fica na fila prioritária de ativação quando a Conta Business abrir",
+      "p4t": "Vai pro ar na abertura",
+      "p4d": "Aparece no mapa, no Desapega e nos roteiros conforme as frentes que escolheu — pronto pra receber viajantes"
     },
     "precos": {
       "labelLancamento": "Valor de lançamento · garantido pra lista de espera",
@@ -477,7 +477,7 @@
     "cadastro": {
       "label": "Cadastro",
       "titulo": "Conte sobre o seu negócio",
-      "desc": "Preenche os dados abaixo e a gente entra em contato em até 2 dias úteis pra ativar sua conta. Quanto mais detalhe, mais rápido."
+      "desc": "Preenche os dados abaixo e você entra na lista de espera. Assim que a Conta Business abrir, você é avisado primeiro e ativado com prioridade."
     }
   },
   "parcerias": {
