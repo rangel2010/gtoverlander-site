@@ -13,6 +13,7 @@ import {
 } from '@/lib/sanity/queries';
 import { urlForImage } from '@/lib/sanity/image';
 import { PILLAR_TITLES } from '@/lib/sanity/types';
+import { NewsletterBlog } from '@/components/sections/newsletter-blog';
 import {
   articleLd,
   breadcrumbLd,
@@ -312,6 +313,8 @@ export default async function PostPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      <NewsletterBlog />
 
       {related.length > 0 && (
         <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
