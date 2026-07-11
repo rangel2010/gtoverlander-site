@@ -296,6 +296,8 @@ export default async function PostPage({ params }: PageProps) {
         </div>
       </article>
 
+      <NewsletterBlog />
+
       {/* CTA contextual */}
       <section className="bg-gt-card py-12 md:py-16 border-t border-gt-border">
         <div className="container-narrow text-center">
@@ -314,7 +316,6 @@ export default async function PostPage({ params }: PageProps) {
         </div>
       </section>
 
-      <NewsletterBlog />
 
       {related.length > 0 && (
         <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">

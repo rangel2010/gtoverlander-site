@@ -11,6 +11,7 @@ import { sanityConfigured } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
 import { PILLAR_TITLES, type Pillar, type BlogLocale } from '@/lib/sanity/types';
 import { getPageAlternates } from '@/lib/seo';
+import { NewsletterCompact } from '@/components/sections/newsletter-compact';
 
 export async function generateMetadata({
   params: { locale },
@@ -76,6 +77,7 @@ export default async function BlogPage({
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans">
             {t('desc')}
           </p>
+          <NewsletterCompact />
         </div>
       </section>
 
