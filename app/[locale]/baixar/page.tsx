@@ -33,7 +33,7 @@ export default async function BaixarPage({
     <main className="bg-gt-bg min-h-screen">
 
       {/* Hero */}
-      <section className="bg-gt-bg-elevated border-b border-gt-border py-20 md:py-28">
+      <section className="bg-gt-card border-b border-gt-border py-20 md:py-28">
         <div className="container-wide max-w-3xl text-center">
           <ScrollReveal>
             <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-5 font-sans">
