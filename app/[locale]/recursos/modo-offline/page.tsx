@@ -19,12 +19,8 @@ export async function generateMetadata({
 
 const oQueFaz = [
   {
-    titulo: 'Abrir o app e ver rotas salvas',
-    desc: 'Suas rotas geradas, paradas, observações e fotos — tudo carrega sem sinal.',
-  },
-  {
     titulo: 'Radar de waypoints',
-    desc: 'GPS funciona offline. O Radar mostra postos, hospedagem, oficinas e atrações ao redor a partir da base baixada. Ao escolher um ponto, você pode abri-lo no Google Maps para navegar até ele.',
+    desc: 'GPS funciona offline. O Radar mostra postos, hospedagem, oficinas e atrações ao redor a partir da base baixada. Ao escolher um ponto, você pode abri-lo no Google Maps com a localização já definida. Para navegar sem internet, é necessário ter baixado previamente a região no próprio Google Maps.',
   },
   {
     titulo: 'Informações disponíveis de cada ponto',
@@ -44,7 +40,7 @@ const precisaInternet = [
   'Gerar rota nova com a IA (IA roda no servidor)',
   'Editar, adicionar ou reordenar paradas de uma rota',
   'Exportar rota para o Google Maps',
-  'Baixar ou atualizar regiões pela primeira vez',
+  'Baixar ou atualizar mapas e dados offline',
   'Sincronizar cadastros e validações pendentes',
   'Help Overlander (notificação em tempo real)',
   'GT Desapega (anúncios e contato com vendedor)',
@@ -57,20 +53,20 @@ const planos = [
     badge: 'Incluso pra todos',
     titulo: '1 país com todas as categorias',
     items: [
-      'País identificado pelo app no momento do download na loja — sem troca no Free',
+      'O país incluído é definido conforme a loja em que o app foi baixado e não pode ser trocado no Free',
       'Todas as categorias de waypoints (postos, hospedagem, mecânica, camping, atração, etc)',
       'Mapa offline da região do país escolhido',
-      'Atualização automática quando conectar wifi',
+      'Sincronização automática das atualizações',
       'Validação e cadastro de pontos offline',
     ],
   },
   {
     nome: 'Plus + Pro',
     badge: 'Pra quem cruza fronteira',
-    titulo: 'Todos os 209 países do mundo',
+    titulo: 'Os 209 países e territórios cobertos pela base GT',
     items: [
       'Baixe qualquer país ou continente que precisar',
-      'Atualização automática quando conectar wifi',
+      'Sincronização automática das atualizações',
       'Sem limite de regiões definido pelo GT — sujeito ao espaço disponível no aparelho',
     ],
   },
@@ -79,11 +75,11 @@ const planos = [
 const faq = [
   {
     q: 'Como ativo o Modo Offline?',
-    a: 'Direto no app. Você escolhe as regiões ou países que vai usar, o GT baixa a base de waypoints e mapas dessas áreas, e tudo fica acessível mesmo sem sinal. Atualiza sozinho quando você reconecta no wifi.',
+    a: 'Direto no app. Você escolhe as regiões ou países que vai usar, o GT baixa a base de waypoints e mapas dessas áreas, e tudo fica acessível mesmo sem sinal. Depois do primeiro download, o app sincroniza as atualizações automaticamente quando houver conexão.',
   },
   {
     q: 'Por que o Free tem 1 país e não o mundo todo?',
-    a: 'Custo de tráfego. Baixar a base de waypoints de 209 países pesa. Pra manter o Free sustentável e Plus/Pro relevantes, separamos: Free baixa o país onde mora (cobre 95% das viagens domésticas), pagantes liberam o resto do mundo.',
+    a: 'Para manter o plano gratuito sustentável, o Free inclui um país. Esse país é definido conforme a loja em que o app foi baixado e não pode ser trocado no plano Free. Plus e Pro permitem baixar qualquer país ou região disponível na base GT.',
   },
   {
     q: 'Posso validar e cadastrar pontos offline?',
