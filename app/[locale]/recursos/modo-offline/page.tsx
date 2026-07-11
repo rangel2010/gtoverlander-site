@@ -90,6 +90,10 @@ const faq = [
     a: 'O mapa de visualização de waypoints é o mesmo em todos os planos. A diferença está em quantas regiões você pode baixar — Free cobre o país do dispositivo, Plus/Pro liberam qualquer país ou continente do mundo.',
   },
   {
+    q: 'Como garantir que a navegação funcione sem sinal?',
+    a: 'Você precisa baixar duas coisas antes de entrar em área sem cobertura: o mapa da região no GT (pelo Modo Offline) e o mapa da mesma região no próprio Google Maps. O GT encontra os waypoints offline e abre o ponto com a localização já definida — mas quem faz a navegação é o Maps. Se o Maps não tiver o mapa baixado, ele abre em branco. Os dois downloads juntos garantem a experiência completa.',
+  },
+  {
     q: 'Como a base se atualiza?',
     a: 'A base de waypoints é atualizada continuamente pelo GT. O app sincroniza o cache do usuário automaticamente em segundo plano, sem que você precise fazer nada. Quando estiver offline, os dados disponíveis são os da última sincronização.',
   },
