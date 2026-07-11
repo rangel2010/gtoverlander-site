@@ -24,11 +24,11 @@ const oQueFaz = [
   },
   {
     titulo: 'Radar de waypoints',
-    desc: 'GPS funciona offline. O radar mostra postos, hospedagem, oficinas e atrações ao seu redor a partir da base baixada.',
+    desc: 'GPS funciona offline. O Radar mostra postos, hospedagem, oficinas e atrações ao redor a partir da base baixada. Ao escolher um ponto, você pode abri-lo no Google Maps para navegar até ele.',
   },
   {
-    titulo: 'Detalhes completos de cada ponto',
-    desc: 'Nome, categoria, facilidades, fotos, contato. O que outros overlanders validaram fica disponível offline também.',
+    titulo: 'Informações disponíveis de cada ponto',
+    desc: 'Nome, categoria, localização e atributos cadastrados ficam acessíveis sem sinal. O nível de detalhe varia conforme os dados de cada ponto.',
   },
   {
     titulo: 'Validar e cadastrar pontos',
@@ -42,10 +42,13 @@ const oQueFaz = [
 
 const precisaInternet = [
   'Gerar rota nova com a IA (IA roda no servidor)',
-  'Editar paradas ou reordenar uma rota existente',
-  'Help Overlander (depende de notificação em tempo real)',
-  'GT Desapega (anúncios, contato com vendedor)',
-  'Atualização automática da base (em wifi)',
+  'Editar, adicionar ou reordenar paradas de uma rota',
+  'Exportar rota para o Google Maps',
+  'Baixar ou atualizar regiões pela primeira vez',
+  'Sincronizar cadastros e validações pendentes',
+  'Help Overlander (notificação em tempo real)',
+  'GT Desapega (anúncios e contato com vendedor)',
+  'Recursos em tempo real do GT Social',
 ];
 
 const planos = [
@@ -54,7 +57,7 @@ const planos = [
     badge: 'Incluso pra todos',
     titulo: '1 país com todas as categorias',
     items: [
-      'Detecta automaticamente o país do dispositivo',
+      'País identificado pelo app no momento do download na loja — sem troca no Free',
       'Todas as categorias de waypoints (postos, hospedagem, mecânica, camping, atração, etc)',
       'Mapa offline da região do país escolhido',
       'Atualização automática quando conectar wifi',
@@ -68,7 +71,7 @@ const planos = [
     items: [
       'Baixe qualquer país ou continente que precisar',
       'Atualização automática quando conectar wifi',
-      'Sem limite de regiões simultâneas armazenadas',
+      'Sem limite de regiões definido pelo GT — sujeito ao espaço disponível no aparelho',
     ],
   },
 ];
@@ -92,7 +95,7 @@ const faq = [
   },
   {
     q: 'Como a base se atualiza?',
-    a: 'Automaticamente em wifi, em qualquer plano. O app detecta wifi disponível e atualiza a base em background, sem consumir dados móveis. Você não precisa se preocupar — fica sempre atualizada.',
+    a: 'A base de waypoints é atualizada continuamente pelo GT. O app sincroniza o cache do usuário automaticamente em segundo plano, sem que você precise fazer nada. Quando estiver offline, os dados disponíveis são os da última sincronização.',
   },
 ];
 
@@ -101,8 +104,8 @@ export default function ModoOfflinePage() {
     <>
       <FeatureHero
         kicker="Disponível agora"
-        title="GT roda em qualquer canto do mundo, sem depender de sinal"
-        subline="Free baixa o país onde você está com todas as categorias. Plus e Pro liberam os 209 países do mundo. Validação, cadastro e atualização automática em wifi funcionam em todos os planos."
+        title="O essencial da viagem continua disponível mesmo sem sinal"
+        subline="Baixe previamente a base de waypoints da região. Depois, consulte rotas salvas e encontre pontos ao redor com o Radar — mesmo sem conexão. Free cobre um país; Plus e Pro liberam qualquer país ou continente."
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
@@ -196,7 +199,7 @@ export default function ModoOfflinePage() {
             Diferencial
           </p>
           <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
-            Apps de mapa que dependem do Google ficam mudos quando o sinal cai. Modo Offline do GT mantém a base de waypoints disponível, com toda a riqueza de categorias e validação comunitária. Continua útil onde outros viram tela em branco.
+            Mesmo sem sinal, o GT mantém disponíveis as rotas salvas e a base de waypoints baixada para aquela região. Você continua encontrando postos, campings, hospedagens, oficinas e pontos validados pela comunidade — sem precisar de internet pra isso.
           </p>
         </div>
       </section>
