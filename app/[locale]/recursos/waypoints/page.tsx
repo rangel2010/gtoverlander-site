@@ -13,7 +13,7 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   return {
-    title: 'Waypoints próprios',
+    title: 'Base de Waypoints',
     description:
     'Mais de 4 milhões de waypoints em 209 países. São 16 categorias organizadas em 10 filtros de uso. Base curada pelo GT e mantida viva pela comunidade — valida e cadastra direto do app.',
     alternates: getPageAlternates(locale, '/recursos/waypoints'),

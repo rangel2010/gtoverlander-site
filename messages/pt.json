@@ -196,7 +196,7 @@
       "saibaMais": "Saiba mais →",
       "r1t": "Roteiros com IA",
       "r1d": "Trajeto montado pela IA em uma conversa — estradas, cidades e destino, pronto em segundos.",
-      "r2t": "Waypoints próprios",
+      "r2t": "Base de Waypoints",
       "r2d": "Mais de 4 milhões de pontos em 209 países — postos, campings, hospedagem, atrações, oficinas.",
       "r3t": "Modo Offline",
       "r3d": "Escolha as regiões da sua viagem. O GT roda em qualquer canto do mundo, mesmo sem sinal."
@@ -241,7 +241,7 @@
       "f3v0": "1 por dia",
       "f3v1": "5 por dia",
       "f3v2": "ilimitado",
-      "f4l": "Waypoints próprios — base mundial",
+      "f4l": "Base de Waypoints — mundial",
       "f5l": "CarPlay / Android Auto",
       "f6l": "Validar e cadastrar waypoints",
       "f7l": "Modo Offline — país do dispositivo",
@@ -279,7 +279,7 @@
     },
     "faq": {
       "q1": "Posso testar antes de assinar?",
-      "a1": "O plano Free não é trial — é grátis pra sempre. Você usa o GT com a IA padrão, todos os waypoints próprios disponíveis, CarPlay e Android Auto, sem deadline. Quando quiser mais densidade, sobe pra Plus ou Pro.",
+      "a1": "O plano Free não é trial — é grátis pra sempre. Você usa o GT com a IA padrão, todos os waypoints disponíveis, CarPlay e Android Auto, sem deadline. Quando quiser mais densidade, sobe pra Plus ou Pro.",
       "q2": "Posso cancelar a qualquer momento?",
       "a2": "Sim. Cancele quando quiser, sem multa. O plano segue ativo até o fim do ciclo já pago e depois volta automaticamente pro Free.",
       "q3": "Qual a diferença entre mensal e anual?",
