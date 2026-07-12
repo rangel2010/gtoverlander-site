@@ -41,7 +41,7 @@ const plans: Plan[] = [
     desc: 'Pra quem não quer pensar em limites. Exportações de rotas e Radar de Waypoints ilimitados, IA avançada e suporte prioritário.',
     cta: { label: 'Assinar Pro', href: '/baixar?plan=pro' },
     highlight: true,
-    badge: 'Mais popular',
+    badge: 'Recomendado',
   },
 ];
 

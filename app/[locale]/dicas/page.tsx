@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'Dicas em Video',
   description:
     'Shorts com dicas praticas de overlanding - roteiros, preparacao de veiculo, vida na estrada e tudo que voce precisa saber antes de partir.',
+  alternates: {
+    canonical: `${BASE_URL}/dicas`,
+  },
   openGraph: {
     title: 'Dicas em Video - GT Overlander',
     description: 'Dicas rapidas de overlanding em video. Roteiros, preparacao, vida na estrada.',
