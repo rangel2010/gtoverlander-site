@@ -107,6 +107,7 @@ export function productPlansLd() {
     name: 'GT Overlander — Assinatura',
     description:
       'Planos de assinatura do GT Overlander. Free pra começar, Plus pra quem viaja com frequência, Pro pra quem não para.',
+    image: `${BASE_URL}/opengraph-image.png`,
     brand: { '@type': 'Brand', name: ORG_NAME },
     offers: [
       {
