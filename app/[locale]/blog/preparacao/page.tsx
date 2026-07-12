@@ -12,6 +12,7 @@ export async function generateMetadata({
     title: 'Preparação & Planejamento',
     description: PILLAR_DESCRIPTIONS.preparacao.slice(0, 160),
     alternates: getPageAlternates(locale, '/blog/preparacao'),
+    ...(locale !== 'pt' && { robots: { index: false, follow: false } }),
   };
 }
 

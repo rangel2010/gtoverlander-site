@@ -12,6 +12,7 @@ export async function generateMetadata({
     title: 'Destinos & Roteiros',
     description: PILLAR_DESCRIPTIONS.destinos.slice(0, 160),
     alternates: getPageAlternates(locale, '/blog/destinos'),
+    ...(locale !== 'pt' && { robots: { index: false, follow: false } }),
   };
 }
 

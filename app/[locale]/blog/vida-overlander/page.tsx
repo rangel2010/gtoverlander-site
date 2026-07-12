@@ -12,6 +12,7 @@ export async function generateMetadata({
     title: 'Vida Overlander',
     description: PILLAR_DESCRIPTIONS['vida-overlander'].slice(0, 160),
     alternates: getPageAlternates(locale, '/blog/vida-overlander'),
+    ...(locale !== 'pt' && { robots: { index: false, follow: false } }),
   };
 }
 
