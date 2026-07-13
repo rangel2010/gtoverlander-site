@@ -301,7 +301,11 @@
       "pricing": "Inclui 1 ponto destacado e até 15 produtos no Desapega. Add-ons disponíveis pra mais pontos ou produtos. Cancele a qualquer momento.",
       "verTabela": "Ver tabela completa",
       "verPolitica": "Política",
-      "cta": "Entrar na lista de espera"
+      "cta": "Entrar na lista de espera",
+      "pricing_from": "De",
+      "pricing_by": "por",
+      "pricing_starting": "a partir de",
+      "pricing_per_month": "por mês"
     },
     "faq": {
       "q1": "Posso testar antes de assinar?",
@@ -321,6 +325,33 @@
       "titulo": "Comece grátis e suba quando precisar",
       "desc": "Sem multa de cancelamento. Suas rotas ficam guardadas mesmo se você descer de plano.",
       "ctaFalar": "Falar com a gente"
+    },
+    "cards": {
+      "billing_mensal": "Mensal",
+      "billing_anual": "Anual",
+      "period_forever": "pra sempre",
+      "period_year": "por ano",
+      "period_month": "por mês",
+      "annual_from": "De",
+      "annual_by": "por",
+      "annual_note": "Equivale a {price} por mês",
+      "savings": "Economize {pct}% em relação ao mensal",
+      "badge_recomendado": "Recomendado",
+      "footer": "Cancele a qualquer momento. Sem multa. Suas rotas ficam guardadas mesmo se você descer de plano.",
+      "plans": {
+        "free": {
+          "desc": "Pra começar a explorar. Crie quantas rotas quiser e exporte 1 para navegação a cada 90 dias. Radar 1 vez por dia. Sem prazo pra acabar.",
+          "cta": "Começar grátis"
+        },
+        "plus": {
+          "desc": "Pra quem viaja com frequência. Crie quantas rotas quiser, exporte até 2 por mês para navegação e consulte o Radar até 5 vezes por dia. Inclui IA avançada e Modo Offline internacional.",
+          "cta": "Assinar Plus"
+        },
+        "pro": {
+          "desc": "Pra quem não quer pensar em limites. Exportações de rotas e Radar de Waypoints ilimitados, IA avançada e suporte prioritário.",
+          "cta": "Assinar Pro"
+        }
+      }
     }
   },
   "contato": {

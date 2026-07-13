@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Button } from '../ui/button';
 import { PRODUCT, formatPrice, annualSavingsPct } from '@/lib/product-config';
 
@@ -8,12 +9,12 @@ interface Plan {
   name: string;
   monthlyPrice: number;
   annualPrice: number;
-  /** Preço anual de tabela ("cheio") — quando definido, aparece riscado acima do preço promocional */
   annualOriginalPrice?: number;
-  desc: string;
-  cta: { label: string; href: string };
+  descKey: 'free' | 'plus' | 'pro';
+  ctaKey: 'free' | 'plus' | 'pro';
+  href: string;
   highlight: boolean;
-  badge?: string;
+  badge?: boolean;
 }
 
 const plans: Plan[] = [
@@ -21,8 +22,9 @@ const plans: Plan[] = [
     name: 'Free',
     monthlyPrice: PRODUCT.plans.free.monthlyPrice,
     annualPrice: PRODUCT.plans.free.annualPrice,
-    desc: 'Pra começar a explorar. Crie quantas rotas quiser e exporte 1 para navegação a cada 90 dias. Radar 1 vez por dia. Sem prazo pra acabar.',
-    cta: { label: 'Começar grátis', href: '/baixar' },
+    descKey: 'free',
+    ctaKey: 'free',
+    href: '/baixar',
     highlight: false,
   },
   {
@@ -30,8 +32,9 @@ const plans: Plan[] = [
     monthlyPrice: PRODUCT.plans.plus.monthlyPrice,
     annualPrice: PRODUCT.plans.plus.annualPrice,
     annualOriginalPrice: PRODUCT.plans.plus.annualOriginalPrice,
-    desc: 'Pra quem viaja com frequência. Crie quantas rotas quiser, exporte até 2 por mês para navegação e consulte o Radar até 5 vezes por dia. Inclui IA avançada e Modo Offline internacional.',
-    cta: { label: 'Assinar Plus', href: '/baixar?plan=plus' },
+    descKey: 'plus',
+    ctaKey: 'plus',
+    href: '/baixar?plan=plus',
     highlight: false,
   },
   {
@@ -39,14 +42,16 @@ const plans: Plan[] = [
     monthlyPrice: PRODUCT.plans.pro.monthlyPrice,
     annualPrice: PRODUCT.plans.pro.annualPrice,
     annualOriginalPrice: PRODUCT.plans.pro.annualOriginalPrice,
-    desc: 'Pra quem não quer pensar em limites. Exportações de rotas e Radar de Waypoints ilimitados, IA avançada e suporte prioritário.',
-    cta: { label: 'Assinar Pro', href: '/baixar?plan=pro' },
+    descKey: 'pro',
+    ctaKey: 'pro',
+    href: '/baixar?plan=pro',
     highlight: true,
-    badge: 'Recomendado',
+    badge: true,
   },
 ];
 
 export function PlansCards() {
+  const t = useTranslations('planos.cards');
   const [billing, setBilling] = useState<'mensal' | 'anual'>('anual');
 
   return (
@@ -55,7 +60,7 @@ export function PlansCards() {
       <div className="flex justify-center mb-10">
         <div
           role="tablist"
-          aria-label="Período de cobrança"
+          aria-label="Billing period"
           className="inline-flex bg-gt-card rounded-full p-1 border border-gt-border"
         >
           <button
@@ -69,7 +74,7 @@ export function PlansCards() {
                 : 'text-gt-text-muted hover:text-gt-text'
             }`}
           >
-            Mensal
+            {t('billing_mensal')}
           </button>
           <button
             type="button"
@@ -82,7 +87,7 @@ export function PlansCards() {
                 : 'text-gt-text-muted hover:text-gt-text'
             }`}
           >
-            Anual
+            {t('billing_anual')}
             <span className="text-[10px] uppercase tracking-wider bg-gt-orange text-white px-2 py-0.5 rounded">
               −58%
             </span>
@@ -96,14 +101,16 @@ export function PlansCards() {
           const isAnnual = billing === 'anual';
           const isPaid = p.monthlyPrice > 0;
 
-          // Anual: valor cheio anual = número grande (anchor); equivalência mensal = pequeno embaixo
-          // Mensal: valor mensal = número grande
           const displayPrice = isAnnual && isPaid ? p.annualPrice : p.monthlyPrice;
-          const periodLabel = !isPaid ? 'pra sempre' : isAnnual ? 'por ano' : 'por mês';
+          const periodLabel = !isPaid
+            ? t('period_forever')
+            : isAnnual
+            ? t('period_year')
+            : t('period_month');
           const perMonth = isAnnual && isPaid ? p.annualPrice / 12 : 0;
           const annualNote =
             isPaid && isAnnual
-              ? `Equivale a ${formatPrice(perMonth)} por mês`
+              ? t('annual_note', { price: formatPrice(perMonth) })
               : null;
           const showSavings = isPaid && isAnnual;
           const savingsPct = showSavings
@@ -121,7 +128,7 @@ export function PlansCards() {
             >
               {p.badge && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gt-orange text-white text-[10px] font-medium uppercase tracking-wider px-3 py-1 rounded font-sans">
-                  {p.badge}
+                  {t('badge_recomendado')}
                 </span>
               )}
 
@@ -131,11 +138,11 @@ export function PlansCards() {
 
               {isAnnual && p.annualOriginalPrice && (
                 <p className="text-xs text-gt-text-dim font-sans mb-1">
-                  De{' '}
+                  {t('annual_from')}{' '}
                   <span className="line-through">
-                    {formatPrice(p.annualOriginalPrice)}/ano
+                    {formatPrice(p.annualOriginalPrice)}/{t('period_year')}
                   </span>{' '}
-                  por
+                  {t('annual_by')}
                 </p>
               )}
 
@@ -156,21 +163,21 @@ export function PlansCards() {
 
               {showSavings && savingsPct > 0 && (
                 <p className="text-xs text-gt-orange font-medium mb-3 font-sans">
-                  Economize {savingsPct}% em relação ao mensal
+                  {t('savings', { pct: savingsPct })}
                 </p>
               )}
               {!showSavings && <div className="mb-3 h-4" />}
 
               <p className="text-sm text-gt-text-muted leading-relaxed mb-6 min-h-[4rem] font-sans">
-                {p.desc}
+                {t(`plans.${p.descKey}.desc`)}
               </p>
 
               <Button
-                href={p.cta.href}
+                href={p.href}
                 variant={p.highlight ? 'primary' : 'secondary'}
                 className="w-full"
               >
-                {p.cta.label}
+                {t(`plans.${p.ctaKey}.cta`)}
               </Button>
             </div>
           );
@@ -178,8 +185,7 @@ export function PlansCards() {
       </div>
 
       <p className="text-xs text-gt-text-muted text-center mt-6 font-sans">
-        Cancele a qualquer momento. Sem multa. Suas rotas ficam guardadas mesmo
-        se você descer de plano.
+        {t('footer')}
       </p>
     </div>
   );

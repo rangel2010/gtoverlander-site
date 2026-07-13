@@ -301,7 +301,11 @@
       "pricing": "Includes 1 highlighted spot and up to 15 products on Desapega. Add-ons available for more spots or products. Cancel anytime.",
       "verTabela": "See full table",
       "verPolitica": "Policy",
-      "cta": "Join the waitlist"
+      "cta": "Join the waitlist",
+      "pricing_from": "From",
+      "pricing_by": "for",
+      "pricing_starting": "starting at",
+      "pricing_per_month": "per month"
     },
     "faq": {
       "q1": "Can I try before subscribing?",
@@ -321,6 +325,33 @@
       "titulo": "Start free and upgrade when you need to",
       "desc": "No cancellation penalty. Your routes are saved even if you downgrade.",
       "ctaFalar": "Talk to us"
+    },
+    "cards": {
+      "billing_mensal": "Monthly",
+      "billing_anual": "Annual",
+      "period_forever": "forever",
+      "period_year": "per year",
+      "period_month": "per month",
+      "annual_from": "From",
+      "annual_by": "for",
+      "annual_note": "That's {price} per month",
+      "savings": "Save {pct}% vs monthly",
+      "badge_recomendado": "Recommended",
+      "footer": "Cancel anytime. No penalties. Your routes are saved even if you downgrade.",
+      "plans": {
+        "free": {
+          "desc": "Start exploring. Create unlimited routes and export 1 for navigation every 90 days. Radar once a day. No expiry.",
+          "cta": "Start free"
+        },
+        "plus": {
+          "desc": "For frequent travelers. Create unlimited routes, export up to 2 per month for navigation and use the Radar up to 5 times per day. Includes advanced AI and international Offline Mode.",
+          "cta": "Subscribe to Plus"
+        },
+        "pro": {
+          "desc": "For those who don't want to think about limits. Unlimited route exports and Waypoint Radar, advanced AI and priority support.",
+          "cta": "Subscribe to Pro"
+        }
+      }
     }
   },
   "contato": {

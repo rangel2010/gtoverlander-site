@@ -301,7 +301,11 @@
       "pricing": "Incluye 1 punto destacado y hasta 15 productos en Desapega. Add-ons disponibles para más puntos o productos. Cancela en cualquier momento.",
       "verTabela": "Ver tabla completa",
       "verPolitica": "Política",
-      "cta": "Unirse a la lista de espera"
+      "cta": "Unirse a la lista de espera",
+      "pricing_from": "De",
+      "pricing_by": "por",
+      "pricing_starting": "desde",
+      "pricing_per_month": "por mes"
     },
     "faq": {
       "q1": "¿Puedo probar antes de suscribirme?",
@@ -321,6 +325,33 @@
       "titulo": "Empieza gratis y sube cuando lo necesites",
       "desc": "Sin penalización por cancelación. Tus rutas se guardan aunque bajes de plan.",
       "ctaFalar": "Habla con nosotros"
+    },
+    "cards": {
+      "billing_mensal": "Mensual",
+      "billing_anual": "Anual",
+      "period_forever": "para siempre",
+      "period_year": "por año",
+      "period_month": "por mes",
+      "annual_from": "De",
+      "annual_by": "por",
+      "annual_note": "Equivale a {price} por mes",
+      "savings": "Ahorra {pct}% vs mensual",
+      "badge_recomendado": "Recomendado",
+      "footer": "Cancela en cualquier momento. Sin penalización. Tus rutas se guardan aunque bajes de plan.",
+      "plans": {
+        "free": {
+          "desc": "Para empezar a explorar. Crea todas las rutas que quieras y exporta 1 para navegación cada 90 días. Radar 1 vez al día. Sin fecha límite.",
+          "cta": "Empezar gratis"
+        },
+        "plus": {
+          "desc": "Para quienes viajan con frecuencia. Crea rutas ilimitadas, exporta hasta 2 por mes para navegación y consulta el Radar hasta 5 veces al día. Incluye IA avanzada y Modo Offline internacional.",
+          "cta": "Suscribirse a Plus"
+        },
+        "pro": {
+          "desc": "Para quienes no quieren pensar en límites. Exportaciones de rutas y Radar de Waypoints ilimitados, IA avanzada y soporte prioritario.",
+          "cta": "Suscribirse a Pro"
+        }
+      }
     }
   },
   "contato": {

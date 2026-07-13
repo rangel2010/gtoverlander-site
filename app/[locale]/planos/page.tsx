@@ -189,12 +189,14 @@ export default async function PlanosPage({
             <div className="bg-gt-card border border-gt-border rounded-lg p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
               <div className="flex-1">
                 <p className="text-xs text-gt-text-dim font-sans mb-1">
-                  De <span className="line-through">R$ 199,90/mês</span> por
+                  {t('business.pricing_from')}{' '}
+                  <span className="line-through">R$ 199,90/{t('business.pricing_per_month')}</span>{' '}
+                  {t('business.pricing_by')}
                 </p>
                 <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-sm text-gt-text-muted font-sans">a partir de</span>
+                  <span className="text-sm text-gt-text-muted font-sans">{t('business.pricing_starting')}</span>
                   <span className="font-display text-5xl text-gt-text uppercase tracking-display">R$ 99,90</span>
-                  <span className="text-sm text-gt-text-muted font-sans">por mês</span>
+                  <span className="text-sm text-gt-text-muted font-sans">{t('business.pricing_per_month')}</span>
                 </div>
                 <p className="text-sm text-gt-text-muted font-sans leading-relaxed">
                   {t('business.pricing')}{' '}
@@ -221,6 +223,7 @@ export default async function PlanosPage({
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Button href="/baixar">{tc('baixarGratis')}</Button>
+       
               <Button href="/contato" variant="outline">{t('cta.ctaFalar')}</Button>
             </div>
           </ScrollReveal>
