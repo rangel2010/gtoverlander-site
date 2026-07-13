@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '../ui/button';
+import { PRODUCT, formatPrice, annualSavingsPct } from '@/lib/product-config';
 
 interface Plan {
   name: string;
@@ -18,47 +19,32 @@ interface Plan {
 const plans: Plan[] = [
   {
     name: 'Free',
-    monthlyPrice: 0,
-    annualPrice: 0,
+    monthlyPrice: PRODUCT.plans.free.monthlyPrice,
+    annualPrice: PRODUCT.plans.free.annualPrice,
     desc: 'Pra começar a explorar. Crie quantas rotas quiser e exporte 1 para navegação a cada 90 dias. Radar 1 vez por dia. Sem prazo pra acabar.',
     cta: { label: 'Começar grátis', href: '/baixar' },
     highlight: false,
   },
   {
     name: 'Plus',
-    monthlyPrice: 14.9,
-    annualPrice: 79.9,
-    annualOriginalPrice: 149.9,
+    monthlyPrice: PRODUCT.plans.plus.monthlyPrice,
+    annualPrice: PRODUCT.plans.plus.annualPrice,
+    annualOriginalPrice: PRODUCT.plans.plus.annualOriginalPrice,
     desc: 'Pra quem viaja com frequência. Crie quantas rotas quiser, exporte até 2 por mês para navegação e consulte o Radar até 5 vezes por dia. Inclui IA avançada e Modo Offline internacional.',
     cta: { label: 'Assinar Plus', href: '/baixar?plan=plus' },
     highlight: false,
   },
   {
     name: 'Pro',
-    monthlyPrice: 19.9,
-    annualPrice: 99.9,
-    annualOriginalPrice: 189.9,
+    monthlyPrice: PRODUCT.plans.pro.monthlyPrice,
+    annualPrice: PRODUCT.plans.pro.annualPrice,
+    annualOriginalPrice: PRODUCT.plans.pro.annualOriginalPrice,
     desc: 'Pra quem não quer pensar em limites. Exportações de rotas e Radar de Waypoints ilimitados, IA avançada e suporte prioritário.',
     cta: { label: 'Assinar Pro', href: '/baixar?plan=pro' },
     highlight: true,
     badge: 'Recomendado',
   },
 ];
-
-function formatPrice(value: number): string {
-  if (value === 0) return 'R$ 0';
-  return value.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-    minimumFractionDigits: 2,
-  });
-}
-
-function annualSavingsPct(monthly: number, annual: number): number {
-  if (monthly === 0) return 0;
-  const yearAtMonthly = monthly * 12;
-  return Math.round(((yearAtMonthly - annual) / yearAtMonthly) * 100);
-}
 
 export function PlansCards() {
   const [billing, setBilling] = useState<'mensal' | 'anual'>('anual');

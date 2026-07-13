@@ -4,6 +4,7 @@
 
 import { urlForImage } from '@/lib/sanity/image';
 import type { PostFull, PostListItem } from '@/lib/sanity/types';
+import { PRODUCT } from '@/lib/product-config';
 
 export const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.gtoverlander.com.br';
@@ -82,12 +83,13 @@ export function websiteLd() {
 export function softwareApplicationLd() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'MobileApplication',
+    '@type': 'SoftwareApplication',
     name: ORG_NAME,
-    operatingSystem: 'iOS, Android',
+    url: BASE_URL,
+    operatingSystem: 'iOS, Android, Web',
     applicationCategory: 'TravelApplication',
     description:
-      'App de planejamento de rotas com IA pra viajantes overlander. Disponível em iOS, Android, CarPlay e Android Auto.',
+      'AI-powered overlanding route planner with 4M+ waypoints across 209 countries. Available on iOS, Android, Web, CarPlay and Android Auto.',
     offers: {
       '@type': 'Offer',
       price: '0',
@@ -96,6 +98,7 @@ export function softwareApplicationLd() {
     publisher: {
       '@type': 'Organization',
       name: ORG_NAME,
+      url: BASE_URL,
     },
   };
 }
@@ -113,7 +116,7 @@ export function productPlansLd() {
       {
         '@type': 'Offer',
         name: 'Free',
-        price: '0',
+        price: String(PRODUCT.plans.free.monthlyPrice),
         priceCurrency: 'BRL',
         availability: 'https://schema.org/InStock',
         url: `${BASE_URL}/planos`,
@@ -121,12 +124,12 @@ export function productPlansLd() {
       {
         '@type': 'Offer',
         name: 'Plus mensal',
-        price: '14.90',
+        price: String(PRODUCT.plans.plus.monthlyPrice),
         priceCurrency: 'BRL',
         availability: 'https://schema.org/InStock',
         priceSpecification: {
           '@type': 'UnitPriceSpecification',
-          price: '14.90',
+          price: String(PRODUCT.plans.plus.monthlyPrice),
           priceCurrency: 'BRL',
           billingDuration: 'P1M',
         },
@@ -135,12 +138,12 @@ export function productPlansLd() {
       {
         '@type': 'Offer',
         name: 'Plus anual',
-        price: '79.90',
+        price: String(PRODUCT.plans.plus.annualPrice),
         priceCurrency: 'BRL',
         availability: 'https://schema.org/InStock',
         priceSpecification: {
           '@type': 'UnitPriceSpecification',
-          price: '79.90',
+          price: String(PRODUCT.plans.plus.annualPrice),
           priceCurrency: 'BRL',
           billingDuration: 'P1Y',
         },
@@ -149,12 +152,12 @@ export function productPlansLd() {
       {
         '@type': 'Offer',
         name: 'Pro mensal',
-        price: '19.90',
+        price: String(PRODUCT.plans.pro.monthlyPrice),
         priceCurrency: 'BRL',
         availability: 'https://schema.org/InStock',
         priceSpecification: {
           '@type': 'UnitPriceSpecification',
-          price: '19.90',
+          price: String(PRODUCT.plans.pro.monthlyPrice),
           priceCurrency: 'BRL',
           billingDuration: 'P1M',
         },
@@ -163,12 +166,12 @@ export function productPlansLd() {
       {
         '@type': 'Offer',
         name: 'Pro anual',
-        price: '99.90',
+        price: String(PRODUCT.plans.pro.annualPrice),
         priceCurrency: 'BRL',
         availability: 'https://schema.org/InStock',
         priceSpecification: {
           '@type': 'UnitPriceSpecification',
-          price: '99.90',
+          price: String(PRODUCT.plans.pro.annualPrice),
           priceCurrency: 'BRL',
           billingDuration: 'P1Y',
         },
@@ -277,7 +280,7 @@ export function aboutPagePersonLd() {
         name: ORG_NAME,
       },
       address: {
-        '@type': 'PostalAddress',
+         '@type': 'PostalAddress',
         addressLocality: 'Londrina',
         addressRegion: 'PR',
         addressCountry: 'BR',
@@ -295,6 +298,10 @@ export function jsonLdScriptProps(data: unknown) {
     type: 'application/ld+json',
     dangerouslySetInnerHTML: {
       __html: JSON.stringify(data),
+    },
+  };
+}
+,
     },
   };
 }
