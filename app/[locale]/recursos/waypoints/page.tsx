@@ -17,6 +17,7 @@ export async function generateMetadata({
     description:
     'Mais de 4 milhões de waypoints em 209 países. São 16 categorias organizadas em 10 filtros de uso. Base curada pelo GT e mantida viva pela comunidade — valida e cadastra direto do app.',
     alternates: getPageAlternates(locale, '/recursos/waypoints'),
+    ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }
 

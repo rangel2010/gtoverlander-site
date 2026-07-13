@@ -20,6 +20,7 @@ import {
   jsonLdScriptProps,
   getPageAlternates,
 } from '@/lib/seo';
+import { getTranslations } from 'next-intl/server';
 
 interface PageProps {
   params: { slug: string; locale: string };
@@ -195,6 +196,7 @@ export default async function PostPage({ params }: PageProps) {
   if (!post) notFound();
 
   const related = await getRelatedPosts(post.slug, post.category, locale);
+  const tc = await getTranslations('common');
   const coverUrl = urlForImage(post.coverImage)
     ?.width(1600)
     .height(900)
@@ -308,9 +310,9 @@ export default async function PostPage({ params }: PageProps) {
             Baixa o GT e começa a planejar agora.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Button href="/baixar">Começar grátis</Button>
+            <Button href="/baixar">{tc('baixarGratis')}</Button>
             <Button href="/planos" variant="outline">
-              Explorar planos
+              {tc('explorarPlanos')}
             </Button>
           </div>
         </div>
@@ -355,7 +357,7 @@ export default async function PostPage({ params }: PageProps) {
                       </h3>
                     </div>
                   </Link>
-                );
+              );
               })}
             </div>
           </div>

@@ -523,7 +523,11 @@
     },
     "precos": {
       "labelLancamento": "Precio de lanzamiento · garantizado para lista de espera",
-      "ctaListaEspera": "Unirse a la lista de espera"
+      "ctaListaEspera": "Unirse a la lista de espera",
+      "pricing_from": "De",
+      "pricing_by": "por",
+      "pricing_starting": "desde",
+      "pricing_per_month": "por mes"
     },
     "cadastro": {
       "label": "Registro",

@@ -14,6 +14,7 @@ export async function generateMetadata({
     description:
     'Free baixa o país onde está com todas as categorias de waypoints. Plus e Pro liberam os 209 países. Use o GT em qualquer canto, sem depender de sinal.',
     alternates: getPageAlternates(locale, '/recursos/modo-offline'),
+    ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }
 

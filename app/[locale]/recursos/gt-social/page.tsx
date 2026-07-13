@@ -15,6 +15,7 @@ export async function generateMetadata({
     description:
     'A rede social dentro do GT. Siga overlanders, descubra rotas públicas testadas e copie roteiros que outros já completaram. Comunidade de quem vive a estrada.',
     alternates: getPageAlternates(locale, '/recursos/gt-social'),
+    ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }
 

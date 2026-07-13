@@ -16,6 +16,7 @@ export async function generateMetadata({
     description:
     'Descreva a viagem em linguagem natural. A IA monta o trajeto — estradas, cidades e destino — e você completa com as paradas. Grátis pra começar.',
     alternates: getPageAlternates(locale, '/recursos/roteiros-ia'),
+    ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }
 

@@ -138,12 +138,14 @@ export default async function EmpresasPage({
             <div className="max-w-3xl mx-auto bg-gt-bg border border-gt-border rounded-lg p-8 md:p-12 text-center mb-10">
               <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">{t('precos.labelLancamento')}</p>
               <p className="text-sm text-gt-text-dim font-sans mb-2">
-                De <span className="line-through">R$ 199,90/mês</span> por
+                {t('precos.pricing_from')}{' '}
+                <span className="line-through">R$ 199,90/{t('precos.pricing_per_month')}</span>{' '}
+                {t('precos.pricing_by')}
               </p>
               <div className="flex items-baseline justify-center gap-3 mb-3">
-                <span className="text-base text-gt-text-muted font-sans">a partir de</span>
+                <span className="text-base text-gt-text-muted font-sans">{t('precos.pricing_starting')}</span>
                 <span className="font-display text-6xl md:text-7xl text-gt-text uppercase tracking-display">R$ 99,90</span>
-                <span className="text-base text-gt-text-muted font-sans">por mês</span>
+                <span className="text-base text-gt-text-muted font-sans">{t('precos.pricing_per_month')}</span>
               </div>
               <p className="text-sm text-gt-text-muted font-sans leading-relaxed mb-6 max-w-xl mx-auto">
                 Plano base inclui 1 ponto destacado, até 15 produtos no Desapega e 1 perfil profissional + 6 expedições agendadas em Serviços. Quem entrar na lista de espera agora tem prioridade de ativação e garante esse valor quando a Conta Business abrir. Cancele a qualquer momento, sem multa.{' '}

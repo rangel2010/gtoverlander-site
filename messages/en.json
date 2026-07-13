@@ -523,7 +523,11 @@
     },
     "precos": {
       "labelLancamento": "Launch price · guaranteed for waitlist",
-      "ctaListaEspera": "Join the waitlist"
+      "ctaListaEspera": "Join the waitlist",
+      "pricing_from": "From",
+      "pricing_by": "for",
+      "pricing_starting": "starting at",
+      "pricing_per_month": "per month"
     },
     "cadastro": {
       "label": "Registration",

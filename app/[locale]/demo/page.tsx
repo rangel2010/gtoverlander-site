@@ -13,6 +13,7 @@ export async function generateMetadata({
     description:
     'Mais de 4 milhões de waypoints curados em 209 países. Explore a base do GT Overlander no mapa — postos, campings, hospedagem, atrações.',
     alternates: getPageAlternates(locale, '/demo'),
+    ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }
 

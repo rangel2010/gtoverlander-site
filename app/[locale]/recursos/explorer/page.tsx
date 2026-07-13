@@ -15,6 +15,7 @@ export async function generateMetadata({
     description:
     'Sua jornada vira XP, níveis, conquistas e ranking regional. Cada km rodado, cada ponto validado, cada rota concluída conta. A estrada vira progressão.',
     alternates: getPageAlternates(locale, '/recursos/explorer'),
+    ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }
 
