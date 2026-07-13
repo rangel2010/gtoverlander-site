@@ -301,7 +301,3 @@ export function jsonLdScriptProps(data: unknown) {
     },
   };
 }
-,
-    },
-  };
-}
