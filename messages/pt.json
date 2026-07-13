@@ -62,17 +62,6 @@
       "passo4desc": "Exporta a rota pro Google Maps e roda direto no painel do carro com CarPlay ou Android Auto",
       "verDemo": "Ver demonstração da IA →"
     },
-    "recursos": {
-      "label": "Disponível agora",
-      "titulo": "O que o GT entrega hoje",
-      "saibaMais": "Saiba mais →",
-      "r1titulo": "Roteiros com IA",
-      "r1desc": "Trajeto montado pela IA em uma conversa — estradas, cidades e destino, pronto em segundos.",
-      "r2titulo": "Base de Waypoints",
-      "r2desc": "Mais de 4 milhões de pontos em 209 países, validados e cadastrados pela comunidade.",
-      "r3titulo": "Modo Offline",
-      "r3desc": "Waypoints, radar de proximidade e rotas salvas — disponíveis mesmo sem sinal."
-    },
     "numeros": {
       "label": "Em breve",
       "titulo": "O ecossistema cresce com você",

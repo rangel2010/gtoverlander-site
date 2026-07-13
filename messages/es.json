@@ -62,17 +62,6 @@
       "passo4desc": "Exportas la ruta a Google Maps y conduces directo en el tablero con CarPlay o Android Auto",
       "verDemo": "Ver demostración de la IA →"
     },
-    "recursos": {
-      "label": "Disponible ahora",
-      "titulo": "Lo que GT entrega hoy",
-      "saibaMais": "Saber más →",
-      "r1titulo": "Rutas con IA",
-      "r1desc": "Ruta trazada por IA en una conversación — carreteras, ciudades y destino, lista en segundos.",
-      "r2titulo": "Base de Waypoints",
-      "r2desc": "Más de 4 millones de puntos en 209 países, validados y registrados por la comunidad.",
-      "r3titulo": "Modo Offline",
-      "r3desc": "Waypoints, radar de proximidad y rutas guardadas — disponibles incluso sin señal."
-    },
     "numeros": {
       "label": "Próximamente",
       "titulo": "El ecosistema crece contigo",

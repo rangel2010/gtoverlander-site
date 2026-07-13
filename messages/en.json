@@ -62,17 +62,6 @@
       "passo4desc": "Export the route to Google Maps and drive directly on your dashboard with CarPlay or Android Auto",
       "verDemo": "See AI demonstration →"
     },
-    "recursos": {
-      "label": "Available now",
-      "titulo": "What GT delivers today",
-      "saibaMais": "Learn more →",
-      "r1titulo": "AI Routes",
-      "r1desc": "Route built by AI in a conversation — roads, cities and destination, ready in seconds.",
-      "r2titulo": "Waypoint Database",
-      "r2desc": "Over 4 million points across 209 countries, validated and submitted by the community.",
-      "r3titulo": "Offline Mode",
-      "r3desc": "Waypoints, proximity radar and saved routes — available even without a signal."
-    },
     "numeros": {
       "label": "Coming soon",
       "titulo": "The ecosystem grows with you",
