@@ -1,4 +1,5 @@
 import { getAllPosts } from '@/lib/sanity/queries';
+import { urlForImage } from '@/lib/sanity/image';
 
 const SITE_URL = 'https://gtoverlander.com.br';
 
@@ -20,13 +21,19 @@ export async function GET() {
       const url = `${SITE_URL}/blog/${p.slug}`;
       const pubDate = new Date(p.publishedAt).toUTCString();
       const desc = p.description ? escapeXml(p.description) : '';
+      // Usa imagemSocial se disponivel, senao coverImage como fallback
+      const imgSource = p.imagemSocial ?? p.coverImage;
+      const imgUrl = urlForImage(imgSource)?.width(1200).height(630).url() ?? null;
+      const enclosure = imgUrl
+        ? `\n      <enclosure url="${imgUrl}" type="image/jpeg" length="0"/>`
+        : '';
       return `
     <item>
       <title>${escapeXml(p.title)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
       <description>${desc}</description>
-      <pubDate>${pubDate}</pubDate>
+      <pubDate>${pubDate}</pubDate>${enclosure}
     </item>`;
     })
     .join('');
@@ -36,7 +43,7 @@ export async function GET() {
   <channel>
     <title>Blog GT Overlander</title>
     <link>${SITE_URL}/blog</link>
-    <description>Destinos, preparação e vida overlander pra quem viaja por terra.</description>
+    <description>Destinos, preparacao e vida overlander pra quem viaja por terra.</description>
     <language>pt-BR</language>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />
 ${items}
