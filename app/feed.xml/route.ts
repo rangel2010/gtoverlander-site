@@ -23,7 +23,7 @@ export async function GET() {
       const desc = p.description ? escapeXml(p.description) : '';
       // Usa imagemSocial se disponivel, senao coverImage como fallback
       const imgSource = p.imagemSocial ?? p.coverImage;
-      const imgUrl = urlForImage(imgSource)?.width(1200).height(630).url() ?? null;
+      const imgUrl = urlForImage(imgSource)?.width(1200).url() ?? null;
       const enclosure = imgUrl
         ? `\n      <enclosure url="${imgUrl}" type="image/jpeg" length="0"/>`
         : '';
