@@ -9,6 +9,13 @@ const nextConfig = {
   poweredByHeader: false,
   async redirects() {
     return [
+      // Blog EN/ES → PT enquanto não há conteúdo nessas línguas
+      // 302 (temporário) para remover facilmente quando houver artigos EN/ES
+      { source: '/en/blog', destination: '/blog', permanent: false },
+      { source: '/en/blog/:path*', destination: '/blog/:path*', permanent: false },
+      { source: '/es/blog', destination: '/blog', permanent: false },
+      { source: '/es/blog/:path*', destination: '/blog/:path*', permanent: false },
+
       // Slug duplicado do artigo Rota Biker — redirect 301 permanente
       {
         source: '/blog/rota-biker-monumentos-mototurismo-brasilrota-biker-monumentos-mototurismo-brasil',

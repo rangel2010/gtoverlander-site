@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 export function NewsletterCompact() {
+  const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -13,7 +14,7 @@ export function NewsletterCompact() {
       const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, nome: nome.trim() || undefined }),
       });
       setStatus(res.ok ? 'success' : 'error');
     } catch {
@@ -30,25 +31,35 @@ export function NewsletterCompact() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-6 flex flex-col sm:flex-row gap-2 max-w-md">
+    <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-2 max-w-md">
       <input
-        type="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="seu@email.com"
+        type="text"
+        value={nome}
+        onChange={(e) => setNome(e.target.value)}
+        placeholder="Como quer ser chamado? (opcional)"
         disabled={status === 'loading'}
-        className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-gt-text placeholder:text-gt-text-dim font-sans focus:outline-none focus:border-gt-orange disabled:opacity-50"
+        className="bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-gt-text placeholder:text-gt-text-dim font-sans focus:outline-none focus:border-gt-orange disabled:opacity-50"
       />
-      <button
-        type="submit"
-        disabled={status === 'loading'}
-        className="bg-gt-orange hover:bg-gt-orange/90 text-white font-sans text-sm font-medium px-5 py-2.5 rounded-lg transition-colors disabled:opacity-50 whitespace-nowrap"
-      >
-        {status === 'loading' ? 'Cadastrando…' : 'Receber artigos'}
-      </button>
+      <div className="flex gap-2">
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="seu@email.com"
+          disabled={status === 'loading'}
+          className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-gt-text placeholder:text-gt-text-dim font-sans focus:outline-none focus:border-gt-orange disabled:opacity-50"
+        />
+        <button
+          type="submit"
+          disabled={status === 'loading'}
+          className="bg-gt-orange hover:bg-gt-orange/90 text-white font-sans text-sm font-medium px-5 py-2.5 rounded-lg transition-colors disabled:opacity-50 whitespace-nowrap"
+        >
+          {status === 'loading' ? 'Cadastrando…' : 'Receber artigos'}
+        </button>
+      </div>
       {status === 'error' && (
-        <p className="text-xs text-red-400 font-sans mt-1 sm:mt-0 sm:self-center">Tente novamente.</p>
+        <p className="text-xs text-red-400 font-sans">Tente novamente.</p>
       )}
     </form>
   );

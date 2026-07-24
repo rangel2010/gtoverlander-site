@@ -3,7 +3,7 @@ import { createBrevoContact } from '@/lib/brevo';
 
 export async function POST(req: Request) {
   try {
-    const { email } = await req.json();
+    const { email, nome } = await req.json();
 
     if (!email || typeof email !== 'string') {
       return NextResponse.json({ error: 'E-mail obrigatório.' }, { status: 400 });
@@ -17,9 +17,14 @@ export async function POST(req: Request) {
 
     const listId = process.env.BREVO_LIST_NEWSLETTER_ID;
 
+    const attributes: Record<string, string> = { SOURCE: 'site:blog/newsletter' };
+    if (nome && typeof nome === 'string' && nome.trim()) {
+      attributes.FIRSTNAME = nome.trim();
+    }
+
     await createBrevoContact({
       email: trimmed,
-      attributes: { SOURCE: 'site:blog/newsletter' },
+      attributes,
       listIds: listId ? [Number(listId)] : [],
     });
 

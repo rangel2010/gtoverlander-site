@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 export function NewsletterBlog() {
+  const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
@@ -15,7 +16,7 @@ export function NewsletterBlog() {
       const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, nome: nome.trim() || undefined }),
       });
 
       const data = await res.json();
@@ -37,7 +38,9 @@ export function NewsletterBlog() {
       <div className="container-wide max-w-2xl text-center">
         {status === 'success' ? (
           <>
-            <p className="text-2xl text-gt-text mb-2">Cadastrado!</p>
+            <p className="text-2xl text-gt-text mb-2">
+              {nome.trim() ? `Cadastrado, ${nome.trim().split(' ')[0]}!` : 'Cadastrado!'}
+            </p>
             <p className="text-gt-text-muted font-sans text-sm">
               Você vai receber os próximos artigos direto no e-mail.
             </p>
@@ -54,7 +57,15 @@ export function NewsletterBlog() {
               Sem spam. Só quando publicar algo novo.
             </p>
 
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 justify-center">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3 items-center max-w-sm mx-auto">
+              <input
+                type="text"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                placeholder="Como quer ser chamado? (opcional)"
+                disabled={status === 'loading'}
+                className="w-full bg-gt-bg border border-gt-border rounded-lg px-4 py-3 text-sm text-gt-text placeholder:text-gt-text-dim font-sans focus:outline-none focus:border-gt-orange disabled:opacity-50"
+              />
               <input
                 type="email"
                 required
@@ -62,12 +73,12 @@ export function NewsletterBlog() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="seu@email.com"
                 disabled={status === 'loading'}
-                className="flex-1 max-w-xs bg-gt-bg border border-gt-border rounded-lg px-4 py-3 text-sm text-gt-text placeholder:text-gt-text-dim font-sans focus:outline-none focus:border-gt-orange disabled:opacity-50"
+                className="w-full bg-gt-bg border border-gt-border rounded-lg px-4 py-3 text-sm text-gt-text placeholder:text-gt-text-dim font-sans focus:outline-none focus:border-gt-orange disabled:opacity-50"
               />
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="bg-gt-orange hover:bg-gt-orange/90 text-white font-sans text-sm font-medium px-6 py-3 rounded-lg transition-colors disabled:opacity-50 whitespace-nowrap"
+                className="w-full bg-gt-orange hover:bg-gt-orange/90 text-white font-sans text-sm font-medium px-6 py-3 rounded-lg transition-colors disabled:opacity-50"
               >
                 {status === 'loading' ? 'Cadastrando…' : 'Receber novidades'}
               </button>
