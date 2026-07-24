@@ -33,6 +33,12 @@ Sentry.init({
       msg.includes('webkit.messageHandlers') ||
       msg.includes('postMessage');
 
+    // Extensões de carteira cripto (MetaMask, etc.) — erro da extensão do navegador, não do site
+    const isWalletExtension =
+      msg.includes('MetaMask') ||
+      msg.toLowerCase().includes('ethereum') ||
+      msg.includes('Failed to connect to MetaMask');
+
     // Ignora também se vier de scripts de navegação de WebView (não do nosso bundle)
     const frames = event.exception?.values?.[0]?.stacktrace?.frames ?? [];
     const isInjectedScript = frames.some(
@@ -41,7 +47,7 @@ Sentry.init({
         f.filename?.includes('sendDataToNative')
     );
 
-    if (isInAppBrowserNoise || isInjectedScript) return null;
+    if (isInAppBrowserNoise || isInjectedScript || isWalletExtension) return null;
 
     return event;
   },
