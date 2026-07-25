@@ -32,8 +32,12 @@ export function formatDuration(seconds: number): string {
   return `${m}:${s.toString().padStart(2, '0')}`;
 }
 
-/** Busca os Shorts mais recentes do canal (≤ 60s, máx 24) */
-export async function getChannelShorts(maxResults = 24): Promise<YouTubeShort[]> {
+/**
+ * Busca os Shorts mais recentes do canal (≤ 90s).
+ * Se `cutoffVideoId` for informado, retorna só os vídeos publicados a partir dele
+ * (inclusive) — os mais antigos ficam ocultos.
+ */
+export async function getChannelShorts(maxResults = 24, cutoffVideoId?: string): Promise<YouTubeShort[]> {
   if (!API_KEY) {
     console.warn('[youtube] YOUTUBE_API_KEY não configurada');
     return [];
@@ -82,7 +86,7 @@ export async function getChannelShorts(maxResults = 24): Promise<YouTubeShort[]>
 
     const detailData = await detailRes.json();
 
-    return (detailData.items ?? [])
+    let result: YouTubeShort[] = (detailData.items ?? [])
       .map((v: {
         id: string;
         snippet: { title: string; description: string; publishedAt: string; thumbnails: { maxres?: { url: string }; high?: { url: string }; medium?: { url: string } } };
@@ -106,6 +110,17 @@ export async function getChannelShorts(maxResults = 24): Promise<YouTubeShort[]>
         };
       })
       .filter((v: YouTubeShort) => v.durationSeconds <= 90); // shorts reais ≤ 90s
+
+    if (cutoffVideoId) {
+      const cutoffIndex = result.findIndex((v) => v.id === cutoffVideoId);
+      if (cutoffIndex !== -1) {
+        // Mantém do mais recente até o vídeo de corte (inclusive)
+        result = result.slice(0, cutoffIndex + 1);
+      }
+      // Se não achou o vídeo de corte, todos já são mais novos — mostra tudo
+    }
+
+    return result;
   } catch (e) {
     console.error('[youtube] erro ao buscar shorts:', e);
     return [];

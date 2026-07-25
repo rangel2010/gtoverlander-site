@@ -55,7 +55,8 @@ function videosLd(shorts: Awaited<ReturnType<typeof getChannelShorts>>) {
 export default async function DicasPage({ params: { locale } }: PageProps) {
   if (locale !== 'pt') notFound();
 
-  const shorts = await getChannelShorts(24);
+  // Mostra apenas a partir do vídeo "Patagônia de carro" (inclusive) — os anteriores eram conteúdo antigo
+  const shorts = await getChannelShorts(50, 'yD_d43yhxKc');
 
   return (
     <>
