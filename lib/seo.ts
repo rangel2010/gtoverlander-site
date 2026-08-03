@@ -36,6 +36,17 @@ const ORG_LEGAL_NAME = 'GT Overlander Ltda';
 const ORG_LOGO = `${BASE_URL}/images/logo-gt.svg`;
 const ORG_CNPJ = '59.840.412/0001-82';
 
+// Bio padrão do autor, usada nos artigos do blog quando o post não tem
+// um `authorBio` próprio preenchido no Sanity. Mantém consistência com o
+// texto da página /sobre (sem travessão, ao contrário do texto original de lá).
+export const DEFAULT_AUTHOR_BIO =
+  'Empresário e viajante. Fundou o GT Overlander pra ser o app que ele mesmo queria ter na própria estrada, e desde então lidera produto e visão ouvindo de perto quem viaja.';
+
+// Perfil de Instagram do Rangel e da esposa, dedicado só a vídeos das viagens
+// deles (não é o perfil pessoal geral). Usado como sinal de autoridade (E-E-A-T)
+// no schema estruturado e como link visível na página /sobre.
+export const INSTAGRAM_OVERLANDEIROS_URL = 'https://www.instagram.com/overlandeiros';
+
 export function organizationLd() {
   return {
     '@context': 'https://schema.org',
@@ -200,6 +211,8 @@ export function articleLd(post: PostFull) {
       '@type': 'Person',
       name: post.authorName,
       url: `${BASE_URL}/sobre`,
+      description: post.authorBio || DEFAULT_AUTHOR_BIO,
+      sameAs: [INSTAGRAM_OVERLANDEIROS_URL],
     },
     publisher: {
       '@type': 'Organization',
@@ -285,6 +298,7 @@ export function aboutPagePersonLd() {
         addressRegion: 'PR',
         addressCountry: 'BR',
       },
+      sameAs: [INSTAGRAM_OVERLANDEIROS_URL],
     },
   };
 }

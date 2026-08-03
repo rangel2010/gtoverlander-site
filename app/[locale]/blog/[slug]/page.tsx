@@ -19,6 +19,7 @@ import {
   breadcrumbLd,
   jsonLdScriptProps,
   getPageAlternates,
+  DEFAULT_AUTHOR_BIO,
 } from '@/lib/seo';
 import { getTranslations } from 'next-intl/server';
 
@@ -294,6 +295,38 @@ export default async function PostPage({ params }: PageProps) {
                 </div>
               </div>
             )}
+
+            {/* Sobre o autor: reforço de E-E-A-T, usa authorBio do post ou a bio padrão */}
+            <div className="mt-10 pt-8 border-t border-gt-border">
+              <div className="flex items-start gap-4 bg-gt-card border border-gt-border rounded-lg p-5">
+                <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                  <Image
+                    src="/images/rangel.png"
+                    alt={post.authorName}
+                    fill
+                    sizes="56px"
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-gt-text-muted mb-1 font-sans">
+                    Escrito por
+                  </p>
+                  <p className="font-sans text-base font-medium text-gt-text mb-1 normal-case">
+                    {post.authorName}
+                  </p>
+                  <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-2">
+                    {post.authorBio || DEFAULT_AUTHOR_BIO}
+                  </p>
+                  <Link
+                    href="/sobre"
+                    className="text-sm text-gt-orange hover:underline font-sans"
+                  >
+                    Conheça mais sobre o Rangel →
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </article>

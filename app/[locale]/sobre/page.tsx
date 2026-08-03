@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { aboutPagePersonLd, jsonLdScriptProps,
-  getPageAlternates
+  getPageAlternates, INSTAGRAM_OVERLANDEIROS_URL
 } from '@/lib/seo';
 import { ScrollReveal } from '@/components/scroll-reveal';
 
@@ -106,7 +107,18 @@ export default async function SobrePage({
                   {t('fundador.cargo')}
                 </p>
                 <p className="text-gt-text leading-relaxed mb-4 font-sans">{t('fundador.p1')}</p>
-                <p className="text-gt-text leading-relaxed font-sans">{t('fundador.p2')}</p>
+                <p className="text-gt-text leading-relaxed mb-4 font-sans">{t('fundador.p2')}</p>
+                <p className="text-sm text-gt-text-muted font-sans">
+                  {t('fundador.instagramLabel')}{' '}
+                  <Link
+                    href={INSTAGRAM_OVERLANDEIROS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gt-orange hover:underline"
+                  >
+                    @overlandeiros
+                  </Link>
+                </p>
               </div>
             </ScrollReveal>
           </div>

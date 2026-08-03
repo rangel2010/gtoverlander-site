@@ -37,6 +37,52 @@ const nextConfig = {
         destination: '/blog/rota-biker-monumentos-mototurismo-brasil',
         permanent: true,
       },
+
+      // Slug duplicado do artigo Internet na estrada — redirect 301 permanente
+      // Corrigir o slug no Sanity pra "internet-na-estrada-chip-esim-starlink" antes de publicar
+      {
+        source: '/blog/internet-na-estrada-chip-esim-starlinkinternet-na-estrada-chip-esim-starlink',
+        destination: '/blog/internet-na-estrada-chip-esim-starlink',
+        permanent: true,
+      },
+      {
+        source: '/pt/blog/internet-na-estrada-chip-esim-starlinkinternet-na-estrada-chip-esim-starlink',
+        destination: '/blog/internet-na-estrada-chip-esim-starlink',
+        permanent: true,
+      },
+      {
+        source: '/en/blog/internet-na-estrada-chip-esim-starlinkinternet-na-estrada-chip-esim-starlink',
+        destination: '/blog/internet-na-estrada-chip-esim-starlink',
+        permanent: true,
+      },
+      {
+        source: '/es/blog/internet-na-estrada-chip-esim-starlinkinternet-na-estrada-chip-esim-starlink',
+        destination: '/blog/internet-na-estrada-chip-esim-starlink',
+        permanent: true,
+      },
+
+      // Slug com erro de digitação do artigo Rota 40 Argentina (faltava o "r") — redirect 301 permanente
+      // Corrigir o slug no Sanity pra "rota-40-argentina-roteiro-de-carro" antes de publicar
+      {
+        source: '/blog/ota-40-argentina-roteiro-de-carro',
+        destination: '/blog/rota-40-argentina-roteiro-de-carro',
+        permanent: true,
+      },
+      {
+        source: '/pt/blog/ota-40-argentina-roteiro-de-carro',
+        destination: '/blog/rota-40-argentina-roteiro-de-carro',
+        permanent: true,
+      },
+      {
+        source: '/en/blog/ota-40-argentina-roteiro-de-carro',
+        destination: '/blog/rota-40-argentina-roteiro-de-carro',
+        permanent: true,
+      },
+      {
+        source: '/es/blog/ota-40-argentina-roteiro-de-carro',
+        destination: '/blog/rota-40-argentina-roteiro-de-carro',
+        permanent: true,
+      },
     ];
   },
   images: {
