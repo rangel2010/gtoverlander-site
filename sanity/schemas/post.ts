@@ -85,6 +85,14 @@ export const postSchema = defineType({
       description: 'Descreva a imagem em 1 frase pra acessibilidade e SEO',
     }),
     defineField({
+      name: 'coverImageSuggestions',
+      title: 'Sugestões de foto de capa (link)',
+      type: 'text',
+      rows: 3,
+      description:
+        'Preenchido automaticamente quando o rascunho ainda não tem capa definitiva: 1-2 links de banco de imagem gratuito (Unsplash) pra você abrir, baixar e subir no campo "Imagem de capa" acima. Pode apagar depois de resolver.',
+    }),
+    defineField({
       name: 'imagemSocial',
       title: 'Imagem para redes sociais (opcional)',
       type: 'image',
@@ -181,16 +189,21 @@ export const postSchema = defineType({
       featured: 'featured',
       locale: 'locale',
       publishedAt: 'publishedAt',
+      coverSuggestions: 'coverImageSuggestions',
     },
-    prepare({ title, author, category, media, featured, locale, publishedAt }) {
+    prepare({ title, author, category, media, featured, locale, publishedAt, coverSuggestions }) {
       const cat = category ? PILLARS[category as Pillar] ?? category : '—';
       const lang = locale ? locale.toUpperCase() : 'PT';
       const dateStr = publishedAt
         ? new Date(publishedAt).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: '2-digit' })
         : 'sem data';
+      const needsCover = !media && coverSuggestions;
+      const flag = needsCover ? '📸 ' : featured ? '⭐ ' : '';
       return {
-        title: featured ? `⭐ ${title}` : title,
-        subtitle: `${dateStr} · [${lang}] ${cat}`,
+        title: `${flag}${title}`,
+        subtitle: needsCover
+          ? `${dateStr} · [${lang}] ${cat} · falta escolher capa`
+          : `${dateStr} · [${lang}] ${cat}`,
         media,
       };
     },

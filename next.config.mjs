@@ -39,25 +39,25 @@ const nextConfig = {
       },
 
       // Slug duplicado do artigo Internet na estrada — redirect 301 permanente
-      // Corrigir o slug no Sanity pra "internet-na-estrada-chip-esim-starlink" antes de publicar
+      // Slug real publicado ficou "internet-na-estrada-chip-esim-e-starlink-em-viagem-overland"
       {
         source: '/blog/internet-na-estrada-chip-esim-starlinkinternet-na-estrada-chip-esim-starlink',
-        destination: '/blog/internet-na-estrada-chip-esim-starlink',
+        destination: '/blog/internet-na-estrada-chip-esim-e-starlink-em-viagem-overland',
         permanent: true,
       },
       {
         source: '/pt/blog/internet-na-estrada-chip-esim-starlinkinternet-na-estrada-chip-esim-starlink',
-        destination: '/blog/internet-na-estrada-chip-esim-starlink',
+        destination: '/blog/internet-na-estrada-chip-esim-e-starlink-em-viagem-overland',
         permanent: true,
       },
       {
         source: '/en/blog/internet-na-estrada-chip-esim-starlinkinternet-na-estrada-chip-esim-starlink',
-        destination: '/blog/internet-na-estrada-chip-esim-starlink',
+        destination: '/blog/internet-na-estrada-chip-esim-e-starlink-em-viagem-overland',
         permanent: true,
       },
       {
         source: '/es/blog/internet-na-estrada-chip-esim-starlinkinternet-na-estrada-chip-esim-starlink',
-        destination: '/blog/internet-na-estrada-chip-esim-starlink',
+        destination: '/blog/internet-na-estrada-chip-esim-e-starlink-em-viagem-overland',
         permanent: true,
       },
 
