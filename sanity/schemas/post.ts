@@ -86,11 +86,18 @@ export const postSchema = defineType({
     }),
     defineField({
       name: 'coverImageSuggestions',
-      title: 'Sugestões de foto de capa (link)',
+      title: 'Sugestões de foto de capa',
       type: 'text',
       rows: 3,
       description:
-        'Preenchido automaticamente quando o rascunho ainda não tem capa definitiva: 1-2 links de banco de imagem gratuito (Unsplash) pra você abrir, baixar e subir no campo "Imagem de capa" acima. Pode apagar depois de resolver.',
+        'Preenchido automaticamente quando o rascunho ainda não tem capa definitiva: ou aponta pro arquivo já baixado na pasta "Blog - Capas Sugeridas" (é só arrastar pro campo "Imagem de capa" acima), ou traz 1-2 links de banco de imagem pra baixar manualmente quando não deu pra baixar sozinho. Pode apagar depois de resolver.',
+    }),
+    defineField({
+      name: 'coverImageCredit',
+      title: 'Crédito da foto de capa (se exigido)',
+      type: 'string',
+      description:
+        'Preencha só quando a foto vier de uma fonte que exige atribuição (ex: Wikimedia Commons com licença CC BY). Formato: "Foto: Nome do autor / Wikimedia Commons (licença)". Aparece em texto discreto embaixo da capa no artigo. Deixe vazio se a foto não exige crédito (ex: Unsplash, ou foto própria).',
     }),
     defineField({
       name: 'imagemSocial',

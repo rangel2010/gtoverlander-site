@@ -261,6 +261,11 @@ export default async function PostPage({ params }: PageProps) {
                 className="object-cover"
               />
             </div>
+            {post.coverImageCredit && (
+              <p className="text-xs text-gt-text-muted mt-2 text-right font-sans">
+                {post.coverImageCredit}
+              </p>
+            )}
           </div>
         )}
 
