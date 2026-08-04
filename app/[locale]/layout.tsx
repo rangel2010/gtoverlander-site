@@ -35,7 +35,18 @@ const anton = Anton({
   adjustFontFallback: true,
 });
 
-export const metadata: Metadata = {
+const OG_LOCALES: Record<string, string> = {
+  pt: 'pt_BR',
+  en: 'en_US',
+  es: 'es_ES',
+};
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.gtoverlander.com.br'
   ),
@@ -47,7 +58,7 @@ export const metadata: Metadata = {
     'Roteiros personalizados em uma conversa com IA. Mais de 4 milhões de waypoints em 209 países. iOS, Android, CarPlay e Android Auto.',
   openGraph: {
     type: 'website',
-    locale: 'pt_BR',
+    locale: OG_LOCALES[locale] ?? 'pt_BR',
     siteName: 'GT Overlander',
   },
   twitter: {
@@ -65,7 +76,8 @@ export const metadata: Metadata = {
   verification: {
     google: 'xR2d6RJaIm9keUfM916f21S2XXFEu8J8A_iG36v9dj0',
   },
-};
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

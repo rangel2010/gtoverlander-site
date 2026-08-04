@@ -192,10 +192,13 @@ export function productPlansLd() {
   };
 }
 
-export function articleLd(post: PostFull) {
+const CONTENT_LANG: Record<string, string> = { pt: 'pt-BR', en: 'en', es: 'es' };
+const localePrefix = (locale: string) => (locale === 'pt' ? '' : `/${locale}`);
+
+export function articleLd(post: PostFull, locale = 'pt') {
   const imageUrl =
     urlForImage(post.coverImage)?.width(1200).height(630).url() ?? null;
-  const postUrl = `${BASE_URL}/blog/${post.slug}`;
+  const postUrl = `${BASE_URL}${localePrefix(locale)}/blog/${post.slug}`;
 
   return {
     '@context': 'https://schema.org',
@@ -206,7 +209,7 @@ export function articleLd(post: PostFull) {
     image: imageUrl ? [imageUrl] : undefined,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
-    inLanguage: 'pt-BR',
+    inLanguage: CONTENT_LANG[locale] ?? 'pt-BR',
     author: {
       '@type': 'Person',
       name: post.authorName,
@@ -230,13 +233,13 @@ export function articleLd(post: PostFull) {
   };
 }
 
-export function blogLd(posts: PostListItem[]) {
+export function blogLd(posts: PostListItem[], locale = 'pt') {
   return {
     '@context': 'https://schema.org',
     '@type': 'Blog',
     name: 'Blog GT Overlander',
-    url: `${BASE_URL}/blog`,
-    inLanguage: 'pt-BR',
+    url: `${BASE_URL}${localePrefix(locale)}/blog`,
+    inLanguage: CONTENT_LANG[locale] ?? 'pt-BR',
     publisher: {
       '@type': 'Organization',
       name: ORG_NAME,
@@ -245,7 +248,7 @@ export function blogLd(posts: PostListItem[]) {
       '@type': 'BlogPosting',
       headline: p.title,
       description: p.description,
-      url: `${BASE_URL}/blog/${p.slug}`,
+      url: `${BASE_URL}${localePrefix(locale)}/blog/${p.slug}`,
       datePublished: p.publishedAt,
       author: { '@type': 'Person', name: p.authorName },
     })),

@@ -8,11 +8,20 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    pt: 'Vida Overlander',
+    en: 'Overlander Life',
+    es: 'Vida Overlander',
+  };
+  const descs: Record<string, string> = {
+    pt: PILLAR_DESCRIPTIONS['vida-overlander'].slice(0, 160),
+    en: 'Life on the road: camping, routines, budget and the culture of those who live traveling overland.',
+    es: 'La vida en la carretera: campamento, rutinas, presupuesto y la cultura de quienes viven viajando por tierra.',
+  };
   return {
-    title: 'Vida Overlander',
-    description: PILLAR_DESCRIPTIONS['vida-overlander'].slice(0, 160),
+    title: titles[locale] ?? titles.pt,
+    description: descs[locale] ?? descs.pt,
     alternates: getPageAlternates(locale, '/blog/vida-overlander'),
-    ...(locale !== 'pt' && { robots: { index: false, follow: false } }),
   };
 }
 

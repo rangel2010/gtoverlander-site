@@ -13,8 +13,10 @@ import {
   type BlogLocale,
 } from '@/lib/sanity/types';
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString('pt-BR', {
+const DATE_LOCALES: Record<string, string> = { pt: 'pt-BR', en: 'en-US', es: 'es-ES' };
+
+function formatDate(iso: string, locale = 'pt') {
+  return new Date(iso).toLocaleDateString(DATE_LOCALES[locale] ?? 'pt-BR', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -106,7 +108,7 @@ export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; lo
                         {post.description}
                       </p>
                       <p className="text-xs text-gt-text-dim font-sans">
-                        {formatDate(post.publishedAt)}
+                        {formatDate(post.publishedAt, locale)}
                       </p>
                     </div>
                   </Link>

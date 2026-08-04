@@ -8,11 +8,20 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    pt: 'Preparação & Planejamento',
+    en: 'Preparation & Planning',
+    es: 'Preparación & Planificación',
+  };
+  const descs: Record<string, string> = {
+    pt: PILLAR_DESCRIPTIONS.preparacao.slice(0, 160),
+    en: 'Vehicle prep, documents, gear and route planning: everything you need to sort out before an overland trip.',
+    es: 'Preparación del vehículo, documentos, equipo y planificación de rutas: todo lo que necesitas resolver antes de un viaje overland.',
+  };
   return {
-    title: 'Preparação & Planejamento',
-    description: PILLAR_DESCRIPTIONS.preparacao.slice(0, 160),
+    title: titles[locale] ?? titles.pt,
+    description: descs[locale] ?? descs.pt,
     alternates: getPageAlternates(locale, '/blog/preparacao'),
-    ...(locale !== 'pt' && { robots: { index: false, follow: false } }),
   };
 }
 

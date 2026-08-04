@@ -86,8 +86,10 @@ export async function generateMetadata({
   };
 }
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString('pt-BR', {
+const DATE_LOCALES: Record<string, string> = { pt: 'pt-BR', en: 'en-US', es: 'es-ES' };
+
+function formatDate(iso: string, locale = 'pt') {
+  return new Date(iso).toLocaleDateString(DATE_LOCALES[locale] ?? 'pt-BR', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -206,13 +208,13 @@ export default async function PostPage({ params }: PageProps) {
   return (
     <>
       {/* Schema.org Article + Breadcrumb */}
-      <script {...jsonLdScriptProps(articleLd(post))} />
+      <script {...jsonLdScriptProps(articleLd(post, locale))} />
       <script
         {...jsonLdScriptProps(
           breadcrumbLd([
-            { name: 'Blog', url: '/blog' },
-            { name: PILLAR_TITLES[post.category], url: `/blog/${post.category}` },
-            { name: post.title, url: `/blog/${post.slug}` },
+            { name: 'Blog', url: locale === 'pt' ? '/blog' : `/${locale}/blog` },
+            { name: PILLAR_TITLES[post.category], url: locale === 'pt' ? `/blog/${post.category}` : `/${locale}/blog/${post.category}` },
+            { name: post.title, url: locale === 'pt' ? `/blog/${post.slug}` : `/${locale}/blog/${post.slug}` },
           ])
         )}
       />
@@ -237,7 +239,7 @@ export default async function PostPage({ params }: PageProps) {
                 <span>{post.authorName}</span>
                 <span>·</span>
                 <time dateTime={post.publishedAt}>
-                  {formatDate(post.publishedAt)}
+                  {formatDate(post.publishedAt, locale)}
                 </time>
               </div>
               <ShareButtons

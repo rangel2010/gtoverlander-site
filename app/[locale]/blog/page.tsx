@@ -18,12 +18,15 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const descs: Record<string, string> = {
+    pt: 'Destinos, preparação e vida overlander pra quem viaja por terra. Roteiros, dicas e histórias de quem vive na estrada.',
+    en: 'Destinations, preparation and overlander life for those who travel overland. Routes, tips and stories from life on the road.',
+    es: 'Destinos, preparación y vida overlander para quienes viajan por tierra. Rutas, consejos e historias de la vida en la carretera.',
+  };
   return {
     title: 'Blog',
-    description:
-      'Destinos, preparação e vida overlander pra quem viaja por terra. Roteiros, dicas e histórias de quem vive na estrada.',
+    description: descs[locale] ?? descs.pt,
     alternates: getPageAlternates(locale, '/blog'),
-    ...(locale !== 'pt' && { robots: { index: false, follow: false } }),
   };
 }
 
@@ -35,8 +38,10 @@ const PILLAR_KEY: Record<Pillar, 'pillarDestinos' | 'pillarPreparacao' | 'pillar
   'vida-overlander': 'pillarVidaOverlander',
 };
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString('pt-BR', {
+const DATE_LOCALES: Record<string, string> = { pt: 'pt-BR', en: 'en-US', es: 'es-ES' };
+
+function formatDate(iso: string, locale = 'pt') {
+  return new Date(iso).toLocaleDateString(DATE_LOCALES[locale] ?? 'pt-BR', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -111,7 +116,7 @@ export default async function BlogPage({
             <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-4 font-sans">
               {t('emDestaque')}
             </p>
-            <FeaturedPost post={featured} pillarLabel={t(PILLAR_KEY[featured.category])} />
+            <FeaturedPost post={featured} pillarLabel={t(PILLAR_KEY[featured.category])} locale={blogLocale} />
           </div>
         </section>
       )}
@@ -129,7 +134,7 @@ export default async function BlogPage({
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {otherPosts.map((post) => (
-                <PostCard key={post._id} post={post} pillarLabel={t(PILLAR_KEY[post.category])} />
+                <PostCard key={post._id} post={post} pillarLabel={t(PILLAR_KEY[post.category])} locale={blogLocale} />
               ))}
             </div>
           )}
@@ -151,7 +156,7 @@ export default async function BlogPage({
   );
 }
 
-function FeaturedPost({ post, pillarLabel }: { post: NonNullable<Awaited<ReturnType<typeof getFeaturedPost>>>; pillarLabel: string }) {
+function FeaturedPost({ post, pillarLabel, locale }: { post: NonNullable<Awaited<ReturnType<typeof getFeaturedPost>>>; pillarLabel: string; locale?: string }) {
   const imageUrl = urlForImage(post.coverImage)?.width(1200).height(675).url();
 
   return (
@@ -181,14 +186,14 @@ function FeaturedPost({ post, pillarLabel }: { post: NonNullable<Awaited<ReturnT
           {post.description}
         </p>
         <p className="text-xs text-gt-text-dim font-sans">
-          {formatDate(post.publishedAt)}
+          {formatDate(post.publishedAt, locale)}
         </p>
       </div>
     </Link>
   );
 }
 
-function PostCard({ post, pillarLabel }: { post: Awaited<ReturnType<typeof getAllPosts>>[number]; pillarLabel: string }) {
+function PostCard({ post, pillarLabel, locale }: { post: Awaited<ReturnType<typeof getAllPosts>>[number]; pillarLabel: string; locale?: string }) {
   const imageUrl = urlForImage(post.coverImage)?.width(800).height(450).url();
 
   return (
@@ -218,7 +223,7 @@ function PostCard({ post, pillarLabel }: { post: Awaited<ReturnType<typeof getAl
           {post.description}
         </p>
         <p className="text-xs text-gt-text-dim font-sans">
-          {formatDate(post.publishedAt)}
+          {formatDate(post.publishedAt, locale)}
         </p>
       </div>
     </Link>

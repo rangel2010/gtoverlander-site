@@ -8,6 +8,10 @@ const localePath = (locale: string, path: string) =>
 // Rotas disponiveis nos 3 locales (tem traducao real)
 const MULTILINGUAL_ROUTES = [
   { path: '',            changeFreq: 'weekly'  as const, priority: 1.0 },
+  { path: '/blog',                 changeFreq: 'weekly' as const, priority: 0.9 },
+  { path: '/blog/destinos',        changeFreq: 'weekly' as const, priority: 0.8 },
+  { path: '/blog/preparacao',      changeFreq: 'weekly' as const, priority: 0.8 },
+  { path: '/blog/vida-overlander', changeFreq: 'weekly' as const, priority: 0.8 },
   { path: '/recursos',   changeFreq: 'monthly' as const, priority: 0.9 },
   { path: '/planos',     changeFreq: 'monthly' as const, priority: 0.9 },
   { path: '/sobre',      changeFreq: 'monthly' as const, priority: 0.7 },
@@ -29,10 +33,7 @@ const PT_ONLY_ROUTES = [
   { path: '/recursos/help-overlander', changeFreq: 'monthly' as const, priority: 0.8 },
   { path: '/recursos/explorer',        changeFreq: 'monthly' as const, priority: 0.8 },
   { path: '/recursos/desapega',        changeFreq: 'monthly' as const, priority: 0.8 },
-  { path: '/blog',            changeFreq: 'weekly'  as const, priority: 0.9 },
-  { path: '/blog/destinos',            changeFreq: 'weekly'  as const, priority: 0.8 },
-  { path: '/blog/preparacao',          changeFreq: 'weekly'  as const, priority: 0.8 },
-  { path: '/blog/vida-overlander',     changeFreq: 'weekly'  as const, priority: 0.8 },
+  { path: '/dicas',                    changeFreq: 'weekly'  as const, priority: 0.7 },
   { path: '/privacidade',              changeFreq: 'yearly'  as const, priority: 0.3 },
   { path: '/termos',                   changeFreq: 'yearly'  as const, priority: 0.3 },
   { path: '/termos/help-overlander',   changeFreq: 'yearly'  as const, priority: 0.3 },
