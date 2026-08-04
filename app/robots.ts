@@ -15,5 +15,6 @@ export default function robots(): MetadataRoute.Robots {
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,
     host: BASE_URL,
+    // llms.txt: resumo em texto simples do site pra assistentes de IA (padrão emergente, llmstxt.org)
   };
 }
