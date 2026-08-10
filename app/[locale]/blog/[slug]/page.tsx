@@ -18,7 +18,6 @@ import {
   articleLd,
   breadcrumbLd,
   jsonLdScriptProps,
-  getPageAlternates,
   DEFAULT_AUTHOR_BIO,
 } from '@/lib/seo';
 import { getTranslations } from 'next-intl/server';
@@ -58,10 +57,22 @@ export async function generateMetadata({
     alternates: (() => {
       const www = 'https://www.gtoverlander.com.br';
       const canonicalPath = locale === 'pt' ? `/blog/${params.slug}` : `/${locale}/blog/${params.slug}`;
-      const languages: Record<string, string> = {
-        'pt-BR': `${www}/blog/${params.slug}`,
-        'x-default': `${www}/blog/${params.slug}`,
-      };
+      const languages: Record<string, string> = {};
+
+      // pt-BR / x-default: usa o slug real do post em PT — a própria página
+      // se locale já for pt, ou o slug da tradução linkada, se existir.
+      // Nunca reaproveita o slug de outro idioma sob o caminho sem prefixo
+      // (bug anterior: gerava /blog/slug-en e /blog/slug-es, que não existem
+      // e viram 404 — visto no relatório de indexação do Search Console).
+      const ptSlug =
+        locale === 'pt'
+          ? params.slug
+          : post.linkedTranslations?.find((t) => t.locale === 'pt')?.slug;
+      if (ptSlug) {
+        languages['pt-BR'] = `${www}/blog/${ptSlug}`;
+        languages['x-default'] = `${www}/blog/${ptSlug}`;
+      }
+
       // Adiciona hreflang só dos idiomas que têm tradução linkada
       for (const t of post.linkedTranslations ?? []) {
         if (t.locale === 'en') languages['en'] = `${www}/en/blog/${t.slug}`;
