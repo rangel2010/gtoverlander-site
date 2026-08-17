@@ -26,7 +26,7 @@ export default async function PrivacidadePage() {
     <LegalDocument
       title="Política de Privacidade"
       subtitle="Conformidade com a Lei Geral de Proteção de Dados (LGPD)"
-      lastUpdated="10 de maio de 2026"
+      lastUpdated="17 de agosto de 2026"
       content={content}
       relatedDocs={[
         { href: '/termos', label: 'Termos de Uso' },

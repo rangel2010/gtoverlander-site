@@ -17,7 +17,8 @@ const POST_LIST_FIELDS = `
   tags,
   featured,
   locale,
-  linkedTranslations
+  linkedTranslations,
+  commentsEnabled
 `;
 
 const POST_FULL_FIELDS = `

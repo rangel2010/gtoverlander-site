@@ -39,4 +39,29 @@ export const structure: StructureResolver = (S) =>
             .defaultOrdering(ordenacaoPorData)
             .initialValueTemplates([S.initialValueTemplateItem('post-es')])
         ),
+      S.divider(),
+      S.listItem()
+        .title('💬 Comentários pendentes')
+        .child(
+          S.documentList()
+            .title('Pendentes de moderação')
+            .filter('_type == "comment" && status == "pending"')
+            .defaultOrdering([{ field: 'createdAt', direction: 'asc' }])
+        ),
+      S.listItem()
+        .title('✅ Comentários aprovados')
+        .child(
+          S.documentList()
+            .title('Aprovados')
+            .filter('_type == "comment" && status == "approved"')
+            .defaultOrdering([{ field: 'createdAt', direction: 'desc' }])
+        ),
+      S.listItem()
+        .title('🚫 Comentários rejeitados')
+        .child(
+          S.documentList()
+            .title('Rejeitados (bloqueio automático ou manual)')
+            .filter('_type == "comment" && status == "rejected"')
+            .defaultOrdering([{ field: 'createdAt', direction: 'desc' }])
+        ),
     ]);

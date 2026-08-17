@@ -18,3 +18,20 @@ export const sanityClient = sanityConfigured
       perspective: 'published',
     })
   : null;
+
+// Cliente com permissão de escrita, usado só em rotas server-side (nunca
+// importar isso em componente de cliente). Precisa de SANITY_API_WRITE_TOKEN
+// (token "Editor" gerado em sanity.io/manage → API → Tokens). Usado hoje só
+// pela rota de comentários (app/api/comments/route.ts).
+const SANITY_WRITE_TOKEN = process.env.SANITY_API_WRITE_TOKEN;
+
+export const sanityWriteClient =
+  sanityConfigured && SANITY_WRITE_TOKEN
+    ? createClient({
+        projectId: SANITY_PROJECT_ID!,
+        dataset: SANITY_DATASET,
+        apiVersion: SANITY_API_VERSION,
+        useCdn: false,
+        token: SANITY_WRITE_TOKEN,
+      })
+    : null;

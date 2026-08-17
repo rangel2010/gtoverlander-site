@@ -178,6 +178,14 @@ export const postSchema = defineType({
       description: 'Aparece em destaque no /blog. Só um post deve estar marcado por vez.',
     }),
     defineField({
+      name: 'commentsEnabled',
+      title: 'Comentários habilitados neste post',
+      type: 'boolean',
+      initialValue: false,
+      description:
+        'Liga a seção de comentários (login Google, moderação manual) só neste artigo. Comece habilitando em poucos posts pra testar antes de expandir pro blog todo.',
+    }),
+    defineField({
       name: 'body',
       title: 'Conteúdo (Markdown)',
       type: 'text',

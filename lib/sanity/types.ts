@@ -50,6 +50,7 @@ export interface PostListItem {
   featured?: boolean;
   locale?: BlogLocale;
   linkedTranslations?: LinkedTranslation[];
+  commentsEnabled?: boolean;
 }
 
 export interface PostFull extends PostListItem {

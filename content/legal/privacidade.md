@@ -94,6 +94,16 @@ Coletamos os seguintes dados pessoais, agrupados por finalidade:
 
   - Mensagem inicial enviada ao prestador no Help Overlander (texto livre, ficar registrada para fins de auditoria)
 
+### 2.7. Dados de Comentários no Blog
+
+  - Para comentar em um artigo do blog, é necessário entrar com sua Conta Google. Usamos esse login apenas para identificar quem comentou e reduzir spam e comentários automatizados, coletando nome, e-mail e foto de perfil pública da sua Conta Google.
+
+  - O nome e a foto de perfil ficam visíveis publicamente junto ao comentário, após aprovação. O e-mail nunca é exibido publicamente, sendo usado apenas para moderação interna.
+
+  - Não utilizamos esse login para nenhuma outra finalidade (não criamos conta na Plataforma, não enviamos e-mail de marketing a partir dele, não vinculamos a outros dados que você já tenha na GT).
+
+  - Todo comentário passa por moderação (automática e manual) antes de ficar visível a outros leitores.
+
 ## 3. Bases Legais e Finalidades
 
 Cada tipo de tratamento de dado pessoal tem uma base legal específica conforme o art. 7º da LGPD. Resumimos abaixo:
@@ -285,4 +295,4 @@ Para qualquer dúvida, solicitação ou reclamação relacionada a esta Polític
 
 Você também tem direito de apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD), pelos canais oficiais disponíveis em www.gov.br/anpd.
 
-**Última atualização:** Maio de 2026 — Versão 1.0.
+**Última atualização:** Agosto de 2026 — Versão 1.1 (adição da Seção 2.7, sobre dados de login usados para comentar no blog).

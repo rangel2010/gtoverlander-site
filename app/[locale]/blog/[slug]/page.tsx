@@ -14,6 +14,10 @@ import {
 import { urlForImage } from '@/lib/sanity/image';
 import { PILLAR_TITLES } from '@/lib/sanity/types';
 import { NewsletterBlog } from '@/components/sections/newsletter-blog';
+import { CommentSection } from '@/components/blog/comments/comment-section';
+import { APPROVED_COMMENTS_QUERY } from '@/lib/comments';
+import { sanityClient } from '@/lib/sanity/client';
+import type { CommentDTO } from '@/lib/comments';
 import {
   articleLd,
   breadcrumbLd,
@@ -211,6 +215,15 @@ export default async function PostPage({ params }: PageProps) {
 
   const related = await getRelatedPosts(post.slug, post.category, locale);
   const tc = await getTranslations('common');
+
+  // Busca os comentários já aprovados no servidor, pra virem prontos no HTML
+  // (bom pro Google indexar, e some com a "piscada" de conteúdo vazio).
+  const initialComments =
+    locale === 'pt' && post.commentsEnabled && sanityClient
+      ? await sanityClient.fetch<CommentDTO[]>(APPROVED_COMMENTS_QUERY, {
+          postId: post._id,
+        })
+      : [];
   const coverUrl = urlForImage(post.coverImage)
     ?.width(1600)
     .height(900)
@@ -345,6 +358,10 @@ export default async function PostPage({ params }: PageProps) {
                 </div>
               </div>
             </div>
+
+            {locale === 'pt' && post.commentsEnabled && (
+              <CommentSection postId={post._id} initialComments={initialComments} />
+            )}
           </div>
         </div>
       </article>
