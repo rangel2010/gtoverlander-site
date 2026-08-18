@@ -181,9 +181,9 @@ export const postSchema = defineType({
       name: 'commentsEnabled',
       title: 'Comentários habilitados neste post',
       type: 'boolean',
-      initialValue: false,
+      initialValue: true,
       description:
-        'Liga a seção de comentários (login Google, moderação manual) só neste artigo. Comece habilitando em poucos posts pra testar antes de expandir pro blog todo.',
+        'Liga a seção de comentários (login Google, moderação manual) neste artigo. Já vem ligado por padrão desde que o recurso passou a valer pra todo o blog PT; desligue aqui se quiser fechar em algum post específico.',
     }),
     defineField({
       name: 'body',
