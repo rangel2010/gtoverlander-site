@@ -273,9 +273,9 @@ function CommentSectionInner({ postId, initialComments = [] }: CommentSectionPro
 
       <div className="bg-gt-card border border-gt-border rounded-lg p-4 mb-6">
         <p className="text-sm text-gt-text-muted font-sans leading-relaxed">
-          Os artigos deste blog refletem a experiência de quem viajou e escreveu. Sua visão pode
-          ser diferente da minha, e é bem-vinda aqui embaixo. Dê sua opinião, mas respeite a
-          opinião de quem pensa diferente.
+          Os artigos deste blog refletem a experiência de quem viajou e escreveu. Toda visão é
+          bem-vinda aqui embaixo, fique à vontade pra comentar e trocar ideia com outros
+          leitores, só pedimos respeito entre quem pensa diferente.
         </p>
         <p className="text-xs text-gt-text-dim font-sans leading-relaxed mt-2">
           Comentar exige login com Google, só pra identificar quem escreveu e evitar spam e bots.
