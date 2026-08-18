@@ -166,7 +166,7 @@ function CommentForm({
     return (
       <button
         type="button"
-        onClick={() => signIn('google')}
+        onClick={() => signIn('google', { callbackUrl: window.location.href })}
         className="flex items-center gap-2 bg-gt-card hover:bg-gt-card-hover border border-gt-border hover:border-gt-border-strong rounded-md px-4 py-2 text-sm text-gt-text font-sans transition-colors"
       >
         <LogIn size={16} />

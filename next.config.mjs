@@ -82,7 +82,9 @@ const nextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'cdn.sanity.io' },
       { protocol: 'https', hostname: 'i.ytimg.com' },
-      { protocol: 'https', hostname: 'i3.ytimg.com' }
+      { protocol: 'https', hostname: 'i3.ytimg.com' },
+      // Foto de perfil do Google, usada no login de comentários do blog
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' }
     ],
     formats: ['image/avif', 'image/webp']
   }
