@@ -24,7 +24,8 @@ const POST_LIST_FIELDS = `
 const POST_FULL_FIELDS = `
   ${POST_LIST_FIELDS},
   authorBio,
-  body
+  body,
+  "audioUrl": audio.asset->url
 `;
 
 /**

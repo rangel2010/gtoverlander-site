@@ -78,6 +78,13 @@ export const postSchema = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'audio',
+      title: 'Áudio (narração do artigo)',
+      type: 'file',
+      options: { accept: 'audio/*' },
+      description: 'Arquivo de narração do artigo na voz do Rangel. Preenchido automaticamente.',
+    }),
+    defineField({
       name: 'coverImageAlt',
       title: 'Texto alternativo da capa',
       type: 'string',

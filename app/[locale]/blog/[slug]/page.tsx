@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { Headphones } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ShareButtons } from '@/components/blog/share-buttons';
 import {
@@ -297,6 +298,24 @@ export default async function PostPage({ params }: PageProps) {
 
         <div className="bg-gt-bg py-12 md:py-16">
           <div className="container-narrow">
+            {post.audioUrl && (
+              <div className="mb-10 bg-gt-card border border-gt-border rounded-lg p-5">
+                <p className="flex items-center gap-2 text-sm font-medium text-gt-green font-sans mb-3">
+                  <Headphones size={18} className="text-gt-orange" aria-hidden="true" />
+                  Ouvir o artigo
+                </p>
+                <audio
+                  controls
+                  preload="none"
+                  src={post.audioUrl}
+                  aria-label={`Narração em áudio do artigo: ${post.title}`}
+                  className="w-full"
+                >
+                  Seu navegador não suporta reprodução de áudio.
+                </audio>
+              </div>
+            )}
+
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={markdownComponents}

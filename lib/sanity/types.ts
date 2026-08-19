@@ -56,4 +56,5 @@ export interface PostListItem {
 export interface PostFull extends PostListItem {
   authorBio?: string;
   body: string; // markdown bruto — renderizado via react-markdown
+  audioUrl?: string; // narração em áudio do artigo (opcional)
 }
