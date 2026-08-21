@@ -30,7 +30,9 @@ export async function Hero() {
             </Button>
           </div>
 
-          <p className="text-[11px] uppercase tracking-[0.15em] text-gt-text-dim mt-8 font-sans">
+          {/* text-muted (não dim): sobre o verde do hero, o dim dá contraste
+              2,76:1 e reprova no WCAG AA. O muted sobe pra 5,37:1. */}
+          <p className="text-[11px] uppercase tracking-[0.15em] text-gt-text-muted mt-8 font-sans">
             {t('plataformas')}
           </p>
         </div>

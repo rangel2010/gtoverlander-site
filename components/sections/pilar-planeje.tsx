@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ScrollReveal } from '@/components/scroll-reveal';
+import { LazyVideo } from '@/components/lazy-video';
 
 export async function PilarPlaneje() {
   const t = await getTranslations('home.pilarPlaneje');
@@ -17,13 +18,12 @@ export async function PilarPlaneje() {
             <div className="relative">
               <div className="absolute inset-0 bg-gt-orange/15 rounded-3xl blur-3xl scale-110 pointer-events-none" />
               <div className="relative rounded-3xl overflow-hidden border border-gt-border shadow-2xl w-[230px] md:w-[250px]">
-                <video
+                <LazyVideo
                   src="/images/screenshots/app-rotas.mp4"
-                  poster="/images/screenshots/app-chat-mapa.jpg"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
+                  poster="/images/screenshots/app-chat-mapa-poster.webp"
+                  label={t('titulo')}
+                  width={480}
+                  height={1040}
                   className="w-full h-auto"
                 />
               </div>

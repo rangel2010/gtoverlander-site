@@ -113,7 +113,13 @@ export function Footer() {
           </div>
 
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/logo-gt-contorno.svg" alt="GT Overlander" className="h-16 w-auto" />
+          <img
+            src="/images/logo-gt-contorno.svg"
+            alt="GT Overlander"
+            width={108}
+            height={64}
+            className="h-16 w-auto"
+          />
         </div>
       </div>
     </footer>

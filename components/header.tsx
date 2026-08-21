@@ -47,6 +47,8 @@ export function Header() {
           <img
             src="/images/logo-gt-contorno.svg"
             alt="GT Overlander"
+            width={108}
+            height={64}
             className="h-16 w-auto"
           />
         </Link>
