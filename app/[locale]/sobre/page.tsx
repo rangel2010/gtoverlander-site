@@ -103,7 +103,7 @@ export default async function SobrePage({
                 <h3 className="font-sans text-xl font-medium text-gt-text mb-2 normal-case">
                   {t('fundador.nome')}
                 </h3>
-                <p className="text-sm text-gt-orange mb-5 uppercase tracking-wider font-sans">
+                <p className="text-sm text-gt-orange-text mb-5 uppercase tracking-wider font-sans">
                   {t('fundador.cargo')}
                 </p>
                 <p className="text-gt-text leading-relaxed mb-4 font-sans">{t('fundador.p1')}</p>
@@ -114,7 +114,7 @@ export default async function SobrePage({
                     href={INSTAGRAM_OVERLANDEIROS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gt-orange hover:underline"
+                    className="text-gt-orange-text hover:underline"
                   >
                     @overlandeiros
                   </Link>

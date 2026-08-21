@@ -33,7 +33,7 @@ export async function Numeros() {
                 <span className="absolute top-5 right-5 bg-gt-orange text-white text-[10px] font-medium uppercase tracking-wider px-2 py-1 rounded font-sans">
                   {t('label')}
                 </span>
-                <h3 className="text-xl md:text-2xl text-gt-text mb-3 group-hover:text-gt-orange transition-colors pr-20">{i.titulo}</h3>
+                <h3 className="text-xl md:text-2xl text-gt-text mb-3 group-hover:text-gt-orange-text transition-colors pr-20">{i.titulo}</h3>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{i.desc}</p>
               </Link>
             </ScrollReveal>

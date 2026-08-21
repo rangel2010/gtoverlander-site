@@ -48,13 +48,13 @@ function FeatureCard({
           {emBreve}
         </span>
       )}
-      <h3 className="text-2xl md:text-3xl text-gt-text mb-3 group-hover:text-gt-orange transition-colors pr-24">
+      <h3 className="text-2xl md:text-3xl text-gt-text mb-3 group-hover:text-gt-orange-text transition-colors pr-24">
         {f.titulo}
       </h3>
       <p className="text-sm text-gt-text-muted leading-relaxed mb-5 font-sans">
         {f.desc}
       </p>
-      <span className="text-gt-orange text-sm font-medium font-sans">
+      <span className="text-gt-orange-text text-sm font-medium font-sans">
         {saibaMais}
       </span>
     </Link>
@@ -104,7 +104,7 @@ export default async function RecursosPage({
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">
+          <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-3 font-sans">
             {t('planejamento.label')}
           </p>
           <h2 className="text-3xl md:text-4xl text-gt-text mb-10 leading-tight">
@@ -120,7 +120,7 @@ export default async function RecursosPage({
 
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
-          <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">
+          <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-3 font-sans">
             {t('comunidade.label')}
           </p>
           <h2 className="text-3xl md:text-4xl text-gt-text mb-10 leading-tight">

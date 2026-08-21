@@ -48,7 +48,7 @@ export function ConsentBanner() {
         Usamos recursos essenciais para o funcionamento do site e métricas anônimas
         para entender o uso e melhorar a experiência. Não criamos perfis individuais
         de navegação. Detalhes na nossa{' '}
-        <Link href="/privacidade" className="text-gt-orange hover:underline">
+        <Link href="/privacidade" className="text-gt-orange-text hover:underline">
           Política de Privacidade
         </Link>
         .

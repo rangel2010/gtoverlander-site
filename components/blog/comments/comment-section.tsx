@@ -73,7 +73,7 @@ function CommentItem({
             <button
               type="button"
               onClick={() => onReply(comment._id)}
-              className="text-xs text-gt-orange hover:underline font-sans mt-2"
+              className="text-xs text-gt-orange-text hover:underline font-sans mt-2"
             >
               Responder como GT Overlander
             </button>
@@ -101,7 +101,7 @@ function CommentItem({
               )}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-sans text-sm font-medium text-gt-orange">
+                  <span className="font-sans text-sm font-medium text-gt-orange-text">
                     {reply.authorName}
                   </span>
                   <span className="text-xs text-gt-text-dim font-sans">
@@ -200,7 +200,7 @@ function CommentForm({
         </button>
       </div>
       {parentComment && (
-        <div className="text-xs text-gt-orange font-sans flex items-center justify-between bg-gt-card border border-gt-border rounded-md px-3 py-2">
+        <div className="text-xs text-gt-orange-text font-sans flex items-center justify-between bg-gt-card border border-gt-border rounded-md px-3 py-2">
           Respondendo como GT Overlander
           <button type="button" onClick={onCancelReply} className="underline">
             cancelar
@@ -267,7 +267,7 @@ function CommentSectionInner({ postId, initialComments = [] }: CommentSectionPro
   return (
     <section className="mt-16 pt-10 border-t border-gt-border">
       <h2 className="flex items-center gap-2 text-xl text-gt-text mb-4">
-        <MessageSquare size={20} className="text-gt-orange" />
+        <MessageSquare size={20} className="text-gt-orange-text" />
         Comentários
       </h2>
 

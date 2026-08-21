@@ -98,10 +98,10 @@ export default async function BlogPage({
                 href={`/blog/${p}`}
                 className="bg-gt-card rounded-lg p-6 border border-gt-border hover:border-gt-border-strong transition-colors group"
               >
-                <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case group-hover:text-gt-orange transition-colors">
+                <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case group-hover:text-gt-orange-text transition-colors">
                   {t(PILLAR_KEY[p])}
                 </h3>
-                <span className="text-gt-orange text-sm font-medium font-sans">
+                <span className="text-gt-orange-text text-sm font-medium font-sans">
                   {t('verArtigos')}
                 </span>
               </Link>
@@ -113,7 +113,7 @@ export default async function BlogPage({
       {featured && (
         <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
           <div className="container-wide">
-            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-4 font-sans">
+            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-4 font-sans">
               {t('emDestaque')}
             </p>
             <FeaturedPost post={featured} pillarLabel={t(PILLAR_KEY[featured.category])} locale={blogLocale} />
@@ -176,10 +176,10 @@ function FeaturedPost({ post, pillarLabel, locale }: { post: NonNullable<Awaited
         </div>
       )}
       <div className="p-6 md:p-8">
-        <p className="text-xs uppercase tracking-wider text-gt-orange/80 mb-3 font-sans">
+        <p className="text-xs uppercase tracking-wider text-gt-orange-text mb-3 font-sans">
           {pillarLabel}
         </p>
-        <h3 className="text-2xl md:text-3xl text-gt-text mb-4 leading-snug group-hover:text-gt-orange transition-colors">
+        <h3 className="text-2xl md:text-3xl text-gt-text mb-4 leading-snug group-hover:text-gt-orange-text transition-colors">
           {post.title}
         </h3>
         <p className="text-sm text-gt-text-muted leading-relaxed mb-5 font-sans">
@@ -213,10 +213,10 @@ function PostCard({ post, pillarLabel, locale }: { post: Awaited<ReturnType<type
         </div>
       )}
       <div className="p-6 flex-1 flex flex-col">
-        <p className="text-xs uppercase tracking-wider text-gt-orange/80 mb-3 font-sans">
+        <p className="text-xs uppercase tracking-wider text-gt-orange-text mb-3 font-sans">
           {pillarLabel}
         </p>
-        <h3 className="font-sans text-lg font-medium text-gt-text mb-3 leading-snug group-hover:text-gt-orange transition-colors normal-case flex-1">
+        <h3 className="font-sans text-lg font-medium text-gt-text mb-3 leading-snug group-hover:text-gt-orange-text transition-colors normal-case flex-1">
           {post.title}
         </h3>
         <p className="text-sm text-gt-text-muted leading-relaxed mb-4 font-sans line-clamp-3">

@@ -95,7 +95,7 @@ export default function WaypointsPage() {
             </p>
             <a
               href="/demo"
-              className="inline-flex items-center text-sm text-gt-orange hover:underline font-sans"
+              className="inline-flex items-center text-sm text-gt-orange-text hover:underline font-sans"
             >
               Abrir em tela cheia →
             </a>

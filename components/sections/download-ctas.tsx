@@ -78,7 +78,7 @@ export function DownloadCtas({ labels }: DownloadCtasProps) {
                 {labels.recomendado}
               </span>
             )}
-            <span className={isRecommended ? 'text-gt-orange' : 'text-gt-text'}>
+            <span className={isRecommended ? 'text-gt-orange-text' : 'text-gt-text'}>
               {opt.icon}
             </span>
             <div>

@@ -67,7 +67,7 @@ export default async function DicasPage({ params: { locale } }: PageProps) {
       {/* Hero */}
       <section className="dark bg-gt-bg-elevated py-16 md:py-20">
         <div className="container-narrow">
-          <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-4 font-sans">
+          <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-4 font-sans">
             Canal GT Overlander
           </p>
           <h1 className="text-4xl md:text-5xl text-gt-text leading-[1.05] mb-5">
@@ -81,7 +81,7 @@ export default async function DicasPage({ params: { locale } }: PageProps) {
             href="https://www.youtube.com/@gtoverlander/shorts"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-6 text-sm text-gt-orange hover:underline font-sans"
+            className="inline-flex items-center gap-2 mt-6 text-sm text-gt-orange-text hover:underline font-sans"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z" />
@@ -102,7 +102,7 @@ export default async function DicasPage({ params: { locale } }: PageProps) {
                   href="https://www.youtube.com/@gtoverlander"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gt-orange hover:underline"
+                  className="text-gt-orange-text hover:underline"
                 >
                   YouTube
                 </a>
@@ -119,7 +119,7 @@ export default async function DicasPage({ params: { locale } }: PageProps) {
                 href="https://www.youtube.com/@gtoverlander/shorts"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-gt-text-muted hover:text-gt-orange transition-colors font-sans border border-gt-border rounded-full px-5 py-2.5 hover:border-gt-border-strong"
+                className="inline-flex items-center gap-2 text-sm text-gt-text-muted hover:text-gt-orange-text transition-colors font-sans border border-gt-border rounded-full px-5 py-2.5 hover:border-gt-border-strong"
               >
                 Ver todos no YouTube
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">

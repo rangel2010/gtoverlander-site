@@ -34,7 +34,7 @@ interface PlanFeature {
 }
 
 function FeatureValue({ value }: { value: string | boolean }) {
-  if (value === true) return <span className="text-gt-orange">✓</span>;
+  if (value === true) return <span className="text-gt-orange-text">✓</span>;
   if (value === false) return <span className="text-gt-text-dim">—</span>;
   return <span className="text-sm text-gt-text font-sans">{value}</span>;
 }
@@ -164,21 +164,21 @@ export default async function PlanosPage({
           <div className="grid md:grid-cols-3 gap-5 mb-10">
             <ScrollReveal delay={0}>
               <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
-                <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">{t('business.w_tag')}</p>
+                <p className="text-xs uppercase tracking-wider text-gt-orange-text mb-3 font-sans font-medium">{t('business.w_tag')}</p>
                 <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">{t('business.w_titulo')}</h3>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{t('business.w_desc')}</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={80}>
               <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
-                <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">{t('business.p_tag')}</p>
+                <p className="text-xs uppercase tracking-wider text-gt-orange-text mb-3 font-sans font-medium">{t('business.p_tag')}</p>
                 <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">{t('business.p_titulo')}</h3>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{t('business.p_desc')}</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={160}>
               <div className="bg-gt-card rounded-lg p-6 border border-gt-border">
-                <p className="text-xs uppercase tracking-wider text-gt-orange mb-3 font-sans font-medium">{t('business.s_tag')}</p>
+                <p className="text-xs uppercase tracking-wider text-gt-orange-text mb-3 font-sans font-medium">{t('business.s_tag')}</p>
                 <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case">{t('business.s_titulo')}</h3>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{t('business.s_desc')}</p>
               </div>
@@ -200,8 +200,8 @@ export default async function PlanosPage({
                 </div>
                 <p className="text-sm text-gt-text-muted font-sans leading-relaxed">
                   {t('business.pricing')}{' '}
-                  <a href="/empresas#precos" className="text-gt-orange hover:underline">{t('business.verTabela')}</a> ·{' '}
-                  <a href="/termos/conta-business" className="text-gt-orange hover:underline">{t('business.verPolitica')}</a>.
+                  <a href="/empresas#precos" className="text-gt-orange-text hover:underline">{t('business.verTabela')}</a> ·{' '}
+                  <a href="/termos/conta-business" className="text-gt-orange-text hover:underline">{t('business.verPolitica')}</a>.
                 </p>
               </div>
               <div className="w-full md:w-auto">

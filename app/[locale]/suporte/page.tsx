@@ -102,7 +102,7 @@ export default async function SuportePage({
                   <span className="font-sans font-medium text-gt-text pr-4">
                     {p.q}
                   </span>
-                  <span className="text-gt-orange flex-shrink-0 text-xl leading-none transition-transform group-open:rotate-45">
+                  <span className="text-gt-orange-text flex-shrink-0 text-xl leading-none transition-transform group-open:rotate-45">
                     +
                   </span>
                 </summary>
@@ -115,7 +115,7 @@ export default async function SuportePage({
 
           <p className="text-sm text-gt-text-muted mt-8 font-sans">
             {t('faq.rodapeTexto')}{' '}
-            <Link href="/faq" className="text-gt-orange hover:underline">
+            <Link href="/faq" className="text-gt-orange-text hover:underline">
               {t('faq.verFaq')}
             </Link>{' '}
             {t('faq.rodapeLink')}
@@ -125,7 +125,7 @@ export default async function SuportePage({
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-narrow">
-          <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">
+          <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-3 font-sans">
             {t('ticket.label')}
           </p>
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">

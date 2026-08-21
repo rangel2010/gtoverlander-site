@@ -152,7 +152,7 @@ export default function ModoOfflinePage() {
                   <span className="font-display text-3xl text-gt-text uppercase tracking-display">
                     {p.nome}
                   </span>
-                  <span className="text-xs uppercase tracking-wider text-gt-orange font-sans font-medium">
+                  <span className="text-xs uppercase tracking-wider text-gt-orange-text font-sans font-medium">
                     {p.badge}
                   </span>
                 </div>
@@ -162,7 +162,7 @@ export default function ModoOfflinePage() {
                 <ul className="space-y-2 font-sans text-sm text-gt-text-muted">
                   {p.items.map((i) => (
                     <li key={i} className="flex gap-2">
-                      <span className="text-gt-orange flex-shrink-0">✓</span>
+                      <span className="text-gt-orange-text flex-shrink-0">✓</span>
                       <span className="leading-relaxed">{i}</span>
                     </li>
                   ))}

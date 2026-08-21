@@ -144,7 +144,7 @@ export default function ExplorerPage() {
                 className="bg-gt-card rounded-lg p-5 border border-gt-border flex flex-col"
               >
                 <div className="flex items-baseline gap-2 mb-2">
-                  <span className="font-display text-3xl text-gt-orange uppercase tracking-display">
+                  <span className="font-display text-3xl text-gt-orange-text uppercase tracking-display">
                     NV {n.nv}
                   </span>
                 </div>

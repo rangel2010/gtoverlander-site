@@ -26,7 +26,7 @@ export function FeatureFaq({ title = 'Perguntas frequentes', items }: FeatureFaq
                 <span className="font-sans font-medium text-gt-text pr-4">
                   {item.q}
                 </span>
-                <span className="text-gt-orange flex-shrink-0 text-xl leading-none transition-transform group-open:rotate-45">
+                <span className="text-gt-orange-text flex-shrink-0 text-xl leading-none transition-transform group-open:rotate-45">
                   +
                 </span>
               </summary>

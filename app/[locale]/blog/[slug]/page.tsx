@@ -141,7 +141,7 @@ const markdownComponents = {
         {...(isExternal
           ? { target: '_blank', rel: 'noopener noreferrer' }
           : {})}
-        className="text-gt-orange hover:underline"
+        className="text-gt-orange-text hover:underline"
       >
         {children}
       </a>
@@ -249,7 +249,7 @@ export default async function PostPage({ params }: PageProps) {
           <div className="container-narrow">
             <Link
               href={`/blog/${post.category}`}
-              className="text-xs uppercase tracking-wider text-gt-orange/80 hover:text-gt-orange font-sans inline-block mb-5"
+              className="text-xs uppercase tracking-wider text-gt-orange-text hover:text-gt-orange-text font-sans inline-block mb-5"
             >
               {PILLAR_TITLES[post.category]}
             </Link>
@@ -301,7 +301,7 @@ export default async function PostPage({ params }: PageProps) {
             {post.audioUrl && (
               <div className="mb-10 bg-gt-card border border-gt-border rounded-lg p-5">
                 <p className="flex items-center gap-2 text-sm font-medium text-gt-green font-sans mb-3">
-                  <Headphones size={18} className="text-gt-orange" aria-hidden="true" />
+                  <Headphones size={18} className="text-gt-orange-text" aria-hidden="true" />
                   Ouvir o artigo
                 </p>
                 <audio
@@ -370,7 +370,7 @@ export default async function PostPage({ params }: PageProps) {
                   </p>
                   <Link
                     href="/sobre"
-                    className="text-sm text-gt-orange hover:underline font-sans"
+                    className="text-sm text-gt-orange-text hover:underline font-sans"
                   >
                     Conheça mais sobre o Rangel →
                   </Link>
@@ -436,10 +436,10 @@ export default async function PostPage({ params }: PageProps) {
                       </div>
                     )}
                     <div className="p-5">
-                      <p className="text-xs uppercase tracking-wider text-gt-orange/80 mb-2 font-sans">
+                      <p className="text-xs uppercase tracking-wider text-gt-orange-text mb-2 font-sans">
                         {PILLAR_TITLES[p.category]}
                       </p>
-                      <h3 className="font-sans text-base font-medium text-gt-text leading-snug group-hover:text-gt-orange transition-colors normal-case">
+                      <h3 className="font-sans text-base font-medium text-gt-text leading-snug group-hover:text-gt-orange-text transition-colors normal-case">
                         {p.title}
                       </h3>
                     </div>

@@ -88,7 +88,7 @@ export function Footer() {
             <p className="text-sm text-gt-text-muted">{tf('tagline')}</p>
             <p className="text-xs text-gt-text-dim mt-2">© 2026 GT Overlander Ltda · CNPJ 59.840.412/0001-82</p>
             <p className="text-xs text-gt-text-dim mt-1">
-              Feito com <span className="text-gt-orange">♥</span> para a comunidade de aventureiros.
+              Feito com <span className="text-gt-orange-text">♥</span> para a comunidade de aventureiros.
             </p>
           </div>
 

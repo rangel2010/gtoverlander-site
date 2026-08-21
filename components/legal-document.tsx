@@ -88,7 +88,7 @@ export function LegalDocument({
                   return (
                     <Link
                       href={href}
-                      className="text-gt-orange hover:underline font-sans"
+                      className="text-gt-orange-text hover:underline font-sans"
                     >
                       {children}
                     </Link>
@@ -99,7 +99,7 @@ export function LegalDocument({
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gt-orange hover:underline font-sans"
+                    className="text-gt-orange-text hover:underline font-sans"
                   >
                     {children}
                   </a>
@@ -155,7 +155,7 @@ export function LegalDocument({
                 <li key={doc.href}>
                   <Link
                     href={doc.href}
-                    className="text-gt-orange hover:underline"
+                    className="text-gt-orange-text hover:underline"
                   >
                     {doc.label} →
                   </Link>

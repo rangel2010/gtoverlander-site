@@ -89,7 +89,7 @@ export default async function FaqPage({
             {t('hero.desc')}{' '}
             <Link
               href="/contato"
-              className="text-gt-text underline underline-offset-4 hover:text-gt-orange"
+              className="text-gt-text underline underline-offset-4 hover:text-gt-orange-text"
             >
               {t('hero.descLink')}
             </Link>
@@ -115,7 +115,7 @@ export default async function FaqPage({
                       <span className="font-sans font-medium text-gt-text pr-4">
                         {p.q}
                       </span>
-                      <span className="text-gt-orange flex-shrink-0 text-xl leading-none transition-transform group-open:rotate-45">
+                      <span className="text-gt-orange-text flex-shrink-0 text-xl leading-none transition-transform group-open:rotate-45">
                         +
                       </span>
                     </summary>

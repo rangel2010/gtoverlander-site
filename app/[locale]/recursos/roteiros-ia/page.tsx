@@ -137,7 +137,7 @@ export default function RoteirosIaPage() {
                 <h3 className="font-sans font-medium text-gt-text text-lg mb-2 normal-case">
                   {m.nome}
                 </h3>
-                <p className="text-xs uppercase tracking-wider text-gt-orange/80 mb-3 font-sans">
+                <p className="text-xs uppercase tracking-wider text-gt-orange-text mb-3 font-sans">
                   {m.pra}
                 </p>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
@@ -164,7 +164,7 @@ export default function RoteirosIaPage() {
                 key={p.num}
                 className="border-l-2 border-gt-orange pl-5"
               >
-                <div className="text-gt-orange font-medium text-sm mb-2 font-sans">
+                <div className="text-gt-orange-text font-medium text-sm mb-2 font-sans">
                   {p.num.toString().padStart(2, '0')}
                 </div>
                 <h3 className="font-sans font-medium text-gt-text mb-2 leading-snug normal-case">

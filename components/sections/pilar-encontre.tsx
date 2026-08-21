@@ -32,7 +32,7 @@ export async function PilarEncontre() {
 
           {/* Texto */}
           <ScrollReveal className="flex-1 min-w-0">
-            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-4 font-sans">
+            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-4 font-sans">
               {t('label')}
             </p>
             <h2 className="text-4xl md:text-5xl text-gt-text mb-5 leading-tight">
@@ -44,14 +44,14 @@ export async function PilarEncontre() {
             <ul className="space-y-3.5 mb-10">
               {features.map((f, i) => (
                 <li key={i} className="flex items-start gap-3 font-sans">
-                  <span className="text-gt-orange mt-0.5 flex-shrink-0 font-medium">→</span>
+                  <span className="text-gt-orange-text mt-0.5 flex-shrink-0 font-medium">→</span>
                   <span className="text-gt-text text-sm leading-relaxed">{f}</span>
                 </li>
               ))}
             </ul>
             <Link
               href="/recursos/waypoints"
-              className="inline-flex items-center gap-2 text-gt-orange text-sm font-medium hover:underline font-sans transition-opacity hover:opacity-80"
+              className="inline-flex items-center gap-2 text-gt-orange-text text-sm font-medium hover:underline font-sans transition-opacity hover:opacity-80"
             >
               {t('cta')}
             </Link>

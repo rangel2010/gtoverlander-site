@@ -36,7 +36,7 @@ export default async function BaixarPage({
       <section className="bg-gt-card border-b border-gt-border py-20 md:py-28">
         <div className="container-wide max-w-3xl text-center">
           <ScrollReveal>
-            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-5 font-sans">
+            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-5 font-sans">
               {t('label')}
             </p>
             <h1 className="text-5xl md:text-6xl leading-tight text-gt-text mb-5">
@@ -65,7 +65,7 @@ export default async function BaixarPage({
               {t('temConta')}{' '}
               <a
                 href="https://app.gtoverlander.com.br"
-                className="text-gt-orange hover:underline font-medium"
+                className="text-gt-orange-text hover:underline font-medium"
               >
                 {t('entrar')}
               </a>
@@ -111,7 +111,7 @@ export default async function BaixarPage({
                   key={key}
                   className="flex items-start gap-3 bg-gt-card rounded-xl border border-gt-border p-6"
                 >
-                  <span className="text-gt-orange mt-0.5 flex-shrink-0 font-bold text-lg">✓</span>
+                  <span className="text-gt-orange-text mt-0.5 flex-shrink-0 font-bold text-lg">✓</span>
                   <span className="text-sm text-gt-text leading-relaxed font-sans">
                     {t(key)}
                   </span>

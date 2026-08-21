@@ -33,6 +33,13 @@ const config: Config = {
         'gt-text': 'rgb(var(--gt-text) / <alpha-value>)',
         'gt-text-muted': 'rgb(var(--gt-text-muted) / <alpha-value>)',
         'gt-text-dim': 'rgb(var(--gt-text-dim) / <alpha-value>)',
+        // Laranja usado como COR DE TEXTO (links, labels, ícones inline).
+        // Existe separado de 'gt-orange' porque o laranja de CTA (#e06226)
+        // não atinge contraste 4,5:1 nem sobre o creme claro (3,24:1) nem
+        // sobre o verde escuro (4,14:1) — reprova no WCAG AA nos dois temas.
+        // Aqui ele escurece no tema claro e clareia no escuro. Fundo de botão
+        // continua usando 'gt-orange' puro, a marca não muda.
+        'gt-orange-text': 'rgb(var(--gt-orange-text) / <alpha-value>)',
       },
       fontFamily: {
         // Display: Anton — condensada bold pra headlines impactantes (estilo app web GT)

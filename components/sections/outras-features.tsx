@@ -68,11 +68,11 @@ export function OutrasFeatures({ currentSlug }: OutrasFeaturesProps) {
                   Em breve
                 </span>
               )}
-              <h3 className="font-sans font-medium text-gt-text mb-2 group-hover:text-gt-orange transition-colors pr-16">
+              <h3 className="font-sans font-medium text-gt-text mb-2 group-hover:text-gt-orange-text transition-colors pr-16">
                 {f.titulo}
               </h3>
               <p className="text-sm text-gt-text-muted mb-3 font-sans leading-relaxed">{f.desc}</p>
-              <span className="text-gt-orange text-sm font-medium font-sans">
+              <span className="text-gt-orange-text text-sm font-medium font-sans">
                 Saiba mais →
               </span>
             </Link>

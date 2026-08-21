@@ -519,7 +519,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
                 onClick={() => toggleGroup(groupKey)}
                 className={`text-xs px-3 py-2 rounded-md font-sans font-medium transition-all border ${
                   isActive
-                    ? 'bg-transparent text-gt-orange border-gt-orange'
+                    ? 'bg-transparent text-gt-orange-text border-gt-orange'
                     : 'bg-transparent text-gt-text-muted border-gt-border/60 hover:text-gt-text hover:border-gt-text/30'
                 }`}
               >
@@ -728,7 +728,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
                       onClick={() => toggleGroup(groupKey)}
                       className={`text-sm px-3 py-2.5 rounded-md font-sans font-medium transition-all border text-left ${
                         isActive
-                          ? 'bg-transparent text-gt-orange border-gt-orange'
+                          ? 'bg-transparent text-gt-orange-text border-gt-orange'
                           : 'bg-transparent text-gt-text-muted border-gt-border/60 hover:text-gt-text hover:border-gt-text/30'
                       }`}
                     >

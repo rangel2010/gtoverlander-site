@@ -87,7 +87,7 @@ export function DicasGrid({ shorts }: Props) {
 
             {/* Info */}
             <div className="p-3">
-              <p className="text-sm font-sans text-gt-text leading-snug line-clamp-2 group-hover:text-gt-orange transition-colors">
+              <p className="text-sm font-sans text-gt-text leading-snug line-clamp-2 group-hover:text-gt-orange-text transition-colors">
                 {video.title}
               </p>
               <p className="text-xs text-gt-text-dim mt-1.5 font-sans">
@@ -140,7 +140,7 @@ export function DicasGrid({ shorts }: Props) {
                 href={activeVideo.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 text-gt-orange hover:underline text-xs font-sans flex items-center gap-1"
+                className="shrink-0 text-gt-orange-text hover:underline text-xs font-sans flex items-center gap-1"
               >
                 YouTube
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

@@ -36,7 +36,7 @@ export function FeatureScreenshot({
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div className={reverse ? 'md:order-2' : ''}>
             {kicker && (
-              <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">
+              <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-3 font-sans">
                 {kicker}
               </p>
             )}

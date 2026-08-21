@@ -55,7 +55,7 @@ export default async function ContatoPage({
                 </h3>
                 <a
                   href="mailto:suporte@gtoverlander.com.br"
-                  className="text-gt-text hover:text-gt-orange transition-colors font-sans block mb-1"
+                  className="text-gt-text hover:text-gt-orange-text transition-colors font-sans block mb-1"
                 >
                   suporte@gtoverlander.com.br
                 </a>
@@ -70,7 +70,7 @@ export default async function ContatoPage({
                 </h3>
                 <Link
                   href="/suporte"
-                  className="text-gt-text hover:text-gt-orange transition-colors font-sans block mb-1"
+                  className="text-gt-text hover:text-gt-orange-text transition-colors font-sans block mb-1"
                 >
                   {t('aside.suporteLink')}
                 </Link>
@@ -85,7 +85,7 @@ export default async function ContatoPage({
                 </h3>
                 <Link
                   href="/empresas"
-                  className="text-gt-text hover:text-gt-orange transition-colors font-sans block mb-1"
+                  className="text-gt-text hover:text-gt-orange-text transition-colors font-sans block mb-1"
                 >
                   {t('aside.empresasLink')}
                 </Link>

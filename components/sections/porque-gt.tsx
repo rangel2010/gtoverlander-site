@@ -17,7 +17,7 @@ export async function PorqueGt() {
           ))}
         </div>
         <div className="mt-10">
-          <Link href="/sobre" className="text-gt-orange text-sm font-medium hover:underline font-sans">{t('linkHistoria')}</Link>
+          <Link href="/sobre" className="text-gt-orange-text text-sm font-medium hover:underline font-sans">{t('linkHistoria')}</Link>
         </div>
       </div>
     </section>

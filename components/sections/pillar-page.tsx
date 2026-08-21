@@ -101,7 +101,7 @@ export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; lo
                       </div>
                     )}
                     <div className="p-6 flex-1 flex flex-col">
-                      <h3 className="font-sans text-lg font-medium text-gt-text mb-3 leading-snug group-hover:text-gt-orange transition-colors normal-case flex-1">
+                      <h3 className="font-sans text-lg font-medium text-gt-text mb-3 leading-snug group-hover:text-gt-orange-text transition-colors normal-case flex-1">
                         {post.title}
                       </h3>
                       <p className="text-sm text-gt-text-muted leading-relaxed mb-4 font-sans line-clamp-3">
@@ -131,10 +131,10 @@ export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; lo
                 href={`/blog/${p}`}
                 className="bg-gt-bg rounded-lg p-6 border border-gt-border hover:border-gt-border-strong transition-colors group"
               >
-                <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case group-hover:text-gt-orange transition-colors">
+                <h3 className="font-sans text-lg font-medium text-gt-text mb-2 normal-case group-hover:text-gt-orange-text transition-colors">
                   {t(PILLAR_KEY[p])}
                 </h3>
-                <span className="text-gt-orange text-sm font-medium font-sans">
+                <span className="text-gt-orange-text text-sm font-medium font-sans">
                   {t('verArtigos')}
                 </span>
               </Link>

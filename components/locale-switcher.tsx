@@ -82,7 +82,7 @@ export function LocaleSwitcher() {
                 onClick={() => handleSelect(l)}
                 className={`w-full flex items-center justify-between px-4 py-2.5 text-sm font-sans transition-colors ${
                   isActive
-                    ? 'text-gt-orange bg-gt-card cursor-default'
+                    ? 'text-gt-orange-text bg-gt-card cursor-default'
                     : 'text-gt-text-muted hover:text-gt-text hover:bg-gt-card cursor-pointer'
                 }`}
               >

@@ -162,7 +162,7 @@ export function PlansCards() {
               )}
 
               {showSavings && savingsPct > 0 && (
-                <p className="text-xs text-gt-orange font-medium mb-3 font-sans">
+                <p className="text-xs text-gt-orange-text font-medium mb-3 font-sans">
                   {t('savings', { pct: savingsPct })}
                 </p>
               )}

@@ -20,7 +20,7 @@ export async function PilarComunidade() {
         {/* Cabeçalho centralizado */}
         <ScrollReveal>
           <div className="text-center mb-14">
-            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-4 font-sans">
+            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-4 font-sans">
               {t('label')}
             </p>
             <h2 className="text-4xl md:text-5xl text-gt-text mb-5 leading-tight">
@@ -38,7 +38,7 @@ export async function PilarComunidade() {
             <ScrollReveal key={card.titulo} delay={idx * 80}>
               <div className="bg-gt-bg rounded-xl p-7 border border-gt-border h-full relative group">
                 {/* Badge Em breve */}
-                <span className="absolute top-5 right-5 bg-gt-orange/10 text-gt-orange text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full font-sans border border-gt-orange/20">
+                <span className="absolute top-5 right-5 bg-gt-orange/10 text-gt-orange-text text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full font-sans border border-gt-orange/20">
                   {t('badge')}
                 </span>
                 {/* Ícone */}

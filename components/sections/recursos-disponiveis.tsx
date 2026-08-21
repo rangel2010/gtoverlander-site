@@ -22,9 +22,9 @@ export async function RecursosDisponiveis() {
           {items.map((i, idx) => (
             <ScrollReveal key={i.href} delay={idx * 80}>
               <Link href={i.href} className="block bg-gt-bg rounded-lg p-7 md:p-8 border border-gt-border hover:border-gt-orange transition-colors group h-full">
-                <h3 className="text-xl md:text-2xl text-gt-text mb-3 group-hover:text-gt-orange transition-colors">{i.titulo}</h3>
+                <h3 className="text-xl md:text-2xl text-gt-text mb-3 group-hover:text-gt-orange-text transition-colors">{i.titulo}</h3>
                 <p className="text-sm text-gt-text-muted leading-relaxed mb-5 font-sans">{i.desc}</p>
-                <span className="text-gt-orange text-sm font-medium font-sans">{t('saibaMais')}</span>
+                <span className="text-gt-orange-text text-sm font-medium font-sans">{t('saibaMais')}</span>
               </Link>
             </ScrollReveal>
           ))}

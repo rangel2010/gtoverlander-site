@@ -150,7 +150,7 @@ export default function HelpOverlanderPage() {
             ))}
           </div>
           <p className="text-xs text-gt-text-dim mt-8 font-sans leading-relaxed">
-            O uso do Help Overlander exige aceite de termo específico de assunção de risco. <a href="/termos/help-overlander" className="text-gt-orange hover:underline">Ver Anexo I — Help Overlander</a>.
+            O uso do Help Overlander exige aceite de termo específico de assunção de risco. <a href="/termos/help-overlander" className="text-gt-orange-text hover:underline">Ver Anexo I — Help Overlander</a>.
           </p>
         </div>
       </section>

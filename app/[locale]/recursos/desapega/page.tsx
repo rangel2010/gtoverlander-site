@@ -144,7 +144,7 @@ export default function DesapegaPage() {
           <div className="grid md:grid-cols-4 gap-8 md:gap-6">
             {passosVendedor.map((p) => (
               <div key={p.num} className="border-l-2 border-gt-orange pl-5">
-                <div className="text-gt-orange font-medium text-sm mb-2 font-sans">
+                <div className="text-gt-orange-text font-medium text-sm mb-2 font-sans">
                   {p.num.toString().padStart(2, '0')}
                 </div>
                 <h3 className="font-sans font-medium text-gt-text mb-2 leading-snug normal-case">

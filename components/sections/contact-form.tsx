@@ -58,7 +58,7 @@ export function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="text-gt-orange text-sm font-medium hover:underline font-sans"
+          className="text-gt-orange-text text-sm font-medium hover:underline font-sans"
         >
           Enviar outra mensagem
         </button>
@@ -134,7 +134,7 @@ export function ContactForm() {
       </div>
 
       {status === 'error' && errorMsg && (
-        <p className="text-sm text-gt-orange font-sans">{errorMsg}</p>
+        <p className="text-sm text-gt-orange-text font-sans">{errorMsg}</p>
       )}
 
       <Button

@@ -25,7 +25,7 @@ export async function ComoFunciona() {
           {passos.map((p, i) => (
             <ScrollReveal key={p.num} delay={i * 120}>
               <div className="border-l-2 border-gt-orange pl-5">
-                <div className="text-gt-orange font-medium text-sm mb-2 font-sans">
+                <div className="text-gt-orange-text font-medium text-sm mb-2 font-sans">
                   {p.num.toString().padStart(2, '0')}
                 </div>
                 <h3 className="text-lg text-gt-text mb-2 leading-snug">{p.titulo}</h3>
@@ -36,7 +36,7 @@ export async function ComoFunciona() {
         </div>
 
         <div className="mt-12">
-          <Link href="/recursos/roteiros-ia" className="text-gt-orange text-sm font-medium hover:underline font-sans">
+          <Link href="/recursos/roteiros-ia" className="text-gt-orange-text text-sm font-medium hover:underline font-sans">
             {t('verDemo')}
           </Link>
         </div>

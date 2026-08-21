@@ -32,7 +32,7 @@ export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
           <h2 className="text-3xl md:text-4xl text-gt-text">{t('titulo')}</h2>
           <Link
             href="/blog"
-            className="text-gt-orange text-sm font-medium hover:underline font-sans"
+            className="text-gt-orange-text text-sm font-medium hover:underline font-sans"
           >
             {t('verTudo')}
           </Link>
@@ -67,10 +67,10 @@ export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
                         </div>
                       )}
                       <div className="p-6">
-                        <p className="text-xs uppercase tracking-wider text-gt-orange/80 font-sans">
+                        <p className="text-xs uppercase tracking-wider text-gt-orange-text font-sans">
                           {tb(PILLAR_KEY[p.category])}
                         </p>
-                        <h3 className="font-sans font-medium text-gt-text text-base md:text-lg mt-3 mb-3 leading-snug group-hover:text-gt-orange transition-colors normal-case">
+                        <h3 className="font-sans font-medium text-gt-text text-base md:text-lg mt-3 mb-3 leading-snug group-hover:text-gt-orange-text transition-colors normal-case">
                           {p.title}
                         </h3>
                         <p className="text-sm text-gt-text-muted leading-relaxed font-sans line-clamp-3">
@@ -92,11 +92,11 @@ export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
                   <div className="p-6">
                     <Link
                       href={placeholderHrefs[n - 1]}
-                      className="text-xs uppercase tracking-wider text-gt-orange/80 hover:text-gt-orange font-sans"
+                      className="text-xs uppercase tracking-wider text-gt-orange-text hover:text-gt-orange-text font-sans"
                     >
                       {tb(PILLAR_KEY[(['destinos', 'preparacao', 'vida-overlander'] as const)[n - 1]])}
                     </Link>
-                    <h3 className="font-sans font-medium text-gt-text text-base md:text-lg mt-3 mb-3 leading-snug group-hover:text-gt-orange transition-colors normal-case">
+                    <h3 className="font-sans font-medium text-gt-text text-base md:text-lg mt-3 mb-3 leading-snug group-hover:text-gt-orange-text transition-colors normal-case">
                       {t(`placeholderTitulo${n}`)}
                     </h3>
                     <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
@@ -109,7 +109,7 @@ export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
 
         {/* Podcast link */}
         <div className="mt-10 pt-8 border-t border-gt-border flex items-center gap-3">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-gt-orange flex-shrink-0" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-gt-orange-text flex-shrink-0" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 11-.277-1.215c3.809-.87 7.076-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.972c3.632-1.102 8.147-.568 11.233 1.328a.78.78 0 01.257 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.937.937 0 11-.543-1.794c3.532-1.072 9.404-.865 13.115 1.338a.937.937 0 01-.954 1.614z"/>
           </svg>
           <p className="text-sm text-gt-text-muted font-sans">
@@ -118,7 +118,7 @@ export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
               href="https://open.spotify.com/show/033tikILUKLf5PFKXLJwat"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gt-orange hover:underline font-medium"
+              className="text-gt-orange-text hover:underline font-medium"
             >
               {t('podcastTexto')} {t('podcastNome')} {t('podcastLink')}
             </a>

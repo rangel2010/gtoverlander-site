@@ -85,7 +85,7 @@ export default async function ParceriasPage({
                   <p className="text-sm text-gt-text-muted leading-relaxed mb-4 font-sans">
                     {c.desc}
                   </p>
-                  <p className="text-xs uppercase tracking-wider text-gt-orange/80 font-sans">
+                  <p className="text-xs uppercase tracking-wider text-gt-orange-text font-sans">
                     {c.exemplos}
                   </p>
                 </div>
@@ -146,7 +146,7 @@ export default async function ParceriasPage({
                     <span className="font-sans font-medium text-gt-text pr-4">
                       {f.titulo}
                     </span>
-                    <span className="text-gt-orange flex-shrink-0 text-xl leading-none transition-transform group-open:rotate-45">
+                    <span className="text-gt-orange-text flex-shrink-0 text-xl leading-none transition-transform group-open:rotate-45">
                       +
                     </span>
                   </summary>
@@ -163,7 +163,7 @@ export default async function ParceriasPage({
       <section className="bg-gt-card py-16 md:py-24 border-t border-gt-border">
         <div className="container-narrow">
           <ScrollReveal>
-            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange mb-3 font-sans">
+            <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-3 font-sans">
               {t('contato.label')}
             </p>
             <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
