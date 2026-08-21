@@ -86,8 +86,10 @@ export function Footer() {
         <div className="pt-8 border-t border-gt-border flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div className="font-sans">
             <p className="text-sm text-gt-text-muted">{tf('tagline')}</p>
-            <p className="text-xs text-gt-text-dim mt-2">© 2026 GT Overlander Ltda · CNPJ 59.840.412/0001-82</p>
-            <p className="text-xs text-gt-text-dim mt-1">
+            {/* text-muted (não dim): o dim dá 2,54:1 sobre o verde do rodapé
+                e reprova no WCAG AA. O muted sobe pra 4,95:1. */}
+            <p className="text-xs text-gt-text-muted mt-2">© 2026 GT Overlander Ltda · CNPJ 59.840.412/0001-82</p>
+            <p className="text-xs text-gt-text-muted mt-1">
               Feito com <span className="text-gt-orange-text">♥</span> para a comunidade de aventureiros.
             </p>
           </div>
