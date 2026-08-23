@@ -12,7 +12,11 @@ const config: Config = {
         // ── CORES FIXAS DA MARCA (não respondem ao tema) ──
         'gt-green': '#122e1f',           // verde GT âncora — Header/Footer sempre
         'gt-bg-elevated': '#163725',     // verde GT levemente claro — Hero sempre verde
-        'gt-orange': '#e06226',          // CTA
+        // CTA. Escurecido de #e06226 pra #c04d18 em 2026-08-21: com texto
+        // branco a 14px, o tom antigo dava 3,53:1 e reprovava no WCAG AA
+        // (mínimo 4,5:1). O novo dá 4,87:1. Vale pra todo fundo/borda laranja
+        // do site — texto laranja usa 'gt-orange-text', que é temático.
+        'gt-orange': '#c04d18',
         'gt-brown': '#904e22',
         'gt-cream': '#f8f5ee',           // legado, usado em poucos lugares
         // Deprecated — soft tones que não estamos usando hoje
@@ -34,11 +38,11 @@ const config: Config = {
         'gt-text-muted': 'rgb(var(--gt-text-muted) / <alpha-value>)',
         'gt-text-dim': 'rgb(var(--gt-text-dim) / <alpha-value>)',
         // Laranja usado como COR DE TEXTO (links, labels, ícones inline).
-        // Existe separado de 'gt-orange' porque o laranja de CTA (#e06226)
+        // Existe separado de 'gt-orange' porque o laranja original (#e06226)
         // não atinge contraste 4,5:1 nem sobre o creme claro (3,24:1) nem
         // sobre o verde escuro (4,14:1) — reprova no WCAG AA nos dois temas.
         // Aqui ele escurece no tema claro e clareia no escuro. Fundo de botão
-        // continua usando 'gt-orange' puro, a marca não muda.
+        // continua usando 'gt-orange', que tem contraste próprio com o branco.
         'gt-orange-text': 'rgb(var(--gt-orange-text) / <alpha-value>)',
       },
       fontFamily: {

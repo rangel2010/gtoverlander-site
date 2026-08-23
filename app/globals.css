@@ -16,7 +16,8 @@
     --gt-text-dim: 107 122 114;   /* #6b7a72 — verde mais dim */
     --gt-orange-text: 184 73 22;  /* #b84916 — laranja GT escurecido pra texto
                                      sobre fundo claro (4,82:1 no creme,
-                                     5,25:1 no branco). Botões seguem #e06226. */
+                                     5,25:1 no branco). Fundo de botão usa
+                                     'gt-orange' (#c04d18). */
   }
 
   /* Tema escuro — aplicado quando next-themes adiciona .dark no html

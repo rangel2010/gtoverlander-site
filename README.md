@@ -81,7 +81,8 @@ public/               Static assets (logos, favicon)
 Paleta GT (em `tailwind.config.ts` como classes utilities):
 
 - `gt-green` `#122e1f` — primária
-- `gt-orange` `#e06226` — CTA
+- `gt-orange` `#c04d18` — CTA (fundo de botão, bordas e detalhes laranja)
+- `gt-orange-text` — laranja para TEXTO/link, temático: `#b84916` no claro, `#ee8a55` no escuro
 - `gt-brown` `#904e22` — apoio
 - `gt-cream` `#f8f5ee` — fundo claro
 
