@@ -22,18 +22,23 @@ export const PRODUCT = {
       radarQueriesPerDay: 1,
       offlineRule: 'APP_STORE_COUNTRY' as const,
     },
+    // Os preços "Original" são os cheios, que passam a valer na virada do app
+    // novo. Aparecem riscados ao lado do preço atual, sinalizando que quem
+    // assina agora trava a condição antiga.
     plus: {
       monthlyPrice: 14.90,
+      monthlyOriginalPrice: 19.90,
       annualPrice: 79.90,
-      annualOriginalPrice: 149.90,
+      annualOriginalPrice: 199.90,
       routeExportsPerMonth: 2,
       radarQueriesPerDay: 5,
       offlineRule: 'ALL_209_COUNTRIES' as const,
     },
     pro: {
       monthlyPrice: 19.90,
+      monthlyOriginalPrice: 29.90,
       annualPrice: 99.90,
-      annualOriginalPrice: 189.90,
+      annualOriginalPrice: 299.90,
       routeExports: 'unlimited' as const,
       radarQueries: 'unlimited' as const,
       offlineRule: 'ALL_209_COUNTRIES' as const,
@@ -73,4 +78,15 @@ export function formatPrice(value: number, locale = 'pt-BR'): string {
 export function annualSavingsPct(monthly: number, annual: number): number {
   if (monthly === 0) return 0;
   return Math.round(((monthly * 12 - annual) / (monthly * 12)) * 100);
+}
+
+/**
+ * Desconto do preço atual em relação ao preço cheio que passa a valer na
+ * virada do app novo. É esse número que aparece no selo dos cards, no lugar
+ * da antiga comparação anual-vs-mensal (que continua comunicada pelo
+ * "Equivale a X por mês").
+ */
+export function discountPct(original: number, current: number): number {
+  if (!original || original <= current) return 0;
+  return Math.round(((original - current) / original) * 100);
 }
