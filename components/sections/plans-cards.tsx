@@ -68,6 +68,14 @@ const annualBadgePct = Math.min(
   annualSavingsPct(PRODUCT.plans.pro.monthlyPrice, PRODUCT.plans.pro.annualPrice),
 );
 
+/**
+ * Selo de economia no toggle Anual. Desligado enquanto todos os planos estão
+ * com desconto sobre o preço cheio: o card já mostra "Economize X%" e um
+ * segundo percentual no toggle só confunde. Religar (true) quando o desconto
+ * de virada sair e o anual voltar a ser a única economia da página.
+ */
+const SHOW_ANNUAL_BADGE = false;
+
 export function PlansCards() {
   const t = useTranslations('planos.cards');
   const [billing, setBilling] = useState<'mensal' | 'anual'>('anual');
@@ -106,9 +114,11 @@ export function PlansCards() {
             }`}
           >
             {t('billing_anual')}
-            <span className="text-[10px] uppercase tracking-wider bg-gt-orange text-white px-2 py-0.5 rounded">
-              −{annualBadgePct}%
-            </span>
+            {SHOW_ANNUAL_BADGE && (
+              <span className="text-[10px] uppercase tracking-wider bg-gt-orange text-white px-2 py-0.5 rounded">
+                −{annualBadgePct}%
+              </span>
+            )}
           </button>
         </div>
       </div>
