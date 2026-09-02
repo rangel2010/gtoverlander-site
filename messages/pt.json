@@ -182,13 +182,9 @@
     },
     "numeros": {
       "titulo": "Onde estamos hoje",
-      "n1v": "Milhares",
-      "n1c": "de viajantes cadastrados",
-      "n2v": "+30%",
-      "n2c": "de crescimento de usuários ao mês",
-      "n3v": "+4 mi",
+      "n1c": "viajantes cadastrados",
+      "n2c": "rotas criadas dentro do app",
       "n3c": "de waypoints na nossa base — ajude a crescer ainda mais",
-      "n4v": "209",
       "n4c": "países cobertos",
       "rodape": "App em iOS, Android e Web — compatível com CarPlay e Android Auto, em 3 idiomas (português, inglês, espanhol)."
     },

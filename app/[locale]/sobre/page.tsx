@@ -7,6 +7,7 @@ import { aboutPagePersonLd, jsonLdScriptProps,
   getPageAlternates, INSTAGRAM_OVERLANDEIROS_URL
 } from '@/lib/seo';
 import { ScrollReveal } from '@/components/scroll-reveal';
+import { getStats, porExtenso } from '@/lib/stats';
 
 export async function generateMetadata({
   params: { locale },
@@ -30,11 +31,16 @@ export default async function SobrePage({
   const t = await getTranslations('sobre');
   const tc = await getTranslations('common');
 
+  // Números vivos da API do app (contrato em CONTRATO_NUMEROS_API.md).
+  // Países é o único fixo — ver a nota de desvio no topo de lib/stats.ts.
+  const stats = await getStats();
+  const nf = new Intl.NumberFormat(locale);
+
   const numeros = [
-    { valor: t('numeros.n1v'), contexto: t('numeros.n1c') },
-    { valor: t('numeros.n2v'), contexto: t('numeros.n2c') },
-    { valor: t('numeros.n3v'), contexto: t('numeros.n3c') },
-    { valor: t('numeros.n4v'), contexto: t('numeros.n4c') },
+    { valor: nf.format(stats.usuarios), contexto: t('numeros.n1c') },
+    { valor: nf.format(stats.rotasCriadas), contexto: t('numeros.n2c') },
+    { valor: porExtenso(stats.waypoints, locale), contexto: t('numeros.n3c') },
+    { valor: nf.format(stats.paises), contexto: t('numeros.n4c') },
   ];
 
   const proximas = [
