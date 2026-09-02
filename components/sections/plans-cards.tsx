@@ -3,11 +3,17 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button } from '../ui/button';
-import { PRODUCT, formatPrice, annualSavingsPct } from '@/lib/product-config';
+import {
+  PRODUCT,
+  formatPrice,
+  discountPct,
+  annualSavingsPct,
+} from '@/lib/product-config';
 
 interface Plan {
   name: string;
   monthlyPrice: number;
+  monthlyOriginalPrice?: number;
   annualPrice: number;
   annualOriginalPrice?: number;
   descKey: 'free' | 'plus' | 'pro';
@@ -30,6 +36,7 @@ const plans: Plan[] = [
   {
     name: 'Plus',
     monthlyPrice: PRODUCT.plans.plus.monthlyPrice,
+    monthlyOriginalPrice: PRODUCT.plans.plus.monthlyOriginalPrice,
     annualPrice: PRODUCT.plans.plus.annualPrice,
     annualOriginalPrice: PRODUCT.plans.plus.annualOriginalPrice,
     descKey: 'plus',
@@ -40,6 +47,7 @@ const plans: Plan[] = [
   {
     name: 'Pro',
     monthlyPrice: PRODUCT.plans.pro.monthlyPrice,
+    monthlyOriginalPrice: PRODUCT.plans.pro.monthlyOriginalPrice,
     annualPrice: PRODUCT.plans.pro.annualPrice,
     annualOriginalPrice: PRODUCT.plans.pro.annualOriginalPrice,
     descKey: 'pro',
@@ -49,6 +57,16 @@ const plans: Plan[] = [
     badge: true,
   },
 ];
+
+/**
+ * Economia do ciclo anual sobre 12x o mensal. Usa o MENOR valor entre os planos
+ * pagos (Plus 55%, Pro 58%) pra que o número do selo seja verdadeiro em
+ * qualquer plano que o visitante escolher, e não só no Pro.
+ */
+const annualBadgePct = Math.min(
+  annualSavingsPct(PRODUCT.plans.plus.monthlyPrice, PRODUCT.plans.plus.annualPrice),
+  annualSavingsPct(PRODUCT.plans.pro.monthlyPrice, PRODUCT.plans.pro.annualPrice),
+);
 
 export function PlansCards() {
   const t = useTranslations('planos.cards');
@@ -89,7 +107,7 @@ export function PlansCards() {
           >
             {t('billing_anual')}
             <span className="text-[10px] uppercase tracking-wider bg-gt-orange text-white px-2 py-0.5 rounded">
-              −58%
+              −{annualBadgePct}%
             </span>
           </button>
         </div>
@@ -112,10 +130,15 @@ export function PlansCards() {
             isPaid && isAnnual
               ? t('annual_note', { price: formatPrice(perMonth) })
               : null;
-          const showSavings = isPaid && isAnnual;
-          const savingsPct = showSavings
-            ? annualSavingsPct(p.monthlyPrice, p.annualPrice)
-            : 0;
+
+          // Preço cheio que entra em vigor na virada do app novo. Vale pros
+          // dois ciclos, então o bloco riscado deixou de ser só do anual.
+          const originalPrice = isAnnual
+            ? p.annualOriginalPrice
+            : p.monthlyOriginalPrice;
+          const savingsPct =
+            isPaid && originalPrice ? discountPct(originalPrice, displayPrice) : 0;
+          const showSavings = savingsPct > 0;
 
           return (
             <div
@@ -136,13 +159,14 @@ export function PlansCards() {
                 {p.name}
               </h3>
 
-              {isAnnual && p.annualOriginalPrice && (
+              {isPaid && originalPrice && (
                 <p className="text-xs text-gt-text-dim font-sans mb-1">
-                  {t('annual_from')}{' '}
+                  {t('price_from')}{' '}
                   <span className="line-through">
-                    {formatPrice(p.annualOriginalPrice)}/{t('period_year')}
+                    {formatPrice(originalPrice)}/
+                    {isAnnual ? t('period_year') : t('period_month')}
                   </span>{' '}
-                  {t('annual_by')}
+                  {t('price_by')}
                 </p>
               )}
 

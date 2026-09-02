@@ -5,6 +5,7 @@ import { FeatureFaq } from '@/components/sections/feature-faq';
 import { PlansCards } from '@/components/sections/plans-cards';
 import { productPlansLd, jsonLdScriptProps, getPageAlternates } from '@/lib/seo';
 import { ScrollReveal } from '@/components/scroll-reveal';
+import { PRODUCT, formatPrice } from '@/lib/product-config';
 
 export async function generateMetadata({
   params: { locale },
@@ -37,6 +38,31 @@ function FeatureValue({ value }: { value: string | boolean }) {
   if (value === true) return <span className="text-gt-orange-text">✓</span>;
   if (value === false) return <span className="text-gt-text-dim">—</span>;
   return <span className="text-sm text-gt-text font-sans">{value}</span>;
+}
+
+/**
+ * Célula de preço da tabela comparativa. Mostra o preço cheio riscado em cima
+ * do preço em vigor, mesmo par "de/por" dos cards. Valores sempre vindos do
+ * PRODUCT config — nunca hardcoded aqui.
+ */
+function PriceCell({
+  current,
+  original,
+}: {
+  current: number;
+  original?: number;
+}) {
+  if (current === 0) return <>R$ 0</>;
+  return (
+    <>
+      {original ? (
+        <span className="block text-gt-text-dim line-through">
+          {formatPrice(original)}
+        </span>
+      ) : null}
+      <span className="block text-gt-text">{formatPrice(current)}</span>
+    </>
+  );
 }
 
 export default async function PlanosPage({
@@ -74,6 +100,7 @@ export default async function PlanosPage({
     { q: t('faq.q4'), a: t('faq.a4') },
     { q: t('faq.q5'), a: t('faq.a5') },
     { q: t('faq.q6'), a: t('faq.a6') },
+    { q: t('faq.q7'), a: t('faq.a7') },
   ];
 
   return (
@@ -121,14 +148,34 @@ export default async function PlanosPage({
                   <tr className="border-b border-gt-border text-xs text-gt-text-muted">
                     <td className="py-3 px-5">{t('comparacao.thMensal')}</td>
                     <td className="text-center py-3 px-3">R$ 0</td>
-                    <td className="text-center py-3 px-3 bg-gt-card">R$ 14,90</td>
-                    <td className="text-center py-3 px-3">R$ 19,90</td>
+                    <td className="text-center py-3 px-3 bg-gt-card">
+                      <PriceCell
+                        current={PRODUCT.plans.plus.monthlyPrice}
+                        original={PRODUCT.plans.plus.monthlyOriginalPrice}
+                      />
+                    </td>
+                    <td className="text-center py-3 px-3">
+                      <PriceCell
+                        current={PRODUCT.plans.pro.monthlyPrice}
+                        original={PRODUCT.plans.pro.monthlyOriginalPrice}
+                      />
+                    </td>
                   </tr>
                   <tr className="border-b border-gt-border text-xs text-gt-text-muted">
                     <td className="py-3 px-5">{t('comparacao.thAnual')}</td>
                     <td className="text-center py-3 px-3">—</td>
-                    <td className="text-center py-3 px-3 bg-gt-card">R$ 79,90</td>
-                    <td className="text-center py-3 px-3">R$ 99,90</td>
+                    <td className="text-center py-3 px-3 bg-gt-card">
+                      <PriceCell
+                        current={PRODUCT.plans.plus.annualPrice}
+                        original={PRODUCT.plans.plus.annualOriginalPrice}
+                      />
+                    </td>
+                    <td className="text-center py-3 px-3">
+                      <PriceCell
+                        current={PRODUCT.plans.pro.annualPrice}
+                        original={PRODUCT.plans.pro.annualOriginalPrice}
+                      />
+                    </td>
                   </tr>
                 </thead>
                 <tbody>
