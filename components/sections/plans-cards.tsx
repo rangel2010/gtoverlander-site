@@ -153,7 +153,7 @@ export function PlansCards() {
           return (
             <div
               key={p.name}
-              className={`bg-gt-card rounded-lg p-7 relative ${
+              className={`bg-gt-card rounded-lg p-7 relative flex flex-col h-full ${
                 p.highlight
                   ? 'border-2 border-gt-orange'
                   : 'border border-gt-border'
@@ -202,7 +202,9 @@ export function PlansCards() {
               )}
               {!showSavings && <div className="mb-3 h-4" />}
 
-              <p className="text-sm text-gt-text-muted leading-relaxed mb-6 min-h-[4rem] font-sans">
+              {/* flex-1 empurra o botão pro rodapé do card, alinhando os três
+                  CTAs na mesma linha mesmo com descrições de tamanhos diferentes */}
+              <p className="text-sm text-gt-text-muted leading-relaxed mb-6 min-h-[4rem] font-sans flex-1">
                 {t(`plans.${p.descKey}.desc`)}
               </p>
 
