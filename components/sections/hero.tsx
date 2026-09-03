@@ -1,10 +1,25 @@
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, getLocale } from 'next-intl/server';
 import { Button } from '../ui/button';
+import { getStats, porExtenso } from '@/lib/stats';
 
 export async function Hero() {
   const t = await getTranslations('home.hero');
+  const ts = await getTranslations('home.stats');
   const tc = await getTranslations('common');
+
+  // Números vivos da API do app — mesma fonte do /sobre.
+  // Ver lib/stats.ts (países é o único fixo, e o porquê está lá).
+  const locale = await getLocale();
+  const stats = await getStats();
+  const nf = new Intl.NumberFormat(locale);
+
+  const faixa = [
+    { valor: nf.format(stats.usuarios), label: ts('usuarios') },
+    { valor: nf.format(stats.rotasCriadas), label: ts('rotas') },
+    { valor: porExtenso(stats.waypoints, locale), label: ts('waypoints') },
+    { valor: nf.format(stats.paises), label: ts('paises') },
+  ];
 
   return (
     <section className="dark bg-gt-bg-elevated text-gt-text relative overflow-hidden">
@@ -49,6 +64,28 @@ export async function Hero() {
             className="rounded-3xl border border-gt-border shadow-2xl"
           />
         </div>
+      </div>
+
+      {/* Faixa de números reais, lidos da API do app. Fica no rodapé do hero,
+          full-width, pra não espremer a coluna de texto. text-muted nos rótulos
+          pelo mesmo motivo do parágrafo de plataformas: sobre o verde do hero,
+          o dim reprova no WCAG AA. */}
+      <div className="container-wide border-t border-gt-border pb-12 md:pb-14">
+        <dl className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 pt-8 md:pt-10">
+          {faixa.map((n) => (
+            <div key={n.label}>
+              <dt className="sr-only">{n.label}</dt>
+              <dd>
+                <span className="block font-display text-3xl md:text-4xl text-gt-text uppercase tracking-display">
+                  {n.valor}
+                </span>
+                <span className="block text-xs md:text-sm text-gt-text-muted leading-snug mt-1 font-sans">
+                  {n.label}
+                </span>
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

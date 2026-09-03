@@ -62,6 +62,12 @@
       "passo4desc": "Exporta a rota pro Google Maps e roda direto no painel do carro com CarPlay ou Android Auto",
       "verDemo": "Ver demonstração da IA →"
     },
+    "stats": {
+      "usuarios": "viajantes cadastrados",
+      "rotas": "rotas ativas dentro do app",
+      "waypoints": "waypoints na base",
+      "paises": "países cobertos"
+    },
     "numeros": {
       "label": "Em breve",
       "titulo": "O ecossistema cresce com você",
@@ -183,7 +189,7 @@
     "numeros": {
       "titulo": "Onde estamos hoje",
       "n1c": "viajantes cadastrados",
-      "n2c": "rotas criadas dentro do app",
+      "n2c": "rotas ativas dentro do app",
       "n3c": "de waypoints na nossa base — ajude a crescer ainda mais",
       "n4c": "países cobertos",
       "rodape": "App em iOS, Android e Web — compatível com CarPlay e Android Auto, em 3 idiomas (português, inglês, espanhol)."

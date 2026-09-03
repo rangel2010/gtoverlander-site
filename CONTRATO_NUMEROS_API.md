@@ -235,11 +235,11 @@ passa a valer sem build. O nome antigo continua no fallback.
 **3. Timeout de 5s no fetch.** Sem isso, API pendurada trava o build inteiro na
 Vercel em vez de cair no fallback.
 
-## Três coisas do lado de vocês
+## Duas coisas do lado de vocês
 
-**`rotasCriadas` pulou de 128 para 756 em ~4 horas**, com o app fechado e sem
-divulgação. Provavelmente é dado de teste/seed no Postgres. Vale conferir antes
-que vire número público — o site está publicando esse valor.
+*(Nota: o `rotasCriadas` passou de 128 para 756 entre a escrita do contrato e o
+deploy. Não foi salto de uso — 128 era o número parcial que a gente enxergava
+antes; 756 é o valor correto do banco. Confirmado pelo Rangel em 03/09.)*
 
 **A resposta não traz header de cache.** O contrato diz que a API guarda o
 resultado por 1h, mas não veio `Cache-Control` nem `Age`. Se o cache é interno,

@@ -62,6 +62,12 @@
       "passo4desc": "Exportas la ruta a Google Maps y conduces directo en el tablero con CarPlay o Android Auto",
       "verDemo": "Ver demostración de la IA →"
     },
+    "stats": {
+      "usuarios": "viajeros registrados",
+      "rotas": "rutas activas dentro de la app",
+      "waypoints": "waypoints en nuestra base",
+      "paises": "países cubiertos"
+    },
     "numeros": {
       "label": "Próximamente",
       "titulo": "El ecosistema crece contigo",
@@ -183,7 +189,7 @@
     "numeros": {
       "titulo": "Dónde estamos hoy",
       "n1c": "viajeros registrados",
-      "n2c": "rutas creadas dentro de la app",
+      "n2c": "rutas activas dentro de la app",
       "n3c": "de waypoints en nuestra base — ayúdanos a crecer aún más",
       "n4c": "países cubiertos",
       "rodape": "App en iOS, Android y Web — compatible con CarPlay y Android Auto, en 3 idiomas (portugués, inglés, español)."
