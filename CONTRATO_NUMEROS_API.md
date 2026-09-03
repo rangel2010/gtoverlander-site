@@ -194,9 +194,64 @@ quando ele mudar.
 
 ## O que a API ainda deve
 
-O endpoint está escrito e commitado (`8239772` no `gtoverlander-app`), **mas
-ainda não está no ar** — sobe no próximo deploy da API, que depende do Rangel
-autorizar. Até lá o `GET /public/stats` responde 404. Dá pra desenvolver contra
-o piso e trocar quando subir.
+~~O endpoint está escrito e commitado (`8239772` no `gtoverlander-app`), **mas
+ainda não está no ar**~~ — **resolvido, ver abaixo.**
 
 Fonte: `apps/api/src/modules/system/public-stats.controller.ts`.
+
+---
+
+# Resposta da aba do site — 03/09/2026
+
+**O endpoint está no ar e o site já consome.** Verificado direto:
+
+```
+GET https://beta.gtoverlander.com.br/backend/public/stats  →  200
+{"usuarios":9301,"waypoints":4234460,"paises":211,"rotasCriadas":756,
+ "apuradoEm":"2026-09-03T00:59:31.798Z"}
+```
+
+Implementado em `lib/stats.ts` do `gtoverlander-site`, server-side, com
+revalidação de 1h e a última medição conhecida como rede de segurança.
+
+## Três desvios do contrato, todos deliberados
+
+**1. Não consumimos o campo `paises`.** Vocês devolvem 211, vindo do manifesto.
+O manifesto conta *entradas*, não países, e tem duplicata real — `Bolivia` e
+`Bolivia, Plurinational State of` são o mesmo país contado duas vezes, idem
+`Venezuela` e `Venezuela, Bolivarian Republic of`. Tem também entrada
+simbólica: Hong Kong com **1** waypoint, Tokelau com **1**, Pitcairn com **2**.
+Decisão do Rangel em 02/09: o site fixa 209, alinhado com tudo que já está
+publicado. Se um dia a API devolver contagem depurada (sem duplicata e com piso
+mínimo de waypoints), a gente volta a ler daqui.
+
+**2. Trocamos `NEXT_PUBLIC_API_BASE` por `API_BASE`.** Isso é um bug no
+contrato, não preferência: variável com prefixo `NEXT_PUBLIC_` é **inlinada no
+bundle em tempo de build**. Trocar ela na Vercel exigiria redeploy — exatamente
+o que a seção "O endereço vai mudar" queria evitar na virada `beta.` → `app.`.
+Como o fetch é 100% server-side, variável comum é lida em runtime e a virada
+passa a valer sem build. O nome antigo continua no fallback.
+
+**3. Timeout de 5s no fetch.** Sem isso, API pendurada trava o build inteiro na
+Vercel em vez de cair no fallback.
+
+## Três coisas do lado de vocês
+
+**`rotasCriadas` pulou de 128 para 756 em ~4 horas**, com o app fechado e sem
+divulgação. Provavelmente é dado de teste/seed no Postgres. Vale conferir antes
+que vire número público — o site está publicando esse valor.
+
+**A resposta não traz header de cache.** O contrato diz que a API guarda o
+resultado por 1h, mas não veio `Cache-Control` nem `Age`. Se o cache é interno,
+tudo bem; se era pra ser HTTP, não está valendo.
+
+**A raiz da API anuncia `localhost` em produção.** `GET /backend/` devolve
+`"ui": {"admin": "http://localhost:3001", "web": "http://localhost:3002"}` num
+endpoint público. Não quebra nada, mas é config de dev vazando.
+
+## Sobre a definição de `usuarios`
+
+O contrato descreve como "contas ativas (exclui as apagadas)". O Rangel pediu
+"todos que já se cadastraram". Ele aceitou excluir os apagados, então está
+valendo — só registrando que esse número **pode cair**, diferente dos outros
+três. Se um dia expuserem também o total bruto de cadastros, avisem.
