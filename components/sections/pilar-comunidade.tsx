@@ -1,17 +1,22 @@
 import { getTranslations } from 'next-intl/server';
 import { ScrollReveal } from '@/components/scroll-reveal';
 
-const ICONS = ['🌐', '🤝', '🏆', '🛒'];
+// c2 era o Help Overlander, desligado em 04/09/2026. Chaves mantidas nos JSONs
+// pra quando a feature voltar — ver HELP_OVERLANDER_ATIVO.
+const CARDS = [
+  { icon: '🌐', chave: 'c1' },
+  { icon: '🏆', chave: 'c3' },
+  { icon: '🛒', chave: 'c4' },
+];
 
 export async function PilarComunidade() {
   const t = await getTranslations('home.pilarComunidade');
 
-  const cards = [
-    { icon: ICONS[0], titulo: t('c1titulo'), desc: t('c1desc') },
-    { icon: ICONS[1], titulo: t('c2titulo'), desc: t('c2desc') },
-    { icon: ICONS[2], titulo: t('c3titulo'), desc: t('c3desc') },
-    { icon: ICONS[3], titulo: t('c4titulo'), desc: t('c4desc') },
-  ];
+  const cards = CARDS.map((c) => ({
+    icon: c.icon,
+    titulo: t(`${c.chave}titulo`),
+    desc: t(`${c.chave}desc`),
+  }));
 
   return (
     <section className="bg-gt-card py-20 md:py-28 border-t border-gt-border">
@@ -33,7 +38,7 @@ export async function PilarComunidade() {
         </ScrollReveal>
 
         {/* Grid 2x2 de cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {cards.map((card, idx) => (
             <ScrollReveal key={card.titulo} delay={idx * 80}>
               <div className="bg-gt-bg rounded-xl p-7 border border-gt-border h-full relative group">

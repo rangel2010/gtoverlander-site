@@ -44,9 +44,9 @@ GT Overlander é o ecossistema para quem viaja por terra: planejamento de rotas 
 
 ## Planos
 
-- Free: gratuito, uso limitado de exportação de rotas e radar (${SITE_URL}/planos)
-- Plus: ${formatPrice(PRODUCT.plans.plus.monthlyPrice)}/mês ou ${formatPrice(PRODUCT.plans.plus.annualPrice)}/ano
-- Pro: ${formatPrice(PRODUCT.plans.pro.monthlyPrice)}/mês ou ${formatPrice(PRODUCT.plans.pro.annualPrice)}/ano — uso ilimitado
+- Free: gratuito para sempre — 3 viagens por conta da casa (não renovam), mapa e pontos do país de origem offline, radar ilimitado, validação sem limite (${SITE_URL}/planos)
+- Plus: ${formatPrice(PRODUCT.plans.plus.monthlyPrice)}/mês ou ${formatPrice(PRODUCT.plans.plus.annualPrice)}/ano — 15 viagens ativas, edição sem prazo, 2 países offline extras, 1 anúncio, 2 aparelhos
+- Pro: ${formatPrice(PRODUCT.plans.pro.monthlyPrice)}/mês ou ${formatPrice(PRODUCT.plans.pro.annualPrice)}/ano — viagens ilimitadas, 5 países offline extras, 3 anúncios, 4 aparelhos
 - Conta Business: para estabelecimentos, vendedores e prestadores de serviço do universo overlander (${SITE_URL}/empresas)
 
 ## Páginas principais

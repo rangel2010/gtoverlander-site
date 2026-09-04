@@ -3,6 +3,7 @@ import { getPageAlternates } from '@/lib/seo';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
+import { getRegua, plano } from '@/lib/planos';
 
 export async function generateMetadata({
   params: { locale },
@@ -12,7 +13,7 @@ export async function generateMetadata({
   return {
     title: 'Modo Offline',
     description:
-    'Free baixa o país onde está com todas as categorias de waypoints. Plus e Pro liberam os 209 países. Use o GT em qualquer canto, sem depender de sinal.',
+    'O mapa e os pontos do seu país ficam offline pra sempre, em qualquer plano. Plus e Pro somam países extras pra quem cruza fronteira.',
     alternates: getPageAlternates(locale, '/recursos/modo-offline'),
     ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
@@ -38,57 +39,35 @@ const oQueFaz = [
 ];
 
 const precisaInternet = [
-  'Gerar rota nova com a IA (IA roda no servidor)',
+  'Gerar rota nova com a IA (a IA roda no servidor)',
   'Editar, adicionar ou reordenar paradas de uma rota',
   'Exportar rota para o Google Maps',
   'Baixar ou atualizar mapas e dados offline',
   'Sincronizar cadastros e validações pendentes',
-  'Help Overlander (notificação em tempo real)',
   'GT Desapega (anúncios e contato com vendedor)',
   'Recursos em tempo real do GT Social',
 ];
 
-const planos = [
-  {
-    nome: 'Free',
-    badge: 'Incluso pra todos',
-    titulo: '1 país com todas as categorias',
-    items: [
-      'O país incluído é definido conforme a loja em que o app foi baixado e não pode ser trocado no Free',
-      'Todas as categorias de waypoints (postos, hospedagem, mecânica, camping, atração, etc)',
-      'Mapa offline da região do país escolhido',
-      'Sincronização automática das atualizações',
-      'Validação e cadastro de pontos offline',
-    ],
-  },
-  {
-    nome: 'Plus + Pro',
-    badge: 'Pra quem cruza fronteira',
-    titulo: 'Os 209 países e territórios cobertos pela base GT',
-    items: [
-      'Baixe qualquer país ou continente que precisar',
-      'Sincronização automática das atualizações',
-      'Sem limite de regiões definido pelo GT — sujeito ao espaço disponível no aparelho',
-    ],
-  },
-];
-
-const faq = [
+const faq = (extraPlus: number, extraPro: number) => [
   {
     q: 'Como ativo o Modo Offline?',
-    a: 'Direto no app. Você escolhe as regiões ou países que vai usar, o GT baixa a base de waypoints e mapas dessas áreas, e tudo fica acessível mesmo sem sinal. Depois do primeiro download, o app sincroniza as atualizações automaticamente quando houver conexão.',
+    a: 'Direto no app. O pacote do seu país já vem incluso; se você tiver países extras no plano, escolhe quais quer baixar. O GT guarda a base de waypoints e os mapas dessas áreas, e tudo fica acessível mesmo sem sinal. Depois do primeiro download, o app sincroniza as atualizações sozinho quando houver conexão.',
   },
   {
-    q: 'Por que o Free tem 1 país e não o mundo todo?',
-    a: 'Para manter o plano gratuito sustentável, o Free inclui um país. Esse país é definido conforme a loja em que o app foi baixado e não pode ser trocado no plano Free. Plus e Pro permitem baixar qualquer país ou região disponível na base GT.',
+    q: 'O país de origem é grátis mesmo no Free?',
+    a: 'É, e pra sempre. O pacote offline do seu país não custa nada em nenhum plano — baixa uma vez e funciona na estrada toda, com todas as categorias de waypoints. O país de origem é escolhido uma vez e não muda depois.',
+  },
+  {
+    q: 'Como funcionam os países extras do Plus e do Pro?',
+    a: `São países offline ALÉM do seu, pra quem cruza fronteira. O Plus soma ${extraPlus} e o Pro soma ${extraPro}, trocáveis quando você quiser — terminou a viagem pela Argentina, troca por outro país na próxima. O seu país de origem continua incluso e não ocupa nenhuma dessas vagas.`,
   },
   {
     q: 'Posso validar e cadastrar pontos offline?',
-    a: 'Sim, em qualquer plano. Encontrou camping novo na trilha sem sinal? Valida no celular ali, sincroniza quando voltar a conectar. A base cresce com isso.',
+    a: 'Sim, em qualquer plano e sem limite. Encontrou camping novo na trilha sem sinal? Valida no celular ali, sincroniza quando voltar a conectar. A base cresce com isso — e validar ainda te rende viagens.',
   },
   {
     q: 'O mapa offline é detalhado?',
-    a: 'O mapa de visualização de waypoints é o mesmo em todos os planos. A diferença está em quantas regiões você pode baixar — Free cobre o país do dispositivo, Plus/Pro liberam qualquer país ou continente do mundo.',
+    a: 'O mapa e as categorias de waypoints são iguais em todos os planos. Nunca entregamos uma base pior pra quem é Free. O que muda é só quantos países você leva junto.',
   },
   {
     q: 'Como garantir que a navegação funcione sem sinal?',
@@ -100,13 +79,44 @@ const faq = [
   },
 ];
 
-export default function ModoOfflinePage() {
+export default async function ModoOfflinePage() {
+  // Os números de países vêm da régua — ver lib/planos.ts.
+  const regua = await getRegua();
+  const extraPlus = plano(regua, 'plus').paisesEstrangeiros;
+  const extraPro = plano(regua, 'pro').paisesEstrangeiros;
+
+  const planos = [
+    {
+      nome: 'Free',
+      badge: 'Incluso em todos os planos',
+      titulo: 'O seu país inteiro, offline, pra sempre',
+      items: [
+        'Todas as categorias de waypoints — postos, hospedagem, mecânica, camping, atração',
+        'Mapa offline da região do seu país',
+        'Sincronização automática das atualizações',
+        'Validação e cadastro de pontos offline, sem limite',
+        'O país de origem é escolhido uma vez e não muda depois',
+      ],
+    },
+    {
+      nome: 'Plus e Pro',
+      badge: 'Pra quem cruza fronteira',
+      titulo: `Países extras além do seu — ${extraPlus} no Plus, ${extraPro} no Pro`,
+      items: [
+        'Somam-se ao país de origem, que continua incluso',
+        'Trocáveis quando quiser — terminou a viagem, troca pelo próximo destino',
+        'Mesmas categorias e mesmo mapa do pacote de origem',
+        'Sincronização automática das atualizações',
+      ],
+    },
+  ];
+
   return (
     <>
       <FeatureHero
         kicker="Disponível agora"
         title="O essencial da viagem continua disponível mesmo sem sinal"
-        subline="Baixe previamente a base de waypoints da região. Depois, consulte rotas salvas e encontre pontos ao redor com o Radar — mesmo sem conexão. Free cobre um país; Plus e Pro liberam qualquer país ou continente."
+        subline="O mapa e os pontos do seu país ficam offline pra sempre, em qualquer plano — inclusive no Free. Quem cruza fronteira soma países extras no Plus e no Pro."
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
@@ -136,7 +146,7 @@ export default function ModoOfflinePage() {
             Como funciona em cada plano
           </h2>
           <p className="text-gt-text-muted mb-10 max-w-2xl font-sans leading-relaxed">
-            Free cobre quem viaja no próprio país. Plus e Pro liberam o mundo. Em qualquer caso, a base offline tem todas as categorias de waypoints — não restringimos o que você pode acessar.
+            O seu país é grátis em todos os planos, pra sempre. Plus e Pro somam países extras pra quem cruza fronteira. Em qualquer caso, a base offline tem todas as categorias de waypoints — não entregamos uma base pior pra quem é Free.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             {planos.map((p) => (
@@ -205,7 +215,7 @@ export default function ModoOfflinePage() {
         </div>
       </section>
 
-      <FeatureFaq items={faq} />
+      <FeatureFaq items={faq(extraPlus, extraPro)} />
 
       <OutrasFeatures currentSlug="modo-offline" />
     </>

@@ -48,11 +48,11 @@ const faq = [
   },
   {
     q: 'Quem pode validar e cadastrar pontos?',
-    a: 'Qualquer overlander, em qualquer plano (Free, Plus ou Pro). Validar e cadastrar é livre pra todos. Cada validação rende XP no GT Explorer e ajuda a manter a base atualizada.',
+    a: 'Qualquer overlander, em qualquer plano, sem limite de quantidade. Validar e cadastrar é livre pra todos — e rende viagem: 5 pontos seus aprovados pela comunidade valem 1 viagem, e 5 validações feitas no local, com GPS, valem outra. Cada validação também rende XP no GT Explorer.',
   },
   {
     q: 'Funciona offline?',
-    a: 'Sim. Como a base é nossa (não depende do Google Places), os waypoints ficam disponíveis offline. No plano Free você baixa o país do dispositivo com todas as categorias. No Plus e Pro, libera os 209 países do mundo.',
+    a: 'Sim. Como a base é nossa (não depende do Google Places), os waypoints ficam disponíveis offline. O pacote do seu país é grátis em todos os planos, pra sempre, com todas as categorias. Plus e Pro somam países extras pra quem cruza fronteira.',
   },
   {
     q: 'De onde vêm os dados?',
@@ -186,7 +186,7 @@ export default function WaypointsPage() {
             Hoje a Base GT é viva. O time GT cura continuamente, e a comunidade contribui validando pontos existentes e cadastrando os que ainda não tinham sido mapeados — tudo direto do app, em qualquer plano. Quanto mais gente na estrada validando, mais rica e atual a base fica.
           </p>
           <p className="text-gt-text leading-relaxed font-sans">
-            Por ser a Base GT, os waypoints ficam disponíveis offline. Plus e Pro liberam os 209 países do mundo; Free baixa o país do dispositivo com todas as categorias.
+            Por ser a Base GT, os waypoints ficam disponíveis offline. O pacote do seu país é grátis em todos os planos, com todas as categorias; Plus e Pro somam países extras pra quem cruza fronteira.
           </p>
           <p className="text-xs text-gt-text-dim leading-relaxed font-sans mt-4">
             Dados de origem: © colaboradores do OpenStreetMap — ODbL. Curadoria, organização e enriquecimento: GT Overlander.

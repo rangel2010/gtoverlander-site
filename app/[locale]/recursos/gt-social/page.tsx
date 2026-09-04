@@ -13,7 +13,7 @@ export async function generateMetadata({
   return {
     title: 'GT Social',
     description:
-    'A rede social dentro do GT. Siga overlanders, descubra rotas públicas testadas e copie roteiros que outros já completaram. Comunidade de quem vive a estrada.',
+    'A rede social dentro do GT. Siga overlanders, descubra rotas públicas testadas e adote roteiros que outros já completaram. Tudo liberado em qualquer plano.',
     alternates: getPageAlternates(locale, '/recursos/gt-social'),
     ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
@@ -63,16 +63,16 @@ const faq = [
     a: 'Não dentro do GT Social. A intenção da rede é descoberta e cópia de rotas, não bate-papo. Pra contato direto, existe Help Overlander (situação de socorro) ou os canais externos que cada overlander disponibiliza no perfil (e-mail, redes sociais).',
   },
   {
-    q: 'Qualquer um pode copiar minhas rotas públicas?',
-    a: 'Sim, é o ponto. Rota pública é pra ser copiada — gente testando suas trilhas é elogio, não invasão. Se algo for sensível pra você, mantenha a rota privada. Quem copia ganha sua rota como base, edita do jeito que quiser, e o crédito de origem fica registrado.',
+    q: 'Qualquer um pode adotar minhas rotas públicas?',
+    a: 'Sim, é o ponto. Rota pública é pra ser adotada — gente testando suas trilhas é elogio, não invasão. Se algo for sensível pra você, mantenha a rota privada. Quem adota recebe sua rota como base, edita do jeito que quiser, e o crédito de origem fica registrado.',
   },
   {
     q: 'Perfis verificados? O que isso muda?',
     a: 'Quem passou pelo processo de verificação de identidade ganha selo no perfil. Não muda funções básicas, mas aumenta confiança — outros overlanders tendem a aceitar Help Overlander de quem é verificado, e perfis verificados têm mais peso em ranking.',
   },
   {
-    q: 'Posso seguir/copiar no Free?',
-    a: 'No Free você acessa, vê perfis públicos, vê rotas públicas, mas não copia rota nem salva como favorita. Pra essas ações, é Plus ou Pro. Seguir overlanders também é benefício do plano pago (cria rede ativa).',
+    q: 'Posso seguir e adotar rotas no Free?',
+    a: 'Pode, tudo. Seguir overlanders, ver perfis, ver rotas públicas e adotar roteiro funcionam em qualquer plano, inclusive no Free. A única diferença é que a rota adotada ocupa uma vaga de viagem: no Free ela consome uma das 3 viagens por nossa conta, no Plus ocupa uma das vagas ativas, e no Pro não tem limite. Ver e namorar a rota antes de adotar não custa nada.',
   },
   {
     q: 'Como funciona quando o autor original deleta a rota?',
@@ -86,15 +86,15 @@ export default function GtSocialPage() {
       <FeatureHero
         kicker="Em breve"
         title="Encontre pessoas que vivem a mesma estrada"
-        subline="GT Social é a rede social dentro do GT. Encontre overlanders que viajam parecido com você, descubra rotas testadas pela comunidade, copie roteiros que outros já completaram. Comunidade que cresce na estrada."
+        subline="GT Social é a rede social dentro do GT. Encontre overlanders que viajam parecido com você, descubra rotas testadas pela comunidade e adote roteiros que outros já completaram. Tudo liberado em qualquer plano."
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
 
       <FeatureScreenshot
         kicker="Rotas Públicas Populares"
-        title="Descobre rotas que outros já testaram e cópia em 1 toque"
-        desc='Aba "Rotas Públicas Populares" mostra os roteiros que a comunidade está rodando. Cada card vem com avaliação, distância, dificuldade e quem criou. Gostou? Botão "Copiar" e a rota vira tua — ajusta paradas, datas, veículo. Crédito original preservado, edição livre.'
+        title="Descubra rotas que outros já testaram e adote em 1 toque"
+        desc='Aba "Rotas Públicas Populares" mostra os roteiros que a comunidade está rodando. Cada card vem com avaliação, distância, dificuldade e quem criou. Gostou? Adota e a rota vira sua — ajusta paradas, datas, veículo. Crédito original preservado, edição livre. Adotar ocupa uma vaga de viagem do seu plano.'
         src="/screenshots/recursos/overlanders-rotas.png"
         alt="Tela do GT Social mostrando Rotas Públicas Populares: Serra do Rio do Rastro 4×4 leve com avaliação 4.8"
         bg="card"

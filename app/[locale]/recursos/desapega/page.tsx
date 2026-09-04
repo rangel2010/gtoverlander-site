@@ -57,7 +57,7 @@ const beneficios = [
 const faq = [
   {
     q: 'Quem pode anunciar?',
-    a: 'Assinantes Plus ou Pro podem anunciar até 3 itens pessoais (sem link de redirecionamento). Pra anunciar mais, vender de forma recorrente, ou incluir link comercial, é Conta Business — pensada pra lojas, fabricantes e distribuidores.',
+    a: 'Assinantes Plus e Pro. O Plus mantém 1 anúncio no ar por vez e o Pro mantém 3 ao mesmo tempo, sempre itens pessoais e sem link de redirecionamento. Pra vender de forma recorrente ou incluir link comercial, o canal é a Conta Business — pensada pra lojas, fabricantes e distribuidores.',
   },
   {
     q: 'GT cobra alguma comissão sobre a venda?',
@@ -77,7 +77,7 @@ const faq = [
   },
   {
     q: 'Posso ver e contatar anúncios mesmo no Free?',
-    a: 'Sim. Ver, buscar e iniciar contato com vendedores é livre pra todo mundo. O que é restrito a pagantes é PUBLICAR anúncio.',
+    a: 'Sim. Ver, buscar e iniciar contato com vendedores é livre pra todo mundo, inclusive no Free. O que exige assinatura é PUBLICAR anúncio.',
   },
 ];
 
@@ -104,7 +104,7 @@ export default function DesapegaPage() {
       <FeatureScreenshot
         kicker="Anúncios em destaque"
         title="Foto real, preço claro, contato direto"
-        desc="Cada anúncio tem foto principal, título, preço e categoria visíveis logo no card. Anunciantes Pro podem destacar até alguns anúncios pra ter mais visibilidade. Pra negociações, contato direto entre vendedor e comprador — GT só conecta, não intermedia."
+        desc="Cada anúncio tem foto principal, título, preço e categoria visíveis logo no card. O Pro mantém mais anúncios no ar ao mesmo tempo que o Plus. Pra negociações, contato direto entre vendedor e comprador — GT só conecta, não intermedia."
         src="/screenshots/recursos/desapega-anuncios.png"
         alt="Anúncios em destaque no GT Desapega: Barraca de Teto Expedition R$ 4.800 e Geladeira Portátil 45L R$ 2.100"
         reverse

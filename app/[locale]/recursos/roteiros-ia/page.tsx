@@ -20,16 +20,20 @@ export async function generateMetadata({
   };
 }
 
+// Não existe mais "IA padrão" e "IA avançada": o motor é o mesmo em todos os
+// planos, por decisão do Rangel (04/09/2026) — dar o motor bom pro gratuito faz
+// ele sentir a qualidade. Os cards abaixo passaram a descrever o que o motor
+// faz, não níveis de plano.
 const motores = [
   {
-    nome: 'IA padrão',
-    pra: 'Plano Free',
-    desc: 'Trajetos diretos pra rotas convencionais. Suficiente pra primeira viagem ou roteiro mais simples.',
+    nome: 'Mesmo motor pra todo mundo',
+    pra: 'Free, Plus e Pro',
+    desc: 'Ninguém recebe uma IA pior por não pagar. O copiloto que monta a rota de quem é Free é exatamente o mesmo de quem assina.',
   },
   {
-    nome: 'IA avançada',
-    pra: 'Planos Plus e Pro',
-    desc: 'Pra quando o trajeto exige mais. Conhecimento geográfico apurado, adaptação ao seu estilo de viagem, e capacidade de planejar rotas complexas com vias secundárias e regiões menos conhecidas.',
+    nome: 'Feito pra viagem por terra',
+    pra: 'Conhecimento geográfico',
+    desc: 'Vias secundárias, regiões menos conhecidas, contexto regional e adaptação ao seu estilo de viagem — não é um buscador de caminho mais rápido.',
   },
 ];
 
@@ -74,8 +78,8 @@ const faq = [
     a: 'Português, inglês e espanhol. Você descreve a viagem no idioma que preferir e a IA responde no mesmo.',
   },
   {
-    q: 'Qual a diferença entre Free e Plus/Pro?',
-    a: 'Free usa a IA padrão, suficiente pra rotas convencionais e primeiras viagens. Plus e Pro usam a IA avançada — mais precisão em rotas complexas, conhecimento geográfico apurado e adaptação ao seu estilo de viagem.',
+    q: 'A IA do Free é pior que a dos planos pagos?',
+    a: 'Não. É o mesmo motor, sem corte de qualidade — quem usa de graça monta rota com exatamente a mesma IA de quem assina. O que muda entre os planos é quantas viagens você mantém ativas, quantos países leva offline e em quantos aparelhos usa. No Free são 3 viagens por nossa conta, e dá pra ganhar mais contribuindo com a base.',
   },
 ];
 
@@ -121,11 +125,12 @@ export default function RoteirosIaPage() {
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3">
-            2 motores de IA, calibrados pra cada nível de viagem
+            O mesmo copiloto de IA em todos os planos
           </h2>
           <p className="text-gt-text-muted mb-10 max-w-xl font-sans">
-            IA padrão pra começar. IA avançada pra rotas mais complexas — mais
-            precisão geográfica, mais adaptação ao seu estilo de viagem.
+            Não limitamos a qualidade da IA por plano. Quem usa de graça monta
+            rota com o mesmo motor de quem assina — o que muda entre os planos é
+            quantas viagens você mantém, não o quão bem elas são feitas.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
