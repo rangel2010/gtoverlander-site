@@ -274,20 +274,20 @@
       "paisesMais": "O seu + {n}",
       "semAnuncio": "Só ver",
       "anunciosPorVez": "{n} por vez",
-      "i1": "Copiloto de IA — o mesmo motor em todos os planos",
+      "i1": "Copiloto de IA: o mesmo motor em todos os planos",
       "i2": "Radar de waypoints completo e ilimitado",
       "i3": "Base mundial de waypoints",
       "i4": "Pacote offline do seu país, pra sempre",
       "i5": "Validar e cadastrar pontos sem limite",
       "i6": "Publicar suas rotas pra comunidade",
       "i7": "Seguir overlanders e descobrir rotas testadas",
-      "i8": "Adotar rota da comunidade — ocupa uma vaga de viagem",
+      "i8": "Adotar rota da comunidade",
       "i9": "Ver anúncios no GT Desapega",
       "i10": "CarPlay e Android Auto"
     },
     "contribuicao": {
       "titulo": "Ganhe mais viagens contribuindo",
-      "desc": "Quem ajuda a base ganha viagem, em qualquer plano. Os dois caminhos valem por si — não se somam.",
+      "desc": "Quem ajuda a base ganha viagem, em qualquer plano. Os dois caminhos valem por si.",
       "c1": "{n} pontos seus aprovados pela comunidade valem 1 viagem",
       "c2": "{n} validações feitas no local, com GPS, valem 1 viagem"
     },

@@ -274,20 +274,20 @@
       "paisesMais": "Yours + {n}",
       "semAnuncio": "View only",
       "anunciosPorVez": "{n} at a time",
-      "i1": "AI copilot — the same engine on every plan",
+      "i1": "AI copilot: the same engine on every plan",
       "i2": "Full, unlimited waypoint radar",
       "i3": "Global waypoint database",
       "i4": "Offline pack for your country, forever",
       "i5": "Validate and submit points, no limit",
       "i6": "Publish your routes to the community",
       "i7": "Follow overlanders and discover tested routes",
-      "i8": "Adopt a community route — takes up a trip slot",
+      "i8": "Adopt a community route",
       "i9": "View listings on GT Desapega",
       "i10": "CarPlay and Android Auto"
     },
     "contribuicao": {
       "titulo": "Earn more trips by contributing",
-      "desc": "Helping the database earns you trips, on any plan. Each path counts on its own — they don't add up.",
+      "desc": "Helping the database earns you trips, on any plan. Each path counts on its own.",
       "c1": "{n} of your points approved by the community earn 1 trip",
       "c2": "{n} validations made on site, with GPS, earn 1 trip"
     },
