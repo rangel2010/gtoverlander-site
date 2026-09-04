@@ -6,6 +6,7 @@ import { PlansCards } from '@/components/sections/plans-cards';
 import { productPlansLd, jsonLdScriptProps, getPageAlternates } from '@/lib/seo';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { PRODUCT, formatPrice } from '@/lib/product-config';
+import { getRegua, plano, reais } from '@/lib/planos';
 
 export async function generateMetadata({
   params: { locale },
@@ -41,23 +42,26 @@ function FeatureValue({ value }: { value: string | boolean }) {
 }
 
 /**
- * Célula de preço da tabela comparativa. Mostra o preço cheio riscado em cima
- * do preço em vigor, mesmo par "de/por" dos cards. Valores sempre vindos do
- * PRODUCT config — nunca hardcoded aqui.
+ * Célula de preço da tabela comparativa: preço de tabela riscado em cima do
+ * preço em vigor.
+ *
+ * O riscado (`originalLabel`) vem da API, que é dona do preço cheio. O preço
+ * cobrado vem do product-config, que é dono da promoção do site. Nenhum dos
+ * dois é escrito à mão aqui.
  */
 function PriceCell({
   current,
-  original,
+  originalLabel,
 }: {
   current: number;
-  original?: number;
+  originalLabel?: string;
 }) {
   if (current === 0) return <>R$ 0</>;
   return (
     <>
-      {original ? (
+      {originalLabel ? (
         <span className="block text-gt-text-dim line-through">
-          {formatPrice(original)}
+          {originalLabel}
         </span>
       ) : null}
       <span className="block text-gt-text">{formatPrice(current)}</span>
@@ -74,23 +78,71 @@ export default async function PlanosPage({
   const t = await getTranslations('planos');
   const tc = await getTranslations('common');
 
+  // Toda a régua vem da API — ver lib/planos.ts e PLANOS_O_QUE_CADA_UM_ENTREGA.md.
+  // Nenhum limite escrito à mão aqui.
+  const regua = await getRegua();
+  const free = plano(regua, 'free');
+  const plus = plano(regua, 'plus');
+  const pro = plano(regua, 'pro');
+
+  /**
+   * A linha de viagens NÃO usa o mesmo texto nos três planos de propósito.
+   * No Free as viagens são gastas (apagar não devolve); no Plus são vagas
+   * simultâneas. Mostrar "3 / 15 / ilimitado" faria o leitor achar que é a
+   * mesma unidade, que é exatamente a confusão que gera reclamação com razão.
+   */
   const features: PlanFeature[] = [
-    { label: t('comparacao.f1l'), values: [t('comparacao.f1v0'), t('comparacao.f1v1'), t('comparacao.f1v2')] },
-    { label: t('comparacao.f2l'), values: [t('comparacao.f2v0'), t('comparacao.f2v1'), t('comparacao.f2v2')] },
-    { label: t('comparacao.f3l'), values: [t('comparacao.f3v0'), t('comparacao.f3v1'), t('comparacao.f3v2')] },
-    { label: t('comparacao.f4l'), values: [true, true, true] },
-    { label: t('comparacao.f5l'), values: [true, true, true] },
-    { label: t('comparacao.f6l'), values: [true, true, true] },
-    { label: t('comparacao.f7l'), values: [true, true, true] },
-    { label: t('comparacao.f8l'), values: [false, true, true] },
-    { label: t('comparacao.f9l'), values: [true, true, true] },
-    { label: t('comparacao.f10l'), values: [false, true, true] },
-    { label: t('comparacao.f11l'), values: [false, true, true] },
-    { label: t('comparacao.f12l'), values: [false, true, true] },
-    { label: t('comparacao.f13l'), values: [false, true, true] },
-    { label: t('comparacao.f14l'), values: [true, true, true] },
-    { label: t('comparacao.f15l'), values: [false, true, true] },
-    { label: t('comparacao.f16l'), values: [t('comparacao.f16v0'), t('comparacao.f16v1'), t('comparacao.f16v2')] },
+    {
+      label: t('comparacao.lViagens'),
+      values: [
+        t('comparacao.viagensGastas', { n: free.rotasAtivas ?? 0 }),
+        t('comparacao.viagensAtivas', { n: plus.rotasAtivas ?? 0 }),
+        pro.rotasAtivas === null
+          ? t('comparacao.viagensIlimitadas')
+          : t('comparacao.viagensAtivas', { n: pro.rotasAtivas }),
+      ],
+    },
+    {
+      label: t('comparacao.lEditar'),
+      values: [
+        free.diasParaEditar === null
+          ? t('comparacao.editarSemPrazo')
+          : t('comparacao.editarPrazo', { dias: free.diasParaEditar }),
+        t('comparacao.editarSemPrazo'),
+        t('comparacao.editarSemPrazo'),
+      ],
+    },
+    {
+      label: t('comparacao.lPaises'),
+      values: [free, plus, pro].map((p) =>
+        p.paisesEstrangeiros === 0
+          ? t('comparacao.paisesSoOSeu')
+          : t('comparacao.paisesMais', { n: p.paisesEstrangeiros }),
+      ) as [string, string, string],
+    },
+    {
+      label: t('comparacao.lAnuncios'),
+      values: [free, plus, pro].map((p) =>
+        p.anunciosSimultaneos === 0
+          ? t('comparacao.semAnuncio')
+          : t('comparacao.anunciosPorVez', { n: p.anunciosSimultaneos }),
+      ) as [string, string, string],
+    },
+    {
+      label: t('comparacao.lAparelhos'),
+      values: [
+        String(free.aparelhos),
+        String(plus.aparelhos),
+        String(pro.aparelhos),
+      ],
+    },
+  ];
+
+  const iguais = [
+    t('comparacao.i1'), t('comparacao.i2'), t('comparacao.i3'),
+    t('comparacao.i4'), t('comparacao.i5'), t('comparacao.i6'),
+    t('comparacao.i7'), t('comparacao.i8'), t('comparacao.i9'),
+    t('comparacao.i10'),
   ];
 
   const faq = [
@@ -121,7 +173,7 @@ export default async function PlanosPage({
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <ScrollReveal>
-            <PlansCards />
+            <PlansCards regua={regua} />
           </ScrollReveal>
         </div>
       </section>
@@ -151,13 +203,13 @@ export default async function PlanosPage({
                     <td className="text-center py-3 px-3 bg-gt-card">
                       <PriceCell
                         current={PRODUCT.plans.plus.monthlyPrice}
-                        original={PRODUCT.plans.plus.monthlyOriginalPrice}
+                        originalLabel={reais(plus.preco.mensalCentavos, locale)}
                       />
                     </td>
                     <td className="text-center py-3 px-3">
                       <PriceCell
                         current={PRODUCT.plans.pro.monthlyPrice}
-                        original={PRODUCT.plans.pro.monthlyOriginalPrice}
+                        originalLabel={reais(pro.preco.mensalCentavos, locale)}
                       />
                     </td>
                   </tr>
@@ -167,13 +219,13 @@ export default async function PlanosPage({
                     <td className="text-center py-3 px-3 bg-gt-card">
                       <PriceCell
                         current={PRODUCT.plans.plus.annualPrice}
-                        original={PRODUCT.plans.plus.annualOriginalPrice}
+                        originalLabel={reais(plus.preco.anualCentavos, locale)}
                       />
                     </td>
                     <td className="text-center py-3 px-3">
                       <PriceCell
                         current={PRODUCT.plans.pro.annualPrice}
-                        original={PRODUCT.plans.pro.annualOriginalPrice}
+                        originalLabel={reais(pro.preco.anualCentavos, locale)}
                       />
                     </td>
                   </tr>
@@ -189,6 +241,48 @@ export default async function PlanosPage({
                   ))}
                 </tbody>
               </table>
+            </div>
+          </ScrollReveal>
+
+          {/* O que não muda entre planos sai da tabela e vira lista: 10 linhas
+              de ✓✓✓ só engordariam a comparação sem informar nada. */}
+          <ScrollReveal>
+            <div className="mt-12">
+              <h3 className="font-sans text-sm font-medium uppercase tracking-[0.15em] text-gt-text-muted mb-5">
+                {t('comparacao.igualTitulo')}
+              </h3>
+              <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+                {iguais.map((item) => (
+                  <li key={item} className="flex gap-3 text-sm text-gt-text font-sans">
+                    <span aria-hidden className="text-gt-orange-text shrink-0">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
+
+          {/* Contribuição: o caminho de ganhar viagem sem pagar. É argumento de
+              venda do Free, não letra miúda. */}
+          <ScrollReveal>
+            <div className="mt-12 bg-gt-bg border border-gt-border rounded-lg p-7 md:p-8">
+              <h3 className="text-2xl text-gt-text mb-2">
+                {t('contribuicao.titulo')}
+              </h3>
+              <p className="text-sm text-gt-text-muted font-sans mb-5 max-w-2xl">
+                {t('contribuicao.desc')}
+              </p>
+              <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+                {[
+                  t('contribuicao.c1', { n: regua.contribuicao.PONTOS_APROVADOS_POR_VIAGEM }),
+                  t('contribuicao.c2', { n: regua.contribuicao.VALIDACOES_NO_LOCAL_POR_VIAGEM }),
+                ].map((linha) => (
+                  <li key={linha} className="flex gap-3 text-sm text-gt-text font-sans">
+                    <span aria-hidden className="text-gt-orange-text shrink-0">+</span>
+                    <span>{linha}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </ScrollReveal>
         </div>

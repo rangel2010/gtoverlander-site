@@ -1,15 +1,33 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { getPageAlternates } from '@/lib/seo';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
 import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 
+/**
+ * Página preservada, rota desligada.
+ *
+ * O Help Overlander saiu do app na V2 (04/09/2026), mas a feature volta no
+ * futuro — decisão do Rangel de guardar em vez de apagar. Enquanto isto for
+ * false a rota devolve 404, não aparece no sitemap, não é linkada em lugar
+ * nenhum e não é indexada. O conteúdo abaixo segue intacto pra quando religar.
+ *
+ * Pra religar: trocar aqui pra true, voltar `helpOverlander` pra 'COMING_SOON'
+ * no product-config, e recolocar as entradas em sitemap.ts, outras-features.tsx,
+ * numeros.tsx e recursos/page.tsx.
+ */
+const HELP_OVERLANDER_ATIVO = false;
+
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  if (!HELP_OVERLANDER_ATIVO) {
+    return { title: 'Help Overlander', robots: { index: false, follow: false } };
+  }
   return {
     title: 'Help Overlander',
     description:
@@ -69,6 +87,8 @@ const faq = [
 ];
 
 export default function HelpOverlanderPage() {
+  if (!HELP_OVERLANDER_ATIVO) notFound();
+
   return (
     <>
       <FeatureHero

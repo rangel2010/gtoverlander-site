@@ -9,6 +9,7 @@ import {
   discountPct,
   annualSavingsPct,
 } from '@/lib/product-config';
+import type { PlanCode, Regua } from '@/lib/planos';
 
 interface Plan {
   name: string;
@@ -16,13 +17,18 @@ interface Plan {
   monthlyOriginalPrice?: number;
   annualPrice: number;
   annualOriginalPrice?: number;
-  descKey: 'free' | 'plus' | 'pro';
-  ctaKey: 'free' | 'plus' | 'pro';
+  descKey: PlanCode;
+  ctaKey: PlanCode;
   href: string;
   highlight: boolean;
   badge?: boolean;
 }
 
+/**
+ * O preço COBRADO sai do product-config (promoção do site). O preço RISCADO
+ * sai da API, via props — ver lib/planos.ts. Este componente é 'use client',
+ * então quem busca a régua é a página servidora que o renderiza.
+ */
 const plans: Plan[] = [
   {
     name: 'Free',
@@ -76,9 +82,21 @@ const annualBadgePct = Math.min(
  */
 const SHOW_ANNUAL_BADGE = false;
 
-export function PlansCards() {
+export function PlansCards({ regua }: { regua: Regua }) {
   const t = useTranslations('planos.cards');
   const [billing, setBilling] = useState<'mensal' | 'anual'>('anual');
+
+  // Números que entram nas descrições dos cards. Nenhum é escrito na tradução:
+  // a mensagem tem placeholder e o valor vem da régua.
+  const valores = (code: PlanCode) => {
+    const p = regua.planos.find((x) => x.code === code)!;
+    return {
+      viagens: p.rotasAtivas ?? 0,
+      paises: p.paisesEstrangeiros,
+      anuncios: p.anunciosSimultaneos,
+      aparelhos: p.aparelhos,
+    };
+  };
 
   return (
     <div>
@@ -205,7 +223,7 @@ export function PlansCards() {
               {/* flex-1 empurra o botão pro rodapé do card, alinhando os três
                   CTAs na mesma linha mesmo com descrições de tamanhos diferentes */}
               <p className="text-sm text-gt-text-muted leading-relaxed mb-6 min-h-[4rem] font-sans flex-1">
-                {t(`plans.${p.descKey}.desc`)}
+                {t(`plans.${p.descKey}.desc`, valores(p.descKey))}
               </p>
 
               <Button

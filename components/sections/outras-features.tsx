@@ -20,13 +20,7 @@ const FEATURES = [
     slug: 'gt-social',
     emBreve: true,
     titulo: 'GT Social',
-    desc: 'Siga overlanders, descubra rotas, copie roteiros',
-  },
-  {
-    slug: 'help-overlander',
-    emBreve: true,
-    titulo: 'Help Overlander',
-    desc: 'Comunidade que se ajuda na estrada',
+    desc: 'Siga overlanders, descubra rotas, adote roteiros',
   },
   {
     slug: 'explorer',

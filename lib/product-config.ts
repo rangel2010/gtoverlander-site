@@ -15,33 +15,30 @@ export const PRODUCT = {
 
   // ── Planos ───────────────────────────────────────────────────────────────
   plans: {
+    // ATENÇÃO: aqui ficam SÓ os preços promocionais que o site cobra.
+    //
+    // Os limites de plano (viagens, países offline, anúncios, aparelhos) saíram
+    // daqui em 04/09/2026 e passaram a vir da API — ver lib/planos.ts e
+    // PLANOS_O_QUE_CADA_UM_ENTREGA.md. Não reintroduza limite neste arquivo:
+    // ele volta a envelhecer calado, que foi exatamente o problema.
+    //
+    // Os preços "Original" (riscados) também vêm da API agora. Os campos abaixo
+    // seguem como piso, caso ela não responda.
     free: {
       monthlyPrice: 0,
       annualPrice: 0,
-      routeExports: { quantity: 1, periodDays: 90 },
-      radarQueriesPerDay: 1,
-      offlineRule: 'APP_STORE_COUNTRY' as const,
     },
-    // Os preços "Original" são os cheios, que passam a valer na virada do app
-    // novo. Aparecem riscados ao lado do preço atual, sinalizando que quem
-    // assina agora trava a condição antiga.
     plus: {
       monthlyPrice: 14.90,
       monthlyOriginalPrice: 19.90,
       annualPrice: 79.90,
       annualOriginalPrice: 199.90,
-      routeExportsPerMonth: 2,
-      radarQueriesPerDay: 5,
-      offlineRule: 'ALL_209_COUNTRIES' as const,
     },
     pro: {
       monthlyPrice: 19.90,
       monthlyOriginalPrice: 29.90,
       annualPrice: 99.90,
       annualOriginalPrice: 299.90,
-      routeExports: 'unlimited' as const,
-      radarQueries: 'unlimited' as const,
-      offlineRule: 'ALL_209_COUNTRIES' as const,
     },
   },
 
@@ -49,10 +46,14 @@ export const PRODUCT = {
   features: {
     offline:          'AVAILABLE'  as const,
     social:           'AVAILABLE'  as const,
-    helpOverlander:   'AVAILABLE'  as const,
     desapega:         'AVAILABLE'  as const,
     explorer:         'COMING_SOON' as const,
     business:         'WAITLIST'   as const,
+    // Desligado em 04/09/2026: a feature saiu do app na V2, mas volta no
+    // futuro. A página em /recursos/help-overlander continua no repo e é
+    // religada trocando isto pra 'COMING_SOON' ou 'AVAILABLE' — ver
+    // HELP_OVERLANDER_ATIVO em app/[locale]/recursos/help-overlander/page.tsx.
+    helpOverlander:   'DISABLED'   as const,
   },
 
   // ── Plataformas ──────────────────────────────────────────────────────────

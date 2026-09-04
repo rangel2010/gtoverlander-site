@@ -78,7 +78,7 @@ export default async function RecursosPage({
 
   const comunidade: Feature[] = [
     { slug: 'gt-social', titulo: t('comunidade.r1t'), desc: t('comunidade.r1d'), status: 'em-breve' },
-    { slug: 'help-overlander', titulo: t('comunidade.r2t'), desc: t('comunidade.r2d'), status: 'em-breve' },
+    // r2 era o Help Overlander, desligado em 04/09/2026.
     { slug: 'explorer', titulo: t('comunidade.r3t'), desc: t('comunidade.r3d'), status: 'em-breve' },
     { slug: 'desapega', titulo: t('comunidade.r4t'), desc: t('comunidade.r4d'), status: 'em-breve' },
   ];

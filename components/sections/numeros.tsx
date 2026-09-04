@@ -2,22 +2,23 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ScrollReveal } from '@/components/scroll-reveal';
 
-const HREFS = [
-  '/recursos/gt-social',
-  '/recursos/help-overlander',
-  '/recursos/explorer',
-  '/recursos/desapega',
+// O slot s2 era o Help Overlander, removido em 04/09/2026 (feature desligada
+// no app). Os demais mantêm a numeração original das chaves de tradução pra
+// evitar renomear em três idiomas sem ganho nenhum.
+const CARDS = [
+  { chave: 's1', href: '/recursos/gt-social' },
+  { chave: 's3', href: '/recursos/explorer' },
+  { chave: 's4', href: '/recursos/desapega' },
 ];
 
 export async function Numeros() {
   const t = await getTranslations('home.numeros');
 
-  const items = [
-    { titulo: t('s1valor'), desc: t('s1ctx'), href: HREFS[0] },
-    { titulo: t('s2valor'), desc: t('s2ctx'), href: HREFS[1] },
-    { titulo: t('s3valor'), desc: t('s3ctx'), href: HREFS[2] },
-    { titulo: t('s4valor'), desc: t('s4ctx'), href: HREFS[3] },
-  ];
+  const items = CARDS.map((c) => ({
+    titulo: t(`${c.chave}valor`),
+    desc: t(`${c.chave}ctx`),
+    href: c.href,
+  }));
 
   return (
     <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
@@ -26,7 +27,7 @@ export async function Numeros() {
           <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-3 font-sans">{t('label')}</p>
           <h2 className="text-3xl md:text-4xl text-gt-text mb-12">{t('titulo')}</h2>
         </ScrollReveal>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((i, idx) => (
             <ScrollReveal key={i.href} delay={idx * 80}>
               <Link href={i.href} className="block bg-gt-card rounded-lg p-7 border border-gt-border hover:border-gt-orange transition-colors group relative h-full">

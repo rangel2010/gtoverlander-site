@@ -30,7 +30,8 @@ const PT_ONLY_ROUTES = [
   { path: '/recursos/modo-offline',    changeFreq: 'monthly' as const, priority: 0.7 },
   { path: '/recursos/waypoints',       changeFreq: 'monthly' as const, priority: 0.8 },
   { path: '/recursos/gt-social',       changeFreq: 'monthly' as const, priority: 0.8 },
-  { path: '/recursos/help-overlander', changeFreq: 'monthly' as const, priority: 0.8 },
+  // /recursos/help-overlander saiu em 04/09/2026 — rota desligada, página
+  // preservada no repo. Recolocar aqui quando a feature voltar.
   { path: '/recursos/explorer',        changeFreq: 'monthly' as const, priority: 0.8 },
   { path: '/recursos/desapega',        changeFreq: 'monthly' as const, priority: 0.8 },
   { path: '/dicas',                    changeFreq: 'weekly'  as const, priority: 0.7 },
