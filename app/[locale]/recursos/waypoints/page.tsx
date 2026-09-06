@@ -48,7 +48,7 @@ const faq = [
   },
   {
     q: 'Quem pode validar e cadastrar pontos?',
-    a: 'Qualquer overlander, em qualquer plano, sem limite de quantidade. Validar e cadastrar é livre pra todos — e rende viagem: 5 pontos seus aprovados pela comunidade valem 1 viagem, e 5 validações feitas no local, com GPS, valem outra. Cada validação também rende XP no GT Explorer.',
+    a: 'Qualquer overlander, em qualquer plano, sem limite de quantidade. Validar e cadastrar é livre pra todos — e rende viagem: 5 pontos seus aprovados pela comunidade valem 1 viagem, e 5 validações feitas no local valem outra. Cada validação também rende XP no GT Explorer.',
   },
   {
     q: 'Funciona offline?',

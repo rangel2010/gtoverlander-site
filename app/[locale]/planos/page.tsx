@@ -5,7 +5,6 @@ import { FeatureFaq } from '@/components/sections/feature-faq';
 import { PlansCards } from '@/components/sections/plans-cards';
 import { productPlansLd, jsonLdScriptProps, getPageAlternates } from '@/lib/seo';
 import { ScrollReveal } from '@/components/scroll-reveal';
-import { PRODUCT, formatPrice } from '@/lib/product-config';
 import { getRegua, plano, reais } from '@/lib/planos';
 
 export async function generateMetadata({
@@ -19,7 +18,7 @@ export async function generateMetadata({
     es: 'Planes',
   };
   const descs: Record<string, string> = {
-    pt: 'Free pra começar. Plus pra quem viaja com frequência. Pro pra quem não para. A partir de R$ 14,90/mês ou R$ 79,90/ano.',
+    pt: 'Free pra começar. Plus pra quem viaja com frequência. Pro pra quem não para. A partir de R$ 19,90/mês ou R$ 199,90/ano.',
     en: 'Free to start. Plus for frequent travelers. Pro for those who never stop. Plans for every overlander.',
     es: 'Gratis para empezar. Plus para viajeros frecuentes. Pro para quienes nunca paran. Planes para cada overlander.',
   };
@@ -42,31 +41,14 @@ function FeatureValue({ value }: { value: string | boolean }) {
 }
 
 /**
- * Célula de preço da tabela comparativa: preço de tabela riscado em cima do
- * preço em vigor.
+ * Célula de preço da tabela comparativa.
  *
- * O riscado (`originalLabel`) vem da API, que é dona do preço cheio. O preço
- * cobrado vem do product-config, que é dono da promoção do site. Nenhum dos
- * dois é escrito à mão aqui.
+ * Desde 05/09/2026 não há mais riscado nos planos pessoais: o desconto do site
+ * acabou junto com a subida do app novo, e o preço de tabela virou o preço
+ * cobrado. O valor vem da API (centavos), nunca escrito à mão.
  */
-function PriceCell({
-  current,
-  originalLabel,
-}: {
-  current: number;
-  originalLabel?: string;
-}) {
-  if (current === 0) return <>R$ 0</>;
-  return (
-    <>
-      {originalLabel ? (
-        <span className="block text-gt-text-dim line-through">
-          {originalLabel}
-        </span>
-      ) : null}
-      <span className="block text-gt-text">{formatPrice(current)}</span>
-    </>
-  );
+function PriceCell({ label }: { label: string }) {
+  return <span className="block text-gt-text">{label}</span>;
 }
 
 export default async function PlanosPage({
@@ -201,32 +183,20 @@ export default async function PlanosPage({
                     <td className="py-3 px-5">{t('comparacao.thMensal')}</td>
                     <td className="text-center py-3 px-3">R$ 0</td>
                     <td className="text-center py-3 px-3 bg-gt-card">
-                      <PriceCell
-                        current={PRODUCT.plans.plus.monthlyPrice}
-                        originalLabel={reais(plus.preco.mensalCentavos, locale)}
-                      />
+                      <PriceCell label={reais(plus.preco.mensalCentavos, locale)} />
                     </td>
                     <td className="text-center py-3 px-3">
-                      <PriceCell
-                        current={PRODUCT.plans.pro.monthlyPrice}
-                        originalLabel={reais(pro.preco.mensalCentavos, locale)}
-                      />
+                      <PriceCell label={reais(pro.preco.mensalCentavos, locale)} />
                     </td>
                   </tr>
                   <tr className="border-b border-gt-border text-xs text-gt-text-muted">
                     <td className="py-3 px-5">{t('comparacao.thAnual')}</td>
                     <td className="text-center py-3 px-3">—</td>
                     <td className="text-center py-3 px-3 bg-gt-card">
-                      <PriceCell
-                        current={PRODUCT.plans.plus.annualPrice}
-                        originalLabel={reais(plus.preco.anualCentavos, locale)}
-                      />
+                      <PriceCell label={reais(plus.preco.anualCentavos, locale)} />
                     </td>
                     <td className="text-center py-3 px-3">
-                      <PriceCell
-                        current={PRODUCT.plans.pro.annualPrice}
-                        originalLabel={reais(pro.preco.anualCentavos, locale)}
-                      />
+                      <PriceCell label={reais(pro.preco.anualCentavos, locale)} />
                     </td>
                   </tr>
                 </thead>
@@ -288,7 +258,10 @@ export default async function PlanosPage({
         </div>
       </section>
 
-      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
+      {/* bg-gt-bg (não gt-card): a seção anterior é gt-card, e os cards desta
+          seção são gt-card. Com a seção também em gt-card, card e fundo ficavam
+          da mesma cor e a alternância entre seções sumia. */}
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <ScrollReveal>
             <div className="max-w-2xl mb-10">

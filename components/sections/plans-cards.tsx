@@ -3,20 +3,13 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button } from '../ui/button';
-import {
-  PRODUCT,
-  formatPrice,
-  discountPct,
-  annualSavingsPct,
-} from '@/lib/product-config';
+import { formatPrice, annualSavingsPct } from '@/lib/product-config';
 import type { PlanCode, Regua } from '@/lib/planos';
 
 interface Plan {
   name: string;
   monthlyPrice: number;
-  monthlyOriginalPrice?: number;
   annualPrice: number;
-  annualOriginalPrice?: number;
   descKey: PlanCode;
   ctaKey: PlanCode;
   href: string;
@@ -25,60 +18,21 @@ interface Plan {
 }
 
 /**
- * O preço COBRADO sai do product-config (promoção do site). O preço RISCADO
- * sai da API, via props — ver lib/planos.ts. Este componente é 'use client',
- * então quem busca a régua é a página servidora que o renderiza.
+ * Preço vem da API (a régua), em centavos. Desde 05/09/2026 não existe mais
+ * desconto nos planos pessoais: o preço de tabela é o preço cobrado, então
+ * não há riscado nem selo de economia. Só a Conta Business mantém "de/por",
+ * e ela é uma seção separada, fora deste componente.
  */
-const plans: Plan[] = [
-  {
-    name: 'Free',
-    monthlyPrice: PRODUCT.plans.free.monthlyPrice,
-    annualPrice: PRODUCT.plans.free.annualPrice,
-    descKey: 'free',
-    ctaKey: 'free',
-    href: '/baixar',
-    highlight: false,
-  },
-  {
-    name: 'Plus',
-    monthlyPrice: PRODUCT.plans.plus.monthlyPrice,
-    monthlyOriginalPrice: PRODUCT.plans.plus.monthlyOriginalPrice,
-    annualPrice: PRODUCT.plans.plus.annualPrice,
-    annualOriginalPrice: PRODUCT.plans.plus.annualOriginalPrice,
-    descKey: 'plus',
-    ctaKey: 'plus',
-    href: '/baixar?plan=plus',
-    highlight: false,
-  },
-  {
-    name: 'Pro',
-    monthlyPrice: PRODUCT.plans.pro.monthlyPrice,
-    monthlyOriginalPrice: PRODUCT.plans.pro.monthlyOriginalPrice,
-    annualPrice: PRODUCT.plans.pro.annualPrice,
-    annualOriginalPrice: PRODUCT.plans.pro.annualOriginalPrice,
-    descKey: 'pro',
-    ctaKey: 'pro',
-    href: '/baixar?plan=pro',
-    highlight: true,
-    badge: true,
-  },
-];
+const META: Record<PlanCode, Omit<Plan, 'name' | 'monthlyPrice' | 'annualPrice'>> = {
+  free: { descKey: 'free', ctaKey: 'free', href: '/baixar', highlight: false },
+  plus: { descKey: 'plus', ctaKey: 'plus', href: '/baixar?plan=plus', highlight: false },
+  pro:  { descKey: 'pro',  ctaKey: 'pro',  href: '/baixar?plan=pro',  highlight: true, badge: true },
+};
 
 /**
- * Economia do ciclo anual sobre 12x o mensal. Usa o MENOR valor entre os planos
- * pagos (Plus 55%, Pro 58%) pra que o número do selo seja verdadeiro em
- * qualquer plano que o visitante escolher, e não só no Pro.
- */
-const annualBadgePct = Math.min(
-  annualSavingsPct(PRODUCT.plans.plus.monthlyPrice, PRODUCT.plans.plus.annualPrice),
-  annualSavingsPct(PRODUCT.plans.pro.monthlyPrice, PRODUCT.plans.pro.annualPrice),
-);
-
-/**
- * Selo de economia no toggle Anual. Desligado enquanto todos os planos estão
- * com desconto sobre o preço cheio: o card já mostra "Economize X%" e um
- * segundo percentual no toggle só confunde. Religar (true) quando o desconto
- * de virada sair e o anual voltar a ser a única economia da página.
+ * Selo de economia no toggle Anual. Desligado hoje: com o anual valendo 10x o
+ * mensal, o "Equivale a X por mês" já comunica a vantagem sem um segundo
+ * percentual competindo com ele. Religar trocando pra true.
  */
 const SHOW_ANNUAL_BADGE = false;
 
@@ -86,10 +40,34 @@ export function PlansCards({ regua }: { regua: Regua }) {
   const t = useTranslations('planos.cards');
   const [billing, setBilling] = useState<'mensal' | 'anual'>('anual');
 
+  const daRegua = (code: PlanCode) => regua.planos.find((x) => x.code === code)!;
+
+  // Preços vindos da régua (centavos → reais). Nenhum preço escrito à mão.
+  const plans: Plan[] = (['free', 'plus', 'pro'] as PlanCode[]).map((code) => {
+    const p = daRegua(code);
+    return {
+      name: p.nome,
+      monthlyPrice: p.preco.mensalCentavos / 100,
+      annualPrice: p.preco.anualCentavos / 100,
+      ...META[code],
+    };
+  });
+
+  const annualBadgePct = Math.min(
+    annualSavingsPct(
+      daRegua('plus').preco.mensalCentavos / 100,
+      daRegua('plus').preco.anualCentavos / 100,
+    ),
+    annualSavingsPct(
+      daRegua('pro').preco.mensalCentavos / 100,
+      daRegua('pro').preco.anualCentavos / 100,
+    ),
+  );
+
   // Números que entram nas descrições dos cards. Nenhum é escrito na tradução:
   // a mensagem tem placeholder e o valor vem da régua.
   const valores = (code: PlanCode) => {
-    const p = regua.planos.find((x) => x.code === code)!;
+    const p = daRegua(code);
     return {
       viagens: p.rotasAtivas ?? 0,
       paises: p.paisesEstrangeiros,
@@ -159,15 +137,6 @@ export function PlansCards({ regua }: { regua: Regua }) {
               ? t('annual_note', { price: formatPrice(perMonth) })
               : null;
 
-          // Preço cheio que entra em vigor na virada do app novo. Vale pros
-          // dois ciclos, então o bloco riscado deixou de ser só do anual.
-          const originalPrice = isAnnual
-            ? p.annualOriginalPrice
-            : p.monthlyOriginalPrice;
-          const savingsPct =
-            isPaid && originalPrice ? discountPct(originalPrice, displayPrice) : 0;
-          const showSavings = savingsPct > 0;
-
           return (
             <div
               key={p.name}
@@ -187,17 +156,6 @@ export function PlansCards({ regua }: { regua: Regua }) {
                 {p.name}
               </h3>
 
-              {isPaid && originalPrice && (
-                <p className="text-xs text-gt-text-dim font-sans mb-1">
-                  {t('price_from')}{' '}
-                  <span className="line-through">
-                    {formatPrice(originalPrice)}/
-                    {isAnnual ? t('period_year') : t('period_month')}
-                  </span>{' '}
-                  {t('price_by')}
-                </p>
-              )}
-
               <div className="flex items-baseline gap-2 mb-1">
                 <span className="font-display text-4xl text-gt-text uppercase tracking-display">
                   {formatPrice(displayPrice)}
@@ -213,12 +171,7 @@ export function PlansCards({ regua }: { regua: Regua }) {
                 </p>
               )}
 
-              {showSavings && savingsPct > 0 && (
-                <p className="text-xs text-gt-orange-text font-medium mb-3 font-sans">
-                  {t('savings', { pct: savingsPct })}
-                </p>
-              )}
-              {!showSavings && <div className="mb-3 h-4" />}
+              <div className="mb-3 h-4" />
 
               {/* flex-1 empurra o botão pro rodapé do card, alinhando os três
                   CTAs na mesma linha mesmo com descrições de tamanhos diferentes */}

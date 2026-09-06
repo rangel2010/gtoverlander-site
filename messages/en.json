@@ -289,7 +289,7 @@
       "titulo": "Earn more trips by contributing",
       "desc": "Helping the database earns you trips, on any plan. Each path counts on its own.",
       "c1": "{n} of your points approved by the community earn 1 trip",
-      "c2": "{n} validations made on site, with GPS, earn 1 trip"
+      "c2": "{n} validations made on site earn 1 trip"
     },
     "business": {
       "label": "For those selling to the overlander world",
@@ -319,15 +319,15 @@
       "q2": "Can I cancel anytime?",
       "a2": "Yes. Cancel whenever you want, no penalty. The plan stays active until the end of the already-paid cycle and then automatically reverts to Free.",
       "q3": "What's the difference between monthly and annual?",
-      "a3": "Annual is a lot cheaper. On Plus, 12 months of monthly billing add up to R$ 178.80, while annual costs R$ 79.90. On Pro, that is R$ 238.80 against R$ 99.90. Both cycles are discounted off the full price while the discount lasts. Same plan, same features, only the billing cycle changes.",
+      "a3": "Annual is a lot cheaper: it works out to 10 months instead of 12. On Plus, 12 months of monthly billing add up to R$ 238.80 against R$ 199.90 annual. On Pro, R$ 358.80 against R$ 299.90. Same plan, same features, only the billing cycle changes.",
       "q4": "How much does it cost in other currencies?",
       "a4": "Prices in Brazilian Reals (R$) are the official ones. In other currencies, the app converts automatically based on your store's billing.",
       "q5": "What happens to my routes if I cancel?",
       "a5": "Your routes are never deleted. If you cancel, they stay locked waiting for you to subscribe again — they don't disappear, and they come back exactly as they were once the subscription is reactivated.",
       "q6": "Is Business Account different?",
       "a6": "Yes. The Business Account is for those who sell to the overlander world — physical establishments (gas stations, campsites, guesthouses, workshops), recurring sellers (e-commerce, equipment manufacturers) and service providers (guides, expedition drivers). A separate plan from personal ones (Free/Plus/Pro). Details at /empresas.",
-      "q7": "Why are some prices crossed out?",
-      "a7": "The crossed-out price is the plan's full price, which takes effect when the new version of the app goes live. The price next to it is what's in effect now, the same price we charge in the app stores."
+      "q7": "Where can I see everything each plan includes?",
+      "a7": "In the comparison table just above. It reads the limits straight from the app, so what's written there is exactly what the system applies to your account."
     },
     "cta": {
       "titulo": "Start free and upgrade when you need to",
@@ -402,7 +402,7 @@
     "cat1q3": "What languages?",
     "cat1a3": "Portuguese, English and Spanish. You describe your trip in whichever language you prefer.",
     "cat1q4": "How much does it cost?",
-    "cat1a4": "The Free plan is free forever, not a trial. Plus starts at R$ 14.90/month or R$ 79.90/year, and Pro at R$ 19.90/month or R$ 99.90/year, discounted off the full price while the discount lasts. See all plans at /planos.",
+    "cat1a4": "The Free plan is free forever, not a trial. Plus at R$ 19.90/month or R$ 199.90/year, and Pro at R$ 29.90/month or R$ 299.90/year. See all plans at /planos.",
     "cat1q5": "Does GT work in any country?",
     "cat1a5": "The waypoint database covers 209 countries across 6 inhabited continents. The AI engine generates routes worldwide. Regional coverage may vary based on point density in the area.",
     "cat2titulo": "How it works",

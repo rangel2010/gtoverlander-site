@@ -289,7 +289,7 @@
       "titulo": "Ganhe mais viagens contribuindo",
       "desc": "Quem ajuda a base ganha viagem, em qualquer plano. Os dois caminhos valem por si.",
       "c1": "{n} pontos seus aprovados pela comunidade valem 1 viagem",
-      "c2": "{n} validações feitas no local, com GPS, valem 1 viagem"
+      "c2": "{n} validações feitas no local valem 1 viagem"
     },
     "business": {
       "label": "Pra quem vende ao universo overlander",
@@ -319,15 +319,15 @@
       "q2": "Posso cancelar a qualquer momento?",
       "a2": "Sim. Cancele quando quiser, sem multa. O plano segue ativo até o fim do ciclo já pago e depois volta automaticamente pro Free.",
       "q3": "Qual a diferença entre mensal e anual?",
-      "a3": "O anual sai bem mais em conta. No Plus, 12 meses no ciclo mensal dão R$ 178,80, e o anual sai R$ 79,90. No Pro, dão R$ 238,80 contra R$ 99,90. Os dois ciclos estão com desconto sobre o preço cheio enquanto ele durar. Mesmo plano, mesmas features, só muda o ciclo de cobrança.",
+      "a3": "O anual sai bem mais em conta: equivale a 10 meses em vez de 12. No Plus, 12 meses no ciclo mensal dão R$ 238,80 contra R$ 199,90 no anual. No Pro, dão R$ 358,80 contra R$ 299,90. Mesmo plano, mesmas features, só muda o ciclo de cobrança.",
       "q4": "Quanto custa em outras moedas?",
       "a4": "Os preços em real (R$) são os oficiais. Em outras moedas, o app converte automaticamente baseado na cobrança da sua loja.",
       "q5": "O que acontece com minhas rotas se eu cancelar?",
       "a5": "Suas rotas nunca são apagadas. Se você cancelar, elas ficam com um cadeado esperando você assinar de novo — não somem, não são deletadas, e voltam exatamente como estavam quando a assinatura for reativada.",
       "q6": "Conta Business é diferente?",
       "a6": "Sim. A Conta Business é pra quem comercializa pro universo overlander — estabelecimentos com ponto físico (postos, campings, pousadas, oficinas), vendedores recorrentes (e-commerce, fabricantes de equipamento) e prestadores de serviço (guias, condutores de expedição). Plano à parte dos pessoais (Free/Plus/Pro). Detalhes em /empresas.",
-      "q7": "Por que alguns preços aparecem riscados?",
-      "a7": "O preço riscado é o valor cheio do plano, que passa a valer quando a nova versão do app entrar no ar. O que você vê ao lado é o preço em vigor agora, o mesmo que cobramos nas lojas."
+      "q7": "Onde vejo tudo o que cada plano entrega?",
+      "a7": "Na tabela de comparação logo acima. Ela lê os limites direto do app, então o que está escrito ali é exatamente o que o sistema aplica na sua conta."
     },
     "cta": {
       "titulo": "Comece grátis e suba quando precisar",
@@ -402,7 +402,7 @@
     "cat1q3": "Em quais idiomas?",
     "cat1a3": "Português, inglês e espanhol. Você descreve a viagem no idioma que preferir.",
     "cat1q4": "Custa quanto?",
-    "cat1a4": "O plano Free é grátis pra sempre, não é trial. Plus a partir de R$ 14,90/mês ou R$ 79,90/ano, e Pro a partir de R$ 19,90/mês ou R$ 99,90/ano, com desconto sobre o preço cheio enquanto ele durar. Veja todos os planos em /planos.",
+    "cat1a4": "O plano Free é grátis pra sempre, não é trial. Plus a R$ 19,90/mês ou R$ 199,90/ano, e Pro a R$ 29,90/mês ou R$ 299,90/ano. Veja todos os planos em /planos.",
     "cat1q5": "O GT funciona em qualquer país?",
     "cat1a5": "A base de waypoints cobre 209 países nos 6 continentes habitados. O motor de IA gera rotas pro mundo todo. Cobertura regional pode variar conforme densidade de pontos na área.",
     "cat2titulo": "Como funciona",

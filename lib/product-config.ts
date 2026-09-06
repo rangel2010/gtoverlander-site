@@ -15,30 +15,28 @@ export const PRODUCT = {
 
   // ── Planos ───────────────────────────────────────────────────────────────
   plans: {
-    // ATENÇÃO: aqui ficam SÓ os preços promocionais que o site cobra.
+    // ATENÇÃO: estes valores são PISO, não fonte.
+    //
+    // O preço exibido vem da API (lib/planos.ts). Em 05/09/2026 o desconto do
+    // site acabou junto com a subida do app novo: o preço de tabela passou a ser
+    // o preço cobrado, e não existe mais riscado nos planos pessoais. Só a Conta
+    // Business mantém "de/por" — ela está fora da régua.
     //
     // Os limites de plano (viagens, países offline, anúncios, aparelhos) saíram
-    // daqui em 04/09/2026 e passaram a vir da API — ver lib/planos.ts e
+    // daqui em 04/09/2026 e também vêm da API — ver
     // PLANOS_O_QUE_CADA_UM_ENTREGA.md. Não reintroduza limite neste arquivo:
     // ele volta a envelhecer calado, que foi exatamente o problema.
-    //
-    // Os preços "Original" (riscados) também vêm da API agora. Os campos abaixo
-    // seguem como piso, caso ela não responda.
     free: {
       monthlyPrice: 0,
       annualPrice: 0,
     },
     plus: {
-      monthlyPrice: 14.90,
-      monthlyOriginalPrice: 19.90,
-      annualPrice: 79.90,
-      annualOriginalPrice: 199.90,
+      monthlyPrice: 19.90,
+      annualPrice: 199.90,
     },
     pro: {
-      monthlyPrice: 19.90,
-      monthlyOriginalPrice: 29.90,
-      annualPrice: 99.90,
-      annualOriginalPrice: 299.90,
+      monthlyPrice: 29.90,
+      annualPrice: 299.90,
     },
   },
 
