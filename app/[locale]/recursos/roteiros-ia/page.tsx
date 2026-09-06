@@ -115,7 +115,7 @@ export default function RoteirosIaPage() {
               src="/images/screenshots/app-chat-mapa.jpg"
               alt="Tela do GT Copilot com o roteiro Foz do Iguaçu a Bariloche pronto, mapa da rota cruzando a Argentina e paradas em postos de combustível filtradas por categoria"
               width={738}
-              height={1600}
+              height={1450}
               className="max-h-[640px] w-auto rounded-3xl border border-gt-border shadow-2xl"
             />
           </div>

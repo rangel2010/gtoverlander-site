@@ -26,7 +26,8 @@ export async function PilarPlaneje() {
           <ScrollReveal delay={120} className="flex-shrink-0 order-first md:order-none">
             <div className="relative">
               <div className="absolute inset-0 bg-gt-orange/15 rounded-3xl blur-3xl scale-110 pointer-events-none" />
-              <div className="relative rounded-3xl overflow-hidden border border-gt-border shadow-2xl w-[230px] md:w-[250px]">
+              {/* Mesma moldura do PilarEncontre — ver comentário lá. */}
+              <div className="relative rounded-3xl overflow-hidden border-2 border-gt-border-strong shadow-2xl w-[230px] md:w-[250px]">
                 {USAR_VIDEO ? (
                   <LazyVideo
                     src="/images/screenshots/app-rotas.mp4"
@@ -41,7 +42,7 @@ export async function PilarPlaneje() {
                     src="/images/screenshots/app-chat-mapa.jpg"
                     alt={t('imgAlt')}
                     width={738}
-                    height={1600}
+                    height={1450}
                     sizes="(max-width: 768px) 230px, 250px"
                     className="w-full h-auto"
                   />
