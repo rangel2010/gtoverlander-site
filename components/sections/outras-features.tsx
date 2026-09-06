@@ -18,19 +18,16 @@ const FEATURES = [
   },
   {
     slug: 'gt-social',
-    emBreve: true,
     titulo: 'GT Social',
     desc: 'Siga overlanders, descubra rotas, adote roteiros',
   },
   {
     slug: 'explorer',
-    emBreve: true,
     titulo: 'GT Explorer',
     desc: 'Sua jornada em níveis, conquistas e ranking',
   },
   {
     slug: 'desapega',
-    emBreve: true,
     titulo: 'GT Desapega',
     desc: 'Compra, venda e troca de equipamento overlander',
   },
@@ -57,12 +54,9 @@ export function OutrasFeatures({ currentSlug }: OutrasFeaturesProps) {
               href={`/recursos/${f.slug}`}
               className="bg-gt-bg rounded-lg p-6 border border-gt-border hover:border-gt-border-strong transition-colors group relative"
             >
-                {f.emBreve && (
-                <span className="absolute top-4 right-4 bg-gt-orange text-white text-[10px] font-medium uppercase tracking-wider px-2 py-1 rounded font-sans">
-                  Em breve
-                </span>
-              )}
-              <h3 className="font-sans font-medium text-gt-text mb-2 group-hover:text-gt-orange-text transition-colors pr-16">
+              {/* Nenhuma feature desta lista está "em breve" desde 06/09/2026 —
+                  GT Social, Explorer e Desapega subiram junto com a V2. */}
+              <h3 className="font-sans font-medium text-gt-text mb-2 group-hover:text-gt-orange-text transition-colors">
                 {f.titulo}
               </h3>
               <p className="text-sm text-gt-text-muted mb-3 font-sans leading-relaxed">{f.desc}</p>

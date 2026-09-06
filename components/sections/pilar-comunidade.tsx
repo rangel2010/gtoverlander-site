@@ -42,7 +42,7 @@ export async function PilarComunidade() {
           {cards.map((card, idx) => (
             <ScrollReveal key={card.titulo} delay={idx * 80}>
               <div className="bg-gt-bg rounded-xl p-7 border border-gt-border h-full relative group">
-                {/* Badge Em breve */}
+                {/* Badge de status — texto vem do i18n */}
                 <span className="absolute top-5 right-5 bg-gt-orange/10 text-gt-orange-text text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full font-sans border border-gt-orange/20">
                   {t('badge')}
                 </span>
@@ -60,13 +60,6 @@ export async function PilarComunidade() {
             </ScrollReveal>
           ))}
         </div>
-
-        {/* Rodapé sutil */}
-        <ScrollReveal delay={200}>
-          <p className="text-xs text-gt-text-dim mt-10 text-center font-sans">
-            {t('rodape')}
-          </p>
-        </ScrollReveal>
 
       </div>
     </section>

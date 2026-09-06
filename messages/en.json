@@ -69,9 +69,9 @@
       "paises": "countries covered"
     },
     "numeros": {
-      "label": "Coming soon",
+      "label": "New",
       "titulo": "The ecosystem grows with you",
-      "rodape": "These features are in active development and coming soon to all users.",
+      "rodape": "Already available in the app for all users.",
       "s1valor": "GT Social",
       "s1ctx": "Follow overlanders, discover tested routes and adopt complete itineraries with 1 tap.",
       "s2valor": "Help Overlander",
@@ -147,7 +147,7 @@
       "label": "03 — Community",
       "titulo": "Travel with the community",
       "desc": "Overlanders who help each other, share routes and keep the waypoint database alive.",
-      "badge": "Coming soon",
+      "badge": "New",
       "c1titulo": "GT Social",
       "c1desc": "Follow overlanders, discover tested routes and adopt complete itineraries with 1 tap.",
       "c2titulo": "Help Overlander",
@@ -155,8 +155,7 @@
       "c3titulo": "GT Explorer",
       "c3desc": "Every km becomes XP, achievements and regional ranking. The more you ride, the higher you climb.",
       "c4titulo": "GT Desapega",
-      "c4desc": "Buy, sell and trade gear with people who actually travel.",
-      "rodape": "Closed beta — coming soon to all users."
+      "c4desc": "Buy, sell and trade gear with people who actually travel."
     }
   },
   "sobre": {

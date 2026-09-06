@@ -85,7 +85,7 @@ export const PRODUCT = {
     offline:          'AVAILABLE'  as const,
     social:           'AVAILABLE'  as const,
     desapega:         'AVAILABLE'  as const,
-    explorer:         'COMING_SOON' as const,
+    explorer:         'AVAILABLE'  as const,
     business:         'WAITLIST'   as const,
     // Desligado em 04/09/2026: a feature saiu do app na V2, mas volta no
     // futuro. A página em /recursos/help-overlander continua no repo e é

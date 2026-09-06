@@ -85,7 +85,7 @@ export default function DesapegaPage() {
   return (
     <>
       <FeatureHero
-        kicker="Em breve"
+        kicker="Novidade"
         title="Marketplace entre quem realmente viaja"
         subline="Equipamento overlander tem mercado próprio: barracas usadas, suspensão modificada, motorhome adaptado. Anuncia entre quem entende e busca exatamente isso. Vitrine sem comissão sobre venda."
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
