@@ -56,7 +56,7 @@ export function organizationLd() {
     url: BASE_URL,
     logo: ORG_LOGO,
     description:
-      'Aplicativo de planejamento de rotas para viajantes overlander — IA conversacional, mais de 4 milhões de waypoints próprios em 209 países, CarPlay e Android Auto.',
+      'Aplicativo de planejamento de rotas para viajantes overlander — IA conversacional, mais de 4 milhões de waypoints próprios em 211 países, CarPlay e Android Auto.',
     sameAs: [
       'https://instagram.com/gtoverlander',
       'https://youtube.com/@gtoverlander',
@@ -100,7 +100,7 @@ export function softwareApplicationLd() {
     operatingSystem: 'iOS, Android, Web',
     applicationCategory: 'TravelApplication',
     description:
-      'AI-powered overlanding route planner with 4M+ waypoints across 209 countries. Available on iOS, Android, Web, CarPlay and Android Auto.',
+      'AI-powered overlanding route planner with 4M+ waypoints across 211 countries. Available on iOS, Android, Web, CarPlay and Android Auto.',
     offers: {
       '@type': 'Offer',
       price: '0',

@@ -4,14 +4,14 @@
  * Contrato: CONTRATO_NUMEROS_API.md (escrito pela aba do gtoverlander-app).
  * Regra de ouro: nenhuma página escreve esses números à mão — todas leem daqui.
  *
- * DESVIO PROPOSITAL DO CONTRATO — países.
- * O contrato expõe `paises` vindo do manifesto do acervo. Não consumimos esse
- * campo: o manifesto conta ENTRADAS, não países, e tem duplicata real
- * ("Bolivia" e "Bolivia, Plurinational State of"; idem Venezuela) além de
- * entradas simbólicas (Hong Kong com 1 waypoint, Tokelau com 1, Pitcairn com 2).
- * Decisão do Rangel em 02/09/2026: países segue fixo em PRODUCT.countries,
- * alinhado com todo o resto do site. Se um dia a API passar a devolver uma
- * contagem depurada, é só voltar a ler daqui.
+ * Países vem da API desde 06/09/2026.
+ *
+ * Antes ficava fixo em 209 no product-config, porque o manifesto conta ENTRADAS
+ * e traz duplicata ("Bolivia" e "Bolivia, Plurinational State of"; idem
+ * Venezuela) além de entradas de 1 waypoint. O Rangel decidiu manter a contagem
+ * da API mesmo assim, e como ela cresce (209 → 211), passou a ser lida em vez de
+ * escrita à mão. O PRODUCT.countries virou só piso pra quando a API não
+ * responder.
  */
 
 import { PRODUCT } from './product-config';
@@ -20,7 +20,7 @@ export interface Stats {
   usuarios: number;
   waypoints: number;
   rotasCriadas: number;
-  /** Fixo em PRODUCT.countries — ver nota de desvio no topo do arquivo. */
+  /** Vem da API; PRODUCT.countries é só o piso. */
   paises: number;
   /** true quando os números vieram da API; false quando caímos no piso. */
   aoVivo: boolean;
@@ -84,12 +84,13 @@ export async function getStats(): Promise<Stats> {
     const usuarios = num(d.usuarios);
     const waypoints = num(d.waypoints);
     const rotasCriadas = num(d.rotasCriadas);
+    const paises = num(d.paises);
 
     return {
       usuarios: usuarios ?? base.usuarios,
       waypoints: waypoints ?? base.waypoints,
       rotasCriadas: rotasCriadas ?? base.rotasCriadas,
-      paises: PRODUCT.countries,
+      paises: paises ?? base.paises,
       aoVivo: usuarios !== null && waypoints !== null && rotasCriadas !== null,
     };
   } catch {

@@ -47,7 +47,7 @@
       "desc": "Describe tu viaje en lenguaje natural. Primero la IA traza la ruta — carreteras, ciudades y destino. Luego tú completas: paradas, combustible, alojamiento y campings.",
       "ctaVerComo": "Ver cómo funciona",
       "plataformas": "App Store · Play Store · Web",
-      "appAlt": "Pantalla de inicio de GT Overlander mostrando el saludo al usuario, hero con Jeep en la carretera y botón Comenzar una nueva ruta"
+      "appAlt": "Pantalla de inicio de GT Overlander mostrando el resumen de rutas creadas, kilómetros planificados y waypoints, los accesos a Rutas Públicas de la Comunidad y Mis Itinerarios Guardados, y el botón Comienza una nueva ruta"
     },
     "comoFunciona": {
       "titulo": "Cómo funciona",
@@ -57,7 +57,7 @@
       "passo2titulo": "La IA traza la ruta",
       "passo2desc": "Carreteras, ciudades y destino — organizados a partir de las rutas, regiones y preferencias que describiste",
       "passo3titulo": "Eliges dónde parar",
-      "passo3desc": "Combustible, alojamiento, campings, atracciones — elige entre más de 4 millones de puntos en 209 países",
+      "passo3desc": "Combustible, alojamiento, campings, atracciones — elige entre más de 4 millones de puntos en 211 países",
       "passo4titulo": "Sales a la ruta",
       "passo4desc": "Exportas la ruta a Google Maps y conduces directo en el tablero con CarPlay o Android Auto",
       "verDemo": "Ver demostración de la IA →"
@@ -135,7 +135,7 @@
     "pilarEncontre": {
       "label": "02 — Encuentra",
       "titulo": "Encuentra lo que necesitas",
-      "desc": "Más de 4 millones de puntos en 209 países. Combustible, campings, alojamiento, talleres y atracciones — donde sea que pase tu ruta.",
+      "desc": "Más de 4 millones de puntos en 211 países. Combustible, campings, alojamiento, talleres y atracciones — donde sea que pase tu ruta.",
       "f1": "Radar de proximidad en tiempo real",
       "f2": "16 categorías y 10 filtros superpuestos",
       "f3": "Funciona offline — sin señal, sin pánico",
@@ -168,7 +168,7 @@
     "missao": {
       "titulo": "Nuestra misión",
       "p1": "GT Overlander es una app para quienes viajan por tierra — en auto, moto, 4x4 o motorhome. Nació de la frustración con apps genéricas que no entienden la realidad de quien cruza fronteras, duerme en campamento silvestre o maneja 5.000 km en un solo viaje.",
-      "p2": "GT entiende al viajero: la IA traza la ruta por los caminos que tienen sentido, con ciudades en el trayecto y contexto regional. La base de más de 4 millones de waypoints en 209 países cubre lo que importa para quien ya decidió a dónde va — gasolineras, alojamiento, campings, talleres, atracciones. Y la integración con Google Maps, CarPlay y Android Auto lleva todo al tablero del auto.",
+      "p2": "GT entiende al viajero: la IA traza la ruta por los caminos que tienen sentido, con ciudades en el trayecto y contexto regional. La base de más de 4 millones de waypoints en 211 países cubre lo que importa para quien ya decidió a dónde va — gasolineras, alojamiento, campings, talleres, atracciones. Y la integración con Google Maps, CarPlay y Android Auto lleva todo al tablero del auto.",
       "p3": "Más que un planificador, GT es un compañero de ruta — hecho para quienes no ven el viaje solo como desplazamiento, sino como una experiencia única."
     },
     "fundador": {
@@ -204,7 +204,7 @@
       "p3t": "Modo Offline",
       "p3d": "El mapa y los puntos de tu país quedan offline para siempre, en cualquier plan. Plus y Pro suman países extras para quien cruza fronteras.",
       "p4t": "Expansión internacional",
-      "p4d": "La base de waypoints ya cubre 209 países. Próximos pasos: localización de la interfaz, alianzas con guías regionales y canales comerciales multi-país."
+      "p4d": "La base de waypoints ya cubre 211 países. Próximos pasos: localización de la interfaz, alianzas con guías regionales y canales comerciales multi-país."
     },
     "cta": {
       "titulo": "Sé parte de esto",
@@ -226,7 +226,7 @@
       "r1t": "Rutas con IA",
       "r1d": "Ruta trazada por IA en una conversación — carreteras, ciudades y destino, lista en segundos.",
       "r2t": "Base de Waypoints",
-      "r2d": "Más de 4 millones de puntos en 209 países — gasolineras, campings, alojamiento, atracciones, talleres.",
+      "r2d": "Más de 4 millones de puntos en 211 países — gasolineras, campings, alojamiento, atracciones, talleres.",
       "r3t": "Modo Offline",
       "r3d": "Elige las regiones de tu viaje. GT funciona en cualquier rincón del mundo, incluso sin señal."
     },
@@ -404,7 +404,7 @@
     "cat1q4": "¿Cuánto cuesta?",
     "cat1a4": "El plan Free es gratis para siempre, no es una prueba. Plus a R$ 19,90/mes o R$ 199,90/año, y Pro a R$ 29,90/mes o R$ 299,90/año. Mira todos los planes en /planos.",
     "cat1q5": "¿GT funciona en cualquier país?",
-    "cat1a5": "La base de waypoints cubre 209 países en los 6 continentes habitados. El motor de IA genera rutas para todo el mundo. La cobertura regional puede variar según la densidad de puntos en el área.",
+    "cat1a5": "La base de waypoints cubre 211 países en los 6 continentes habitados. El motor de IA genera rutas para todo el mundo. La cobertura regional puede variar según la densidad de puntos en el área.",
     "cat2titulo": "Cómo funciona",
     "cat2q1": "¿Cómo genera la IA las rutas?",
     "cat2a1": "Describes el viaje en lenguaje natural — destino, regiones, preferencias de carretera. La IA traza la ruta en segundos: carreteras, ciudades y contexto regional. Luego eliges las paradas de nuestra base de waypoints. Tú siempre en control.",

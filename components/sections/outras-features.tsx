@@ -9,7 +9,7 @@ const FEATURES = [
   {
     slug: 'waypoints',
     titulo: 'Base de Waypoints',
-    desc: 'Mais de 4 milhões de pontos em 209 países',
+    desc: 'Mais de 4 milhões de pontos em 211 países',
   },
   {
     slug: 'modo-offline',

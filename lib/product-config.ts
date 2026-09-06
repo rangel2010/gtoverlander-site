@@ -9,7 +9,7 @@ export const PRODUCT = {
   // ── Base de waypoints ────────────────────────────────────────────────────
   waypointCount: 4_000_000,
   waypointCountLabel: '4M+',
-  countries: 209,
+  countries: 211, // piso: o valor real vem da API (lib/stats.ts)
   categories: 16,
   filters: 10,
 

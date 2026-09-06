@@ -15,7 +15,7 @@ export async function generateMetadata({
   return {
     title: 'Base de Waypoints',
     description:
-    'Mais de 4 milhões de waypoints em 209 países. São 16 categorias organizadas em 10 filtros de uso. Base curada pelo GT e mantida viva pela comunidade — valida e cadastra direto do app.',
+    'Mais de 4 milhões de waypoints em 211 países. São 16 categorias organizadas em 10 filtros de uso. Base curada pelo GT e mantida viva pela comunidade — valida e cadastra direto do app.',
     alternates: getPageAlternates(locale, '/recursos/waypoints'),
     ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
@@ -23,7 +23,7 @@ export async function generateMetadata({
 
 const numeros = [
   { valor: '+4 mi', contexto: 'pontos no mundo' },
-  { valor: '209', contexto: 'países' },
+  { valor: '211', contexto: 'países' },
   { valor: '16', contexto: 'categorias' },
   { valor: '6', contexto: 'continentes habitados' },
 ];
@@ -76,7 +76,7 @@ export default function WaypointsPage() {
       <FeatureHero
         kicker="Disponível agora"
         title="Onde parar, onde dormir, onde abastecer"
-        subline="Mais de 4 milhões de pontos em 209 países. São 16 categorias organizadas em 10 filtros de uso. Base curada pelo GT e mantida viva pela comunidade — qualquer overlander valida ou cadastra direto do app."
+        subline="Mais de 4 milhões de pontos em 211 países. São 16 categorias organizadas em 10 filtros de uso. Base curada pelo GT e mantida viva pela comunidade — qualquer overlander valida ou cadastra direto do app."
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
@@ -91,7 +91,7 @@ export default function WaypointsPage() {
               Explore a base na sua região agora
             </h2>
             <p className="text-gt-text-muted leading-relaxed font-sans mb-6">
-              Mapa interativo com os waypoints curados pelo GT. Filtra por categoria, navega pelos pontos, abre os detalhes. Mais de 4 milhões de lugares em 209 países — aqui tem uma prévia pra você.
+              Mapa interativo com os waypoints curados pelo GT. Filtra por categoria, navega pelos pontos, abre os detalhes. Mais de 4 milhões de lugares em 211 países — aqui tem uma prévia pra você.
             </p>
             <a
               href="/demo"

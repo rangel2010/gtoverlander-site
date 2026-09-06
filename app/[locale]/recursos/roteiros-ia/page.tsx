@@ -51,7 +51,7 @@ const passos = [
   {
     num: 3,
     titulo: 'Você escolhe onde parar',
-    desc: 'Postos, hospedagem, campings, atrações — escolhe entre mais de 4 milhões de pontos em 209 países',
+    desc: 'Postos, hospedagem, campings, atrações — escolhe entre mais de 4 milhões de pontos em 211 países',
   },
   {
     num: 4,
@@ -113,7 +113,7 @@ export default function RoteirosIaPage() {
           <div className="flex justify-center">
             <Image
               src="/images/screenshots/app-chat-mapa.jpg"
-              alt="Tela do app mostrando a rota São Paulo a Curitiba com mapa, paradas em postos de combustível e botões de filtro por categoria"
+              alt="Tela do GT Copilot com o roteiro Foz do Iguaçu a Bariloche pronto, mapa da rota cruzando a Argentina e paradas em postos de combustível filtradas por categoria"
               width={738}
               height={1600}
               className="max-h-[640px] w-auto rounded-3xl border border-gt-border shadow-2xl"

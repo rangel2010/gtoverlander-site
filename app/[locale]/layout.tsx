@@ -55,7 +55,7 @@ export async function generateMetadata({
     template: '%s · GT Overlander',
   },
   description:
-    'Roteiros personalizados em uma conversa com IA. Mais de 4 milhões de waypoints em 209 países. iOS, Android, CarPlay e Android Auto.',
+    'Roteiros personalizados em uma conversa com IA. Mais de 4 milhões de waypoints em 211 países. iOS, Android, CarPlay e Android Auto.',
   openGraph: {
     type: 'website',
     locale: OG_LOCALES[locale] ?? 'pt_BR',
