@@ -5,6 +5,18 @@
  * Componentes e JSON-LD consomem este arquivo — não editar valores diretamente neles.
  */
 
+/**
+ * Endereço do webapp — o "Acessar pelo computador" do header, do rodapé e da
+ * página de download.
+ *
+ * Aponta pro beta desde 06/09/2026: o `app.` ainda serve a V1 e o beta já está
+ * mais próximo do produto real. Na virada de domínio o beta vira `app.`, e aí
+ * é trocar AQUI — ou definir WEB_APP_URL no ambiente, que sobrepõe sem deploy.
+ * Ver a seção "três domínios" no CLAUDE.md do gtoverlander-app.
+ */
+export const WEB_APP_URL =
+  process.env.WEB_APP_URL ?? 'https://beta.gtoverlander.com.br';
+
 export const PRODUCT = {
   // ── Base de waypoints ────────────────────────────────────────────────────
   waypointCount: 4_000_000,

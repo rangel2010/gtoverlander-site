@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { WEB_APP_URL } from '@/lib/product-config';
 
 type Device = 'web' | 'android' | 'ios';
 
@@ -36,7 +37,7 @@ export function DownloadCtas({ labels }: DownloadCtasProps) {
       id: 'web',
       label: labels.webLabel,
       sub: labels.webSub,
-      href: 'https://app.gtoverlander.com.br',
+      href: WEB_APP_URL,
       icon: <WebIcon />,
     },
     {

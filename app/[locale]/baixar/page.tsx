@@ -5,6 +5,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { DownloadCtas } from '@/components/sections/download-ctas';
+import { WEB_APP_URL } from '@/lib/product-config';
 
 export async function generateMetadata({
   params: { locale },
@@ -64,7 +65,7 @@ export default async function BaixarPage({
             <p className="mt-8 text-sm text-gt-text-muted font-sans">
               {t('temConta')}{' '}
               <a
-                href="https://app.gtoverlander.com.br"
+                href={WEB_APP_URL}
                 className="text-gt-orange-text hover:underline font-medium"
               >
                 {t('entrar')}
