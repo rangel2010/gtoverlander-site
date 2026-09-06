@@ -1,7 +1,14 @@
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { LazyVideo } from '@/components/lazy-video';
+
+/**
+ * Vídeo desligado em 06/09/2026 — mesmo motivo do PilarPlaneje: os vídeos ainda
+ * são da V1. Trocar pra true quando gravarmos os novos.
+ */
+const USAR_VIDEO = false;
 
 export async function PilarEncontre() {
   const t = await getTranslations('home.pilarEncontre');
@@ -18,14 +25,25 @@ export async function PilarEncontre() {
             <div className="relative">
               <div className="absolute inset-0 bg-gt-orange/15 rounded-3xl blur-3xl scale-110 pointer-events-none" />
               <div className="relative rounded-3xl overflow-hidden border border-gt-border shadow-2xl w-[230px] md:w-[250px]">
-                <LazyVideo
-                  src="/images/screenshots/app-radar.mp4"
-                  poster="/images/screenshots/app-radar-poster.webp"
-                  label={t('titulo')}
-                  width={480}
-                  height={1040}
-                  className="w-full h-auto"
-                />
+                {USAR_VIDEO ? (
+                  <LazyVideo
+                    src="/images/screenshots/app-radar.mp4"
+                    poster="/images/screenshots/app-radar-poster.webp"
+                    label={t('titulo')}
+                    width={480}
+                    height={1040}
+                    className="w-full h-auto"
+                  />
+                ) : (
+                  <Image
+                    src="/images/screenshots/app-radar.jpg"
+                    alt={t('imgAlt')}
+                    width={738}
+                    height={1600}
+                    sizes="(max-width: 768px) 230px, 250px"
+                    className="w-full h-auto"
+                  />
+                )}
               </div>
             </div>
           </ScrollReveal>

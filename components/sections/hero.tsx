@@ -53,16 +53,16 @@ export async function Hero() {
         </div>
 
         {/* Reserva espaço explícito pra evitar CLS. O screenshot da V2 é
-            738x1600, então em max-h-640 a largura é 295 (não 338 como na V1,
-            que era 846x1600). Se trocar a imagem, recalcular aqui. */}
+            738x1550 (já sem a barra de status, cortada no topo), então em
+            max-h-640 a largura é 305. Se trocar a imagem, recalcular aqui. */}
         <div className="hidden md:flex justify-center items-center h-[640px]">
           <Image
             src="/images/screenshots/app-home.jpg"
             alt={t('appAlt')}
-            width={295}
+            width={305}
             height={640}
             priority
-            sizes="(max-width: 1280px) 295px, 295px"
+            sizes="(max-width: 1280px) 305px, 305px"
             className="rounded-3xl border border-gt-border shadow-2xl"
           />
         </div>
