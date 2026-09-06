@@ -53,16 +53,18 @@ export async function Hero() {
         </div>
 
         {/* Reserva espaço explícito pra evitar CLS. O screenshot da V2 é
-            738x1550 (já sem a barra de status, cortada no topo), então em
-            max-h-640 a largura é 305. Se trocar a imagem, recalcular aqui. */}
+            738x1450 — já sem a barra de status do Android no topo (ela
+            sobrepunha a faixa de estatísticas) e sem a barra de navegação no
+            rodapé. Em max-h-640 a largura fica 326. Se trocar a imagem,
+            recalcular aqui. */}
         <div className="hidden md:flex justify-center items-center h-[640px]">
           <Image
             src="/images/screenshots/app-home.jpg"
             alt={t('appAlt')}
-            width={305}
+            width={326}
             height={640}
             priority
-            sizes="(max-width: 1280px) 305px, 305px"
+            sizes="(max-width: 1280px) 326px, 326px"
             className="rounded-3xl border border-gt-border shadow-2xl"
           />
         </div>
