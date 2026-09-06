@@ -5,7 +5,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { DownloadCtas } from '@/components/sections/download-ctas';
-import { WEB_APP_URL } from '@/lib/product-config';
+import { WEB_APP_URL, MOSTRAR_WEBAPP } from '@/lib/product-config';
 
 export async function generateMetadata({
   params: { locale },
@@ -55,22 +55,26 @@ export default async function BaixarPage({
                 webSub: t('webSub'),
                 androidLabel: t('androidLabel'),
                 androidSub: t('androidSub'),
+                androidNota: t('androidNota'),
                 iosLabel: t('iosLabel'),
                 iosSub: t('iosSub'),
+                iosNota: t('iosNota'),
                 disponivelNa: t('disponivelNa'),
               }}
             />
 
-            {/* Já tem conta */}
-            <p className="mt-8 text-sm text-gt-text-muted font-sans">
-              {t('temConta')}{' '}
-              <a
-                href={WEB_APP_URL}
-                className="text-gt-orange-text hover:underline font-medium"
-              >
-                {t('entrar')}
-              </a>
-            </p>
+            {/* Já tem conta — só faz sentido com o webapp visível */}
+            {MOSTRAR_WEBAPP && (
+              <p className="mt-8 text-sm text-gt-text-muted font-sans">
+                {t('temConta')}{' '}
+                <a
+                  href={WEB_APP_URL}
+                  className="text-gt-orange-text hover:underline font-medium"
+                >
+                  {t('entrar')}
+                </a>
+              </p>
+            )}
           </ScrollReveal>
         </div>
       </section>

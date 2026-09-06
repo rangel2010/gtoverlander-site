@@ -3,7 +3,7 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { Instagram, Facebook, Youtube, Mail } from 'lucide-react';
-import { WEB_APP_URL } from '@/lib/product-config';
+import { WEB_APP_URL, MOSTRAR_WEBAPP } from '@/lib/product-config';
 
 export function Footer() {
   const pathname = usePathname();
@@ -22,7 +22,7 @@ export function Footer() {
         ...(locale === 'pt' ? [{ href: '/blog', label: tn('blog') }] : []),
         { href: 'https://apps.apple.com/br/app/gt-overlander/id6745626026', label: tf('appStore'), external: true },
         { href: 'https://play.google.com/store/apps/details?id=com.overlander', label: tf('playStore'), external: true },
-        { href: WEB_APP_URL, label: tn('acessarComputador'), external: true },
+        ...(MOSTRAR_WEBAPP ? [{ href: WEB_APP_URL, label: tn('acessarComputador'), external: true }] : []),
       ],
     },
     {

@@ -1,7 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { WEB_APP_URL } from '@/lib/product-config';
+import {
+  WEB_APP_URL,
+  MOSTRAR_WEBAPP,
+  MOSTRAR_IOS,
+  IOS_ATUALIZACAO_EM_BREVE,
+  ANDROID_VERSAO_NOVA,
+} from '@/lib/product-config';
 
 type Device = 'web' | 'android' | 'ios';
 
@@ -12,8 +18,10 @@ interface DownloadCtasProps {
     webSub: string;
     androidLabel: string;
     androidSub: string;
+    androidNota: string;
     iosLabel: string;
     iosSub: string;
+    iosNota: string;
     disponivelNa: string;
   };
 }
@@ -32,32 +40,40 @@ export function DownloadCtas({ labels }: DownloadCtasProps) {
     setDevice(detectDevice());
   }, []);
 
-  const options: { id: Device; label: string; sub: string; href: string; icon: React.ReactNode }[] = [
-    {
-      id: 'web',
-      label: labels.webLabel,
-      sub: labels.webSub,
-      href: WEB_APP_URL,
-      icon: <WebIcon />,
-    },
+  // Web e iOS entram conforme as flags do product-config — ver o comentário lá.
+  const options: { id: Device; label: string; sub: string; href: string; nota?: string; notaDestaque?: boolean; icon: React.ReactNode }[] = [
+    ...(MOSTRAR_WEBAPP
+      ? [{
+          id: 'web' as Device,
+          label: labels.webLabel,
+          sub: labels.webSub,
+          href: WEB_APP_URL,
+          icon: <WebIcon />,
+        }]
+      : []),
     {
       id: 'android',
       label: labels.androidLabel,
       sub: labels.androidSub,
       href: 'https://play.google.com/store/apps/details?id=com.overlander',
+      nota: ANDROID_VERSAO_NOVA ? labels.androidNota : undefined,
+      notaDestaque: true,
       icon: <PlayIcon />,
     },
-    {
-      id: 'ios',
-      label: labels.iosLabel,
-      sub: labels.iosSub,
-      href: 'https://apps.apple.com/br/app/gt-overlander/id6745626026',
-      icon: <AppleIcon />,
-    },
+    ...(MOSTRAR_IOS
+      ? [{
+          id: 'ios' as Device,
+          label: labels.iosLabel,
+          sub: labels.iosSub,
+          href: 'https://apps.apple.com/br/app/gt-overlander/id6745626026',
+          nota: IOS_ATUALIZACAO_EM_BREVE ? labels.iosNota : undefined,
+          icon: <AppleIcon />,
+        }]
+      : []),
   ];
 
   return (
-    <div className="grid sm:grid-cols-3 gap-4 w-full max-w-2xl mx-auto">
+    <div className={`grid gap-4 w-full max-w-2xl mx-auto ${options.length === 1 ? "sm:grid-cols-1 max-w-sm" : options.length === 2 ? "sm:grid-cols-2 max-w-xl" : "sm:grid-cols-3"}`}>
       {options.map((opt) => {
         const isRecommended = opt.id === device;
         return (
@@ -85,6 +101,17 @@ export function DownloadCtas({ labels }: DownloadCtasProps) {
             <div>
               <p className="font-medium text-gt-text text-sm">{opt.label}</p>
               <p className="text-xs text-gt-text-muted font-sans mt-0.5">{opt.sub}</p>
+              {opt.nota && (
+                <p
+                  className={`text-[11px] font-sans mt-1.5 ${
+                    opt.notaDestaque
+                      ? 'text-gt-orange-text font-medium'
+                      : 'text-gt-text-dim'
+                  }`}
+                >
+                  {opt.nota}
+                </p>
+              )}
             </div>
           </a>
         );

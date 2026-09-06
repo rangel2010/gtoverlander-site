@@ -7,7 +7,7 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { ThemeToggle } from './theme-toggle';
 import { LocaleSwitcher } from './locale-switcher';
-import { WEB_APP_URL } from '@/lib/product-config';
+import { WEB_APP_URL, MOSTRAR_WEBAPP } from '@/lib/product-config';
 
 const APP_WEB_URL = WEB_APP_URL;
 
@@ -72,6 +72,7 @@ export function Header() {
           <LocaleSwitcher />
           <ThemeToggle />
 
+          {MOSTRAR_WEBAPP && (
           <a
             href={APP_WEB_URL}
             target="_blank"
@@ -81,6 +82,7 @@ export function Header() {
             {t('acessarComputador')}
             <ArrowUpRight size={14} aria-hidden="true" />
           </a>
+          )}
 
           <Button href="/baixar" size="sm" className="hidden sm:inline-flex">
             {t('comecarGratis')}
@@ -123,6 +125,7 @@ export function Header() {
                   {l.label}
                 </Link>
               ))}
+              {MOSTRAR_WEBAPP && (
               <a
                 href={APP_WEB_URL}
                 target="_blank"
@@ -132,6 +135,7 @@ export function Header() {
                 {t('acessarComputador')}
                 <ArrowUpRight size={14} aria-hidden="true" />
               </a>
+              )}
             </div>
             <Button href="/baixar" className="mt-3 w-fit">
               {t('comecarGratis')}
