@@ -95,9 +95,18 @@ export default function GtSocialPage() {
         kicker="Rotas Públicas Populares"
         title="Descubra rotas que outros já testaram e adote em 1 toque"
         desc='Aba "Rotas Públicas Populares" mostra os roteiros que a comunidade está rodando. Cada card vem com avaliação, distância, dificuldade e quem criou. Gostou? Adota e a rota vira sua — ajusta paradas, datas, veículo. Crédito original preservado, edição livre. Adotar ocupa uma vaga de viagem do seu plano.'
-        src="/screenshots/recursos/overlanders-rotas.png"
-        alt="Tela do GT Social mostrando Rotas Públicas Populares: Serra do Rio do Rastro 4×4 leve com avaliação 4.8"
+        src="/screenshots/recursos/overlanders-rotas.jpg"
+        alt="Lista de rotas públicas da comunidade com miniatura do traçado no mapa: Foz do Iguaçu a Bariloche, Florianópolis a Urubici e Londrina a Brasília"
         bg="card"
+      />
+
+      <FeatureScreenshot
+        kicker="Overlanders"
+        title="Descubra quem viaja parecido com você"
+        desc="A aba Overlanders reúne quem está na estrada: perfis em destaque, quem você segue e as rotas que a comunidade está rodando. Segue, acompanha e adota o roteiro de quem já testou. Quem prefere privacidade fecha o perfil nas configurações — aparecer é escolha de cada um."
+        src="/screenshots/recursos/social-overlanders.jpg"
+        alt="Aba Overlanders do GT Social com busca por viajante, rota ou destino, cards de overlanders em destaque e a seção Rotas públicas populares"
+        bg="bg"
       />
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">

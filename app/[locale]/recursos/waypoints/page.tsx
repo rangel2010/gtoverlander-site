@@ -124,10 +124,10 @@ export default function WaypointsPage() {
 
       <FeatureScreenshot
         kicker="A base é viva"
-        title="Adicione ou valide um waypoint em 1 toque"
-        desc="Encontrou camping novo no meio do nada? Cadastra ali. Posto fechou? Marca como inativo. Achou um lugar útil que ainda não tava no GT? Adiciona com foto e descrição. A base cresce a cada overlander na estrada — em qualquer plano, Free incluso."
-        src="/screenshots/recursos/waypoints-acao.png"
-        alt="Tela de Adicionar ou validar waypoint, com opções 'Adicionar novo ponto' e 'Validar ponto próximo'"
+        title="Quem passou por lá é a única fonte disso"
+        desc="Continua de pé, mudou alguma coisa ou fechou — um voto por pessoa, direto na tela. Dá pra completar com detalhes que só quem esteve lá sabe, tipo se o lugar tem ponto de recarga. Validar e cadastrar é livre em qualquer plano, sem limite, e ainda rende viagem."
+        src="/screenshots/recursos/waypoints-acao.jpg"
+        alt="Tela de validação de waypoint perguntando como está o Recanto Pinhão, com as opções Continua de pé, Mudou alguma coisa e Fechou, pergunta sobre ponto de recarga e campo livre para observações"
         bg="card"
       />
 
