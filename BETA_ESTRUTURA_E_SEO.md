@@ -1,9 +1,26 @@
 # beta.gtoverlander.com.br — estrutura e SEO
 
-**Para a aba que trabalha no `gtoverlander-app`.**
-Escrito em 06/09/2026 pela aba do `gtoverlander-site`, depois de ler o repo do app.
+**Para a aba que trabalha no monorepo.**
+Escrito em 06/09/2026 pela aba da landing. Revisado no mesmo dia com as correções
+do `ALINHAMENTO_WEBAPP.md`, resposta da outra aba.
 
 Irmão do `CONTRATO_NUMEROS_API.md` e do `CONTRATO_REGUA_PLANOS_API.md`, na mesma pasta.
+
+> **Vocabulário.** Não existem "dois repositórios de site". Existe **a landing**
+> (`gtoverlander.com.br`, repositório próprio) e o **monorepo**, onde vivem o app,
+> a API e o webapp — este último é `apps/web`, não um repo separado. Os contratos
+> de números e da régua descrevem endpoints de `apps/api`, dentro do monorepo.
+
+> ### ✅ Estado em 06/09/2026: o webapp já saiu da busca
+> Toda página carrega `noindex, follow`, o `robots.txt` segue autorizando o
+> rastreamento (só bloqueia `/api/`, `/wp-data`, `/og/`, que não são página) e o
+> sitemap responde vazio. Religa com `WEBAPP_INDEXAVEL=on` no ambiente, sem build.
+> O porquê está em `apps/web/src/lib/indexacao.ts`.
+>
+> **O motivo foi mais grave que SEO.** O sitemap entregava 5.899 endereços ao
+> Google, dos quais **5.001 eram perfis de pessoas** — e a URL de cada perfil é
+> montada com o pedaço do e-mail antes do arroba, com o perfil nascendo público
+> por padrão. Isso é LGPD, não otimização, e por isso não esperou a lapidação.
 
 ---
 
@@ -48,18 +65,18 @@ delas sempre fica velha. Onde houver link interno, apontar pro equivalente em
 `apps/web/src/app/planos/actions.ts` tem `subscribeLab` — exige login, escolhe
 gateway, redireciona pra `/me/assinatura`.
 
-⚠️ **A trava tem padrão LIGADO:**
+~~⚠️ A trava tem padrão LIGADO~~ — **corrigido em 06/09**, junto com um pacote
+de segurança. O padrão passou de `'on'` para `'off'`, então o risco descrito aqui
+(pessoa preenche, tenta pagar, leva erro de gateway) não existe mais. A leitura
+que gerou este documento foi feita antes do conserto.
 
-```ts
-const v = (process.env.GTO_LAB_SUBSCRIPTIONS ?? 'on').toLowerCase().trim();
-```
+Deixou de ser urgência e virou faxina: a página veio do zip do protótipo, nunca
+teve chave do Asaas ligada de verdade, e a cobrança é só pelas lojas. **Remover o
+fluxo continua sendo mais limpo que mantê-lo desligado por variável**, e no lugar
+fica um caminho pra loja.
 
-Sem `GTO_LAB_SUBSCRIPTIONS=off` no ambiente de produção, o formulário aparece e
-submete. Sem chave do Asaas configurada, o usuário cai em `/planos?erro=gateway`
-— ou seja, ele preencheu, tentou pagar e levou erro. Pior do que não existir.
-
-Como a cobrança é só pelas lojas, **remover o fluxo é mais limpo que desligar por
-variável.**
+⚠️ Registrado: **o Asaas volta lá na frente, e só no B2B da Conta Business.**
+Para usuário final, nunca.
 
 ## 1.3 Transformar `/me/assinatura`
 
@@ -113,11 +130,11 @@ alternates: { canonical: `${SITE_URL}/rotas/${id}` },
 
 Sem isso, parâmetro de UTM e paginação viram URLs duplicadas.
 
-No `layout.tsx`, definir a base uma vez:
+O `metadataBase` no `layout.tsx` **já existe** — este item do checklist estava
+errado e já nasce feito.
 
-```ts
-metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://beta.gtoverlander.com.br'),
-```
+O que não existe é o canônico por página: de **68 páginas, uma** tem canônico
+próprio. Esse é o item real e segue aberto.
 
 ## 2.3 `noindex, follow`
 
@@ -154,8 +171,22 @@ Remover de `STATIC_PAGES`: `/planos`, `/sobre`, `/como-funciona`, `/faq`,
 `/privacidade`. Sitemap só lista o que se quer indexado — anunciar página com
 `noindex` confunde o rastreador.
 
-Manter e priorizar as entradas dinâmicas (rotas, waypoints, perfis, tags,
-anúncios). São elas que fazem o índice crescer sozinho.
+Manter e priorizar as entradas dinâmicas — **com uma correção importante na
+lista original deste documento.**
+
+Rotas, waypoints, tags e anúncios: sim. **Perfis: só filtrados.** No banco há
+9.322 perfis públicos e apenas **5 pessoas com alguma rota pública** — o resto são
+contas migradas da v1 que nunca entraram no app novo. Cinco mil páginas vazias não
+são cauda longa, são conteúdo fino, que é a categoria que o Google usa pra decidir
+que um site inteiro vale pouco.
+
+Quando religar, o perfil entra no sitemap **só se tiver rota, waypoint ou anúncio
+público**. Hoje seriam 5 pessoas; cresce sozinho.
+
+**Contexto que evita alarme falso:** existem 766 rotas e 7 são públicas. Rota
+nasce privada de propósito, e as 766 vêm da migração da v1. O poço da cauda longa
+está quase seco porque o app acabou de chegar à loja — é o esperado, não um
+defeito. Decisão do Rangel: deixar crescer naturalmente.
 
 ## 2.7 Não criar `hreflang` entre webapp e landing
 
@@ -177,18 +208,25 @@ Pra isso sair barato:
   Caddy preservando o caminho
 - Manter `beta.` respondendo com o 301 por vários meses
 
-⚠️ Lembrete do próprio `CLAUDE.md` de vocês: o `Caddyfile.azure` da `main` já
-está escrito para depois da virada. Subir aquele arquivo hoje derruba o site.
+⚠️ Sobre o `Caddyfile.azure`: o aviso vale, mas o `CLAUDE.md` do monorepo dizia
+`main` — e `main` está velho. O branch de trabalho é **`migracao-sdk`**. O ponto
+em si continua: aquele arquivo está escrito pro estado depois da virada, e subir
+hoje derruba o site, porque o DNS de `app.` ainda não existe.
+
+**Ficou mais barato:** com o webapp fora do índice desde 06/09, não haverá nada de
+`beta.` catalogado pra redirecionar depois. Cada dia escondido é dívida que não se
+cria.
 
 ---
 
 # Checklist
 
 - [ ] `/sobre`, `/como-funciona`, `/faq` removidas; links internos apontando pra landing
-- [ ] Fluxo `subscribeLab` removido (ou `GTO_LAB_SUBSCRIPTIONS=off` no ambiente)
+- [ ] Fluxo `subscribeLab` removido (a trava já está em `off`; falta a faxina)
 - [ ] `/me/assinatura` em modo leitura, lendo a régua, com caminho pras lojas
-- [ ] `metadataBase` no `layout.tsx`
-- [ ] Canônico absoluto nas páginas indexáveis
+- [x] ~~`metadataBase` no `layout.tsx`~~ — já existia
+- [ ] Canônico absoluto nas páginas indexáveis (hoje: 1 de 68)
+- [ ] Perfis no sitemap apenas se tiverem conteúdo público
 - [ ] `noindex, follow` nas páginas da lista 2.3
 - [ ] `robots.ts` com os `disallow` da lista 2.4 — e nenhuma página com noindex ali
 - [ ] `sitemap.ts` sem as páginas de marketing
