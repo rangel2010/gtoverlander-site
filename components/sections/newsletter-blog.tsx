@@ -1,8 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { useLocale } from 'next-intl';
 
 export function NewsletterBlog() {
+  // Idioma de quem está lendo — vai pro Brevo pra segmentar a newsletter,
+  // senão quem lê em espanhol recebe o link do artigo em português.
+  const locale = useLocale();
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -16,7 +20,7 @@ export function NewsletterBlog() {
       const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, nome: nome.trim() || undefined }),
+        body: JSON.stringify({ email, nome: nome.trim() || undefined, locale }),
       });
 
       const data = await res.json();
