@@ -1,4 +1,5 @@
-import Link from 'next/link';
+// Link do i18n, não o de 'next/link' — mantém o prefixo /es e /en.
+import { Link } from '@/i18n/navigation';
 
 const FEATURES = [
   {

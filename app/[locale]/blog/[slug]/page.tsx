@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
+// Link do i18n (não o de 'next/link'): sem ele, artigo em ES/EN gera link
+// interno sem o prefixo /es ou /en e cai em 404 na rota PT.
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -215,6 +217,13 @@ export default async function PostPage({ params }: PageProps) {
   if (!post) notFound();
 
   const related = await getRelatedPosts(post.slug, post.category, locale);
+
+  // URL absoluta pra compartilhamento. PT não leva prefixo (localePrefix
+  // 'as-needed'); EN e ES levam, senão o link compartilhado cai em 404.
+  const shareUrl =
+    locale === 'pt'
+      ? `https://www.gtoverlander.com.br/blog/${post.slug}`
+      : `https://www.gtoverlander.com.br/${locale}/blog/${post.slug}`;
   const tc = await getTranslations('common');
 
   // Busca os comentários já aprovados no servidor, pra virem prontos no HTML
@@ -268,7 +277,7 @@ export default async function PostPage({ params }: PageProps) {
                 </time>
               </div>
               <ShareButtons
-                url={`https://gtoverlander.com.br/blog/${post.slug}`}
+                url={shareUrl}
                 title={post.title}
                 variant="compact"
               />
@@ -324,7 +333,7 @@ export default async function PostPage({ params }: PageProps) {
             </ReactMarkdown>
 
             <ShareButtons
-              url={`https://gtoverlander.com.br/blog/${post.slug}`}
+              url={shareUrl}
               title={post.title}
             />
 
