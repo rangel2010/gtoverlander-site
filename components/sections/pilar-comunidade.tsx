@@ -1,12 +1,14 @@
 import { getTranslations } from 'next-intl/server';
+// Link do i18n, não o de 'next/link' — mantém o prefixo /es e /en.
+import { Link } from '@/i18n/navigation';
 import { ScrollReveal } from '@/components/scroll-reveal';
 
 // c2 era o Help Overlander, desligado em 04/09/2026. Chaves mantidas nos JSONs
 // pra quando a feature voltar — ver HELP_OVERLANDER_ATIVO.
 const CARDS = [
-  { icon: '🌐', chave: 'c1' },
-  { icon: '🏆', chave: 'c3' },
-  { icon: '🛒', chave: 'c4' },
+  { icon: '🌐', chave: 'c1', href: '/recursos/gt-social' },
+  { icon: '🏆', chave: 'c3', href: '/recursos/explorer' },
+  { icon: '🛒', chave: 'c4', href: '/recursos/desapega' },
 ];
 
 export async function PilarComunidade() {
@@ -14,6 +16,7 @@ export async function PilarComunidade() {
 
   const cards = CARDS.map((c) => ({
     icon: c.icon,
+    href: c.href,
     titulo: t(`${c.chave}titulo`),
     desc: t(`${c.chave}desc`),
   }));
@@ -41,7 +44,12 @@ export async function PilarComunidade() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {cards.map((card, idx) => (
             <ScrollReveal key={card.titulo} delay={idx * 80}>
-              <div className="bg-gt-bg rounded-xl p-7 border border-gt-border h-full relative group">
+              {/* O card inteiro é o link, não só o título: alvo grande é mais
+                  fácil de acertar no celular do que um texto de uma linha. */}
+              <Link
+                href={card.href}
+                className="bg-gt-bg rounded-xl p-7 border border-gt-border h-full relative group block hover:border-gt-orange transition-colors"
+              >
                 {/* Badge de status — texto vem do i18n */}
                 <span className="absolute top-5 right-5 bg-gt-orange/10 text-gt-orange-text text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full font-sans border border-gt-orange/20">
                   {t('badge')}
@@ -49,14 +57,17 @@ export async function PilarComunidade() {
                 {/* Ícone */}
                 <span className="text-2xl mb-4 block">{card.icon}</span>
                 {/* Título */}
-                <h3 className="text-lg md:text-xl text-gt-text mb-2.5 pr-16 leading-snug">
+                <h3 className="text-lg md:text-xl text-gt-text mb-2.5 pr-16 leading-snug group-hover:text-gt-orange-text transition-colors">
                   {card.titulo}
                 </h3>
                 {/* Descrição */}
-                <p className="text-sm text-gt-text-muted leading-relaxed font-sans">
+                <p className="text-sm text-gt-text-muted leading-relaxed font-sans mb-4">
                   {card.desc}
                 </p>
-              </div>
+                <span className="text-gt-orange-text text-sm font-medium font-sans">
+                  {t('saibaMais')}
+                </span>
+              </Link>
             </ScrollReveal>
           ))}
         </div>

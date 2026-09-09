@@ -1,0 +1,220 @@
+<!--
+  E-mail de lançamento da V2 — para colar no Brevo (editor HTML).
+
+  Decisões que valem manter se alguém editar isto:
+
+  1. TOM DE PRODUTO, não de venda. Esses contatos se cadastraram no app, não
+     numa newsletter. Aviso de nova versão se sustenta como comunicação de
+     serviço; anúncio de plano seria marketing, com base legal diferente.
+     Por isso não há preço, nem "assine", nem menção a Plus/Pro.
+
+  2. A TRANQUILIZAÇÃO VEM ANTES DA NOVIDADE. A primeira pergunta de quem lê
+     "atualize seu app" é "vou perder minhas coisas?". Responder isso no topo
+     é o que decide entre atualizar e desinstalar.
+
+  3. UM CTA SÓ. Dois botões num e-mail de reativação derrubam o principal.
+
+  4. Layout em tabela e CSS inline, porque cliente de e-mail não entende
+     flex, grid nem variável CSS. Largura travada em 600px.
+
+  5. Anton (fonte de display do site) não carrega na maioria dos clientes de
+     e-mail. A pilha cai em Impact e Arial Black, que dão o mesmo peso
+     condensado. Não trocar por fonte web achando que vai renderizar.
+
+  6. Laranja #c04d18 no botão, não o #e06226 antigo: com texto branco o tom
+     antigo dá 3,53:1 e reprova no WCAG. Ver IDENTIDADE_VISUAL_GT.md.
+
+  7. O link de descadastro usa a tag do Brevo {{ unsubscribe }}. Não remover:
+     sem ela o envio vira problema legal e de reputação.
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O GT Overlander novo chegou</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f8f5ee;">
+
+  <!-- Preheader: aparece na prévia da caixa de entrada, depois do assunto -->
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0; color:transparent; height:0; width:0;">
+    Suas rotas continuam lá. Seu login também. O resto é novo.
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f8f5ee;">
+    <tr>
+      <td align="center" style="padding:0 16px;">
+
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:100%;">
+
+          <!-- Cabeçalho verde -->
+          <tr>
+            <td align="center" style="background-color:#122e1f; padding:28px 24px;">
+              <img src="https://www.gtoverlander.com.br/images/logo-gt-contorno.svg"
+                   width="150" height="48" alt="GT Overlander"
+                   style="display:block; border:0; width:150px; height:auto;">
+            </td>
+          </tr>
+
+          <!-- Hero -->
+          <tr>
+            <td style="background-color:#163725; padding:44px 32px 40px 32px;">
+              <p style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:16px; letter-spacing:2px; text-transform:uppercase; color:#a6a6a6;">
+                Nova versão no ar
+              </p>
+              <h1 style="margin:0 0 18px 0; font-family:Anton,Impact,'Arial Black',Arial,sans-serif; font-weight:400; font-size:38px; line-height:40px; letter-spacing:0.5px; text-transform:uppercase; color:#e8e8e8;">
+                O GT Overlander<br>novo chegou
+              </h1>
+              <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:26px; color:#c9c9c9;">
+                Reconstruímos o app do zero. Está na Play Store agora, e a atualização é gratuita.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Tranquilização: a primeira dúvida de quem já usava -->
+          <tr>
+            <td style="background-color:#ffffff; padding:32px; border-left:1px solid #e0dcce; border-right:1px solid #e0dcce;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f8f5ee; border-left:3px solid #c04d18;">
+                <tr>
+                  <td style="padding:20px 22px;">
+                    <p style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:17px; line-height:24px; font-weight:bold; color:#122e1f;">
+                      Suas rotas continuam lá.
+                    </p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:24px; color:#4a5c52;">
+                      Seu login e sua senha também são os mesmos. Você atualiza, entra com a conta de sempre e encontra tudo onde deixou. O resto é novidade.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- O que mudou -->
+          <tr>
+            <td style="background-color:#ffffff; padding:8px 32px 8px 32px; border-left:1px solid #e0dcce; border-right:1px solid #e0dcce;">
+              <h2 style="margin:16px 0 22px 0; font-family:Anton,Impact,'Arial Black',Arial,sans-serif; font-weight:400; font-size:24px; line-height:28px; letter-spacing:0.5px; text-transform:uppercase; color:#122e1f;">
+                O que você vai encontrar
+              </h2>
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+                <tr>
+                  <td style="padding:0 0 22px 0;">
+                    <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:22px; font-weight:bold; color:#122e1f;">
+                      Um copiloto que monta a rota com você
+                    </p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:23px; color:#4a5c52;">
+                      Você descreve a viagem em conversa e ele organiza o trajeto pelas estradas que fazem sentido, com as paradas do caminho.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:0 0 22px 0;">
+                    <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:22px; font-weight:bold; color:#122e1f;">
+                      O mapa do seu país offline, pra sempre
+                    </p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:23px; color:#4a5c52;">
+                      Baixa uma vez e o radar de pontos funciona sem sinal, na estrada toda. Sem custo nenhum.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:0 0 22px 0;">
+                    <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:22px; font-weight:bold; color:#122e1f;">
+                      Rotas públicas da comunidade
+                    </p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:23px; color:#4a5c52;">
+                      Roteiros que outros overlanders já rodaram, prontos pra você adotar e ajustar do seu jeito. E os seus podem virar públicos também.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:0 0 22px 0;">
+                    <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:22px; font-weight:bold; color:#122e1f;">
+                      GT Desapega
+                    </p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:23px; color:#4a5c52;">
+                      Compra, venda e troca de equipamento entre quem realmente viaja. Ver os anúncios é livre pra todo mundo.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:0 0 8px 0;">
+                    <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:22px; font-weight:bold; color:#122e1f;">
+                      Pontos validados por quem esteve lá
+                    </p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:23px; color:#4a5c52;">
+                      Continua de pé, mudou alguma coisa ou fechou. Um voto por pessoa, e a base fica viva porque a comunidade cuida dela.
+                    </p>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+
+          <!-- CTA único -->
+          <tr>
+            <td align="center" style="background-color:#ffffff; padding:16px 32px 40px 32px; border-left:1px solid #e0dcce; border-right:1px solid #e0dcce; border-bottom:1px solid #e0dcce;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" style="background-color:#c04d18; border-radius:6px;">
+                    <a href="https://play.google.com/store/apps/details?id=com.overlander"
+                       style="display:inline-block; padding:16px 38px; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:20px; font-weight:bold; color:#ffffff; text-decoration:none;">
+                      Atualizar na Play Store
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:18px 0 0 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:20px; color:#6b7a72;">
+                Está no iPhone? A versão nova está a caminho, e a gente te avisa quando chegar.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Assinatura -->
+          <tr>
+            <td style="background-color:#f8f5ee; padding:28px 32px;">
+              <p style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:24px; color:#4a5c52;">
+                Se algo parecer estranho ou faltando, me responde este e-mail. Leio todas.
+              </p>
+              <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:24px; color:#122e1f;">
+                <strong>Rangel Machado</strong><br>
+                <span style="color:#6b7a72;">Fundador do GT Overlander</span>
+              </p>
+            </td>
+          </tr>
+
+          <!-- Rodapé -->
+          <tr>
+            <td align="center" style="background-color:#122e1f; padding:26px 32px;">
+              <p style="margin:0 0 10px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:20px; color:#a6a6a6;">
+                <a href="https://www.gtoverlander.com.br" style="color:#ee8a55; text-decoration:none;">gtoverlander.com.br</a>
+                &nbsp;·&nbsp;
+                <a href="https://www.gtoverlander.com.br/blog" style="color:#ee8a55; text-decoration:none;">Blog</a>
+                &nbsp;·&nbsp;
+                <a href="https://www.gtoverlander.com.br/suporte" style="color:#ee8a55; text-decoration:none;">Suporte</a>
+              </p>
+              <p style="margin:0 0 10px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:18px; color:#8a8a8a;">
+                Você está recebendo porque tem uma conta no GT Overlander.
+              </p>
+              <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:18px; color:#8a8a8a;">
+                <a href="{{ unsubscribe }}" style="color:#8a8a8a; text-decoration:underline;">Não quero mais receber e-mails</a>
+                <br><br>
+                GT Overlander Ltda &nbsp;·&nbsp; CNPJ 59.840.412/0001-82
+              </p>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
