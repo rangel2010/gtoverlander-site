@@ -13,69 +13,83 @@ export async function generateMetadata({
   return {
     title: 'Modo Offline',
     description:
-    'O mapa e os pontos do seu país ficam offline pra sempre, em qualquer plano. Plus e Pro somam países extras pra quem cruza fronteira.',
+      'O mapa e os pontos do seu país ficam no seu celular pra sempre, em qualquer plano. Sem sinal, o GT continua desenhando o mapa e mostrando o caminho até o ponto, sem depender de nenhum outro app.',
     alternates: getPageAlternates(locale, '/recursos/modo-offline'),
     ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }
 
+// Reescrito em 09/09/2026, na build 77 do app. O que mudou: quem faz o caminho
+// até o ponto agora é o GT, não mais o Google Maps. Exportar pro Maps continua
+// existindo, mas como saída secundária, não como requisito pra navegar.
+// Regras de copy desta página (decisões, não esquecimento):
+//   - não dizer "navegação passo a passo" nem "turn-by-turn"
+//   - não prometer o "Ir" pra um roteiro inteiro, só pra um ponto
+//   - não falar em "mapa detalhado" nem em nível de detalhe por plano
+//   - não citar quantos países têm mapa, porque todos vão ter
 const oQueFaz = [
   {
-    titulo: 'Radar de waypoints',
-    desc: 'GPS funciona offline. O Radar mostra postos, hospedagem, oficinas e atrações ao redor a partir da base baixada. Ao escolher um ponto, você pode abri-lo no Google Maps com a localização já definida. Para navegar sem internet, é necessário ter baixado previamente a região no próprio Google Maps.',
+    titulo: 'O mapa e os pontos ficam no seu celular',
+    desc: 'O pacote do seu país traz o mapa inteiro, com estradas, cidades e relevo, junto com os pontos da comunidade: postos, hospedagem, oficinas, campings e atrações. Sem sinal, é o próprio aparelho que desenha o mapa, e o radar continua mostrando o que existe ao seu redor, com busca por região e por categoria.',
   },
   {
-    titulo: 'Informações disponíveis de cada ponto',
-    desc: 'Nome, categoria, localização e atributos cadastrados ficam acessíveis sem sinal. O nível de detalhe varia conforme os dados de cada ponto.',
+    titulo: 'O caminho até o ponto, dentro do app',
+    desc: 'Tocou em "Ir" sem sinal, o GT limpa a tela e deixa só o essencial: onde você está, o destino, a distância, pra que lado ele fica e a linha entre os dois. Um toque em "Seguir" e o mapa fecha o zoom e anda com você. Aparecendo sinal no meio do caminho, a linha vira a estrada de verdade sozinha.',
   },
   {
-    titulo: 'Validar e cadastrar pontos',
-    desc: 'Encontrou camping novo no meio do nada? Cadastra ali, valida no momento. Sincroniza com a base assim que conectar.',
+    titulo: 'Cadastrar e validar sem sinal nenhum',
+    desc: 'Achou um camping que não está no mapa? Cadastra ali, na hora, e responde as perguntas do lugar, que ficam guardadas no aparelho justamente pra esse momento. Tudo sobe quando você reconectar, com a coordenada de onde você estava quando cadastrou: o selo de verificado no local continua valendo mesmo que o envio só aconteça 200 km depois.',
   },
   {
-    titulo: 'Consultar rotas salvas',
-    desc: 'Visualize suas rotas geradas, paradas e pontos marcados sem precisar de sinal. Edição e exportação de rotas requerem conexão.',
+    titulo: 'Suas rotas e seus pontos, sempre à mão',
+    desc: 'Roteiros salvos, paradas, distâncias e a sua coleção de waypoints abrem sem sinal, na última versão que o app recebeu. Criar ou editar uma rota continua precisando de internet.',
   },
 ];
 
 const precisaInternet = [
-  'Gerar rota nova com a IA (a IA roda no servidor)',
-  'Editar, adicionar ou reordenar paradas de uma rota',
-  'Exportar rota para o Google Maps',
-  'Baixar ou atualizar mapas e dados offline',
-  'Sincronizar cadastros e validações pendentes',
-  'GT Desapega (anúncios e contato com vendedor)',
+  'Gerar ou editar um roteiro com a IA',
+  'Baixar ou atualizar o mapa e a base de pontos',
+  'Sincronizar os cadastros e validações que ficaram na fila',
+  'GT Desapega (anúncios e contato com o vendedor)',
   'Recursos em tempo real do GT Social',
 ];
 
 const faq = (extraPlus: number, extraPro: number) => [
   {
     q: 'Como ativo o Modo Offline?',
-    a: 'Direto no app. O pacote do seu país já vem incluso; se você tiver países extras no plano, escolhe quais quer baixar. O GT guarda a base de waypoints e os mapas dessas áreas, e tudo fica acessível mesmo sem sinal. Depois do primeiro download, o app sincroniza as atualizações sozinho quando houver conexão.',
+    a: 'Não precisa ativar nada. Ao entrar, o GT já baixa o pacote do seu país, mapa e pontos juntos, e se você tiver países extras no plano é só escolher quais quer levar. Depois disso funciona sozinho: quando falta sinal, o app troca de mapa e segue.',
+  },
+  {
+    q: 'Quanto ocupa no celular?',
+    a: 'Menos do que você imagina. O Brasil inteiro cabe em 51 MB, a Argentina em 13 MB e o Uruguai em pouco mais de 1 MB. Pra comparar, o Brasil inteiro ocupa menos espaço que vinte fotos do seu celular. E dá pra apagar e baixar de novo quando quiser.',
+  },
+  {
+    q: 'Preciso baixar o mapa no Google Maps também?',
+    a: 'Não. Essa era a realidade das primeiras versões do app e não é mais. O GT desenha o próprio mapa a partir do arquivo que já está no seu celular, e mostra o caminho até o ponto dentro do app mesmo. Se você preferir seguir pelo Google Maps ou pelo Waze, os dois continuam a um toque, mas aí valem as regras deles.',
+  },
+  {
+    q: 'O GT faz navegação por voz, passo a passo?',
+    a: 'Não, e é decisão nossa. O que ele faz é te manter no mapa: o zoom fecha, a tela aponta pra onde você está indo e a linha até o destino fica na frente. Numa estrada de terra sem placa, é isso que resolve. E funciona sem sinal nenhum, que é justamente onde a voz do navegador some de qualquer jeito.',
   },
   {
     q: 'O país de origem é grátis mesmo no Free?',
-    a: 'É, e pra sempre. O pacote offline do seu país não custa nada em nenhum plano — baixa uma vez e funciona na estrada toda, com todas as categorias de waypoints. O país de origem é escolhido uma vez e não muda depois.',
+    a: 'É, e pra sempre. O pacote do seu país não custa nada em nenhum plano, com o mapa e todas as categorias de pontos. O país de origem é escolhido uma vez e não muda depois.',
   },
   {
     q: 'Como funcionam os países extras do Plus e do Pro?',
-    a: `São países offline ALÉM do seu, pra quem cruza fronteira. O Plus soma ${extraPlus} e o Pro soma ${extraPro}, trocáveis quando você quiser — terminou a viagem pela Argentina, troca por outro país na próxima. O seu país de origem continua incluso e não ocupa nenhuma dessas vagas.`,
+    a: `São países offline ALÉM do seu, pra quem cruza fronteira. O Plus soma ${extraPlus} e o Pro soma ${extraPro}, trocáveis quando você quiser: terminou a viagem pela Argentina, troca por outro país na próxima. O seu país de origem continua incluso e não ocupa nenhuma dessas vagas.`,
   },
   {
     q: 'Posso validar e cadastrar pontos offline?',
-    a: 'Sim, em qualquer plano e sem limite. Encontrou camping novo na trilha sem sinal? Valida no celular ali, sincroniza quando voltar a conectar. A base cresce com isso — e validar ainda te rende viagens.',
+    a: 'Sim, em qualquer plano e sem limite. E o que mais importa: a validação guarda a coordenada do momento em que você validou, não a de quando o celular conseguiu enviar. Quem confirmou o lugar estando lá continua recebendo o selo de verificado no local, mesmo que só reconecte no dia seguinte. Validar ainda te rende viagens.',
   },
   {
-    q: 'O mapa offline é detalhado?',
-    a: 'O mapa e as categorias de waypoints são iguais em todos os planos. Nunca entregamos uma base pior pra quem é Free. O que muda é só quantos países você leva junto.',
-  },
-  {
-    q: 'Como garantir que a navegação funcione sem sinal?',
-    a: 'Você precisa baixar duas coisas antes de entrar em área sem cobertura: o mapa da região no GT (pelo Modo Offline) e o mapa da mesma região no próprio Google Maps. O GT encontra os waypoints offline e abre o ponto com a localização já definida — mas quem faz a navegação é o Maps. Se o Maps não tiver o mapa baixado, ele abre em branco. Os dois downloads juntos garantem a experiência completa.',
+    q: 'Quem é Free recebe uma base pior?',
+    a: 'Não. O mapa e as categorias de pontos são iguais em todos os planos. Nunca entregamos uma base menor pra quem é Free. O que muda é só quantos países você leva junto.',
   },
   {
     q: 'Como a base se atualiza?',
-    a: 'A base de waypoints é atualizada continuamente pelo GT. O app sincroniza o cache do usuário automaticamente em segundo plano, sem que você precise fazer nada. Quando estiver offline, os dados disponíveis são os da última sincronização.',
+    a: 'O app cuida disso sozinho sempre que há conexão. E quem viaja com dados contados manda no assunto: dá pra pedir que o download do mapa aconteça só no Wi-Fi, e desligar a sincronização automática, e aí nada sobe até você mandar. Offline, o que você vê é o da última sincronização.',
   },
 ];
 
@@ -91,20 +105,20 @@ export default async function ModoOfflinePage() {
       badge: 'Incluso em todos os planos',
       titulo: 'O seu país inteiro, offline, pra sempre',
       items: [
-        'Todas as categorias de waypoints — postos, hospedagem, mecânica, camping, atração',
-        'Mapa offline da região do seu país',
-        'Sincronização automática das atualizações',
-        'Validação e cadastro de pontos offline, sem limite',
+        'O mapa completo do seu país gravado no celular. O Brasil inteiro cabe em 51 MB',
+        'Todas as categorias de pontos: postos, hospedagem, mecânica, camping, atração',
+        'O caminho até qualquer ponto, com acompanhamento no mapa, sem sinal',
+        'Cadastro e validação de pontos offline, sem limite',
         'O país de origem é escolhido uma vez e não muda depois',
       ],
     },
     {
       nome: 'Plus e Pro',
       badge: 'Pra quem cruza fronteira',
-      titulo: `Países extras além do seu — ${extraPlus} no Plus, ${extraPro} no Pro`,
+      titulo: `Países extras além do seu: ${extraPlus} no Plus, ${extraPro} no Pro`,
       items: [
         'Somam-se ao país de origem, que continua incluso',
-        'Trocáveis quando quiser — terminou a viagem, troca pelo próximo destino',
+        'Trocáveis quando quiser: terminou a viagem, troca pelo próximo destino',
         'Mesmas categorias e mesmo mapa do pacote de origem',
         'Sincronização automática das atualizações',
       ],
@@ -115,23 +129,41 @@ export default async function ModoOfflinePage() {
     <>
       <FeatureHero
         kicker="Disponível agora"
-        title="O essencial da viagem continua disponível mesmo sem sinal"
-        subline="O mapa e os pontos do seu país ficam offline pra sempre, em qualquer plano — inclusive no Free. Quem cruza fronteira soma países extras no Plus e no Pro."
+        title="Estrada de verdade tem trecho sem sinal. O GT foi feito pra esse trecho."
+        subline="O mapa do seu país e os pontos da comunidade ficam gravados no celular, em qualquer plano, inclusive no Free. Sem sinal, o GT desenha o mapa sozinho, encontra o que está ao seu redor e traça o caminho até lá. Quem cruza fronteira soma países extras no Plus e no Pro."
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
 
-      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
+      {/* Cena de abertura: coloca o leitor no momento em que a feature importa,
+          antes de explicar como ela funciona. */}
+      <section className="bg-gt-card py-14 md:py-16 border-t border-gt-border">
+        <div className="container-narrow">
+          <p className="font-sans text-lg md:text-xl leading-relaxed text-gt-text">
+            O sinal sumiu faz uma hora. O sol está caindo, a estrada continua, e
+            você precisa saber uma coisa só: tem posto antes de escurecer, ou é
+            melhor parar aqui mesmo?
+          </p>
+          <p className="font-sans text-lg md:text-xl leading-relaxed text-gt-text-muted mt-4">
+            É pra essa hora que o Modo Offline existe. Não pra você abrir o app e
+            ver uma tela cinza pedindo conexão.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3 leading-tight">
             O que funciona offline
           </h2>
           <p className="text-gt-text-muted mb-10 max-w-2xl font-sans leading-relaxed">
-            Com a região baixada, o GT continua sendo útil mesmo sem sinal — e isso é o ponto. Estrada de verdade tem trecho sem 4G, sem 3G, sem nada.
+            Com o país baixado, o GT não fica meio útil sem sinal. Ele continua
+            fazendo o trabalho, porque o mapa é desenhado pelo próprio celular, a
+            partir de um arquivo que já está no aparelho.
           </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 gap-5">
             {oQueFaz.map((o) => (
-              <div key={o.titulo} className="bg-gt-bg rounded-lg p-6 border border-gt-border">
+              <div key={o.titulo} className="bg-gt-card rounded-lg p-6 border border-gt-border">
                 <h3 className="font-sans font-medium text-gt-text mb-2 normal-case">{o.titulo}</h3>
                 <p className="text-sm text-gt-text-muted leading-relaxed font-sans">{o.desc}</p>
               </div>
@@ -140,13 +172,16 @@ export default async function ModoOfflinePage() {
         </div>
       </section>
 
-      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3 leading-tight">
             Como funciona em cada plano
           </h2>
           <p className="text-gt-text-muted mb-10 max-w-2xl font-sans leading-relaxed">
-            O seu país é grátis em todos os planos, pra sempre. Plus e Pro somam países extras pra quem cruza fronteira. Em qualquer caso, a base offline tem todas as categorias de waypoints — não entregamos uma base pior pra quem é Free.
+            O seu país é grátis em todos os planos, pra sempre. Plus e Pro somam
+            países extras pra quem cruza fronteira. Em qualquer caso, a base
+            offline tem todas as categorias de pontos: não entregamos uma base
+            pior pra quem é Free.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             {planos.map((p) => (
@@ -154,8 +189,8 @@ export default async function ModoOfflinePage() {
                 key={p.nome}
                 className={`rounded-lg p-7 border ${
                   p.nome === 'Free'
-                    ? 'bg-gt-card border-gt-border'
-                    : 'bg-gt-card border-2 border-gt-orange'
+                    ? 'bg-gt-bg border-gt-border'
+                    : 'bg-gt-bg border-2 border-gt-orange'
                 }`}
               >
                 <div className="flex items-baseline justify-between mb-2">
@@ -183,19 +218,22 @@ export default async function ModoOfflinePage() {
         </div>
       </section>
 
-      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3 leading-tight">
             O que ainda precisa de internet
           </h2>
           <p className="text-gt-text-muted mb-8 max-w-2xl font-sans leading-relaxed">
-            Algumas funções dependem de servidor por natureza — IA, comunicação em tempo real, marketplace. Quando você voltar a conectar, tudo retoma.
+            Algumas funções dependem de servidor por natureza: a IA, a
+            comunicação em tempo real, o marketplace. Nenhuma delas é necessária
+            pra usar o mapa na estrada, e todas retomam sozinhas quando você
+            reconecta.
           </p>
-          <div className="bg-gt-bg rounded-lg border border-gt-border p-6 max-w-2xl">
+          <div className="bg-gt-card rounded-lg border border-gt-border p-6 max-w-2xl">
             <ul className="space-y-3 font-sans text-sm text-gt-text">
               {precisaInternet.map((p) => (
                 <li key={p} className="flex gap-3">
-                  <span className="text-gt-text-dim flex-shrink-0">○</span>
+                  <span className="text-gt-text-muted flex-shrink-0">○</span>
                   <span className="leading-relaxed">{p}</span>
                 </li>
               ))}
@@ -210,7 +248,11 @@ export default async function ModoOfflinePage() {
             Diferencial
           </p>
           <p className="font-sans text-xl md:text-2xl font-medium leading-snug text-gt-text">
-            Mesmo sem sinal, o GT mantém disponíveis as rotas salvas e a base de waypoints baixada para aquela região. Você continua encontrando postos, campings, hospedagens, oficinas e pontos validados pela comunidade — sem precisar de internet pra isso.
+            Mapa offline todo mundo tem. O que o GT faz de diferente é continuar
+            sendo o mesmo app quando o sinal acaba: o mapa é desenhado pelo
+            celular, os pontos da comunidade continuam lá, o caminho até o
+            próximo posto aparece na tela, e o que você cadastrar no meio do nada
+            entra na base com a coordenada certa assim que voltar o sinal.
           </p>
         </div>
       </section>
