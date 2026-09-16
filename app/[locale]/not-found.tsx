@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 
@@ -9,10 +9,22 @@ import { Button } from '@/components/ui/button';
  * fontes — antes o Next servia a tela padrão dele ("This page could not be
  * found."), em inglês, sem marca e sem nenhum link de saída.
  *
- * Quem dispara isso pra URLs inexistentes é o catch-all em [locale]/[...rest].
+ * Quem dispara isso: o catch-all em [locale]/[...rest], pra URLs que não casam
+ * com rota nenhuma, e o notFound() da página de post, quando o slug não existe
+ * naquele idioma.
  */
 export default async function NotFound() {
-  const t = await getTranslations('notFound');
+  // Locale explícito: dentro de um boundary de not-found o Next pode renderizar
+  // fora do contexto de request da página que chamou notFound(), e aí um
+  // getTranslations() sem locale falha — deixando a tela em branco, que é
+  // justamente o que essa página existe pra evitar.
+  let locale = 'pt';
+  try {
+    locale = await getLocale();
+  } catch {
+    // fica no pt
+  }
+  const t = await getTranslations({ locale, namespace: 'notFound' });
 
   const atalhos = [
     { href: '/recursos', label: t('linkRecursos') },

@@ -12,6 +12,48 @@ const LOCALE_LABELS: Record<Locale, { short: string; label: string }> = {
   es: { short: 'ES', label: 'Español' },
 };
 
+const HREFLANG: Record<Locale, string> = { pt: 'pt-BR', en: 'en', es: 'es' };
+
+// Pillar pages têm o mesmo caminho nos três idiomas; posts, não.
+const BLOG_PILLARS = ['/blog/destinos', '/blog/preparacao', '/blog/vida-overlander'];
+
+/**
+ * Descobre pra onde ir ao trocar de idioma.
+ *
+ * Repetir o caminho atual só funciona quando ele existe nos dois idiomas. Posts
+ * do blog são escritos nativamente e têm slug próprio por idioma
+ * (serra-do-rio-do-rastro-de-carro / -road-brazil / -en-auto), então repetir o
+ * caminho levava a um post inexistente — 404, tela em branco.
+ *
+ * A própria página já publica o endereço certo de cada idioma no
+ * <link rel="alternate" hreflang>, montado a partir do linkedTranslations do
+ * Sanity. É essa a fonte da verdade aqui.
+ *
+ * Usa só o pathname do alternate, nunca a URL inteira: o href é absoluto no
+ * domínio de produção e mandaria o visitante pra fora de um preview.
+ */
+function targetPath(next: Locale, current: string): string {
+  if (typeof document !== 'undefined') {
+    const link = document.querySelector<HTMLLinkElement>(
+      `link[rel="alternate"][hreflang="${HREFLANG[next]}"]`
+    );
+    if (link?.href) {
+      try {
+        const path = new URL(link.href).pathname.replace(/^\/(pt|en|es)(?=\/|$)/, '');
+        return path || '/';
+      } catch {
+        // href malformado: cai no fallback abaixo
+      }
+    }
+  }
+
+  // Post sem tradução linkada: o hub do blog existe nos três idiomas e é
+  // um destino melhor que uma 404.
+  if (current.startsWith('/blog/') && !BLOG_PILLARS.includes(current)) return '/blog';
+
+  return current;
+}
+
 export function LocaleSwitcher() {
   const locale = useLocale() as Locale;
   const router = useRouter();
@@ -42,7 +84,7 @@ export function LocaleSwitcher() {
   function handleSelect(next: Locale) {
     setOpen(false);
     if (next === locale) return;
-    router.replace(pathname, { locale: next });
+    router.replace(targetPath(next, pathname), { locale: next });
   }
 
   const current = LOCALE_LABELS[locale];
