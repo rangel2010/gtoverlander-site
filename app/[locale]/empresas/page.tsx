@@ -10,10 +10,19 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    pt: 'Conta Business',
+    en: 'Business Account',
+    es: 'Cuenta Business',
+  };
+  const descs: Record<string, string> = {
+    pt: 'Conta Business do GT Overlander, em breve. Destaque seu ponto no mapa, venda produtos e ofereça serviços pra quem viaja por terra. Entre na lista de espera.',
+    en: 'The GT Overlander Business Account, coming soon. Put your spot on the map, sell products and offer services to people traveling overland. Join the waitlist.',
+    es: 'La Cuenta Business de GT Overlander, próximamente. Destaca tu punto en el mapa, vende productos y ofrece servicios a quienes viajan por tierra. Únete a la lista de espera.',
+  };
   return {
-    title: 'Conta Business',
-    description:
-    'Conta Business do GT Overlander, em breve. Destaque seu ponto no mapa, venda produtos e ofereça serviços pra quem viaja por terra. Entre na lista de espera.',
+    title: titles[locale] ?? titles.pt,
+    description: descs[locale] ?? descs.pt,
     alternates: getPageAlternates(locale, '/empresas'),
   };
 }

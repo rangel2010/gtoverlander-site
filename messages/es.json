@@ -639,5 +639,16 @@
     "pillarDestinosDesc": "Rutas, destinos y caminos por América del Sur — desde la costa nordestina hasta la Patagonia, del Pantanal a los Andes. Los overlanders necesitan entender que cada región tiene su propia personalidad, geografía y ritmo. Aquí contamos lo que importa para quienes quieren rodar.",
     "pillarPreparacaoDesc": "Documentación, equipo, logística, fronteras, mecánica básica. Todo lo que necesitas saber antes de partir, y lo que aprenderás en el camino. Desde el primer viaje hasta una ruta de meses, contenido práctico que te saca de la parálisis de preparación.",
     "pillarVidaOverlanderDesc": "El lado humano de viajar por tierra. Camping, comunidad, seguridad, comida en la ruta, costos reales, percances, rutinas. Historias y aprendizajes de quienes viven el overlanding en la práctica — no como turismo ocasional, sino como modo de vida."
+  },
+  "notFound": {
+    "codigo": "404",
+    "titulo": "Esta carretera no está en el mapa",
+    "subtitulo": "La página que buscabas ya no existe o cambió de dirección. Elige un camino y sigue viaje.",
+    "ctaHome": "Volver al inicio",
+    "ctaBlog": "Ir al blog",
+    "atalhos": "O ve directo a:",
+    "linkRecursos": "Recursos de la app",
+    "linkPlanos": "Planes",
+    "linkSuporte": "Soporte"
   }
 }

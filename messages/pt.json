@@ -639,5 +639,16 @@
     "pillarDestinosDesc": "Roteiros, destinos e rotas pela América do Sul — do litoral nordestino à Patagônia, do Pantanal aos Andes. Quem viaja por terra precisa entender que cada região tem sua personalidade, sua geografia, seu ritmo. Aqui a gente conta o que importa pra quem quer rodar.",
     "pillarPreparacaoDesc": "Documentação, equipamento, logística, fronteiras, mecânica básica. Tudo que você precisa saber antes de partir, e o que aprender no caminho. Da primeira viagem ao roteiro de meses, conteúdo prático que tira você do paralisia da preparação.",
     "pillarVidaOverlanderDesc": "O lado humano de viajar por terra. Acampamento, comunidade, segurança, comida na estrada, custos reais, perrengues, rotinas. Histórias e aprendizados de quem vive o overlanding na prática — não como turismo eventual, como modo de viver."
+  },
+  "notFound": {
+    "codigo": "404",
+    "titulo": "Essa estrada não existe no mapa",
+    "subtitulo": "A página que você procurou saiu do ar ou mudou de endereço. Escolha um caminho e siga viagem.",
+    "ctaHome": "Voltar pro início",
+    "ctaBlog": "Ir pro blog",
+    "atalhos": "Ou vá direto pra:",
+    "linkRecursos": "Recursos do app",
+    "linkPlanos": "Planos",
+    "linkSuporte": "Suporte"
   }
 }

@@ -9,6 +9,32 @@ const nextConfig = {
   poweredByHeader: false,
   async redirects() {
     return [
+      // Rotas de recurso descontinuadas. Antes eram páginas que chamavam
+      // redirect() de server component: o Next respondia 307 SEM header
+      // Location, com corpo HTML marcado "index, follow" — o Googlebot não
+      // conseguia seguir e a autoridade da URL antiga não era consolidada.
+      // Aqui vira 301 de verdade, resolvido na borda antes do render.
+      // PT não usa prefixo na URL, então '' e '/pt' apontam pro destino limpo —
+      // mandar pra '/pt/recursos' faria o middleware encadear outro redirect.
+      ...[
+        { from: '', to: '' },
+        { from: '/pt', to: '' },
+        { from: '/en', to: '/en' },
+        { from: '/es', to: '/es' },
+      ].flatMap(({ from, to }) => [
+        {
+          source: `${from}/recursos/off-road`,
+          destination: `${to}/recursos`,
+          permanent: true,
+        },
+        {
+          // "Overlanders" virou "GT Social".
+          source: `${from}/recursos/overlanders`,
+          destination: `${to}/recursos/gt-social`,
+          permanent: true,
+        },
+      ]),
+
       // Slug duplicado do artigo Rota Biker — redirect 301 permanente
       {
         source: '/blog/rota-biker-monumentos-mototurismo-brasilrota-biker-monumentos-mototurismo-brasil',

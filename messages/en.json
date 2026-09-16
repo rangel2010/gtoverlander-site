@@ -639,5 +639,16 @@
     "pillarDestinosDesc": "Routes, destinations and roads across South America — from the northeastern coast to Patagonia, from the Pantanal to the Andes. Overlanders need to understand that each region has its own personality, geography and rhythm. Here we cover what matters for those who want to ride.",
     "pillarPreparacaoDesc": "Documentation, gear, logistics, borders, basic mechanics. Everything you need to know before setting off, and what to learn along the way. From the first trip to a months-long journey, practical content that gets you out of preparation paralysis.",
     "pillarVidaOverlanderDesc": "The human side of overland travel. Camping, community, safety, road food, real costs, breakdowns, routines. Stories and lessons from those who live overlanding in practice — not as occasional tourism, but as a way of life."
+  },
+  "notFound": {
+    "codigo": "404",
+    "titulo": "This road isn't on the map",
+    "subtitulo": "The page you were looking for is gone or moved. Pick a route and keep going.",
+    "ctaHome": "Back to home",
+    "ctaBlog": "Go to the blog",
+    "atalhos": "Or head straight to:",
+    "linkRecursos": "App features",
+    "linkPlanos": "Pricing",
+    "linkSuporte": "Support"
   }
 }

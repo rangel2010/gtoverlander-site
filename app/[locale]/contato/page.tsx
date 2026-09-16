@@ -9,10 +9,19 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    pt: 'Contato',
+    en: 'Contact',
+    es: 'Contacto',
+  };
+  const descs: Record<string, string> = {
+    pt: 'Fale com a equipe GT Overlander. Suporte, parcerias, imprensa, dúvidas comerciais — todos os canais reunidos numa só página.',
+    en: 'Talk to the GT Overlander team. Support, partnerships, press, sales questions — every channel gathered on one page.',
+    es: 'Habla con el equipo de GT Overlander. Soporte, alianzas, prensa, dudas comerciales — todos los canales reunidos en una sola página.',
+  };
   return {
-    title: 'Contato',
-    description:
-    'Fale com a equipe GT Overlander. Suporte, parcerias, imprensa, dúvidas comerciais — todos os canais reunidos numa só página.',
+    title: titles[locale] ?? titles.pt,
+    description: descs[locale] ?? descs.pt,
     alternates: getPageAlternates(locale, '/contato'),
   };
 }

@@ -14,6 +14,9 @@ export async function generateMetadata({
     description:
     'Termos específicos da Conta Business no GT Overlander. Regras para destaque de pontos de interesse, cobrança, propriedade dos dados e responsabilidades.',
     alternates: getPageAlternates(locale, '/termos/conta-business'),
+    // Documento só existe em português: fora do sitemap e sem indexação
+    // em EN/ES, senão o Google indexa conteúdo PT como página em inglês.
+    ...(locale !== 'pt' && { robots: { index: false, follow: false } }),
   };
 }
 

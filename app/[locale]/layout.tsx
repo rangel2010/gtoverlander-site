@@ -41,6 +41,22 @@ const OG_LOCALES: Record<string, string> = {
   es: 'es_ES',
 };
 
+// Título e description padrão do site, por idioma. Valem pra home e pra
+// qualquer página que não defina os seus — por isso precisam existir nos três
+// idiomas: o corpo do /en já vinha traduzido, mas o título (que é o que o
+// Google mostra no resultado) vinha em português.
+const DEFAULT_TITLES: Record<string, string> = {
+  pt: 'GT Overlander · O ecossistema feito para quem viaja por terra',
+  en: 'GT Overlander · The ecosystem built for people who travel overland',
+  es: 'GT Overlander · El ecosistema hecho para quienes viajan por tierra',
+};
+
+const DEFAULT_DESCRIPTIONS: Record<string, string> = {
+  pt: 'Roteiros personalizados em uma conversa com IA. Mais de 4 milhões de waypoints em 211 países. iOS, Android, CarPlay e Android Auto.',
+  en: 'Personalized routes from a single conversation with AI. Over 4 million waypoints across 211 countries. iOS, Android, CarPlay and Android Auto.',
+  es: 'Rutas personalizadas en una conversación con IA. Más de 4 millones de waypoints en 211 países. iOS, Android, CarPlay y Android Auto.',
+};
+
 export async function generateMetadata({
   params: { locale },
 }: {
@@ -51,11 +67,10 @@ export async function generateMetadata({
     process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.gtoverlander.com.br'
   ),
   title: {
-    default: 'GT Overlander · O ecossistema feito para quem viaja por terra',
+    default: DEFAULT_TITLES[locale] ?? DEFAULT_TITLES.pt,
     template: '%s · GT Overlander',
   },
-  description:
-    'Roteiros personalizados em uma conversa com IA. Mais de 4 milhões de waypoints em 211 países. iOS, Android, CarPlay e Android Auto.',
+  description: DEFAULT_DESCRIPTIONS[locale] ?? DEFAULT_DESCRIPTIONS.pt,
   openGraph: {
     type: 'website',
     locale: OG_LOCALES[locale] ?? 'pt_BR',

@@ -9,10 +9,19 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    pt: 'Suporte',
+    en: 'Support',
+    es: 'Soporte',
+  };
+  const descs: Record<string, string> = {
+    pt: 'Centro de ajuda do GT Overlander. Tópicos populares, FAQ aprofundado e abertura de ticket — pra resolver seu problema rápido.',
+    en: 'GT Overlander help center. Popular topics, in-depth FAQ and ticket submission — to get your problem solved fast.',
+    es: 'Centro de ayuda de GT Overlander. Temas populares, FAQ a fondo y apertura de tickets — para resolver tu problema rápido.',
+  };
   return {
-    title: 'Suporte',
-    description:
-    'Centro de ajuda do GT Overlander. Tópicos populares, FAQ aprofundado e abertura de ticket — pra resolver seu problema rápido.',
+    title: titles[locale] ?? titles.pt,
+    description: descs[locale] ?? descs.pt,
     alternates: getPageAlternates(locale, '/suporte'),
   };
 }

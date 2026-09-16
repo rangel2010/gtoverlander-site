@@ -9,10 +9,19 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    pt: 'Parcerias',
+    en: 'Partnerships',
+    es: 'Alianzas',
+  };
+  const descs: Record<string, string> = {
+    pt: 'Criadores, marcas e serviços de viagem que sustentam o ecossistema overlander. Afiliados, embaixadores, co-marketing e integrações.',
+    en: 'Creators, brands and travel services that sustain the overlander ecosystem. Affiliates, ambassadors, co-marketing and integrations.',
+    es: 'Creadores, marcas y servicios de viaje que sostienen el ecosistema overlander. Afiliados, embajadores, co-marketing e integraciones.',
+  };
   return {
-    title: 'Parcerias',
-    description:
-    'Criadores, marcas e serviços de viagem que sustentam o ecossistema overlander. Afiliados, embaixadores, co-marketing e integrações.',
+    title: titles[locale] ?? titles.pt,
+    description: descs[locale] ?? descs.pt,
     alternates: getPageAlternates(locale, '/parcerias'),
   };
 }
