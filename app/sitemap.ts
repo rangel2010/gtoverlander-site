@@ -2,8 +2,10 @@ import type { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/sanity/queries';
 
 const WWW = 'https://www.gtoverlander.com.br';
+// A home entra como '/'. Para EN/ES isso geraria '/en/', que o Next responde
+// com 308 pra '/en' — sitemap não deve listar URL que redireciona.
 const localePath = (locale: string, path: string) =>
-  locale === 'pt' ? WWW + path : WWW + '/' + locale + path;
+  locale === 'pt' ? WWW + path : WWW + '/' + locale + (path === '/' ? '' : path);
 
 // Rotas disponiveis nos 3 locales (tem traducao real)
 const MULTILINGUAL_ROUTES = [

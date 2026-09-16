@@ -9,10 +9,19 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    pt: 'Recursos',
+    en: 'Features',
+    es: 'Recursos',
+  };
+  const descs: Record<string, string> = {
+    pt: 'Roteiros com IA, base de waypoints, modo offline e comunidade overlander — tudo que você precisa pra viajar por terra.',
+    en: 'AI route planning, a waypoint database, offline mode and an overlander community — everything you need to travel overland.',
+    es: 'Rutas con IA, base de waypoints, modo offline y comunidad overlander — todo lo que necesitas para viajar por tierra.',
+  };
   return {
-    title: 'Recursos',
-    description:
-    'Roteiros com IA, base de waypoints, modo offline e comunidade overlander — tudo que você precisa pra viajar por terra.',
+    title: titles[locale] ?? titles.pt,
+    description: descs[locale] ?? descs.pt,
     alternates: getPageAlternates(locale, '/recursos'),
   };
 }

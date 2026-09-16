@@ -14,6 +14,9 @@ export async function generateMetadata({
     description:
     'Política de Privacidade do GT Overlander em conformidade com a LGPD. Como coletamos, usamos, compartilhamos e protegemos seus dados pessoais.',
     alternates: getPageAlternates(locale, '/privacidade'),
+    // Documento só existe em português: fora do sitemap e sem indexação
+    // em EN/ES, senão o Google indexa conteúdo PT como página em inglês.
+    ...(locale !== 'pt' && { robots: { index: false, follow: false } }),
   };
 }
 

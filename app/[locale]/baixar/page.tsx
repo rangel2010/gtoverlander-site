@@ -12,10 +12,19 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    pt: 'Baixar o GT Overlander — Web, Android e iPhone',
+    en: 'Download GT Overlander — Web, Android and iPhone',
+    es: 'Descargar GT Overlander — Web, Android y iPhone',
+  };
+  const descs: Record<string, string> = {
+    pt: 'Acesse o GT Overlander grátis: abra no navegador agora ou baixe para Android e iPhone. Compatível com CarPlay e Android Auto.',
+    en: 'Get GT Overlander free: open it in your browser now or download it for Android and iPhone. Works with CarPlay and Android Auto.',
+    es: 'Accede a GT Overlander gratis: ábrelo en el navegador ahora o descárgalo para Android y iPhone. Compatible con CarPlay y Android Auto.',
+  };
   return {
-    title: 'Baixar o GT Overlander — Web, Android e iPhone',
-    description:
-      'Acesse o GT Overlander grátis: abra no navegador agora ou baixe para Android e iPhone. Compatível com CarPlay e Android Auto.',
+    title: titles[locale] ?? titles.pt,
+    description: descs[locale] ?? descs.pt,
     alternates: getPageAlternates(locale, '/baixar'),
   };
 }

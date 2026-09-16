@@ -11,10 +11,19 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    pt: 'Perguntas frequentes',
+    en: 'Frequently asked questions',
+    es: 'Preguntas frecuentes',
+  };
+  const descs: Record<string, string> = {
+    pt: 'Dúvidas mais comuns sobre o GT Overlander — o app, como funciona, planos, conta e dados, Conta Business.',
+    en: 'The most common questions about GT Overlander — the app, how it works, plans, account and data, Business Account.',
+    es: 'Las dudas más comunes sobre GT Overlander — la app, cómo funciona, planes, cuenta y datos, Cuenta Business.',
+  };
   return {
-    title: 'Perguntas frequentes',
-    description:
-    'Dúvidas mais comuns sobre o GT Overlander — o app, como funciona, planos, conta e dados, Conta Business.',
+    title: titles[locale] ?? titles.pt,
+    description: descs[locale] ?? descs.pt,
     alternates: getPageAlternates(locale, '/faq'),
   };
 }

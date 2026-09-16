@@ -19,7 +19,10 @@ export const BASE_URL =
  */
 export function getPageAlternates(locale: string, path: string) {
   const www = 'https://www.gtoverlander.com.br';
-  const lp = (l: string) => (l === 'pt' ? `${www}${path}` : `${www}/${l}${path}`);
+  // A home chega como '/'. Sem esse ajuste EN/ES virariam '/en/', que o Next
+  // responde com 308 pra '/en' — canonical e sitemap apontando pra redirect.
+  const suffix = path === '/' ? '' : path;
+  const lp = (l: string) => (l === 'pt' ? `${www}${suffix || '/'}` : `${www}/${l}${suffix}`);
   return {
     canonical: lp(locale),
     languages: {

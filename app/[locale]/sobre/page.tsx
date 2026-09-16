@@ -14,10 +14,19 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    pt: 'Sobre',
+    en: 'About',
+    es: 'Acerca de',
+  };
+  const descs: Record<string, string> = {
+    pt: 'O GT Overlander é o ecossistema feito de ponta a ponta para quem viaja por terra — une planejamento com IA, waypoints curados e comunidade.',
+    en: 'GT Overlander is an ecosystem built end to end for people who travel overland — AI planning, curated waypoints and community in one place.',
+    es: 'GT Overlander es el ecosistema hecho de punta a punta para quienes viajan por tierra — planificación con IA, waypoints curados y comunidad.',
+  };
   return {
-    title: 'Sobre',
-    description:
-    'O GT Overlander é o ecossistema feito de ponta a ponta para quem viaja por terra — une planejamento com IA, waypoints curados e comunidade.',
+    title: titles[locale] ?? titles.pt,
+    description: descs[locale] ?? descs.pt,
     alternates: getPageAlternates(locale, '/sobre'),
   };
 }
