@@ -5,7 +5,9 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Button } from '../ui/button';
-import { getPostsByPillar } from '@/lib/sanity/queries';
+import { notFound } from 'next/navigation';
+import { Pagination } from '@/components/blog/pagination';
+import { getPillarPostsPage, totalPagesFor } from '@/lib/sanity/queries';
 import { sanityConfigured } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
 import {
@@ -35,9 +37,24 @@ const PILLAR_DESC_KEY: Record<Pillar, 'pillarDestinosDesc' | 'pillarPreparacaoDe
   'vida-overlander': 'pillarVidaOverlanderDesc',
 };
 
-export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; locale?: BlogLocale }) {
+export async function PillarPage({
+  pillar,
+  locale = 'pt',
+  page = 1,
+}: {
+  pillar: Pillar;
+  locale?: BlogLocale;
+  page?: number;
+}) {
   const t = await getTranslations('blogPage');
-  const posts = sanityConfigured ? await getPostsByPillar(pillar, locale) : [];
+  const { posts, total } = sanityConfigured
+    ? await getPillarPostsPage(pillar, locale, page)
+    : { posts: [], total: 0 };
+  const totalPages = totalPagesFor(total);
+
+  // Página fora do intervalo: 404 em vez de listagem vazia indexável.
+  if (page > totalPages) notFound();
+
   const otherPillars: Pillar[] = (
     ['destinos', 'preparacao', 'vida-overlander'] as Pillar[]
   ).filter((p) => p !== pillar);
@@ -116,6 +133,8 @@ export async function PillarPage({ pillar, locale = 'pt' }: { pillar: Pillar; lo
               })}
             </div>
           )}
+
+          <Pagination basePath={`/blog/${pillar}`} page={page} totalPages={totalPages} />
         </div>
       </section>
 

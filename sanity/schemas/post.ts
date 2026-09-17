@@ -38,8 +38,9 @@ export const postSchema = defineType({
       },
       validation: (Rule) =>
         Rule.required().custom((slug) => {
-          // Slugs reservados (que conflitam com pillar pages estáticas)
-          const reserved = ['destinos', 'preparacao', 'vida-overlander'];
+          // Slugs reservados: conflitam com as pillar pages estáticas e com o
+          // segmento de paginação (/blog/pagina/2).
+          const reserved = ['destinos', 'preparacao', 'vida-overlander', 'pagina'];
           if (slug?.current && reserved.includes(slug.current)) {
             return `Slug "${slug.current}" é reservado pra pillar page. Use outro.`;
           }

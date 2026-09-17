@@ -9,6 +9,22 @@ const nextConfig = {
   poweredByHeader: false,
   async redirects() {
     return [
+      // Página 1 da paginação mora no caminho base (/blog, /blog/destinos).
+      // .../pagina/1 mostrando a mesma listagem seria conteúdo duplicado.
+      // Resolvido aqui, na borda: redirect() de server component devolve 307
+      // sem header Location neste projeto — foi o que quebrou as rotas de
+      // recurso descontinuadas logo abaixo.
+      ...['', '/pt', '/en', '/es'].flatMap((prefix) => {
+        const to = prefix === '/pt' ? '' : prefix;
+        return ['/blog', '/blog/destinos', '/blog/preparacao', '/blog/vida-overlander'].map(
+          (base) => ({
+            source: `${prefix}${base}/pagina/1`,
+            destination: `${to}${base}`,
+            permanent: true,
+          })
+        );
+      }),
+
       // Rotas de recurso descontinuadas. Antes eram páginas que chamavam
       // redirect() de server component: o Next respondia 307 SEM header
       // Location, com corpo HTML marcado "index, follow" — o Googlebot não

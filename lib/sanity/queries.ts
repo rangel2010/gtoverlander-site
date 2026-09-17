@@ -52,24 +52,124 @@ export async function getAllPosts(locale: BlogLocale = 'pt'): Promise<PostListIt
 }
 
 /**
- * Lista posts de uma pillar específica filtrados por locale.
+ * Os N posts mais recentes. Usado pelo teaser da home, que mostra 3 — antes ele
+ * chamava getAllPosts e trazia os 63 inteiros pra descartar 60.
  */
-export async function getPostsByPillar(pillar: Pillar, locale: BlogLocale = 'pt'): Promise<PostListItem[]> {
+export async function getLatestPosts(locale: BlogLocale = 'pt', limit = 3): Promise<PostListItem[]> {
   if (!sanityClient) return [];
   try {
     return await sanityClient.fetch<PostListItem[]>(
-      `*[_type == "post" && category == $pillar && defined(slug.current) && publishedAt <= now()
+      `*[_type == "post" && defined(slug.current) && defined(publishedAt) && publishedAt <= now()
         && (locale == $locale || (!defined(locale) && $locale == "pt"))]
-        | order(publishedAt desc) {
+        | order(publishedAt desc) [0...$limit] {
           ${POST_LIST_FIELDS}
         }`,
-      { pillar, locale },
+      { locale, limit },
       { next: { revalidate: 60 } }
     );
   } catch (e) {
-    console.error('[sanity] getPostsByPillar error:', e);
+    console.error('[sanity] getLatestPosts error:', e);
     return [];
   }
+}
+
+/**
+ * Quantos artigos cada página da listagem mostra.
+ *
+ * O blog publica ~3 posts por semana. Sem paginação a /blog renderizava todos
+ * de uma vez — 63 artigos viravam 390KB de HTML, e em um ano passaria de 800KB.
+ * 12 fecha certinho na grade de 3 colunas.
+ */
+export const POSTS_PER_PAGE = 12;
+
+export interface PostsPage {
+  posts: PostListItem[];
+  /** Total de posts que casam com o filtro, não só os desta página. */
+  total: number;
+}
+
+const EMPTY_PAGE: PostsPage = { posts: [], total: 0 };
+
+// Filtro base da listagem. $excludeId tira o post em destaque, que tem seção
+// própria na página 1 e não deve reaparecer no meio da paginação. Quando não há
+// nada a excluir vai string vazia, que nunca casa com um _id — assim o filtro é
+// sempre a mesma expressão, sem ramo condicional no GROQ.
+const LIST_FILTER = `_type == "post"
+  && defined(slug.current) && defined(publishedAt) && publishedAt <= now()
+  && (locale == $locale || (!defined(locale) && $locale == "pt"))
+  && _id != $excludeId`;
+
+/**
+ * Uma página da listagem geral, com o total pra calcular quantas páginas existem.
+ * Fatia e contagem saem na mesma consulta — uma ida ao Sanity, não duas.
+ */
+export async function getPostsPage(
+  locale: BlogLocale = 'pt',
+  page = 1,
+  excludeId = ''
+): Promise<PostsPage> {
+  if (!sanityClient) return EMPTY_PAGE;
+  const { start, end } = sliceFor(page);
+  try {
+    return await sanityClient.fetch<PostsPage>(
+      `{
+        "posts": *[${LIST_FILTER}] | order(publishedAt desc) [${start}...${end}] {
+          ${POST_LIST_FIELDS}
+        },
+        "total": count(*[${LIST_FILTER}])
+      }`,
+      { locale, excludeId },
+      { next: { revalidate: 60 } }
+    );
+  } catch (e) {
+    console.error('[sanity] getPostsPage error:', e);
+    return EMPTY_PAGE;
+  }
+}
+
+/**
+ * Mesma coisa, restrito a uma pillar. Aqui não há post em destaque pra excluir.
+ */
+export async function getPillarPostsPage(
+  pillar: Pillar,
+  locale: BlogLocale = 'pt',
+  page = 1
+): Promise<PostsPage> {
+  if (!sanityClient) return EMPTY_PAGE;
+  const { start, end } = sliceFor(page);
+  const filter = `${LIST_FILTER} && category == $pillar`;
+  try {
+    return await sanityClient.fetch<PostsPage>(
+      `{
+        "posts": *[${filter}] | order(publishedAt desc) [${start}...${end}] {
+          ${POST_LIST_FIELDS}
+        },
+        "total": count(*[${filter}])
+      }`,
+      { pillar, locale, excludeId: '' },
+      { next: { revalidate: 60 } }
+    );
+  } catch (e) {
+    console.error('[sanity] getPillarPostsPage error:', e);
+    return EMPTY_PAGE;
+  }
+}
+
+/**
+ * Limites da fatia, interpolados direto na query em vez de irem como parâmetro:
+ * GROQ aceita variável em range, mas aqui isso é uma incerteza a menos e os
+ * valores nunca vêm crus da URL — o número da página é validado contra
+ * /^[1-9][0-9]*$/ na rota antes de chegar aqui, e Math.trunc fecha a porta.
+ */
+function sliceFor(page: number) {
+  const safe = Math.max(1, Math.trunc(page) || 1);
+  const start = (safe - 1) * POSTS_PER_PAGE;
+  return { start, end: start + POSTS_PER_PAGE };
+}
+
+/** Quantas páginas um total de posts ocupa. Sempre pelo menos 1. */
+export function totalPagesFor(total: number): number {
+  return Math.max(1, Math.ceil(total / POSTS_PER_PAGE));
 }
 
 /**
