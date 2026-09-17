@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { getAllPosts } from '@/lib/sanity/queries';
+import { getLatestPosts } from '@/lib/sanity/queries';
 import { sanityConfigured } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
 import { type Pillar, type BlogLocale } from '@/lib/sanity/types';
@@ -21,9 +21,9 @@ export async function BlogTeaser({ locale = 'pt' }: { locale?: BlogLocale }) {
   // Tenta buscar posts reais do Sanity filtrados por locale.
   // Se houver pelo menos 1 post real, mostra os reais (até 3).
   // Só cai em placeholder se não tiver nenhum.
-  const realPosts = sanityConfigured ? await getAllPosts(locale) : [];
+  const realPosts = sanityConfigured ? await getLatestPosts(locale, 3) : [];
   const showReal = realPosts.length >= 1;
-  const display = showReal ? realPosts.slice(0, 3) : null;
+  const display = showReal ? realPosts : null;
 
   return (
     <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
