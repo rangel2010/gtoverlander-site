@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 // Link do i18n (não o de 'next/link'): sem ele, artigo em ES/EN gera link
 // interno sem o prefixo /es ou /en e cai em 404 na rota PT.
 import { Link } from '@/i18n/navigation';
@@ -13,6 +13,7 @@ import {
   getPostBySlug,
   getAllPosts,
   getRelatedPosts,
+  findPostLocaleBySlug,
 } from '@/lib/sanity/queries';
 import { urlForImage } from '@/lib/sanity/image';
 import { PILLAR_TITLES } from '@/lib/sanity/types';
@@ -214,7 +215,24 @@ const markdownComponents = {
 export default async function PostPage({ params }: PageProps) {
   const locale = (params.locale ?? 'pt') as import('@/lib/sanity/types').BlogLocale;
   const post = await getPostBySlug(params.slug, locale);
-  if (!post) notFound();
+
+  if (!post) {
+    // O slug pode existir, só em outro idioma. /blog/<slug-en>,
+    // /es/blog/<slug-en> e /en/blog/<slug-es> vieram de dois bugs antigos (o
+    // hreflang montando URL sem prefixo, e os links do blog perdendo o prefixo
+    // de locale) — o Search Console tem 281 dessas em "Não encontrado (404)".
+    // Mandar o visitante pro artigo certo é melhor que devolver erro, e libera
+    // o orçamento de rastreamento gasto nelas.
+    const realLocale = await findPostLocaleBySlug(params.slug);
+    if (realLocale && realLocale !== locale) {
+      permanentRedirect(
+        realLocale === 'pt'
+          ? `/blog/${params.slug}`
+          : `/${realLocale}/blog/${params.slug}`
+      );
+    }
+    notFound();
+  }
 
   const related = await getRelatedPosts(post.slug, post.category, locale);
 

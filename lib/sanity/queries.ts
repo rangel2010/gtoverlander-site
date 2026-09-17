@@ -196,6 +196,41 @@ export async function getPostBySlug(slug: string, locale: BlogLocale = 'pt'): Pr
 }
 
 /**
+ * Em qual idioma esse slug existe?
+ *
+ * Serve pra URL que pede um slug sob o idioma errado — /blog/<slug-en>,
+ * /es/blog/<slug-en>, /en/blog/<slug-es>. Dois bugs antigos (o hreflang
+ * montando URL sem prefixo e os links do blog perdendo o prefixo de locale)
+ * espalharam centenas dessas combinações, e o Search Console acumulou 281 em
+ * "Não encontrado (404)". Sabendo o idioma real dá pra redirecionar em vez de
+ * devolver erro.
+ *
+ * Post sem locale definido conta como PT, igual ao resto das queries.
+ */
+export async function findPostLocaleBySlug(slug: string): Promise<BlogLocale | null> {
+  if (!sanityClient) return null;
+  try {
+    // Projeção em objeto, não `[0].locale`: aquele devolve null tanto pra
+    // "slug não existe" quanto pra "existe sem campo locale", e aí o redirect
+    // apontaria pra uma URL que também dá 404. coalesce resolve o default PT
+    // no próprio GROQ, e o objeto nulo distingue os dois casos.
+    const found = await sanityClient.fetch<{ locale: string } | null>(
+      `*[_type == "post" && slug.current == $slug
+        && defined(publishedAt) && publishedAt <= now()][0]{
+          "locale": coalesce(locale, "pt")
+        }`,
+      { slug },
+      { next: { revalidate: 60 } }
+    );
+    if (!found) return null;
+    return found.locale === 'en' || found.locale === 'es' ? found.locale : 'pt';
+  } catch (e) {
+    console.error('[sanity] findPostLocaleBySlug error:', e);
+    return null;
+  }
+}
+
+/**
  * Busca o post em destaque (featured == true) de um locale. Retorna null se não houver.
  */
 export async function getFeaturedPost(locale: BlogLocale = 'pt'): Promise<PostListItem | null> {
