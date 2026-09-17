@@ -24,5 +24,9 @@ export const config = {
   // - /studio (Sanity Studio, fora do [locale])
   // - /_next (assets internos do Next)
   // - arquivos com extensão (favicon.ico, og images, feed.xml, sitemap.xml, robots.txt, etc.)
-  matcher: ['/((?!api|studio|_next|.*\\..*).*)'],
+  // Prefixos ancorados: 'studio' solto também excluía /studio-qualquer-coisa,
+  // que então escapava do i18n e casava [locale] com um locale inválido. O
+  // layout chamava notFound() — e quando é o layout que lança, ele não envolve
+  // a própria 404: o documento sai sem <html> e a tela fica em branco.
+  matcher: ['/((?!api(?:/|$)|studio(?:/|$)|_next(?:/|$)|.*\\..*).*)'],
 };
