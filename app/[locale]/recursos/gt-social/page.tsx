@@ -14,7 +14,7 @@ export async function generateMetadata({
     title: 'GT Social',
     description:
     'A rede social dentro do GT. Siga overlanders, descubra rotas públicas testadas e adote roteiros que outros já completaram. Tudo liberado em qualquer plano.',
-    alternates: getPageAlternates(locale, '/recursos/gt-social'),
+    alternates: getPageAlternates(locale, '/recursos/gt-social', { soPt: true }),
     ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }

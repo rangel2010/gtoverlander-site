@@ -13,7 +13,7 @@ export async function generateMetadata({
     title: 'Termos de Uso',
     description:
     'Termos de Uso do GT Overlander. Condições para utilização da plataforma, regras de conduta, direitos e responsabilidades.',
-    alternates: getPageAlternates(locale, '/termos'),
+    alternates: getPageAlternates(locale, '/termos', { soPt: true }),
     // Documento só existe em português: fora do sitemap e sem indexação
     // em EN/ES, senão o Google indexa conteúdo PT como página em inglês.
     ...(locale !== 'pt' && { robots: { index: false, follow: false } }),

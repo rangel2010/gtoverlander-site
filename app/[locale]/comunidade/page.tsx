@@ -13,7 +13,7 @@ export async function generateMetadata({
     title: 'Código de Conduta da Comunidade',
     description:
     'Código de Conduta da Comunidade GT Overlander. Princípios, comportamentos esperados e regras de convivência entre overlanders.',
-    alternates: getPageAlternates(locale, '/comunidade'),
+    alternates: getPageAlternates(locale, '/comunidade', { soPt: true }),
     // Documento só existe em português: fora do sitemap e sem indexação
     // em EN/ES, senão o Google indexa conteúdo PT como página em inglês.
     ...(locale !== 'pt' && { robots: { index: false, follow: false } }),

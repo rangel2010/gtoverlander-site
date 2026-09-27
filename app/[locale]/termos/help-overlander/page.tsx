@@ -13,7 +13,7 @@ export async function generateMetadata({
     title: 'Anexo I — Termo de Assunção de Risco (Help Overlander)',
     description:
     'Termo específico de assunção de risco para uso da funcionalidade Help Overlander. Aceite obrigatório para ativação da funcionalidade.',
-    alternates: getPageAlternates(locale, '/termos/help-overlander'),
+    alternates: getPageAlternates(locale, '/termos/help-overlander', { soPt: true }),
     // Documento só existe em português: fora do sitemap e sem indexação
     // em EN/ES, senão o Google indexa conteúdo PT como página em inglês.
     ...(locale !== 'pt' && { robots: { index: false, follow: false } }),

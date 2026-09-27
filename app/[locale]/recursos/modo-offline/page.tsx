@@ -14,7 +14,7 @@ export async function generateMetadata({
     title: 'Modo Offline',
     description:
       'O mapa e os pontos do seu país ficam no seu celular pra sempre, em qualquer plano. Sem sinal, o GT continua desenhando o mapa e mostrando o caminho até o ponto, sem depender de nenhum outro app.',
-    alternates: getPageAlternates(locale, '/recursos/modo-offline'),
+    alternates: getPageAlternates(locale, '/recursos/modo-offline', { soPt: true }),
     ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }

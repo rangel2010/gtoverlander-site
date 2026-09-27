@@ -16,8 +16,13 @@ export const BASE_URL =
  * PT sem prefixo → https://www.gtoverlander.com.br/blog/meu-post
  * EN com prefixo → https://www.gtoverlander.com.br/en/blog/meu-post
  * ES com prefixo → https://www.gtoverlander.com.br/es/blog/meu-post
+ *
+ * `soPt`: página que só existe de verdade em português. As versões en/es
+ * respondem com texto em português e `noindex` — anunciar essas versões como
+ * tradução (hreflang) é apontar pro Google uma página que ele não pode indexar.
+ * Com `soPt`, a página só se anuncia em pt-BR + x-default.
  */
-export function getPageAlternates(locale: string, path: string) {
+export function getPageAlternates(locale: string, path: string, opts?: { soPt?: boolean }) {
   const www = 'https://www.gtoverlander.com.br';
   // A home chega como '/'. Sem esse ajuste EN/ES virariam '/en/', que o Next
   // responde com 308 pra '/en' — canonical e sitemap apontando pra redirect.
@@ -25,12 +30,14 @@ export function getPageAlternates(locale: string, path: string) {
   const lp = (l: string) => (l === 'pt' ? `${www}${suffix || '/'}` : `${www}/${l}${suffix}`);
   return {
     canonical: lp(locale),
-    languages: {
-      'pt-BR': lp('pt'),
-      en: lp('en'),
-      es: lp('es'),
-      'x-default': lp('pt'),
-    },
+    languages: opts?.soPt
+      ? { 'pt-BR': lp('pt'), 'x-default': lp('pt') }
+      : {
+          'pt-BR': lp('pt'),
+          en: lp('en'),
+          es: lp('es'),
+          'x-default': lp('pt'),
+        },
   };
 }
 
@@ -198,6 +205,16 @@ export function productPlansLd() {
 const CONTENT_LANG: Record<string, string> = { pt: 'pt-BR', en: 'en', es: 'es' };
 const localePrefix = (locale: string) => (locale === 'pt' ? '' : `/${locale}`);
 
+/**
+ * Data real da última modificação de um post. Post agendado é criado antes de
+ * ir ao ar, então o carimbo do Sanity pode ser anterior à publicação — nesse
+ * caso vale a publicação.
+ */
+export function postModifiedAt(post: { publishedAt: string; _updatedAt?: string }): string {
+  if (!post._updatedAt) return post.publishedAt;
+  return new Date(post._updatedAt) > new Date(post.publishedAt) ? post._updatedAt : post.publishedAt;
+}
+
 export function articleLd(post: PostFull, locale = 'pt') {
   const imageUrl =
     urlForImage(post.coverImage)?.width(1200).height(630).url() ?? null;
@@ -211,7 +228,7 @@ export function articleLd(post: PostFull, locale = 'pt') {
     url: postUrl,
     image: imageUrl ? [imageUrl] : undefined,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: postModifiedAt(post),
     inLanguage: CONTENT_LANG[locale] ?? 'pt-BR',
     author: {
       '@type': 'Person',

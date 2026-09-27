@@ -7,16 +7,21 @@ import { jsonLdScriptProps, BASE_URL } from '@/lib/seo';
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: 'Dicas em Video',
+  title: 'Dicas em vídeo',
   description:
-    'Shorts com dicas praticas de overlanding - roteiros, preparacao de veiculo, vida na estrada e tudo que voce precisa saber antes de partir.',
+    'Vídeos curtos com dicas práticas de overlanding: roteiros, preparação do veículo, vida na estrada e o que saber antes de partir.',
+  // Página só em português (o menu esconde /dicas em en/es).
   alternates: {
     canonical: `${BASE_URL}/dicas`,
+    languages: { 'pt-BR': `${BASE_URL}/dicas`, 'x-default': `${BASE_URL}/dicas` },
   },
   openGraph: {
-    title: 'Dicas em Video - GT Overlander',
-    description: 'Dicas rapidas de overlanding em video. Roteiros, preparacao, vida na estrada.',
+    title: 'Dicas em vídeo · GT Overlander',
+    description: 'Dicas rápidas de overlanding em vídeo: roteiros, preparação e vida na estrada.',
     type: 'website',
+    // Definir openGraph aqui substitui o do layout inteiro — sem isto a página
+    // ficava sem imagem ao ser compartilhada.
+    images: [{ url: `${BASE_URL}/opengraph-image.png`, width: 1200, height: 630 }],
   },
 };
 
@@ -28,7 +33,7 @@ function videosLd(shorts: Awaited<ReturnType<typeof getChannelShorts>>) {
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Dicas de Overlanding em Video - GT Overlander',
+    name: 'Dicas de overlanding em vídeo · GT Overlander',
     url: `${BASE_URL}/dicas`,
     itemListElement: shorts.map((v, i) => ({
       '@type': 'ListItem',

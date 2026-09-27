@@ -14,7 +14,7 @@ export async function generateMetadata({
     title: 'GT Explorer',
     description:
     'Sua jornada vira XP, níveis, conquistas e ranking regional. Cada km rodado, cada ponto validado, cada rota concluída conta. A estrada vira progressão.',
-    alternates: getPageAlternates(locale, '/recursos/explorer'),
+    alternates: getPageAlternates(locale, '/recursos/explorer', { soPt: true }),
     ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }

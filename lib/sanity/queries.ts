@@ -14,6 +14,7 @@ const POST_LIST_FIELDS = `
   imagemSocial,
   authorName,
   publishedAt,
+  _updatedAt,
   tags,
   featured,
   locale,

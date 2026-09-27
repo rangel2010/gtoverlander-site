@@ -14,8 +14,13 @@ export async function generateMetadata({
     en: 'Destinations, preparation and overlander life for those who travel overland. Routes, tips and stories from life on the road.',
     es: 'Destinos, preparación y vida overlander para quienes viajan por tierra. Rutas, consejos e historias de la vida en la carretera.',
   };
+  const titles: Record<string, string> = {
+    pt: 'Blog de viagem overland',
+    en: 'Overland travel blog',
+    es: 'Blog de viajes overland',
+  };
   return {
-    title: 'Blog',
+    title: titles[locale] ?? titles.pt,
     description: descs[locale] ?? descs.pt,
     alternates: getPageAlternates(locale, '/blog'),
   };

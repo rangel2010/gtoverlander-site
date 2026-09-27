@@ -32,7 +32,7 @@ export async function generateMetadata({
     title: 'Help Overlander',
     description:
     'Pane na estrada, pneu, bateria ou combustível? Sinaliza no Help Overlander e quem está perto e disposto a ajudar aparece. Comunidade que cuida de comunidade.',
-    alternates: getPageAlternates(locale, '/recursos/help-overlander'),
+    alternates: getPageAlternates(locale, '/recursos/help-overlander', { soPt: true }),
     ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }

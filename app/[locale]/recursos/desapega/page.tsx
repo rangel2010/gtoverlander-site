@@ -14,7 +14,7 @@ export async function generateMetadata({
     title: 'GT Desapega',
     description:
     'Marketplace overlander entre quem realmente viaja. Compre e venda equipamento, peças e acessórios. Vitrine entre overlanders, sem intermediação.',
-    alternates: getPageAlternates(locale, '/recursos/desapega'),
+    alternates: getPageAlternates(locale, '/recursos/desapega', { soPt: true }),
     ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }

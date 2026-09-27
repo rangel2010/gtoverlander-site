@@ -33,7 +33,7 @@ export async function GET() {
 
 > Aplicativo de planejamento de rotas para viajantes overlander — roteiros com IA conversacional, base própria de mais de ${PRODUCT.waypointCountLabel} waypoints em ${PRODUCT.countries} países, Modo Offline, CarPlay e Android Auto. Disponível para ${plataformas}.
 
-GT Overlander é o ecossistema para quem viaja por terra: planejamento de rotas com IA, uma base própria de pontos de interesse relevantes para overlanding (postos, campings, oficinas, atrativos, fronteiras), modo offline com mapas e dados por país, e uma comunidade de viajantes (GT Social, Help Overlander, GT Desapega).
+GT Overlander é o ecossistema para quem viaja por terra: planejamento de rotas com IA, uma base própria de pontos de interesse relevantes para overlanding (postos, campings, oficinas, atrativos, fronteiras), modo offline com mapas e dados por país, e uma comunidade de viajantes (GT Social, GT Desapega).
 
 ## Produto
 

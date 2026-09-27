@@ -45,6 +45,7 @@ export interface PostListItem {
   imagemSocial?: SanityImage; // imagem pré-tratada para Instagram/Facebook (opcional)
   authorName: string;
   publishedAt: string;
+  _updatedAt?: string; // carimbo do Sanity: muda a cada edição salva
   readingTime?: number;
   tags?: string[];
   featured?: boolean;

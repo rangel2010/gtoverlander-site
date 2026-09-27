@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/sanity/queries';
+import { postModifiedAt } from '@/lib/seo';
 
 const WWW = 'https://www.gtoverlander.com.br';
 // A home entra como '/'. Para EN/ES isso geraria '/en/', que o Next responde
@@ -42,17 +43,45 @@ const PT_ONLY_ROUTES = [
   { path: '/termos/help-overlander',   changeFreq: 'yearly'  as const, priority: 0.3 },
   { path: '/termos/conta-business',    changeFreq: 'yearly'  as const, priority: 0.3 },
   { path: '/comunidade',               changeFreq: 'yearly'  as const, priority: 0.4 },
+  { path: '/demo',                     changeFreq: 'monthly' as const, priority: 0.5 },
 ];
+
+// Datas de modificação (27/09/2026): antes, toda página fixa saía com
+// lastModified = agora, renovado a cada hora. Data que não bate com mudança
+// real ensina o Google a ignorar o campo — inclusive nos posts, onde ele vale.
+// Agora: post leva a data da última edição (postModifiedAt); o blog e os
+// pilares levam a do post mais recente; página fixa não informa data.
+const BLOG_HUBS = new Set(['/blog', '/blog/destinos', '/blog/preparacao', '/blog/vida-overlander']);
 
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
+  let ptPosts: Awaited<ReturnType<typeof getAllPosts>> = [];
+  let enPosts: typeof ptPosts = [];
+  let esPosts: typeof ptPosts = [];
+  try {
+    [ptPosts, enPosts, esPosts] = await Promise.all([
+      getAllPosts('pt'),
+      getAllPosts('en'),
+      getAllPosts('es'),
+    ]);
+  } catch (e) {
+    console.error('[sitemap] Falha ao buscar posts do Sanity:', e);
+  }
+  const postsByLocale = { pt: ptPosts, en: enPosts, es: esPosts };
+  const latestPostDate = (locale: 'pt' | 'en' | 'es', pillar?: string) => {
+    const dates = postsByLocale[locale]
+      .filter((p) => !pillar || p.category === pillar)
+      .map((p) => new Date(postModifiedAt(p)).getTime());
+    return dates.length ? new Date(Math.max(...dates)) : undefined;
+  };
 
   const multilingualEntries: MetadataRoute.Sitemap = MULTILINGUAL_ROUTES.flatMap((r) =>
     (['pt', 'en', 'es'] as const).map((locale) => ({
       url: localePath(locale, r.path || '/'),
-      lastModified: now,
+      lastModified: BLOG_HUBS.has(r.path)
+        ? latestPostDate(locale, r.path === '/blog' ? undefined : r.path.replace('/blog/', ''))
+        : undefined,
       changeFrequency: r.changeFreq,
       priority: locale === 'pt' ? r.priority : r.priority * 0.9,
     }))
@@ -60,35 +89,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const ptOnlyEntries: MetadataRoute.Sitemap = PT_ONLY_ROUTES.map((r) => ({
     url: WWW + r.path,
-    lastModified: now,
     changeFrequency: r.changeFreq,
     priority: r.priority,
   }));
 
-  let postEntries: MetadataRoute.Sitemap = [];
-  try {
-    const [ptPosts, enPosts, esPosts] = await Promise.all([
-      getAllPosts('pt'),
-      getAllPosts('en'),
-      getAllPosts('es'),
-    ]);
+  const toEntries = (posts: typeof ptPosts, locale: string): MetadataRoute.Sitemap =>
+    posts.map((post) => ({
+      url: localePath(locale, '/blog/' + post.slug),
+      lastModified: new Date(postModifiedAt(post)),
+      changeFrequency: 'monthly' as const,
+      priority: locale === 'pt' ? 0.7 : 0.63,
+    }));
 
-    const toEntries = (posts: typeof ptPosts, locale: string): MetadataRoute.Sitemap =>
-      posts.map((post) => ({
-        url: localePath(locale, '/blog/' + post.slug),
-        lastModified: post.publishedAt ? new Date(post.publishedAt) : now,
-        changeFrequency: 'monthly' as const,
-        priority: locale === 'pt' ? 0.7 : 0.63,
-      }));
-
-    postEntries = [
-      ...toEntries(ptPosts, 'pt'),
-      ...toEntries(enPosts, 'en'),
-      ...toEntries(esPosts, 'es'),
-    ];
-  } catch (e) {
-    console.error('[sitemap] Falha ao buscar posts do Sanity:', e);
-  }
+  const postEntries: MetadataRoute.Sitemap = [
+    ...toEntries(ptPosts, 'pt'),
+    ...toEntries(enPosts, 'en'),
+    ...toEntries(esPosts, 'es'),
+  ];
 
   return [...multilingualEntries, ...ptOnlyEntries, ...postEntries];
 }

@@ -26,8 +26,7 @@ import {
   articleLd,
   breadcrumbLd,
   jsonLdScriptProps,
-  DEFAULT_AUTHOR_BIO,
-} from '@/lib/seo';
+  DEFAULT_AUTHOR_BIO, postModifiedAt } from '@/lib/seo';
 import { getTranslations } from 'next-intl/server';
 
 interface PageProps {
@@ -57,7 +56,10 @@ export async function generateMetadata({
   const imageUrl = urlForImage(post.coverImage)?.width(1200).height(630).url();
 
   return {
-    title: post.title,
+    // O layout acrescenta " · GT Overlander" (16 caracteres). O Google corta
+    // o título por volta de 60; se o título do post já ocupa esse espaço, o
+    // sufixo só empurra o fim da frase pra fora. Nesses casos, sai sem sufixo.
+    title: post.title.length > 44 ? { absolute: post.title } : post.title,
     description: post.description,
     // Blog posts são escritos nativamente por locale — só gera hreflang
     // dos idiomas que realmente existem (via linkedTranslations), evitando
@@ -93,6 +95,7 @@ export async function generateMetadata({
       description: post.description,
       type: 'article',
       publishedTime: post.publishedAt,
+      modifiedTime: postModifiedAt(post),
       authors: [post.authorName],
       images: imageUrl ? [{ url: imageUrl, width: 1200, height: 630, alt: post.coverImageAlt }] : [],
     },
@@ -117,8 +120,10 @@ function formatDate(iso: string, locale = 'pt') {
 
 // Componentes customizados pra renderizar markdown com a paleta GT
 const markdownComponents = {
+  // "# " no corpo do post vira H2: a página já tem o H1 (o título do post).
+  // Onze posts antigos começam o texto com um "# título" e ficavam com dois H1.
   h1: ({ children }: { children?: React.ReactNode }) => (
-    <h1 className="text-3xl md:text-4xl text-gt-text mt-12 mb-6">{children}</h1>
+    <h2 className="text-3xl md:text-4xl text-gt-text mt-12 mb-6">{children}</h2>
   ),
   h2: ({ children }: { children?: React.ReactNode }) => (
     <h2 className="text-2xl md:text-3xl text-gt-text mt-12 mb-5">{children}</h2>
