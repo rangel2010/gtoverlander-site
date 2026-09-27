@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { getTranslations, getLocale } from 'next-intl/server';
 import { Button } from '../ui/button';
 import { getStats, porExtenso } from '@/lib/stats';
+import { MOSTRAR_WEBAPP } from '@/lib/product-config';
 
 export async function Hero() {
   const t = await getTranslations('home.hero');
@@ -48,7 +49,7 @@ export async function Hero() {
           {/* text-muted (não dim): sobre o verde do hero, o dim dá contraste
               2,76:1 e reprova no WCAG AA. O muted sobe pra 5,37:1. */}
           <p className="text-[11px] uppercase tracking-[0.15em] text-gt-text-muted mt-8 font-sans">
-            {t('plataformas')}
+            {t(MOSTRAR_WEBAPP ? 'plataformas' : 'plataformasSemWeb')}
           </p>
         </div>
 

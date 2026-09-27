@@ -12,16 +12,30 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-  const titles: Record<string, string> = {
-    pt: 'Baixar o GT Overlander — Web, Android e iPhone',
-    en: 'Download GT Overlander — Web, Android and iPhone',
-    es: 'Descargar GT Overlander — Web, Android y iPhone',
-  };
-  const descs: Record<string, string> = {
-    pt: 'Acesse o GT Overlander grátis: abra no navegador agora ou baixe para Android e iPhone. Compatível com CarPlay e Android Auto.',
-    en: 'Get GT Overlander free: open it in your browser now or download it for Android and iPhone. Works with CarPlay and Android Auto.',
-    es: 'Accede a GT Overlander gratis: ábrelo en el navegador ahora o descárgalo para Android y iPhone. Compatible con CarPlay y Android Auto.',
-  };
+  // Com o webapp fechado ao público (MOSTRAR_WEBAPP = false), o título e a
+  // descrição não podem prometer o navegador. Ver o comentário em product-config.
+  const titles: Record<string, string> = MOSTRAR_WEBAPP
+    ? {
+        pt: 'Baixar o GT Overlander — Web, Android e iPhone',
+        en: 'Download GT Overlander — Web, Android and iPhone',
+        es: 'Descargar GT Overlander — Web, Android y iPhone',
+      }
+    : {
+        pt: 'Baixar o GT Overlander — Android e iPhone',
+        en: 'Download GT Overlander — Android and iPhone',
+        es: 'Descargar GT Overlander — Android y iPhone',
+      };
+  const descs: Record<string, string> = MOSTRAR_WEBAPP
+    ? {
+        pt: 'Acesse o GT Overlander grátis: abra no navegador agora ou baixe para Android e iPhone. Compatível com CarPlay e Android Auto.',
+        en: 'Get GT Overlander free: open it in your browser now or download it for Android and iPhone. Works with CarPlay and Android Auto.',
+        es: 'Accede a GT Overlander gratis: ábrelo en el navegador ahora o descárgalo para Android y iPhone. Compatible con CarPlay y Android Auto.',
+      }
+    : {
+        pt: 'Baixe o GT Overlander grátis para Android e iPhone. Compatível com CarPlay e Android Auto.',
+        en: 'Get GT Overlander free for Android and iPhone. Works with CarPlay and Android Auto.',
+        es: 'Descarga GT Overlander gratis para Android e iPhone. Compatible con CarPlay y Android Auto.',
+      };
   return {
     title: titles[locale] ?? titles.pt,
     description: descs[locale] ?? descs.pt,
@@ -53,7 +67,7 @@ export default async function BaixarPage({
               {t('titulo')}
             </h1>
             <p className="text-base md:text-lg text-gt-text-muted leading-relaxed mb-12 font-sans max-w-xl mx-auto">
-              {t('desc')}
+              {t(MOSTRAR_WEBAPP ? 'desc' : 'descSemWeb')}
             </p>
 
             {/* CTAs com detecção de dispositivo */}

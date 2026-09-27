@@ -5,11 +5,12 @@
 // pelos modelos, mas facilita citação e resumo corretos quando consultado.
 
 import { getAllPosts } from '@/lib/sanity/queries';
-import { PRODUCT, formatPrice } from '@/lib/product-config';
+import { PRODUCT, formatPrice, MOSTRAR_WEBAPP } from '@/lib/product-config';
 
 const SITE_URL = 'https://www.gtoverlander.com.br';
 
 export async function GET() {
+  const plataformas = MOSTRAR_WEBAPP ? 'iOS, Android e Web' : 'iOS e Android';
   let recentPosts: { title: string; description: string; slug: string }[] = [];
   try {
     const posts = await getAllPosts('pt');
@@ -30,7 +31,7 @@ export async function GET() {
 
   const txt = `# GT Overlander
 
-> Aplicativo de planejamento de rotas para viajantes overlander — roteiros com IA conversacional, base própria de mais de ${PRODUCT.waypointCountLabel} waypoints em ${PRODUCT.countries} países, Modo Offline, CarPlay e Android Auto. Disponível para iOS, Android e Web.
+> Aplicativo de planejamento de rotas para viajantes overlander — roteiros com IA conversacional, base própria de mais de ${PRODUCT.waypointCountLabel} waypoints em ${PRODUCT.countries} países, Modo Offline, CarPlay e Android Auto. Disponível para ${plataformas}.
 
 GT Overlander é o ecossistema para quem viaja por terra: planejamento de rotas com IA, uma base própria de pontos de interesse relevantes para overlanding (postos, campings, oficinas, atrativos, fronteiras), modo offline com mapas e dados por país, e uma comunidade de viajantes (GT Social, Help Overlander, GT Desapega).
 
@@ -40,7 +41,7 @@ GT Overlander é o ecossistema para quem viaja por terra: planejamento de rotas 
 - Base própria de ${PRODUCT.waypointCountLabel} waypoints em ${PRODUCT.countries} países, organizados em ${PRODUCT.categories} categorias
 - Modo Offline: mapas e waypoints por país, sem internet
 - Integração CarPlay e Android Auto
-- Disponível em iOS, Android e Web (${SITE_URL}/baixar)
+- Disponível em ${plataformas} (${SITE_URL}/baixar)
 
 ## Planos
 

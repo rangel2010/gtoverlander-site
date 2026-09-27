@@ -47,6 +47,7 @@
       "desc": "Descreva a viagem em linguagem natural. Primeiro a IA monta o trajeto — estradas, cidades e destino. Depois você completa: paradas, postos, hospedagem e campings.",
       "ctaVerComo": "Ver como funciona",
       "plataformas": "App Store · Play Store · Web",
+      "plataformasSemWeb": "App Store · Play Store",
       "appAlt": "Tela inicial do app GT Overlander mostrando o resumo de rotas criadas, km planejados e waypoints, os atalhos para Rotas Públicas da Comunidade e Meus Roteiros Salvos, e o botão Comece um novo roteiro"
     },
     "comoFunciona": {
@@ -192,7 +193,8 @@
       "n2c": "rotas ativas dentro do app",
       "n3c": "de waypoints na nossa base — ajude a crescer ainda mais",
       "n4c": "países cobertos",
-      "rodape": "App em iOS, Android e Web — compatível com CarPlay e Android Auto, em 3 idiomas (português, inglês, espanhol)."
+      "rodape": "App em iOS, Android e Web — compatível com CarPlay e Android Auto, em 3 idiomas (português, inglês, espanhol).",
+      "rodapeSemWeb": "App em iOS e Android — compatível com CarPlay e Android Auto, em 3 idiomas (português, inglês, espanhol)."
     },
     "proximas": {
       "titulo": "Pra onde vamos",
@@ -399,6 +401,7 @@
     "cat1a1": "É um app de planejamento de rotas pra quem viaja por terra — de carro, moto, 4x4 ou motorhome, em qualquer lugar do mundo. Serve tanto pra grandes expedições quanto pra uma viagem de fim de semana. Você descreve a viagem em linguagem natural pra uma IA que monta o trajeto, e completa com paradas da nossa base de mais de 4 milhões de waypoints.",
     "cat1q2": "Em quais plataformas funciona?",
     "cat1a2": "iOS, Android e Web (acesso pelo computador). Compatível com CarPlay e Android Auto. Tudo sincronizado entre dispositivos.",
+    "cat1a2SemWeb": "iOS e Android. Compatível com CarPlay e Android Auto. Tudo sincronizado entre dispositivos.",
     "cat1q3": "Em quais idiomas?",
     "cat1a3": "Português, inglês e espanhol. Você descreve a viagem no idioma que preferir.",
     "cat1q4": "Custa quanto?",
@@ -598,6 +601,7 @@
     "label": "Free pra sempre",
     "titulo": "Comece agora — grátis",
     "desc": "Disponível no navegador, no Android e no iPhone. Sem cartão, sem trial, sem compromisso.",
+    "descSemWeb": "Disponível no Android e no iPhone. Sem cartão, sem trial, sem compromisso.",
     "recomendado": "Recomendado",
     "webLabel": "Abrir no navegador",
     "webSub": "Sem download — funciona agora",

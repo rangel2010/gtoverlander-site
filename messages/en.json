@@ -47,6 +47,7 @@
       "desc": "Describe your trip in natural language. First the AI builds the route — roads, cities and destination. Then you complete it: stops, fuel, accommodation and campsites.",
       "ctaVerComo": "See how it works",
       "plataformas": "App Store · Play Store · Web",
+      "plataformasSemWeb": "App Store · Play Store",
       "appAlt": "GT Overlander app home screen showing the summary of routes created, kilometers planned and waypoints, shortcuts to Community Public Routes and My Saved Itineraries, and the Start a new route button"
     },
     "comoFunciona": {
@@ -192,7 +193,8 @@
       "n2c": "active routes inside the app",
       "n3c": "waypoints in our database — help us grow even more",
       "n4c": "countries covered",
-      "rodape": "App on iOS, Android and Web — compatible with CarPlay and Android Auto, in 3 languages (Portuguese, English, Spanish)."
+      "rodape": "App on iOS, Android and Web — compatible with CarPlay and Android Auto, in 3 languages (Portuguese, English, Spanish).",
+      "rodapeSemWeb": "App on iOS and Android — compatible with CarPlay and Android Auto, in 3 languages (Portuguese, English, Spanish)."
     },
     "proximas": {
       "titulo": "Where we're going",
@@ -399,6 +401,7 @@
     "cat1a1": "It's a route planning app for those who travel overland — by car, motorcycle, 4x4 or motorhome, anywhere in the world. Works for major expeditions and weekend trips alike. You describe the trip in natural language to an AI that builds the route, and complete it with stops from our database of over 4 million waypoints.",
     "cat1q2": "What platforms does it work on?",
     "cat1a2": "iOS, Android and Web (desktop access). Compatible with CarPlay and Android Auto. Everything synced across devices.",
+    "cat1a2SemWeb": "iOS and Android. Compatible with CarPlay and Android Auto. Everything synced across devices.",
     "cat1q3": "What languages?",
     "cat1a3": "Portuguese, English and Spanish. You describe your trip in whichever language you prefer.",
     "cat1q4": "How much does it cost?",
@@ -598,6 +601,7 @@
     "label": "Free forever",
     "titulo": "Get started — free",
     "desc": "Available on the web, Android and iPhone. No credit card, no trial, no commitment.",
+    "descSemWeb": "Available on Android and iPhone. No credit card, no trial, no commitment.",
     "recomendado": "Recommended",
     "webLabel": "Open in browser",
     "webSub": "No download — works right now",

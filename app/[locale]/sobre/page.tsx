@@ -8,6 +8,7 @@ import { aboutPagePersonLd, jsonLdScriptProps,
 } from '@/lib/seo';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { getStats, porExtenso } from '@/lib/stats';
+import { MOSTRAR_WEBAPP } from '@/lib/product-config';
 
 export async function generateMetadata({
   params: { locale },
@@ -175,7 +176,7 @@ export default async function SobrePage({
             ))}
           </div>
           <p className="text-sm text-gt-text-muted mt-10 font-sans">
-            {t('numeros.rodape')}
+            {t(MOSTRAR_WEBAPP ? 'numeros.rodape' : 'numeros.rodapeSemWeb')}
           </p>
         </div>
       </section>

@@ -47,6 +47,7 @@
       "desc": "Describe tu viaje en lenguaje natural. Primero la IA traza la ruta — carreteras, ciudades y destino. Luego tú completas: paradas, combustible, alojamiento y campings.",
       "ctaVerComo": "Ver cómo funciona",
       "plataformas": "App Store · Play Store · Web",
+      "plataformasSemWeb": "App Store · Play Store",
       "appAlt": "Pantalla de inicio de GT Overlander mostrando el resumen de rutas creadas, kilómetros planificados y waypoints, los accesos a Rutas Públicas de la Comunidad y Mis Itinerarios Guardados, y el botón Comienza una nueva ruta"
     },
     "comoFunciona": {
@@ -192,7 +193,8 @@
       "n2c": "rutas activas dentro de la app",
       "n3c": "de waypoints en nuestra base — ayúdanos a crecer aún más",
       "n4c": "países cubiertos",
-      "rodape": "App en iOS, Android y Web — compatible con CarPlay y Android Auto, en 3 idiomas (portugués, inglés, español)."
+      "rodape": "App en iOS, Android y Web — compatible con CarPlay y Android Auto, en 3 idiomas (portugués, inglés, español).",
+      "rodapeSemWeb": "App en iOS y Android — compatible con CarPlay y Android Auto, en 3 idiomas (portugués, inglés, español)."
     },
     "proximas": {
       "titulo": "A dónde vamos",
@@ -399,6 +401,7 @@
     "cat1a1": "Es una app de planificación de rutas para quienes viajan por tierra — en auto, moto, 4x4 o motorhome, en cualquier lugar del mundo. Funciona tanto para grandes expediciones como para un viaje de fin de semana. Describes el viaje en lenguaje natural a una IA que traza la ruta, y la completas con paradas de nuestra base de más de 4 millones de waypoints.",
     "cat1q2": "¿En qué plataformas funciona?",
     "cat1a2": "iOS, Android y Web (acceso por ordenador). Compatible con CarPlay y Android Auto. Todo sincronizado entre dispositivos.",
+    "cat1a2SemWeb": "iOS y Android. Compatible con CarPlay y Android Auto. Todo sincronizado entre dispositivos.",
     "cat1q3": "¿En qué idiomas?",
     "cat1a3": "Portugués, inglés y español. Describes tu viaje en el idioma que prefieras.",
     "cat1q4": "¿Cuánto cuesta?",
@@ -598,6 +601,7 @@
     "label": "Gratis para siempre",
     "titulo": "Empieza ahora — gratis",
     "desc": "Disponible en el navegador, Android e iPhone. Sin tarjeta, sin prueba, sin compromiso.",
+    "descSemWeb": "Disponible en Android e iPhone. Sin tarjeta, sin prueba, sin compromiso.",
     "recomendado": "Recomendado",
     "webLabel": "Abrir en el navegador",
     "webSub": "Sin descarga — funciona ahora",

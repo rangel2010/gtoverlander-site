@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
+import { MOSTRAR_WEBAPP } from '@/lib/product-config';
 import { faqPageLd, jsonLdScriptProps,
   getPageAlternates
 } from '@/lib/seo';
@@ -41,7 +42,7 @@ export default async function FaqPage({
       titulo: t('cat1titulo'),
       perguntas: [
         { q: t('cat1q1'), a: t('cat1a1') },
-        { q: t('cat1q2'), a: t('cat1a2') },
+        { q: t('cat1q2'), a: t(MOSTRAR_WEBAPP ? 'cat1a2' : 'cat1a2SemWeb') },
         { q: t('cat1q3'), a: t('cat1a3') },
         { q: t('cat1q4'), a: t('cat1a4') },
         { q: t('cat1q5'), a: t('cat1a5') },

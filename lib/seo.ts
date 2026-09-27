@@ -4,7 +4,7 @@
 
 import { urlForImage } from '@/lib/sanity/image';
 import type { PostFull, PostListItem } from '@/lib/sanity/types';
-import { PRODUCT } from '@/lib/product-config';
+import { PRODUCT, MOSTRAR_WEBAPP } from '@/lib/product-config';
 
 export const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.gtoverlander.com.br';
@@ -100,10 +100,10 @@ export function softwareApplicationLd() {
     '@type': 'SoftwareApplication',
     name: ORG_NAME,
     url: BASE_URL,
-    operatingSystem: 'iOS, Android, Web',
+    operatingSystem: MOSTRAR_WEBAPP ? 'iOS, Android, Web' : 'iOS, Android',
     applicationCategory: 'TravelApplication',
     description:
-      'AI-powered overlanding route planner with 4M+ waypoints across 211 countries. Available on iOS, Android, Web, CarPlay and Android Auto.',
+      `AI-powered overlanding route planner with 4M+ waypoints across 211 countries. Available on iOS, Android, ${MOSTRAR_WEBAPP ? 'Web, ' : ''}CarPlay and Android Auto.`,
     offers: {
       '@type': 'Offer',
       price: '0',
