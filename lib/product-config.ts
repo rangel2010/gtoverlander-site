@@ -29,14 +29,15 @@ export const WEB_APP_URL =
  */
 export const MOSTRAR_WEBAPP = false;
 
-/**
- * O link da App Store continua no ar, mas hoje ele leva à versão ANTIGA do app
- * — a nova leva cerca de uma semana pra sair. Enquanto isto for true, o card do
- * iOS ganha um aviso de "atualização em breve", pra quem baixar não achar que
- * aquilo é o produto que o site descreve. Desligar quando a V2 subir na Apple.
- */
 export const MOSTRAR_IOS = true;
-export const IOS_ATUALIZACAO_EM_BREVE = true;
+
+/**
+ * A V2 subiu na App Store em 27/09/2026, fechando a janela em que o link levava
+ * à versão ANTIGA do app. Enquanto isto for true, o card do iOS destaca que a
+ * versão nova já está no ar, igual ao do Android. Desligar quando deixar de ser
+ * novidade — algumas semanas.
+ */
+export const IOS_VERSAO_NOVA = true;
 
 /**
  * A V2 subiu na Play em 06/09/2026. Enquanto isto for true, o card do Android

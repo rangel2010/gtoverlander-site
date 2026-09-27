@@ -5,7 +5,7 @@ import {
   WEB_APP_URL,
   MOSTRAR_WEBAPP,
   MOSTRAR_IOS,
-  IOS_ATUALIZACAO_EM_BREVE,
+  IOS_VERSAO_NOVA,
   ANDROID_VERSAO_NOVA,
 } from '@/lib/product-config';
 
@@ -66,7 +66,8 @@ export function DownloadCtas({ labels }: DownloadCtasProps) {
           label: labels.iosLabel,
           sub: labels.iosSub,
           href: 'https://apps.apple.com/br/app/gt-overlander/id6745626026',
-          nota: IOS_ATUALIZACAO_EM_BREVE ? labels.iosNota : undefined,
+          nota: IOS_VERSAO_NOVA ? labels.iosNota : undefined,
+          notaDestaque: true,
           icon: <AppleIcon />,
         }]
       : []),
