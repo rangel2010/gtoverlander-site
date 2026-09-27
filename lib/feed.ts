@@ -27,7 +27,7 @@ const TITULOS: Record<BlogLocale, string> = {
 };
 
 const DESCRICOES: Record<BlogLocale, string> = {
-  pt: 'Destinos, preparacao e vida overlander pra quem viaja por terra.',
+  pt: 'Destinos, preparação e vida overlander pra quem viaja por terra.',
   en: 'Destinations, preparation and overlander life for those who travel by land.',
   es: 'Destinos, preparacion y vida overlander para quien viaja por tierra.',
 };

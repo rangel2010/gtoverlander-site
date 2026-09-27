@@ -76,11 +76,11 @@ export default async function DicasPage({ params: { locale } }: PageProps) {
             Canal GT Overlander
           </p>
           <h1 className="text-4xl md:text-5xl text-gt-text leading-[1.05] mb-5">
-            Dicas em Video
+            Dicas em vídeo
           </h1>
           <p className="text-lg text-gt-text-muted leading-relaxed font-sans max-w-xl">
-            Dicas rapidas de overlanding — roteiros, preparacao, vida na estrada.
-            Novos videos toda semana.
+            Dicas rápidas de overlanding: roteiros, preparação e vida na estrada.
+            Vídeos novos toda semana.
           </p>
           <a
             href="https://www.youtube.com/@gtoverlander/shorts"
