@@ -79,8 +79,8 @@
       "s2ctx": "Breakdown on the road? Signal in the app and nearby helpers appear. A community that takes care of each other.",
       "s3valor": "GT Explorer",
       "s3ctx": "Your journey becomes XP, levels, achievements and regional ranking. Every km counts.",
-      "s4valor": "GT Desapega",
-      "s4ctx": "Overlander marketplace among real travelers. Buy, sell and trade gear."
+      "s4valor": "Shopping",
+      "s4ctx": "Products from shops and travelers' used gear, guide services and gear rental, all in one place."
     },
     "porqueGt": {
       "titulo": "Conventional map apps don't understand overland travel",
@@ -106,10 +106,10 @@
       "podcastNome": "GT Overlander"
     },
     "empresas": {
-      "label": "Business Account — coming soon",
-      "titulo": "Want to be seen by travelers who've already decided to go?",
-      "desc": "Fuel stations, campsites, lodges, workshops and restaurants gain visibility with travelers who've already decided to pass through your region.",
-      "cta": "I want to know more →"
+      "label": "Business Account",
+      "titulo": "Run a lodge, campsite, shop or service on the route?",
+      "desc": "Your place is already on the map of people traveling overland. Claim it, get the information right and show everything you offer.",
+      "cta": "Discover the Business Account →"
     },
     "ctaFinal": {
       "titulo": "Your next trip starts with a conversation",
@@ -156,8 +156,8 @@
       "c2desc": "Breakdown on the road? Signal in the app and nearby helpers appear.",
       "c3titulo": "GT Explorer",
       "c3desc": "Every km becomes XP, achievements and regional ranking. The more you ride, the higher you climb.",
-      "c4titulo": "GT Desapega",
-      "c4desc": "Buy, sell and trade gear with people who actually travel."
+      "c4titulo": "Shopping",
+      "c4desc": "New and used gear, guides and rentals, from people who know the road."
     }
   },
   "sobre": {
@@ -200,9 +200,9 @@
       "titulo": "Where we're going",
       "desc": "GT is evolving into a complete ecosystem for those who live the road — connecting travelers, businesses, services and experiences.",
       "p1t": "Living GT Community",
-      "p1d": "GT Social for the traveler network, GT Explorer for reputation and ranking, GT Desapega for the marketplace. In limited access — growing with the overlander community.",
-      "p2t": "Business Account 3 fronts",
-      "p2d": "Physical POI, product seller and guided expedition services in a single business account. Coming soon.",
+      "p1d": "GT Social for the traveler network, GT Explorer for reputation and ranking, Shopping for overland products and services. Growing with the community.",
+      "p2t": "Business Account",
+      "p2d": "Lodges, campsites, shops and guides claim their place on the map, publish products and advertise services in a single account.",
       "p3t": "Offline Mode",
       "p3d": "Your country's map and points stay offline forever, on every plan. Plus and Pro add extra countries for those crossing borders.",
       "p4t": "International expansion",
@@ -241,8 +241,8 @@
       "r2d": "Community that helps each other on the road. Ask for help, someone nearby appears — breakdown, tire, battery, fuel.",
       "r3t": "GT Explorer",
       "r3d": "Your journey becomes XP, levels, achievements and regional ranking. Every validation, every route, every kilometer counts.",
-      "r4t": "GT Desapega",
-      "r4d": "Buy, sell and trade overlander gear among real travelers. Marketplace between overlanders, no intermediary."
+      "r4t": "Shopping",
+      "r4d": "Products from shops and used gear from Desapega, guide services and gear rental. All organized by category, among people who travel overland."
     },
     "cta": {
       "titulo": "Ready to start?",
@@ -284,7 +284,7 @@
       "i6": "Publish your routes to the community",
       "i7": "Follow overlanders and discover tested routes",
       "i8": "Adopt a community route",
-      "i9": "View listings on GT Desapega",
+      "i9": "Buy and list on the Shopping",
       "i10": "CarPlay and Android Auto"
     },
     "contribuicao": {
@@ -294,26 +294,21 @@
       "c2": "{n} validations made on site earn 1 trip"
     },
     "business": {
-      "label": "For those selling to the overlander world",
+      "label": "For businesses on the route",
       "titulo": "Business Account",
-      "desc": "Single commercial plan, three usage fronts depending on your business:",
-      "w_tag": "Waypoints",
-      "w_titulo": "Highlight your spot on the map",
-      "w_desc": "Physical establishment — gas station, hotel, workshop, campsite, restaurant, attraction. Appears highlighted in the radar and planning of those traveling through the region.",
+      "desc": "One account to claim your spot on the map, publish products and advertise services:",
+      "w_tag": "Your spot",
+      "w_titulo": "Claim your place on the map",
+      "w_desc": "Lodge, campsite, restaurant, workshop, fuel station, attraction. Fix the information and show everything you offer to those who arrive.",
       "p_tag": "Products",
-      "p_titulo": "Sell to the traveling base",
-      "p_desc": "E-commerce, manufacturer, distributor of overlander equipment. List your products with a direct link to your store, marketplace or commercial WhatsApp.",
+      "p_titulo": "Publish on the Shopping",
+      "p_desc": "Gear, accessory or parts shop. Your products with a direct path to your store or WhatsApp.",
       "s_tag": "Services",
-      "s_titulo": "Offer guided experiences",
-      "s_desc": "Guide, expedition driver, 4×4 instructor, route photographer. Appear in relevant regions and routes for those planning their trip.",
-      "pricing": "Includes 1 highlighted spot and up to 15 products on Desapega. Add-ons available for more spots or products. Cancel anytime.",
-      "verTabela": "See full table",
-      "verPolitica": "Policy",
-      "cta": "Join the waitlist",
-      "pricing_from": "From",
-      "pricing_by": "for",
-      "pricing_starting": "starting at",
-      "pricing_per_month": "per month"
+      "s_titulo": "Advertise your services",
+      "s_desc": "Guide, expedition, gear rental, transfer. Be seen by people planning their trip.",
+      "cta": "Create my account",
+      "convite": "The Business Account is separate from personal plans. Create yours and claim your place on the map.",
+      "saibaMais": "Learn more"
     },
     "faq": {
       "q1": "Can I try before subscribing?",
@@ -327,7 +322,7 @@
       "q5": "What happens to my routes if I cancel?",
       "a5": "Your routes are never deleted. If you cancel, they stay locked waiting for you to subscribe again — they don't disappear, and they come back exactly as they were once the subscription is reactivated.",
       "q6": "Is Business Account different?",
-      "a6": "Yes. The Business Account is for those who sell to the overlander world — physical establishments (gas stations, campsites, guesthouses, workshops), recurring sellers (e-commerce, equipment manufacturers) and service providers (guides, expedition drivers). A separate plan from personal ones (Free/Plus/Pro). Details at /empresas.",
+      "a6": "Yes. The Business Account is for businesses on travelers' routes: lodges, campsites, workshops and restaurants that claim their spot on the map, shops that publish products, and guides and rental companies that advertise services. It is separate from personal plans (Free, Plus and Pro). Details at /empresas.",
       "q7": "Where can I see everything each plan includes?",
       "a7": "In the comparison table just above. It reads the limits straight from the app, so what's written there is exactly what the system applies to your account."
     },
@@ -355,11 +350,13 @@
         },
         "plus": {
           "desc": "For frequent travelers. {viagens} active trips at a time, editing with no time limit, {paises} more offline countries beyond your own and {anuncios} listing on Desapega. On {aparelhos} devices.",
-          "cta": "Subscribe to Plus"
+          "cta": "Subscribe to Plus",
+          "descSemAnuncio": "For frequent travelers. {viagens} active trips at a time, editing with no time limit and {paises} more offline countries beyond your own. On {aparelhos} devices."
         },
         "pro": {
           "desc": "For those who don't want to choose what to delete. Unlimited trips, {paises} more offline countries beyond your own, {anuncios} simultaneous listings on Desapega and {aparelhos} devices.",
-          "cta": "Subscribe to Pro"
+          "cta": "Subscribe to Pro",
+          "descSemAnuncio": "For those who don't want to choose what to delete. Unlimited trips, {paises} more offline countries beyond your own and {aparelhos} devices."
         }
       }
     }
@@ -380,7 +377,7 @@
       "suporteDesc": "FAQ, popular topics and ticket submission",
       "empresasLabel": "Business",
       "empresasLink": "Business Account →",
-      "empresasDesc": "For establishments that want to appear on the map",
+      "empresasDesc": "For businesses on the route that want to claim their place on the map",
       "razaoLabel": "Company details",
       "cidade": "Londrina, PR — Brazil"
     }
@@ -426,16 +423,17 @@
     "cat3a3": "Plus and Pro deliver the same quality and the same AI engine. The difference is in the amounts: Plus keeps 15 active trips at a time, 2 offline countries beyond your own, 1 listing on Desapega and 2 devices. Pro is unlimited on trips, adds 5 countries, 3 listings and 4 devices.",
     "cat4titulo": "Account and data",
     "cat4q1": "How do you handle my data?",
-    "cat4a1": "In accordance with data protection laws. We only collect what's necessary to run the app: email for authentication, routes you create to sync across devices, payment data via Asaas (we don't store cards). See the full policy at /privacy.",
+    "cat4a1": "In accordance with data protection laws. We only collect what's necessary to run the app: email for authentication, routes you create to sync across devices. Subscriptions are paid through the app store (Google Play or App Store), and we never receive or store card data. See the full policy at /privacy.",
     "cat4q2": "Can I delete my account?",
     "cat4a2": "Yes. In the app, go to Profile → Settings → Delete account. Your routes and personal data are removed within 30 days. Technical backups may stay a few more days for service continuity.",
     "cat4q3": "Can I use GT without an account?",
     "cat4a3": "You can download and open the app without an account, but to save routes, sync across devices and use the AI, you need to create an account with email.",
     "cat5titulo": "Business",
     "cat5q1": "I have a gas station / campsite / guesthouse. How do I appear on GT?",
-    "cat5a1": "The Business Account is in development. When launched, any establishment on travelers' routes (gas stations, campsites, guesthouses, workshops, restaurants) will be able to create a profile and appear to those passing through the region. Sign up for the waitlist at /empresas.",
-    "cat5q2": "How much will the Business Account cost?",
-    "cat5a2": "The Business Account is on the waitlist. When it opens, you can track views, clicks and contacts generated — measurable ROI directly from the dashboard."
+    "cat5a1": "Create your Business Account at /empresas. Find your business on the map, claim it, fix the information and show everything you offer to travelers. You can also publish products and advertise services in the same account.",
+    "cat5q2": "What can I follow in the Business Account?",
+    "cat5a2": "Your business metrics: how many routes went through your place, how many times it showed up on the map and how many people tapped it to learn more. They start to show up the day after you create the account.",
+    "cat3a3SemAnuncio": "Plus and Pro deliver the same quality and the same AI engine. The difference is in the amounts: Plus keeps 15 active trips at a time, 2 offline countries beyond your own and 2 devices. Pro is unlimited on trips, adds 5 countries and 4 devices."
   },
   "suporte": {
     "hero": {
@@ -485,65 +483,66 @@
     }
   },
   "empresas": {
+    "meta": {
+      "titulo": "Business Account: claim your place on the GT Overlander map",
+      "desc": "Lodge, campsite, shop or guide: create your account, claim your spot on the map, fix its details and show overland travelers everything you offer."
+    },
+    "cta": "Create my account",
     "hero": {
-      "label": "Business Account · Coming soon",
-      "titulo": "Do you sell to travelers? GT is your channel.",
-      "desc": "Physical establishment, equipment e-commerce or guide service — the Business Account is the single gateway for those selling in the overlander world to appear to travelers who have already decided to hit the road.",
-      "cta1": "Join the waitlist",
-      "cta2": "View full policy"
+      "label": "Business Account",
+      "titulo": "Your place is already on the map. Now it's yours.",
+      "desc": "Overland travelers already pass by you on GT Overlander. Claim your space, fix what's wrong and show everything you offer to people on the road."
     },
     "frentes": {
-      "titulo": "Three fronts, one account",
-      "desc": "The same subscription covers all three modalities. You activate the ones that make sense for your business — can be one, two or all.",
-      "f1tag": "Waypoints",
-      "f1titulo": "Highlight your spot on the map",
-      "f1desc": "Physical establishment — gas station, hotel, workshop, campsite, restaurant, tourist attraction. Appears highlighted in the radar of those who have already decided to pass through your region, with custom icon, photo and full details.",
-      "f1exemplos": "Gas Stations · Campsites · Hotels · Guesthouses · Workshops · Restaurants · Attractions",
-      "f2tag": "Products",
-      "f2titulo": "Sell to the traveling base",
-      "f2desc": "E-commerce, manufacturer or distributor of overlander equipment. List your products on GT Desapega with a direct link to your store, marketplace or commercial WhatsApp.",
-      "f2exemplos": "Online Stores · Manufacturers · Distributors · Customization · Accessories · Parts",
-      "f3tag": "Services",
-      "f3titulo": "Offer guided experiences",
-      "f3desc": "Local guide, expedition driver, 4×4 instructor, route photographer. Appear in relevant regions and routes for those planning travel — before leaving home.",
-      "f3exemplos": "4×4 Guides · Drivers · Instructors · Photographers · Guided Trails · Expeditions"
+      "titulo": "One account, everything you do",
+      "f1tag": "Your spot on the map",
+      "f1titulo": "Claim it",
+      "f1desc": "Lodge, campsite, restaurant, workshop, fuel station, attraction. Find your place and get it right: name, photos, contact, opening hours and everything you offer to those who arrive.",
+      "f2tag": "Your products",
+      "f2titulo": "Publish them",
+      "f2desc": "Gear, accessory or parts shop. Put your products on the Shopping, with a direct path to your store or your WhatsApp.",
+      "f3tag": "Your services",
+      "f3titulo": "Advertise them",
+      "f3desc": "Guide, expedition, gear rental, transfer, roadside mechanic. Advertise your service and upcoming departures to people planning their trip.",
+      "nota": "Run a lodge and sell firewood? Do both in the same account."
     },
-    "beneficios": {
-      "titulo": "Why Business Account",
-      "desc": "Unlike advertising on social media or Google Ads — GT puts you in front of those who have already decided to hit the road.",
-      "b1t": "Qualified audience",
-      "b1d": "Appear to those who HAVE ALREADY DECIDED to travel to your region. Not cold traffic — travelers at the exact moment of planning.",
-      "b2t": "Exclusive visual highlight",
-      "b2d": "Colored box + custom icon on the map, presence on Desapega, featured on destination pages.",
-      "b3t": "Guided onboarding",
-      "b3d": "During the initial phase, we guide you through registration and activation. No long contracts.",
-      "b4t": "Cancel whenever you want",
-      "b4d": "Monthly, no penalty, no commitment. If it doesn't bring results, you leave. Your information stays with you."
+    "aoEntrar": {
+      "titulo": "As soon as you're in",
+      "i1": "Claim your spot and fix name, category, photos, description, contact and opening hours",
+      "i2": "Show everything you offer to those who arrive",
+      "i3": "Publish your products on the Shopping and advertise your services and expeditions",
+      "i4": "Follow your business metrics"
+    },
+    "metricas": {
+      "label": "Metrics",
+      "titulo": "See who passes by you",
+      "m1": "How many routes went through your place.",
+      "m2": "How many times it showed up on the map.",
+      "m3": "How many people tapped it to learn more.",
+      "desc": "These are people who already decided to travel through your region. Now you can see them."
+    },
+    "frase": {
+      "titulo": "You don't pay to fix what's yours.",
+      "desc": "The right information is good for you and for travelers. And when you want to stand out, let's talk."
     },
     "comoFunciona": {
       "titulo": "How it works",
-      "desc": "In 4 steps, with support during the initial phase. No long contract.",
-      "p1t": "Fill in the registration",
-      "p1d": "Business data, fronts you'll use, photos and contact",
-      "p2t": "GT validates",
-      "p2d": "We verify the information to ensure quality and database security",
-      "p3t": "Joins the waitlist",
-      "p3d": "You receive confirmation and are placed in the priority activation queue when the Business Account opens",
-      "p4t": "Goes live at launch",
-      "p4d": "Appears on the map, Desapega and itineraries according to the fronts you chose — ready to receive travelers"
+      "p1t": "Create the account",
+      "p1d": "With your email and your business name.",
+      "p2t": "Claim your place",
+      "p2d": "Find your business on the map and claim it.",
+      "p3t": "Make it yours",
+      "p3d": "Fix what's wrong, upload photos, pick a color and an icon.",
+      "p4t": "Follow along",
+      "p4d": "The next day, your metrics start to show up."
     },
-    "precos": {
-      "labelLancamento": "Launch price · guaranteed for waitlist",
-      "ctaListaEspera": "Join the waitlist",
-      "pricing_from": "From",
-      "pricing_by": "for",
-      "pricing_starting": "starting at",
-      "pricing_per_month": "per month"
+    "numeros": {
+      "titulo": "GT Overlander today"
     },
-    "cadastro": {
-      "label": "Registration",
-      "titulo": "Tell us about your business",
-      "desc": "Fill in the details below and you'll join the Business Account waitlist. When it opens, you'll be notified first and activated with priority."
+    "fecho": {
+      "titulo": "Your place is waiting for you.",
+      "termos": "Business Account terms",
+      "duvidas": "Questions:"
     }
   },
   "parcerias": {

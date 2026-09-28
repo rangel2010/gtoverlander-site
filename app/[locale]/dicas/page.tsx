@@ -102,7 +102,7 @@ export default async function DicasPage({ params: { locale } }: PageProps) {
           {shorts.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-gt-text-muted font-sans">
-                Videos em breve. Acompanhe no{' '}
+                Vídeos em breve. Acompanhe no{' '}
                 <a
                   href="https://www.youtube.com/@gtoverlander"
                   target="_blank"

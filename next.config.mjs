@@ -44,6 +44,12 @@ const nextConfig = {
           permanent: true,
         },
         {
+          // "GT Desapega" virou parte do "Shopping" (28/09/2026).
+          source: `${from}/recursos/desapega`,
+          destination: `${to}/recursos/shopping`,
+          permanent: true,
+        },
+        {
           // "Overlanders" virou "GT Social".
           source: `${from}/recursos/overlanders`,
           destination: `${to}/recursos/gt-social`,

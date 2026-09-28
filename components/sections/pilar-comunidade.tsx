@@ -8,7 +8,7 @@ import { ScrollReveal } from '@/components/scroll-reveal';
 const CARDS = [
   { icon: '🌐', chave: 'c1', href: '/recursos/gt-social' },
   { icon: '🏆', chave: 'c3', href: '/recursos/explorer' },
-  { icon: '🛒', chave: 'c4', href: '/recursos/desapega' },
+  { icon: '🛒', chave: 'c4', href: '/recursos/shopping' },
 ];
 
 export async function PilarComunidade() {

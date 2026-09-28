@@ -32,6 +32,24 @@ export const MOSTRAR_WEBAPP = false;
 export const MOSTRAR_IOS = true;
 
 /**
+ * Onde o empresário cria a Conta Business — todos os "Criar minha conta" do
+ * site apontam pra cá. A criação mora no webapp (é lá que ele assume o ponto e
+ * gerencia produtos e serviços), aberto só nessa parte desde 28/09/2026.
+ * Trocar AQUI na virada de domínio, ou definir BUSINESS_SIGNUP_URL no ambiente.
+ */
+export const BUSINESS_SIGNUP_URL =
+  process.env.BUSINESS_SIGNUP_URL ?? `${WEB_APP_URL}/business/cadastrar`;
+
+/**
+ * Desapega aberto a todos (28/09/2026, decisão do Rangel, TEMPORÁRIO): qualquer
+ * conta, inclusive Free, pode anunciar usado no Shopping. Enquanto true, o site
+ * não cita "anúncios" como diferença entre planos — a régua da API ainda traz
+ * os números antigos, e mostrá-los diria que o Free não pode anunciar.
+ * Quando o limite voltar, é trocar pra false: tabela, cards e FAQ voltam juntos.
+ */
+export const DESAPEGA_ABERTO_A_TODOS = true;
+
+/**
  * A V2 subiu na App Store em 27/09/2026, fechando a janela em que o link levava
  * à versão ANTIGA do app. Enquanto isto for true, o card do iOS destaca que a
  * versão nova já está no ar, igual ao do Android. Desligar quando deixar de ser
@@ -85,9 +103,9 @@ export const PRODUCT = {
   features: {
     offline:          'AVAILABLE'  as const,
     social:           'AVAILABLE'  as const,
-    desapega:         'AVAILABLE'  as const,
+    shopping:         'AVAILABLE'  as const, // Desapega é subcategoria do Shopping desde 28/09/2026
     explorer:         'AVAILABLE'  as const,
-    business:         'WAITLIST'   as const,
+    business:         'AVAILABLE'  as const,
     // Desligado em 04/09/2026: a feature saiu do app na V2, mas volta no
     // futuro. A página em /recursos/help-overlander continua no repo e é
     // religada trocando isto pra 'COMING_SOON' ou 'AVAILABLE' — ver

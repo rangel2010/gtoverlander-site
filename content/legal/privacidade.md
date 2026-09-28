@@ -50,7 +50,7 @@ Coletamos os seguintes dados pessoais, agrupados por finalidade:
 
   - Fotos enviadas para a Plataforma
 
-  - Anúncios publicados no GT Desapega
+  - Anúncios publicados no Shopping, inclusive no Desapega
 
   - Avaliações dadas e recebidas
 
@@ -148,7 +148,7 @@ A GT compartilha dados pessoais apenas com terceiros quando estritamente necess�
 
 ### 4.2. Compartilhamento Público
 
-  - Conteúdo que você publica como público (perfil público, rotas públicas, validações exibidas anonimamente, anúncios no Desapega) fica visível a outros Usuários e, no caso do site, a visitantes.
+  - Conteúdo que você publica como público (perfil público, rotas públicas, validações exibidas anonimamente, anúncios no Shopping, inclusive no Desapega) fica visível a outros Usuários e, no caso do site, a visitantes.
 
   - Contribuições à base coletiva de Waypoints (validações, fotos públicas) ficam disponíveis para a comunidade, identificadas como "Comunidade GT" salvo se você optar por atribuição.
 
@@ -265,7 +265,7 @@ Não utilizamos cookies de publicidade comportamental, pixels de redes sociais p
 
 A Plataforma GT Overlander é destinada a maiores de 18 anos. Não direcionamos serviços a crianças ou adolescentes e não coletamos intencionalmente dados de menores de idade.
 
-Funcionalidades sensíveis — notadamente Help Overlander, GT Desapega e demais que envolvam interação direta entre Usuários — são restritas a maiores de 18 anos completos.
+Funcionalidades sensíveis — notadamente Help Overlander, Shopping (inclusive o Desapega) e demais que envolvam interação direta entre Usuários — são restritas a maiores de 18 anos completos.
 
 Se identificarmos que dados de menor de idade foram coletados sem autorização parental adequada, procederemos à exclusão imediata.
 
@@ -295,4 +295,4 @@ Para qualquer dúvida, solicitação ou reclamação relacionada a esta Polític
 
 Você também tem direito de apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD), pelos canais oficiais disponíveis em www.gov.br/anpd.
 
-**Última atualização:** Agosto de 2026 — Versão 1.1 (adição da Seção 2.7, sobre dados de login usados para comentar no blog).
+**Última atualização:** Setembro de 2026 — Versão 1.2 (o GT Desapega passa a ser parte do Shopping).

@@ -28,9 +28,9 @@ const FEATURES = [
     desc: 'Sua jornada em níveis, conquistas e ranking',
   },
   {
-    slug: 'desapega',
-    titulo: 'GT Desapega',
-    desc: 'Compra, venda e troca de equipamento overlander',
+    slug: 'shopping',
+    titulo: 'Shopping',
+    desc: 'Equipamento novo e usado, guias e aluguel',
   },
 ];
 
@@ -56,7 +56,8 @@ export function OutrasFeatures({ currentSlug }: OutrasFeaturesProps) {
               className="bg-gt-bg rounded-lg p-6 border border-gt-border hover:border-gt-border-strong transition-colors group relative"
             >
               {/* Nenhuma feature desta lista está "em breve" desde 06/09/2026 —
-                  GT Social, Explorer e Desapega subiram junto com a V2. */}
+                  GT Social, Explorer e Desapega subiram junto com a V2. O Desapega
+                  virou parte do Shopping em 28/09/2026. */}
               <h3 className="font-sans font-medium text-gt-text mb-2 group-hover:text-gt-orange-text transition-colors">
                 {f.titulo}
               </h3>

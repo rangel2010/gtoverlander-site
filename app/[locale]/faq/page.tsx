@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
-import { MOSTRAR_WEBAPP } from '@/lib/product-config';
+import { MOSTRAR_WEBAPP, DESAPEGA_ABERTO_A_TODOS } from '@/lib/product-config';
 import { faqPageLd, jsonLdScriptProps,
   getPageAlternates
 } from '@/lib/seo';
@@ -62,7 +62,7 @@ export default async function FaqPage({
       perguntas: [
         { q: t('cat3q1'), a: t('cat3a1') },
         { q: t('cat3q2'), a: t('cat3a2') },
-        { q: t('cat3q3'), a: t('cat3a3') },
+        { q: t('cat3q3'), a: t(DESAPEGA_ABERTO_A_TODOS ? 'cat3a3SemAnuncio' : 'cat3a3') },
       ],
     },
     {

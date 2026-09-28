@@ -50,7 +50,7 @@ const precisaInternet = [
   'Gerar ou editar um roteiro com a IA',
   'Baixar ou atualizar o mapa e a base de pontos',
   'Sincronizar os cadastros e validações que ficaram na fila',
-  'GT Desapega (anúncios e contato com o vendedor)',
+  'Shopping (produtos, serviços e contato com o vendedor)',
   'Recursos em tempo real do GT Social',
 ];
 

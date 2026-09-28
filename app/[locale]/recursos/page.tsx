@@ -89,7 +89,7 @@ export default async function RecursosPage({
     { slug: 'gt-social', titulo: t('comunidade.r1t'), desc: t('comunidade.r1d'), status: 'disponivel' },
     // r2 era o Help Overlander, desligado em 04/09/2026.
     { slug: 'explorer', titulo: t('comunidade.r3t'), desc: t('comunidade.r3d'), status: 'disponivel' },
-    { slug: 'desapega', titulo: t('comunidade.r4t'), desc: t('comunidade.r4d'), status: 'disponivel' },
+    { slug: 'shopping', titulo: t('comunidade.r4t'), desc: t('comunidade.r4d'), status: 'disponivel' },
   ];
 
   const emBreve = t('planejamento.emBreve');

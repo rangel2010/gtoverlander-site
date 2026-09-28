@@ -8,7 +8,7 @@ import { ScrollReveal } from '@/components/scroll-reveal';
 const CARDS = [
   { chave: 's1', href: '/recursos/gt-social' },
   { chave: 's3', href: '/recursos/explorer' },
-  { chave: 's4', href: '/recursos/desapega' },
+  { chave: 's4', href: '/recursos/shopping' },
 ];
 
 export async function Numeros() {

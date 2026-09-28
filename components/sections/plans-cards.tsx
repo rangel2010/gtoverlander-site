@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button } from '../ui/button';
-import { formatPrice, annualSavingsPct } from '@/lib/product-config';
+import { formatPrice, annualSavingsPct, DESAPEGA_ABERTO_A_TODOS } from '@/lib/product-config';
 import type { PlanCode, Regua } from '@/lib/planos';
 
 interface Plan {
@@ -176,7 +176,13 @@ export function PlansCards({ regua }: { regua: Regua }) {
               {/* flex-1 empurra o botão pro rodapé do card, alinhando os três
                   CTAs na mesma linha mesmo com descrições de tamanhos diferentes */}
               <p className="text-sm text-gt-text-muted leading-relaxed mb-6 min-h-[4rem] font-sans flex-1">
-                {t(`plans.${p.descKey}.desc`, valores(p.descKey))}
+                {t(
+                  // Com o Desapega aberto a todos, anúncio não é diferença de plano.
+                  DESAPEGA_ABERTO_A_TODOS && p.descKey !== 'free'
+                    ? `plans.${p.descKey}.descSemAnuncio`
+                    : `plans.${p.descKey}.desc`,
+                  valores(p.descKey),
+                )}
               </p>
 
               <Button

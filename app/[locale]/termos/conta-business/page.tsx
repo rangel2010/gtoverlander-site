@@ -28,8 +28,8 @@ export default async function ContaBusinessPage() {
   return (
     <LegalDocument
       title="Anexo II — Conta Business"
-      subtitle="Termos específicos para titulares de Conta Business (CNPJ ou CPF)"
-      lastUpdated="10 de maio de 2026"
+      subtitle="Termos específicos para titulares de Conta Business — Versão 2.0"
+      lastUpdated="28 de setembro de 2026"
       content={content}
       relatedDocs={[
         { href: '/termos', label: 'Termos de Uso' },

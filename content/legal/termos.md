@@ -18,7 +18,9 @@ Para os fins destes Termos de Uso, os seguintes termos têm os significados a se
 
   - **"Help Overlander"**: funcionalidade que permite a conexão entre Usuários para fins de auxílio mútuo em situações de pane, dificuldade ou necessidade durante viagens, sem mediação direta da GT na execução do auxílio.
 
-  - **"GT Desapega"**: classificado de anúncios para compra, venda ou troca de equipamentos, veículos, peças e itens relacionados ao universo overlander, operado pela GT no modelo de vitrine, sem participação nas transações.
+  - **"Shopping"**: espaço da Plataforma que reúne produtos, serviços e aluguel de equipamentos relacionados ao universo overlander, publicados por titulares de Conta Business e por Usuários, operado pela GT no modelo de vitrine, sem participação nas transações.
+
+  - **"Desapega"**: área do Shopping em que Usuários anunciam, entre si, bens usados para venda, troca ou doação.
 
   - **"Conta Business"**: modalidade de Conta destinada a estabelecimentos comerciais, prestadores de serviço e organizações que desejam destacar pontos de interesse na base de Waypoints mediante pagamento.
 
@@ -34,7 +36,7 @@ Para os fins destes Termos de Uso, os seguintes termos têm os significados a se
 
 2.3. Caso o Usuário não concorde com qualquer disposição destes Termos, deverá abster-se de utilizar a Plataforma e, se já cadastrado, solicitar o encerramento da Conta conforme procedimento previsto na Seção 12.
 
-2.4. A GT poderá disponibilizar Termos Específicos, Anexos ou Políticas Suplementares para funcionalidades particulares (como Help Overlander, GT Desapega ou Conta Business). Tais documentos integram estes Termos e seu aceite é condição para uso da funcionalidade respectiva.
+2.4. A GT poderá disponibilizar Termos Específicos, Anexos ou Políticas Suplementares para funcionalidades particulares (como Help Overlander, Shopping ou Conta Business). Tais documentos integram estes Termos e seu aceite é condição para uso da funcionalidade respectiva.
 
 2.5. O Usuário declara ter capacidade civil plena para celebrar negócios jurídicos, possuir mais de 18 anos completos, e estar atuando em nome próprio (ou, no caso de Conta Business, com poderes para representar a pessoa jurídica vinculada).
 
@@ -122,7 +124,7 @@ Para os fins destes Termos de Uso, os seguintes termos têm os significados a se
 
 ### 5.1. Responsabilidade pelo Conteúdo
 
-5.1.1. O Usuário é o único e exclusivo responsável por todo o Conteúdo que publica, envia, transmite ou de qualquer forma disponibiliza através da Plataforma — incluindo, mas não se limitando a: fotos, descrições de roteiros, validações de waypoints, observações em pontos de interesse, mensagens em pedidos de Help Overlander, anúncios no GT Desapega, avaliações, comentários, dados de perfil e informações de Conta Business.
+5.1.1. O Usuário é o único e exclusivo responsável por todo o Conteúdo que publica, envia, transmite ou de qualquer forma disponibiliza através da Plataforma — incluindo, mas não se limitando a: fotos, descrições de roteiros, validações de waypoints, observações em pontos de interesse, mensagens em pedidos de Help Overlander, anúncios no Shopping, avaliações, comentários, dados de perfil e informações de Conta Business.
 
 5.1.2. Ao publicar Conteúdo, o Usuário declara e garante que:
 
@@ -166,7 +168,7 @@ Para os fins destes Termos de Uso, os seguintes termos têm os significados a se
 
 5.4.2. Conteúdo público que tenha sido contribuído à base coletiva da Plataforma (notadamente: validações de waypoints, edições à base, avaliações textuais e fotos públicas vinculadas a locais) poderá permanecer disponível após a exclusão da Conta, de forma anonimizada, identificado como "Comunidade GT", com o objetivo de preservar a utilidade pública da base.
 
-5.4.3. Conteúdo de natureza estritamente pessoal (foto de perfil, biografia, mensagens privadas, anúncios pessoais no GT Desapega, fotos não vinculadas a base coletiva) será removido integralmente em caso de exclusão da Conta.
+5.4.3. Conteúdo de natureza estritamente pessoal (foto de perfil, biografia, mensagens privadas, anúncios pessoais no Desapega, fotos não vinculadas a base coletiva) será removido integralmente em caso de exclusão da Conta.
 
 5.4.4. A GT poderá manter cópia interna de logs e registros mínimos pelo prazo legal aplicável (notadamente o prazo de guarda de logs de acesso previsto no Marco Civil da Internet) para fins de cumprimento de obrigações legais e atendimento a ordens judiciais.
 
@@ -272,21 +274,21 @@ Após cada interação iniciada pelo Help Overlander, ambos os Usuários (solici
 
 O Help Overlander NÃO É serviço de emergência médica, policial, mecânica profissional, atendimento de seguro ou guincho. Em situações de risco grave à vida, à saúde ou ao patrimônio, o Usuário deve recorrer aos serviços públicos competentes (190, 192, 193, defesa civil) ou serviços profissionais contratados (seguros, assistência 24h).
 
-### 6.6. GT Desapega
+### 6.6. Shopping e Desapega
 
 **6.6.1. Natureza Vitrine**
 
-O GT Desapega é um classificado de anúncios entre Usuários para compra, venda, troca ou doação de bens, equipamentos, peças, veículos e itens relacionados ao universo overlander. A GT atua exclusivamente como provedora de espaço de divulgação (vitrine), NÃO sendo parte das transações realizadas entre Usuários.
+O Shopping reúne produtos, serviços e aluguel de equipamentos relacionados ao universo overlander. Produtos novos e serviços são publicados por titulares de Conta Business, nos termos do Anexo II. No Desapega, área do Shopping, Usuários anunciam entre si bens usados para venda, troca ou doação. Em ambos os casos, a GT atua exclusivamente como provedora de espaço de divulgação (vitrine), NÃO sendo parte das transações realizadas.
 
-A GT NÃO se responsabiliza por: qualidade, autenticidade, segurança, condição, descrição, imagens, preço, entrega, pagamento, eventuais defeitos ocultos ou aparentes, garantia ou conformidade dos bens anunciados; cumprimento dos termos comerciais entre comprador e vendedor; eventuais disputas, golpes, fraudes ou inadimplemento entre Usuários.
+A GT NÃO se responsabiliza por: qualidade, autenticidade, segurança, condição, descrição, imagens, preço, entrega, pagamento, eventuais defeitos ocultos ou aparentes, garantia ou conformidade dos bens anunciados; cumprimento dos termos comerciais entre comprador e vendedor; eventuais disputas, golpes, fraudes ou inadimplemento entre as partes.
 
 **6.6.2. Acesso à Funcionalidade**
 
-A publicação de anúncios no GT Desapega é restrita a Usuários assinantes de plano pago (Plus, Pro ou planos equivalentes que venham a ser definidos pela GT). A consulta a anúncios e a iniciação de contato com vendedores são livres a todos os Usuários, inclusive Free. A receita de assinatura, ainda que confira o direito de anunciar, é classificada como prestação de serviço de software (SaaS), não constituindo prestação de serviço de publicidade pela GT.
+A publicação de anúncios no Desapega está disponível a todos os Usuários com conta ativa, inclusive no Plano Free. A GT poderá, mediante comunicação prévia razoável, restringir a publicação a planos pagos ou a limites por plano. A consulta a anúncios e a iniciação de contato com vendedores são livres a todos os Usuários. A receita de assinatura, quando conferir direitos relacionados a anúncios, é classificada como prestação de serviço de software (SaaS), não constituindo prestação de serviço de publicidade pela GT.
 
 **6.6.3. Regras dos Anúncios**
 
-Para serem aceitos no GT Desapega, anúncios devem:
+Para serem aceitos no Desapega, anúncios devem:
 
   - Referir-se a bens ou itens efetivamente relacionados ao universo overlander (camping, motorhome, RV, off-road, veículos compatíveis, peças, acessórios, vestuário e equipamentos correlatos).
 
@@ -302,15 +304,15 @@ A GT poderá, a qualquer momento, remover anúncios que violem essas regras, sem
 
 **6.6.4. Limites de Publicação**
 
-Cada Usuário Pro pode manter até 10 (dez) anúncios simultâneos ativos no GT Desapega. Cada anúncio tem duração máxima de 60 (sessenta) dias, podendo ser renovado manualmente pelo anunciante até 2 (duas) vezes consecutivas, observadas as regras de qualidade. Após esse período, o anúncio é arquivado, podendo ser republicado mediante novo cadastro. Os limites podem ser revistos pela GT, mediante comunicação prévia razoável aos assinantes.
+A quantidade de anúncios simultâneos, a duração de cada anúncio e as regras de renovação no Desapega são definidas pela GT e informadas no aplicativo. Esgotada a duração, o anúncio é arquivado, podendo ser republicado mediante novo cadastro. Os limites podem ser revistos pela GT, mediante comunicação prévia razoável aos Usuários.
 
 **6.6.5. Comunicação entre Usuários**
 
-O contato inicial entre interessado e anunciante poderá ocorrer através de canais disponibilizados pela própria Plataforma ou por meios externos informados no anúncio. Eventuais negociações, condições de pagamento, garantias e entregas são responsabilidade exclusiva das partes envolvidas.
+No Desapega, o contato inicial entre interessado e anunciante ocorre por mensagem dentro da Plataforma. Nos produtos e serviços de titulares de Conta Business, o contato ocorre pelo canal informado pelo titular no anúncio (como site, loja virtual ou WhatsApp). Eventuais negociações, condições de pagamento, garantias e entregas são responsabilidade exclusiva das partes envolvidas.
 
 **6.6.6. Pagamentos e Tributos**
 
-A GT não intermedeia pagamentos no GT Desapega. Comprador e vendedor são responsáveis por: ajustar forma de pagamento, emissão de eventuais notas fiscais, recolhimento de tributos aplicáveis a operação realizada e cumprimento de demais obrigações fiscais e legais.
+A GT não intermedeia pagamentos no Shopping, inclusive no Desapega. Comprador e vendedor são responsáveis por: ajustar forma de pagamento, emissão de eventuais notas fiscais, recolhimento de tributos aplicáveis a operação realizada e cumprimento de demais obrigações fiscais e legais.
 
 ## 7. Planos de Assinatura
 
@@ -362,7 +364,7 @@ A GT não intermedeia pagamentos no GT Desapega. Comprador e vendedor são respo
 
 9.1. Pertencem exclusivamente à GT Overlander, sendo protegidos pelas leis brasileiras de propriedade intelectual (Lei nº 9.279/96, Lei nº 9.610/98, Lei nº 9.609/98 e demais aplicáveis), todos os direitos sobre:
 
-  - As marcas "GT Overlander", "GT", "GT Explorer", "GT Desapega", "Help Overlander" e demais sinais distintivos utilizados na Plataforma.
+  - As marcas "GT Overlander", "GT", "GT Explorer", "GT Desapega", "Shopping", "Help Overlander" e demais sinais distintivos utilizados na Plataforma.
 
   - O código-fonte, design, layout, interfaces, ícones, ilustrações, fotografias originais, vídeos, textos institucionais, conteúdo editorial e demais elementos visuais e textuais produzidos pela GT.
 
@@ -442,7 +444,7 @@ A GT não intermedeia pagamentos no GT Desapega. Comprador e vendedor são respo
 
 13.2. Sem prejuízo de obrigações legais que não possam ser limitadas (notadamente em relação a Usuários consumidores, na forma do CDC), a GT não se responsabiliza por:
 
-  - Quaisquer danos materiais, morais, físicos, financeiros ou de qualquer natureza decorrentes de interações entre Usuários iniciadas pela Plataforma, incluindo, mas não se limitando ao Help Overlander e ao GT Desapega.
+  - Quaisquer danos materiais, morais, físicos, financeiros ou de qualquer natureza decorrentes de interações entre Usuários iniciadas pela Plataforma, incluindo, mas não se limitando ao Help Overlander e ao Shopping (inclusive o Desapega).
 
   - Resultados, viabilidade, segurança ou adequação de roteiros gerados ou sugeridos pela Plataforma, com ou sem assistência de inteligência artificial.
 
@@ -466,7 +468,7 @@ A GT não intermedeia pagamentos no GT Desapega. Comprador e vendedor são respo
 
   - Conteúdo publicado pelo Usuário que infrinja direitos de terceiros.
 
-  - Atos do Usuário que causem danos a outros Usuários, à comunidade ou a terceiros, especialmente em decorrência de interações iniciadas pelo Help Overlander, transações no GT Desapega ou compartilhamento de roteiros.
+  - Atos do Usuário que causem danos a outros Usuários, à comunidade ou a terceiros, especialmente em decorrência de interações iniciadas pelo Help Overlander, transações no Shopping (inclusive no Desapega) ou compartilhamento de roteiros.
 
   - Uso fraudulento, indevido ou não autorizado da Conta do Usuário, salvo se decorrente de falha demonstradamente atribuível à GT.
 

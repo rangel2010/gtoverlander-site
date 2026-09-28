@@ -5,6 +5,7 @@ import { FeatureFaq } from '@/components/sections/feature-faq';
 import { PlansCards } from '@/components/sections/plans-cards';
 import { productPlansLd, jsonLdScriptProps, getPageAlternates } from '@/lib/seo';
 import { ScrollReveal } from '@/components/scroll-reveal';
+import { DESAPEGA_ABERTO_A_TODOS, BUSINESS_SIGNUP_URL } from '@/lib/product-config';
 import { getRegua, plano, reais } from '@/lib/planos';
 
 export async function generateMetadata({
@@ -102,14 +103,16 @@ export default async function PlanosPage({
           : t('comparacao.paisesMais', { n: p.paisesEstrangeiros }),
       ) as [string, string, string],
     },
-    {
+    // Linha de anúncios some enquanto o Desapega estiver aberto a todos
+    // (ver DESAPEGA_ABERTO_A_TODOS em product-config).
+    ...(DESAPEGA_ABERTO_A_TODOS ? [] : [{
       label: t('comparacao.lAnuncios'),
       values: [free, plus, pro].map((p) =>
         p.anunciosSimultaneos === 0
           ? t('comparacao.semAnuncio')
           : t('comparacao.anunciosPorVez', { n: p.anunciosSimultaneos }),
       ) as [string, string, string],
-    },
+    }]),
     {
       label: t('comparacao.lAparelhos'),
       values: [
@@ -299,27 +302,16 @@ export default async function PlanosPage({
             </ScrollReveal>
           </div>
 
+          {/* Sem preço (28/09/2026): a Conta Business é convite pra entrar.
+              Destaque e upsell são conversa depois, não vitrine. */}
           <ScrollReveal>
             <div className="bg-gt-card border border-gt-border rounded-lg p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
-              <div className="flex-1">
-                <p className="text-xs text-gt-text-dim font-sans mb-1">
-                  {t('business.pricing_from')}{' '}
-                  <span className="line-through">R$ 199,90/{t('business.pricing_per_month')}</span>{' '}
-                  {t('business.pricing_by')}
-                </p>
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-sm text-gt-text-muted font-sans">{t('business.pricing_starting')}</span>
-                  <span className="font-display text-5xl text-gt-text uppercase tracking-display">R$ 99,90</span>
-                  <span className="text-sm text-gt-text-muted font-sans">{t('business.pricing_per_month')}</span>
-                </div>
-                <p className="text-sm text-gt-text-muted font-sans leading-relaxed">
-                  {t('business.pricing')}{' '}
-                  <a href="/empresas#precos" className="text-gt-orange-text hover:underline">{t('business.verTabela')}</a> ·{' '}
-                  <a href="/termos/conta-business" className="text-gt-orange-text hover:underline">{t('business.verPolitica')}</a>.
-                </p>
-              </div>
+              <p className="flex-1 text-gt-text-muted font-sans leading-relaxed">
+                {t('business.convite')}{' '}
+                <a href="/empresas" className="text-gt-orange-text hover:underline">{t('business.saibaMais')}</a>
+              </p>
               <div className="w-full md:w-auto">
-                <Button href="/empresas" className="w-full md:w-auto">{t('business.cta')}</Button>
+                <Button href={BUSINESS_SIGNUP_URL} external className="w-full md:w-auto">{t('business.cta')}</Button>
               </div>
             </div>
           </ScrollReveal>

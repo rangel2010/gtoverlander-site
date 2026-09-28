@@ -78,7 +78,7 @@ Em qualquer interação, em qualquer rota, em qualquer encontro, sua segurança 
 
   - Engajamento artificial em ranking, conquistas ou destaques.
 
-  - Anúncios falsos no GT Desapega (produto inexistente, descrição enganosa, preço-isca).
+  - Anúncios falsos no Shopping ou no Desapega (produto inexistente, descrição enganosa, preço-isca).
 
   - Tentativa de fraudar pagamentos ou cobrar valores não autorizados.
 
@@ -86,7 +86,7 @@ Em qualquer interação, em qualquer rota, em qualquer encontro, sua segurança 
 
   - Promoção, venda ou divulgação de armas, drogas, animais silvestres, conteúdo proibido.
 
-  - Solicitação ou oferta de serviços ilícitos via Help Overlander ou Desapega.
+  - Solicitação ou oferta de serviços ilícitos via Help Overlander ou Shopping.
 
   - Uso da Plataforma como meio de praticar crimes contra a pessoa, o patrimônio ou a administração pública.
 
@@ -180,4 +180,4 @@ Bem-vindo. E boa estrada.
 
 **— Equipe GT Overlander**
 
-**Última atualização:** Maio de 2026 — Versão 1.0.
+**Última atualização:** Setembro de 2026 — Versão 1.1.

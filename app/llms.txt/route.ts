@@ -33,7 +33,7 @@ export async function GET() {
 
 > Aplicativo de planejamento de rotas para viajantes overlander — roteiros com IA conversacional, base própria de mais de ${PRODUCT.waypointCountLabel} waypoints em ${PRODUCT.countries} países, Modo Offline, CarPlay e Android Auto. Disponível para ${plataformas}.
 
-GT Overlander é o ecossistema para quem viaja por terra: planejamento de rotas com IA, uma base própria de pontos de interesse relevantes para overlanding (postos, campings, oficinas, atrativos, fronteiras), modo offline com mapas e dados por país, e uma comunidade de viajantes (GT Social, GT Desapega).
+GT Overlander é o ecossistema para quem viaja por terra: planejamento de rotas com IA, uma base própria de pontos de interesse relevantes para overlanding (postos, campings, oficinas, atrativos, fronteiras), modo offline com mapas e dados por país, uma comunidade de viajantes (GT Social) e o Shopping, com produtos de lojas, usados de viajantes (Desapega), guias e aluguel de equipamento.
 
 ## Produto
 
@@ -48,7 +48,7 @@ GT Overlander é o ecossistema para quem viaja por terra: planejamento de rotas 
 - Free: gratuito para sempre — 3 viagens por conta da casa (não renovam), mapa e pontos do país de origem offline, radar ilimitado, validação sem limite (${SITE_URL}/planos)
 - Plus: ${formatPrice(PRODUCT.plans.plus.monthlyPrice)}/mês ou ${formatPrice(PRODUCT.plans.plus.annualPrice)}/ano — 15 viagens ativas, edição sem prazo, 2 países offline extras, 1 anúncio, 2 aparelhos
 - Pro: ${formatPrice(PRODUCT.plans.pro.monthlyPrice)}/mês ou ${formatPrice(PRODUCT.plans.pro.annualPrice)}/ano — viagens ilimitadas, 5 países offline extras, 3 anúncios, 4 aparelhos
-- Conta Business: para estabelecimentos, vendedores e prestadores de serviço do universo overlander (${SITE_URL}/empresas)
+- Conta Business: para quem tem negócio na rota de quem viaja — pousadas, campings, oficinas, lojas, guias e locadoras assumem o seu ponto no mapa, publicam produtos e anunciam serviços, e acompanham métricas (${SITE_URL}/empresas)
 
 ## Páginas principais
 

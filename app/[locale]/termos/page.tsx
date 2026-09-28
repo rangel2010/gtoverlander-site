@@ -28,8 +28,8 @@ export default async function TermosPage() {
   return (
     <LegalDocument
       title="Termos de Uso"
-      subtitle="Versão 1.0 — GT Overlander LTDA · CNPJ 59.840.412/0001-82"
-      lastUpdated="10 de maio de 2026"
+      subtitle="Versão 1.1 — GT Overlander LTDA · CNPJ 59.840.412/0001-82"
+      lastUpdated="28 de setembro de 2026"
       content={content}
       relatedDocs={[
         { href: '/privacidade', label: 'Política de Privacidade' },

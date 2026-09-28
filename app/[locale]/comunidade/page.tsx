@@ -29,7 +29,7 @@ export default async function ComunidadePage() {
     <LegalDocument
       title="Código de Conduta"
       subtitle="Como a Comunidade GT se relaciona, contribui e cuida uns dos outros"
-      lastUpdated="10 de maio de 2026"
+      lastUpdated="28 de setembro de 2026"
       content={content}
       relatedDocs={[
         { href: '/termos', label: 'Termos de Uso' },
