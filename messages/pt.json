@@ -306,7 +306,7 @@
       "s_tag": "Serviços",
       "s_titulo": "Anuncie seus serviços",
       "s_desc": "Guia, expedição, aluguel de equipamento, transfer. Apareça pra quem está planejando a viagem.",
-      "cta": "Criar minha conta",
+      "cta": "Entrar",
       "convite": "A Conta Business é separada dos planos pessoais. Crie a sua e assuma o seu lugar no mapa.",
       "saibaMais": "Saiba mais"
     },
@@ -487,7 +487,7 @@
       "titulo": "Conta Business: assuma seu lugar no mapa do GT Overlander",
       "desc": "Pousada, camping, loja ou guia: crie sua conta, assuma seu ponto no mapa, corrija as informações e mostre a quem viaja por terra tudo o que você oferece."
     },
-    "cta": "Criar minha conta",
+    "cta": "Entrar",
     "hero": {
       "label": "Conta Business",
       "titulo": "O seu lugar já está no mapa. Agora ele é seu.",
@@ -503,8 +503,7 @@
       "f2desc": "Loja de equipamento, acessório ou peça. Coloque seus produtos no Shopping, com o caminho direto pra sua loja ou pro seu WhatsApp.",
       "f3tag": "Seus serviços",
       "f3titulo": "Anuncie",
-      "f3desc": "Guia, expedição, aluguel de equipamento, transfer, mecânico de estrada. Anuncie o serviço e as próximas saídas pra quem está planejando a viagem.",
-      "nota": "Tem pousada e vende lenha? Faz as duas coisas na mesma conta."
+      "f3desc": "Guia, expedição, aluguel de equipamento, transfer, mecânico de estrada. Anuncie o serviço e as próximas saídas pra quem está planejando a viagem."
     },
     "aoEntrar": {
       "titulo": "Assim que você entra",

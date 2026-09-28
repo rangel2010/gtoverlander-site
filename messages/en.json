@@ -306,7 +306,7 @@
       "s_tag": "Services",
       "s_titulo": "Advertise your services",
       "s_desc": "Guide, expedition, gear rental, transfer. Be seen by people planning their trip.",
-      "cta": "Create my account",
+      "cta": "Sign in",
       "convite": "The Business Account is separate from personal plans. Create yours and claim your place on the map.",
       "saibaMais": "Learn more"
     },
@@ -487,7 +487,7 @@
       "titulo": "Business Account: claim your place on the GT Overlander map",
       "desc": "Lodge, campsite, shop or guide: create your account, claim your spot on the map, fix its details and show overland travelers everything you offer."
     },
-    "cta": "Create my account",
+    "cta": "Sign in",
     "hero": {
       "label": "Business Account",
       "titulo": "Your place is already on the map. Now it's yours.",
@@ -503,8 +503,7 @@
       "f2desc": "Gear, accessory or parts shop. Put your products on the Shopping, with a direct path to your store or your WhatsApp.",
       "f3tag": "Your services",
       "f3titulo": "Advertise them",
-      "f3desc": "Guide, expedition, gear rental, transfer, roadside mechanic. Advertise your service and upcoming departures to people planning their trip.",
-      "nota": "Run a lodge and sell firewood? Do both in the same account."
+      "f3desc": "Guide, expedition, gear rental, transfer, roadside mechanic. Advertise your service and upcoming departures to people planning their trip."
     },
     "aoEntrar": {
       "titulo": "As soon as you're in",

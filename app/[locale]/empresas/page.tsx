@@ -112,7 +112,6 @@ export default async function EmpresasPage({
               </ScrollReveal>
             ))}
           </div>
-          <p className="text-gt-text-muted mt-8 font-sans italic">{t('frentes.nota')}</p>
         </div>
       </section>
 
