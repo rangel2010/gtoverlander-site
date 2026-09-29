@@ -23,7 +23,7 @@ O aceite deste Anexo é condição para criação e manutenção de Conta Busine
 ### Frente Waypoints (estabelecimento físico)
 
   - Assumir pontos de interesse já existentes na base da Plataforma que correspondam ao seu estabelecimento, e cadastrar pontos próprios ainda não listados.
-  - Personalizar informações exibidas (nome, categoria, fotos, descrição, contato, horário e facilidades oferecidas), incluindo cor e ícone do ponto.
+  - Personalizar informações exibidas (nome, categoria, fotos, descrição, contato, horário e facilidades oferecidas).
   - Substituir informações de pontos OSM correspondentes ao mesmo local físico (a versão Business prevalece na exibição enquanto a Conta estiver ativa e regular).
   - Acompanhar métricas de visibilidade, como rotas que passaram pelo ponto, exibições no mapa e toques.
 

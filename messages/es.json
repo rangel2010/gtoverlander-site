@@ -108,7 +108,7 @@
     "empresas": {
       "label": "Cuenta Business",
       "titulo": "¿Tienes posada, camping, tienda o servicio en la ruta?",
-      "desc": "Tu lugar ya está en el mapa de quienes viajan por tierra. Reclámalo, deja la información correcta y muestra todo lo que ofreces.",
+      "desc": "Presenta tu negocio a tu manera a quienes viajan por tierra. Reclama tu punto en el mapa y muestra todo lo que ofreces.",
       "cta": "Conocer la Cuenta Business →"
     },
     "ctaFinal": {
@@ -307,7 +307,7 @@
       "s_titulo": "Anuncia tus servicios",
       "s_desc": "Guía, expedición, alquiler de equipo, transfer. Aparece para quien está planeando el viaje.",
       "cta": "Entrar",
-      "convite": "La Cuenta Business es independiente de los planes personales. Crea la tuya y reclama tu lugar en el mapa.",
+      "convite": "La Cuenta Business es independiente de los planes personales. Entra y presenta tu negocio a tu manera.",
       "saibaMais": "Saber más"
     },
     "faq": {
@@ -430,7 +430,7 @@
     "cat4a3": "Puedes descargar y abrir la app sin cuenta, pero para guardar rutas, sincronizar entre dispositivos y usar la IA, necesitas crear una cuenta con e-mail.",
     "cat5titulo": "Empresas",
     "cat5q1": "Tengo una gasolinera / camping / alojamiento. ¿Cómo aparecer en GT?",
-    "cat5a1": "Crea tu Cuenta Business en /empresas. Buscas tu establecimiento en el mapa, lo reclamas, corriges la información y muestras todo lo que ofreces a quien viaja. También puedes publicar productos y anunciar servicios en la misma cuenta.",
+    "cat5a1": "Entra en la Cuenta Business en /empresas, encuentra tu establecimiento en el mapa y reclámalo. A partir de ahí, eres tú quien presenta tu negocio: fotos, descripción, contacto y todo lo que ofreces. En la misma cuenta también puedes mostrar productos y difundir servicios.",
     "cat5q2": "¿Qué puedo seguir en la Cuenta Business?",
     "cat5a2": "Las métricas de tu negocio: cuántas rutas pasaron por tu lugar, cuántas veces apareció en el mapa y cuántas personas lo tocaron para saber más. Empiezan a aparecer al día siguiente de crear la cuenta.",
     "cat3a3SemAnuncio": "Plus y Pro entregan la misma calidad y el mismo motor de IA. La diferencia está en las cantidades: Plus mantiene 15 viajes activos a la vez, 2 países offline además del tuyo y 2 aparatos. Pro es ilimitado en viajes, suma 5 países y 4 aparatos."
@@ -484,62 +484,59 @@
   },
   "empresas": {
     "meta": {
-      "titulo": "Cuenta Business: reclama tu lugar en el mapa de GT Overlander",
-      "desc": "Posada, camping, tienda o guía: crea tu cuenta, reclama tu punto en el mapa, corrige la información y muestra a quienes viajan por tierra todo lo que ofreces."
+      "titulo": "Cuenta Business: tu negocio, a tu manera, en GT Overlander",
+      "desc": "Posada, camping, tienda o guía: reclama tu punto en el mapa de quienes viajan por tierra, presenta tu negocio a tu manera y sigue quién se interesa por él."
     },
     "cta": "Entrar",
     "hero": {
       "label": "Cuenta Business",
-      "titulo": "Tu lugar ya está en el mapa. Ahora es tuyo.",
-      "desc": "Quienes viajan por tierra ya pasan por ti en GT Overlander. Reclama tu espacio, corrige lo que esté mal y muestra todo lo que ofreces a quien está en la ruta."
+      "titulo": "Tu negocio, a tu manera, en el mapa de quienes viajan",
+      "desc": "Reclama tu punto en GT Overlander y decide cómo aparece: fotos, contacto, horarios y todo lo que ofreces. Quien planea el viaje ve tu negocio como tú quieres que lo vea."
     },
     "frentes": {
-      "titulo": "Una cuenta, todo lo que haces",
+      "titulo": "Una cuenta para todo lo que tu negocio ofrece",
       "f1tag": "Tu punto en el mapa",
-      "f1titulo": "Reclámalo",
-      "f1desc": "Posada, camping, restaurante, taller, estación de servicio, atractivo. Encuentra tu establecimiento y déjalo bien: nombre, fotos, contacto, horario y todo lo que ofreces a quien llega.",
+      "f1titulo": "Reclama tu punto",
+      "f1desc": "Posada, camping, restaurante, taller, estación de servicio, atractivo. Presenta tu lugar con tus fotos, tu contacto, tus horarios y todo lo que ofreces a quien llega.",
       "f2tag": "Tus productos",
-      "f2titulo": "Publícalos",
-      "f2desc": "Tienda de equipo, accesorios o repuestos. Pon tus productos en el Shopping, con el camino directo a tu tienda o a tu WhatsApp.",
+      "f2titulo": "Muestra tus productos",
+      "f2desc": "Tienda de equipo, accesorios o repuestos. Tus productos en el Shopping de la comunidad, con el camino directo a tu tienda o a tu WhatsApp.",
       "f3tag": "Tus servicios",
-      "f3titulo": "Anúncialos",
-      "f3desc": "Guía, expedición, alquiler de equipo, transfer, mecánico de ruta. Anuncia tu servicio y las próximas salidas a quien está planeando el viaje."
+      "f3titulo": "Difunde tus servicios",
+      "f3desc": "Guía, expedición, alquiler de equipo, transfer, mecánico de ruta. Tu servicio y tus próximas salidas frente a quien está planeando el viaje."
     },
     "aoEntrar": {
-      "titulo": "En cuanto entras",
-      "i1": "Reclamas tu punto y corriges nombre, categoría, fotos, descripción, contacto y horario",
+      "titulo": "Lo que haces en cuanto entras",
+      "i1": "Reclamas tu punto y presentas tu negocio: fotos, descripción, contacto y horarios",
       "i2": "Muestras todo lo que ofreces a quien llega",
-      "i3": "Publicas tus productos en el Shopping y anuncias tus servicios y expediciones",
-      "i4": "Sigues las métricas de tu negocio"
+      "i3": "Pones tus productos en el Shopping y difundes tus servicios y expediciones",
+      "i4": "Sigues en el panel cómo se está viendo tu negocio"
     },
     "metricas": {
       "label": "Métricas",
-      "titulo": "Mira quién pasa por ti",
-      "m1": "Cuántas rutas pasaron por tu lugar.",
-      "m2": "Cuántas veces apareció en el mapa.",
-      "m3": "Cuántas personas lo tocaron para saber más.",
-      "desc": "Es gente que ya decidió viajar por tu región. Ahora puedes verla."
+      "titulo": "Números que muestran tu alcance dentro de nuestra comunidad",
+      "desc": "Rutas planeadas que pasan cerca de ti, apariciones en el mapa de la comunidad, personas interesadas que visitaron tu perfil. Lo sigues todo en nuestro panel."
     },
     "frase": {
-      "titulo": "No pagas por corregir lo que es tuyo.",
-      "desc": "La información correcta es buena para ti y para quien viaja. Y cuando quieras aparecer adelante, hablamos."
+      "titulo": "Quien conoce tu negocio eres tú.",
+      "desc": "Eliges las fotos, cuentas tu historia y dices lo que ofreces. Y cuando quieras aparecer adelante, hablamos."
     },
     "comoFunciona": {
       "titulo": "Cómo funciona",
-      "p1t": "Crea la cuenta",
+      "p1t": "Entra",
       "p1d": "Con tu e-mail y el nombre del negocio.",
-      "p2t": "Reclama tu lugar",
+      "p2t": "Encuentra tu punto",
       "p2d": "Busca tu establecimiento en el mapa y reclámalo.",
-      "p3t": "Déjalo a tu manera",
-      "p3d": "Corrige lo que esté mal, sube fotos, elige color e ícono.",
+      "p3t": "Dale tu estilo",
+      "p3d": "Sube fotos, escribe tu descripción y muestra todo lo que ofreces.",
       "p4t": "Acompaña",
-      "p4d": "Al día siguiente, las métricas empiezan a aparecer."
+      "p4d": "Al día siguiente, tus números empiezan a aparecer en el panel."
     },
     "numeros": {
-      "titulo": "GT Overlander hoy"
+      "titulo": "La comunidad que va a conocer tu negocio"
     },
     "fecho": {
-      "titulo": "Tu lugar te está esperando.",
+      "titulo": "¿Listo para reclamar tu lugar en el mapa?",
       "termos": "Términos de la Cuenta Business",
       "duvidas": "Dudas:"
     }

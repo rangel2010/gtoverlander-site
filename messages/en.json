@@ -108,7 +108,7 @@
     "empresas": {
       "label": "Business Account",
       "titulo": "Run a lodge, campsite, shop or service on the route?",
-      "desc": "Your place is already on the map of people traveling overland. Claim it, get the information right and show everything you offer.",
+      "desc": "Present your business your way to people traveling overland. Claim your spot on the map and show everything you offer.",
       "cta": "Discover the Business Account →"
     },
     "ctaFinal": {
@@ -307,7 +307,7 @@
       "s_titulo": "Advertise your services",
       "s_desc": "Guide, expedition, gear rental, transfer. Be seen by people planning their trip.",
       "cta": "Sign in",
-      "convite": "The Business Account is separate from personal plans. Create yours and claim your place on the map.",
+      "convite": "The Business Account is separate from personal plans. Sign in and present your business your way.",
       "saibaMais": "Learn more"
     },
     "faq": {
@@ -430,7 +430,7 @@
     "cat4a3": "You can download and open the app without an account, but to save routes, sync across devices and use the AI, you need to create an account with email.",
     "cat5titulo": "Business",
     "cat5q1": "I have a gas station / campsite / guesthouse. How do I appear on GT?",
-    "cat5a1": "Create your Business Account at /empresas. Find your business on the map, claim it, fix the information and show everything you offer to travelers. You can also publish products and advertise services in the same account.",
+    "cat5a1": "Sign in to the Business Account at /empresas, find your business on the map and claim it. From there, you present your business: photos, description, contact and everything you offer. In the same account you can also show products and promote services.",
     "cat5q2": "What can I follow in the Business Account?",
     "cat5a2": "Your business metrics: how many routes went through your place, how many times it showed up on the map and how many people tapped it to learn more. They start to show up the day after you create the account.",
     "cat3a3SemAnuncio": "Plus and Pro deliver the same quality and the same AI engine. The difference is in the amounts: Plus keeps 15 active trips at a time, 2 offline countries beyond your own and 2 devices. Pro is unlimited on trips, adds 5 countries and 4 devices."
@@ -484,62 +484,59 @@
   },
   "empresas": {
     "meta": {
-      "titulo": "Business Account: claim your place on the GT Overlander map",
-      "desc": "Lodge, campsite, shop or guide: create your account, claim your spot on the map, fix its details and show overland travelers everything you offer."
+      "titulo": "Business Account: your business, your way, on GT Overlander",
+      "desc": "Lodge, campsite, shop or guide: claim your spot on the map of overland travelers, present your business your way and see who's interested in it."
     },
     "cta": "Sign in",
     "hero": {
       "label": "Business Account",
-      "titulo": "Your place is already on the map. Now it's yours.",
-      "desc": "Overland travelers already pass by you on GT Overlander. Claim your space, fix what's wrong and show everything you offer to people on the road."
+      "titulo": "Your business, your way, on the map of those who travel",
+      "desc": "Claim your spot on GT Overlander and decide how it shows up: photos, contact, opening hours and everything you offer. People planning their trip see your business the way you want it to be seen."
     },
     "frentes": {
-      "titulo": "One account, everything you do",
+      "titulo": "One account for everything your business offers",
       "f1tag": "Your spot on the map",
-      "f1titulo": "Claim it",
-      "f1desc": "Lodge, campsite, restaurant, workshop, fuel station, attraction. Find your place and get it right: name, photos, contact, opening hours and everything you offer to those who arrive.",
+      "f1titulo": "Claim your spot",
+      "f1desc": "Lodge, campsite, restaurant, workshop, fuel station, attraction. Present your place with your photos, your contact, your opening hours and everything you offer to those who arrive.",
       "f2tag": "Your products",
-      "f2titulo": "Publish them",
-      "f2desc": "Gear, accessory or parts shop. Put your products on the Shopping, with a direct path to your store or your WhatsApp.",
+      "f2titulo": "Show your products",
+      "f2desc": "Gear, accessory or parts shop. Your products on the community Shopping, with a direct path to your store or your WhatsApp.",
       "f3tag": "Your services",
-      "f3titulo": "Advertise them",
-      "f3desc": "Guide, expedition, gear rental, transfer, roadside mechanic. Advertise your service and upcoming departures to people planning their trip."
+      "f3titulo": "Promote your services",
+      "f3desc": "Guide, expedition, gear rental, transfer, roadside mechanic. Your service and upcoming departures in front of people planning their trip."
     },
     "aoEntrar": {
-      "titulo": "As soon as you're in",
-      "i1": "Claim your spot and fix name, category, photos, description, contact and opening hours",
+      "titulo": "What you do as soon as you're in",
+      "i1": "Claim your spot and present your business: photos, description, contact and opening hours",
       "i2": "Show everything you offer to those who arrive",
-      "i3": "Publish your products on the Shopping and advertise your services and expeditions",
-      "i4": "Follow your business metrics"
+      "i3": "Put your products on the Shopping and promote your services and expeditions",
+      "i4": "Follow on the dashboard how your business is being seen"
     },
     "metricas": {
       "label": "Metrics",
-      "titulo": "See who passes by you",
-      "m1": "How many routes went through your place.",
-      "m2": "How many times it showed up on the map.",
-      "m3": "How many people tapped it to learn more.",
-      "desc": "These are people who already decided to travel through your region. Now you can see them."
+      "titulo": "Numbers that show your reach within our community",
+      "desc": "Planned routes passing near you, appearances on the community map, interested people who visited your profile. You follow it all on our dashboard."
     },
     "frase": {
-      "titulo": "You don't pay to fix what's yours.",
-      "desc": "The right information is good for you and for travelers. And when you want to stand out, let's talk."
+      "titulo": "Nobody knows your business better than you.",
+      "desc": "You choose the photos, tell your story and say what you offer. And when you want to stand out, let's talk."
     },
     "comoFunciona": {
       "titulo": "How it works",
-      "p1t": "Create the account",
+      "p1t": "Sign in",
       "p1d": "With your email and your business name.",
-      "p2t": "Claim your place",
-      "p2d": "Find your business on the map and claim it.",
+      "p2t": "Find your spot",
+      "p2d": "Look for your business on the map and claim it.",
       "p3t": "Make it yours",
-      "p3d": "Fix what's wrong, upload photos, pick a color and an icon.",
+      "p3d": "Upload photos, write your description and show everything you offer.",
       "p4t": "Follow along",
-      "p4d": "The next day, your metrics start to show up."
+      "p4d": "The next day, your numbers start showing up on the dashboard."
     },
     "numeros": {
-      "titulo": "GT Overlander today"
+      "titulo": "The community that will get to know your business"
     },
     "fecho": {
-      "titulo": "Your place is waiting for you.",
+      "titulo": "Ready to claim your place on the map?",
       "termos": "Business Account terms",
       "duvidas": "Questions:"
     }

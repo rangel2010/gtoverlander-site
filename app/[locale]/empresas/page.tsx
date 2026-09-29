@@ -57,8 +57,6 @@ export default async function EmpresasPage({
 
   const aoEntrar = [t('aoEntrar.i1'), t('aoEntrar.i2'), t('aoEntrar.i3'), t('aoEntrar.i4')];
 
-  const metricas = [t('metricas.m1'), t('metricas.m2'), t('metricas.m3')];
-
   const passos = [
     { num: 1, titulo: t('comoFunciona.p1t'), desc: t('comoFunciona.p1d') },
     { num: 2, titulo: t('comoFunciona.p2t'), desc: t('comoFunciona.p2d') },
@@ -87,7 +85,7 @@ export default async function EmpresasPage({
           <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-5 font-sans">
             {t('hero.label')}
           </p>
-          <h1 className="text-5xl md:text-6xl leading-[0.95] mb-6">{t('hero.titulo')}</h1>
+          <h1 className="text-5xl md:text-6xl leading-[1.2] md:leading-[1.2] mb-6">{t('hero.titulo')}</h1>
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed max-w-xl mb-10 font-sans">
             {t('hero.desc')}
           </p>
@@ -137,14 +135,9 @@ export default async function EmpresasPage({
         <div className="container-narrow">
           <ScrollReveal>
             <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-4 font-sans">{t('metricas.label')}</p>
-            <h2 className="text-4xl md:text-5xl leading-tight mb-8">{t('metricas.titulo')}</h2>
+            <h2 className="text-4xl md:text-5xl leading-[1.25] md:leading-[1.25] mb-8">{t('metricas.titulo')}</h2>
           </ScrollReveal>
-          <ul className="space-y-3 mb-8">
-            {metricas.map((m) => (
-              <li key={m} className="font-sans text-lg text-gt-text leading-relaxed border-l-2 border-gt-orange pl-4">{m}</li>
-            ))}
-          </ul>
-          <p className="font-sans text-gt-text-muted leading-relaxed max-w-xl">{t('metricas.desc')}</p>
+          <p className="font-sans text-lg text-gt-text-muted leading-relaxed max-w-xl border-l-2 border-gt-orange pl-4">{t('metricas.desc')}</p>
         </div>
       </section>
 
@@ -152,7 +145,7 @@ export default async function EmpresasPage({
       <section className="bg-gt-bg py-16 md:py-24 border-t border-gt-border">
         <div className="container-narrow text-center">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl text-gt-text leading-tight mb-6">{t('frase.titulo')}</h2>
+            <h2 className="text-4xl md:text-5xl text-gt-text leading-[1.25] md:leading-[1.25] mb-6">{t('frase.titulo')}</h2>
             <p className="font-sans text-gt-text-muted leading-relaxed max-w-xl mx-auto">{t('frase.desc')}</p>
           </ScrollReveal>
         </div>
@@ -198,7 +191,7 @@ export default async function EmpresasPage({
       {/* 8 · Fecho */}
       <section className="dark bg-gt-bg-elevated text-gt-text py-16 md:py-24">
         <div className="container-narrow text-center">
-          <h2 className="text-4xl md:text-5xl leading-tight mb-8">{t('fecho.titulo')}</h2>
+          <h2 className="text-4xl md:text-5xl leading-[1.25] md:leading-[1.25] mb-8">{t('fecho.titulo')}</h2>
           {cta}
           <p className="text-sm text-gt-text-muted font-sans mt-8">
             <a href="/termos/conta-business" className="text-gt-orange-text hover:underline">{t('fecho.termos')}</a>
