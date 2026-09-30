@@ -38,7 +38,7 @@ const SHOW_ANNUAL_BADGE = false;
 
 export function PlansCards({ regua }: { regua: Regua }) {
   const t = useTranslations('planos.cards');
-  const [billing, setBilling] = useState<'mensal' | 'anual'>('anual');
+  const [billing, setBilling] = useState<'mensal' | 'anual'>('mensal');
 
   const daRegua = (code: PlanCode) => regua.planos.find((x) => x.code === code)!;
 
