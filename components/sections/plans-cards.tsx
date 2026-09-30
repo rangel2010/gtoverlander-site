@@ -30,11 +30,11 @@ const META: Record<PlanCode, Omit<Plan, 'name' | 'monthlyPrice' | 'annualPrice'>
 };
 
 /**
- * Selo de economia no toggle Anual. Desligado hoje: com o anual valendo 10x o
- * mensal, o "Equivale a X por mês" já comunica a vantagem sem um segundo
- * percentual competindo com ele. Religar trocando pra true.
+ * Selo "X% de economia" ao lado do preço, dentro do card, quando o Anual está
+ * selecionado (30/09/2026, pedido do Rangel). Cada plano mostra o seu próprio
+ * percentual, calculado da régua — nunca escrito à mão.
  */
-const SHOW_ANNUAL_BADGE = false;
+const SHOW_ANNUAL_BADGE = true;
 
 export function PlansCards({ regua }: { regua: Regua }) {
   const t = useTranslations('planos.cards');
@@ -53,16 +53,6 @@ export function PlansCards({ regua }: { regua: Regua }) {
     };
   });
 
-  const annualBadgePct = Math.min(
-    annualSavingsPct(
-      daRegua('plus').preco.mensalCentavos / 100,
-      daRegua('plus').preco.anualCentavos / 100,
-    ),
-    annualSavingsPct(
-      daRegua('pro').preco.mensalCentavos / 100,
-      daRegua('pro').preco.anualCentavos / 100,
-    ),
-  );
 
   // Números que entram nas descrições dos cards. Nenhum é escrito na tradução:
   // a mensagem tem placeholder e o valor vem da régua.
@@ -92,7 +82,7 @@ export function PlansCards({ regua }: { regua: Regua }) {
             onClick={() => setBilling('mensal')}
             className={`px-5 py-2 text-sm font-sans font-medium rounded-full transition-colors ${
               billing === 'mensal'
-                ? 'bg-gt-bg text-gt-text shadow-sm'
+                ? 'bg-gt-orange text-white shadow-sm'
                 : 'text-gt-text-muted hover:text-gt-text'
             }`}
           >
@@ -105,16 +95,11 @@ export function PlansCards({ regua }: { regua: Regua }) {
             onClick={() => setBilling('anual')}
             className={`px-5 py-2 text-sm font-sans font-medium rounded-full transition-colors flex items-center gap-2 ${
               billing === 'anual'
-                ? 'bg-gt-bg text-gt-text shadow-sm'
+                ? 'bg-gt-orange text-white shadow-sm'
                 : 'text-gt-text-muted hover:text-gt-text'
             }`}
           >
             {t('billing_anual')}
-            {SHOW_ANNUAL_BADGE && (
-              <span className="text-[10px] uppercase tracking-wider bg-gt-orange text-white px-2 py-0.5 rounded">
-                −{annualBadgePct}%
-              </span>
-            )}
           </button>
         </div>
       </div>
@@ -132,6 +117,7 @@ export function PlansCards({ regua }: { regua: Regua }) {
             ? t('period_year')
             : t('period_month');
           const perMonth = isAnnual && isPaid ? p.annualPrice / 12 : 0;
+          const savingsPct = isPaid ? annualSavingsPct(p.monthlyPrice, p.annualPrice) : 0;
           const annualNote =
             isPaid && isAnnual
               ? t('annual_note', { price: formatPrice(perMonth) })
@@ -156,13 +142,18 @@ export function PlansCards({ regua }: { regua: Regua }) {
                 {p.name}
               </h3>
 
-              <div className="flex items-baseline gap-2 mb-1">
+              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-1">
                 <span className="font-display text-4xl text-gt-text uppercase tracking-display">
                   {formatPrice(displayPrice)}
                 </span>
                 <span className="text-sm text-gt-text-muted font-sans">
                   {periodLabel}
                 </span>
+                {SHOW_ANNUAL_BADGE && isAnnual && isPaid && savingsPct > 0 && (
+                  <span className="self-center text-[10px] font-medium uppercase tracking-wider bg-gt-orange text-white px-2 py-0.5 rounded font-sans whitespace-nowrap">
+                    {t('billing_economia', { pct: savingsPct })}
+                  </span>
+                )}
               </div>
 
               {annualNote && (

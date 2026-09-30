@@ -334,6 +334,7 @@
     "cards": {
       "billing_mensal": "Mensual",
       "billing_anual": "Anual",
+      "billing_economia": "{pct}% de ahorro",
       "period_forever": "para siempre",
       "period_year": "por año",
       "period_month": "por mes",

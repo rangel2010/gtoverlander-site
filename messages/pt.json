@@ -334,6 +334,7 @@
     "cards": {
       "billing_mensal": "Mensal",
       "billing_anual": "Anual",
+      "billing_economia": "{pct}% de economia",
       "period_forever": "pra sempre",
       "period_year": "por ano",
       "period_month": "por mês",
