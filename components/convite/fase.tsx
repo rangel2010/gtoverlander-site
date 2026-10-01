@@ -52,12 +52,12 @@ export function Contagem() {
       {blocos.map((b) => (
         <div
           key={b.l}
-          className="bg-white/10 border border-white/15 rounded-lg px-4 md:px-6 py-3 md:py-4 text-center min-w-[84px] md:min-w-[110px]"
+          className="bg-white border border-[#e0dcce] shadow-sm rounded-lg px-4 md:px-6 py-3 md:py-4 text-center min-w-[84px] md:min-w-[110px]"
         >
-          <div className="font-display text-4xl md:text-6xl text-white leading-none">
+          <div className="font-display text-4xl md:text-6xl text-[#122E1F] leading-none">
             {String(b.n).padStart(2, '0')}
           </div>
-          <div className="text-xs md:text-sm text-white/70 font-sans mt-2 uppercase tracking-wider">{b.l}</div>
+          <div className="text-xs md:text-sm text-[#122E1F]/60 font-sans mt-2 uppercase tracking-wider">{b.l}</div>
         </div>
       ))}
     </div>

@@ -53,6 +53,8 @@ const APP_STORE = 'https://apps.apple.com/br/app/gt-overlander/id6745626026';
 const CTA_URL = `${BUSINESS_SIGNUP_URL}?utm_source=convite`;
 const TOTAL = 8;
 const LARANJA = '#E06226';
+// No fundo claro o laranja de texto é o escurecido do site (contraste de leitura).
+const LARANJA_TEXTO = '#b84916';
 
 /** Prints já colocados em public/convite/ (nome → arquivo). */
 const PRINTS: Record<string, string> = {
@@ -68,17 +70,34 @@ function print(nome: string): string | null {
   return PRINTS[nome] ? `/convite/${PRINTS[nome]}` : null;
 }
 
-function Slide({ n, children }: { n: number; children: React.ReactNode }) {
+/**
+ * Tom do slide (01/10, escolha do Rangel): capa e chamada em verde escuro, os
+ * slides do meio no creme claro do site — "topo e rodapé verde escuro, o meio
+ * no padrão do modo claro". Uma versão só, igual pra todo mundo (não segue o
+ * modo claro/escuro do aparelho).
+ */
+type Tom = 'escuro' | 'claro';
+
+function Slide({ n, tom = 'claro', children }: { n: number; tom?: Tom; children: React.ReactNode }) {
+  const escuro = tom === 'escuro';
   return (
-    <section className="bg-[#122E1F] snap-start min-h-[100dvh] relative flex items-center border-b border-white/5">
+    <section
+      className={`snap-start min-h-[100dvh] relative flex items-center ${
+        escuro ? 'bg-[#122E1F] text-white' : 'bg-[#f8f5ee] text-[#122E1F] border-b border-[#e0dcce]'
+      }`}
+    >
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 py-24">{children}</div>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/logo-gt-contorno.svg" alt="GT Overlander" className="absolute top-4 left-6 md:left-12 h-9 md:h-10 w-auto" />
-      <div className="absolute top-6 right-6 md:right-12 text-xs text-white/50 font-sans tabular-nums">
+      <img
+        src={escuro ? '/images/logo-gt-contorno.svg' : '/images/logo-gt.svg'}
+        alt="GT Overlander"
+        className={escuro ? 'absolute top-4 left-6 md:left-12 h-9 md:h-10 w-auto' : 'absolute top-0 left-3 md:left-9 h-16 md:h-[72px] w-auto'}
+      />
+      <div className={`absolute top-6 right-6 md:right-12 text-xs font-sans tabular-nums ${escuro ? 'text-white/50' : 'text-[#122E1F]/50'}`}>
         {String(n).padStart(2, '0')} / {String(TOTAL).padStart(2, '0')}
       </div>
       {n < TOTAL && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-xs font-sans animate-bounce" aria-hidden>
+        <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 text-xs font-sans animate-bounce ${escuro ? 'text-white/40' : 'text-[#122E1F]/40'}`} aria-hidden>
           ↓
         </div>
       )}
@@ -86,26 +105,26 @@ function Slide({ n, children }: { n: number; children: React.ReactNode }) {
   );
 }
 
-const Kicker = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-xs uppercase tracking-[0.2em] mb-5 font-sans" style={{ color: LARANJA }}>
+const Kicker = ({ children, escuro = false }: { children: React.ReactNode; escuro?: boolean }) => (
+  <p className="text-xs uppercase tracking-[0.2em] mb-5 font-sans" style={{ color: escuro ? LARANJA : LARANJA_TEXTO }}>
     {children}
   </p>
 );
 
 const Titulo = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="font-display uppercase text-white text-4xl md:text-6xl leading-[1.2] md:leading-[1.2] mb-6 max-w-4xl">
+  <h2 className="font-display uppercase text-4xl md:text-6xl leading-[1.2] md:leading-[1.2] mb-6 max-w-4xl">
     {children}
   </h2>
 );
 
 const Apoio = ({ children }: { children: React.ReactNode }) => (
-  <p className="font-sans text-white/75 text-lg md:text-xl leading-relaxed max-w-2xl">{children}</p>
+  <p className="font-sans opacity-80 text-lg md:text-xl leading-relaxed max-w-2xl">{children}</p>
 );
 
 /** Print de celular (em pé). */
 function Celular({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="rounded-[28px] border-4 border-white/15 bg-black overflow-hidden shadow-2xl w-[150px] md:w-[230px] shrink-0">
+    <div className="rounded-[28px] border-4 border-[#122E1F] bg-black overflow-hidden shadow-2xl w-[150px] md:w-[230px] shrink-0">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full h-auto block" loading="lazy" />
     </div>
@@ -115,11 +134,11 @@ function Celular({ src, alt }: { src: string; alt: string }) {
 /** Print de tela de computador (painel do parceiro). */
 function Tela({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="rounded-lg border border-white/15 bg-black overflow-hidden shadow-2xl w-full">
-      <div className="flex gap-1.5 px-3 py-2 bg-white/10" aria-hidden>
-        <span className="w-2.5 h-2.5 rounded-full bg-white/30" />
-        <span className="w-2.5 h-2.5 rounded-full bg-white/30" />
-        <span className="w-2.5 h-2.5 rounded-full bg-white/30" />
+    <div className="rounded-lg border border-[#e0dcce] bg-white overflow-hidden shadow-2xl w-full">
+      <div className="flex gap-1.5 px-3 py-2 bg-[#122E1F]" aria-hidden>
+        <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
+        <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
+        <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
       </div>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="w-full h-auto block" loading="lazy" />
@@ -168,10 +187,10 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
   return (
     // Camada em tela cheia por cima do cabeçalho e do rodapé do site (z-40),
     // abaixo do aviso de cookies (z-50). Rolagem própria, um slide por vez.
-    <div className="dark fixed inset-0 z-[45] overflow-y-auto snap-y snap-mandatory scroll-smooth bg-[#122E1F] text-white">
+    <div className="fixed inset-0 z-[45] overflow-y-auto snap-y snap-mandatory scroll-smooth bg-[#f8f5ee]">
       {/* 1 · O convite */}
-      <Slide n={1}>
-        <Kicker>Convite · Parceiros GT Overlander</Kicker>
+      <Slide n={1} tom="escuro">
+        <Kicker escuro>Convite · Parceiros GT Overlander</Kicker>
         <h1 className="font-display uppercase text-white text-5xl md:text-7xl leading-[1.15] md:leading-[1.15] mb-8 max-w-4xl">
           Você está convidado a fazer parte do <span style={{ color: LARANJA }}>GT Overlander</span>
         </h1>
@@ -194,19 +213,19 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
                   'Viajantes compartilhando rotas e pontos entre si',
                   'Uma IA muito mais inteligente montando os roteiros',
                 ].map((i) => (
-                  <li key={i} className="font-sans text-white/80 text-lg leading-relaxed flex gap-3">
-                    <span style={{ color: LARANJA }}>—</span>
+                  <li key={i} className="font-sans opacity-85 text-lg leading-relaxed flex gap-3">
+                    <span style={{ color: LARANJA_TEXTO }}>—</span>
                     {i}
                   </li>
                 ))}
               </ul>
-              <p className="font-display uppercase text-3xl md:text-4xl text-white mb-1">{viajantes}</p>
-              <p className="font-sans text-white/60 mb-8">de viajantes já usam o app</p>
+              <p className="font-display uppercase text-3xl md:text-4xl mb-1">{viajantes}</p>
+              <p className="font-sans opacity-70 mb-8">de viajantes já usam o app</p>
               <div className="flex flex-wrap gap-3">
-                <a href={PLAY_STORE} target="_blank" rel="noopener noreferrer" className="border border-white/30 hover:bg-white/10 rounded-md px-5 py-3 font-sans text-sm">
+                <a href={PLAY_STORE} target="_blank" rel="noopener noreferrer" className="border border-[#122E1F]/30 hover:bg-[#122E1F]/5 rounded-md px-5 py-3 font-sans text-sm">
                   Conhecer na Google Play
                 </a>
-                <a href={APP_STORE} target="_blank" rel="noopener noreferrer" className="border border-white/30 hover:bg-white/10 rounded-md px-5 py-3 font-sans text-sm">
+                <a href={APP_STORE} target="_blank" rel="noopener noreferrer" className="border border-[#122E1F]/30 hover:bg-[#122E1F]/5 rounded-md px-5 py-3 font-sans text-sm">
                   Conhecer na App Store
                 </a>
               </div>
@@ -227,7 +246,7 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
       <Slide n={3}>
         <Kicker>O ecossistema</Kicker>
         <Titulo>
-          A peça que faltava é <span style={{ color: LARANJA }}>você</span>
+          A peça que faltava é <span style={{ color: LARANJA_TEXTO }}>você</span>
         </Titulo>
         <Apoio>
           O GT Overlander é um ecossistema: viajantes trocam rotas, pontos e experiências entre si, todos os dias. O que
@@ -244,11 +263,11 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
               <Titulo>Seu negócio, do seu jeito, no mapa de quem viaja</Titulo>
               <div className="space-y-5 mt-6">
                 {frentes.map((f) => (
-                  <div key={f.tag} className="border-l-2 border-white/15 pl-5">
-                    <p className="text-xs uppercase tracking-wider font-sans font-medium mb-1" style={{ color: LARANJA }}>
+                  <div key={f.tag} className="border-l-2 border-[#122E1F]/15 pl-5">
+                    <p className="text-xs uppercase tracking-wider font-sans font-medium mb-1" style={{ color: LARANJA_TEXTO }}>
                       {f.tag}
                     </p>
-                    <p className="font-sans text-white/80 leading-relaxed">{f.desc}</p>
+                    <p className="font-sans opacity-80 leading-relaxed">{f.desc}</p>
                   </div>
                 ))}
               </div>
@@ -267,9 +286,9 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
               <Titulo>Quem conhece o seu negócio é você</Titulo>
               <div className="space-y-5 mt-6">
                 {porque.map((p) => (
-                  <div key={p.t} className="border-l-2 border-white/15 pl-5">
-                    <p className="font-display uppercase text-2xl text-white leading-tight">{p.t}</p>
-                    <p className="font-sans text-white/75 leading-relaxed mt-1">{p.d}</p>
+                  <div key={p.t} className="border-l-2 border-[#122E1F]/15 pl-5">
+                    <p className="font-display uppercase text-2xl leading-tight">{p.t}</p>
+                    <p className="font-sans opacity-80 leading-relaxed mt-1">{p.d}</p>
                   </div>
                 ))}
               </div>
@@ -290,7 +309,7 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
                 Produtos de lojas e usados de viajantes, guias e aluguel de equipamento, organizados por categoria,
                 dentro do app que o overlander já usa pra planejar a viagem.
               </Apoio>
-              <p className="mt-8 font-sans font-semibold text-lg" style={{ color: LARANJA }}>
+              <p className="mt-8 font-sans font-semibold text-lg" style={{ color: LARANJA_TEXTO }}>
                 <Fase
                   antes="Quem cadastrar até 9 de outubro já entra na vitrine da inauguração."
                   depois="O Shopping está aberto. Sua vitrine pode estar lá hoje."
@@ -325,9 +344,9 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
       </Slide>
 
       {/* 8 · A chamada — o único botão laranja do deck */}
-      <Slide n={8}>
+      <Slide n={8} tom="escuro">
         <div className="text-center flex flex-col items-center">
-          <Kicker>Parceiros</Kicker>
+          <Kicker escuro>Parceiros</Kicker>
           <Fase
             antes={<Titulo>Garanta o seu lugar na inauguração</Titulo>}
             depois={<Titulo>Pronto pra assumir o seu lugar no mapa?</Titulo>}
@@ -339,7 +358,7 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
           >
             Entrar na aba de parceiros →
           </a>
-          <p className="font-sans text-white/50 text-sm mt-8">
+          <p className="font-sans text-white/60 text-sm mt-8">
             Dúvidas:{' '}
             <a href="mailto:business@gtoverlander.com.br" className="hover:underline" style={{ color: LARANJA }}>
               business@gtoverlander.com.br
