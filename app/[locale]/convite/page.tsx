@@ -59,6 +59,7 @@ const LARANJA_TEXTO = '#b84916';
 /** Prints já colocados em public/convite/ (nome → arquivo). */
 const PRINTS: Record<string, string> = {
   '01-app-inicio': '01-app-inicio.jpg',
+  '03-mapa-app': '03-mapa-app.jpg',
   // '02-app-roteiro': '02-app-roteiro.png',
   '05-novo-produto': '05-novo-produto.png',
   '06-colocar-no-mapa': '06-colocar-no-mapa.png',
@@ -82,7 +83,7 @@ function Slide({ n, tom = 'claro', children }: { n: number; tom?: Tom; children:
   const escuro = tom === 'escuro';
   return (
     <section
-      className={`snap-start min-h-[100dvh] relative flex items-center ${
+      className={`min-h-[100dvh] relative flex items-center ${
         escuro ? 'bg-[#122E1F] text-white' : 'bg-[#f8f5ee] text-[#122E1F] border-b border-[#e0dcce]'
       }`}
     >
@@ -168,6 +169,7 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
 
   const pInicio = print('01-app-inicio');
   const pRotas = print('02-app-roteiro');
+  const pMapaApp = print('03-mapa-app');
   const pMapa = print('06-colocar-no-mapa');
   const pPainel = print('07-painel-parceiro');
   const pProduto = print('05-novo-produto');
@@ -187,7 +189,7 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
   return (
     // Camada em tela cheia por cima do cabeçalho e do rodapé do site (z-40),
     // abaixo do aviso de cookies (z-50). Rolagem própria, um slide por vez.
-    <div className="fixed inset-0 z-[45] overflow-y-auto snap-y snap-mandatory scroll-smooth bg-[#f8f5ee]">
+    <div className="fixed inset-0 z-[45] overflow-y-auto scroll-smooth bg-[#f8f5ee]">
       {/* 1 · O convite */}
       <Slide n={1} tom="escuro">
         <Kicker escuro>Convite · Parceiros GT Overlander</Kicker>
@@ -247,14 +249,27 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
 
       {/* 3 · O ecossistema — a peça que faltava são as empresas */}
       <Slide n={3}>
-        <Kicker>O ecossistema</Kicker>
-        <Titulo>
-          A peça que faltava é <span style={{ color: LARANJA_TEXTO }}>você</span>
-        </Titulo>
-        <Apoio>
-          O GT Overlander é um ecossistema: viajantes trocam rotas, pontos e experiências entre si, todos os dias. O que
-          faltava pra fechar esse círculo são as empresas que recebem quem está na estrada.
-        </Apoio>
+        <ComImagem
+          texto={
+            <>
+              <Kicker>O ecossistema</Kicker>
+              <Titulo>
+                A peça que faltava é <span style={{ color: LARANJA_TEXTO }}>você</span>
+              </Titulo>
+              <Apoio>
+                O GT Overlander é um ecossistema: viajantes trocam rotas, pontos e experiências entre si, todos os dias.
+                O que faltava pra fechar esse círculo são as empresas que recebem quem está na estrada.
+              </Apoio>
+            </>
+          }
+          imagem={
+            pMapaApp ? (
+              <div className="flex justify-center">
+                <Celular src={pMapaApp} alt="Mapa do app GT Overlander cheio de pontos da comunidade" />
+              </div>
+            ) : null
+          }
+        />
       </Slide>
 
       {/* 4 · O que o parceiro faz — com o painel */}
