@@ -221,12 +221,15 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
               </ul>
               <p className="font-display uppercase text-3xl md:text-4xl mb-1">{viajantes}</p>
               <p className="font-sans opacity-70 mb-8">de viajantes já usam o app</p>
-              <div className="flex flex-wrap gap-3">
-                <a href={PLAY_STORE} target="_blank" rel="noopener noreferrer" className="border border-[#122E1F]/30 hover:bg-[#122E1F]/5 rounded-md px-5 py-3 font-sans text-sm">
-                  Conhecer na Google Play
+              {/* Selos oficiais das lojas (arquivos fornecidos por Google e Apple, sem redesenho), mesma altura. */}
+              <div className="flex flex-wrap items-center gap-3">
+                <a href={PLAY_STORE} target="_blank" rel="noopener noreferrer" className="hover:opacity-85 transition-opacity">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/convite/selo-google-play.png" alt="Disponível no Google Play" className="h-11 md:h-12 w-auto block" />
                 </a>
-                <a href={APP_STORE} target="_blank" rel="noopener noreferrer" className="border border-[#122E1F]/30 hover:bg-[#122E1F]/5 rounded-md px-5 py-3 font-sans text-sm">
-                  Conhecer na App Store
+                <a href={APP_STORE} target="_blank" rel="noopener noreferrer" className="hover:opacity-85 transition-opacity">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/convite/selo-app-store.svg" alt="Baixar na App Store" className="h-11 md:h-12 w-auto block" />
                 </a>
               </div>
             </>
@@ -357,6 +360,10 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
             style={{ backgroundColor: '#c04d18' }}
           >
             Entrar na aba de parceiros →
+          </a>
+          <p className="font-sans text-white/60 text-sm mt-3">💻 O painel do parceiro funciona melhor no computador.</p>
+          <a href="/empresas" className="font-sans text-white/85 hover:text-white mt-6 underline-offset-4 hover:underline">
+            Quer ver todos os detalhes antes? <span style={{ color: LARANJA }}>Conheça a Conta Business →</span>
           </a>
           <p className="font-sans text-white/60 text-sm mt-8">
             Dúvidas:{' '}
