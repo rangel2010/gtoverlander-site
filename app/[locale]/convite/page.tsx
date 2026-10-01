@@ -58,11 +58,11 @@ const LARANJA_TEXTO = '#b84916';
 
 /** Prints já colocados em public/convite/ (nome → arquivo). */
 const PRINTS: Record<string, string> = {
-  // '01-app-inicio': '01-app-inicio.png',
+  '01-app-inicio': '01-app-inicio.jpg',
   // '02-app-roteiro': '02-app-roteiro.png',
-  // '05-shopping': '05-shopping.png',
-  // '07-painel-parceiro': '07-painel-parceiro.png',
-  // '08-metricas': '08-metricas.png',
+  '05-novo-produto': '05-novo-produto.png',
+  '06-colocar-no-mapa': '06-colocar-no-mapa.png',
+  '07-painel-parceiro': '07-painel-parceiro.png',
 };
 
 /** Caminho público do print, ou null se ele ainda não foi colocado. */
@@ -168,9 +168,9 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
 
   const pInicio = print('01-app-inicio');
   const pRotas = print('02-app-roteiro');
+  const pMapa = print('06-colocar-no-mapa');
   const pPainel = print('07-painel-parceiro');
-  const pMetricas = print('08-metricas');
-  const pShopping = print('05-shopping');
+  const pProduto = print('05-novo-produto');
 
   const frentes = [
     { tag: 'Seu ponto no mapa', desc: 'Assuma o seu estabelecimento e apresente com as suas fotos, o seu contato, os seus horários e tudo o que você oferece.' },
@@ -273,7 +273,7 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
               </div>
             </>
           }
-          imagem={pPainel ? <Tela src={pPainel} alt="Painel do parceiro GT Overlander" /> : null}
+          imagem={pMapa ? <Tela src={pMapa} alt="Colocar o seu negócio no mapa do GT Overlander" /> : null}
         />
       </Slide>
 
@@ -294,7 +294,7 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
               </div>
             </>
           }
-          imagem={pMetricas ? <Tela src={pMetricas} alt="Métricas do parceiro GT Overlander" /> : null}
+          imagem={pPainel ? <Tela src={pPainel} alt="Painel do parceiro com as métricas" /> : null}
         />
       </Slide>
 
@@ -317,7 +317,7 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
               </p>
             </>
           }
-          imagem={pShopping ? <div className="flex justify-center"><Celular src={pShopping} alt="Shopping no app GT Overlander" /></div> : null}
+          imagem={pProduto ? <Tela src={pProduto} alt="Cadastro de produto na Conta Business" /> : null}
         />
       </Slide>
 
