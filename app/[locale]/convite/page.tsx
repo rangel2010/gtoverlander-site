@@ -41,9 +41,21 @@ export const metadata: Metadata = {
     title: 'Você está convidado a fazer parte do GT Overlander',
     description: 'Pousadas, campings, lojas, guias e oficinas: inauguração do Shopping em 9 de outubro.',
     type: 'website',
-    // Endereço direto da imagem: o gerado automaticamente leva /pt/ e passa por
-    // um redirecionamento antes de chegar nela.
-    images: [{ url: 'https://www.gtoverlander.com.br/convite/opengraph-image', width: 1200, height: 630 }],
+    // Arte de compartilhamento feita pelo Rangel (01/10), 1200x630. Endereço completo
+    // e fixo, pra não passar por redirecionamento. Ao trocar a arte, troque o ?v=.
+    images: [
+      {
+        url: 'https://www.gtoverlander.com.br/convite/compartilhar.jpg?v=2',
+        width: 1200,
+        height: 630,
+        type: 'image/jpeg',
+        alt: 'Convite especial GT Overlander · Inauguração do Shopping, 9 de outubro',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://www.gtoverlander.com.br/convite/compartilhar.jpg?v=2'],
   },
   alternates: { canonical: 'https://www.gtoverlander.com.br/convite' },
 };
