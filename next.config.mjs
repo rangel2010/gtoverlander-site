@@ -3,12 +3,33 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin();
 
+/**
+ * Links curtos de rota (gtoverlander.com.br/rota/<nome>) que levam pra rota
+ * pública no app web. Pra acrescentar uma rota nova, é só uma linha aqui:
+ *   serras: 'https://beta.gtoverlander.com.br/rotas/<id-da-rota>',
+ * Redirecionamento TEMPORÁRIO (307): o destino pode mudar (ex.: quando o app
+ * web sair do beta) sem o Google nem os navegadores "decorarem" o endereço.
+ */
+const ROTAS_CURTAS = {
+  uruguai: 'https://beta.gtoverlander.com.br/rotas/cmur0rf2v000l132o452yzoe2',
+};
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   async redirects() {
     return [
+      // Links curtos de rota (lista ROTAS_CURTAS no topo do arquivo). Vale com
+      // e sem prefixo de idioma, pra o link funcionar de qualquer jeito.
+      ...Object.entries(ROTAS_CURTAS).flatMap(([nome, destino]) =>
+        ['', '/pt', '/en', '/es'].map((prefix) => ({
+          source: `${prefix}/rota/${nome}`,
+          destination: destino,
+          permanent: false,
+        }))
+      ),
+
       // Página 1 da paginação mora no caminho base (/blog, /blog/destinos).
       // .../pagina/1 mostrando a mesma listagem seria conteúdo duplicado.
       // Resolvido aqui, na borda: redirect() de server component devolve 307
