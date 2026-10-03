@@ -29,19 +29,23 @@ export interface RotaSite {
   capaCredito?: string;
   corpo?: string;
   ordem?: number;
-  artigo?: {
-    title: string;
-    slug: string;
-    description?: string;
-    coverImage?: unknown;
-    coverImageAlt?: string;
-  } | null;
+  artigo?: ArtigoLigado | null;
+  maisArtigos?: ArtigoLigado[] | null;
+}
+
+export interface ArtigoLigado {
+  title: string;
+  slug: string;
+  description?: string;
+  coverImage?: unknown;
+  coverImageAlt?: string;
 }
 
 const CAMPOS = `
   _id, _updatedAt, titulo, "slug": slug.current, appRouteId, descricaoSeo, paises,
   capa, capaAlt, capaCredito, corpo, ordem,
-  "artigo": artigo->{ title, "slug": slug.current, description, coverImage, coverImageAlt }
+  "artigo": artigo->{ title, "slug": slug.current, description, coverImage, coverImageAlt },
+  "maisArtigos": maisArtigos[]->{ title, "slug": slug.current, description, coverImage, coverImageAlt }
 `;
 
 const FILTRO = `_type == "rotaSite" && mostrar != false && defined(slug.current) && defined(appRouteId)`;

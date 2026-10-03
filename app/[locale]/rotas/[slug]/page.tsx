@@ -154,6 +154,8 @@ export default async function RotaPage({ params }: { params: { locale: string; s
     { ...ficha.destino, tipo: 'ponta' as const, papel: 'Chegada' },
   ];
 
+  // Sem repetir o artigo principal e sem referência quebrada (artigo apagado).
+  const maisArtigos = (rota.maisArtigos ?? []).filter((a) => a?.slug && a.slug !== rota.artigo?.slug);
   const mostraSalvos = ficha.salvamentos >= MIN_SALVAMENTOS;
   const mostraNota = ficha.nota !== null && ficha.avaliacoes >= MIN_AVALIACOES;
   const capaArtigo = rota.artigo ? urlForImage(rota.artigo.coverImage as never)?.width(640).height(360).url() : null;
@@ -323,6 +325,36 @@ export default async function RotaPage({ params }: { params: { locale: string; s
                   <p className="font-sans text-sm text-gt-orange-text mt-3">Ler a história e as dicas →</p>
                 </div>
               </Link>
+            </div>
+          </section>
+        )}
+
+        {/* Mais artigos do blog sobre o mesmo destino (campo "Mais artigos" no Studio) */}
+        {maisArtigos.length > 0 && (
+          <section className={`py-12 ${rota.artigo ? 'bg-gt-card' : 'bg-gt-card border-t border-gt-border'}`}>
+            <div className="container-wide">
+              <h2 className="text-2xl md:text-3xl text-gt-text mb-8">Mais pra planejar essa viagem</h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {maisArtigos.map((a) => {
+                  const img = urlForImage(a.coverImage as never)?.width(640).height(360).url();
+                  return (
+                    <Link
+                      key={a.slug}
+                      href={`/blog/${a.slug}`}
+                      className="group bg-gt-bg border border-gt-border rounded-lg overflow-hidden flex flex-col hover:border-gt-orange transition-colors"
+                    >
+                      <div className="relative aspect-[16/9] bg-gt-bg-elevated">
+                        {img && (
+                          <Image src={img} alt={a.coverImageAlt || ''} fill sizes="(max-width: 640px) 100vw, 400px" className="object-cover" />
+                        )}
+                      </div>
+                      <div className="p-5">
+                        <p className="font-sans font-medium text-gt-text leading-snug group-hover:text-gt-orange-text">{a.title}</p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           </section>
         )}

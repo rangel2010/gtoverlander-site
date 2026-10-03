@@ -97,6 +97,15 @@ export const rotaSchema = defineType({
       description: 'O artigo com a história e as dicas. A página da rota aponta pra ele.',
     }),
     defineField({
+      name: 'maisArtigos',
+      title: 'Mais artigos do blog (fim da página)',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'post' }] }],
+      description:
+        'Até 6 artigos sobre o mesmo destino ou assunto (pedágio, documentos, cidades do caminho). Aparecem em cartões no fim da página.',
+      validation: (Rule) => Rule.max(6).unique(),
+    }),
+    defineField({
       name: 'ordem',
       title: 'Ordem na vitrine',
       type: 'number',
