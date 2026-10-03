@@ -40,6 +40,16 @@ export const structure: StructureResolver = (S) =>
             .initialValueTemplates([S.initialValueTemplateItem('post-es')])
         ),
       S.divider(),
+      // Rotas que aparecem no site (www.gtoverlander.com.br/rotas/…). 02/10/2026.
+      S.listItem()
+        .title('🗺️ Rotas do site')
+        .child(
+          S.documentList()
+            .title('Rotas do site')
+            .filter('_type == "rotaSite"')
+            .defaultOrdering([{ field: 'ordem', direction: 'asc' }])
+        ),
+      S.divider(),
       S.listItem()
         .title('💬 Comentários pendentes')
         .child(

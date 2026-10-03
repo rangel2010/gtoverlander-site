@@ -22,6 +22,7 @@ export function Header() {
   const navLinks = [
     { href: '/recursos' as const, label: t('recursos'), ptOnly: false },
     { href: '/planos' as const, label: t('planos'), ptOnly: false },
+    { href: '/rotas' as const, label: t('rotas'), ptOnly: true },
     { href: '/blog' as const, label: t('blog'), ptOnly: false },
     { href: '/dicas' as const, label: t('dicas'), ptOnly: true },
     { href: '/sobre' as const, label: t('sobre'), ptOnly: false },

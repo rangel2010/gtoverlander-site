@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/sanity/queries';
 import { postModifiedAt } from '@/lib/seo';
+import { getRotasSite } from '@/lib/rotas';
 
 const WWW = 'https://www.gtoverlander.com.br';
 // A home entra como '/'. Para EN/ES isso geraria '/en/', que o Next responde
@@ -107,5 +108,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...toEntries(esPosts, 'es'),
   ];
 
-  return [...multilingualEntries, ...ptOnlyEntries, ...postEntries];
+  // Rotas do site (02/10/2026): só as cadastradas no Studio, só em PT. A
+  // vitrine /rotas só entra quando já tem rota — página vazia não vai pro Google.
+  let rotas: Awaited<ReturnType<typeof getRotasSite>> = [];
+  try {
+    rotas = await getRotasSite();
+  } catch (e) {
+    console.error('[sitemap] Falha ao buscar rotas do Sanity:', e);
+  }
+  const rotaEntries: MetadataRoute.Sitemap = rotas.length
+    ? [
+        { url: WWW + '/rotas', changeFrequency: 'weekly' as const, priority: 0.8 },
+        ...rotas.map((r) => ({
+          url: WWW + '/rotas/' + r.slug,
+          lastModified: new Date(r._updatedAt),
+          changeFrequency: 'monthly' as const,
+          priority: 0.8,
+        })),
+      ]
+    : [];
+
+  return [...multilingualEntries, ...ptOnlyEntries, ...rotaEntries, ...postEntries];
 }
