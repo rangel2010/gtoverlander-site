@@ -12,6 +12,7 @@ const withNextIntl = createNextIntlPlugin();
  */
 const ROTAS_CURTAS = {
   uruguai: 'https://beta.gtoverlander.com.br/rotas/cmur0rf2v000l132o452yzoe2',
+  serras: 'https://beta.gtoverlander.com.br/rotas/cmusc39nx000dwc6uqgfi6lz0',
 };
 
 /** @type {import('next').NextConfig} */
