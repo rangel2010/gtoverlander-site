@@ -13,6 +13,11 @@ const withNextIntl = createNextIntlPlugin();
 const ROTAS_CURTAS = {
   uruguai: 'https://beta.gtoverlander.com.br/rotas/cmur0rf2v000l132o452yzoe2',
   serras: 'https://beta.gtoverlander.com.br/rotas/cmusc39nx000dwc6uqgfi6lz0',
+  // Prontos antes do reel (03/10/2026):
+  'carretera-austral': 'https://beta.gtoverlander.com.br/rotas/cmtsjcedt00098tr1hffbgj5q',
+  'ruta-40-sul': 'https://beta.gtoverlander.com.br/rotas/cmtrnrby00005fhd3eprw9akx',
+  'ruta-40-mendoza-bariloche': 'https://beta.gtoverlander.com.br/rotas/cmtrne7gz000vox9kagyhnq44',
+  'ruta-40-norte': 'https://beta.gtoverlander.com.br/rotas/cmtrmwcx0000dox9kcmd6kltx',
 };
 
 /** @type {import('next').NextConfig} */

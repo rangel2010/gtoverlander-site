@@ -209,7 +209,10 @@ export default async function RotaPage({ params }: { params: { locale: string; s
             <p className="font-sans text-gt-text-muted text-lg mb-2">
               {cidade(ficha.origem.nome)} → {cidade(ficha.destino.nome)}
             </p>
-            <p className="font-sans text-gt-text leading-relaxed text-lg">{ficha.descricao}</p>
+            {/* Rota sem descrição pública no app usa a descrição do Studio. */}
+            {(ficha.descricao || rota.descricaoSeo) && (
+              <p className="font-sans text-gt-text leading-relaxed text-lg">{ficha.descricao || rota.descricaoSeo}</p>
+            )}
           </div>
         </header>
 
