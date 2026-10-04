@@ -20,6 +20,7 @@ const ROTAS_CURTAS = {
   'ruta-40-norte': 'https://beta.gtoverlander.com.br/rotas/cmtrmwcx0000dox9kcmd6kltx',
   'estrada-real': 'https://beta.gtoverlander.com.br/rotas/cmutwx0f1003qwc6usanestlt',
   'chapada-diamantina': 'https://beta.gtoverlander.com.br/rotas/cmuu6h7ea007fwc6urhulonr8',
+  'rastro-da-serpente': 'https://beta.gtoverlander.com.br/rotas/cmuu76zf8008bwc6u92tctgpk',
 };
 
 /** @type {import('next').NextConfig} */
