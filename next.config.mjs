@@ -19,6 +19,7 @@ const ROTAS_CURTAS = {
   'ruta-40-mendoza-bariloche': 'https://beta.gtoverlander.com.br/rotas/cmtrne7gz000vox9kagyhnq44',
   'ruta-40-norte': 'https://beta.gtoverlander.com.br/rotas/cmtrmwcx0000dox9kcmd6kltx',
   'estrada-real': 'https://beta.gtoverlander.com.br/rotas/cmutwx0f1003qwc6usanestlt',
+  'chapada-diamantina': 'https://beta.gtoverlander.com.br/rotas/cmuu6h7ea007fwc6urhulonr8',
 };
 
 /** @type {import('next').NextConfig} */
