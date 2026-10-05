@@ -389,6 +389,13 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
             Entrar na aba de parceiros →
           </a>
           <p className="font-sans text-white/60 text-sm mt-3">💻 O painel do parceiro funciona melhor no computador.</p>
+          {/* Guia rápido do parceiro (05/10): passo a passo do cadastro, com PDF pra baixar. */}
+          <a
+            href="/parceiros/guia"
+            className="mt-6 inline-flex items-center justify-center font-sans font-semibold px-6 py-3 rounded-md border border-white/40 text-white hover:bg-white/10 transition-colors"
+          >
+            📘 Como cadastrar seus produtos: veja o guia
+          </a>
           <a href="/empresas" className="font-sans text-white/85 hover:text-white mt-6 underline-offset-4 hover:underline">
             Quer ver todos os detalhes antes? <span style={{ color: LARANJA }}>Conheça a Conta Business →</span>
           </a>
