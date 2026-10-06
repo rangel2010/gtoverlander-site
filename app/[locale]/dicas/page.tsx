@@ -1,12 +1,18 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { getChannelShorts } from '@/lib/youtube';
 import { DicasGrid } from '@/components/dicas-grid';
 import { jsonLdScriptProps, BASE_URL } from '@/lib/seo';
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+// en/es (06/10/2026): quem tem o navegador em inglês ou espanhol e abre um link
+// de /dicas era redirecionado pra /en/dicas e caía num 404. Agora vê a mesma
+// página em português, fora do Google (regra das páginas só em português).
+export async function generateMetadata({ params: { locale } }: PageProps): Promise<Metadata> {
+  return locale === 'pt' ? metadata : { ...metadata, robots: { index: false, follow: true } };
+}
+
+const metadata: Metadata = {
   title: 'Dicas em vídeo',
   description:
     'Vídeos curtos com dicas práticas de overlanding: roteiros, preparação do veículo, vida na estrada e o que saber antes de partir.',
@@ -58,7 +64,6 @@ function videosLd(shorts: Awaited<ReturnType<typeof getChannelShorts>>) {
 }
 
 export default async function DicasPage({ params: { locale } }: PageProps) {
-  if (locale !== 'pt') notFound();
 
   // Mostra apenas a partir do vídeo "Patagônia de carro" (inclusive) — os anteriores eram conteúdo antigo
   const shorts = await getChannelShorts(50, 'yD_d43yhxKc');

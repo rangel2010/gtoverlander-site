@@ -208,6 +208,38 @@ export async function getPostBySlug(slug: string, locale: BlogLocale = 'pt'): Pr
  *
  * Post sem locale definido conta como PT, igual ao resto das queries.
  */
+/**
+ * Endereço com o slug no idioma errado (06/10/2026): devolve o idioma real do
+ * post e as traduções dele, pra mandar o visitante pra versão no idioma que ele
+ * pediu quando ela existe (/en/blog/<slug-pt> → /en/blog/<slug-en>), em vez de
+ * jogar pro idioma original.
+ */
+export async function findPostTranslationsBySlug(
+  slug: string
+): Promise<{ locale: BlogLocale; translations: { locale: string; slug: string }[] } | null> {
+  if (!sanityClient) return null;
+  try {
+    const found = await sanityClient.fetch<{
+      locale: string;
+      translations: { locale: string; slug: string }[] | null;
+    } | null>(
+      `*[_type == "post" && slug.current == $slug
+        && defined(publishedAt) && publishedAt <= now()][0]{
+          "locale": coalesce(locale, "pt"),
+          "translations": linkedTranslations[]{ locale, slug }
+        }`,
+      { slug },
+      { next: { revalidate: 60 } }
+    );
+    if (!found) return null;
+    const locale: BlogLocale = found.locale === 'en' || found.locale === 'es' ? found.locale : 'pt';
+    return { locale, translations: (found.translations ?? []).filter((t) => t?.locale && t?.slug) };
+  } catch (e) {
+    console.error('[sanity] findPostTranslationsBySlug error:', e);
+    return null;
+  }
+}
+
 export async function findPostLocaleBySlug(slug: string): Promise<BlogLocale | null> {
   if (!sanityClient) return null;
   try {

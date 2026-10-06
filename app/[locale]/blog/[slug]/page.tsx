@@ -13,7 +13,7 @@ import {
   getPostBySlug,
   getAllPosts,
   getRelatedPosts,
-  findPostLocaleBySlug,
+  findPostTranslationsBySlug,
 } from '@/lib/sanity/queries';
 import { urlForImage } from '@/lib/sanity/image';
 import { PILLAR_TITLES } from '@/lib/sanity/types';
@@ -228,12 +228,18 @@ export default async function PostPage({ params }: PageProps) {
     // de locale) — o Search Console tem 281 dessas em "Não encontrado (404)".
     // Mandar o visitante pro artigo certo é melhor que devolver erro, e libera
     // o orçamento de rastreamento gasto nelas.
-    const realLocale = await findPostLocaleBySlug(params.slug);
-    if (realLocale && realLocale !== locale) {
+    // 06/10/2026: se o artigo tem tradução no idioma pedido, vai pra ela
+    // (quem abriu /en/... quer ler em inglês); senão, pro idioma original.
+    const achado = await findPostTranslationsBySlug(params.slug);
+    if (achado && achado.locale !== locale) {
+      const traducao = achado.translations.find((t) => t.locale === locale);
+      if (traducao && (await getPostBySlug(traducao.slug, locale))) {
+        permanentRedirect(locale === 'pt' ? `/blog/${traducao.slug}` : `/${locale}/blog/${traducao.slug}`);
+      }
       permanentRedirect(
-        realLocale === 'pt'
+        achado.locale === 'pt'
           ? `/blog/${params.slug}`
-          : `/${realLocale}/blog/${params.slug}`
+          : `/${achado.locale}/blog/${params.slug}`
       );
     }
     notFound();
