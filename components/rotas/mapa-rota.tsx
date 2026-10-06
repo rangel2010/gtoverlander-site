@@ -1,12 +1,16 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import 'maplibre-gl/dist/maplibre-gl.css';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * Mapa da rota: o traçado vindo do app, partida e chegada em verde, paradas
  * numeradas em laranja. Só ilustra — o Google lê a lista de paradas em texto,
  * que fica fora do mapa.
+ *
+ * Desempenho (06/10/2026): o mapa só carrega quando a pessoa rola até perto
+ * dele. Antes ele carregava junto com a página e travava o celular por uns
+ * 4 segundos (PageSpeed), mesmo com o mapa lá embaixo. O estilo do mapa
+ * também vem só nessa hora, pra não atrasar o resto da página.
  */
 export function MapaRota({
   tracado,
@@ -16,13 +20,39 @@ export function MapaRota({
   pontos: { nome: string; lat: number; lng: number; tipo: 'ponta' | 'parada'; n?: number }[];
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [perto, setPerto] = useState(false);
+
+  // Avisa quando o mapa está a ~1 tela de distância.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === 'undefined') {
+      setPerto(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entradas) => {
+        if (entradas.some((e) => e.isIntersecting)) {
+          setPerto(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: '600px 0px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
-    if (!ref.current) return;
+    if (!perto || !ref.current) return;
     let map: import('maplibre-gl').Map | null = null;
     let cancelado = false;
 
-    import('maplibre-gl').then(({ default: maplibregl }) => {
+    Promise.all([
+      import('maplibre-gl'),
+      // @ts-expect-error -- arquivo de estilo, sem tipos; o Next carrega na hora
+      import('maplibre-gl/dist/maplibre-gl.css'),
+    ]).then(([{ default: maplibregl }]) => {
       if (cancelado || !ref.current) return;
       const coords = tracado.map(([lat, lng]) => [lng, lat] as [number, number]);
       const todos = coords.length ? coords : pontos.map((p) => [p.lng, p.lat] as [number, number]);
@@ -77,6 +107,9 @@ export function MapaRota({
             .setLngLat([p.lng, p.lat])
             .setPopup(new maplibregl.Popup({ offset: 12, closeButton: false }).setText(p.nome))
             .addTo(map);
+          // Acessibilidade: o marcador abre um balão, então é um botão com o nome do lugar.
+          el.setAttribute('role', 'button');
+          el.setAttribute('aria-label', p.nome);
         }
       });
     });
@@ -85,13 +118,13 @@ export function MapaRota({
       cancelado = true;
       map?.remove();
     };
-  }, [tracado, pontos]);
+  }, [perto, tracado, pontos]);
 
   return (
     <div
       ref={ref}
       className="w-full h-[360px] md:h-[480px] rounded-lg overflow-hidden border border-gt-border bg-gt-card"
-      role="img"
+      role="region"
       aria-label="Mapa com o traçado da rota e as paradas"
     />
   );

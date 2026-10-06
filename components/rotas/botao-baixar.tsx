@@ -29,17 +29,20 @@ export function BotaoBaixar({ className = '' }: { className?: string }) {
   );
 }
 
+// Tamanho real dos arquivos dos selos (a altura na tela vem da classe h-11).
+const PW = 646, PH = 192, AW = 120, AH = 40;
+
 /** Selos oficiais das lojas, mesma altura. */
 export function SelosLojas() {
   return (
     <div className="flex flex-wrap items-center gap-3">
       <a href={PLAY_STORE} target="_blank" rel="noopener noreferrer" className="hover:opacity-85 transition-opacity">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/convite/selo-google-play.png" alt="Disponível no Google Play" className="h-11 w-auto block" />
+        <img src="/convite/selo-google-play.png" alt="Disponível no Google Play" width={PW} height={PH} className="h-11 w-auto block" />
       </a>
       <a href={APP_STORE} target="_blank" rel="noopener noreferrer" className="hover:opacity-85 transition-opacity">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/convite/selo-app-store.svg" alt="Baixar na App Store" className="h-11 w-auto block" />
+        <img src="/convite/selo-app-store.svg" alt="Baixar na App Store" width={AW} height={AH} className="h-11 w-auto block" />
       </a>
     </div>
   );

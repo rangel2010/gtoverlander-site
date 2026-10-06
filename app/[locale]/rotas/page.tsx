@@ -68,7 +68,7 @@ export default async function RotasPage({ params }: { params: { locale: string }
             <p className="font-sans text-gt-text-muted">As primeiras rotas chegam em breve.</p>
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {cartoes.map(({ rota, ficha }) => {
+              {cartoes.map(({ rota, ficha }, i) => {
                 const capa = capaDaRota(rota, 800, 450);
                 const dif = nomeDificuldade(ficha.dificuldade);
                 return (
@@ -79,7 +79,15 @@ export default async function RotasPage({ params }: { params: { locale: string }
                   >
                     <div className="relative aspect-[16/9] bg-gt-bg-elevated">
                       {capa.url && (
-                        <Image src={capa.url} alt={capa.alt} fill sizes="(max-width: 640px) 100vw, 400px" className="object-cover" />
+                        <Image
+                          src={capa.url}
+                          alt={capa.alt}
+                          fill
+                          sizes="(max-width: 640px) 100vw, 400px"
+                          className="object-cover"
+                          // As primeiras fotos aparecem logo na tela: carregam na frente (06/10/2026).
+                          priority={i < 3}
+                        />
                       )}
                     </div>
                     <div className="p-5 flex flex-col gap-2 flex-1">

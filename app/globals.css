@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fonte provisória dos títulos enquanto a Anton carrega (06/10/2026).
+   Medida pela largura das MAIÚSCULAS (os títulos são todos em caixa alta):
+   assim o título quebra nas mesmas linhas antes e depois da troca, sem pular.
+   size-adjust = largura média das maiúsculas da Anton ÷ Arial (69,66%);
+   ascent/descent = métricas da Anton ÷ size-adjust. */
+@font-face {
+  font-family: 'Anton Caps Fallback';
+  src: local('Arial'), local('ArialMT'), local('Helvetica'), local('Roboto'), local('Liberation Sans');
+  size-adjust: 69.66%;
+  ascent-override: 168.86%;
+  descent-override: 47.24%;
+  line-gap-override: 0%;
+}
+
 @layer base {
   /* Tema claro (padrão das variáveis CSS).
      Formato R G B (triplet) — exigido pelo Tailwind pra suportar opacidade (/95, /50 etc) */

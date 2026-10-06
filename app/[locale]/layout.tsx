@@ -27,12 +27,19 @@ const inter = Inter({
   adjustFontFallback: true,
 });
 
+// Fonte provisória da Anton (06/10/2026): a que o Next calcula sozinho é
+// medida em letra minúscula, mas nossos títulos são todos em MAIÚSCULA — e a
+// Arial maiúscula é bem mais larga que a Anton. O título quebrava em mais
+// linhas até a Anton chegar e aí "pulava" (CLS 0,18 na home, PageSpeed).
+// A provisória agora é ajustada pela largura das maiúsculas: ver
+// "Anton Caps Fallback" em globals.css.
 const anton = Anton({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-anton',
   display: 'swap',
-  adjustFontFallback: true,
+  adjustFontFallback: false,
+  fallback: ['Anton Caps Fallback', 'Impact', 'sans-serif'],
 });
 
 const OG_LOCALES: Record<string, string> = {
