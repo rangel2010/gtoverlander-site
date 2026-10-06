@@ -78,6 +78,27 @@ export async function getRotaSite(slug: string): Promise<RotaSite | null> {
   }
 }
 
+/**
+ * Rotas que usam um artigo do blog (06/10/2026): como artigo principal ou em
+ * "Mais artigos". Alimenta o cartão "Essa viagem tem rota pronta" no começo do
+ * artigo — o caminho de volta, do blog pra página da rota. Rota nova no Studio
+ * já aparece sozinha nos artigos ligados a ela.
+ */
+export async function getRotasDoArtigo(postId: string): Promise<RotaSite[]> {
+  if (!sanityClient || !postId) return [];
+  try {
+    return await sanityClient.fetch<RotaSite[]>(
+      `*[${FILTRO} && (artigo._ref == $id || $id in maisArtigos[]._ref)]
+        | order(select(artigo._ref == $id => 0, 1) asc, coalesce(ordem, 9999) asc, _createdAt asc) { ${CAMPOS} }`,
+      { id: postId },
+      { next: { revalidate: 60 } }
+    );
+  } catch (e) {
+    console.error('[rotas] getRotasDoArtigo:', e);
+    return [];
+  }
+}
+
 /** Capa da rota; sem capa própria, a do artigo relacionado. */
 export function capaDaRota(r: RotaSite, w = 1600, h = 900) {
   const src = r.capa ?? r.artigo?.coverImage;

@@ -28,6 +28,7 @@ import {
   jsonLdScriptProps,
   DEFAULT_AUTHOR_BIO, postModifiedAt } from '@/lib/seo';
 import { getTranslations } from 'next-intl/server';
+import { getRotasDoArtigo, getFichaRota, cidade } from '@/lib/rotas';
 
 interface PageProps {
   params: { slug: string; locale: string };
@@ -247,6 +248,14 @@ export default async function PostPage({ params }: PageProps) {
 
   const related = await getRelatedPosts(post.slug, post.category, locale);
 
+  // Caminho de volta blog → página da rota (06/10/2026). Páginas de rota são só
+  // em português, então o cartão só aparece no artigo em PT.
+  const rotasDoArtigo = locale === 'pt' ? await getRotasDoArtigo(post._id) : [];
+  const fichasDoArtigo = await Promise.all(rotasDoArtigo.map((r) => getFichaRota(r.appRouteId)));
+  const rotasProntas = rotasDoArtigo
+    .map((rota, i) => ({ rota, ficha: fichasDoArtigo[i] }))
+    .filter((c) => c.ficha);
+
   // URL absoluta pra compartilhamento. PT não leva prefixo (localePrefix
   // 'as-needed'); EN e ES levam, senão o link compartilhado cai em 404.
   const shareUrl =
@@ -336,6 +345,38 @@ export default async function PostPage({ params }: PageProps) {
 
         <div className="bg-gt-bg py-12 md:py-16">
           <div className="container-narrow">
+            {rotasProntas.length > 0 && (
+              <aside
+                className="mb-10 bg-gt-card border border-gt-border rounded-lg p-5 font-sans"
+                aria-label="Rota pronta no GT Overlander"
+              >
+                <p className="text-sm font-semibold text-gt-text mb-3">
+                  🗺️ {rotasProntas.length > 1 ? 'Essa viagem tem rotas prontas' : 'Essa viagem tem rota pronta'} no GT Overlander
+                </p>
+                <ul className="grid gap-2">
+                  {rotasProntas.map(({ rota, ficha }) => (
+                    <li key={rota._id}>
+                      <Link
+                        href={`/rotas/${rota.slug}`}
+                        className="group flex flex-wrap items-baseline gap-x-2 gap-y-1 rounded-md px-3 py-2 -mx-3 hover:bg-gt-card-hover transition-colors"
+                      >
+                        <span className="text-gt-text font-medium group-hover:text-gt-orange-text">
+                          {rota.titulo || ficha!.titulo}
+                        </span>
+                        <span className="text-sm text-gt-text-muted">
+                          {cidade(ficha!.origem.nome)} → {cidade(ficha!.destino.nome)} · {ficha!.km.toLocaleString('pt-BR')} km
+                          {ficha!.dias ? ` · ${ficha!.dias} dias` : ''}
+                        </span>
+                        <span className="text-sm text-gt-orange-text font-medium underline underline-offset-2">
+                          Ver a rota parada por parada →
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            )}
+
             {post.audioUrl && (
               <div className="mb-10 bg-gt-card border border-gt-border rounded-lg p-5">
                 <p className="flex items-center gap-2 text-sm font-medium text-gt-green font-sans mb-3">
