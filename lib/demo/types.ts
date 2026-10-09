@@ -1,9 +1,10 @@
-// Types pra demo de waypoints — espelham os arquivos públicos do Storage Account
-// Fonte: gtoverlanderwaypoints.blob.core.windows.net/waypoint-regions
+// Types pra demo de waypoints — espelham os arquivos públicos do acervo do app
+// Fonte: acervo.gtoverlander.com.br (regerado 06:10 e 18:10; até 09/10/2026 era a
+// cópia da Azure em gtoverlanderwaypoints.blob.core.windows.net/waypoint-regions)
 
 /**
  * Manifest — cardápio que lista todos os países disponíveis e versão atual.
- * URL: https://gtoverlanderwaypoints.blob.core.windows.net/waypoint-regions/manifest.json
+ * URL: https://acervo.gtoverlander.com.br/manifest.json
  */
 export interface Manifest {
   generatedAt: string;
@@ -19,7 +20,7 @@ export interface ManifestEntry {
 
 /**
  * Arquivo de waypoints de um país específico.
- * URL: https://gtoverlanderwaypoints.blob.core.windows.net/waypoint-regions/{fileName}
+ * URL: https://acervo.gtoverlander.com.br/{fileName}
  * Já vem com Content-Encoding: gzip — navegador descomprime automaticamente.
  */
 export interface CountryFile {

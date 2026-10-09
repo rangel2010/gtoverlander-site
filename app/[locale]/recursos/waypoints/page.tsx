@@ -6,6 +6,7 @@ import { OutrasFeatures } from '@/components/sections/outras-features';
 import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 import { WaypointsMap } from '@/components/demo/waypoints-map';
 import { getGeoFromHeaders } from '@/lib/demo/geo';
+import { getCatalogoWaypoints } from '@/lib/demo/catalogo';
 
 export async function generateMetadata({
   params: { locale },
@@ -68,8 +69,10 @@ const faq = [
   },
 ];
 
-export default function WaypointsPage() {
+export default async function WaypointsPage() {
   const geo = getGeoFromHeaders();
+  // Catálogo de categorias buscado no servidor e passado como prop (09/10/2026).
+  const catalogo = await getCatalogoWaypoints();
 
   return (
     <>
@@ -100,7 +103,7 @@ export default function WaypointsPage() {
               Abrir em tela cheia →
             </a>
           </div>
-          <WaypointsMap geo={geo} />
+          <WaypointsMap geo={geo} catalogo={catalogo} />
         </div>
       </section>
 

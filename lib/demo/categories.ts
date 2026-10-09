@@ -1,185 +1,100 @@
-// Labels, emojis e cores das categorias de waypoints.
-// A demo lê DINAMICAMENTE do arquivo de cada país quais categorias existem
-// e renderiza o filtro com base nisso. Esse mapa serve de catálogo pra
-// dar label bonito e emoji em PT-BR pras categorias conhecidas.
-// Se o backend adicionar uma categoria nova, ela aparece com fallback automático.
+// Categorias e subtipos dos waypoints da demo (mapa de degustação).
+//
+// 09/10/2026: deixou de ser tabela escrita à mão. A fonte é o catálogo público
+// do app — GET {API_BASE}/vocabulary → waypoints.categorias e waypoints.subtipos
+// — buscado NO SERVIDOR (lib/demo/catalogo.ts) e entregue ao mapa como prop.
+// O `code` com sublinhado (gas_station) é o canônico desde 14/09; a tabela
+// antiga, com espaço ('gas station') e sem market/atm, era o resto daquele
+// defeito sobrevivendo neste repositório.
+//
+// ⚠️ Não criar tabela de reserva aqui. Sem catálogo (API fora e cache vazio),
+// tudo cai no pino genérico — é proposital.
 
-interface CategoryConfig {
+/** Uma categoria como o catálogo entrega. */
+export interface CategoriaCatalogo {
+  code: string;
+  label: string;
+  color: string;
+  emoji: string;
+  soNoRadar: boolean;
+  /** Código da categoria em cujo filtro esta entra (ex.: guesthouse → hotel). */
+  agrupaEm: string | null;
+}
+
+/** Um subtipo (customIcon do ponto) como o catálogo entrega. */
+export interface SubtipoCatalogo {
+  code: string;
+  label: string;
+  emoji: string;
+  categoria: string;
+  cruzaEm: string | null;
+}
+
+export interface CatalogoWaypoints {
+  categorias: CategoriaCatalogo[];
+  subtipos: SubtipoCatalogo[];
+}
+
+export interface CategoryConfig {
   label: string;
   emoji: string;
   color: string;
 }
 
-const CATEGORIES_KNOWN: Record<string, CategoryConfig> = {
-  // Estrada e veículo
-  'gas station': { label: 'Postos', emoji: '⛽', color: '#F5C842' },
-  mechanic: { label: 'Oficina', emoji: '🔧', color: '#8090A0' },
-  'rv support': { label: 'Aceita RV', emoji: '🚐', color: '#1F8A8A' },
-  // Hospedagem
-  hotel: { label: 'Hospedagem', emoji: '🛌', color: '#7280C4' },
-  guesthouse: { label: 'Pousada', emoji: '🏡', color: '#A48B65' },
-  camping: { label: 'Camping', emoji: '🏕️', color: '#7FCB7F' },
-  // Comida
-  restaurant: { label: 'Restaurante', emoji: '🍽️', color: '#B8505A' },
-  'fast food': { label: 'Fast Food', emoji: '🍔', color: '#D49850' },
-  cafe: { label: 'Café', emoji: '☕', color: '#8B5A3C' },
-  bakery: { label: 'Padaria', emoji: '🥐', color: '#C39556' },
-  // Turismo
-  attraction: { label: 'Atração', emoji: '⭐', color: '#7FCB7F' },
-  'national park': { label: 'Parque Nacional', emoji: '🌲', color: '#3F7050' },
-  // Logística
-  'rest area': { label: 'Área de Descanso', emoji: '🅿️', color: '#8090A0' },
-  'border crossing': { label: 'Fronteira', emoji: '🛂', color: '#A050A0' },
-  // Saúde / emergência
-  hospital: { label: 'Hospital', emoji: '🏥', color: '#C04050' },
-  pharmacy: { label: 'Farmácia', emoji: '💊', color: '#5BAA5F' },
-  // Categorias do Radar (podem aparecer em outros países, mantidas como fallback)
-  viewpoint: { label: 'Mirante', emoji: '🏞️', color: '#7080A0' },
-  museum: { label: 'Museu', emoji: '🏛️', color: '#806060' },
-  parking: { label: 'Estacionamento', emoji: '🚗', color: '#606060' },
-  supermarket: { label: 'Supermercado', emoji: '🛒', color: '#5070A0' },
-};
+/** Pino genérico: o que aparece quando o código não está no catálogo. */
+const GENERICO = { emoji: '📍', color: '#707070' };
 
-const PREFERRED_ORDER: string[] = [
-  'gas station',
-  'mechanic',
-  'hotel',
-  'guesthouse',
-  'camping',
-  'restaurant',
-  'fast food',
-  'cafe',
-  'bakery',
-  'supermarket',
-  'attraction',
-  'viewpoint',
-  'museum',
-  'national park',
-  'rest area',
-  'parking',
-  'border crossing',
-  'hospital',
-  'pharmacy',
-  'rv support',
-];
+function rotuloDoCodigo(code: string): string {
+  return code.replace(/[_-]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}
 
-export function getCategoryConfig(category: string): CategoryConfig {
-  if (category in CATEGORIES_KNOWN) {
-    return CATEGORIES_KNOWN[category];
-  }
-  const label = category
-    .replace(/[_-]/g, ' ')
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-  return {
-    label,
-    emoji: '📍',
-    color: '#707070',
+/** customIcon que não é um código (ex.: '✌️' legado da Rota Biker) passa direto. */
+function ehCodigo(s: string): boolean {
+  return /^[a-z0-9_]+$/.test(s);
+}
+
+export interface Catalogo {
+  /** Códigos de todas as categorias, na ordem do catálogo. */
+  codigos: string[];
+  /** Label, emoji e cor da categoria. Fora do catálogo → pino genérico. */
+  config(code: string): CategoryConfig;
+  /** Chave do filtro (chip) onde a categoria entra: `agrupaEm` ou ela mesma. */
+  grupo(code: string): string;
+  /** Ordena chaves de filtro pela ordem do catálogo; desconhecidas no fim. */
+  ordenarGrupos(keys: string[]): string[];
+  /** Emoji do subtipo. Código desconhecido → '' (usa o emoji da categoria). */
+  emojiDoSubtipo(customIcon: string): string;
+}
+
+export function criarCatalogo(dados: CatalogoWaypoints | null): Catalogo {
+  const categorias = new Map((dados?.categorias ?? []).map((c) => [c.code, c]));
+  const subtipos = new Map((dados?.subtipos ?? []).map((s) => [s.code, s]));
+  const ordem = Array.from(categorias.keys());
+
+  const config = (code: string): CategoryConfig => {
+    const c = categorias.get(code);
+    if (c) return { label: c.label, emoji: c.emoji, color: c.color };
+    return { label: rotuloDoCodigo(code), ...GENERICO };
   };
-}
 
-export function sortCategories(categories: string[]): string[] {
-  return [...categories].sort((a, b) => {
-    const aIdx = PREFERRED_ORDER.indexOf(a);
-    const bIdx = PREFERRED_ORDER.indexOf(b);
-    if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
-    if (aIdx !== -1) return -1;
-    if (bIdx !== -1) return 1;
-    return a.localeCompare(b);
-  });
-}
-
-// === GRUPOS COMPOSTOS ===
-const CATEGORY_TO_GROUP: Record<string, string> = {
-  hotel: 'Hospedagem',
-  guesthouse: 'Hospedagem',
-  restaurant: 'Alimentação',
-  'fast food': 'Alimentação',
-  cafe: 'Alimentação',
-  bakery: 'Alimentação',
-  supermarket: 'Alimentação',
-  hospital: 'Saúde',
-  pharmacy: 'Saúde',
-  // Parque Nacional cai dentro do chip "Atração" (são poucos por país).
-  // No mapa cada um mantém o emoji próprio (⭐ vs 🌲).
-  'national park': 'attraction',
-};
-
-const COMPOSITE_GROUPS_CONFIG: Record<string, CategoryConfig> = {
-  Hospedagem: { label: 'Hospedagem', emoji: '🛌', color: '#2A4A7A' },
-  Alimentação: { label: 'Alimentação', emoji: '🍽️', color: '#5BA8E0' },
-  Saúde: { label: 'Saúde', emoji: '🏥', color: '#C04050' },
-};
-
-export function categoryToGroupKey(category: string): string {
-  return CATEGORY_TO_GROUP[category] ?? category;
-}
-
-export function getGroupConfig(groupKey: string): CategoryConfig {
-  if (groupKey in COMPOSITE_GROUPS_CONFIG) {
-    return COMPOSITE_GROUPS_CONFIG[groupKey];
-  }
-  return getCategoryConfig(groupKey);
-}
-
-const GROUP_ORDER: string[] = [
-  'gas station',
-  'mechanic',
-  'Hospedagem',
-  'camping',
-  'Alimentação',
-  'attraction',
-  'viewpoint',
-  'museum',
-  'rest area',
-  'parking',
-  'border crossing',
-  'Saúde',
-  'rv support',
-];
-
-export function sortGroups(groupKeys: string[]): string[] {
-  return [...groupKeys].sort((a, b) => {
-    const aIdx = GROUP_ORDER.indexOf(a);
-    const bIdx = GROUP_ORDER.indexOf(b);
-    if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
-    if (aIdx !== -1) return -1;
-    if (bIdx !== -1) return 1;
-    return a.localeCompare(b);
-  });
-}
-
-// === CUSTOM ICONS (subtipo dentro de uma categoria) ===
-// CustomIcon no banco pode vir como:
-//  - emoji direto (legado, ex: '✌️' pra Rota Biker editorial)
-//  - slug de subtipo (ex: 'waterfall', 'icecream', 'cave') vindo da importação OSM
-// resolveCustomIcon faz o mapeamento slug → emoji, mantendo passthrough pra emoji direto.
-const CUSTOM_ICON_EMOJIS: Record<string, string> = {
-  // Atração — subtipos
-  ruins: '🏛️',
-  museum: '🖼️',
-  monument: '🗿',
-  peak: '⛰️',
-  waterfall: '🌊',
-  cave: '🦇',
-  trailhead: '🥾',
-  ferry: '⛴️',
-  // Posto — subtipo
-  charging: '⚡',
-  // Restaurante — subtipo
-  bar: '🍺',
-  // Fast food — subtipo
-  icecream: '🍦',
-  // Hospedagem — subtipos
-  cabin: '🏡',
-  shelter: '🛖',
-  // Área de descanso — subtipo
-  picnic: '🧺',
-  // Camping — subtipo
-  wild_camp: '⛺',
-};
-
-export function resolveCustomIcon(customIcon: string): string {
-  if (!customIcon) return '';
-  // Slug → emoji se conhecido; senão devolve o próprio valor (legado emoji direto).
-  return CUSTOM_ICON_EMOJIS[customIcon] ?? customIcon;
+  return {
+    codigos: ordem,
+    config,
+    grupo: (code) => categorias.get(code)?.agrupaEm ?? code,
+    ordenarGrupos: (keys) =>
+      [...keys].sort((a, b) => {
+        const ai = ordem.indexOf(a);
+        const bi = ordem.indexOf(b);
+        if (ai !== -1 && bi !== -1) return ai - bi;
+        if (ai !== -1) return -1;
+        if (bi !== -1) return 1;
+        return a.localeCompare(b);
+      }),
+    emojiDoSubtipo: (customIcon) => {
+      if (!customIcon) return '';
+      const s = subtipos.get(customIcon);
+      if (s) return s.emoji;
+      return ehCodigo(customIcon) ? '' : customIcon;
+    },
+  };
 }

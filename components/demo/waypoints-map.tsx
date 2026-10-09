@@ -12,21 +12,23 @@ import type {
 } from '@/lib/demo/types';
 import { DEFAULT_CENTER, DEFAULT_COUNTRY } from '@/lib/demo/countries';
 import {
-  categoryToGroupKey,
-  getCategoryConfig,
-  getGroupConfig,
-  resolveCustomIcon,
-  sortGroups,
+  criarCatalogo,
+  type Catalogo,
+  type CatalogoWaypoints,
 } from '@/lib/demo/categories';
 
 interface WaypointsMapProps {
   geo: GeoData;
+  /** Catálogo de categorias/subtipos, buscado no servidor (lib/demo/catalogo.ts). */
+  catalogo: CatalogoWaypoints | null;
 }
 
-const BLOB_BASE_URL =
-  'https://gtoverlanderwaypoints.blob.core.windows.net/waypoint-regions';
+// Acervo vivo do app (09/10/2026): regerado 06:10 e 18:10. Antes era uma
+// cópia na Azure (gtoverlanderwaypoints.blob.core.windows.net), parada em 04/10.
+const BLOB_BASE_URL = 'https://acervo.gtoverlander.com.br';
 
-export function WaypointsMap({ geo }: WaypointsMapProps) {
+export function WaypointsMap({ geo, catalogo }: WaypointsMapProps) {
+  const cat = useMemo(() => criarCatalogo(catalogo), [catalogo]);
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const popup = useRef<maplibregl.Popup | null>(null);
@@ -58,14 +60,14 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
   const filteredWaypoints = useMemo(() => {
     if (allWaypoints.length === 0) return [];
-    const rvActive = activeGroups.has('rv support');
+    const rvActive = activeGroups.has('rv_support');
     return allWaypoints.filter((w) => {
-      const groupKey = categoryToGroupKey(w.categoria);
+      const groupKey = cat.grupo(w.categoria);
       if (activeGroups.has(groupKey)) return true;
       if (rvActive && w.aceitaRv) return true;
       return false;
     });
-  }, [allWaypoints, activeGroups]);
+  }, [allWaypoints, activeGroups, cat]);
 
   useEffect(() => {
     if (!mapContainer.current || map.current) return;
@@ -89,7 +91,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
     map.current.addControl(new maplibregl.NavigationControl(), 'top-right');
 
     map.current.on('style.load', () => {
-      loadCategoryIcons(map.current!);
+      loadCategoryIcons(map.current!, cat);
       addWaypointsLayers([]);
       setMapReady(true);
       loadCountryData(geo.countryName ?? DEFAULT_COUNTRY);
@@ -110,7 +112,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       | maplibregl.GeoJSONSource
       | undefined;
     if (!source) return;
-    const geojson = waypointsToGeoJSON(filteredWaypoints);
+    const geojson = waypointsToGeoJSON(filteredWaypoints, cat);
     source.setData(geojson);
   }, [filteredWaypoints, mapReady]);
 
@@ -142,24 +144,29 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
       // quando renderizar o symbol layer.
       if (map.current) {
         const seen = new Set<string>();
+        const categoriasVistas = new Set<string>();
         for (const w of data.waypoints) {
+          if (!categoriasVistas.has(w.categoria)) {
+            categoriasVistas.add(w.categoria);
+            garantirSpriteBase(map.current, cat, w.categoria);
+          }
           if (w.customIcon) {
             const featured = !!w.featured;
             const k = `${w.categoria}|${w.customIcon}|${featured}`;
             if (!seen.has(k)) {
               seen.add(k);
-              registerCustomSprite(map.current, w.categoria, w.customIcon, featured);
+              registerCustomSprite(map.current, cat, w.categoria, w.customIcon, featured);
             }
           }
         }
       }
 
       const uniqueGroups = Array.from(
-        new Set(data.waypoints.map((w) => categoryToGroupKey(w.categoria)))
+        new Set(data.waypoints.map((w) => cat.grupo(w.categoria)))
       );
-      const sorted = sortGroups(uniqueGroups);
-      const initialGroup = sorted.includes('gas station')
-        ? 'gas station'
+      const sorted = cat.ordenarGrupos(uniqueGroups);
+      const initialGroup = sorted.includes('gas_station')
+        ? 'gas_station'
         : sorted[0];
 
       setAllWaypoints(data.waypoints);
@@ -179,7 +186,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
   function addWaypointsLayers(waypoints: Waypoint[]) {
     if (!map.current) return;
     const m = map.current;
-    const geojson = waypointsToGeoJSON(waypoints);
+    const geojson = waypointsToGeoJSON(waypoints, cat);
 
     if (m.getSource('waypoints')) {
       (m.getSource('waypoints') as maplibregl.GeoJSONSource).setData(geojson);
@@ -283,7 +290,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
         maxWidth: '280px',
       })
         .setLngLat(coords)
-        .setHTML(buildPopupHTML(props))
+        .setHTML(buildPopupHTML(props, cat))
         .addTo(m);
     });
 
@@ -510,7 +517,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
 
         <div className="flex flex-wrap gap-2">
           {availableGroups.map((groupKey) => {
-            const config = getGroupConfig(groupKey);
+            const config = cat.config(groupKey);
             const isActive = activeGroups.has(groupKey);
             return (
               <button
@@ -719,7 +726,7 @@ export function WaypointsMap({ geo }: WaypointsMapProps) {
               </div>
               <div className="flex flex-col gap-2">
                 {availableGroups.map((groupKey) => {
-                  const config = getGroupConfig(groupKey);
+                  const config = cat.config(groupKey);
                   const isActive = activeGroups.has(groupKey);
                   return (
                     <button
@@ -914,28 +921,6 @@ function iconKeyForWaypoint(w: { categoria: string; featured?: boolean; customIc
   return `custom-${cat}-${slugify(w.customIcon!)}`;
 }
 
-const ALL_CATEGORIES_FOR_ICONS: string[] = [
-  'gas station',
-  'mechanic',
-  'hotel',
-  'guesthouse',
-  'camping',
-  'restaurant',
-  'fast food',
-  'cafe',
-  'bakery',
-  'attraction',
-  'rest area',
-  'national park',
-  'border crossing',
-  'rv support',
-  'hospital',
-  'pharmacy',
-  'viewpoint',
-  'museum',
-  'parking',
-  'supermarket',
-];
 
 /**
  * Desenha um sprite de pino no canvas. Se withBox=true, desenha a caixinha
@@ -980,33 +965,39 @@ function drawPinSprite(
 }
 
 /**
- * Pré-registra os sprites BASE pra todas as categorias conhecidas:
+ * Pré-registra os sprites BASE pra todas as categorias do catálogo:
  *  - 'plain-{cat}': comum (só emoji, sem caixinha)
  *  - 'featured-{cat}': destacado sem customIcon (emoji + caixinha)
  *
  * Sprites com customIcon são gerados sob demanda em registerCustomSprite().
  */
-function loadCategoryIcons(map: maplibregl.Map) {
+function loadCategoryIcons(map: maplibregl.Map, cat: Catalogo) {
+  for (const category of cat.codigos) garantirSpriteBase(map, cat, category);
+}
+
+/**
+ * Registra os dois sprites base de uma categoria, se ainda não existirem.
+ * Também é chamado pra cada categoria que chega no arquivo do país: código
+ * fora do catálogo ganha o pino genérico (📍) em vez de ficar invisível.
+ */
+function garantirSpriteBase(map: maplibregl.Map, cat: Catalogo, category: string) {
   const PIXEL_RATIO = window.devicePixelRatio || 1;
+  const groupColor = cat.config(cat.grupo(category)).color;
+  const emoji = cat.config(category).emoji;
+  const slug = slugify(category);
 
-  for (const category of ALL_CATEGORIES_FOR_ICONS) {
-    const groupColor = getGroupConfig(categoryToGroupKey(category)).color;
-    const emoji = getCategoryConfig(category).emoji;
-    const cat = slugify(category);
+  const plainKey = `plain-${slug}`;
+  if (!map.hasImage(plainKey)) {
+    map.addImage(plainKey, drawPinSprite(emoji, groupColor, false, PIXEL_RATIO), {
+      pixelRatio: PIXEL_RATIO,
+    });
+  }
 
-    const plainKey = `plain-${cat}`;
-    if (!map.hasImage(plainKey)) {
-      map.addImage(plainKey, drawPinSprite(emoji, groupColor, false, PIXEL_RATIO), {
-        pixelRatio: PIXEL_RATIO,
-      });
-    }
-
-    const featuredKey = `featured-${cat}`;
-    if (!map.hasImage(featuredKey)) {
-      map.addImage(featuredKey, drawPinSprite(emoji, groupColor, true, PIXEL_RATIO), {
-        pixelRatio: PIXEL_RATIO,
-      });
-    }
+  const featuredKey = `featured-${slug}`;
+  if (!map.hasImage(featuredKey)) {
+    map.addImage(featuredKey, drawPinSprite(emoji, groupColor, true, PIXEL_RATIO), {
+      pixelRatio: PIXEL_RATIO,
+    });
   }
 }
 
@@ -1018,34 +1009,37 @@ function loadCategoryIcons(map: maplibregl.Map) {
  * featured=false → sem caixinha (subtipo dentro da categoria, ex: cachoeira em Atração)
  *
  * customIcon pode ser slug (ex: 'waterfall') ou emoji direto (ex: '✌️' Rota Biker).
- * resolveCustomIcon mapeia slug → emoji; passthrough quando já é emoji.
+ * O emoji do subtipo vem do catálogo (waypoints.subtipos); emoji direto passa.
  */
 function registerCustomSprite(
   map: maplibregl.Map,
+  cat: Catalogo,
   category: string,
   customIcon: string,
   featured: boolean
 ) {
-  const cat = slugify(category);
+  const slug = slugify(category);
   const key = featured
-    ? `custom-${cat}-${slugify(customIcon)}`
-    : `plain-custom-${cat}-${slugify(customIcon)}`;
+    ? `custom-${slug}-${slugify(customIcon)}`
+    : `plain-custom-${slug}-${slugify(customIcon)}`;
   if (map.hasImage(key)) return;
   const PIXEL_RATIO = window.devicePixelRatio || 1;
-  const groupColor = getGroupConfig(categoryToGroupKey(category)).color;
-  const emoji = resolveCustomIcon(customIcon);
+  const groupColor = cat.config(cat.grupo(category)).color;
+  // Subtipo sem emoji no catálogo usa o emoji da própria categoria.
+  const emoji = cat.emojiDoSubtipo(customIcon) || cat.config(category).emoji;
   map.addImage(key, drawPinSprite(emoji, groupColor, featured, PIXEL_RATIO), {
     pixelRatio: PIXEL_RATIO,
   });
 }
 
 function waypointsToGeoJSON(
-  waypoints: Waypoint[]
+  waypoints: Waypoint[],
+  cat: Catalogo
 ): GeoJSON.FeatureCollection<GeoJSON.Point> {
   return {
     type: 'FeatureCollection',
     features: waypoints.map((w) => {
-      const groupConfig = getGroupConfig(categoryToGroupKey(w.categoria));
+      const groupConfig = cat.config(cat.grupo(w.categoria));
       return {
         type: 'Feature',
         geometry: {
@@ -1069,14 +1063,14 @@ function waypointsToGeoJSON(
   };
 }
 
-function buildPopupHTML(props: Record<string, unknown>): string {
+function buildPopupHTML(props: Record<string, unknown>, cat: Catalogo): string {
   const nome = String(props.nome ?? 'Sem nome');
   const categoria = String(props.categoria ?? '');
   const aceitaRv = props.aceitaRv === true || props.aceitaRv === 'true';
   const editorialLabel = String(props.editorialLabel ?? '');
   const customIconRaw = String(props.customIcon ?? '');
-  const customIcon = resolveCustomIcon(customIconRaw);
-  const config = getCategoryConfig(categoria);
+  const customIcon = cat.emojiDoSubtipo(customIconRaw);
+  const config = cat.config(categoria);
 
   const escape = (s: string) =>
     s.replace(

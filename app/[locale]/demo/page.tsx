@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getPageAlternates } from '@/lib/seo';
 import { WaypointsMap } from '@/components/demo/waypoints-map';
 import { getGeoFromHeaders } from '@/lib/demo/geo';
+import { getCatalogoWaypoints } from '@/lib/demo/catalogo';
 
 export async function generateMetadata({
   params: { locale },
@@ -17,8 +18,10 @@ export async function generateMetadata({
   };
 }
 
-export default function DemoPage() {
+export default async function DemoPage() {
   const geo = getGeoFromHeaders();
+  // Catálogo de categorias buscado no servidor e passado como prop (09/10/2026).
+  const catalogo = await getCatalogoWaypoints();
 
   return (
     <div className="bg-gt-bg min-h-screen text-gt-text">
@@ -39,7 +42,7 @@ export default function DemoPage() {
 
       {/* Container do mapa — ocupa quase a tela toda */}
       <section className="container-wide pb-12 md:pb-16 max-w-7xl">
-        <WaypointsMap geo={geo} />
+        <WaypointsMap geo={geo} catalogo={catalogo} />
       </section>
 
       {/* CTA suave pro fim */}

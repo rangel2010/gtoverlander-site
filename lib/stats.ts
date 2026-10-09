@@ -56,6 +56,9 @@ const BASE =
   process.env.NEXT_PUBLIC_API_BASE ??
   'https://beta.gtoverlander.com.br/backend';
 
+/** Mesma base, exportada pra outras leituras do servidor (ex.: lib/demo/catalogo.ts). */
+export const API_BASE = BASE;
+
 /** Segura o build se a API estiver pendurada: melhor cair no piso que travar. */
 const TIMEOUT_MS = 5000;
 
