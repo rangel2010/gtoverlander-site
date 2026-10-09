@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { getStats } from '@/lib/stats';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { MOSTRAR_WEBAPP, DESAPEGA_ABERTO_A_TODOS } from '@/lib/product-config';
@@ -36,6 +37,9 @@ export default async function FaqPage({
 }) {
   setRequestLocale(locale);
   const t = await getTranslations('faqPage');
+  // Nº de países vem da API (09/10/2026), não escrito à mão.
+  const stats = await getStats();
+  const paises = new Intl.NumberFormat(locale).format(stats.paises);
 
   const categorias = [
     {
@@ -45,7 +49,7 @@ export default async function FaqPage({
         { q: t('cat1q2'), a: t(MOSTRAR_WEBAPP ? 'cat1a2' : 'cat1a2SemWeb') },
         { q: t('cat1q3'), a: t('cat1a3') },
         { q: t('cat1q4'), a: t('cat1a4') },
-        { q: t('cat1q5'), a: t('cat1a5') },
+        { q: t('cat1q5'), a: t('cat1a5', { paises }) },
       ],
     },
     {

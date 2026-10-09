@@ -59,7 +59,7 @@
       "passo2titulo": "AI builds the route",
       "passo2desc": "Roads, cities and destination — organized from the roads, regions and preferences you described",
       "passo3titulo": "You choose where to stop",
-      "passo3desc": "Fuel, accommodation, campsites, attractions — choose from over 4 million points across 211 countries",
+      "passo3desc": "Fuel, accommodation, campsites, attractions — choose from over 4 million points across {paises} countries",
       "passo4titulo": "You hit the road",
       "passo4desc": "Export the route to Google Maps and drive directly on your dashboard with CarPlay or Android Auto",
       "verDemo": "See AI demonstration →"
@@ -137,9 +137,9 @@
     "pilarEncontre": {
       "label": "02 — Find",
       "titulo": "Find what you need",
-      "desc": "Over 4 million points across 211 countries. Fuel, campsites, accommodation, workshops and attractions — wherever your route takes you.",
+      "desc": "Over 4 million points across {paises} countries. Fuel, campsites, accommodation, workshops and attractions — wherever your route takes you.",
       "f1": "Real-time proximity radar",
-      "f2": "16 categories and 10 overlapping filters",
+      "f2": "Filter by type of stop: fuel, camping, hotel, market and more",
       "f3": "Works offline — no signal, no panic",
       "f4": "Validated and updated by the community",
       "cta": "Explore the waypoint database →",
@@ -170,7 +170,7 @@
     "missao": {
       "titulo": "Our mission",
       "p1": "GT Overlander is an app for people who travel overland — by car, motorcycle, 4x4 or motorhome. Born from the frustration with generic apps that don't understand the reality of someone who crosses borders, sleeps in wild campsites, or drives 5,000 km in a single trip.",
-      "p2": "GT understands travelers: the AI builds the route along roads that make sense, with cities along the way and regional context. The GT database of over 4 million waypoints in 211 countries covers what matters to those who have already decided where they're going — gas stations, accommodation, campsites, workshops, attractions. And integration with Google Maps, CarPlay and Android Auto takes everything to the car's dashboard.",
+      "p2": "GT understands travelers: the AI builds the route along roads that make sense, with cities along the way and regional context. The GT database of over 4 million waypoints in {paises} countries covers what matters to those who have already decided where they're going — gas stations, accommodation, campsites, workshops, attractions. And integration with Google Maps, CarPlay and Android Auto takes everything to the car's dashboard.",
       "p3": "More than a planner, GT is a road companion — made for those who don't see travel as just transportation, but as a unique experience."
     },
     "fundador": {
@@ -207,7 +207,7 @@
       "p3t": "Offline Mode",
       "p3d": "Your country's map and points stay offline forever, on every plan. Plus and Pro add extra countries for those crossing borders.",
       "p4t": "International expansion",
-      "p4d": "The waypoint base already covers 211 countries. Next steps: interface localization, partnerships with regional guides and multi-country commercial channels."
+      "p4d": "The waypoint base already covers {paises} countries. Next steps: interface localization, partnerships with regional guides and multi-country commercial channels."
     },
     "cta": {
       "titulo": "Be part of it",
@@ -229,7 +229,7 @@
       "r1t": "AI Routes",
       "r1d": "Route built by AI in a conversation — roads, cities and destination, ready in seconds.",
       "r2t": "Waypoint Database",
-      "r2d": "Over 4 million points in 211 countries — gas stations, campsites, accommodation, attractions, workshops.",
+      "r2d": "Over 4 million points in {paises} countries — gas stations, campsites, accommodation, attractions, workshops.",
       "r3t": "Offline Mode",
       "r3d": "Choose the regions of your trip. GT runs anywhere in the world, even without signal."
     },
@@ -406,7 +406,7 @@
     "cat1q4": "How much does it cost?",
     "cat1a4": "The Free plan is free forever, not a trial. Plus at R$ 19.90/month or R$ 199.90/year, and Pro at R$ 29.90/month or R$ 299.90/year. See all plans at /planos.",
     "cat1q5": "Does GT work in any country?",
-    "cat1a5": "The waypoint database covers 211 countries across 6 inhabited continents. The AI engine generates routes worldwide. Regional coverage may vary based on point density in the area.",
+    "cat1a5": "The waypoint database covers {paises} countries across 6 inhabited continents. The AI engine generates routes worldwide. Regional coverage may vary based on point density in the area.",
     "cat2titulo": "How it works",
     "cat2q1": "How does the AI generate routes?",
     "cat2a1": "You describe the trip in natural language — destination, regions, road preferences. The AI builds the route in seconds: roads, cities and regional context. Then you choose stops from our waypoint database. You're always in control.",
@@ -415,7 +415,7 @@
     "cat2q3": "Does it work with CarPlay and Android Auto?",
     "cat2a3": "Yes, native integration. You plan the trip on your phone, connect in the car, and everything keeps working on the vehicle's screen.",
     "cat2q4": "Are the waypoints reliable?",
-    "cat2a4": "The database started with public OpenStreetMap data, processed and classified by the GT team into 10 categories relevant to overlanders. In development: community validation — overlanders contributing and validating points directly through the app.",
+    "cat2a4": "The database started with public OpenStreetMap data, processed and classified by the GT team into stop categories built for overlanders. Today the database is alive: overlanders validate and add points directly in the app, on any plan.",
     "cat3titulo": "Plans and payment",
     "cat3q1": "Can I try before subscribing?",
     "cat3a1": "Free isn't a trial. You use GT free forever, with the same AI engine as the paid plans, all waypoints, unlimited radar, CarPlay and Android Auto. That's 3 trips on us — they don't renew, but you can earn more by contributing to the database.",

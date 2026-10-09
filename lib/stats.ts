@@ -11,7 +11,8 @@
  * Venezuela) além de entradas de 1 waypoint. O Rangel decidiu manter a contagem
  * da API mesmo assim, e como ela cresce (209 → 211), passou a ser lida em vez de
  * escrita à mão. O PRODUCT.countries virou só piso pra quando a API não
- * responder.
+ * responder. Em 09/10/2026 a API passou a devolver 209 (o acervo novo tirou as
+ * duplicatas) e o piso acompanhou.
  */
 
 import { PRODUCT } from './product-config';

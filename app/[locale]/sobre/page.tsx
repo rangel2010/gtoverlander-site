@@ -42,7 +42,7 @@ export default async function SobrePage({
   const tc = await getTranslations('common');
 
   // Números vivos da API do app (contrato em CONTRATO_NUMEROS_API.md).
-  // Países é o único fixo — ver a nota de desvio no topo de lib/stats.ts.
+  // Países também vem da API (lib/stats.ts).
   const stats = await getStats();
   const nf = new Intl.NumberFormat(locale);
 
@@ -57,7 +57,7 @@ export default async function SobrePage({
     { titulo: t('proximas.p1t'), desc: t('proximas.p1d') },
     { titulo: t('proximas.p2t'), desc: t('proximas.p2d') },
     { titulo: t('proximas.p3t'), desc: t('proximas.p3d') },
-    { titulo: t('proximas.p4t'), desc: t('proximas.p4d') },
+    { titulo: t('proximas.p4t'), desc: t('proximas.p4d', { paises: new Intl.NumberFormat(locale).format(stats.paises) }) },
   ];
 
   return (
@@ -86,7 +86,7 @@ export default async function SobrePage({
               {t('missao.titulo')}
             </h2>
             <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('missao.p1')}</p>
-            <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('missao.p2')}</p>
+            <p className="text-gt-text leading-relaxed mb-5 font-sans">{t('missao.p2', { paises: new Intl.NumberFormat(locale).format(stats.paises) })}</p>
             <p className="text-gt-text leading-relaxed font-sans">{t('missao.p3')}</p>
           </ScrollReveal>
         </div>
@@ -231,4 +231,4 @@ export default async function SobrePage({
       </section>
     </>
   );
-}
+}

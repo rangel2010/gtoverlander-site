@@ -3,16 +3,18 @@ import { getPageAlternates } from '@/lib/seo';
 import { WaypointsMap } from '@/components/demo/waypoints-map';
 import { getGeoFromHeaders } from '@/lib/demo/geo';
 import { getCatalogoWaypoints } from '@/lib/demo/catalogo';
+import { getStats } from '@/lib/stats';
 
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const stats = await getStats();
   return {
     title: 'Demo — Mapa interativo dos waypoints',
     description:
-    'Mais de 4 milhões de waypoints curados em 211 países. Explore a base do GT Overlander no mapa — postos, campings, hospedagem, atrações.',
+    `Mais de 4 milhões de waypoints curados em ${new Intl.NumberFormat('pt-BR').format(stats.paises)} países. Explore a base do GT Overlander no mapa — postos, campings, hospedagem, atrações.`,
     alternates: getPageAlternates(locale, '/demo', { soPt: true }),
     ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
@@ -21,7 +23,7 @@ export async function generateMetadata({
 export default async function DemoPage() {
   const geo = getGeoFromHeaders();
   // Catálogo de categorias buscado no servidor e passado como prop (09/10/2026).
-  const catalogo = await getCatalogoWaypoints();
+  const [catalogo, stats] = await Promise.all([getCatalogoWaypoints(), getStats()]);
 
   return (
     <div className="bg-gt-bg min-h-screen text-gt-text">
@@ -34,7 +36,7 @@ export default async function DemoPage() {
           A base de waypoints do GT, em tempo real
         </h1>
         <p className="text-base md:text-lg text-gt-text-muted leading-relaxed font-sans max-w-2xl">
-          Mais de 4 milhões de pontos em 211 países. Navegue, filtre por
+          Mais de 4 milhões de pontos em {new Intl.NumberFormat('pt-BR').format(stats.paises)} países. Navegue, filtre por
           categoria, valide a base na sua região. É a maior curadoria
           overlander do mundo, aberta pra você explorar.
         </p>

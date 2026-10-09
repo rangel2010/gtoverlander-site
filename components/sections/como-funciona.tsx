@@ -1,14 +1,18 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { getStats } from '@/lib/stats';
 import { Link } from '@/i18n/navigation';
 import { ScrollReveal } from '@/components/scroll-reveal';
 
 export async function ComoFunciona() {
   const t = await getTranslations('home.comoFunciona');
+  // Nº de países vem da API (09/10/2026), não escrito à mão.
+  const [locale, stats] = await Promise.all([getLocale(), getStats()]);
+  const paises = new Intl.NumberFormat(locale).format(stats.paises);
 
   const passos = [
     { num: 1, titulo: t('passo1titulo'), desc: t('passo1desc') },
     { num: 2, titulo: t('passo2titulo'), desc: t('passo2desc') },
-    { num: 3, titulo: t('passo3titulo'), desc: t('passo3desc') },
+    { num: 3, titulo: t('passo3titulo'), desc: t('passo3desc', { paises }) },
     { num: 4, titulo: t('passo4titulo'), desc: t('passo4desc') },
   ];
 

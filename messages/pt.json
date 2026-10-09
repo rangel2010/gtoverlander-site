@@ -59,7 +59,7 @@
       "passo2titulo": "A IA monta o trajeto",
       "passo2desc": "A IA organiza o caminho a partir das estradas, regiões e preferências que você descreveu",
       "passo3titulo": "Você escolhe onde parar",
-      "passo3desc": "Postos, hospedagem, campings, atrações — escolhe entre mais de 4 milhões de pontos em 211 países",
+      "passo3desc": "Postos, hospedagem, campings, atrações — escolhe entre mais de 4 milhões de pontos em {paises} países",
       "passo4titulo": "Você pega a estrada",
       "passo4desc": "Exporta a rota pro Google Maps e roda direto no painel do carro com CarPlay ou Android Auto",
       "verDemo": "Ver demonstração da IA →"
@@ -137,9 +137,9 @@
     "pilarEncontre": {
       "label": "02 — Encontre",
       "titulo": "Encontre o que precisa",
-      "desc": "Mais de 4 milhões de pontos em 211 países. Postos, campings, hospedagem, oficinas e atrações — onde quer que sua rota passe.",
+      "desc": "Mais de 4 milhões de pontos em {paises} países. Postos, campings, hospedagem, oficinas e atrações — onde quer que sua rota passe.",
       "f1": "Radar de proximidade em tempo real",
-      "f2": "16 categorias e 10 filtros sobrepostos",
+      "f2": "Filtro por tipo de parada: posto, camping, hotel, mercado e mais",
       "f3": "Funciona offline — sem sinal, sem desespero",
       "f4": "Validado e atualizado pela comunidade",
       "cta": "Explorar a base de waypoints →",
@@ -170,7 +170,7 @@
     "missao": {
       "titulo": "Nossa missão",
       "p1": "O GT Overlander é um aplicativo pra quem viaja por terra — de carro, moto, 4x4 ou motorhome. Nasceu da frustração com apps genéricos que não entendem a realidade de quem cruza fronteira, dorme em camping selvagem, ou roda 5 mil km numa só viagem.",
-      "p2": "O GT entende quem viaja: a IA monta o trajeto pelas estradas que fazem sentido, com cidades pelo caminho e contexto regional. A base de mais de 4 milhões de waypoints em 211 países cobre o que importa pra quem já decidiu pra onde vai — postos, hospedagem, campings, oficinas, atrações. E a integração com Google Maps, CarPlay e Android Auto leva tudo pro painel do carro.",
+      "p2": "O GT entende quem viaja: a IA monta o trajeto pelas estradas que fazem sentido, com cidades pelo caminho e contexto regional. A base de mais de 4 milhões de waypoints em {paises} países cobre o que importa pra quem já decidiu pra onde vai — postos, hospedagem, campings, oficinas, atrações. E a integração com Google Maps, CarPlay e Android Auto leva tudo pro painel do carro.",
       "p3": "Mais que um planejador, o GT é um companheiro de estrada — feito pra quem não vê a viagem só como deslocamento, mas como uma experiência única."
     },
     "fundador": {
@@ -207,7 +207,7 @@
       "p3t": "Modo Offline",
       "p3d": "O mapa e os pontos do seu país ficam offline pra sempre, em qualquer plano. Plus e Pro somam países extras pra quem cruza fronteira.",
       "p4t": "Expansão internacional",
-      "p4d": "A base de waypoints já cobre 211 países. Próximos passos: localização da interface, parcerias com guias regionais e canais comerciais multi-país."
+      "p4d": "A base de waypoints já cobre {paises} países. Próximos passos: localização da interface, parcerias com guias regionais e canais comerciais multi-país."
     },
     "cta": {
       "titulo": "Faça parte",
@@ -229,7 +229,7 @@
       "r1t": "Roteiros com IA",
       "r1d": "Trajeto montado pela IA em uma conversa — estradas, cidades e destino, pronto em segundos.",
       "r2t": "Base de Waypoints",
-      "r2d": "Mais de 4 milhões de pontos em 211 países — postos, campings, hospedagem, atrações, oficinas.",
+      "r2d": "Mais de 4 milhões de pontos em {paises} países — postos, campings, hospedagem, atrações, oficinas.",
       "r3t": "Modo Offline",
       "r3d": "Escolha as regiões da sua viagem. O GT roda em qualquer canto do mundo, mesmo sem sinal."
     },
@@ -406,7 +406,7 @@
     "cat1q4": "Custa quanto?",
     "cat1a4": "O plano Free é grátis pra sempre, não é trial. Plus a R$ 19,90/mês ou R$ 199,90/ano, e Pro a R$ 29,90/mês ou R$ 299,90/ano. Veja todos os planos em /planos.",
     "cat1q5": "O GT funciona em qualquer país?",
-    "cat1a5": "A base de waypoints cobre 211 países nos 6 continentes habitados. O motor de IA gera rotas pro mundo todo. Cobertura regional pode variar conforme densidade de pontos na área.",
+    "cat1a5": "A base de waypoints cobre {paises} países nos 6 continentes habitados. O motor de IA gera rotas pro mundo todo. Cobertura regional pode variar conforme densidade de pontos na área.",
     "cat2titulo": "Como funciona",
     "cat2q1": "Como a IA gera as rotas?",
     "cat2a1": "Você descreve a viagem em linguagem natural — destino, regiões, preferências de estrada. A IA monta o trajeto em segundos: estradas, cidades e contexto regional. Daí você escolhe as paradas na nossa base de waypoints. Você no controle, sempre.",
@@ -415,7 +415,7 @@
     "cat2q3": "Funciona com CarPlay e Android Auto?",
     "cat2a3": "Sim, integração nativa. Você planeja a viagem no celular, conecta no carro, e tudo continua funcionando na tela do veículo.",
     "cat2q4": "Os waypoints são confiáveis?",
-    "cat2a4": "A base começou com dados públicos do OpenStreetMap, processados e classificados pelo time GT em 16 categorias, organizadas em 10 filtros de uso pro overlander. Em construção: validação por comunidade — overlanders contribuindo e validando pontos diretamente pelo app.",
+    "cat2a4": "A base começou com dados públicos do OpenStreetMap, processados e classificados pelo time GT em categorias de parada pensadas pro overlander. Hoje a base é viva: overlanders validam e cadastram pontos direto pelo app, em qualquer plano.",
     "cat3titulo": "Planos e pagamento",
     "cat3q1": "Posso testar antes de assinar?",
     "cat3a1": "Free não é trial. Você usa o GT grátis pra sempre, com o mesmo motor de IA dos planos pagos, todos os waypoints, radar ilimitado, CarPlay e Android Auto. São 3 viagens por nossa conta — elas não renovam, mas dá pra ganhar mais contribuindo com a base.",

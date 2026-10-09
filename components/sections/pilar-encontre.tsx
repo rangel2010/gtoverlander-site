@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { getStats } from '@/lib/stats';
 import { Link } from '@/i18n/navigation';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { LazyVideo } from '@/components/lazy-video';
@@ -12,6 +13,9 @@ const USAR_VIDEO = false;
 
 export async function PilarEncontre() {
   const t = await getTranslations('home.pilarEncontre');
+  // Nº de países vem da API (09/10/2026), não escrito à mão.
+  const [locale, stats] = await Promise.all([getLocale(), getStats()]);
+  const paises = new Intl.NumberFormat(locale).format(stats.paises);
 
   const features = [t('f1'), t('f2'), t('f3'), t('f4')];
 
@@ -62,7 +66,7 @@ export async function PilarEncontre() {
               {t('titulo')}
             </h2>
             <p className="text-gt-text-muted leading-relaxed mb-8 font-sans max-w-md">
-              {t('desc')}
+              {t('desc', { paises })}
             </p>
             <ul className="space-y-3.5 mb-10">
               {features.map((f, i) => (

@@ -12,6 +12,7 @@ import { ConsentBanner } from '@/components/consent-banner';
 import { ClarityScript } from '@/components/clarity-script';
 import { GaScript } from '@/components/ga-script';
 import { routing } from '@/i18n/routing';
+import { getStats } from '@/lib/stats';
 import {
   organizationLd,
   websiteLd,
@@ -58,10 +59,11 @@ const DEFAULT_TITLES: Record<string, string> = {
   es: 'GT Overlander · El ecosistema hecho para quienes viajan por tierra',
 };
 
-const DEFAULT_DESCRIPTIONS: Record<string, string> = {
-  pt: 'Roteiros personalizados em uma conversa com IA. Mais de 4 milhões de waypoints em 211 países. iOS, Android, CarPlay e Android Auto.',
-  en: 'Personalized routes from a single conversation with AI. Over 4 million waypoints across 211 countries. iOS, Android, CarPlay and Android Auto.',
-  es: 'Rutas personalizadas en una conversación con IA. Más de 4 millones de waypoints en 211 países. iOS, Android, CarPlay y Android Auto.',
+// Nº de países vem da API (09/10/2026), não escrito à mão.
+const DEFAULT_DESCRIPTIONS: Record<string, (paises: string) => string> = {
+  pt: (n) => `Roteiros personalizados em uma conversa com IA. Mais de 4 milhões de waypoints em ${n} países. iOS, Android, CarPlay e Android Auto.`,
+  en: (n) => `Personalized routes from a single conversation with AI. Over 4 million waypoints across ${n} countries. iOS, Android, CarPlay and Android Auto.`,
+  es: (n) => `Rutas personalizadas en una conversación con IA. Más de 4 millones de waypoints en ${n} países. iOS, Android, CarPlay y Android Auto.`,
 };
 
 export async function generateMetadata({
@@ -77,7 +79,9 @@ export async function generateMetadata({
     default: DEFAULT_TITLES[locale] ?? DEFAULT_TITLES.pt,
     template: '%s · GT Overlander',
   },
-  description: DEFAULT_DESCRIPTIONS[locale] ?? DEFAULT_DESCRIPTIONS.pt,
+  description: (DEFAULT_DESCRIPTIONS[locale] ?? DEFAULT_DESCRIPTIONS.pt)(
+    new Intl.NumberFormat(locale).format((await getStats()).paises)
+  ),
   openGraph: {
     type: 'website',
     locale: OG_LOCALES[locale] ?? 'pt_BR',
@@ -128,6 +132,7 @@ export default async function LocaleLayout({
 
   // Carrega as mensagens (traduções) do locale ativo
   const messages = await getMessages();
+  const stats = await getStats();
 
   return (
     <html
@@ -137,9 +142,9 @@ export default async function LocaleLayout({
     >
       <head>
         {/* Schema.org JSON-LD — Organization + WebSite + SoftwareApplication */}
-        <script {...jsonLdScriptProps(organizationLd())} />
+        <script {...jsonLdScriptProps(organizationLd(stats.paises))} />
         <script {...jsonLdScriptProps(websiteLd())} />
-        <script {...jsonLdScriptProps(softwareApplicationLd())} />
+        <script {...jsonLdScriptProps(softwareApplicationLd(stats.paises))} />
       </head>
       <body className="font-sans antialiased flex flex-col min-h-screen bg-gt-bg text-gt-text">
         <NextIntlClientProvider messages={messages}>

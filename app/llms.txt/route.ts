@@ -6,11 +6,19 @@
 
 import { getAllPosts } from '@/lib/sanity/queries';
 import { PRODUCT, formatPrice, MOSTRAR_WEBAPP } from '@/lib/product-config';
+import { getStats } from '@/lib/stats';
+import { getCatalogoWaypoints } from '@/lib/demo/catalogo';
 
 const SITE_URL = 'https://www.gtoverlander.com.br';
 
 export async function GET() {
   const plataformas = MOSTRAR_WEBAPP ? 'iOS, Android e Web' : 'iOS e Android';
+  // Países e categorias vêm da API e do catálogo do app (09/10/2026), não escritos à mão.
+  const [stats, catalogo] = await Promise.all([getStats(), getCatalogoWaypoints()]);
+  const paises = stats.paises;
+  const organizados = catalogo
+    ? `, organizados em ${catalogo.categorias.length} categorias (${catalogo.categorias.map((c) => c.label.toLowerCase()).join(', ')})`
+    : '';
   let recentPosts: { title: string; description: string; slug: string }[] = [];
   try {
     const posts = await getAllPosts('pt');
@@ -31,14 +39,14 @@ export async function GET() {
 
   const txt = `# GT Overlander
 
-> Aplicativo de planejamento de rotas para viajantes overlander — roteiros com IA conversacional, base própria de mais de ${PRODUCT.waypointCountLabel} waypoints em ${PRODUCT.countries} países, Modo Offline, CarPlay e Android Auto. Disponível para ${plataformas}.
+> Aplicativo de planejamento de rotas para viajantes overlander — roteiros com IA conversacional, base própria de ${PRODUCT.waypointCountLabel} waypoints em ${paises} países, Modo Offline, CarPlay e Android Auto. Disponível para ${plataformas}.
 
 GT Overlander é o ecossistema para quem viaja por terra: planejamento de rotas com IA, uma base própria de pontos de interesse relevantes para overlanding (postos, campings, oficinas, atrativos, fronteiras), modo offline com mapas e dados por país, uma comunidade de viajantes (GT Social) e o Shopping, com produtos de lojas, usados de viajantes (Desapega), guias e aluguel de equipamento.
 
 ## Produto
 
 - Planejamento de rotas com IA conversacional (roteiros personalizados a partir de uma conversa)
-- Base própria de ${PRODUCT.waypointCountLabel} waypoints em ${PRODUCT.countries} países, organizados em ${PRODUCT.categories} categorias
+- Base própria de ${PRODUCT.waypointCountLabel} waypoints em ${paises} países${organizados}
 - Modo Offline: mapas e waypoints por país, sem internet
 - Integração CarPlay e Android Auto
 - Disponível em ${plataformas} (${SITE_URL}/baixar)

@@ -1,3 +1,4 @@
+import { getStats } from '@/lib/stats';
 import type { Metadata } from 'next';
 import { getPageAlternates } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
@@ -76,12 +77,14 @@ export default async function RecursosPage({
   params: { locale: string };
 }) {
   setRequestLocale(locale);
+  // Nº de países vem da API (09/10/2026), não escrito à mão.
+  const stats = await getStats();
   const t = await getTranslations('recursos');
   const tc = await getTranslations('common');
 
   const planejamento: Feature[] = [
     { slug: 'roteiros-ia', titulo: t('planejamento.r1t'), desc: t('planejamento.r1d'), status: 'disponivel' },
-    { slug: 'waypoints', titulo: t('planejamento.r2t'), desc: t('planejamento.r2d'), status: 'disponivel' },
+    { slug: 'waypoints', titulo: t('planejamento.r2t'), desc: t('planejamento.r2d', { paises: new Intl.NumberFormat(locale).format(stats.paises) }), status: 'disponivel' },
     { slug: 'modo-offline', titulo: t('planejamento.r3t'), desc: t('planejamento.r3d'), status: 'disponivel' },
   ];
 

@@ -7,45 +7,48 @@ import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 import { WaypointsMap } from '@/components/demo/waypoints-map';
 import { getGeoFromHeaders } from '@/lib/demo/geo';
 import { getCatalogoWaypoints } from '@/lib/demo/catalogo';
+import { getStats } from '@/lib/stats';
+import type { CatalogoWaypoints } from '@/lib/demo/categories';
 
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const stats = await getStats();
   return {
     title: 'Base de Waypoints',
-    description:
-    'Mais de 4 milhões de waypoints em 211 países. São 16 categorias organizadas em 10 filtros de uso. Base curada pelo GT e mantida viva pela comunidade — valida e cadastra direto do app.',
+    description: `Mais de 4 milhões de waypoints em ${fmt(stats.paises)} países, organizados por tipo de parada. Base curada pelo GT e mantida viva pela comunidade — valida e cadastra direto do app.`,
     alternates: getPageAlternates(locale, '/recursos/waypoints', { soPt: true }),
     ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
 }
 
-const numeros = [
-  { valor: '+4 mi', contexto: 'pontos no mundo' },
-  { valor: '211', contexto: 'países' },
-  { valor: '16', contexto: 'categorias' },
-  { valor: '6', contexto: 'continentes habitados' },
-];
+// Números e categorias desta página (09/10/2026): nada escrito à mão.
+// Países e pontos vêm de lib/stats.ts; categorias e filtros, do catálogo do
+// app (lib/demo/catalogo.ts) — o mesmo que desenha os filtros do mapa abaixo.
+const fmt = (n: number) => new Intl.NumberFormat('pt-BR').format(n);
 
-const categorias = [
-  '⛽ Postos',
-  '🔧 Oficina',
-  '🛌 Hospedagem (Hotel + Pousada)',
-  '🏕️ Camping',
-  '🍴 Alimentação (Restaurante + Fast Food + Café + Padaria)',
-  '⭐ Atração (atrações turísticas e parques nacionais)',
-  '🅿️ Área de Descanso',
-  '🛂 Fronteira',
-  '🏥 Saúde (Hospital + Farmácia)',
-  '🚐 Aceita RV',
-];
+/** 4.357.857 → "+4,3 mi" (arredonda pra baixo, nunca promete a mais). */
+const milhoes = (n: number) =>
+  `+${new Intl.NumberFormat('pt-BR').format(Math.floor(n / 100_000) / 10)} mi`;
+
+/** Um chip por filtro do mapa; as categorias agrupadas nele entram entre parênteses. */
+function filtrosDoCatalogo(catalogo: CatalogoWaypoints | null): string[] {
+  if (!catalogo) return [];
+  const todas = catalogo.categorias;
+  return todas
+    .filter((c) => !c.agrupaEm)
+    .map((c) => {
+      const dentro = todas.filter((x) => x.agrupaEm === c.code).map((x) => x.label);
+      return `${c.emoji} ${c.label}${dentro.length ? ` (+ ${dentro.join(', ')})` : ''}`;
+    });
+}
 
 const faq = [
   {
     q: 'É confiável?',
-    a: 'Sim. A base começou com dados públicos do OpenStreetMap e passou por curadoria exaustiva do time GT — deduplificação, organização em 16 categorias e enriquecimento. Hoje a base é viva: overlanders validam e cadastram pontos pelo app, e o time GT cura continuamente. Erros acontecem, mas em escala muito menor que confiar só no Google Places.',
+    a: 'Sim. A base começou com dados públicos do OpenStreetMap e passou por curadoria exaustiva do time GT — deduplificação, organização por tipo de parada e enriquecimento. Hoje a base é viva: overlanders validam e cadastram pontos pelo app, e o time GT cura continuamente. Erros acontecem, mas em escala muito menor que confiar só no Google Places.',
   },
   {
     q: 'Quem pode validar e cadastrar pontos?',
@@ -57,7 +60,7 @@ const faq = [
   },
   {
     q: 'De onde vêm os dados?',
-    a: 'A base começou com dados públicos do OpenStreetMap. O time GT processa, deduplifica, enriquece e organiza em 16 categorias, agrupadas em 10 filtros de uso pro overlander. A partir daí, a comunidade alimenta — overlanders validam o que existe e cadastram o que não tinha sido mapeado ainda.',
+    a: 'A base começou com dados públicos do OpenStreetMap. O time GT processa, deduplifica, enriquece e organiza por tipo de parada, com filtros pensados pro overlander. A partir daí, a comunidade alimenta — overlanders validam o que existe e cadastram o que não tinha sido mapeado ainda.',
   },
   {
     q: 'É só radar ou aparece na hora de planejar a rota também?',
@@ -72,14 +75,23 @@ const faq = [
 export default async function WaypointsPage() {
   const geo = getGeoFromHeaders();
   // Catálogo de categorias buscado no servidor e passado como prop (09/10/2026).
-  const catalogo = await getCatalogoWaypoints();
+  const [catalogo, stats] = await Promise.all([getCatalogoWaypoints(), getStats()]);
+  const paises = fmt(stats.paises);
+  const filtros = filtrosDoCatalogo(catalogo);
+  const qtdCategorias = catalogo?.categorias.length ?? 0;
+  const numeros = [
+    { valor: milhoes(stats.waypoints), contexto: 'pontos no mundo' },
+    { valor: paises, contexto: 'países' },
+    ...(qtdCategorias ? [{ valor: fmt(qtdCategorias), contexto: 'categorias' }] : []),
+    ...(filtros.length ? [{ valor: fmt(filtros.length), contexto: 'filtros no radar' }] : []),
+  ];
 
   return (
     <>
       <FeatureHero
         kicker="Disponível agora"
         title="Onde parar, onde dormir, onde abastecer"
-        subline="Mais de 4 milhões de pontos em 211 países. São 16 categorias organizadas em 10 filtros de uso. Base curada pelo GT e mantida viva pela comunidade — qualquer overlander valida ou cadastra direto do app."
+        subline={`Mais de 4 milhões de pontos em ${paises} países, organizados por tipo de parada. Base curada pelo GT e mantida viva pela comunidade — qualquer overlander valida ou cadastra direto do app.`}
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
@@ -94,7 +106,7 @@ export default async function WaypointsPage() {
               Explore a base na sua região agora
             </h2>
             <p className="text-gt-text-muted leading-relaxed font-sans mb-6">
-              Mapa interativo com os waypoints curados pelo GT. Filtra por categoria, navega pelos pontos, abre os detalhes. Mais de 4 milhões de lugares em 211 países — aqui tem uma prévia pra você.
+              Mapa interativo com os waypoints curados pelo GT. Filtra por categoria, navega pelos pontos, abre os detalhes. Mais de 4 milhões de lugares em {paises} países — aqui tem uma prévia pra você.
             </p>
             <a
               href="/demo"
@@ -135,9 +147,9 @@ export default async function WaypointsPage() {
       />
 
       <FeatureScreenshot
-        kicker="16 categorias, 10 filtros"
+        kicker={qtdCategorias ? `${qtdCategorias} categorias de parada` : 'Categorias de parada'}
         title="Categorias pensadas pra quem viaja"
-        desc='Camping, área de descanso, posto, restaurante, hotel, oficina, atrações, fronteira, saúde — categorias úteis pro overlander, sem ruído de "academia" ou "petshop". Cada ponto tá organizado pra você encontrar exatamente o que precisa, na hora que precisa.'
+        desc='Camping, área de descanso, posto, restaurante, hotel, mecânica, atrações, fronteira, hospital, farmácia, mercado, caixa eletrônico — categorias úteis pro overlander, sem ruído de "academia" ou "petshop". Cada ponto tá organizado pra você encontrar exatamente o que precisa, na hora que precisa.'
         src="/screenshots/recursos/waypoints-categoria.png"
         alt="Tela 'Escolha a categoria' com opções: Camping, Área de descanso, Posto de combustível, Restaurante, Hotel, Oficina mecânica"
         reverse
@@ -165,7 +177,7 @@ export default async function WaypointsPage() {
             Categorias visíveis
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            {categorias.map((c) => (
+            {filtros.map((c) => (
               <div
                 key={c}
                 className="bg-gt-card rounded-md px-4 py-3 text-sm text-gt-text border border-gt-border font-sans"
@@ -183,7 +195,7 @@ export default async function WaypointsPage() {
             Origem e evolução dos dados
           </h2>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
-            A base GT foi estruturada a partir de dados abertos do OpenStreetMap e passou por processamento, deduplicação e organização em 16 categorias, agrupadas em 10 filtros de uso para facilitar o planejamento e o dia a dia na estrada.
+            A base GT foi estruturada a partir de dados abertos do OpenStreetMap e passou por processamento, deduplicação e organização por tipo de parada, com filtros pensados para facilitar o planejamento e o dia a dia na estrada.
           </p>
           <p className="text-gt-text leading-relaxed mb-5 font-sans">
             Hoje a Base GT é viva. O time GT cura continuamente, e a comunidade contribui validando pontos existentes e cadastrando os que ainda não tinham sido mapeados — tudo direto do app, em qualquer plano. Quanto mais gente na estrada validando, mais rica e atual a base fica.

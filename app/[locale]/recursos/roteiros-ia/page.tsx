@@ -5,6 +5,7 @@ import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
 import { OutrasFeatures } from '@/components/sections/outras-features';
 import { CtaFinal } from '@/components/sections/cta-final';
+import { getStats } from '@/lib/stats';
 
 export async function generateMetadata({
   params: { locale },
@@ -37,7 +38,8 @@ const motores = [
   },
 ];
 
-const passos = [
+// Nº de países vem da API (09/10/2026) — por isso os passos são montados com ele.
+const montarPassos = (paises: string) => [
   {
     num: 1,
     titulo: 'Você descreve a viagem',
@@ -51,7 +53,7 @@ const passos = [
   {
     num: 3,
     titulo: 'Você escolhe onde parar',
-    desc: 'Postos, hospedagem, campings, atrações — escolhe entre mais de 4 milhões de pontos em 211 países',
+    desc: `Postos, hospedagem, campings, atrações — escolhe entre mais de 4 milhões de pontos em ${paises} países`,
   },
   {
     num: 4,
@@ -83,7 +85,9 @@ const faq = [
   },
 ];
 
-export default function RoteirosIaPage() {
+export default async function RoteirosIaPage() {
+  const stats = await getStats();
+  const passos = montarPassos(new Intl.NumberFormat('pt-BR').format(stats.paises));
   return (
     <>
       <FeatureHero

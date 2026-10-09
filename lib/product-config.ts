@@ -68,9 +68,11 @@ export const PRODUCT = {
   // ── Base de waypoints ────────────────────────────────────────────────────
   waypointCount: 4_000_000,
   waypointCountLabel: '4M+',
-  countries: 211, // piso: o valor real vem da API (lib/stats.ts)
-  categories: 16,
-  filters: 10,
+  // Piso pra quando a API não responder — o valor real vem de lib/stats.ts.
+  // 209 = /public/stats em 09/10/2026, depois que o acervo tirou as duplicatas
+  // ("Bolivia, Plurinational State of", "Venezuela, Bolivarian Republic of").
+  // Categorias e filtros não ficam mais aqui: vêm do catálogo (lib/demo/catalogo.ts).
+  countries: 209,
 
   // ── Planos ───────────────────────────────────────────────────────────────
   plans: {
