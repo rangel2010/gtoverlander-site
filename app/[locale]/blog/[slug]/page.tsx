@@ -89,6 +89,11 @@ export async function generateMetadata({
         if (t.locale === 'en') languages['en'] = `${www}/en/blog/${t.slug}`;
         if (t.locale === 'es') languages['es'] = `${www}/es/blog/${t.slug}`;
       }
+      // A própria página também entra na lista (11/10/2026). As traduções
+      // linkadas nunca incluem o post atual, então os artigos em en/es saíam
+      // sem se declarar — 124 de 130 no sitemap. O Google pede que cada
+      // versão liste a si mesma; sem isso pode ignorar o conjunto inteiro.
+      if (locale === 'en' || locale === 'es') languages[locale] = `${www}${canonicalPath}`;
       return { canonical: `${www}${canonicalPath}`, languages };
     })(),
     openGraph: {
