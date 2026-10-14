@@ -169,7 +169,8 @@ export default async function ParceriasPage({
         </div>
       </section>
 
-      <section className="bg-gt-card py-16 md:py-24 border-t border-gt-border">
+      {/* id="formulario": o deck /criadores manda o criador direto pra cá (/parcerias#formulario). */}
+      <section id="formulario" className="bg-gt-card py-16 md:py-24 border-t border-gt-border scroll-mt-24">
         <div className="container-narrow">
           <ScrollReveal>
             <p className="text-xs uppercase tracking-[0.18em] text-gt-orange-text mb-3 font-sans">
