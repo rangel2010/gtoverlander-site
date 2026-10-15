@@ -49,6 +49,15 @@ export const structure: StructureResolver = (S) =>
             .filter('_type == "rotaSite"')
             .defaultOrdering([{ field: 'ordem', direction: 'asc' }])
         ),
+      // Convites individuais em PDF (www.gtoverlander.com.br/convites/….pdf). 15/10/2026.
+      S.listItem()
+        .title('✉️ Convites em PDF')
+        .child(
+          S.documentList()
+            .title('Convites em PDF')
+            .filter('_type == "convitePdf"')
+            .defaultOrdering([{ field: '_createdAt', direction: 'desc' }])
+        ),
       S.divider(),
       S.listItem()
         .title('💬 Comentários pendentes')

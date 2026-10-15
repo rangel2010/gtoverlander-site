@@ -27,6 +27,15 @@ const ROTAS_CURTAS = {
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // Arquivos de parceiro ficam fora do Google (15/10/2026): convites em PDF
+  // (/convites/…) e o PDF do guia do parceiro. Não bloquear no robots.txt:
+  // o Google precisa conseguir ler este aviso para obedecer.
+  async headers() {
+    return [
+      { source: '/convites/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' }] },
+      { source: '/parceiros/:path*.pdf', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' }] },
+    ];
+  },
   async redirects() {
     return [
       // Links curtos de rota (lista ROTAS_CURTAS no topo do arquivo). Vale com
