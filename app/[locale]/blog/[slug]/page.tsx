@@ -29,6 +29,8 @@ import {
   DEFAULT_AUTHOR_BIO, postModifiedAt } from '@/lib/seo';
 import { getTranslations } from 'next-intl/server';
 import { getRotasDoArtigo, getFichaRota, cidade } from '@/lib/rotas';
+import { MAPAS, MARCA_MAPA, getPontosMapa } from '@/lib/mapas';
+import { MapaPontos } from '@/components/blog/mapa-pontos';
 
 interface PageProps {
   params: { slug: string; locale: string };
@@ -277,6 +279,16 @@ export default async function PostPage({ params }: PageProps) {
           postId: post._id,
         })
       : [];
+  // Mapa de pontos no meio do texto (19/10/2026): uma linha "[[mapa:<chave>]]"
+  // no corpo marca onde ele entra. Sem a linha, o corpo sai inteiro como antes.
+  // Se o mapa não carregar, a linha some e o texto segue normal.
+  const marca = post.body?.match(MARCA_MAPA);
+  const chaveMapa = marca?.[1];
+  const pontosMapa = chaveMapa ? await getPontosMapa(chaveMapa) : null;
+  const [corpoAntes, corpoDepois] = marca
+    ? [post.body.slice(0, marca.index), post.body.slice((marca.index ?? 0) + marca[0].length)]
+    : [post.body, ''];
+
   const coverUrl = urlForImage(post.coverImage)
     ?.width(1600)
     .height(900)
@@ -404,8 +416,25 @@ export default async function PostPage({ params }: PageProps) {
               remarkPlugins={[remarkGfm]}
               components={markdownComponents}
             >
-              {post.body}
+              {corpoAntes}
             </ReactMarkdown>
+
+            {chaveMapa && pontosMapa && (
+              <MapaPontos
+                pontos={pontosMapa}
+                titulo={MAPAS[chaveMapa].titulo}
+                original={MAPAS[chaveMapa].original}
+              />
+            )}
+
+            {corpoDepois && (
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={markdownComponents}
+              >
+                {corpoDepois}
+              </ReactMarkdown>
+            )}
 
             <ShareButtons
               url={shareUrl}
