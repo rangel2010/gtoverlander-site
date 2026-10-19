@@ -7,6 +7,7 @@ import { PilarPlaneje } from '@/components/sections/pilar-planeje';
 import { PilarEncontre } from '@/components/sections/pilar-encontre';
 import { PilarComunidade } from '@/components/sections/pilar-comunidade';
 import { BlogTeaser } from '@/components/sections/blog-teaser';
+import { AluguelParceiro } from '@/components/sections/aluguel-parceiro';
 import { EmpresasTeaser } from '@/components/sections/empresas-teaser';
 import { CtaFinal } from '@/components/sections/cta-final';
 
@@ -35,6 +36,7 @@ export default function HomePage({
       <PilarEncontre />
       <PilarComunidade />
       <BlogTeaser locale={(locale === 'en' || locale === 'es') ? locale : 'pt'} />
+      <AluguelParceiro locale={(locale === 'en' || locale === 'es') ? locale : 'pt'} />
       <EmpresasTeaser />
       <CtaFinal />
     </>
