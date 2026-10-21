@@ -47,7 +47,7 @@ export async function generateStaticParams({
 }
 
 // Revalida a cada 60s pra pegar posts editados
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,

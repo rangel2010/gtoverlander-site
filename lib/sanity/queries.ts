@@ -44,7 +44,7 @@ export async function getAllPosts(locale: BlogLocale = 'pt'): Promise<PostListIt
           ${POST_LIST_FIELDS}
         }`,
       { locale },
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 3600 } }
     );
   } catch (e) {
     console.error('[sanity] getAllPosts error:', e);
@@ -66,7 +66,7 @@ export async function getLatestPosts(locale: BlogLocale = 'pt', limit = 3): Prom
           ${POST_LIST_FIELDS}
         }`,
       { locale, limit },
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 3600 } }
     );
   } catch (e) {
     console.error('[sanity] getLatestPosts error:', e);
@@ -120,7 +120,7 @@ export async function getPostsPage(
         "total": count(*[${LIST_FILTER}])
       }`,
       { locale, excludeId },
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 3600 } }
     );
   } catch (e) {
     console.error('[sanity] getPostsPage error:', e);
@@ -148,7 +148,7 @@ export async function getPillarPostsPage(
         "total": count(*[${filter}])
       }`,
       { pillar, locale, excludeId: '' },
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 3600 } }
     );
   } catch (e) {
     console.error('[sanity] getPillarPostsPage error:', e);
@@ -187,7 +187,7 @@ export async function getPostBySlug(slug: string, locale: BlogLocale = 'pt'): Pr
         ${POST_FULL_FIELDS}
       }`,
       { slug, locale },
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 3600 } }
     );
     return post ?? null;
   } catch (e) {
@@ -229,7 +229,7 @@ export async function findPostTranslationsBySlug(
           "translations": linkedTranslations[]{ locale, slug }
         }`,
       { slug },
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 3600 } }
     );
     if (!found) return null;
     const locale: BlogLocale = found.locale === 'en' || found.locale === 'es' ? found.locale : 'pt';
@@ -253,7 +253,7 @@ export async function findPostLocaleBySlug(slug: string): Promise<BlogLocale | n
           "locale": coalesce(locale, "pt")
         }`,
       { slug },
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 3600 } }
     );
     if (!found) return null;
     return found.locale === 'en' || found.locale === 'es' ? found.locale : 'pt';
@@ -276,7 +276,7 @@ export async function getFeaturedPost(locale: BlogLocale = 'pt'): Promise<PostLi
           ${POST_LIST_FIELDS}
         }`,
       { locale },
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 3600 } }
     );
     return post ?? null;
   } catch (e) {
@@ -302,7 +302,7 @@ export async function getRelatedPosts(
           ${POST_LIST_FIELDS}
         }`,
       { pillar, slug: currentSlug, locale },
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 3600 } }
     );
   } catch (e) {
     console.error('[sanity] getRelatedPosts error:', e);

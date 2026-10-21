@@ -56,7 +56,7 @@ export async function getRotasSite(): Promise<RotaSite[]> {
     return await sanityClient.fetch<RotaSite[]>(
       `*[${FILTRO}] | order(coalesce(ordem, 9999) asc, _createdAt asc) { ${CAMPOS} }`,
       {},
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 3600 } }
     );
   } catch (e) {
     console.error('[rotas] getRotasSite:', e);
@@ -70,7 +70,7 @@ export async function getRotaSite(slug: string): Promise<RotaSite | null> {
     return await sanityClient.fetch<RotaSite | null>(
       `*[${FILTRO} && slug.current == $slug][0] { ${CAMPOS} }`,
       { slug },
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 3600 } }
     );
   } catch (e) {
     console.error('[rotas] getRotaSite:', e);
@@ -91,7 +91,7 @@ export async function getRotasDoArtigo(postId: string): Promise<RotaSite[]> {
       `*[${FILTRO} && (artigo._ref == $id || $id in maisArtigos[]._ref)]
         | order(select(artigo._ref == $id => 0, 1) asc, coalesce(ordem, 9999) asc, _createdAt asc) { ${CAMPOS} }`,
       { id: postId },
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 3600 } }
     );
   } catch (e) {
     console.error('[rotas] getRotasDoArtigo:', e);

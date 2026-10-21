@@ -26,7 +26,7 @@ export async function generateMetadata({
   };
 }
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default function BlogPage({
   params: { locale },

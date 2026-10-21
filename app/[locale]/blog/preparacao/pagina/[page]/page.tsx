@@ -42,7 +42,7 @@ export async function generateMetadata({
   };
 }
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default function PreparacaoPaginaPage({
   params: { locale, page },
