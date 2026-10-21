@@ -59,12 +59,12 @@ export async function Hero() {
             transformação de imagem da Vercel. Proporção 680/1296 = 0,525:
             altura 600 -> largura 315; altura 545 -> 286; altura 440 -> 231.
             Se trocar a imagem, recalcular aqui (evita o layout pular).
-            Computador: dois aparelhos (tela inicial na frente, mapa da Ruta
+            Computador: dois aparelhos (tela inicial na frente, ficha da Ruta
             40 atrás). Celular: só a tela inicial, abaixo do texto. */}
         <div className="hidden md:flex justify-center items-center h-[640px]">
           <div className="relative w-[530px] h-[620px] max-w-full">
             <Image
-              src="/images/app/celular-rota-mapa.webp"
+              src="/images/app/celular-rota-resumo.webp"
               alt=""
               width={286}
               height={545}

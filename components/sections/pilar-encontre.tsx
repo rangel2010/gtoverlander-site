@@ -33,8 +33,8 @@ export async function PilarEncontre() {
                   "solta" sobre o fundo escuro. A moldura mais grossa contém a
                   imagem e funciona como bezel. Mantida igual no PilarPlaneje
                   pra as duas seções não ficarem diferentes entre si. */}
-              <div className="relative rounded-3xl overflow-hidden border-2 border-gt-border-strong shadow-2xl w-[230px] md:w-[250px]">
-                {USAR_VIDEO ? (
+              {USAR_VIDEO ? (
+                <div className="relative rounded-3xl overflow-hidden border-2 border-gt-border-strong shadow-2xl w-[230px] md:w-[250px]">
                   <LazyVideo
                     src="/images/screenshots/app-radar.mp4"
                     poster="/images/screenshots/app-radar-poster.webp"
@@ -43,17 +43,20 @@ export async function PilarEncontre() {
                     height={1040}
                     className="w-full h-auto"
                   />
-                ) : (
-                  <Image
-                    src="/images/screenshots/app-radar.jpg"
-                    alt={t('imgAlt')}
-                    width={738}
-                    height={1450}
-                    sizes="(max-width: 768px) 230px, 250px"
-                    className="w-full h-auto"
-                  />
-                )}
-              </div>
+                </div>
+              ) : (
+                /* Celular da V2 (21/10/2026), PNG transparente convertido em
+                   WebP. Já tem a moldura do aparelho, então sai a borda.
+                   680x1296; unoptimized pra não gastar a cota de imagem. */
+                <Image
+                  src="/images/app/celular-radar.webp"
+                  alt={t('imgAlt')}
+                  width={680}
+                  height={1296}
+                  unoptimized
+                  className="relative w-[250px] md:w-[290px] h-auto drop-shadow-[0_25px_35px_rgba(0,0,0,0.45)]"
+                />
+              )}
             </div>
           </ScrollReveal>
 
