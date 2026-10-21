@@ -234,7 +234,7 @@ export function WaypointsMap({ geo, catalogo }: WaypointsMapProps) {
       filter: ['has', 'point_count'],
       layout: {
         'text-field': ['get', 'point_count_abbreviated'],
-        'text-font': ['Roboto Bold'],
+        'text-font': ['Open Sans Bold'],
         'text-size': 13,
       },
       paint: {
