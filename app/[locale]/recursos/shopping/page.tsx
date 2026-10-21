@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getPageAlternates } from '@/lib/seo';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
+import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 import { OutrasFeatures } from '@/components/sections/outras-features';
 import { DESAPEGA_ABERTO_A_TODOS } from '@/lib/product-config';
 
@@ -17,8 +18,8 @@ import { DESAPEGA_ABERTO_A_TODOS } from '@/lib/product-config';
  *    canal de contato (site, WhatsApp...);
  *  - usuário comum anuncia usado no Desapega, e o contato é por mensagem no app.
  *
- * Sem limites de quantidade no texto. Sem screenshots por enquanto: as antigas
- * mostram a tela do GT Desapega, que mudou.
+ * Sem limites de quantidade no texto. Telas do app novas (21/10/2026), no
+ * padrão de celular desenhado; as antigas do GT Desapega saíram de vez.
  */
 
 export async function generateMetadata({
@@ -108,6 +109,15 @@ export default function ShoppingPage() {
         secondaryCta={{ label: 'Tenho loja ou serviço', href: '/empresas' }}
       />
 
+      <FeatureScreenshot
+        kicker="A vitrine"
+        title="Uma vitrine só, organizada do jeito que a estrada pede"
+        desc="Loja e Serviços em abas separadas, categorias como Veículos, Camping, Cozinha e Peças, e busca por nome. Produto de loja e usado de viajante aparecem lado a lado na mesma categoria, e o que você gostou fica salvo no coração pra ver depois."
+        src="/images/app/celular-shopping.webp"
+        alt="Tela do GT Shopping com as abas Loja e Serviços, busca, categorias Veículos, Camping, Cozinha e Peças, e anúncios de estação de energia e boné GT Overlander"
+        bg="bg"
+      />
+
       <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3 leading-tight">O que tem no Shopping</h2>
@@ -125,7 +135,16 @@ export default function ShoppingPage() {
         </div>
       </section>
 
-      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
+      <FeatureScreenshot
+        kicker="Na página do produto"
+        title="Viu, gostou, fala direto com quem vende"
+        desc="Cada anúncio mostra fotos, preço, quem vende e de onde é. Um toque em Falar com e você já está conversando com a loja ou com o viajante. O GT é a vitrine e o canal de contato: a negociação é entre vocês."
+        src="/images/app/celular-shopping-produto.webp"
+        alt="Página do produto Boné GT Overlander, a partir de R$ 59,90, com a loja GT Overlander de Londrina, PR, e o botão Falar com GT Overlander"
+        reverse
+      />
+
+      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-10 leading-tight">Como você fala com quem vende</h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -139,7 +158,7 @@ export default function ShoppingPage() {
         </div>
       </section>
 
-      <section className="bg-gt-card py-16 md:py-20 border-t border-gt-border">
+      <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">
           <h2 className="text-3xl md:text-4xl text-gt-text mb-3 leading-tight">Desapega: venda o que você não usa mais</h2>
           <p className="text-gt-text-muted mb-12 max-w-xl font-sans">
@@ -156,7 +175,7 @@ export default function ShoppingPage() {
               </div>
             ))}
           </div>
-          <div className="bg-gt-bg border border-gt-border rounded-lg p-5 mt-12 font-sans text-sm text-gt-text-muted leading-relaxed">
+          <div className="bg-gt-card border border-gt-border rounded-lg p-5 mt-12 font-sans text-sm text-gt-text-muted leading-relaxed">
             <strong className="text-gt-text font-medium">Atenção:</strong> O GT funciona como vitrine e canal de contato. Não recebe pagamentos, não realiza entregas e não garante a condição dos produtos. Confira o item, a identidade de quem vende e as condições da negociação antes de qualquer pagamento. Pra mais segurança, combine encontros em locais públicos e movimentados.
           </div>
         </div>

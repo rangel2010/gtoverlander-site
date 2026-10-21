@@ -79,7 +79,7 @@
       "s2valor": "Help Overlander",
       "s2ctx": "¿Avería en la ruta? Señaliza en la app y aparecen quienes están cerca. Comunidad que cuida de comunidad.",
       "s3valor": "GT Explorer",
-      "s3ctx": "Tu travesía se convierte en XP, niveles, logros y ranking regional. Cada km suma.",
+      "s3ctx": "Tu travesía se convierte en XP, niveles, logros y ranking de la comunidad. Cada km suma.",
       "s4valor": "Shopping",
       "s4ctx": "Productos de tiendas y usados de viajeros, servicios de guía y alquiler de equipo, en un solo lugar."
     },
@@ -156,7 +156,7 @@
       "c2titulo": "Help Overlander",
       "c2desc": "¿Avería en la ruta? Señaliza en la app y aparecen quienes están cerca para ayudar.",
       "c3titulo": "GT Explorer",
-      "c3desc": "Cada km se convierte en XP, logros y ranking regional. Cuanto más ruedas, más subes.",
+      "c3desc": "Cada km se convierte en XP, logros y ranking de la comunidad. Cuanto más ruedas, más subes.",
       "c4titulo": "Shopping",
       "c4desc": "Equipo nuevo y usado, guías y alquiler, de quienes conocen la ruta."
     }
@@ -241,7 +241,7 @@
       "r2t": "Help Overlander",
       "r2d": "Comunidad que se ayuda en la ruta. Pediste ayuda, alguien cercano aparece — avería, neumático, batería, combustible.",
       "r3t": "GT Explorer",
-      "r3d": "Tu travesía se convierte en XP, niveles, logros y ranking regional. Cada validación, cada ruta, cada kilómetro suma.",
+      "r3d": "Tu travesía se convierte en XP, niveles, logros y ranking de la comunidad. Cada validación, cada ruta, cada kilómetro suma.",
       "r4t": "Shopping",
       "r4d": "Productos de tiendas y usados del Desapega, servicios de guía y alquiler de equipo. Todo organizado por categoría, entre quienes viajan por tierra."
     },

@@ -95,18 +95,28 @@ export default function GtSocialPage() {
         kicker="Rotas Públicas Populares"
         title="Descubra rotas que outros já testaram e adote em 1 toque"
         desc='Aba "Rotas Públicas Populares" mostra os roteiros que a comunidade está rodando. Cada card vem com avaliação, distância, dificuldade e quem criou. Gostou? Adota e a rota vira sua — ajusta paradas, datas, veículo. Crédito original preservado, edição livre. Adotar ocupa uma vaga de viagem do seu plano.'
-        src="/screenshots/recursos/overlanders-rotas.jpg"
-        alt="Lista de rotas públicas da comunidade com miniatura do traçado no mapa: Foz do Iguaçu a Bariloche, Florianópolis a Urubici e Londrina a Brasília"
+        src="/images/app/celular-rotas-comunidade.webp"
+        alt="Tela Comunidade com rotas públicas e o traçado no mapa: Carretera Austral de Puerto Montt a Villa O'Higgins e Serras do Sul de Urubici aos cânions de Cambará, cada uma com distância, dias, dificuldade e o botão Salvar nas minhas rotas"
         bg="card"
       />
 
       <FeatureScreenshot
         kicker="Overlanders"
         title="Descubra quem viaja parecido com você"
-        desc="A aba Overlanders reúne quem está na estrada: perfis em destaque, quem você segue e as rotas que a comunidade está rodando. Segue, acompanha e adota o roteiro de quem já testou. Quem prefere privacidade fecha o perfil nas configurações — aparecer é escolha de cada um."
-        src="/screenshots/recursos/social-overlanders.jpg"
-        alt="Aba Overlanders do GT Social com busca por viajante, rota ou destino, cards de overlanders em destaque e a seção Rotas públicas populares"
+        desc="A aba Overlanders reúne quem está na estrada. Em Descobrir você vê quem mais contribuiu com rotas e pontos, com o nível de cada um; em Seguindo, quem você já acompanha. Segue, acompanha e adota o roteiro de quem já testou. Quem prefere privacidade fecha o perfil nas configurações — aparecer é escolha de cada um."
+        src="/images/app/celular-overlanders.webp"
+        alt="Aba Overlanders com Descobrir e Seguindo, busca por nome ou @ e a lista de quem mais contribuiu, com nível, rotas e pontos de cada overlander"
         bg="bg"
+        reverse
+      />
+
+      <FeatureScreenshot
+        kicker="Seu perfil"
+        title="É assim que a comunidade te vê"
+        desc="Foto, nível, uma linha sobre o seu jeito de viajar e os números que contam: rotas, pontos cadastrados e XP. Logo abaixo, as suas rotas públicas mais bem avaliadas e as medalhas que você conquistou. Você confere a prévia e edita quando quiser."
+        src="/images/app/celular-perfil.webp"
+        alt="Perfil público do overlander Rangel, nível Expedicionário, com 9 rotas, 804 pontos, 20.410 de XP, seguidores e a lista das rotas públicas mais bem avaliadas"
+        bg="card"
       />
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">

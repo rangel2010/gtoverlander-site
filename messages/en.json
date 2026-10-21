@@ -79,7 +79,7 @@
       "s2valor": "Help Overlander",
       "s2ctx": "Breakdown on the road? Signal in the app and nearby helpers appear. A community that takes care of each other.",
       "s3valor": "GT Explorer",
-      "s3ctx": "Your journey becomes XP, levels, achievements and regional ranking. Every km counts.",
+      "s3ctx": "Your journey becomes XP, levels, achievements and community ranking. Every km counts.",
       "s4valor": "Shopping",
       "s4ctx": "Products from shops and travelers' used gear, guide services and gear rental, all in one place."
     },
@@ -156,7 +156,7 @@
       "c2titulo": "Help Overlander",
       "c2desc": "Breakdown on the road? Signal in the app and nearby helpers appear.",
       "c3titulo": "GT Explorer",
-      "c3desc": "Every km becomes XP, achievements and regional ranking. The more you ride, the higher you climb.",
+      "c3desc": "Every km becomes XP, achievements and community ranking. The more you ride, the higher you climb.",
       "c4titulo": "Shopping",
       "c4desc": "New and used gear, guides and rentals, from people who know the road."
     }
@@ -241,7 +241,7 @@
       "r2t": "Help Overlander",
       "r2d": "Community that helps each other on the road. Ask for help, someone nearby appears — breakdown, tire, battery, fuel.",
       "r3t": "GT Explorer",
-      "r3d": "Your journey becomes XP, levels, achievements and regional ranking. Every validation, every route, every kilometer counts.",
+      "r3d": "Your journey becomes XP, levels, achievements and community ranking. Every validation, every route, every kilometer counts.",
       "r4t": "Shopping",
       "r4d": "Products from shops and used gear from Desapega, guide services and gear rental. All organized by category, among people who travel overland."
     },

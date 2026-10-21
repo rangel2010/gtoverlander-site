@@ -3,6 +3,7 @@ import { getPageAlternates } from '@/lib/seo';
 import Image from 'next/image';
 import { FeatureHero } from '@/components/sections/feature-hero';
 import { FeatureFaq } from '@/components/sections/feature-faq';
+import { FeatureScreenshot } from '@/components/sections/feature-screenshot';
 import { OutrasFeatures } from '@/components/sections/outras-features';
 import { CtaFinal } from '@/components/sections/cta-final';
 import { getStats } from '@/lib/stats';
@@ -116,15 +117,35 @@ export default async function RoteirosIaPage() {
           </div>
           <div className="flex justify-center">
             <Image
-              src="/images/screenshots/app-chat-mapa.jpg"
-              alt="Tela do GT Copilot com o roteiro Foz do Iguaçu a Bariloche pronto, mapa da rota cruzando a Argentina e paradas em postos de combustível filtradas por categoria"
-              width={738}
-              height={1450}
-              className="max-h-[640px] w-auto rounded-3xl border border-gt-border shadow-2xl"
+              src="/images/app/celular-rota-mapa.webp"
+              alt="Rota pronta no app GT Overlander com o traçado no mapa e as paradas ao longo do caminho"
+              width={680}
+              height={1296}
+              unoptimized
+              className="w-[250px] md:w-[290px] h-auto drop-shadow-[0_25px_35px_rgba(0,0,0,0.45)]"
             />
           </div>
         </div>
       </section>
+
+      <FeatureScreenshot
+        kicker="Clima da rota"
+        title="A previsão de cada parada, no dia em que você passa por lá"
+        desc="Escolha a data de saída e o GT mostra a previsão de cada cidade do roteiro no dia em que você chega nela, com temperatura e chuva. Mostra também a melhor época do ano pra aquela rota, o tipo de veículo que vai bem e um aviso sobre o relevo, como altitude e descidas longas. Previsão do MET Norway e médias climáticas da NASA."
+        src="/images/app/celular-clima-rota.webp"
+        alt="Clima da rota de Bariloche a Río Gallegos com a melhor época do ano, saída em 21 de outubro de 2026, previsão de temperatura e chuva em cada parada e um aviso sobre a altitude do trajeto"
+        bg="bg"
+        reverse
+      />
+
+      <FeatureScreenshot
+        kicker="Minha garagem"
+        title="O copiloto sabe com o que você está viajando"
+        desc="Cadastre seus veículos (SUV ou 4x4, picape, carro, motorhome, trailer, van ou kombi, moto, bicicleta) e marque qual é o padrão. O copiloto usa isso pra sugerir o que faz sentido pra cada um: apoio de RV pra motorhome, eletroposto pra elétrico."
+        src="/images/app/celular-garagem.webp"
+        alt="Tela Minha garagem com um Suzuki Jimny marcado como padrão, uma moto Himalayan 450 e os tipos de veículo SUV/4x4, Picape, Carro, Motorhome, Trailer, Van/Kombi, Moto e Bicicleta"
+        bg="card"
+      />
 
       <section className="bg-gt-bg py-16 md:py-20 border-t border-gt-border">
         <div className="container-wide">

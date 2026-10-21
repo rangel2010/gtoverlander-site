@@ -141,17 +141,30 @@ export default async function WaypointsPage() {
         kicker="A base é viva"
         title="Quem passou por lá é a única fonte disso"
         desc="Continua de pé, mudou alguma coisa ou fechou — um voto por pessoa, direto na tela. Dá pra completar com detalhes que só quem esteve lá sabe, tipo se o lugar tem ponto de recarga. Validar e cadastrar é livre em qualquer plano, sem limite, e ainda rende viagem."
-        src="/screenshots/recursos/waypoints-acao.jpg"
-        alt="Tela de validação de waypoint perguntando como está o Recanto Pinhão, com as opções Continua de pé, Mudou alguma coisa e Fechou, pergunta sobre ponto de recarga e campo livre para observações"
         bg="card"
+      />
+
+      <FeatureScreenshot
+        kicker="Cadastrar um ponto"
+        title="Achou um lugar que vale a parada? Põe no mapa"
+        desc="Na primeira etapa você já decide quem vê: Público entra no mapa da comunidade, Só pra mim fica só no seu. A localização vem do GPS na hora, de um pino arrastado no mapa ou de coordenadas digitadas — e dá pra revisar tudo antes de enviar."
+        src="/images/app/celular-cadastro-ponto.webp"
+        alt="Primeira etapa do cadastro de ponto, com a escolha entre Público e Só pra mim e as opções Usar localização atual, Escolher ponto no mapa e Coordenadas manuais"
       />
 
       <FeatureScreenshot
         kicker={qtdCategorias ? `${qtdCategorias} categorias de parada` : 'Categorias de parada'}
         title="Categorias pensadas pra quem viaja"
         desc='Camping, área de descanso, posto, restaurante, hotel, mecânica, atrações, fronteira, hospital, farmácia, mercado, caixa eletrônico — categorias úteis pro overlander, sem ruído de "academia" ou "petshop". Cada ponto tá organizado pra você encontrar exatamente o que precisa, na hora que precisa.'
-        src="/screenshots/recursos/waypoints-categoria.png"
-        alt="Tela 'Escolha a categoria' com opções: Camping, Área de descanso, Posto de combustível, Restaurante, Hotel, Oficina mecânica"
+        bg="card"
+      />
+
+      <FeatureScreenshot
+        kicker="Meus waypoints"
+        title="Tudo o que você colocou no mapa, num lugar só"
+        desc="Seus pontos públicos e os que só você vê, separados. Pra cada um, quantas vezes a comunidade já validou — e no topo, quantos já estão verificados. Dá pra buscar, abrir no mapa e cadastrar outro direto dali."
+        src="/images/app/celular-meus-waypoints.webp"
+        alt="Tela Meus Waypoints com as abas Públicos e Só meus, 800 pontos verificados, 18 validações e a lista de pontos com restaurante, posto de combustível e farmácia em Londrina"
         reverse
       />
 
@@ -159,8 +172,6 @@ export default async function WaypointsPage() {
         kicker="Facilidades reais"
         title="Detalhes que outros viajantes confirmaram"
         desc='Tem banheiro? Água potável? Aceita RV? Cada ponto guarda as facilidades validadas por quem esteve lá pessoalmente. Marcação simples — "Sim", "Não" ou "Não sei" — pra evitar informação chutada. O resultado: outros overlanders chegam sabendo o que esperar.'
-        src="/screenshots/recursos/waypoints-facilidades.png"
-        alt="Tela 'Detalhes e facilidades' de um camping, com perguntas sobre Banheiro e Água potável"
         bg="card"
       />
 

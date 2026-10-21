@@ -13,7 +13,7 @@ export async function generateMetadata({
   return {
     title: 'GT Explorer',
     description:
-    'Sua jornada vira XP, níveis, conquistas e ranking regional. Cada km rodado, cada ponto validado, cada rota concluída conta. A estrada vira progressão.',
+    'Sua jornada vira XP, níveis, conquistas e ranking da comunidade. Cada km rodado, cada ponto validado, cada rota concluída conta. A estrada vira progressão.',
     alternates: getPageAlternates(locale, '/recursos/explorer', { soPt: true }),
     ...(locale !== "pt" && { robots: { index: false, follow: false } }),
   };
@@ -36,18 +36,9 @@ const ganhos = [
   { titulo: 'Pontos novos cadastrados', desc: 'Encontrou local que ainda não estava no GT? Cadastra com foto e ganha XP.' },
   { titulo: 'Rotas públicas concluídas', desc: 'Compartilhou rota e completou a viagem? XP no fim, mais XP por avaliação positiva.' },
   { titulo: 'Avaliações úteis', desc: 'Avaliou estabelecimento, prestador, rota? Avaliação detalhada e relevante rende XP.' },
-  { titulo: 'Ajuda em Help Overlander', desc: 'Atendeu pedido de socorro como prestador? Bons serviços viram XP e reputação.' },
 ];
 
 const ranking = [
-  {
-    titulo: 'Liga Regional',
-    desc: 'Ranking por estado e país. Você compete com overlanders próximos, vê quem mais explora a sua região.',
-  },
-  {
-    titulo: 'Temporadas',
-    desc: 'A cada trimestre, ranking reseta. Quem sobe consistentemente cria reputação. Quem para, perde posição.',
-  },
   {
     titulo: 'Medalhas e desafios',
     desc: 'Conquistas específicas — "Cruzou 5 estados", "100 pontos validados", "Trilha Dakar completa". Medalha vira selo permanente no perfil.',
@@ -69,7 +60,7 @@ const faq = [
   },
   {
     q: 'Onde vejo meu progresso?',
-    a: 'Aba GT Explorer dentro do app. Mostra teu nível, próxima meta, ranking regional, conquistas desbloqueadas e em progresso. Pra quem já participa de redes sociais é visualmente similar ao que você já conhece.',
+    a: 'Aba GT Explorer dentro do app. Mostra teu nível, quanto falta pro próximo, de onde veio cada ponto de XP, conquistas desbloqueadas e em progresso. Pra quem já participa de redes sociais é visualmente similar ao que você já conhece.',
   },
   {
     q: 'O ranking é público?',
@@ -87,26 +78,26 @@ export default function ExplorerPage() {
       <FeatureHero
         kicker="Novidade"
         title="Sua jornada vira progressão"
-        subline="Cada km rodado, cada ponto validado, cada rota concluída soma XP. Você sobe de nível, desbloqueia conquistas, sobe no ranking regional. A comunidade GT reconhece quem realmente vive a estrada."
+        subline="Cada km rodado, cada ponto validado, cada rota concluída soma XP. Você sobe de nível, desbloqueia conquistas e aparece entre quem mais contribui. A comunidade GT reconhece quem realmente vive a estrada."
         primaryCta={{ label: 'Começar grátis', href: '/baixar' }}
         secondaryCta={{ label: 'Explorar planos', href: '/planos' }}
       />
 
       <FeatureScreenshot
-        kicker="Seu perfil overlander"
-        title="Visão geral, sempre à mão"
-        desc="Nível atual, título conquistado (Overlander Experiente, Guia de Estrada...), próximo nível e quanto falta pra desbloquear. Stats principais visíveis: km rodados, pontos criados. Tudo num cartão limpo, sem competir com a função principal do app."
-        src="/screenshots/recursos/explorer-perfil.png"
-        alt="Tela do GT Explorer mostrando o perfil do overlander Rangel no nível 6 com 7.840/10.000 XP"
+        kicker="Sua trilha"
+        title="Você vê de onde veio cada ponto"
+        desc="Nível atual, título conquistado, qual é o próximo e quanto XP falta pra chegar lá. Logo abaixo, o extrato completo: começou a seguir um overlander, alguém salvou a sua rota, ganhou um seguidor. Cada linha mostra quanto rendeu e quando."
+        src="/images/app/celular-conquistas.webp"
+        alt="Tela Sua Trilha do GT Explorer com o nível 6 Expedicionário, 20.410 de 22.000 XP e a lista de onde veio o XP, como rota salva por outro viajante e novo seguidor"
         bg="card"
       />
 
       <FeatureScreenshot
-        kicker="Liga Regional"
-        title="Compete com a comunidade da sua região"
-        desc="Ranking por liga regional (estado + país). Você vê sua posição, quem está acima, quanto falta pra subir. Avaliações úteis, rotas concluídas — tudo conta. Cada trimestre rola reset, então sempre tem chance de subir mesmo pra quem começou tarde."
-        src="/screenshots/recursos/explorer-ranking.png"
-        alt="Ranking GT Explorer mostrando posição #18 na Liga Expedição Brasil"
+        kicker="Quem mais contribuiu"
+        title="O ranking de quem constrói a base"
+        desc="Na aba Overlanders, a lista de quem mais contribuiu mostra o nível, as rotas e os pontos de cada viajante. Quem cadastra, valida e compartilha rota aparece ali, e de lá é um toque pra seguir e ver o perfil."
+        src="/images/app/celular-overlanders.webp"
+        alt="Lista Quem mais contribuiu na aba Overlanders, com nível, número de rotas e de pontos de cada viajante e o botão Seguir"
         reverse
       />
 
@@ -162,7 +153,7 @@ export default function ExplorerPage() {
             Mais que XP — reputação
           </h2>
           <p className="text-gt-text-muted mb-10 max-w-2xl font-sans">
-            GT Explorer é sistema de reputação real, não só pontuação solta. Quem sobe no ranking ganha visibilidade, vira referência regional e influencia a comunidade.
+            GT Explorer é sistema de reputação real, não só pontuação solta. Quem sobe no ranking ganha visibilidade, vira referência na comunidade e influencia a comunidade.
           </p>
           <div className="grid sm:grid-cols-2 gap-6">
             {ranking.map((r) => (

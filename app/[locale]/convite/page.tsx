@@ -134,12 +134,12 @@ const Apoio = ({ children }: { children: React.ReactNode }) => (
   <p className="font-sans opacity-80 text-lg md:text-xl leading-relaxed max-w-2xl">{children}</p>
 );
 
-/** Print de celular (em pé). */
+/** Tela do app, já com o celular desenhado (sem moldura extra). */
 function Celular({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="rounded-[28px] border-4 border-[#122E1F] bg-black overflow-hidden shadow-2xl w-[150px] md:w-[230px] shrink-0">
+    <div className="w-[160px] md:w-[250px] shrink-0">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} className="w-full h-auto block" loading="lazy" />
+      <img src={src} alt={alt} className="w-full h-auto block drop-shadow-[0_20px_30px_rgba(0,0,0,0.35)]" loading="lazy" />
     </div>
   );
 }
@@ -179,9 +179,10 @@ export default async function ConvitePage({ params: { locale } }: { params: { lo
   const viajantes =
     stats.usuarios < 10_000 && stats.usuarios >= 9_000 ? 'Quase 10 mil' : `Mais de ${mil} mil`;
 
-  const pInicio = print('01-app-inicio');
+  // Telas do app no padrão novo, com o celular desenhado (21/10/2026).
+  const pInicio = '/images/app/celular-home.webp';
   const pRotas = print('02-app-roteiro');
-  const pMapaApp = print('03-mapa-app');
+  const pMapaApp = '/images/app/celular-radar.webp';
   const pMapa = print('06-colocar-no-mapa');
   const pPainel = print('07-painel-parceiro');
   const pProduto = print('05-novo-produto');
