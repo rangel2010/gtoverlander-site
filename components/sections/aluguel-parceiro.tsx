@@ -10,23 +10,23 @@ const AFILIADO = 'a_aid=rangelmachado';
 const TEXTOS = {
   pt: {
     titulo: 'Vai voar e rodar no destino?',
-    texto: 'Se a viagem começa no aeroporto, dá para montar o roteiro aqui e retirar o carro lá. Compare preços de locadoras no Chile, na Argentina, no Uruguai e no mundo todo.',
-    link: 'Comparar aluguel de carros',
-    aviso: 'Link de parceiro DiscoverCars. Você não paga nada a mais e ajuda o GT Overlander.',
+    texto: 'Se a viagem começa no aeroporto, monte o roteiro aqui e retire o carro lá. A gente te ajuda a encontrar as melhores opções e preços de locadoras no Chile, na Argentina, no Uruguai e no mundo todo.',
+    link: 'Ver os melhores preços',
+    aviso: 'Parceria GT Overlander + DiscoverCars.',
     url: `https://www.discovercars.com/pt?${AFILIADO}`,
   },
   en: {
     titulo: 'Flying in and driving from there?',
-    texto: 'If your trip starts at the airport, plan the route here and pick up the car there. Compare rental prices in Chile, Argentina, Uruguay and worldwide.',
-    link: 'Compare car rentals',
-    aviso: 'DiscoverCars partner link. It costs you nothing extra and supports GT Overlander.',
+    texto: 'If your trip starts at the airport, plan the route here and pick up the car there. We help you find the best options and prices from rental companies in Chile, Argentina, Uruguay and worldwide.',
+    link: 'See the best prices',
+    aviso: 'GT Overlander + DiscoverCars partnership.',
     url: `https://www.discovercars.com/?${AFILIADO}`,
   },
   es: {
     titulo: '¿Vuelas y manejas en el destino?',
-    texto: 'Si tu viaje empieza en el aeropuerto, arma la ruta aquí y retira el auto allá. Compara precios de alquiler en Chile, Argentina, Uruguay y el mundo entero.',
-    link: 'Comparar alquiler de autos',
-    aviso: 'Enlace de socio DiscoverCars. No pagas nada extra y apoyas a GT Overlander.',
+    texto: 'Si tu viaje empieza en el aeropuerto, arma la ruta aquí y retira el auto allá. Te ayudamos a encontrar las mejores opciones y precios de alquiler en Chile, Argentina, Uruguay y el mundo entero.',
+    link: 'Ver los mejores precios',
+    aviso: 'Alianza GT Overlander + DiscoverCars.',
     url: `https://www.discovercars.com/es?${AFILIADO}`,
   },
 } as const;
