@@ -71,6 +71,13 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  // 21/10/2026: /favicon.ico, /manifest.json e qualquer caminho com ponto não
+  // passam pelo middleware de idioma e chegam aqui com locale = "favicon.ico".
+  // O Intl.NumberFormat lá embaixo estourava (RangeError) e o site dava 500.
+  // Idioma que não é nosso: 404 na hora, antes de formatar qualquer coisa.
+  if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
+    notFound();
+  }
   return {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.gtoverlander.com.br'
