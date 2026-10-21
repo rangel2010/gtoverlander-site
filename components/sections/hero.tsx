@@ -53,20 +53,44 @@ export async function Hero() {
           </p>
         </div>
 
-        {/* Reserva espaço explícito pra evitar CLS. O screenshot da V2 é
-            738x1450 — já sem a barra de status do Android no topo (ela
-            sobrepunha a faixa de estatísticas) e sem a barra de navegação no
-            rodapé. Em max-h-640 a largura fica 326. Se trocar a imagem,
-            recalcular aqui. */}
+        {/* Celulares da V2 (21/10/2026): PNGs transparentes 680x1296 da
+            campanha "telefone premium", convertidos para WebP (~90 KB cada).
+            unoptimized: já vêm leves e assim não gastam a cota de
+            transformação de imagem da Vercel. Proporção 680/1296 = 0,525:
+            altura 600 -> largura 315; altura 545 -> 286; altura 440 -> 231.
+            Se trocar a imagem, recalcular aqui (evita o layout pular).
+            Computador: dois aparelhos (tela inicial na frente, mapa da Ruta
+            40 atrás). Celular: só a tela inicial, abaixo do texto. */}
         <div className="hidden md:flex justify-center items-center h-[640px]">
+          <div className="relative w-[530px] h-[620px] max-w-full">
+            <Image
+              src="/images/app/celular-rota-mapa.webp"
+              alt=""
+              width={286}
+              height={545}
+              unoptimized
+              className="absolute right-0 top-0 h-[545px] w-auto"
+            />
+            <Image
+              src="/images/app/celular-home.webp"
+              alt={t('appAlt')}
+              width={315}
+              height={600}
+              priority
+              unoptimized
+              className="absolute left-0 bottom-0 h-[600px] w-auto drop-shadow-[0_25px_35px_rgba(0,0,0,0.45)]"
+            />
+          </div>
+        </div>
+        <div className="md:hidden flex justify-center">
           <Image
-            src="/images/screenshots/app-home.jpg"
+            src="/images/app/celular-home.webp"
             alt={t('appAlt')}
-            width={326}
-            height={640}
+            width={231}
+            height={440}
             priority
-            sizes="(max-width: 1280px) 326px, 326px"
-            className="rounded-3xl border border-gt-border shadow-2xl"
+            unoptimized
+            className="h-[440px] w-auto drop-shadow-[0_20px_30px_rgba(0,0,0,0.45)]"
           />
         </div>
       </div>
