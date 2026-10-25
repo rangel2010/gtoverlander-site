@@ -15,6 +15,7 @@ import {
   getRelatedPosts,
   findPostTranslationsBySlug,
 } from '@/lib/sanity/queries';
+import { slugParecido } from '@/lib/sanity/slug-parecido';
 import { urlForImage } from '@/lib/sanity/image';
 import { PILLAR_TITLES } from '@/lib/sanity/types';
 import { NewsletterBlog } from '@/components/sections/newsletter-blog';
@@ -249,6 +250,12 @@ export default async function PostPage({ params }: PageProps) {
           ? `/blog/${params.slug}`
           : `/${achado.locale}/blog/${params.slug}`
       );
+    }
+    // Slug antigo ou com erro de digitação: vai pro artigo mais parecido,
+    // quando não há dúvida (lib/sanity/slug-parecido.ts).
+    const parecido = await slugParecido(params.slug, locale);
+    if (parecido) {
+      permanentRedirect(locale === 'pt' ? `/blog/${parecido}` : `/${locale}/blog/${parecido}`);
     }
     notFound();
   }
