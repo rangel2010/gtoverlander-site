@@ -389,7 +389,7 @@ export default async function PostPage({ params }: PageProps) {
                         </span>
                         <span className="text-sm text-gt-text-muted">
                           {cidade(ficha!.origem.nome)} → {cidade(ficha!.destino.nome)} · {ficha!.km.toLocaleString('pt-BR')} km
-                          {ficha!.dias ? ` · ${ficha!.dias} dias` : ''}
+                          {ficha!.dias ? ` · ${ficha!.dias} ${ficha!.dias === 1 ? 'dia' : 'dias'}` : ''}
                         </span>
                         <span className="text-sm text-gt-orange-text font-medium underline underline-offset-2">
                           Ver a rota parada por parada →

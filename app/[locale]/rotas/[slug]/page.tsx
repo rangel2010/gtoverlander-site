@@ -141,7 +141,7 @@ export default async function RotaPage({ params }: { params: { locale: string; s
 
   const itens = [
     { rotulo: 'Distância', valor: `${ficha.km.toLocaleString('pt-BR')} km` },
-    ficha.dias ? { rotulo: 'Duração', valor: `${ficha.dias} dias` } : null,
+    ficha.dias ? { rotulo: 'Duração', valor: `${ficha.dias} ${ficha.dias === 1 ? 'dia' : 'dias'}` } : null,
     ficha.horasDirigindo ? { rotulo: 'Ao volante', valor: `cerca de ${ficha.horasDirigindo} h` } : null,
     dificuldade ? { rotulo: 'Dificuldade', valor: dificuldade } : null,
     epocas.length ? { rotulo: 'Melhor época', valor: epocas.join(' e ') } : null,

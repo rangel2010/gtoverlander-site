@@ -102,7 +102,7 @@ export default async function RotasPage({ params }: { params: { locale: string }
                       </p>
                       <p className="font-sans text-sm text-gt-text mt-auto pt-2">
                         {ficha.km.toLocaleString('pt-BR')} km
-                        {ficha.dias ? ` · ${ficha.dias} dias` : ''}
+                        {ficha.dias ? ` · ${ficha.dias} ${ficha.dias === 1 ? 'dia' : 'dias'}` : ''}
                         {dif ? ` · ${dif}` : ''}
                       </p>
                     </div>

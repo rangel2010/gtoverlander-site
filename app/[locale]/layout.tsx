@@ -11,6 +11,7 @@ import { Footer } from '@/components/footer';
 import { ConsentBanner } from '@/components/consent-banner';
 import { ClarityScript } from '@/components/clarity-script';
 import { GaScript } from '@/components/ga-script';
+import { RastreioLoja } from '@/components/rastreio-loja';
 import { routing } from '@/i18n/routing';
 import { getStats } from '@/lib/stats';
 import {
@@ -169,6 +170,7 @@ export default async function LocaleLayout({
             <ClarityScript />
             {/* Google Analytics 4 — só inicializa se o usuário aceitou o ConsentBanner */}
             <GaScript />
+            <RastreioLoja />
           </Providers>
         </NextIntlClientProvider>
       </body>
