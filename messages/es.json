@@ -648,6 +648,15 @@
       "paginaAtual": "Página {page} de {total}",
       "irParaPagina": "Ir a la página {page}",
       "navegacao": "Paginación de artículos"
+    },
+    "busca": {
+      "placeholder": "Buscar artículos: peajes, Atacama, dormir en el auto...",
+      "rotulo": "Buscar en los artículos del blog",
+      "limpar": "Borrar",
+      "resultados": "{n} artículos encontrados",
+      "umResultado": "1 artículo encontrado",
+      "nenhum": "Todavía no hay artículos sobre eso",
+      "nenhumDesc": "Probá otra palabra o explorá por tema:"
     }
   },
   "notFound": {

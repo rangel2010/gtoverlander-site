@@ -648,6 +648,15 @@
       "paginaAtual": "Page {page} of {total}",
       "irParaPagina": "Go to page {page}",
       "navegacao": "Article pagination"
+    },
+    "busca": {
+      "placeholder": "Search articles: tolls, Atacama, sleeping in the car...",
+      "rotulo": "Search blog articles",
+      "limpar": "Clear",
+      "resultados": "{n} articles found",
+      "umResultado": "1 article found",
+      "nenhum": "No articles on that yet",
+      "nenhumDesc": "Try another word or browse by topic:"
     }
   },
   "notFound": {

@@ -8,7 +8,9 @@ import { Link } from '@/i18n/navigation';
 import { Button } from '../ui/button';
 import { Pagination } from '@/components/blog/pagination';
 import { NewsletterCompact } from './newsletter-compact';
+import { BuscaBlog, type ItemBusca } from '@/components/blog/busca-blog';
 import {
+  getAllPosts,
   getPostsPage,
   getFeaturedPost,
   totalPagesFor,
@@ -44,7 +46,7 @@ export async function BlogHub({ locale, page = 1 }: { locale: BlogLocale; page?:
 
   // O destaque tem seção própria na página 1 e sai da listagem em todas as
   // páginas — senão reapareceria no meio da paginação.
-  const featured = await getFeaturedPost(locale);
+  const [featured, todos] = await Promise.all([getFeaturedPost(locale), getAllPosts(locale)]);
   const { posts, total } = await getPostsPage(locale, page, featured?._id ?? '');
   const totalPages = totalPagesFor(total);
 
@@ -52,6 +54,29 @@ export async function BlogHub({ locale, page = 1 }: { locale: BlogLocale; page?:
   if (page > totalPages) notFound();
 
   const isFirstPage = page === 1;
+
+  // Lista enxuta pra busca no navegador (todos os artigos do idioma).
+  const itensBusca: ItemBusca[] = todos.map((p) => ({
+    slug: p.slug,
+    titulo: p.title,
+    descricao: p.description ?? '',
+    tags: p.tags ?? [],
+    pilar: p.category ? t(PILLAR_KEY[p.category]) : '',
+    pilarSlug: p.category ?? '',
+    data: formatDate(p.publishedAt, locale),
+    imagem: urlForImage(p.coverImage)?.width(800).height(450).url() ?? undefined,
+    imagemAlt: p.coverImageAlt ?? '',
+  }));
+  const textosBusca = {
+    placeholder: t('busca.placeholder'),
+    rotulo: t('busca.rotulo'),
+    limpar: t('busca.limpar'),
+    resultados: t('busca.resultados'),
+    umResultado: t('busca.umResultado'),
+    nenhum: t('busca.nenhum'),
+    nenhumDesc: t('busca.nenhumDesc'),
+    pilares: pillars.map((p) => ({ slug: p, nome: t(PILLAR_KEY[p]) })),
+  };
 
   return (
     <>
@@ -65,6 +90,7 @@ export async function BlogHub({ locale, page = 1 }: { locale: BlogLocale; page?:
         </div>
       </section>
 
+      <BuscaBlog itens={itensBusca} textos={textosBusca}>
       {isFirstPage && (
         <section className="bg-gt-bg py-12 md:py-16 border-t border-gt-border">
           <div className="container-wide">
@@ -136,6 +162,7 @@ export async function BlogHub({ locale, page = 1 }: { locale: BlogLocale; page?:
           <Button href="/baixar">{t('comecarGratis')}</Button>
         </div>
       </section>
+      </BuscaBlog>
     </>
   );
 }
