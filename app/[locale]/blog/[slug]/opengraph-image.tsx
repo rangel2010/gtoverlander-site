@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { getPostBySlug } from '@/lib/sanity/queries';
-import { PILLAR_TITLES } from '@/lib/sanity/types';
+import { pillarTitle } from '@/lib/sanity/types';
 
 // OG image gerada dinamicamente pra cada post do blog.
 // Aparece quando alguem compartilha o link no WhatsApp, X, LinkedIn, etc.
@@ -21,7 +21,7 @@ export default async function OgImage({
     (params.locale ?? 'pt') as import('@/lib/sanity/types').BlogLocale
   );
   const title = post?.title ?? 'GT Overlander';
-  const category = post?.category ? PILLAR_TITLES[post.category] : 'Blog';
+  const category = post?.category ? pillarTitle(post.category, params.locale ?? 'pt') : 'Blog';
   const author = post?.authorName ?? 'GT Overlander';
 
   return new ImageResponse(

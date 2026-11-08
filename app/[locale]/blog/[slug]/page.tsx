@@ -17,7 +17,7 @@ import {
 } from '@/lib/sanity/queries';
 import { slugParecido } from '@/lib/sanity/slug-parecido';
 import { urlForImage } from '@/lib/sanity/image';
-import { PILLAR_TITLES } from '@/lib/sanity/types';
+import { pillarTitle } from '@/lib/sanity/types';
 import { NewsletterBlog } from '@/components/sections/newsletter-blog';
 import { CommentSection } from '@/components/blog/comments/comment-section';
 import { APPROVED_COMMENTS_QUERY } from '@/lib/comments';
@@ -376,7 +376,7 @@ export default async function PostPage({ params }: PageProps) {
         {...jsonLdScriptProps(
           breadcrumbLd([
             { name: 'Blog', url: locale === 'pt' ? '/blog' : `/${locale}/blog` },
-            { name: PILLAR_TITLES[post.category], url: locale === 'pt' ? `/blog/${post.category}` : `/${locale}/blog/${post.category}` },
+            { name: pillarTitle(post.category, locale), url: locale === 'pt' ? `/blog/${post.category}` : `/${locale}/blog/${post.category}` },
             { name: post.title, url: locale === 'pt' ? `/blog/${post.slug}` : `/${locale}/blog/${post.slug}` },
           ])
         )}
@@ -389,7 +389,7 @@ export default async function PostPage({ params }: PageProps) {
               href={`/blog/${post.category}`}
               className="text-xs uppercase tracking-wider text-gt-orange-text hover:text-gt-orange-text font-sans inline-block mb-5"
             >
-              {PILLAR_TITLES[post.category]}
+              {pillarTitle(post.category, locale)}
             </Link>
             <h1 className="text-4xl md:text-5xl text-gt-text leading-[1.05] mb-6">
               {post.title}
@@ -620,7 +620,7 @@ export default async function PostPage({ params }: PageProps) {
                     )}
                     <div className="p-5">
                       <p className="text-xs uppercase tracking-wider text-gt-orange-text mb-2 font-sans">
-                        {PILLAR_TITLES[p.category]}
+                        {pillarTitle(p.category, locale)}
                       </p>
                       <h3 className="font-sans text-base font-medium text-gt-text leading-snug group-hover:text-gt-orange-text transition-colors normal-case">
                         {p.title}
