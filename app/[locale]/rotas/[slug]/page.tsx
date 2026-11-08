@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import NextLink from 'next/link';
 import { getPageAlternates, jsonLdScriptProps, breadcrumbLd, BASE_URL } from '@/lib/seo';
 import {
   getRotaSite,
@@ -307,14 +308,13 @@ export default async function RotaPage({ params }: { params: { locale: string; s
         </section>
 
         {/* Artigo relacionado. Os artigos ligados à rota são os em português:
-            locale="pt" evita gerar /en/blog/<slug-pt>, que só redireciona (08/11/2026). */}
+            link simples (next/link) evita gerar /en/blog/<slug-pt> ou /pt/blog/..., que só redirecionam (08/11/2026). */}
         {rota.artigo && (
           <section className="bg-gt-card border-t border-gt-border py-12">
             <div className="container-narrow">
               <p className="text-xs uppercase tracking-wider text-gt-orange-text font-sans mb-4">Do blog</p>
-              <Link
+              <NextLink
                 href={`/blog/${rota.artigo.slug}`}
-                locale="pt"
                 className="group grid sm:grid-cols-[220px_1fr] gap-5 items-center bg-gt-bg border border-gt-border rounded-lg overflow-hidden"
               >
                 {capaArtigo && (
@@ -329,7 +329,7 @@ export default async function RotaPage({ params }: { params: { locale: string; s
                   )}
                   <p className="font-sans text-sm text-gt-orange-text mt-3">Ler a história e as dicas →</p>
                 </div>
-              </Link>
+              </NextLink>
             </div>
           </section>
         )}
@@ -343,10 +343,9 @@ export default async function RotaPage({ params }: { params: { locale: string; s
                 {maisArtigos.map((a) => {
                   const img = urlForImage(a.coverImage as never)?.width(640).height(360).url();
                   return (
-                    <Link
+                    <NextLink
                       key={a.slug}
                       href={`/blog/${a.slug}`}
-                      locale="pt"
                       className="group bg-gt-bg border border-gt-border rounded-lg overflow-hidden flex flex-col hover:border-gt-orange transition-colors"
                     >
                       <div className="relative aspect-[16/9] bg-gt-bg-elevated">
@@ -357,7 +356,7 @@ export default async function RotaPage({ params }: { params: { locale: string; s
                       <div className="p-5">
                         <p className="font-sans font-medium text-gt-text leading-snug group-hover:text-gt-orange-text">{a.title}</p>
                       </div>
-                    </Link>
+                    </NextLink>
                   );
                 })}
               </div>
