@@ -306,13 +306,15 @@ export default async function RotaPage({ params }: { params: { locale: string; s
           </div>
         </section>
 
-        {/* Artigo relacionado */}
+        {/* Artigo relacionado. Os artigos ligados à rota são os em português:
+            locale="pt" evita gerar /en/blog/<slug-pt>, que só redireciona (08/11/2026). */}
         {rota.artigo && (
           <section className="bg-gt-card border-t border-gt-border py-12">
             <div className="container-narrow">
               <p className="text-xs uppercase tracking-wider text-gt-orange-text font-sans mb-4">Do blog</p>
               <Link
                 href={`/blog/${rota.artigo.slug}`}
+                locale="pt"
                 className="group grid sm:grid-cols-[220px_1fr] gap-5 items-center bg-gt-bg border border-gt-border rounded-lg overflow-hidden"
               >
                 {capaArtigo && (
@@ -344,6 +346,7 @@ export default async function RotaPage({ params }: { params: { locale: string; s
                     <Link
                       key={a.slug}
                       href={`/blog/${a.slug}`}
+                      locale="pt"
                       className="group bg-gt-bg border border-gt-border rounded-lg overflow-hidden flex flex-col hover:border-gt-orange transition-colors"
                     >
                       <div className="relative aspect-[16/9] bg-gt-bg-elevated">
