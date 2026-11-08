@@ -43,9 +43,9 @@
   "home": {
     "hero": {
       "tagline": "The overlander ecosystem built for those who travel by land",
-      "titulo": "Your road companion",
-      "tituloDestaque": "anywhere in the world",
-      "desc": "Describe your trip in natural language. First the AI builds the route — roads, cities and destination. Then you complete it: stops, fuel, accommodation and campsites.",
+      "titulo": "Planned by AI.",
+      "tituloDestaque": "Mapped by those who live on the road.",
+      "desc": "GT plans your overland trip: the Copilot builds the route, and more than 4 million curated places, kept up to date by the travelers who pass through them, show you where to stop.",
       "ctaVerComo": "See how it works",
       "plataformas": "App Store · Play Store · Web",
       "plataformasSemWeb": "App Store · Play Store",
@@ -616,6 +616,8 @@
     "temConta": "Already have an account?",
     "entrar": "Sign in to app →",
     "disponivelNa": "Available on",
+    "telaAlt": "GT Overlander app home screen with the route summary, shortcuts to Community Public Routes and the Start a new trip button",
+    "primeiroMinuto": "In the first minute: describe a trip and see the route and the places along the way.",
     "rodape": "Questions about access?",
     "rodapeLink": "Contact us"
   },

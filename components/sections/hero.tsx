@@ -32,7 +32,7 @@ export async function Hero() {
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-6 max-w-2xl">
             {t('titulo')}{' '}
-            <span className="text-gt-orange-text">{t('tituloDestaque')}</span>
+            <span className="text-gt-orange-text block">{t('tituloDestaque')}</span>
           </h1>
 
           <p className="text-base md:text-lg text-gt-text-muted leading-relaxed max-w-md mb-8 font-sans">

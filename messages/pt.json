@@ -43,9 +43,9 @@
   "home": {
     "hero": {
       "tagline": "O ecossistema feito para quem viaja por terra",
-      "titulo": "Seu companheiro de estrada",
-      "tituloDestaque": "em qualquer lugar do mundo",
-      "desc": "Descreva a viagem em linguagem natural. Primeiro a IA monta o trajeto — estradas, cidades e destino. Depois você completa: paradas, postos, hospedagem e campings.",
+      "titulo": "Planejado por IA.",
+      "tituloDestaque": "Mapeado por quem vive a estrada.",
+      "desc": "O GT planeja sua viagem por terra: o Copiloto monta o trajeto e mais de 4 milhões de pontos curados, mantidos por quem passa por eles, mostram onde parar.",
       "ctaVerComo": "Ver como funciona",
       "plataformas": "App Store · Play Store · Web",
       "plataformasSemWeb": "App Store · Play Store",
@@ -616,6 +616,8 @@
     "temConta": "Já tem conta?",
     "entrar": "Entrar no app →",
     "disponivelNa": "Disponível na",
+    "telaAlt": "Tela inicial do app GT Overlander com o resumo das rotas, os atalhos para Rotas Públicas da Comunidade e o botão Comece um novo roteiro",
+    "primeiroMinuto": "No primeiro minuto: descreva uma viagem e veja o trajeto e os pontos do caminho.",
     "rodape": "Dúvidas sobre o acesso?",
     "rodapeLink": "Fale com a gente"
   },

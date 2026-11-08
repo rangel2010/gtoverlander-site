@@ -25,6 +25,11 @@ import { useEffect } from 'react';
  * 2. GA4: evento `clique_loja_site` com loja, página e posição. Só dispara se
  *    o GA4 estiver carregado, ou seja, se a pessoa aceitou os cookies.
  *
+ * Origem (08/11/2026): se a pessoa chegou por um cartão do blog, o
+ * CtaContextual guardou artigo, variante e posição na memória da aba; o clique
+ * na loja leva esses três dados no evento (origem_*) e na etiqueta da Play
+ * (utm_content = variante, utm_term = artigo).
+ *
  * Posição: `data-posicao` no próprio link ou num pai; sem isso, "menu" se
  * estiver no cabeçalho, "rodape" no rodapé, "pagina" no resto.
  */
@@ -52,14 +57,24 @@ export function RastreioLoja() {
 
       const pagina = window.location.pathname.slice(0, 80) || '/';
       const posicao = posicaoDo(a);
+      // Origem guardada pelo cartão do blog (CtaContextual), se houver.
+      let origem: { artigo?: string; cta?: string; pos?: string } = {};
+      try {
+        origem = JSON.parse(sessionStorage.getItem('gt-origem') || '{}');
+      } catch {
+        origem = {};
+      }
 
       if (ehPlay) {
         try {
           const url = new URL(a.href);
           if (!url.searchParams.has('referrer')) {
+            const extra = origem.cta
+              ? `&utm_content=${origem.cta}&utm_term=${(origem.artigo || '').slice(0, 60)}`
+              : '';
             url.searchParams.set(
               'referrer',
-              `utm_source=site&utm_medium=${posicao}&utm_campaign=${pagina}`
+              `utm_source=site&utm_medium=${posicao}&utm_campaign=${pagina}${extra}`
             );
             a.href = url.toString();
           }
@@ -74,6 +89,9 @@ export function RastreioLoja() {
           loja: ehPlay ? 'play' : 'apple',
           pagina,
           posicao,
+          origem_artigo: origem.artigo,
+          origem_cta: origem.cta,
+          origem_posicao: origem.pos,
           transport_type: 'beacon',
         });
       }

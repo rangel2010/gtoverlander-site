@@ -32,6 +32,8 @@ import { getTranslations } from 'next-intl/server';
 import { getRotasDoArtigo, getFichaRota, cidade } from '@/lib/rotas';
 import { MAPAS, MARCA_MAPA, getPontosMapa } from '@/lib/mapas';
 import { MapaPontos } from '@/components/blog/mapa-pontos';
+import { CtaContextual } from '@/components/blog/cta-contextual';
+import { PILOTOS, dividirAntesDoTitulo } from '@/lib/cta-pilotos';
 
 interface PageProps {
   params: { slug: string; locale: string };
@@ -296,6 +298,71 @@ export default async function PostPage({ params }: PageProps) {
     ? [post.body.slice(0, marca.index), post.body.slice((marca.index ?? 0) + marca[0].length)]
     : [post.body, ''];
 
+  // Pilotos da ponte blog → app (08/11/2026): cartão depois da resposta, só em PT.
+  const piloto = locale === 'pt' ? PILOTOS[post.slug] : undefined;
+  const cartaoRotaTopo = piloto?.cartaoRotaTopo ?? 'manter';
+  const rotaDoPiloto = piloto?.variante === 'rota' ? rotasProntas[0] : undefined;
+  const ctaPiloto =
+    piloto && (piloto.variante !== 'rota' || rotaDoPiloto) ? (
+      <CtaContextual
+        variante={piloto.variante}
+        artigo={post.slug}
+        posicao={piloto.posicao}
+        titulo={piloto.titulo}
+        frase={
+          rotaDoPiloto
+            ? `A rota de ${cidade(rotaDoPiloto.ficha!.origem.nome)} a ${cidade(rotaDoPiloto.ficha!.destino.nome)} já está pronta no GT: ${rotaDoPiloto.ficha!.km.toLocaleString('pt-BR')} km${rotaDoPiloto.ficha!.dias ? `, ${rotaDoPiloto.ficha!.dias} ${rotaDoPiloto.ficha!.dias === 1 ? 'dia' : 'dias'}` : ''}, parada por parada.`
+            : piloto.frase ?? ''
+        }
+        botao={piloto.botao}
+        href={rotaDoPiloto ? `/rotas/${rotaDoPiloto.rota.slug}` : piloto.destino ?? '/baixar'}
+      />
+    ) : null;
+  // Onde o cartão entra: no trecho de texto que tiver o título de referência.
+  let [antesA, antesB] = [corpoAntes, ''];
+  let [depoisA, depoisB] = [corpoDepois, ''];
+  let ctaNoAntes = false;
+  let ctaNoDepois = false;
+  if (ctaPiloto && piloto) {
+    const d1 = dividirAntesDoTitulo(corpoAntes, piloto.antesDe);
+    if (d1) { [antesA, antesB] = d1; ctaNoAntes = true; }
+    else {
+      const d2 = dividirAntesDoTitulo(corpoDepois, piloto.antesDe);
+      if (d2) { [depoisA, depoisB] = d2; ctaNoDepois = true; }
+    }
+  }
+  const cartaoRotas = (
+              <aside
+                className="mb-10 bg-gt-card border border-gt-border rounded-lg p-5 font-sans"
+                aria-label="Rota pronta no GT Overlander"
+              >
+                <p className="text-sm font-semibold text-gt-text mb-3">
+                  🗺️ {rotasProntas.length > 1 ? 'Essa viagem tem rotas prontas' : 'Essa viagem tem rota pronta'} no GT Overlander
+                </p>
+                <ul className="grid gap-2">
+                  {rotasProntas.map(({ rota, ficha }) => (
+                    <li key={rota._id}>
+                      <Link
+                        href={`/rotas/${rota.slug}`}
+                        className="group flex flex-wrap items-baseline gap-x-2 gap-y-1 rounded-md px-3 py-2 -mx-3 hover:bg-gt-card-hover transition-colors"
+                      >
+                        <span className="text-gt-text font-medium group-hover:text-gt-orange-text">
+                          {rota.titulo || ficha!.titulo}
+                        </span>
+                        <span className="text-sm text-gt-text-muted">
+                          {cidade(ficha!.origem.nome)} → {cidade(ficha!.destino.nome)} · {ficha!.km.toLocaleString('pt-BR')} km
+                          {ficha!.dias ? ` · ${ficha!.dias} ${ficha!.dias === 1 ? 'dia' : 'dias'}` : ''}
+                        </span>
+                        <span className="text-sm text-gt-orange-text font-medium underline underline-offset-2">
+                          Ver a rota parada por parada →
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+  );
+
   const coverUrl = urlForImage(post.coverImage)
     ?.width(1600)
     .height(900)
@@ -369,37 +436,7 @@ export default async function PostPage({ params }: PageProps) {
 
         <div className="bg-gt-bg py-12 md:py-16">
           <div className="container-narrow">
-            {rotasProntas.length > 0 && (
-              <aside
-                className="mb-10 bg-gt-card border border-gt-border rounded-lg p-5 font-sans"
-                aria-label="Rota pronta no GT Overlander"
-              >
-                <p className="text-sm font-semibold text-gt-text mb-3">
-                  🗺️ {rotasProntas.length > 1 ? 'Essa viagem tem rotas prontas' : 'Essa viagem tem rota pronta'} no GT Overlander
-                </p>
-                <ul className="grid gap-2">
-                  {rotasProntas.map(({ rota, ficha }) => (
-                    <li key={rota._id}>
-                      <Link
-                        href={`/rotas/${rota.slug}`}
-                        className="group flex flex-wrap items-baseline gap-x-2 gap-y-1 rounded-md px-3 py-2 -mx-3 hover:bg-gt-card-hover transition-colors"
-                      >
-                        <span className="text-gt-text font-medium group-hover:text-gt-orange-text">
-                          {rota.titulo || ficha!.titulo}
-                        </span>
-                        <span className="text-sm text-gt-text-muted">
-                          {cidade(ficha!.origem.nome)} → {cidade(ficha!.destino.nome)} · {ficha!.km.toLocaleString('pt-BR')} km
-                          {ficha!.dias ? ` · ${ficha!.dias} ${ficha!.dias === 1 ? 'dia' : 'dias'}` : ''}
-                        </span>
-                        <span className="text-sm text-gt-orange-text font-medium underline underline-offset-2">
-                          Ver a rota parada por parada →
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </aside>
-            )}
+            {rotasProntas.length > 0 && cartaoRotaTopo === 'manter' && cartaoRotas}
 
             {post.audioUrl && (
               <div className="mb-10 bg-gt-card border border-gt-border rounded-lg p-5">
@@ -423,8 +460,19 @@ export default async function PostPage({ params }: PageProps) {
               remarkPlugins={[remarkGfm]}
               components={markdownComponents}
             >
-              {corpoAntes}
+              {antesA}
             </ReactMarkdown>
+
+            {ctaNoAntes && ctaPiloto}
+
+            {antesB && (
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={markdownComponents}
+              >
+                {antesB}
+              </ReactMarkdown>
+            )}
 
             {chaveMapa && pontosMapa && (
               <MapaPontos
@@ -434,13 +482,28 @@ export default async function PostPage({ params }: PageProps) {
               />
             )}
 
-            {corpoDepois && (
+            {depoisA && (
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={markdownComponents}
               >
-                {corpoDepois}
+                {depoisA}
               </ReactMarkdown>
+            )}
+
+            {ctaNoDepois && ctaPiloto}
+
+            {depoisB && (
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={markdownComponents}
+              >
+                {depoisB}
+              </ReactMarkdown>
+            )}
+
+            {rotasProntas.length > 0 && cartaoRotaTopo === 'fim' && (
+              <div className="mt-10">{cartaoRotas}</div>
             )}
 
             <ShareButtons

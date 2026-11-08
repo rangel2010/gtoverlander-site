@@ -86,6 +86,21 @@ export default async function BaixarPage({
               }}
             />
 
+            {/* Tela real do app (08/11/2026): quem chega pelo site via só botões. */}
+            <div className="mt-12 flex flex-col items-center gap-4">
+              <Image
+                src="/images/app/celular-home.webp"
+                alt={t('telaAlt')}
+                width={231}
+                height={440}
+                unoptimized
+                className="h-[380px] md:h-[440px] w-auto drop-shadow-[0_20px_30px_rgba(0,0,0,0.45)]"
+              />
+              <p className="text-sm md:text-base text-gt-text-muted font-sans max-w-md">
+                {t('primeiroMinuto')}
+              </p>
+            </div>
+
             {/* Já tem conta — só faz sentido com o webapp visível */}
             {MOSTRAR_WEBAPP && (
               <p className="mt-8 text-sm text-gt-text-muted font-sans">
@@ -102,8 +117,8 @@ export default async function BaixarPage({
         </div>
       </section>
 
-      {/* QR Code — para quem está no desktop */}
-      <section className="py-16 md:py-20 border-b border-gt-border">
+      {/* QR Code — só no computador: no celular a pessoa já está no aparelho */}
+      <section className="hidden md:block py-16 md:py-20 border-b border-gt-border">
         <div className="container-wide max-w-3xl">
           <ScrollReveal>
             <div className="flex flex-col sm:flex-row items-center gap-8 bg-gt-card rounded-2xl border border-gt-border p-8 md:p-10">

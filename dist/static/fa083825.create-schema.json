@@ -1,0 +1,773 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "max",
+                "constraint": 80
+              }
+            ],
+            "level": "warning",
+            "message": "Acima de 80 caracteres é grande pra SEO"
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Título"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 80
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "custom"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug",
+        "title": "Slug (URL)"
+      },
+      {
+        "rows": 2,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "max",
+                "constraint": 160
+              }
+            ],
+            "level": "warning",
+            "message": "Recomendado até 160 caracteres pra SEO"
+          }
+        ],
+        "description": "Aparece no Google e quando o link é compartilhado",
+        "name": "description",
+        "type": "text",
+        "title": "Descrição (meta description)"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Destinos & Roteiros América do Sul",
+              "value": "destinos"
+            },
+            {
+              "title": "Preparação & Planejamento",
+              "value": "preparacao"
+            },
+            {
+              "title": "Vida Overlander",
+              "value": "vida-overlander"
+            }
+          ],
+          "layout": "radio"
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "destinos",
+                  "preparacao",
+                  "vida-overlander"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "category",
+        "type": "string",
+        "title": "Pilar"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "coverImage",
+        "type": "image",
+        "title": "Imagem de capa"
+      },
+      {
+        "options": {
+          "accept": "audio/*"
+        },
+        "description": "Arquivo de narração do artigo na voz do Rangel. Preenchido automaticamente.",
+        "name": "audio",
+        "type": "file",
+        "title": "Áudio (narração do artigo)"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Descreva a imagem em 1 frase pra acessibilidade e SEO",
+        "name": "coverImageAlt",
+        "type": "string",
+        "title": "Texto alternativo da capa"
+      },
+      {
+        "rows": 3,
+        "description": "Preenchido automaticamente quando o rascunho ainda não tem capa definitiva: ou aponta pro arquivo já baixado na pasta \"Blog - Capas Sugeridas\" (é só arrastar pro campo \"Imagem de capa\" acima), ou traz 1-2 links de banco de imagem pra baixar manualmente quando não deu pra baixar sozinho. Pode apagar depois de resolver.",
+        "name": "coverImageSuggestions",
+        "type": "text",
+        "title": "Sugestões de foto de capa"
+      },
+      {
+        "description": "Preencha só quando a foto vier de uma fonte que exige atribuição (ex: Wikimedia Commons com licença CC BY). Formato: \"Foto: Nome do autor / Wikimedia Commons (licença)\". Aparece em texto discreto embaixo da capa no artigo. Deixe vazio se a foto não exige crédito (ex: Unsplash, ou foto própria).",
+        "name": "coverImageCredit",
+        "type": "string",
+        "title": "Crédito da foto de capa (se exigido)"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Sobe aqui a imagem já tratada (1:1, com título e arte) para Instagram e Facebook. Quando presente, o Make posta essa imagem. Se não tiver, usa a capa original.",
+        "name": "imagemSocial",
+        "type": "image",
+        "title": "Imagem para redes sociais (opcional)"
+      },
+      {
+        "initialValue": "Rangel Machado",
+        "name": "authorName",
+        "type": "string",
+        "title": "Autor"
+      },
+      {
+        "name": "authorBio",
+        "type": "string",
+        "title": "Bio do autor (opcional)"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "publishedAt",
+        "type": "datetime",
+        "title": "Data de publicação"
+      },
+      {
+        "options": {
+          "layout": "tags"
+        },
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "tags",
+        "type": "array"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "🇧🇷 Português",
+              "value": "pt"
+            },
+            {
+              "title": "🇺🇸 English",
+              "value": "en"
+            },
+            {
+              "title": "🇪🇸 Español",
+              "value": "es"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "pt",
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "pt",
+                  "en",
+                  "es"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Idioma em que este post foi escrito. Posts são escritos nativamente — não são traduções automáticas.",
+        "name": "locale",
+        "type": "string",
+        "title": "Idioma"
+      },
+      {
+        "description": "Se este post existe em outros idiomas, linke aqui. Habilita hreflang e \"leia em inglês\" no site.",
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "locale",
+                "type": "string",
+                "title": "Idioma"
+              },
+              {
+                "name": "slug",
+                "type": "string",
+                "title": "Slug do post"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "linkedTranslations",
+        "type": "array",
+        "title": "Posts equivalentes em outros idiomas (opcional)"
+      },
+      {
+        "initialValue": false,
+        "description": "Aparece em destaque no /blog. Só um post deve estar marcado por vez.",
+        "name": "featured",
+        "type": "boolean",
+        "title": "Destacar este post no hub do blog"
+      },
+      {
+        "initialValue": true,
+        "description": "Liga a seção de comentários (login Google, moderação manual) neste artigo. Já vem ligado por padrão desde que o recurso passou a valer pra todo o blog PT; desligue aqui se quiser fechar em algum post específico.",
+        "name": "commentsEnabled",
+        "type": "boolean",
+        "title": "Comentários habilitados neste post"
+      },
+      {
+        "rows": 30,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Cole o markdown completo aqui. Suporta # H1, ## H2, ### H3, **negrito**, *itálico*, [link](url), listas com - ou 1., > citação, ![imagem](url) e tabelas. Vai ser renderizado bonitinho no site.",
+        "name": "body",
+        "type": "text",
+        "title": "Conteúdo (Markdown)"
+      }
+    ],
+    "name": "post",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "to": [
+          {
+            "type": "post"
+          }
+        ],
+        "name": "post",
+        "type": "reference",
+        "title": "Artigo"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "authorName",
+        "type": "string",
+        "title": "Nome (da conta Google)"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "authorImage",
+        "type": "url",
+        "title": "Foto (URL da conta Google)"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Usado só pra moderação e pra identificar o autor. Nunca aparece no site.",
+        "name": "authorEmail",
+        "type": "string",
+        "title": "E-mail (da conta Google, não exibido publicamente)"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "max",
+                "constraint": 1000
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "body",
+        "type": "text",
+        "title": "Texto do comentário"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Pendente",
+              "value": "pending"
+            },
+            {
+              "title": "Aprovado",
+              "value": "approved"
+            },
+            {
+              "title": "Rejeitado",
+              "value": "rejected"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "pending",
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "pending",
+                  "approved",
+                  "rejected"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "description": "Preenchido automaticamente quando o filtro (link ou palavra bloqueada) rejeita antes da fila. Ajuda a conferir se o filtro errou.",
+        "readOnly": true,
+        "name": "autoFlagReason",
+        "type": "string",
+        "title": "Motivo do bloqueio automático (se houver)"
+      },
+      {
+        "initialValue": false,
+        "description": "Marcado automaticamente quando a resposta vem da conta autorizada do Rangel.",
+        "name": "isAuthorReply",
+        "type": "boolean",
+        "title": "É resposta da marca (GT Overlander)"
+      },
+      {
+        "description": "Preenchido só quando isAuthorReply é true. Comentários de leitores não respondem a outros comentários.",
+        "to": [
+          {
+            "type": "comment"
+          }
+        ],
+        "name": "parentComment",
+        "type": "reference",
+        "title": "Em resposta a"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "createdAt",
+        "type": "datetime",
+        "title": "Criado em"
+      }
+    ],
+    "name": "comment",
+    "type": "document",
+    "title": "Comentário"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 70
+              }
+            ],
+            "level": "warning",
+            "message": "Acima de 70 caracteres o Google corta o título"
+          }
+        ],
+        "description": "O título que aparece no Google e no topo da página. Se ficar vazio, usa o título público da rota no app.",
+        "name": "titulo",
+        "type": "string",
+        "title": "Título da página"
+      },
+      {
+        "options": {
+          "source": "titulo",
+          "maxLength": 40
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Curto e fácil de falar no vídeo: uruguai, serras, ruta-40.",
+        "name": "slug",
+        "type": "slug",
+        "title": "Endereço (www.gtoverlander.com.br/rotas/…)"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "O final do endereço da rota pública no app. Ex.: em beta.gtoverlander.com.br/rotas/cmur0rf2v000l132o452yzoe2 o código é cmur0rf2v000l132o452yzoe2. A rota precisa estar pública no app.",
+        "name": "appRouteId",
+        "type": "string",
+        "title": "Código da rota no app"
+      },
+      {
+        "initialValue": true,
+        "description": "Desligue para tirar a rota do site sem apagar o registro.",
+        "name": "mostrar",
+        "type": "boolean",
+        "title": "Mostrar no site"
+      },
+      {
+        "rows": 2,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "max",
+                "constraint": 160
+              }
+            ],
+            "level": "warning",
+            "message": "Recomendado até 160 caracteres"
+          }
+        ],
+        "description": "Até 160 caracteres. Aparece embaixo do título no Google e quando o link é compartilhado.",
+        "name": "descricaoSeo",
+        "type": "text",
+        "title": "Descrição para o Google"
+      },
+      {
+        "options": {
+          "layout": "tags"
+        },
+        "description": "Ex.: Brasil, Uruguai. Usado na vitrine de rotas.",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "paises",
+        "type": "array",
+        "title": "Países"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Foto real de um lugar da rota. Se ficar vazio, usa a capa do artigo relacionado.",
+        "name": "capa",
+        "type": "image",
+        "title": "Foto de capa"
+      },
+      {
+        "name": "capaAlt",
+        "type": "string",
+        "title": "Descrição da foto (acessibilidade)"
+      },
+      {
+        "name": "capaCredito",
+        "type": "string",
+        "title": "Crédito da foto"
+      },
+      {
+        "rows": 25,
+        "description": "O texto prático da rota: como é, os trechos, quando ir, o que levar. Mesmo formato do blog (## título, **negrito**, listas com -). A ficha, as paradas e o mapa entram sozinhos — não precisa repetir.",
+        "name": "corpo",
+        "type": "text",
+        "title": "Texto da página (Markdown)"
+      },
+      {
+        "description": "O artigo com a história e as dicas. A página da rota aponta pra ele.",
+        "to": [
+          {
+            "type": "post"
+          }
+        ],
+        "name": "artigo",
+        "type": "reference",
+        "title": "Artigo do blog relacionado"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 6
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Até 6 artigos sobre o mesmo destino ou assunto (pedágio, documentos, cidades do caminho). Aparecem em cartões no fim da página.",
+        "of": [
+          {
+            "to": [
+              {
+                "type": "post"
+              }
+            ],
+            "type": "reference",
+            "title": "Reference to post"
+          }
+        ],
+        "name": "maisArtigos",
+        "type": "array",
+        "title": "Mais artigos do blog (fim da página)"
+      },
+      {
+        "description": "Menor aparece primeiro. Vazio vai pro fim.",
+        "name": "ordem",
+        "type": "number",
+        "title": "Ordem na vitrine"
+      }
+    ],
+    "name": "rotaSite",
+    "type": "document",
+    "title": "Rota do site"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Nome do parceiro convidado. Só aparece aqui no Studio.",
+        "name": "parceiro",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "parceiro",
+          "maxLength": 60
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Clique em \"Gerar\": usa o nome do parceiro e acrescenta um código curto no fim, pra ninguém adivinhar o convite de outro. O link final é www.gtoverlander.com.br/convites/<endereço>.pdf",
+        "name": "slug",
+        "type": "slug",
+        "title": "Endereço (www.gtoverlander.com.br/convites/….pdf)"
+      },
+      {
+        "options": {
+          "accept": "application/pdf"
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "arquivo",
+        "type": "file",
+        "title": "PDF do convite"
+      },
+      {
+        "initialValue": true,
+        "description": "Desligue pra tirar o convite do ar sem apagar o registro.",
+        "name": "ativo",
+        "type": "boolean"
+      },
+      {
+        "rows": 3,
+        "description": "Ex.: enviado por Instagram em 15/10, respondeu em…",
+        "name": "observacao",
+        "type": "text",
+        "title": "Observação (interna)"
+      }
+    ],
+    "name": "convitePdf",
+    "type": "document",
+    "title": "Convite em PDF"
+  }
+]

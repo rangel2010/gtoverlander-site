@@ -43,9 +43,9 @@
   "home": {
     "hero": {
       "tagline": "El ecosistema overlander hecho para quien viaja por tierra",
-      "titulo": "Tu compañero de ruta",
-      "tituloDestaque": "en cualquier lugar del mundo",
-      "desc": "Describe tu viaje en lenguaje natural. Primero la IA traza la ruta — carreteras, ciudades y destino. Luego tú completas: paradas, combustible, alojamiento y campings.",
+      "titulo": "Planificado por IA.",
+      "tituloDestaque": "Mapeado por quienes viven la ruta.",
+      "desc": "GT planifica tu viaje por tierra: el Copiloto arma el trayecto y más de 4 millones de lugares curados, mantenidos por los viajeros que pasan por ellos, te muestran dónde parar.",
       "ctaVerComo": "Ver cómo funciona",
       "plataformas": "App Store · Play Store · Web",
       "plataformasSemWeb": "App Store · Play Store",
@@ -616,6 +616,8 @@
     "temConta": "¿Ya tienes cuenta?",
     "entrar": "Entrar a la app →",
     "disponivelNa": "Disponible en",
+    "telaAlt": "Pantalla inicial de la app GT Overlander con el resumen de rutas, los accesos a Rutas Públicas de la Comunidad y el botón Empieza un nuevo itinerario",
+    "primeiroMinuto": "En el primer minuto: describe un viaje y mira el trayecto y los lugares del camino.",
     "rodape": "¿Preguntas sobre el acceso?",
     "rodapeLink": "Contáctanos"
   },
