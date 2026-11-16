@@ -21,6 +21,8 @@ const ROTAS_CURTAS = {
   'estrada-real': 'https://beta.gtoverlander.com.br/rotas/cmutwx0f1003qwc6usanestlt',
   'chapada-diamantina': 'https://beta.gtoverlander.com.br/rotas/cmuu6h7ea007fwc6urhulonr8',
   'rastro-da-serpente': 'https://beta.gtoverlander.com.br/rotas/cmuu76zf8008bwc6u92tctgpk',
+  // Foz do Iguaçu → San Pedro de Atacama, de moto (16/11/2026):
+  'foz-atacama': 'https://beta.gtoverlander.com.br/rotas/cmwj6neoj004mt1uqoyxw3uku',
 };
 
 /** @type {import('next').NextConfig} */
