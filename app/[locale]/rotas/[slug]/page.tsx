@@ -19,6 +19,7 @@ import {
 } from '@/lib/rotas';
 import { MapaRota } from '@/components/rotas/mapa-rota';
 import { BotaoBaixar, SelosLojas } from '@/components/rotas/botao-baixar';
+import { BarraBaixar } from '@/components/rotas/barra-baixar';
 import { urlForImage } from '@/lib/sanity/image';
 
 /**
@@ -245,7 +246,7 @@ export default async function RotaPage({ params }: { params: { locale: string; s
               </p>
             )}
 
-            <div className="mt-8 bg-gt-card border border-gt-border rounded-lg p-6 flex flex-col md:flex-row md:items-center gap-5 md:justify-between">
+            <div data-cta-rota data-posicao="rota-ficha" className="mt-8 bg-gt-card border border-gt-border rounded-lg p-6 flex flex-col md:flex-row md:items-center gap-5 md:justify-between">
               <div>
                 <p className="font-sans font-medium text-gt-text">A rota inteira está pronta no app</p>
                 <p className="font-sans text-sm text-gt-text-muted mt-1">
@@ -265,6 +266,16 @@ export default async function RotaPage({ params }: { params: { locale: string; s
               tracado={ficha.tracado}
               pontos={sequencia.map(({ nome, lat, lng, tipo, ...r }) => ({ nome, lat, lng, tipo, n: 'n' in r ? r.n : undefined }))}
             />
+          </div>
+          {/* Chamada logo abaixo do mapa (19/11/2026): o momento em que a pessoa acabou de ver a rota inteira. */}
+          <div className="container-narrow mt-6">
+            <div data-cta-rota data-posicao="rota-mapa" className="border border-gt-orange/40 bg-gt-card rounded-lg px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-4 sm:justify-between">
+              <p className="font-sans text-gt-text">
+                <span className="font-medium">Gostou do caminho?</span>{' '}
+                <span className="text-gt-text-muted">Abra esta rota no seu celular, com o mapa e as paradas.</span>
+              </p>
+              <BotaoBaixar className="shrink-0" />
+            </div>
           </div>
         </section>
 
@@ -304,6 +315,30 @@ export default async function RotaPage({ params }: { params: { locale: string; s
             <p className="font-sans text-xs text-gt-text-muted mt-2">
               Quilometragem aproximada, medida sobre o traçado da rota no app.
             </p>
+
+            {/* Chamada antes dos artigos (19/11/2026), pra quem leu as paradas até o fim. */}
+            <div data-cta-rota data-posicao="rota-paradas" className="mt-8 bg-gt-card border border-gt-border rounded-lg p-6 flex flex-col md:flex-row md:items-center gap-5 md:justify-between">
+              <div>
+                <p className="font-sans font-medium text-gt-text">
+                  {ficha.paradas.length > 0
+                    ? `As ${ficha.paradas.length} paradas, o mapa e os postos do caminho no seu bolso`
+                    : 'O mapa e os postos do caminho no seu bolso'}
+                </p>
+                <p className="font-sans text-sm text-gt-text-muted mt-1">
+                  No app você ajusta a rota do seu jeito e leva tudo para a estrada.
+                </p>
+              </div>
+              <BotaoBaixar className="shrink-0" />
+            </div>
+          </div>
+        </section>
+
+        {/* Fecho: subiu para antes dos artigos (19/11/2026), pra chamada forte vir antes de a pessoa sair pro blog. */}
+        <section data-cta-rota data-posicao="rota-fecho" className="dark bg-gt-bg-elevated text-gt-text py-14">
+          <div className="container-narrow text-center flex flex-col items-center gap-6">
+            <h2 className="text-3xl md:text-4xl leading-[1.25] md:leading-[1.25]">Pronto pra pegar a estrada?</h2>
+            <SelosLojas />
+            <p className="font-sans text-sm text-gt-text-muted max-w-md">{jaTemApp}</p>
           </div>
         </section>
 
@@ -312,7 +347,7 @@ export default async function RotaPage({ params }: { params: { locale: string; s
         {rota.artigo && (
           <section className="bg-gt-card border-t border-gt-border py-12">
             <div className="container-narrow">
-              <p className="text-xs uppercase tracking-wider text-gt-orange-text font-sans mb-4">Do blog</p>
+              <p className="text-xs uppercase tracking-wider text-gt-orange-text font-sans mb-4">Para ler antes de ir</p>
               <NextLink
                 href={`/blog/${rota.artigo.slug}`}
                 className="group grid sm:grid-cols-[220px_1fr] gap-5 items-center bg-gt-bg border border-gt-border rounded-lg overflow-hidden"
@@ -364,15 +399,8 @@ export default async function RotaPage({ params }: { params: { locale: string; s
           </section>
         )}
 
-        {/* Fecho */}
-        <section className="dark bg-gt-bg-elevated text-gt-text py-14">
-          <div className="container-narrow text-center flex flex-col items-center gap-6">
-            <h2 className="text-3xl md:text-4xl leading-[1.25] md:leading-[1.25]">Pronto pra pegar a estrada?</h2>
-            <SelosLojas />
-            <p className="font-sans text-sm text-gt-text-muted max-w-md">{jaTemApp}</p>
-          </div>
-        </section>
       </article>
+      <BarraBaixar />
     </>
   );
 }
