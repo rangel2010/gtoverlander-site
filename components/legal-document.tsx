@@ -1,6 +1,8 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import Link from 'next/link';
+// O Link do i18n põe o prefixo de idioma sozinho: de /es/termos, o link pra
+// /privacidade vai direto a /es/privacidade, sem depender do redirect.
+import { Link } from '@/i18n/navigation';
 
 interface RelatedDoc {
   href: string;
@@ -13,6 +15,11 @@ interface LegalDocumentProps {
   lastUpdated: string;
   content: string;
   relatedDocs?: RelatedDoc[];
+  /** Rótulos da moldura, na língua do documento (padrão: português). */
+  lastUpdatedLabel?: string;
+  relatedDocsLabel?: string;
+  /** Aviso no topo do texto — usado nas traduções. */
+  notice?: string | null;
 }
 
 export function LegalDocument({
@@ -21,6 +28,9 @@ export function LegalDocument({
   lastUpdated,
   content,
   relatedDocs,
+  lastUpdatedLabel = 'Última atualização',
+  relatedDocsLabel = 'Documentos relacionados',
+  notice,
 }: LegalDocumentProps) {
   return (
     <>
@@ -35,13 +45,18 @@ export function LegalDocument({
             </p>
           )}
           <p className="text-sm text-gt-text-muted">
-            Última atualização: {lastUpdated}
+            {lastUpdatedLabel}: {lastUpdated}
           </p>
         </div>
       </section>
 
       <section className="bg-gt-bg border-t border-gt-border py-12 md:py-16">
         <article className="container-narrow gt-prose">
+          {notice && (
+            <p className="border-l-4 border-gt-orange bg-gt-card pl-5 pr-4 py-4 mb-8 text-gt-text-muted font-sans rounded-r-md">
+              {notice}
+            </p>
+          )}
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
@@ -148,7 +163,7 @@ export function LegalDocument({
         <section className="bg-gt-card border-t border-gt-border py-12">
           <div className="container-narrow">
             <p className="text-xs uppercase tracking-[0.18em] text-gt-text-muted mb-4 font-sans">
-              Documentos relacionados
+              {relatedDocsLabel}
             </p>
             <ul className="space-y-2 font-sans">
               {relatedDocs.map((doc) => (

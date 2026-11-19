@@ -1,40 +1,34 @@
 import type { Metadata } from 'next';
-import { getPageAlternates } from '@/lib/seo';
-import { promises as fs } from 'fs';
-import path from 'path';
 import { LegalDocument } from '@/components/legal-document';
+import { lerDocumentoLegal, metadataDoDocumentoLegal } from '@/lib/legal';
 
-export async function generateMetadata({
+// Texto, título, língua e indexação saem da ficha em `lib/legal.ts`.
+const DOCUMENTO = 'comunidade' as const;
+
+export function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
-}): Promise<Metadata> {
-  return {
-    title: 'Código de Conduta da Comunidade',
-    description:
-    'Código de Conduta da Comunidade GT Overlander. Princípios, comportamentos esperados e regras de convivência entre overlanders.',
-    alternates: getPageAlternates(locale, '/comunidade', { soPt: true }),
-    // Documento só existe em português: fora do sitemap e sem indexação
-    // em EN/ES, senão o Google indexa conteúdo PT como página em inglês.
-    ...(locale !== 'pt' && { robots: { index: false, follow: false } }),
-  };
+}): Metadata {
+  return metadataDoDocumentoLegal(DOCUMENTO, locale);
 }
 
-export default async function ComunidadePage() {
-  const content = await fs.readFile(
-    path.join(process.cwd(), 'content/legal/comunidade.md'),
-    'utf-8'
-  );
+export default async function ComunidadePage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const doc = await lerDocumentoLegal(DOCUMENTO, locale);
   return (
     <LegalDocument
-      title="Código de Conduta"
-      subtitle="Como a Comunidade GT se relaciona, contribui e cuida uns dos outros"
-      lastUpdated="28 de setembro de 2026"
-      content={content}
-      relatedDocs={[
-        { href: '/termos', label: 'Termos de Uso' },
-        { href: '/privacidade', label: 'Política de Privacidade' },
-      ]}
+      title={doc.titulo}
+      subtitle={doc.subtitulo}
+      lastUpdated={doc.atualizadoEm}
+      lastUpdatedLabel={doc.rotuloDeAtualizado}
+      relatedDocsLabel={doc.rotuloDeRelacionados}
+      notice={doc.aviso}
+      content={doc.conteudo}
+      relatedDocs={doc.relacionados}
     />
   );
 }

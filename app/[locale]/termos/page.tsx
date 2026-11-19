@@ -1,42 +1,34 @@
 import type { Metadata } from 'next';
-import { getPageAlternates } from '@/lib/seo';
-import { promises as fs } from 'fs';
-import path from 'path';
 import { LegalDocument } from '@/components/legal-document';
+import { lerDocumentoLegal, metadataDoDocumentoLegal } from '@/lib/legal';
 
-export async function generateMetadata({
+// Texto, título, língua e indexação saem da ficha em `lib/legal.ts`.
+const DOCUMENTO = 'termos' as const;
+
+export function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
-}): Promise<Metadata> {
-  return {
-    title: 'Termos de Uso',
-    description:
-    'Termos de Uso do GT Overlander. Condições para utilização da plataforma, regras de conduta, direitos e responsabilidades.',
-    alternates: getPageAlternates(locale, '/termos', { soPt: true }),
-    // Documento só existe em português: fora do sitemap e sem indexação
-    // em EN/ES, senão o Google indexa conteúdo PT como página em inglês.
-    ...(locale !== 'pt' && { robots: { index: false, follow: false } }),
-  };
+}): Metadata {
+  return metadataDoDocumentoLegal(DOCUMENTO, locale);
 }
 
-export default async function TermosPage() {
-  const content = await fs.readFile(
-    path.join(process.cwd(), 'content/legal/termos.md'),
-    'utf-8'
-  );
+export default async function TermosPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const doc = await lerDocumentoLegal(DOCUMENTO, locale);
   return (
     <LegalDocument
-      title="Termos de Uso"
-      subtitle="Versão 1.1 — GT Overlander LTDA · CNPJ 59.840.412/0001-82"
-      lastUpdated="28 de setembro de 2026"
-      content={content}
-      relatedDocs={[
-        { href: '/privacidade', label: 'Política de Privacidade' },
-        { href: '/termos/help-overlander', label: 'Anexo I — Termo de Assunção de Risco (Help Overlander)' },
-        { href: '/termos/conta-business', label: 'Anexo II — Termos da Conta Business' },
-        { href: '/comunidade', label: 'Código de Conduta da Comunidade GT' },
-      ]}
+      title={doc.titulo}
+      subtitle={doc.subtitulo}
+      lastUpdated={doc.atualizadoEm}
+      lastUpdatedLabel={doc.rotuloDeAtualizado}
+      relatedDocsLabel={doc.rotuloDeRelacionados}
+      notice={doc.aviso}
+      content={doc.conteudo}
+      relatedDocs={doc.relacionados}
     />
   );
 }

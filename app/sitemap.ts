@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/sanity/queries';
 import { postModifiedAt } from '@/lib/seo';
 import { getRotasSite } from '@/lib/rotas';
+import { paginasLegaisDoSitemap } from '@/lib/legal';
 
 const WWW = 'https://www.gtoverlander.com.br';
 // A home entra como '/'. Para EN/ES isso geraria '/en/', que o Next responde
@@ -39,11 +40,8 @@ const PT_ONLY_ROUTES = [
   { path: '/recursos/explorer',        changeFreq: 'monthly' as const, priority: 0.8 },
   { path: '/recursos/shopping',        changeFreq: 'monthly' as const, priority: 0.8 },
   { path: '/dicas',                    changeFreq: 'weekly'  as const, priority: 0.7 },
-  { path: '/privacidade',              changeFreq: 'yearly'  as const, priority: 0.3 },
-  { path: '/termos',                   changeFreq: 'yearly'  as const, priority: 0.3 },
-  { path: '/termos/help-overlander',   changeFreq: 'yearly'  as const, priority: 0.3 },
-  { path: '/termos/conta-business',    changeFreq: 'yearly'  as const, priority: 0.3 },
-  { path: '/comunidade',               changeFreq: 'yearly'  as const, priority: 0.4 },
+  // Os documentos legais não moram mais aqui: cada um entra nas línguas em
+  // que existe de verdade, pela ficha em lib/legal.ts (ver legalEntries abaixo).
   { path: '/demo',                     changeFreq: 'monthly' as const, priority: 0.5 },
 ];
 
@@ -94,6 +92,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: r.priority,
   }));
 
+  const legalEntries: MetadataRoute.Sitemap = paginasLegaisDoSitemap().map((p) => ({
+    url: localePath(p.lingua, p.caminho),
+    changeFrequency: 'yearly' as const,
+    priority: p.lingua === 'pt' ? 0.3 : 0.27,
+  }));
+
   const toEntries = (posts: typeof ptPosts, locale: string): MetadataRoute.Sitemap =>
     posts.map((post) => ({
       url: localePath(locale, '/blog/' + post.slug),
@@ -128,5 +132,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ]
     : [];
 
-  return [...multilingualEntries, ...ptOnlyEntries, ...rotaEntries, ...postEntries];
+  return [...multilingualEntries, ...ptOnlyEntries, ...legalEntries, ...rotaEntries, ...postEntries];
 }
