@@ -324,7 +324,7 @@ GT does not intermediate payments in Shopping, including on Desapega. Buyer and 
 
 7.4. Modifications to the scope of benefits of each Plan may occur over time. Features may be added or removed, and the allocation of features among Plans may be revised. GT will inform material changes with reasonable advance notice.
 
-7.5. Migration between Plans is available to the User, subject to the following rules:
+7.5. Migration between Plans is available to the User and is carried out in the app store in which the subscription was contracted, subject to the rules of the store itself and, in general, to the following:
 
   - Upgrade (from a lower Plan to a higher one): effective immediately, with proportional (pro rata) charging of the difference for the remaining period of the cycle in progress.
 
@@ -336,29 +336,33 @@ GT does not intermediate payments in Shopping, including on Desapega. Buyer and 
 
 ### 8.1. Means of Payment
 
-8.1.1. Payments for subscriptions and other paid services of the Platform are processed through a payment gateway contracted by GT (currently, Asaas), which operates the transactions with credit card, debit card, PIX, boleto and other means made available.
+8.1.1. Subscriptions to the paid Plans are contracted and charged within the application, by the app stores of Apple (App Store) and Google (Google Play). Billing, renewal and refunds follow the rules and policies of the store in which the subscription was contracted.
 
-8.1.2. The User authorizes GT (or the gateway contracted by it) to make recurring charges on the registered form of payment, according to the frequency contracted, until express cancellation of the subscription occurs.
+8.1.2. Upon contracting, the User authorizes the store to make recurring charges on the form of payment registered in his or her store account, according to the frequency contracted, until cancellation of the subscription occurs, made in the store itself.
 
-8.1.3. Credit card data and other sensitive financial information are stored by the payment gateway, in a certified secure environment, and not by GT directly.
+8.1.3. Credit card data and other financial information of those purchases are processed by the store. GT does not receive or store them: it receives only the confirmation of the subscription (Plan contracted, period and status).
+
+8.1.4. The additional services of the Business Account contracted through the website are processed through a payment gateway contracted by GT (currently, Asaas), under the terms of Addendum II. GT does not store complete card data.
 
 ### 8.2. Payment Failure and Default
 
-8.2.1. In the event of failure in the processing of a recurring charge (card declined, insufficient balance, expiration or others), GT will make new charge attempts on subsequent dates, according to the rules of the gateway.
+8.2.1. In the event of failure in the processing of a recurring charge (card declined, insufficient balance, expiration or others), the store makes new charge attempts according to its rules, and may maintain the benefits of the Plan for a grace period.
 
-8.2.2. If the default persists, GT will adopt the following escalating policy: (i) after 7 (seven) days of delay, notification to the User through the registered channels; (ii) after 15 (fifteen) days, automatic downgrade to the Free Plan with loss of the paid benefits; (iii) after 30 (thirty) days, cancellation of the subscription, without prejudice to the collection of the amounts due for the period in which the benefits were made available.
+8.2.2. If the failure persists, the store ends the subscription and the Account returns to the Free Plan, with loss of the paid benefits.
 
-8.2.3. Reactivation of the subscription after default depends on full settlement of the amounts due.
+8.2.3. Reactivation of the benefits depends on settlement of the payment in the store or on a new subscription.
 
 ### 8.3. Tax Invoices
 
-8.3.1. GT, in its capacity as a provider of software service (SaaS), classified under item 1.05 of the List Attached to Lei Complementar nº 116/2003 (Brazil's federal supplementary law on the tax on services), will issue an Electronic Service Invoice (NFS-e) through the municipality of Londrina/PR for each charge made, sending it by email or making it available in the area of the User's Account.
+8.3.1. For subscriptions contracted in an app store, the proof of purchase is issued by the store itself and remains available in the User's account in the store.
+
+8.3.2. For services contracted directly with GT (Business Account), GT, in its capacity as a provider of software service (SaaS), classified under item 1.05 of the List Attached to Lei Complementar nº 116/2003 (Brazil's federal supplementary law on the tax on services), issues an Electronic Service Invoice (NFS-e) through the municipality of Londrina/PR, in accordance with Addendum II.
 
 ### 8.4. Right of Withdrawal (CDC)
 
 8.4.1. In accordance with art. 49 of the Código de Defesa do Consumidor, the consumer User who contracts a paid subscription outside the physical establishment (notably over the internet) has a period of 7 (seven) days, counted from the payment, to withdraw from the contract, with the right to a full refund.
 
-8.4.2. The exercise of the right of withdrawal must be communicated through the official channels set forth in Section 15 of these Terms.
+8.4.2. The exercise of the right of withdrawal must be communicated through the official channels set forth in Section 15 of these Terms. For subscriptions contracted in an app store, the refund is carried out by the store itself, and GT guides the User on the procedure.
 
 ## 9. Intellectual Property
 

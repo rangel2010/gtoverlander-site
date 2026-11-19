@@ -324,7 +324,7 @@ A GT não intermedeia pagamentos no Shopping, inclusive no Desapega. Comprador e
 
 7.4. Modificações no escopo de benefícios de cada Plano poderão ocorrer ao longo do tempo. Funcionalidades podem ser adicionadas ou removidas, e a alocação de funcionalidades entre Planos pode ser revista. A GT informará alterações materiais com antecedência razoável.
 
-7.5. A migração entre Planos é facultada ao Usuário, observadas as seguintes regras:
+7.5. A migração entre Planos é facultada ao Usuário e é feita na loja de aplicativos em que a assinatura foi contratada, observadas as regras da própria loja e, em geral, o seguinte:
 
   - Upgrade (de Plano inferior para superior): vigência imediata, com cobrança proporcional (pro rata) da diferença pelo período remanescente do ciclo em curso.
 
@@ -336,29 +336,33 @@ A GT não intermedeia pagamentos no Shopping, inclusive no Desapega. Comprador e
 
 ### 8.1. Meios de Pagamento
 
-8.1.1. Os pagamentos das assinaturas e demais serviços onerosos da Plataforma são processados por meio de gateway de pagamento contratado pela GT (atualmente, Asaas), que opera as transações com cartão de crédito, débito, PIX, boleto e demais meios disponibilizados.
+8.1.1. As assinaturas dos Planos pagos são contratadas e cobradas dentro do aplicativo, pelas lojas de aplicativos da Apple (App Store) e do Google (Google Play). A cobrança, a renovação e o reembolso seguem as regras e as políticas da loja em que a assinatura foi contratada.
 
-8.1.2. O Usuário autoriza a GT (ou o gateway por ela contratado) a realizar cobranças recorrentes na forma de pagamento cadastrada, conforme periodicidade contratada, até que ocorra cancelamento expresso da assinatura.
+8.1.2. Ao contratar, o Usuário autoriza a loja a realizar cobranças recorrentes na forma de pagamento cadastrada na sua conta da loja, conforme periodicidade contratada, até que ocorra o cancelamento da assinatura, feito na própria loja.
 
-8.1.3. Os dados de cartão de crédito e demais informações financeiras sensíveis são armazenados pelo gateway de pagamento, em ambiente seguro certificado, e não pela GT diretamente.
+8.1.3. Os dados de cartão de crédito e demais informações financeiras dessas compras são tratados pela loja. A GT não os recebe nem os armazena: recebe apenas a confirmação da assinatura (Plano contratado, período e situação).
+
+8.1.4. Os serviços adicionais da Conta Business contratados pelo site são processados por meio de gateway de pagamento contratado pela GT (atualmente, Asaas), nos termos do Anexo II. A GT não armazena dados completos de cartão.
 
 ### 8.2. Falha no Pagamento e Inadimplência
 
-8.2.1. Em caso de falha no processamento de cobrança recorrente (cartão recusado, saldo insuficiente, expiração ou outros), a GT realizará novas tentativas de cobrança em datas subsequentes, conforme regras do gateway.
+8.2.1. Em caso de falha no processamento de cobrança recorrente (cartão recusado, saldo insuficiente, expiração ou outros), a loja realiza novas tentativas de cobrança conforme as regras dela, podendo manter os benefícios do Plano por um período de tolerância.
 
-8.2.2. Persistindo o inadimplemento, a GT adotará a seguinte política escalonada: (i) após 7 (sete) dias de atraso, notificação ao Usuário pelos canais cadastrados; (ii) após 15 (quinze) dias, rebaixamento automático para o Plano Free com perda dos benefícios pagos; (iii) após 30 (trinta) dias, cancelamento da assinatura, sem prejuízo da cobrança dos valores devidos pelo período em que os benefícios foram disponibilizados.
+8.2.2. Persistindo a falha, a loja encerra a assinatura e a Conta retorna ao Plano Free, com perda dos benefícios pagos.
 
-8.2.3. A reativação da assinatura após inadimplemento depende de regularização integral dos valores devidos.
+8.2.3. A reativação dos benefícios depende da regularização do pagamento na loja ou de nova contratação.
 
 ### 8.3. Notas Fiscais
 
-8.3.1. A GT, na qualidade de prestadora de serviço de software (SaaS), enquadrada no item 1.05 da Lista Anexa à Lei Complementar nº 116/2003, emitirá Nota Fiscal de Serviço Eletrônica (NFS-e) pelo município de Londrina/PR para cada cobrança realizada, encaminhando-a por e-mail ou disponibilizando-a na área da Conta do Usuário.
+8.3.1. Nas assinaturas contratadas em loja de aplicativos, o comprovante da compra é emitido pela própria loja e fica disponível na conta do Usuário na loja.
+
+8.3.2. Nos serviços contratados diretamente com a GT (Conta Business), a GT, na qualidade de prestadora de serviço de software (SaaS), enquadrada no item 1.05 da Lista Anexa à Lei Complementar nº 116/2003, emite Nota Fiscal de Serviço Eletrônica (NFS-e) pelo município de Londrina/PR, conforme o Anexo II.
 
 ### 8.4. Direito de Arrependimento (CDC)
 
 8.4.1. Em conformidade com o art. 49 do Código de Defesa do Consumidor, o Usuário consumidor que contrate assinatura paga fora do estabelecimento físico (notadamente pela internet) tem o prazo de 7 (sete) dias, a contar do pagamento, para desistir da contratação, com direito a reembolso integral.
 
-8.4.2. O exercício do direito de arrependimento deve ser comunicado pelos canais oficiais previstos na Seção 15 destes Termos.
+8.4.2. O exercício do direito de arrependimento deve ser comunicado pelos canais oficiais previstos na Seção 15 destes Termos. Nas assinaturas contratadas em loja de aplicativos, o reembolso é efetivado pela própria loja, e a GT orienta o Usuário sobre o procedimento.
 
 ## 9. Propriedade Intelectual
 

@@ -57,28 +57,28 @@ export const DOCUMENTOS_LEGAIS: Record<DocumentoLegal, Ficha> = {
   termos: {
     arquivo: 'termos',
     caminho: '/termos',
-    atualizadoEm: '2026-09-28',
+    atualizadoEm: '2026-11-19',
     relacionados: ['privacidade', 'help-overlander', 'conta-business', 'comunidade'],
     linguas: TODAS,
     textos: {
       pt: {
         titulo: 'Termos de Uso',
         tituloDaAba: 'Termos de Uso',
-        subtitulo: `Versão 1.1 — ${CNPJ}`,
+        subtitulo: `Versão 1.2 — ${CNPJ}`,
         descricao:
           'Termos de Uso do GT Overlander. Condições para utilização da plataforma, regras de conduta, direitos e responsabilidades.',
       },
       es: {
         titulo: 'Términos de Uso',
         tituloDaAba: 'Términos de Uso',
-        subtitulo: `Versión 1.1 — ${CNPJ}`,
+        subtitulo: `Versión 1.2 — ${CNPJ}`,
         descricao:
           'Términos de Uso de GT Overlander. Condiciones para utilizar la plataforma, reglas de conducta, derechos y responsabilidades.',
       },
       en: {
         titulo: 'Terms of Use',
         tituloDaAba: 'Terms of Use',
-        subtitulo: `Version 1.1 — ${CNPJ}`,
+        subtitulo: `Version 1.2 — ${CNPJ}`,
         descricao:
           'GT Overlander Terms of Use. Conditions for using the platform, rules of conduct, rights and responsibilities.',
       },
@@ -88,7 +88,7 @@ export const DOCUMENTOS_LEGAIS: Record<DocumentoLegal, Ficha> = {
   privacidade: {
     arquivo: 'privacidade',
     caminho: '/privacidade',
-    atualizadoEm: '2026-09-28',
+    atualizadoEm: '2026-11-19',
     relacionados: ['termos', 'comunidade'],
     linguas: TODAS,
     textos: {

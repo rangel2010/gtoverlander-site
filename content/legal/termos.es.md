@@ -324,7 +324,7 @@ GT no intermedia pagos en el Shopping, incluso en el Desapega. Comprador y vende
 
 7.4. Podrán ocurrir modificaciones en el alcance de beneficios de cada Plan a lo largo del tiempo. Pueden agregarse o removerse funcionalidades, y la asignación de funcionalidades entre Planes puede ser revisada. GT informará las alteraciones materiales con antelación razonable.
 
-7.5. La migración entre Planes se faculta al Usuario, observadas las siguientes reglas:
+7.5. La migración entre Planes se faculta al Usuario y se realiza en la tienda de aplicaciones en la que se contrató la suscripción, observadas las reglas de la propia tienda y, en general, lo siguiente:
 
   - Upgrade (de Plan inferior a superior): vigencia inmediata, con cobro proporcional (pro rata) de la diferencia por el período restante del ciclo en curso.
 
@@ -336,29 +336,33 @@ GT no intermedia pagos en el Shopping, incluso en el Desapega. Comprador y vende
 
 ### 8.1. Medios de Pago
 
-8.1.1. Los pagos de las suscripciones y demás servicios onerosos de la Plataforma son procesados por medio de una pasarela de pago contratada por GT (actualmente, Asaas), que opera las transacciones con tarjeta de crédito, débito, PIX, boleto bancario y demás medios puestos a disposición.
+8.1.1. Las suscripciones de los Planes pagos se contratan y se cobran dentro de la aplicación, por las tiendas de aplicaciones de Apple (App Store) y de Google (Google Play). El cobro, la renovación y el reembolso siguen las reglas y las políticas de la tienda en la que se contrató la suscripción.
 
-8.1.2. El Usuario autoriza a GT (o a la pasarela por ella contratada) a realizar cobros recurrentes en la forma de pago registrada, conforme a la periodicidad contratada, hasta que ocurra la cancelación expresa de la suscripción.
+8.1.2. Al contratar, el Usuario autoriza a la tienda a realizar cobros recurrentes en la forma de pago registrada en su cuenta de la tienda, conforme a la periodicidad contratada, hasta que ocurra la cancelación de la suscripción, hecha en la propia tienda.
 
-8.1.3. Los datos de tarjeta de crédito y demás información financiera sensible son almacenados por la pasarela de pago, en ambiente seguro certificado, y no por GT directamente.
+8.1.3. Los datos de tarjeta de crédito y demás información financiera de esas compras son tratados por la tienda. GT no los recibe ni los almacena: recibe solo la confirmación de la suscripción (Plan contratado, período y estado).
+
+8.1.4. Los servicios adicionales de la Cuenta Business contratados por el sitio son procesados por medio de una pasarela de pago contratada por GT (actualmente, Asaas), en los términos del Anexo II. GT no almacena datos completos de tarjeta.
 
 ### 8.2. Falla en el Pago e Incumplimiento
 
-8.2.1. En caso de falla en el procesamiento de un cobro recurrente (tarjeta rechazada, saldo insuficiente, vencimiento u otros), GT realizará nuevos intentos de cobro en fechas subsiguientes, conforme a las reglas de la pasarela.
+8.2.1. En caso de falla en el procesamiento de un cobro recurrente (tarjeta rechazada, saldo insuficiente, vencimiento u otros), la tienda realiza nuevos intentos de cobro conforme a sus reglas, pudiendo mantener los beneficios del Plan por un período de tolerancia.
 
-8.2.2. De persistir el incumplimiento, GT adoptará la siguiente política escalonada: (i) después de 7 (siete) días de atraso, notificación al Usuario por los canales registrados; (ii) después de 15 (quince) días, descenso automático al Plan Free con pérdida de los beneficios pagos; (iii) después de 30 (treinta) días, cancelación de la suscripción, sin perjuicio del cobro de los valores adeudados por el período en que los beneficios fueron puestos a disposición.
+8.2.2. De persistir la falla, la tienda cierra la suscripción y la Cuenta vuelve al Plan Free, con pérdida de los beneficios pagos.
 
-8.2.3. La reactivación de la suscripción después del incumplimiento depende de la regularización integral de los valores adeudados.
+8.2.3. La reactivación de los beneficios depende de la regularización del pago en la tienda o de una nueva contratación.
 
 ### 8.3. Comprobantes Fiscales
 
-8.3.1. GT, en calidad de prestadora de servicio de software (SaaS), encuadrada en el ítem 1.05 de la Lista Anexa a la Lei Complementar nº 116/2003 (ley complementaria brasileña sobre el impuesto a los servicios), emitirá Nota Fiscal de Serviço Eletrônica (NFS-e, el comprobante fiscal electrónico de servicios de Brasil) por el municipio de Londrina/PR para cada cobro realizado, enviándola por e-mail o poniéndola a disposición en el área de la Cuenta del Usuario.
+8.3.1. En las suscripciones contratadas en una tienda de aplicaciones, el comprobante de la compra es emitido por la propia tienda y queda disponible en la cuenta del Usuario en la tienda.
+
+8.3.2. En los servicios contratados directamente con GT (Cuenta Business), GT, en calidad de prestadora de servicio de software (SaaS), encuadrada en el ítem 1.05 de la Lista Anexa a la Lei Complementar nº 116/2003 (ley complementaria brasileña sobre el impuesto a los servicios), emite Nota Fiscal de Serviço Eletrônica (NFS-e, el comprobante fiscal electrónico de servicios de Brasil) por el municipio de Londrina/PR, conforme al Anexo II.
 
 ### 8.4. Derecho de Arrepentimiento (CDC)
 
 8.4.1. En conformidad con el art. 49 del Código de Defesa do Consumidor, el Usuario consumidor que contrate una suscripción paga fuera del establecimiento físico (en particular, por internet) tiene el plazo de 7 (siete) días, contados a partir del pago, para desistir de la contratación, con derecho a reembolso íntegro.
 
-8.4.2. El ejercicio del derecho de arrepentimiento debe ser comunicado por los canales oficiales previstos en la Sección 15 de estos Términos.
+8.4.2. El ejercicio del derecho de arrepentimiento debe ser comunicado por los canales oficiales previstos en la Sección 15 de estos Términos. En las suscripciones contratadas en una tienda de aplicaciones, el reembolso es efectuado por la propia tienda, y GT orienta al Usuario sobre el procedimiento.
 
 ## 9. Propiedad Intelectual
 

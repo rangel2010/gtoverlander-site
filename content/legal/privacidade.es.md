@@ -82,11 +82,11 @@ Recopilamos los siguientes datos personales, agrupados por finalidad:
 
 ### 2.5. Datos de Pago
 
-  - Tipo de Plan contratado e historial de cobros
+  - Tipo de Plan contratado e historial de la suscripción (inicio, renovaciones y cancelación)
 
-  - Estado de los pagos (sin almacenamiento directo por GT de números de tarjeta — esos datos quedan en la pasarela de pago contratada, conforme a la Sección 5)
+  - Estado de los pagos (sin almacenamiento por GT de números de tarjeta — en las suscripciones, el pago se hace en la tienda de aplicaciones; en los servicios de la Cuenta Business, en la pasarela de pago contratada, conforme a la Sección 4.1)
 
-  - CPF o CNPJ para la emisión de Nota Fiscal (NFS-e)
+  - CPF o CNPJ para la emisión de Nota Fiscal (NFS-e), en los servicios contratados directamente con GT
 
 ### 2.6. Datos de Comunicación
 
@@ -130,7 +130,11 @@ GT comparte datos personales con terceros solo cuando es estrictamente necesario
 
   - Microsoft Azure — proveedor de alojamiento en la nube (servidores, base de datos, storage). Datacenters en Brasil y, para servicios específicos, en Estados Unidos.
 
-  - Asaas — pasarela de pago (cobro de suscripciones, procesamiento de tarjeta y PIX, emisión de cobros).
+  - Apple (App Store) y Google (Google Play) — contratación, cobro, renovación y reembolso de las suscripciones hechas en la aplicación.
+
+  - RevenueCat — gestión de las suscripciones contratadas en las tiendas (informa a GT el Plan contratado y el estado de la suscripción).
+
+  - Asaas — pasarela de pago de los servicios de la Cuenta Business contratados por el sitio (procesamiento de tarjeta y PIX, emisión de cobros).
 
   - Google y Apple — autenticación por SSO cuando el Usuario opta por iniciar sesión con esas cuentas.
 
@@ -166,7 +170,7 @@ GT comparte datos personales con terceros solo cuando es estrictamente necesario
 
 ## 5. Transferencia Internacional de Datos
 
-Algunos de nuestros Operadores de tratamiento (en particular Microsoft Azure, Google, Apple, Sendgrid, Brevo, Vercel) procesan datos en servidores ubicados en otros países, especialmente en Estados Unidos.
+Algunos de nuestros Operadores de tratamiento (en particular Microsoft Azure, Google, Apple, RevenueCat, Sendgrid, Brevo, Vercel) procesan datos en servidores ubicados en otros países, especialmente en Estados Unidos.
 
 Cuando ocurre una transferencia internacional, garantizamos que el destinatario:
 
@@ -295,4 +299,4 @@ Para cualquier duda, solicitud o reclamación relacionada con esta Política o c
 
 También tienes derecho a presentar reclamación ante la Autoridade Nacional de Proteção de Dados (ANPD), por los canales oficiales disponibles en www.gov.br/anpd.
 
-**Última actualización:** septiembre de 2026 — Versión 1.2 (GT Desapega pasa a ser parte de Shopping).
+**Última actualización:** noviembre de 2026 — Versión 1.3 (las suscripciones pasan a describirse como cobradas por las tiendas de aplicaciones).
