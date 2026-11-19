@@ -524,4 +524,4 @@ A GT não intermedeia pagamentos no Shopping, inclusive no Desapega. Comprador e
 
 18.3. Antes do recurso à via judicial, as partes envidarão esforços razoáveis para resolução amigável de eventuais conflitos, podendo a GT indicar canais de conciliação extrajudicial e mediação.
 
-**Última atualização:**
+**Última atualização:** Novembro de 2026 — Versão 1.2 (as assinaturas passam a ser descritas como cobradas pelas lojas de aplicativos).

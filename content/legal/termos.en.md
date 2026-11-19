@@ -524,4 +524,4 @@ GT does not intermediate payments in Shopping, including on Desapega. Buyer and 
 
 18.3. Before resorting to the courts, the parties will use reasonable efforts for the amicable resolution of any conflicts, and GT may indicate channels for out-of-court conciliation and mediation.
 
-**Last updated:**
+**Last updated:** November 2026 — Version 1.2 (subscriptions are now described as billed by the app stores).

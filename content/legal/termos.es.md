@@ -524,4 +524,4 @@ GT no intermedia pagos en el Shopping, incluso en el Desapega. Comprador y vende
 
 18.3. Antes de recurrir a la vía judicial, las partes emplearán esfuerzos razonables para la resolución amistosa de eventuales conflictos, pudiendo GT indicar canales de conciliación extrajudicial y mediación.
 
-**Última actualización:**
+**Última actualización:** noviembre de 2026 — Versión 1.2 (las suscripciones pasan a describirse como cobradas por las tiendas de aplicaciones).
